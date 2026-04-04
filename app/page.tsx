@@ -31,7 +31,7 @@ export default function LandingPage() {
           }}
         >
           Realistic mock exams for KNM, Reading, Listening, Writing, and Speaking. Practice with
-          AI-powered feedback in your native language.
+          AI-powered feedback.
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center">
@@ -50,7 +50,6 @@ export default function LandingPage() {
           style={{ borderTop: "1px solid var(--gray-200)" }}
         >
           <TrustItem icon={<CheckCircleIcon />} text="2025 KNM Format" />
-          <TrustItem icon={<GlobeIcon />} text="Multi-language UI" />
           <TrustItem icon={<SparklesIcon />} text="AI Feedback" />
         </div>
       </section>
@@ -71,8 +70,8 @@ export default function LandingPage() {
             />
             <FeatureCard
               icon={<UsersIcon />}
-              title="Native Language Support"
-              description="UI available in Dutch, English, Farsi, Arabic, and Turkish. Practice in your comfort zone."
+              title="Beginner Friendly"
+              description="Clear instructions and step-by-step guidance so you can focus on practicing, not figuring out the platform."
             />
             <FeatureCard
               icon={<CalendarIcon />}
@@ -111,7 +110,7 @@ export default function LandingPage() {
               name="Free"
               price="€0"
               period="forever"
-              features={["1 exam per skill", "Basic results", "Multi-language UI"]}
+              features={["1 exam per skill", "Basic results", "Progress overview"]}
               cta="Get Started"
               href="/signup"
               variant="outline"
@@ -304,14 +303,6 @@ function CheckCircleIcon() {
         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
         clipRule="evenodd"
       />
-    </svg>
-  );
-}
-
-function GlobeIcon() {
-  return (
-    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-      <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
     </svg>
   );
 }

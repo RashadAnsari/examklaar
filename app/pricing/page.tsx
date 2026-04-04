@@ -17,7 +17,7 @@ const PLANS = [
     features: [
       { text: "1 practice exam per skill", included: true },
       { text: "Basic scoring & results", included: true },
-      { text: "Multi-language UI", included: true },
+      { text: "Progress overview", included: true },
       { text: "KNM, Reading, Listening", included: true },
       { text: "No AI feedback", included: false },
       { text: "No Writing & Speaking", included: false },

@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "ExamKlaar - Practice for Your Inburgering Exam",
   description:
-    "Realistic mock exams for KNM, Reading, Listening, Writing, and Speaking. Practice with AI-powered feedback in your native language.",
+    "Realistic mock exams for KNM, Reading, Listening, Writing, and Speaking. Practice with AI-powered feedback.",
 };
 
 export default function RootLayout({

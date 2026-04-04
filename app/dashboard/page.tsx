@@ -1,4 +1,4 @@
-import { DashboardNav } from "@/components/layout/DashboardNav";
+import { Navbar } from "@/components/layout/Navbar";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
@@ -35,7 +35,7 @@ const EXAMS = [
     id: "knm",
     title: "KNM (Knowledge)",
     description:
-      "Test your knowledge about Dutch society, culture, and laws. 40 questions, 45 minutes.",
+      "Test your knowledge about Dutch society, culture, and laws. 40 questions, 45 minutes",
     badge: <Badge variant="free">Free</Badge>,
     bestScore: "8.5",
     attempts: "3/5",
@@ -45,7 +45,7 @@ const EXAMS = [
   {
     id: "lezen",
     title: "Lezen (Reading)",
-    description: "Practice reading comprehension with Dutch texts. 30 questions, 65 minutes.",
+    description: "Practice reading comprehension with Dutch texts. 30 questions, 65 minutes",
     badge: <Badge variant="free">Free</Badge>,
     bestScore: "7.0",
     attempts: "2/5",
@@ -55,7 +55,7 @@ const EXAMS = [
   {
     id: "luisteren",
     title: "Luisteren (Listening)",
-    description: "Listen to Dutch audio clips and answer questions. 30 questions, 60 minutes.",
+    description: "Listen to Dutch audio clips and answer questions. 30 questions, 60 minutes",
     badge: <Badge variant="free">Free</Badge>,
     bestScore: "6.5",
     attempts: "1/5",
@@ -66,7 +66,7 @@ const EXAMS = [
     id: "schrijven",
     title: "Schrijven (Writing)",
     description:
-      "Write in Dutch and get AI-powered grammar and vocabulary feedback. 4 tasks, 45 minutes.",
+      "Write in Dutch and get AI-powered grammar and vocabulary feedback. 4 tasks, 45 minutes",
     badge: <Badge variant="premium">Premium</Badge>,
     bestScore: "Locked",
     attempts: "0/0",
@@ -76,7 +76,7 @@ const EXAMS = [
   {
     id: "spreken",
     title: "Spreken (Speaking)",
-    description: "Practice speaking and get pronunciation feedback. 12 tasks, 30 minutes.",
+    description: "Practice speaking and get pronunciation feedback. 12 tasks, 30 minutes",
     badge: <Badge variant="premium">Premium</Badge>,
     bestScore: "Locked",
     attempts: "0/0",
@@ -109,7 +109,7 @@ const ACTIVITY = [
 export default function DashboardPage() {
   return (
     <div className="min-h-screen" style={{ background: "var(--gray-50)" }}>
-      <DashboardNav userName="Rashad" userInitials="RA" />
+      <Navbar variant="dashboard" />
 
       <div className="container py-8" style={{ maxWidth: "1280px" }}>
         {/* Page header */}

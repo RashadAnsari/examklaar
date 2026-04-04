@@ -1,47 +1,113 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/Input";
-import { Toggle } from "@/components/ui/Toggle";
 import { Button } from "@/components/ui/Button";
+import { createClient } from "@/utils/supabase/client";
+import { Navbar } from "@/components/layout/Navbar";
+import { SuccessBanner } from "@/components/ui/SuccessBanner";
+import { ErrorBanner } from "@/components/ui/ErrorBanner";
 
 export default function SettingsPage() {
-  const [profile, setProfile] = useState({
-    name: "Rashad Ansari",
-    email: "rashad@example.com",
-  });
+  const router = useRouter();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [nameLoading, setNameLoading] = useState(false);
+  const [nameError, setNameError] = useState("");
+  const [profileSuccess, setProfileSuccess] = useState<string | null>(null);
 
-  const [prefs, setPrefs] = useState({
-    language: "en",
-    examLevel: "a2",
-    emailNotifications: true,
-    studyReminders: true,
-  });
+  const [passwords, setPasswords] = useState({ current: "", next: "", confirm: "" });
+  const [pwErrors, setPwErrors] = useState<{
+    current?: string;
+    next?: string;
+    confirm?: string;
+    form?: string;
+  }>({});
+  const [pwLoading, setPwLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
-  const [passwords, setPasswords] = useState({
-    current: "",
-    next: "",
-    confirm: "",
-  });
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => {
+      if (data.user) {
+        setName(data.user.user_metadata?.full_name ?? "");
+        setEmail(data.user.email ?? "");
+      }
+    });
+  }, []);
 
-  function updatePref<K extends keyof typeof prefs>(key: K, value: (typeof prefs)[K]) {
-    setPrefs((prev) => ({ ...prev, [key]: value }));
+  async function saveName() {
+    if (!name.trim()) {
+      setNameError("Name cannot be empty");
+      return;
+    }
+    setNameLoading(true);
+    setNameError("");
+    const supabase = createClient();
+    const { error } = await supabase.auth.updateUser({ data: { full_name: name } });
+    setNameLoading(false);
+    if (error) setNameError(error.message);
+    else setProfileSuccess("Profile updated successfully.");
   }
+
+  async function changePassword(e: React.SyntheticEvent) {
+    e.preventDefault();
+    const errs: typeof pwErrors = {};
+    if (!passwords.current) errs.current = "Required";
+    if (!passwords.next || passwords.next.length < 8) errs.next = "Must be at least 8 characters";
+    if (passwords.next !== passwords.confirm) errs.confirm = "Passwords do not match";
+    if (Object.keys(errs).length) {
+      setPwErrors(errs);
+      return;
+    }
+    setPwLoading(true);
+    setPwErrors({});
+    const supabase = createClient();
+    // Verify current password before updating
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password: passwords.current,
+    });
+    if (signInError) {
+      setPwLoading(false);
+      setPwErrors({ current: "Incorrect password" });
+      return;
+    }
+    const { error } = await supabase.auth.updateUser({ password: passwords.next });
+    setPwLoading(false);
+    if (error) {
+      setPwErrors({ form: error.message });
+    } else {
+      setSuccessMessage("Password updated successfully.");
+      setPasswords({ current: "", next: "", confirm: "" });
+    }
+  }
+
+  const deleteAccount = useCallback(async () => {
+    if (
+      !confirm(
+        "Are you sure you want to delete your account? Your subscription will be cancelled and all your data will be permanently removed. This action cannot be undone."
+      )
+    )
+      return;
+    setDeleteLoading(true);
+    const res = await fetch("/api/account", { method: "DELETE" });
+    if (!res.ok) {
+      const { error } = await res.json();
+      alert(error ?? "Something went wrong. Please try again.");
+      setDeleteLoading(false);
+      return;
+    }
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    router.push("/");
+  }, [router]);
 
   return (
     <div className="min-h-screen" style={{ background: "var(--gray-50)" }}>
-      {/* Navbar */}
-      <nav className="nav">
-        <div className="nav-container">
-          <Link href="/" className="logo">
-            ExamKlaar
-          </Link>
-          <Link href="/dashboard" className="nav-link">
-            Back to Dashboard
-          </Link>
-        </div>
-      </nav>
+      <Navbar variant="dashboard" />
 
       <div className="mx-auto px-6 py-12" style={{ maxWidth: "900px" }}>
         {/* Page header */}
@@ -54,27 +120,40 @@ export default function SettingsPage() {
 
         {/* Profile */}
         <SettingsSection title="Profile" description="Update your personal information">
-          <div className="flex flex-col gap-6">
+          <SuccessBanner message={profileSuccess} onHide={() => setProfileSuccess(null)} />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              saveName();
+            }}
+            noValidate
+            className="flex flex-col gap-6"
+            style={{ maxWidth: "400px" }}
+          >
             <Input
               label="Full Name"
               type="text"
-              value={profile.name}
-              onChange={(e) => setProfile((p) => ({ ...p, name: e.target.value }))}
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+                setNameError("");
+              }}
+              error={nameError}
               autoComplete="name"
             />
             <Input
               label="Email Address"
               type="email"
-              value={profile.email}
-              onChange={(e) => setProfile((p) => ({ ...p, email: e.target.value }))}
-              autoComplete="email"
+              value={email}
+              readOnly
+              style={{ opacity: 0.6, cursor: "not-allowed" }}
             />
             <div>
-              <Button variant="primary" type="button">
-                Save Changes
+              <Button variant="primary" type="submit" disabled={nameLoading}>
+                {nameLoading ? "Saving…" : "Save Changes"}
               </Button>
             </div>
-          </div>
+          </form>
         </SettingsSection>
 
         {/* Subscription */}
@@ -108,95 +187,58 @@ export default function SettingsPage() {
           </Button>
         </SettingsSection>
 
-        {/* Preferences */}
-        <SettingsSection title="Preferences" description="Customize your learning experience">
-          <SettingsItem
-            label="Interface Language"
-            description="Choose the language for the app interface"
-          >
-            <select
-              value={prefs.language}
-              onChange={(e) => updatePref("language", e.target.value)}
-              className="input"
-              style={{ width: "auto", minWidth: "200px" }}
-            >
-              <option value="nl">Nederlands</option>
-              <option value="en">English</option>
-              <option value="fa">فارسی (Farsi)</option>
-              <option value="ar">العربية (Arabic)</option>
-              <option value="tr">Türkçe (Turkish)</option>
-            </select>
-          </SettingsItem>
-
-          <SettingsItem
-            label="Target Exam Level"
-            description="Select your target inburgering exam level"
-          >
-            <select
-              value={prefs.examLevel}
-              onChange={(e) => updatePref("examLevel", e.target.value)}
-              className="input"
-              style={{ width: "auto", minWidth: "200px" }}
-            >
-              <option value="a2">A2 (Standard)</option>
-              <option value="b1">B1 (Advanced)</option>
-            </select>
-          </SettingsItem>
-
-          <Toggle
-            checked={prefs.emailNotifications}
-            onChange={(v) => updatePref("emailNotifications", v)}
-            label="Email Notifications"
-            description="Receive updates about your progress and new features"
-          />
-
-          <div className="mt-6">
-            <Toggle
-              checked={prefs.studyReminders}
-              onChange={(v) => updatePref("studyReminders", v)}
-              label="Study Reminders"
-              description="Get daily reminders to practice"
-            />
-          </div>
-        </SettingsSection>
-
         {/* Security */}
         <SettingsSection title="Security" description="Manage your password and account security">
-          <SettingsItem label="Password" description="Last changed 2 months ago">
-            <Button variant="outline" type="button">
-              Change Password
-            </Button>
-          </SettingsItem>
-
-          {/* Password change form (hidden by default, shown here for completeness) */}
-          <div className="mt-6 flex flex-col gap-4" style={{ maxWidth: "400px" }}>
+          <SuccessBanner message={successMessage} onHide={() => setSuccessMessage(null)} />
+          <ErrorBanner
+            message={pwErrors.form ?? null}
+            onHide={() => setPwErrors((prev) => ({ ...prev, form: undefined }))}
+          />
+          <form
+            onSubmit={changePassword}
+            noValidate
+            className="flex flex-col gap-6"
+            style={{ maxWidth: "400px" }}
+          >
             <Input
               label="Current Password"
               type="password"
               value={passwords.current}
-              onChange={(e) => setPasswords((p) => ({ ...p, current: e.target.value }))}
+              onChange={(e) => {
+                setPasswords((p) => ({ ...p, current: e.target.value }));
+                if (pwErrors.current) setPwErrors((p) => ({ ...p, current: undefined }));
+              }}
+              error={pwErrors.current}
               autoComplete="current-password"
             />
             <Input
               label="New Password"
               type="password"
               value={passwords.next}
-              onChange={(e) => setPasswords((p) => ({ ...p, next: e.target.value }))}
+              onChange={(e) => {
+                setPasswords((p) => ({ ...p, next: e.target.value }));
+                if (pwErrors.next) setPwErrors((p) => ({ ...p, next: undefined }));
+              }}
+              error={pwErrors.next}
               autoComplete="new-password"
             />
             <Input
               label="Confirm New Password"
               type="password"
               value={passwords.confirm}
-              onChange={(e) => setPasswords((p) => ({ ...p, confirm: e.target.value }))}
+              onChange={(e) => {
+                setPasswords((p) => ({ ...p, confirm: e.target.value }));
+                if (pwErrors.confirm) setPwErrors((p) => ({ ...p, confirm: undefined }));
+              }}
+              error={pwErrors.confirm}
               autoComplete="new-password"
             />
             <div>
-              <Button variant="primary" type="button">
-                Update Password
+              <Button variant="primary" type="submit" disabled={pwLoading}>
+                {pwLoading ? "Updating…" : "Update Password"}
               </Button>
             </div>
-          </div>
+          </form>
         </SettingsSection>
 
         {/* Danger zone */}
@@ -207,22 +249,10 @@ export default function SettingsPage() {
         >
           <SettingsItem
             label="Delete Account"
-            description="Permanently delete your account and all your data. This action cannot be undone."
+            description="Permanently delete your account, cancel your subscription, and remove all your data. This action cannot be undone."
           >
-            <Button
-              variant="danger"
-              type="button"
-              onClick={() => {
-                if (
-                  confirm(
-                    "Are you sure you want to delete your account? This action cannot be undone."
-                  )
-                ) {
-                  // In a real app, call the delete API
-                }
-              }}
-            >
-              Delete Account
+            <Button variant="danger" type="button" onClick={deleteAccount} disabled={deleteLoading}>
+              {deleteLoading ? "Deleting…" : "Delete Account"}
             </Button>
           </SettingsItem>
         </SettingsSection>
@@ -279,7 +309,7 @@ function SettingsItem({
 }) {
   return (
     <div
-      className="flex flex-col sm:flex-row justify-between items-start gap-6 py-6 border-b last:border-b-0 first:pt-0"
+      className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 py-6 border-b last:border-b-0 first:pt-0"
       style={{ borderColor: "var(--gray-100)" }}
     >
       <div className="flex-1">
