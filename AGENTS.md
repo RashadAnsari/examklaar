@@ -19,12 +19,15 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## Routing & auth protection
 
 - Auth-protected pages are guarded in `proxy.ts` (NOT `middleware.ts` — that convention is deprecated in this Next.js version; the function must be named `proxy`).
-- Public paths: `/`, `/pricing`, `/terms`, `/privacy`, `/login`, `/signup`, `/forgot-password`, `/reset-password`, `/auth/*`.
+- Public paths: `/`, `/pricing`, `/terms`, `/privacy`, `/login`, `/signup`, `/forgot-password`, `/auth/*`.
 - All other pages require a valid session; unauthenticated requests are redirected to `/login`.
+
+## Package manager
+
+- This project uses **bun**. Always use `bun` / `bunx` — never `npm`, `npx`, or `yarn`.
 
 ## General rules
 
-- English only — no multilingual UI, language switchers, or references to native language support.
 - No duplicate components: reuse existing ones with props rather than creating variants.
 - `React.FormEvent` is fully deprecated — use `React.SyntheticEvent` for form submit handlers.
 - **Punctuation**: no period on short labels, headings, button text, and single-phrase descriptions. Use a period on full sentences, especially multi-clause ones (FAQs, warnings, longer descriptions).
