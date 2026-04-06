@@ -1,0 +1,136 @@
+{
+  "id": "speaking-a2-exam-1",
+  "skill": "speaking",
+  "level": "A2",
+  "title": "Speaking Exam 1",
+  "timeLimitMinutes": 35,
+  "sections": [
+    {
+      "content": "<h3>Spreekvaardigheid A2 - Oefentoets 1</h3><p>U moet antwoorden geven op de vragen. Bijna alle opdrachten bestaan uit twee delen. Geef altijd antwoord in korte en makkelijke zinnen. Geef altijd antwoord op beide delen van de vraag.</p><p><strong>Voorbeeld:</strong> \"Van welk fruit houdt u het meest en waar koopt u dat dan?\"<br>Antwoord: \"Ik houd van appels. Ik koop appels op de markt.\"</p>",
+      "audioUrl": null,
+      "videoUrl": "https://youtu.be/pRq_ZxB0tto",
+      "questions": [
+        {
+          "id": "q1",
+          "type": "speaking",
+          "content": "<p>Ik ga drie keer per jaar op vakantie. <strong>Hoe vaak gaat u op vakantie en waar gaat u dan naar toe?</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Ik ga één keer per jaar op vakantie. Ik ga naar Thailand.\"</p>"
+        },
+        {
+          "id": "q2",
+          "type": "speaking",
+          "content": "<p>Ik spreek 4 talen en mijn moedertaal is Nederlands. <strong>Welke talen spreekt u en wat is uw moedertaal?</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Mijn moedertaal is Engels. Ik spreek Engels en een klein beetje Nederlands.\"</p>"
+        },
+        {
+          "id": "q3",
+          "type": "speaking",
+          "content": "<p>Ik heb twee zussen en veel neven en nichten. <strong>Wat kunt u vertellen over uw familie?</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Ik heb twee broers en geen zussen. Mijn familie is groot, ik heb veel ooms en tantes en neven en nichten.\"</p>"
+        },
+        {
+          "id": "q4",
+          "type": "speaking",
+          "content": "<p>Mijn dag begint altijd om 6 uur in de ochtend. <strong>Hoe laat begint uw dag en wat doet u dan het eerst?</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Ik sta op om 8 uur. Dan drink ik eerst koffie.\"</p>"
+        },
+        {
+          "id": "q5",
+          "type": "speaking",
+          "content": "<p>Ik woon in een rijtjeshuis in Heemstede. <strong>Waar woont u en hoe is uw contact met de buren?</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Ik woon in Amsterdam en ik heb weinig contact met de buren.\"</p>"
+        },
+        {
+          "id": "q6",
+          "type": "speaking",
+          "content": "<p>Ik doe allerlei dingen om gezond te blijven. <strong>Wat doet u allemaal om gezond te blijven?</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Ik doe veel aan sport. Ik eet niet zo veel. En ik drink geen alcohol.\"</p>"
+        },
+        {
+          "id": "q7",
+          "type": "speaking",
+          "content": "<p>Ik doe mijn boodschappen bijna altijd op de fiets. <strong>Hoe doet u uw boodschappen?</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Ik doe mijn boodschappen met de auto.\"</p>"
+        },
+        {
+          "id": "q8",
+          "type": "speaking",
+          "content": "<p>Ik houd van autorijden. <strong>Houdt u ook van autorijden? Vertel ook waarom u wel of niet van autorijden houdt.</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Ik houd niet van autorijden, want er zijn altijd files op de weg.\"</p>"
+        },
+        {
+          "id": "q9",
+          "type": "speaking",
+          "content": "<p>Ik luister elke dag naar het nieuws op de radio. <strong>Hoe vaak luistert u naar de radio? En naar wat voor soort programma's luistert u het liefst?</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Ik luister elke dag naar de radio. Ik luister het liefst naar muziek.\"</p>"
+        },
+        {
+          "id": "q10",
+          "type": "speaking",
+          "content": "<p>Ik ga graag naar een feestje in het weekend. <strong>Wat doet u het liefst in het weekend? En vertel ook waarom u dat leuk vindt.</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Ik ga het liefst naar een discotheek, want ik houd van dansen.\"</p>"
+        },
+        {
+          "id": "q11",
+          "type": "speaking",
+          "content": "<p>Ik ontvang graag vrienden op bezoek. <strong>Ontvangt u wel eens vrienden bij u thuis op bezoek? En wat doet u dan met uw vrienden?</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Soms komen vrienden op bezoek. Dan gaan we samen lekker eten.\"</p>"
+        },
+        {
+          "id": "q12",
+          "type": "speaking",
+          "content": "<p>Ik vind de winter een heerlijk seizoen. <strong>Welk seizoen vindt u het prettigst? En vertel ook waarom.</strong></p>",
+          "audioUrl": null,
+          "videoUrl": null,
+          "options": null,
+          "correctAnswer": null,
+          "explanation": "<p>Voorbeeldantwoord: \"Ik vind de zomer goed. In de zomer is het lekker warm.\"</p>"
+        }
+      ]
+    }
+  ]
+}

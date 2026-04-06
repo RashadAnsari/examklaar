@@ -1,0 +1,266 @@
+{
+  "id": "listening-a2-exam-1",
+  "skill": "listening",
+  "level": "A2",
+  "title": "Listening Exam 1",
+  "timeLimitMinutes": 45,
+  "sections": [
+    {
+      "content": "<h3>Luistervaardigheid A2 - Oefenexamen 1</h3><p>U gaat luisteren naar gesproken teksten. Beantwoord de vragen. Het examen duurt 45 minuten.</p><p><strong>Bron:</strong> DUO Oefenexamen Luisteren A2 (code: NCJ5) — <a href=\"https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5\">Klik hier voor het officiële oefenexamen</a></p>",
+      "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5",
+      "videoUrl": null,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 1 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q1",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q2",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 2 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q2",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q3",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 3 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q3",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q4",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 4 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q4",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q5",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 5 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q5",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q6",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 6 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q6",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q7",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 7 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q7",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q8",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 8 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q8",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q9",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 9 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q9",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q10",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 10 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q10",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q11",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 11 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q11",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q12",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 12 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q12",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q13",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 13 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q13",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q14",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 14 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q14",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q15",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 15 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q15",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q16",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 16 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q16",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q17",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 17 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q17",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q18",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 18 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q18",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q19",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 19 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q19",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q20",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 20 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q20",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q21",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 21 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q21",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q22",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 22 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q22",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q23",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 23 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q23",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q24",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 24 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q24",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        },
+        {
+          "id": "q25",
+          "type": "multiple_choice",
+          "content": "<p>Vraag 25 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
+          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q25",
+          "videoUrl": null,
+          "options": ["Optie A", "Optie B", "Optie C"],
+          "correctAnswer": null,
+          "explanation": null
+        }
+      ]
+    }
+  ]
+}
