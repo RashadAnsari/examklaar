@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { createClient } from "@/utils/supabase/client";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { SuccessBanner } from "@/components/ui/SuccessBanner";
 import { ErrorBanner } from "@/components/ui/ErrorBanner";
 
@@ -257,6 +258,7 @@ export default function SettingsPage() {
           </SettingsItem>
         </SettingsSection>
       </div>
+      <Footer />
     </div>
   );
 }

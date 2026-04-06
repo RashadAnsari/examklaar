@@ -1,121 +1,115 @@
+"use client";
+
+import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
-import { Badge } from "@/components/ui/Badge";
+import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
-import {
-  CheckCircleIcon,
-  ChartBarIcon,
-  FireIcon,
-  ClockIcon,
-  ClipboardDocumentIcon,
-  BookOpenIcon,
-  MicrophoneIcon,
-} from "@heroicons/react/20/solid";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+type Level = "A2" | "B1";
 
-const STATS = [
-  {
-    label: "Exams Completed",
-    value: "12",
-    trend: "+3 this week",
-    icon: <CheckCircleIcon style={{ width: 20, height: 20 }} />,
-  },
-  {
-    label: "Average Score",
-    value: "7.2",
-    trend: "Improving steadily",
-    icon: <ChartBarIcon style={{ width: 20, height: 20 }} />,
-  },
-  {
-    label: "Study Streak",
-    value: "5",
-    trend: "days in a row",
-    icon: <FireIcon style={{ width: 20, height: 20 }} />,
-  },
-  {
-    label: "Time Practiced",
-    value: "8.5h",
-    trend: "+2.3h this week",
-    icon: <ClockIcon style={{ width: 20, height: 20 }} />,
-  },
-];
+interface ExamCardData {
+  id: string;
+  title: string;
+  level: Level | null;
+  description: string;
+  locked: boolean;
+  completions: number;
+  totalExams: number;
+}
 
-const EXAMS = [
-  {
-    id: "knm",
-    title: "KNM (Knowledge)",
-    description:
-      "Test your knowledge about Dutch society, culture, and laws. 40 questions, 45 minutes",
-    badge: <Badge variant="free">Free</Badge>,
-    bestScore: "8.5",
-    attempts: "3/5",
-    progress: 60,
-    locked: false,
-  },
-  {
-    id: "lezen",
-    title: "Lezen (Reading)",
-    description: "Practice reading comprehension with Dutch texts. 30 questions, 65 minutes",
-    badge: <Badge variant="free">Free</Badge>,
-    bestScore: "7.0",
-    attempts: "2/5",
-    progress: 40,
-    locked: false,
-  },
-  {
-    id: "luisteren",
-    title: "Luisteren (Listening)",
-    description: "Listen to Dutch audio clips and answer questions. 30 questions, 60 minutes",
-    badge: <Badge variant="free">Free</Badge>,
-    bestScore: "6.5",
-    attempts: "1/5",
-    progress: 20,
-    locked: false,
-  },
-  {
-    id: "schrijven",
-    title: "Schrijven (Writing)",
-    description:
-      "Write in Dutch and get AI-powered grammar and vocabulary feedback. 4 tasks, 45 minutes",
-    badge: <Badge variant="premium">Premium</Badge>,
-    bestScore: "Locked",
-    attempts: "0/0",
-    progress: 0,
-    locked: true,
-  },
-  {
-    id: "spreken",
-    title: "Spreken (Speaking)",
-    description: "Practice speaking and get pronunciation feedback. 12 tasks, 30 minutes",
-    badge: <Badge variant="premium">Premium</Badge>,
-    bestScore: "Locked",
-    attempts: "0/0",
-    progress: 0,
-    locked: true,
-  },
-];
+const KNM_EXAM: ExamCardData = {
+  id: "knm",
+  title: "KNM (Knowledge)",
+  level: null,
+  description: "Dutch society, culture, and laws. 40 questions, 45 minutes",
+  locked: false,
+  completions: 3,
+  totalExams: 5,
+};
 
-const ACTIVITY = [
-  {
-    title: "Completed KNM Exam #3",
-    time: "2 hours ago • 45 minutes",
-    score: "8.5",
-    icon: <ClipboardDocumentIcon style={{ width: 20, height: 20 }} />,
-  },
-  {
-    title: "Completed Lezen Exam #2",
-    time: "1 day ago • 65 minutes",
-    score: "7.0",
-    icon: <BookOpenIcon style={{ width: 20, height: 20 }} />,
-  },
-  {
-    title: "Completed Luisteren Exam #1",
-    time: "2 days ago • 60 minutes",
-    score: "6.5",
-    icon: <MicrophoneIcon style={{ width: 20, height: 20 }} />,
-  },
-];
+const EXAMS_BY_LEVEL: Record<Level, ExamCardData[]> = {
+  A2: [
+    {
+      id: "reading-a2",
+      title: "Lezen (Reading)",
+      level: "A2",
+      description: "Reading comprehension with Dutch texts. 30 questions, 65 minutes",
+      locked: false,
+      completions: 2,
+      totalExams: 5,
+    },
+    {
+      id: "listening-a2",
+      title: "Luisteren (Listening)",
+      level: "A2",
+      description: "Dutch audio clips and questions. 30 questions, 60 minutes",
+      locked: false,
+      completions: 1,
+      totalExams: 5,
+    },
+    {
+      id: "writing-a2",
+      title: "Schrijven (Writing)",
+      level: "A2",
+      description: "Write in Dutch and get AI-powered feedback. 4 tasks, 45 minutes",
+      locked: true,
+      completions: 0,
+      totalExams: 5,
+    },
+    {
+      id: "speaking-a2",
+      title: "Spreken (Speaking)",
+      level: "A2",
+      description: "Practice speaking and get pronunciation feedback. 12 tasks, 30 minutes",
+      locked: true,
+      completions: 0,
+      totalExams: 5,
+    },
+  ],
+  B1: [
+    {
+      id: "reading-b1",
+      title: "Lezen (Reading)",
+      level: "B1",
+      description: "Reading comprehension with Dutch texts. 30 questions, 65 minutes",
+      locked: false,
+      completions: 0,
+      totalExams: 5,
+    },
+    {
+      id: "listening-b1",
+      title: "Luisteren (Listening)",
+      level: "B1",
+      description: "Dutch audio clips and questions. 30 questions, 60 minutes",
+      locked: false,
+      completions: 0,
+      totalExams: 5,
+    },
+    {
+      id: "writing-b1",
+      title: "Schrijven (Writing)",
+      level: "B1",
+      description: "Write in Dutch and get AI-powered feedback. 4 tasks, 45 minutes",
+      locked: true,
+      completions: 0,
+      totalExams: 5,
+    },
+    {
+      id: "speaking-b1",
+      title: "Spreken (Speaking)",
+      level: "B1",
+      description: "Practice speaking and get pronunciation feedback. 12 tasks, 30 minutes",
+      locked: true,
+      completions: 0,
+      totalExams: 5,
+    },
+  ],
+};
 
 export default function DashboardPage() {
+  const [level, setLevel] = useState<Level>("A2");
+  const exams = [KNM_EXAM, ...EXAMS_BY_LEVEL[level]];
+
   return (
     <div className="min-h-screen" style={{ background: "var(--gray-50)" }}>
       <Navbar />
@@ -127,13 +121,6 @@ export default function DashboardPage() {
             Welcome back, Rashad
           </h1>
           <p style={{ color: "var(--gray-600)" }}>Continue practicing for your inburgering exam</p>
-        </div>
-
-        {/* Stats grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {STATS.map((stat) => (
-            <StatCard key={stat.label} {...stat} />
-          ))}
         </div>
 
         {/* Upgrade banner */}
@@ -157,119 +144,87 @@ export default function DashboardPage() {
           </Button>
         </div>
 
-        {/* Exam skills */}
+        {/* Practice Exams heading + level selector */}
         <div className="flex justify-between items-center mb-6">
           <h2 className="font-semibold" style={{ fontSize: "1.5rem", color: "var(--gray-900)" }}>
             Practice Exams
           </h2>
+          <div className="flex rounded-lg p-1 gap-1" style={{ background: "var(--gray-200)" }}>
+            {(["A2", "B1"] as Level[]).map((l) => (
+              <button
+                key={l}
+                onClick={() => setLevel(l)}
+                className="rounded-md px-4 py-1.5 text-sm font-semibold transition-all"
+                style={{
+                  background: level === l ? "white" : "transparent",
+                  color: level === l ? "var(--gray-900)" : "var(--gray-600)",
+                  boxShadow: level === l ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                {l}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
-          {EXAMS.map((exam) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {exams.map((exam) => (
             <ExamCard key={exam.id} {...exam} />
           ))}
         </div>
-
-        {/* Recent activity */}
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="font-semibold" style={{ fontSize: "1.5rem", color: "var(--gray-900)" }}>
-            Recent Activity
-          </h2>
-        </div>
-
-        <div
-          className="rounded-2xl border overflow-hidden"
-          style={{ background: "white", borderColor: "var(--gray-200)" }}
-        >
-          {ACTIVITY.map((item, i) => (
-            <ActivityItem key={i} {...item} isLast={i === ACTIVITY.length - 1} />
-          ))}
-        </div>
       </div>
+      <Footer />
     </div>
   );
 }
 
 /* ==================== SUB-COMPONENTS ==================== */
 
-function StatCard({
-  label,
-  value,
-  trend,
-  icon,
-}: {
-  label: string;
-  value: string;
-  trend: string;
-  icon: React.ReactNode;
-}) {
-  return (
-    <div
-      className="rounded-2xl p-6 border"
-      style={{ background: "white", borderColor: "var(--gray-200)" }}
-    >
-      <div className="flex justify-between items-center mb-4">
-        <span className="text-sm font-medium" style={{ color: "var(--gray-600)" }}>
-          {label}
-        </span>
-        <div
-          className="w-10 h-10 rounded-lg flex items-center justify-center"
-          style={{ background: "var(--green-50)", color: "var(--green-900)" }}
-        >
-          {icon}
-        </div>
-      </div>
-      <div
-        className="font-bold mb-1"
-        style={{
-          fontSize: "2rem",
-          fontFamily: "var(--font-mono)",
-          color: "var(--gray-900)",
-        }}
-      >
-        {value}
-      </div>
-      <div className="text-sm" style={{ color: "var(--green-900)" }}>
-        {trend}
-      </div>
-    </div>
-  );
-}
-
 function ExamCard({
+  id,
   title,
+  level,
   description,
-  badge,
-  bestScore,
-  attempts,
-  progress,
   locked,
-}: (typeof EXAMS)[number]) {
+  completions,
+  totalExams,
+}: ExamCardData) {
   return (
     <div
-      className="rounded-2xl p-8 border-2 transition-all"
+      className="rounded-2xl p-8 border-2 flex flex-col"
       style={{
         background: "white",
         borderColor: "var(--gray-200)",
         opacity: locked ? 0.65 : 1,
       }}
     >
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="font-semibold" style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}>
-          {title}
-        </h3>
-        {badge}
-      </div>
+      <h3 className="font-semibold mb-3" style={{ fontSize: "1.125rem", color: "var(--gray-900)" }}>
+        {title}
+        {level ? ` ${level}` : ""}
+      </h3>
+
       <p className="text-sm mb-6" style={{ color: "var(--gray-600)", lineHeight: 1.6 }}>
         {description}
       </p>
 
-      <div className="mb-6">
-        <div className="flex justify-between text-sm mb-2" style={{ color: "var(--gray-600)" }}>
-          <span>Best score: {bestScore}</span>
-          <span>{attempts} attempts</span>
-        </div>
-        <ProgressBar value={progress} thin />
+      <div className="mb-6 flex-1">
+        {locked ? (
+          <p className="text-sm" style={{ color: "var(--gray-500)" }}>
+            Available with Premium
+          </p>
+        ) : (
+          <>
+            <div className="flex justify-between text-xs mb-2" style={{ color: "var(--gray-500)" }}>
+              <span>
+                {completions === 0 ? "Not started" : `${completions} of ${totalExams} completed`}
+              </span>
+              <span>{totalExams} exams</span>
+            </div>
+            <ProgressBar value={completions} max={totalExams} thin />
+          </>
+        )}
       </div>
 
       <div className="flex gap-3">
@@ -278,61 +233,10 @@ function ExamCard({
             Upgrade to Unlock
           </Button>
         ) : (
-          <>
-            <Button href="/exam" variant="primary" fullWidth>
-              Start Exam
-            </Button>
-            <Button href="/review" variant="outline" fullWidth>
-              Review
-            </Button>
-          </>
+          <Button href={`/exams/${id}`} variant="primary" fullWidth>
+            View Exams
+          </Button>
         )}
-      </div>
-    </div>
-  );
-}
-
-function ActivityItem({
-  title,
-  time,
-  score,
-  icon,
-  isLast,
-}: {
-  title: string;
-  time: string;
-  score: string;
-  icon: React.ReactNode;
-  isLast: boolean;
-}) {
-  return (
-    <div
-      className="flex items-center gap-4 p-6"
-      style={{ borderBottom: isLast ? "none" : "1px solid var(--gray-100)" }}
-    >
-      <div
-        className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-        style={{ background: "var(--gray-100)", color: "var(--gray-600)" }}
-      >
-        {icon}
-      </div>
-      <div className="flex-1 min-w-0">
-        <p className="font-semibold text-sm" style={{ color: "var(--gray-900)" }}>
-          {title}
-        </p>
-        <p className="text-sm" style={{ color: "var(--gray-600)" }}>
-          {time}
-        </p>
-      </div>
-      <div
-        className="font-bold flex-shrink-0"
-        style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: "1.25rem",
-          color: "var(--green-900)",
-        }}
-      >
-        {score}
       </div>
     </div>
   );
