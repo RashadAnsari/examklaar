@@ -1,10 +1,12 @@
 import fs from "fs/promises";
 import path from "path";
+import { cookies } from "next/headers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { SKILL_TITLES, SKILL_DESCRIPTIONS, LOCKED_SKILLS } from "@/lib/exam-config";
+import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam-config";
 import type { SkillGroup } from "@/lib/exam-config";
 import { DashboardClient } from "./DashboardClient";
+import { createClient } from "@/utils/supabase/server";
 
 const EXAMS_DIR = path.join(process.cwd(), "src/data/exams");
 
@@ -39,7 +41,7 @@ async function loadSkillGroups(): Promise<SkillGroup[]> {
           description: SKILL_DESCRIPTIONS[skill] ?? "",
           timeLimitMinutes: firstExam.timeLimitMinutes,
           examCount: examFiles.length,
-          locked: LOCKED_SKILLS.has(skill),
+          completedCount: 0,
         });
       }
     } else {
@@ -56,7 +58,7 @@ async function loadSkillGroups(): Promise<SkillGroup[]> {
         description: SKILL_DESCRIPTIONS[skill] ?? "",
         timeLimitMinutes: firstExam.timeLimitMinutes,
         examCount: examFiles.length,
-        locked: LOCKED_SKILLS.has(skill),
+        completedCount: 0,
       });
     }
   }
@@ -65,7 +67,24 @@ async function loadSkillGroups(): Promise<SkillGroup[]> {
 }
 
 export default async function DashboardPage() {
-  const skills = await loadSkillGroups();
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
+
+  const { data: results } = await supabase.from("exam_results").select("exam_id");
+
+  const completedByGroup = new Map<string, Set<string>>();
+  for (const r of results ?? []) {
+    const match = r.exam_id.match(/^(.+)-exam-\d+$/);
+    if (!match) continue;
+    const groupId = match[1];
+    if (!completedByGroup.has(groupId)) completedByGroup.set(groupId, new Set());
+    completedByGroup.get(groupId)!.add(r.exam_id);
+  }
+
+  const skills = (await loadSkillGroups()).map((g) => ({
+    ...g,
+    completedCount: completedByGroup.get(g.id)?.size ?? 0,
+  }));
 
   return (
     <div className="min-h-screen" style={{ background: "var(--gray-50)" }}>

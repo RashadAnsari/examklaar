@@ -6,7 +6,7 @@ export interface SkillGroup {
   description: string;
   timeLimitMinutes: number;
   examCount: number;
-  locked: boolean;
+  completedCount: number;
 }
 
 export const SKILL_TITLES: Record<string, string> = {
@@ -24,5 +24,3 @@ export const SKILL_DESCRIPTIONS: Record<string, string> = {
   writing: "Write in Dutch and get AI-powered feedback.",
   speaking: "Practice speaking and get pronunciation feedback.",
 };
-
-export const LOCKED_SKILLS = new Set(["writing", "speaking"]);

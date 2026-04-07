@@ -4,6 +4,7 @@
   "level": "A2",
   "title": "KNM Exam 1",
   "timeLimitMinutes": 45,
+  "premiumOnly": false,
   "questions": [
     {
       "id": "q1",

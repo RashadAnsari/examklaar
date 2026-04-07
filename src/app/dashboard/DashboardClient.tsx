@@ -8,7 +8,18 @@ import type { SkillGroup } from "@/lib/exam-config";
 type Level = "A2" | "B1";
 
 export function DashboardClient({ skills }: { skills: SkillGroup[] }) {
-  const [level, setLevel] = useState<Level>("A2");
+  const [level, setLevel] = useState<Level>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("dashboard:level");
+      if (saved === "A2" || saved === "B1") return saved;
+    }
+    return "A2";
+  });
+
+  function handleLevelChange(l: Level) {
+    setLevel(l);
+    localStorage.setItem("dashboard:level", l);
+  }
 
   const knm = skills.find((s) => s.skill === "knm");
   const leveled = skills.filter((s) => s.level === level);
@@ -46,7 +57,7 @@ export function DashboardClient({ skills }: { skills: SkillGroup[] }) {
           {(["A2", "B1"] as Level[]).map((l) => (
             <button
               key={l}
-              onClick={() => setLevel(l)}
+              onClick={() => handleLevelChange(l)}
               className="rounded-md px-4 py-1.5 text-sm font-semibold transition-all"
               style={{
                 background: level === l ? "white" : "transparent",
@@ -72,16 +83,12 @@ export function DashboardClient({ skills }: { skills: SkillGroup[] }) {
 }
 
 function ExamCard({ skill }: { skill: SkillGroup }) {
-  const { id, title, level, description, locked, examCount, timeLimitMinutes } = skill;
+  const { id, title, level, description, examCount, completedCount, timeLimitMinutes } = skill;
 
   return (
     <div
       className="rounded-2xl p-8 border-2 flex flex-col"
-      style={{
-        background: "white",
-        borderColor: "var(--gray-200)",
-        opacity: locked ? 0.65 : 1,
-      }}
+      style={{ background: "white", borderColor: "var(--gray-200)" }}
     >
       <h3 className="font-semibold mb-3" style={{ fontSize: "1.125rem", color: "var(--gray-900)" }}>
         {title}
@@ -93,33 +100,21 @@ function ExamCard({ skill }: { skill: SkillGroup }) {
       </p>
 
       <div className="mb-6 flex-1">
-        {locked ? (
-          <p className="text-sm" style={{ color: "var(--gray-500)" }}>
-            Available with Premium
-          </p>
-        ) : (
-          <>
-            <div className="flex justify-between text-xs mb-2" style={{ color: "var(--gray-500)" }}>
-              <span>Not started</span>
-              <span>
-                {examCount} {examCount === 1 ? "exam" : "exams"}
-              </span>
-            </div>
-            <ProgressBar value={0} max={examCount} thin />
-          </>
-        )}
+        <div className="flex justify-between text-xs mb-2" style={{ color: "var(--gray-500)" }}>
+          <span>
+            {completedCount === 0 ? "Not started" : `${completedCount} of ${examCount} completed`}
+          </span>
+          <span>
+            {examCount} {examCount === 1 ? "exam" : "exams"}
+          </span>
+        </div>
+        <ProgressBar value={completedCount} max={examCount} thin />
       </div>
 
       <div className="flex gap-3">
-        {locked ? (
-          <Button href="/pricing" variant="primary" fullWidth>
-            Upgrade to Unlock
-          </Button>
-        ) : (
-          <Button href={`/exams/${id}`} variant="primary" fullWidth>
-            View Exams
-          </Button>
-        )}
+        <Button href={`/exams/${id}`} variant="primary" fullWidth>
+          View Exams
+        </Button>
       </div>
     </div>
   );

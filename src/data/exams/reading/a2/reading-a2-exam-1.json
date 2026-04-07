@@ -4,6 +4,7 @@
   "level": "A2",
   "title": "Reading Exam 1",
   "timeLimitMinutes": 65,
+  "premiumOnly": false,
   "questions": [
     {
       "id": "q1",

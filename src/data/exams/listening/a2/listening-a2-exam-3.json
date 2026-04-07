@@ -4,6 +4,7 @@
   "level": "A2",
   "title": "Listening Exam 3",
   "timeLimitMinutes": 45,
+  "premiumOnly": true,
   "questions": [
     {
       "id": "q1",
