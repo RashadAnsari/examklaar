@@ -9,3 +9,6 @@ lint:
 format:
 	bunx prettier --write "**/*.{ts,tsx,css,json,md}" --ignore-path .gitignore
 	bun run lint --fix
+
+migrate:
+	bunx supabase db push --yes
