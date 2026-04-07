@@ -537,12 +537,13 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.25rem;
   background: var(--gray-50);
   border: 2px solid var(--gray-200);
   border-radius: 0.75rem;
   cursor: pointer;
   transition: all var(--transition-base);
+  text-align: left;
 }
 
 .exam-option:hover {
@@ -550,9 +551,67 @@ body {
   border-color: var(--green-900);
 }
 
+.exam-option:hover .option-letter {
+  background: var(--green-50);
+  border-color: var(--green-900);
+  color: var(--green-900);
+}
+
 .exam-option.selected {
   background: var(--green-50);
   border-color: var(--green-900);
+}
+
+/* ==================== OPTION LETTER BADGE ==================== */
+
+.option-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  background: var(--gray-200);
+  color: var(--gray-600);
+  border: 2px solid var(--gray-300);
+  transition: all var(--transition-base);
+}
+
+.exam-option.selected .option-letter {
+  background: var(--green-900);
+  color: white;
+  border-color: var(--green-900);
+}
+
+/* ==================== QUESTION CONTENT (HTML from JSON) ==================== */
+
+.question-content {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--gray-900);
+}
+
+.question-content p {
+  margin: 0;
+}
+
+.question-content p + p {
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+.question-content p:only-child {
+  font-weight: 600;
+}
+
+.question-content em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gray-500);
+  font-size: 0.9375rem;
 }
 
 /* ==================== QUESTION NAVIGATOR ==================== */
