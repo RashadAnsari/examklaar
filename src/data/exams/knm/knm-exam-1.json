@@ -4,493 +4,382 @@
   "level": "A2",
   "title": "KNM Exam 1",
   "timeLimitMinutes": 45,
-  "sections": [
+  "questions": [
     {
-      "content": "<h3>Kennis van de Nederlandse Maatschappij</h3><p>Dit is een oefentoets KNM voor het inburgeringsexamen. Elke vraag is multiple choice. U mag geen woordenboek gebruiken.</p>",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "q1",
-          "type": "multiple_choice",
-          "content": "<p>Wat is de gewoonte in Nederland als iemand is geslaagd voor het diploma op het voortgezet onderwijs?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "De schooltas buiten hangen.",
-            "De jas buiten hangen.",
-            "Het diploma buiten hangen."
-          ],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q2",
-          "type": "multiple_choice",
-          "content": "<p>U ziet een jongen met een bal. Hij schopt de bal tegen uw winkelraam. Het raam is kapot en uw spullen ook. U bent boos. Mag u de jongen slaan?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Nee, maar u pakt de jongen en trekt hem hard aan zijn arm.",
-            "Nee, maar u pakt de bal en maakt de bal kapot.",
-            "Nee, u vraagt aan de jongen hoe hij heet en waar hij woont. U raakt hem niet aan."
-          ],
-          "correctAnswer": 2,
-          "explanation": null
-        },
-        {
-          "id": "q3",
-          "type": "multiple_choice",
-          "content": "<p>In Nederland zijn heel veel politieke partijen. De partijen zijn rechts, links of middenpartijen. Welke combinatie is goed?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Het CDA = links, De PvdA = midden, De VVD = rechts.",
-            "Het CDA = midden, De PvdA = links, De VVD = rechts.",
-            "Het CDA = rechts, De PvdA = links, De VVD = midden."
-          ],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q4",
-          "type": "multiple_choice",
-          "content": "<p>Hassan wil graag in een schoenwinkel werken. De chef zegt dat Nederlanders harder werken. Hij wil Hassan niet aannemen. Wat kan Hassan het beste doen?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Naar de politie gaan.",
-            "Naar de Nationale Ombudsman gaan.",
-            "Naar het Anti Discriminatie Bureau gaan."
-          ],
-          "correctAnswer": 2,
-          "explanation": null
-        },
-        {
-          "id": "q5",
-          "type": "multiple_choice",
-          "content": "<p>Iemand met de Nederlandse nationaliteit is altijd in Nederland geboren.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q6",
-          "type": "multiple_choice",
-          "content": "<p>Als je een rekening declareert, moet je een formulier invullen.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q7",
-          "type": "multiple_choice",
-          "content": "<p>Welke 2 buurlanden heeft Nederland?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "België en Duitsland.",
-            "België en de Noordzee.",
-            "België en Frankrijk.",
-            "België en Friesland."
-          ],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q8",
-          "type": "multiple_choice",
-          "content": "<p>In welke provincie zijn er veel duinen?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Friesland.", "Noord-Holland.", "Zeeland."],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q9",
-          "type": "multiple_choice",
-          "content": "<p>Als je kiest voor een eigen risico, betaal je alle kosten zelf.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q10",
-          "type": "multiple_choice",
-          "content": "<p>Met de euro betalen de mensen</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "alleen in Nederland.",
-            "in veel landen in Europa.",
-            "in alle landen van Europa."
-          ],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q11",
-          "type": "multiple_choice",
-          "content": "<p>Friya kijkt hoe ze moet rijden naar Den Haag. Waar ligt Den Haag?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "in het noorden van Nederland.",
-            "in het westen van Nederland.",
-            "in het oosten van Nederland.",
-            "in het zuiden van Nederland."
-          ],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q12",
-          "type": "multiple_choice",
-          "content": "<p>Hoe heten de dijken die na de Watersnoodramp in Zeeland zijn gemaakt?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "De Afsluitdijk.",
-            "De Deltawerken.",
-            "De Flevopolder.",
-            "De Hondsbossche zeewering."
-          ],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q13",
-          "type": "multiple_choice",
-          "content": "<p>Wanneer kwamen er veel gastarbeiders naar Nederland?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Na 1985.",
-            "Na de Tweede Wereldoorlog.",
-            "Na de Eerste Wereldoorlog.",
-            "Na de wederopbouw."
-          ],
-          "correctAnswer": 3,
-          "explanation": null
-        },
-        {
-          "id": "q14",
-          "type": "multiple_choice",
-          "content": "<p>Welk briefje heb je nodig voor de specialist?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Een etiket.", "Een recept.", "Een verwijsbrief."],
-          "correctAnswer": 2,
-          "explanation": null
-        },
-        {
-          "id": "q15",
-          "type": "multiple_choice",
-          "content": "<p>Bij de basisverzekering worden alle kosten voor je betaald.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q16",
-          "type": "multiple_choice",
-          "content": "<p>In het groeiboekje staat een grafiek met de groeicurve van je baby.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q17",
-          "type": "multiple_choice",
-          "content": "<p>De wijkverpleegkundige is een dokter.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q18",
-          "type": "multiple_choice",
-          "content": "<p>Lina is drie jaar. De ouders van haar hebben een afspraak gemaakt met een basisschool. Ze krijgen informatie van de directeur van de school over het basisonderwijs.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q19",
-          "type": "multiple_choice",
-          "content": "<p>De ouders van Lina krijgen tijdens het overleg de schoolgids om thuis de informatie nog eens rustig na te lezen. Wat staat er in de schoolgids?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Onder andere hoe zij hun kind kunnen aanmelden, de lestijden en de vakantiedagen.",
-            "Onder andere hoe groot het schoolplein is.",
-            "Onder andere wat voor eten hun kind op school krijgt."
-          ],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q20",
-          "type": "multiple_choice",
-          "content": "<p>Wat is de brugklas?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Het is een klas met een brug.",
-            "Het is een klas met extra taallessen.",
-            "Het is een klas waarin de definitieve keuze voor een schoolsoort wordt uitgesteld."
-          ],
-          "correctAnswer": 2,
-          "explanation": null
-        },
-        {
-          "id": "q21",
-          "type": "multiple_choice",
-          "content": "<p>Wat doet het Anti Discriminatie Bureau met een klacht over discriminatie?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Dit bureau registreert uw klacht en kan zorgen dat u juridische hulp krijgt.",
-            "Dit bureau geeft een gevangenisstraf of een boete aan degene die u heeft gediscrimineerd.",
-            "Dit bureau doet onderzoek naar discriminatie in Nederland. Uw klacht wordt voor het onderzoek gebruikt."
-          ],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q22",
-          "type": "multiple_choice",
-          "content": "<p>Uw dochter gaat op kamers wonen. U maakt kennis met de buren. De buren zijn lesbische vrouwen. Wat kunt u het beste doen?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "U zoekt een andere kamer voor uw dochter.",
-            "U waarschuwt de buren dat ze uit de buurt van uw dochter moeten blijven.",
-            "Niets."
-          ],
-          "correctAnswer": 2,
-          "explanation": null
-        },
-        {
-          "id": "q23",
-          "type": "multiple_choice",
-          "content": "<p>U woont 4 jaar legaal in Nederland. Er zijn verkiezingen voor de gemeente. Mag u stemmen voor de gemeente?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Ja, want u woont legaal in Nederland.",
-            "Nee, want u woont nog geen vijf jaar legaal in Nederland.",
-            "Ja, want voor de gemeenteraad mogen alle buitenlanders stemmen."
-          ],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q24",
-          "type": "multiple_choice",
-          "content": "<p>Chemisch afval mag in de container met groente-, fruit- en tuinafval.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q25",
-          "type": "multiple_choice",
-          "content": "<p>Een loodgieter kan je kapotte kraan repareren.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q26",
-          "type": "multiple_choice",
-          "content": "<p>\"Grof huishoudelijk afval\" Wat betekent grof?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Vies.", "Groot.", "Goed."],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q27",
-          "type": "multiple_choice",
-          "content": "<p>Hoe werkt een kledinginzamelactie?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "U krijgt thuis een plastic zak waar u oude kleding in doet.",
-            "U krijgt thuis een plastic zak waar u nieuwe kleding in doet.",
-            "U verzamelt kleding voor de textielbak."
-          ],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q28",
-          "type": "multiple_choice",
-          "content": "<p>Waar kunt u textiel naartoe wegbrengen?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Naar de fabriek.",
-            "Naar de fabriek en de textielbak.",
-            "Naar de textielbak of kledingsinzamelacties."
-          ],
-          "correctAnswer": 2,
-          "explanation": null
-        },
-        {
-          "id": "q29",
-          "type": "multiple_choice",
-          "content": "<p>U heeft een volle chemobox. U wilt hem morgen legen. Wat doet u?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "U brengt uw chemobox naar de gemeente.",
-            "U geeft uw chemobox aan de vuilnisman.",
-            "U brengt uw chemobox naar de milieustraat."
-          ],
-          "correctAnswer": 2,
-          "explanation": null
-        },
-        {
-          "id": "q30",
-          "type": "multiple_choice",
-          "content": "<p>U kunt een inschrijfformulier voor de bibliotheek bij de gemeente ophalen.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q31",
-          "type": "multiple_choice",
-          "content": "<p>Als je wilt scheiden, kan een advocaat je helpen.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q32",
-          "type": "multiple_choice",
-          "content": "<p>Als je een woning krijgt aangeboden van de woningbouwvereniging, moet je er gaan wonen.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q33",
-          "type": "multiple_choice",
-          "content": "<p>Hoe verdient een zelfstandig ondernemer geld?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Met een baan.", "Met een eigen bedrijf.", "Met een uitkering."],
-          "correctAnswer": 1,
-          "explanation": null
-        },
-        {
-          "id": "q34",
-          "type": "multiple_choice",
-          "content": "<p>Wie is de baas in Nederland?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["De koning.", "De premier.", "Het volk."],
-          "correctAnswer": 2,
-          "explanation": null
-        },
-        {
-          "id": "q35",
-          "type": "multiple_choice",
-          "content": "<p>Bij het consultatiebureau krijgen de ouders van kinderen tot vier jaar advies.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Waar.", "Niet waar."],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q36",
-          "type": "multiple_choice",
-          "content": "<p>Alle kinderen zijn leerplichtig tot</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["16 jaar.", "17 jaar.", "18 jaar."],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q37",
-          "type": "multiple_choice",
-          "content": "<p>Het VWO duurt</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["4 jaar.", "5 jaar.", "6 jaar."],
-          "correctAnswer": 2,
-          "explanation": null
-        },
-        {
-          "id": "q38",
-          "type": "multiple_choice",
-          "content": "<p>Het VMBO duurt</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["4 jaar.", "5 jaar.", "6 jaar."],
-          "correctAnswer": 0,
-          "explanation": null
-        },
-        {
-          "id": "q39",
-          "type": "multiple_choice",
-          "content": "<p>U gaat vrijdag op vakantie. De vuilniswagen komt volgende week woensdag pas langs. Uw container zit helemaal vol. Wat doet u?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "U zet de container alvast op straat, dan bent u zeker op tijd.",
-            "U belt de gemeente en vraagt of ze vrijdag uw container kunnen komen legen.",
-            "U vraagt de buren of zij uw container buiten kunnen zetten op woensdag."
-          ],
-          "correctAnswer": 2,
-          "explanation": null
-        },
-        {
-          "id": "q40",
-          "type": "multiple_choice",
-          "content": "<p>Wat is een patiëntenpas?</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Een plastic kaartje met NAW gegevens.",
-            "Een plastic kaart met ziekenhuisafspraken.",
-            "Een plastic kaartje met informatie over jou en een persoonlijke barcode."
-          ],
-          "correctAnswer": 2,
-          "explanation": null
-        }
-      ]
+      "id": "q1",
+      "type": "multiple_choice",
+      "content": "<p>Wat is het alarmnummer in Nederland?</p>",
+      "options": ["911", "112", "999"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q2",
+      "type": "multiple_choice",
+      "content": "<p>Hoe oud moet u zijn om te mogen stemmen in Nederland?</p>",
+      "options": ["16 jaar", "18 jaar", "21 jaar"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q3",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de hoofdstad van Nederland?</p>",
+      "options": ["Den Haag", "Rotterdam", "Amsterdam"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q4",
+      "type": "multiple_choice",
+      "content": "<p>Welke dag is het begin van het schooljaar in Nederland?</p>",
+      "options": ["1 september", "In augustus of september", "1 oktober"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q5",
+      "type": "multiple_choice",
+      "content": "<p>Wat doet u als u een conflict heeft met uw werkgever?</p>",
+      "options": [
+        "Stoppen met werken",
+        "Contact opnemen met een vakbond of rechtshulp",
+        "De politie bellen"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q6",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de rol van de burgemeester?</p>",
+      "options": [
+        "Hij maakt nationale wetten",
+        "Hij leidt de gemeente",
+        "Hij spreekt recht in de rechtbank"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q7",
+      "type": "multiple_choice",
+      "content": "<p>Hoe heet het Nederlandse parlement?</p>",
+      "options": ["De Senaat", "De Staten-Generaal", "De Nationale Vergadering"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q8",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een DigiD?</p>",
+      "options": [
+        "Een digitale bankpas",
+        "Een digitale identiteit voor overheidsdiensten",
+        "Een soort rijbewijs"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q9",
+      "type": "multiple_choice",
+      "content": "<p>Wat moet u doen als u verhuist naar een andere gemeente?</p>",
+      "options": [
+        "Niets, het gaat automatisch",
+        "U schrijft zich in bij de nieuwe gemeente",
+        "U meldt het aan de belastingdienst"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q10",
+      "type": "multiple_choice",
+      "content": "<p>Wat is het BSN?</p>",
+      "options": [
+        "Een bankrekeningnummer",
+        "Een persoonlijk nummer van de overheid",
+        "Een ziektekostennummer"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q11",
+      "type": "multiple_choice",
+      "content": "<p>Hoe werkt het zorgstelsel in Nederland?</p>",
+      "options": [
+        "De overheid betaalt alles",
+        "U moet verplicht een zorgverzekering hebben",
+        "Zorg is gratis voor iedereen"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q12",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de rol van de huisarts?</p>",
+      "options": [
+        "Gespecialiseerde medische zorg bieden",
+        "De eerste zorgverlener die u bezoekt bij ziekte",
+        "Operaties uitvoeren"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q13",
+      "type": "multiple_choice",
+      "content": "<p>Wanneer is het koningsdag in Nederland?</p>",
+      "options": ["30 april", "27 april", "5 mei"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q14",
+      "type": "multiple_choice",
+      "content": "<p>Wat vieren Nederlanders op 5 mei?</p>",
+      "options": ["Bevrijdingsdag", "Koningsdag", "Dodenherdenking"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q15",
+      "type": "multiple_choice",
+      "content": "<p>Wat is het minimumloon in Nederland gebaseerd op?</p>",
+      "options": ["Leeftijd en werkervaring", "Leeftijd en arbeidsduur", "Opleiding en sector"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q16",
+      "type": "multiple_choice",
+      "content": "<p>Wat doet u als u een ongeluk ziet op straat?</p>",
+      "options": [
+        "Doorlopen",
+        "Hulp verlenen en 112 bellen indien nodig",
+        "Foto's maken en doorgaan"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q17",
+      "type": "multiple_choice",
+      "content": "<p>Welke organisatie helpt u bij het zoeken naar werk in Nederland?</p>",
+      "options": ["De belastingdienst", "Het UWV", "De gemeente"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q18",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de WW-uitkering?</p>",
+      "options": [
+        "Een uitkering bij ziekte",
+        "Een uitkering bij werkloosheid",
+        "Een uitkering bij pensionering"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q19",
+      "type": "multiple_choice",
+      "content": "<p>Hoe lang duurt de basisschool in Nederland?</p>",
+      "options": ["6 jaar", "8 jaar", "10 jaar"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q20",
+      "type": "multiple_choice",
+      "content": "<p>Wat is het doel van inburgering?</p>",
+      "options": [
+        "Een paspoort krijgen",
+        "Integreren in de Nederlandse samenleving",
+        "Gratis wonen in Nederland"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q21",
+      "type": "multiple_choice",
+      "content": "<p>Welk recht heeft iedereen in Nederland?</p>",
+      "options": [
+        "Het recht om gratis te wonen",
+        "Het recht op een eerlijk proces",
+        "Het recht op een auto"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q22",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de functie van de politie?</p>",
+      "options": [
+        "Wetten maken",
+        "Openbare orde handhaven en criminaliteit bestrijden",
+        "Belastingen innen"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q23",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een huurcontract?</p>",
+      "options": [
+        "Een contract voor het kopen van een huis",
+        "Een schriftelijke overeenkomst tussen huurder en verhuurder",
+        "Een hypotheekdocument"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q24",
+      "type": "multiple_choice",
+      "content": "<p>Hoeveel provincies heeft Nederland?</p>",
+      "options": ["10", "12", "14"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q25",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de officiële taal van Nederland?</p>",
+      "options": ["Duits", "Engels", "Nederlands"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q26",
+      "type": "multiple_choice",
+      "content": "<p>Wat betekent 'tolerantie' in de Nederlandse samenleving?</p>",
+      "options": [
+        "Iedereen moet hetzelfde denken",
+        "Respect voor verschillende meningen en leefstijlen",
+        "Regels zijn niet belangrijk"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q27",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de Tweede Kamer?</p>",
+      "options": [
+        "Een rechtbank",
+        "Het gekozen deel van het parlement",
+        "Een adviesorgaan van de koning"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q28",
+      "type": "multiple_choice",
+      "content": "<p>Hoe vaak zijn er gemeenteraadsverkiezingen in Nederland?</p>",
+      "options": ["Elke 2 jaar", "Elke 4 jaar", "Elke 6 jaar"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q29",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een WOZ-waarde?</p>",
+      "options": [
+        "De waarde van uw auto",
+        "De vastgestelde waarde van uw woning door de gemeente",
+        "Uw inkomen per jaar"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q30",
+      "type": "multiple_choice",
+      "content": "<p>Wat moet u doen als uw kind ziek is en niet naar school kan?</p>",
+      "options": [
+        "Niets, de school merkt het vanzelf",
+        "De school bellen of een bericht sturen",
+        "Een doktersbriefje sturen naar de gemeente"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q31",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de rol van de rechter in Nederland?</p>",
+      "options": ["Wetten maken", "Onpartijdig rechtspreken", "De politie leiden"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q32",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een AOW-uitkering?</p>",
+      "options": [
+        "Uitkering bij ziekte",
+        "Pensioenuitkering van de overheid",
+        "Uitkering bij werkloosheid"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q33",
+      "type": "multiple_choice",
+      "content": "<p>Wat doet u als u iets gevonden heeft op straat?</p>",
+      "options": [
+        "Het houden",
+        "Het inleveren bij de politie of een gevonden-voorwerpenbureau",
+        "Het weggooien"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q34",
+      "type": "multiple_choice",
+      "content": "<p>Wat is het belang van de vrijheid van meningsuiting?</p>",
+      "options": [
+        "U mag alles zeggen zonder gevolgen",
+        "U mag uw mening uiten binnen de grenzen van de wet",
+        "Alleen de overheid mag spreken"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q35",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een hypotheek?</p>",
+      "options": [
+        "Een soort huurcontract",
+        "Een lening om een huis te kopen",
+        "Een verzekering voor het huis"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q36",
+      "type": "multiple_choice",
+      "content": "<p>Wie kiest de leden van de Tweede Kamer?</p>",
+      "options": ["De koning", "De burgers via verkiezingen", "De minister-president"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q37",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de kinderbijslag?</p>",
+      "options": [
+        "Een vergoeding voor kinderopvang",
+        "Financiële steun van de overheid voor ouders met kinderen",
+        "Gratis onderwijs voor kinderen"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q38",
+      "type": "multiple_choice",
+      "content": "<p>Welk document heeft u nodig om in Nederland te werken als niet-EU-burger?</p>",
+      "options": ["Alleen een paspoort", "Een werkvergunning", "Een rijbewijs"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q39",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de taak van de Eerste Kamer?</p>",
+      "options": [
+        "Nieuwe wetten voorstellen",
+        "Wetten van de Tweede Kamer controleren",
+        "De begroting opstellen"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q40",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een naturalisatie?</p>",
+      "options": [
+        "Een visum aanvragen",
+        "De Nederlandse nationaliteit verkrijgen",
+        "Een verblijfsvergunning verlengen"
+      ],
+      "correctAnswer": 1
     }
   ]
 }

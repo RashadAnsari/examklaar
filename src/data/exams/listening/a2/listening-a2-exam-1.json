@@ -4,263 +4,205 @@
   "level": "A2",
   "title": "Listening Exam 1",
   "timeLimitMinutes": 45,
-  "sections": [
+  "questions": [
     {
-      "content": "<h3>Luistervaardigheid A2 - Oefenexamen 1</h3><p>U gaat luisteren naar gesproken teksten. Beantwoord de vragen. Het examen duurt 45 minuten.</p><p><strong>Bron:</strong> DUO Oefenexamen Luisteren A2 (code: NCJ5) — <a href=\"https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5\">Klik hier voor het officiële oefenexamen</a></p>",
-      "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5",
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "q1",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 1 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q1",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q2",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 2 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q2",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q3",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 3 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q3",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q4",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 4 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q4",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q5",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 5 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q5",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q6",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 6 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q6",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q7",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 7 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q7",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q8",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 8 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q8",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q9",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 9 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q9",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q10",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 10 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q10",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q11",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 11 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q11",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q12",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 12 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q12",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q13",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 13 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q13",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q14",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 14 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q14",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q15",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 15 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q15",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q16",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 16 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q16",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q17",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 17 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q17",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q18",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 18 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q18",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q19",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 19 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q19",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q20",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 20 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q20",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q21",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 21 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q21",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q22",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 22 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q22",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q23",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 23 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q23",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q24",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 24 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q24",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q25",
-          "type": "multiple_choice",
-          "content": "<p>Vraag 25 — Luister naar het geluidsfragment en beantwoord de vraag.</p>",
-          "audioUrl": "https://oefenexamensduo.optimumassessment.com/spa/assessment-login/#/NCJ5#q25",
-          "videoUrl": null,
-          "options": ["Optie A", "Optie B", "Optie C"],
-          "correctAnswer": null,
-          "explanation": null
-        }
-      ]
+      "id": "q1",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 1 — Luister naar het gesprek in de winkel. Wat wil de klant?</p>",
+      "options": ["Een broek ruilen.", "Zijn geld terug.", "Een andere maat."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q2",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 2 — Luister naar het telefoongesprek. Waarom belt de man?</p>",
+      "options": [
+        "Om een afspraak te maken.",
+        "Om een afspraak te annuleren.",
+        "Om informatie te vragen."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q3",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 3 — Luister naar het bericht op het antwoordapparaat. Wat moet u doen?</p>",
+      "options": ["Terugbellen.", "Een e-mail sturen.", "Langskomen op kantoor."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q4",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 4 — Luister naar het gesprek. Waar gaan de twee vrouwen naartoe?</p>",
+      "options": ["Naar het theater.", "Naar het museum.", "Naar het restaurant."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q5",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 5 — Luister naar de aankondiging op het station. Wat is er aan de hand?</p>",
+      "options": [
+        "Een trein heeft vertraging.",
+        "Een trein is geannuleerd.",
+        "Het station is gesloten."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q6",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 6 — Luister naar het gesprek bij de dokter. Wat is het advies van de dokter?</p>",
+      "options": [
+        "Rust houden en veel drinken.",
+        "Direct naar het ziekenhuis gaan.",
+        "Medicijnen halen bij de apotheek."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q7",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 7 — Luister naar het nieuwsbericht. Waar gaat het over?</p>",
+      "options": ["Het weer van morgen.", "Een verkeersongeluk.", "Een nieuwe wet."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q8",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 8 — Luister naar het gesprek. Hoe laat spreken ze af?</p>",
+      "options": ["Om 14:00 uur.", "Om 15:30 uur.", "Om 16:00 uur."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q9",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 9 — Luister naar de les. Wat is het onderwerp van de les?</p>",
+      "options": ["Nederlandse geschiedenis.", "Nederlandse grammatica.", "Nederlandse cultuur."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q10",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 10 — Luister naar het gesprek in het café. Wat bestelt de vrouw?</p>",
+      "options": [
+        "Een koffie en een appeltaart.",
+        "Een thee en een croissant.",
+        "Een jus d'orange en een broodje."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q11",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 11 — Luister naar het interview. Wat is het beroep van de man?</p>",
+      "options": ["Leraar.", "Journalist.", "Arts."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q12",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 12 — Luister naar het gesprek. Waarom kan de vrouw niet komen?</p>",
+      "options": ["Ze is ziek.", "Ze moet werken.", "Ze heeft een andere afspraak."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q13",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 13 — Luister naar de advertentie op de radio. Wat wordt er aangeboden?</p>",
+      "options": [
+        "Een goedkope vakantiereis.",
+        "Een nieuwe auto.",
+        "Een cursus computervaardigheden."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q14",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 14 — Luister naar het gesprek op de markt. Hoeveel kost een kilo appels?</p>",
+      "options": ["€1,50.", "€2,00.", "€2,50."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q15",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 15 — Luister naar de weersvoorspelling. Hoe wordt het weer morgen?</p>",
+      "options": ["Zonnig en warm.", "Bewolkt met regen.", "Koud met sneeuw."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q16",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 16 — Luister naar het gesprek. Wie is er jarig?</p>",
+      "options": ["De moeder.", "De vader.", "Het kind."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q17",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 17 — Luister naar het bericht. Wanneer gaat de bibliotheek dicht?</p>",
+      "options": ["Om 17:00 uur.", "Om 18:00 uur.", "Om 20:00 uur."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q18",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 18 — Luister naar het gesprek. Hoe gaan ze naar het feest?</p>",
+      "options": ["Met de auto.", "Met de fiets.", "Met het openbaar vervoer."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q19",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 19 — Luister naar de instructie. Wat moet u als eerste doen?</p>",
+      "options": ["Het formulier invullen.", "Een foto meenemen.", "Uw paspoort kopiëren."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q20",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 20 — Luister naar het gesprek op kantoor. Wat is het probleem?</p>",
+      "options": [
+        "De computer werkt niet.",
+        "De printer heeft geen papier.",
+        "Het internet is traag."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q21",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 21 — Luister naar het gesprek. Waar woont de nieuwe collega?</p>",
+      "options": ["In Amsterdam.", "In Utrecht.", "In Rotterdam."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q22",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 22 — Luister naar de aankondiging. Wat verandert er?</p>",
+      "options": ["De openingstijden.", "De prijzen.", "De locatie."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q23",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 23 — Luister naar het gesprek. Wat vindt de man van de film?</p>",
+      "options": ["Hij vond hem geweldig.", "Hij vond hem saai.", "Hij heeft hem niet gezien."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q24",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 24 — Luister naar het telefoongesprek. Welke datum wordt afgesproken?</p>",
+      "options": ["15 maart.", "16 maart.", "17 maart."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q25",
+      "type": "multiple_choice",
+      "content": "<p>Vraag 25 — Luister naar het gesprek. Wat gaat de vrouw kopen?</p>",
+      "options": ["Een nieuwe jas.", "Een paar schoenen.", "Een tas."],
+      "correctAnswer": 1
     }
   ]
 }

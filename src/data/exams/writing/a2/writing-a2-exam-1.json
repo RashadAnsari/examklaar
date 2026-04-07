@@ -4,53 +4,34 @@
   "level": "A2",
   "title": "Writing Exam 1",
   "timeLimitMinutes": 40,
-  "sections": [
+  "questions": [
     {
-      "content": "<h3>Schrijfvaardigheid A2 - Oefentoets 1</h3><p>Maak de toets in 40 minuten. U mag geen woordenboek gebruiken.</p>",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "q1",
-          "type": "writing",
-          "content": "<p><strong>Schrijf een e-mail</strong> <em>(maximale score: 10)</em></p><p>U moet volgende week rijexamen doen, maar u hebt uw arm gebroken. U schrijft een brief aan het bureau voor de rijexamens. In de brief schrijft u waarom u niet kunt deelnemen aan het examen. Ook vraagt u het bureau voor rijexamens wat u in deze situatie moet doen.</p><p><strong>Aan:</strong> info@rijexamen.nl<br><strong>Onderwerp:</strong> mijn examen volgende week</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": null,
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q2",
-          "type": "writing",
-          "content": "<p><strong>Formulier 'cursus Engels'</strong> <em>(maximale score: 8)</em></p><p>U wilt meedoen aan een cursus Engels. U bent geen absolute beginner. U spreekt goed Engels, maar u weet dat u slecht Engels schrijft. Daarom wilt u uw schrijfvaardigheid verbeteren. Vul het formulier in.</p><ul><li>Voornaam</li><li>Achternaam</li><li>Adres</li><li>Postcode</li><li>Woonplaats</li><li>Geboortedatum</li><li>Telefoonnummer</li><li>E-mailadres</li><li>Bankrekeningnummer</li><li>Kies drie dagdelen waarop u de cursus wilt volgen (ochtend/middag/avond)</li><li>Uw vooropleiding: Hoogopgeleid / Middenopgeleid / Laagopgeleid</li><li>Welke vaardigheid wilt u verbeteren? Kies één: Spreekvaardigheid / Schrijfvaardigheid / Leesvaardigheid / Luistervaardigheid</li><li>Waarom wilt u deze vaardigheid verbeteren?</li></ul>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": null,
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q3",
-          "type": "writing",
-          "content": "<p><strong>Verhuisd naar een nieuwe wijk</strong> <em>(maximale score: 10)</em></p><p>U krijgt elke week een wijkkrant. Iedereen uit de buurt mag iets voor deze krant schrijven.</p><p>U bent verhuisd en u woont nu in een nieuwe wijk. U schrijft in de wijkkrant iets over uzelf. Zo weten uw buurtbewoners beter wie u bent. Schrijf minimaal drie zinnen op. Denk aan:</p><ul><li>Wat is uw naam, waar komt u vandaan?</li><li>Wie zijn uw buren?</li><li>Met wie woont u in uw nieuwe huis?</li></ul><p>Schrijf in hele zinnen.</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": null,
-          "correctAnswer": null,
-          "explanation": null
-        },
-        {
-          "id": "q4",
-          "type": "writing",
-          "content": "<p><strong>Schrijf een e-mail</strong> <em>(maximale score: 10)</em></p><p>U hebt zich ingeschreven voor een computercursus. De cursus begint volgende week maandagavond. U gaat wel meedoen aan de cursus, maar de eerste avond kunt u niet komen, want u hebt iets anders te doen. U schrijft een brief aan de school die de cursus organiseert. In de brief schrijft u waarom u niet kunt komen op deze maandagavond. U vraagt verder of u deze eerste les kunt inhalen. Tenslotte schrijft u dat u op de andere maandagen wel kunt komen.</p><p><strong>Aan:</strong> docent@compuschool.org<br><strong>Onderwerp:</strong> start van de computercursus</p>",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": null,
-          "correctAnswer": null,
-          "explanation": null
-        }
-      ]
+      "id": "q1",
+      "type": "writing",
+      "content": "<p><strong>Schrijf een e-mail</strong> <em>(maximale score: 10)</em></p><p>U bent ziek en kunt niet werken. Schrijf een e-mail aan uw baas. Leg uit waarom u niet komt en wanneer u denkt terug te komen.</p><p><strong>Aan:</strong> baas@werk.nl<br><strong>Onderwerp:</strong> ik ben ziek</p>",
+      "options": null,
+      "correctAnswer": null
+    },
+    {
+      "id": "q2",
+      "type": "writing",
+      "content": "<p><strong>Formulier 'inschrijving taalcursus'</strong> <em>(maximale score: 8)</em></p><p>U wilt een taalcursus Nederlands volgen. Vul het inschrijfformulier in.</p><ul><li>Voornaam en achternaam</li><li>Geboortedatum</li><li>Adres en woonplaats</li><li>Telefoonnummer</li><li>E-mailadres</li><li>Huidig taalniveau</li><li>Beschikbare dagdelen</li></ul>",
+      "options": null,
+      "correctAnswer": null
+    },
+    {
+      "id": "q3",
+      "type": "writing",
+      "content": "<p><strong>Schrijf een bericht</strong> <em>(maximale score: 8)</em></p><p>Uw buurman heeft overlast. U schrijft een brief aan de verhuurder. Beschrijf het probleem en vraag om hulp. Schrijf minimaal vier zinnen.</p>",
+      "options": null,
+      "correctAnswer": null
+    },
+    {
+      "id": "q4",
+      "type": "writing",
+      "content": "<p><strong>Stel uzelf voor</strong> <em>(maximale score: 6)</em></p><p>U begint bij een nieuwe sportclub. Schrijf een korte introductie over uzelf voor de clubwebsite. Vertel wie u bent, waar u vandaan komt en waarom u lid wilt worden. Schrijf minimaal vijf zinnen.</p>",
+      "options": null,
+      "correctAnswer": null
     }
   ]
 }

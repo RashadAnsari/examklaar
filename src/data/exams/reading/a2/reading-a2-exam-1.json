@@ -4,402 +4,205 @@
   "level": "A2",
   "title": "Reading Exam 1",
   "timeLimitMinutes": 65,
-  "sections": [
+  "questions": [
     {
-      "content": "<h3>Tekst 1</h3><p>Het is december. Paulo krijgt van de gemeente een folder met informatie over het afsteken van vuurwerk.<br>\nLees eerst de vraag. Lees daarna de tekst.</p>\n<p><strong>Wanneer mag u vuurwerk afsteken?</strong><br>\nU mag vuurwerk afsteken tussen 31 december 18.00 uur en 1 januari 02.00 uur. U kunt een boete van € 100 krijgen als u vuurwerk afsteekt buiten deze tijden.<br>\n<strong>Vuurwerkverbod op bepaalde plekken</strong><br>\nIn onze gemeente is op sommige plekken het afsteken van vuurwerk verboden: in het winkelcentrum, in de buurt van het Maxima-ziekenhuis en bij alle kinderboerderijen.<br>\n<strong>Veilig vuurwerk afsteken </strong><br>\nGaat u tijdens de jaarwisseling vuurwerk afsteken of buiten naar het vuurwerk kijken? Dan kunt u het beste uw ogen beschermen met een vuurwerkbril.</p>\n\n<p><img alt=\"\" src=\"https://nt2taalmenu.nl/wp-content/uploads/A2-inburgeringsexamen/vuurwerk.jpg\"></p>\n",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "s1q1",
-          "type": "multiple_choice",
-          "content": "<p>Paulo wil vuurwerk afsteken met oud &amp; nieuw. Wanneer mag dat precies?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "<p>Alleen op 31 december de hele dag.</p>\n",
-            "<p>Alleen op 1 januari de hele dag.</p>\n",
-            "<p>Van 31 december om 18 uur ‘s avonds tot 1 januari om 2 uur ‘s nachts.</p>\n",
-            "Op 31 december &amp; op 1 januari de hele dag."
-          ],
-          "correctAnswer": 2,
-          "explanation": "<p>Het juiste antwoord is optie 3.</p>"
-        },
-        {
-          "id": "s1q2",
-          "type": "multiple_choice",
-          "content": "<p>Paulo wil vuurwerk afsteken.Waar mag hij dat doen?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Dichtbij het ziekenhuis.",
-            "<p>In het winkelcentrum.</p>\n",
-            "Niet bij het ziekenhuis en ook niet in het winkelcentrum."
-          ],
-          "correctAnswer": 2,
-          "explanation": "<p>Het juiste antwoord is optie 3.</p>"
-        },
-        {
-          "id": "s1q3",
-          "type": "multiple_choice",
-          "content": "<p>Paolo koopt een vuurwerkbril. Waarom koopt hij die speciale bril?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Die bril beschermt zijn ogen.",
-            "Met die bril kan hij het vuurwerk beter zien.",
-            "De vuurwerkbril is verplicht."
-          ],
-          "correctAnswer": 0,
-          "explanation": "<p>Het juiste antwoord is optie 1.</p>"
-        }
-      ]
+      "id": "q1",
+      "type": "multiple_choice",
+      "content": "<p><em>Een advertentie in de krant.</em></p><p>U leest een advertentie. Een winkel verkoopt winterjassen met 30% korting. De aanbieding is geldig tot zaterdag. Wat is de aanbieding?</p>",
+      "options": [
+        "Gratis bezorging bij aankoop.",
+        "30% korting op winterjassen.",
+        "Gratis jas bij aankoop van twee."
+      ],
+      "correctAnswer": 1
     },
     {
-      "content": "<h3>Tekst 2</h3><p>Nanda krijgt een e-mail van haar broer Adriaan en zijn vriend Olivier. Zij schrijven haar over het plan voor het weekend.<br>\nLees eerst de vraag. Lees daarna de tekst.</p>\n<p>Hoi Nanda,</p>\n\n<p>Hoe gaat het met je? Met ons is alles goed. Het is druk in onze kaaswinkel en ook bij ons thuis. Dit weekend hebben we een afspraak met je. We hadden afgesproken, dat we zaterdagochtend om 10 uur bij jou zijn. We gaan je trakteren op een dagje uit. We komen, maar we moeten in de ochtend nog werken in onze winkel. Dus 10 uur redden we niet. Het wordt iets later, we denken half 12. We sturen je een foto mee van het bootje, dat we gehuurd hebben. Daarmee gaan we zaterdagmiddag samen het water op. Leuk, toch? Wij slapen van zaterdag op zondag in een Bed &amp; Breakfast, dichtbij jouw huis. Op zondagochtend gaan we zoals afgesproken samen met jou om 10 uur naar de kerk. We hebben er zin in!</p>\n\n<p>Groetjes en tot zaterdag,<br>\nAdriaan &amp; Olivier</p>\n\n<p><img alt=\"\" src=\"https://nt2taalmenu.nl/wp-content/uploads/A2-inburgeringsexamen/speedboot.jpg\"></p>\n",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "s2q1",
-          "type": "multiple_choice",
-          "content": "<p>Nanda krijgt bezoek. Wanneer komen Adriaan en Olivier aan?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Op zaterdagochtend om 10 uur.",
-            "Op zaterdagochtend om half 12.",
-            "Op zondagochtend om 10 uur.",
-            "Zaterdagmiddag."
-          ],
-          "correctAnswer": 1,
-          "explanation": "<p>Het juiste antwoord is optie 2.</p>"
-        },
-        {
-          "id": "s2q2",
-          "type": "multiple_choice",
-          "content": "<p>Moeten Adriaan en Olivier op zaterdag werken?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Ja, zij moeten eerst werken op hun boot.",
-            "Ja, zij moeten eerst werken in hun winkel.",
-            "Ja, zij hebben een Bed &amp; Breakfast-bedrijf.",
-            "Nee, zij staan vroeg op en gaan extra vroeg naar Nanda."
-          ],
-          "correctAnswer": 1,
-          "explanation": "<p>Het juiste antwoord is optie 2.</p>"
-        }
-      ]
+      "id": "q2",
+      "type": "multiple_choice",
+      "content": "<p><em>Een bericht van school.</em></p><p>U krijgt een bericht van de school van uw kind. De school is woensdag gesloten vanwege een studiedag. Wat moet u doen op woensdag?</p>",
+      "options": ["Uw kind naar school brengen.", "Uw kind thuishouden.", "Een brief terugsturen."],
+      "correctAnswer": 1
     },
     {
-      "content": "<h3>Tekst 3</h3><p>Fatima heeft schade aan haar nieuwe auto. Zij wil de kosten van de schade vergoed krijgen van de verzekeringsmaatschappij. Zij krijgt deze e-mail.<br>\nLees eerst de vraag. Lees daarna de tekst.</p>\n<p>Geachte heer, mevrouw,</p>\n\n<p>Wij hebben uw vraag over schadevergoeding ontvangen. U heeft schade aan uw nieuwe auto. U wilt dat wij deze schade vergoeden. U hebt ons alle informatie gestuurd over de schade.</p>\n\n<p>Op basis van de informatie die u ons heeft gegeven, kunnen we u het volgende meedelen: u hebt recht op een schadevergoeding, maar u hebt ook een eigen risico van € 250. U moet, zoals ook in de polis staat, uw auto laten repareren bij uw eigen Toyota-garage.</p>\n\n<p>Wij wensen u na deze reparatie weer veel schadevrije kilometers!</p>\n\n<p>Met vriendelijke groet,<br>\nARAG Autoverzekeringen</p>\n\n<p><img alt=\"\" src=\"https://nt2taalmenu.nl/wp-content/uploads/A2-inburgeringsexamen/arag.jpg\"></p>\n",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "s3q1",
-          "type": "multiple_choice",
-          "content": "<p>Hoeveel schadevergoeding krijgt Fatima?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "De schade aan de nieuwe auto wordt 100% vergoed.",
-            "Zij zal € 250 euro schadevergoeding krijgen van de verzekering.",
-            "Zij krijgt een vergoeding, maar zij moet € 250 zelf betalen.",
-            "De garage weet hoeveel schadevergoeding Fatima zal krijgen."
-          ],
-          "correctAnswer": 2,
-          "explanation": "<p>Het juiste antwoord is optie 3.</p>"
-        },
-        {
-          "id": "s3q2",
-          "type": "multiple_choice",
-          "content": "<p>Wie gaat de auto repareren?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "<p>Fatima heeft de auto zelf gerepareerd.</p>\n",
-            "<p>De ARAG repareert de auto van Fatima.</p>\n",
-            "<p>De Toyota-garage gaat de auto van Fatima repareren.</p>\n"
-          ],
-          "correctAnswer": 2,
-          "explanation": "<p>Het juiste antwoord is optie 3.</p>"
-        }
-      ]
+      "id": "q3",
+      "type": "multiple_choice",
+      "content": "<p><em>Een affiche in de bibliotheek.</em></p><p>U ziet een affiche. De bibliotheek organiseert elke donderdagmiddag een voorleesuur voor kinderen van 4 tot 8 jaar. Wie kan meedoen?</p>",
+      "options": [
+        "Kinderen van 4 tot 8 jaar.",
+        "Volwassenen en kinderen.",
+        "Kinderen van 8 tot 12 jaar."
+      ],
+      "correctAnswer": 0
     },
     {
-      "content": "<h3>Tekst 4</h3><p>Maxima ziet een folder met reclame voor een abonnement op een tijdschrift.<br>\nLees eerst de vraag. Lees daarna de tekst.</p>\n<p><strong><span style=\"font-size:1.125em;\"><span style=\"color:#c0392b;\">Storyplus</span> –<em>magazine</em></span> – speciaal voor u! </strong></p>\n\n<p><span style=\"font-size:2.25em;\"><span style=\"color:#8e44ad;\"><span style=\"background-color:#99ffff;\">40% korting</span></span></span></p>\n\n<p><strong><span style=\"font-size:1.125em;\"><span style=\"color:#c0392b;\">Storyplus</span> –<em>magazine</em></span></strong> is al tientallen jaren het belangrijkste tijdschrift voor iedereen die alles wil weten van de Nederlandse televisiesterren en de leden van het koninklijk huis. En zegt u nu zelf: wie wil dat niet?<br>\n<span style=\"font-size:1.125em;\"><span style=\"color:#c0392b;\"><strong>Storyplus</strong></span><strong> –<em>magazine</em></strong></span> verschijnt wekelijks. Wij hebben voor u een speciaal aanbod: U betaalt niet € 82,95, maar <strong>slechts € 49,75</strong> voor een jaarabonnement. Dat is een<strong> korting van 40%</strong>. U betaalt minder dan 1 euro per week!</p>\n\n<p>Wilt u straks ook alles weten over onze koning, over onze koningin en over hun kinderen? Wilt u het laatste nieuws weten over alle bekende Nederlanders die u elke dag op de televisie ziet? Dat kan!<br>\nLaat deze unieke kans niet lopen: bel <u>uiterlijk vóór 31 december</u> naar 0900 – 244.62 44 of vul (vóór 31 december) het formulier in op <span style=\"color:#000099;\"><u>www.storyplus.nl</u></span></p>\n\n<p><strong><span style=\"font-size:1.125em;\"><span style=\"color:#c0392b;\">Storyplus</span> –<em>magazine</em></span></strong> … <u><strong>Lees ons elke week en u weet echt alles!!!</strong></u></p>\n",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "s4q1",
-          "type": "multiple_choice",
-          "content": "<p>Wat voor soort tijdschrift is Storyplus –magazine?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Een dagblad.", "Een maandblad.", "Een weekblad."],
-          "correctAnswer": 2,
-          "explanation": "<p>Het juiste antwoord is optie 3.</p>"
-        },
-        {
-          "id": "s4q2",
-          "type": "multiple_choice",
-          "content": "<p>Wat voor nieuws kan Maxima lezen in Storyplus –magazine?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Nieuws over het koninklijk huis.",
-            "Nieuws over belangrijke politieke zaken.",
-            "Nieuws over kleding die je met 40% korting kunt kopen."
-          ],
-          "correctAnswer": 0,
-          "explanation": "<p>Het juiste antwoord is optie 1.</p>"
-        },
-        {
-          "id": "s4q3",
-          "type": "multiple_choice",
-          "content": "<p>Maxima wil een jaarabonnement nemen op Storyplus –magazine. Hoe kan zij gebruik maken van deze aanbieding van 40% korting?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Zij moet deze week € 49,75 betalen aan Storyplus –magazine.",
-            "Zij moet deze maand € 49,75 betalen aan Storyplus –magazine.",
-            "Zij moet vóór 31 december bellen of een formulier invullen."
-          ],
-          "correctAnswer": 2,
-          "explanation": "<p>Het juiste antwoord is optie 3.</p>"
-        }
-      ]
+      "id": "q4",
+      "type": "multiple_choice",
+      "content": "<p><em>Een e-mail van de huisarts.</em></p><p>Uw huisarts stuurt een e-mail. Uw bloedtestresultaten zijn klaar. U moet een nieuwe afspraak maken. Wat moet u doen?</p>",
+      "options": [
+        "Wachten op een brief.",
+        "Een nieuwe afspraak maken.",
+        "Direct naar het ziekenhuis gaan."
+      ],
+      "correctAnswer": 1
     },
     {
-      "content": "<h3>Tekst 5</h3><p>Monica leest in de krant een bericht over vergrijzing. De mensen in Nederland worden ouder en ouder.<br>\nLees eerst de vraag. Lees daarna de tekst.</p>\n<p><strong>Vergrijzing</strong><br>\nEr komen steeds meer oude mensen in Nederland. In 2018 waren er 2,9 miljoen 65-plussers. In 2040 zullen dat er 4,7 miljoen zijn. Tot 2060 blijft dat aantal ongeveer hetzelfde. Vanaf 2025 komen er snel meer 80-plussers.</p>\n\n<p><img alt=\"\" src=\"https://nt2taalmenu.nl/wp-content/uploads/A2-inburgeringsexamen/vergrijzing.jpg\"></p>\n\n<p>In 2040 is ongeveer 26 procent van de bevolking 65-plusser. Bijna 10% van de Nederlanders is in 2040 ouder dan 80 jaar. In 2012 waren er 686.227 mensen van 80 jaar of ouder, in 2040 zijn dat er 1.554.742.</p>\n",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "s5q1",
-          "type": "multiple_choice",
-          "content": "<p>Hoeveel 80-plussers zullen er in 2040 in Nederland wonen?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["2.900.000.", "4.700.000.", "1.554.742."],
-          "correctAnswer": 2,
-          "explanation": "<p>Het juiste antwoord is optie 3.</p>"
-        },
-        {
-          "id": "s5q2",
-          "type": "multiple_choice",
-          "content": "<p>Hoeveel procent van de Nederlandse bevolking is in 2040 ouder dan 65 jaar?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["26%.", "10%.", "Minder dan 10%.", "Veel meer dan 26%."],
-          "correctAnswer": 0,
-          "explanation": "<p>Het juiste antwoord is optie 1.</p>"
-        },
-        {
-          "id": "s5q3",
-          "type": "multiple_choice",
-          "content": "<p>Hoeveel 65-plussers zijn er in 2060 ongeveer in Nederland?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Hierover staat niets in deze tekst.",
-            "Ongeveer 4,7 miljoen.",
-            "Ongeveer 2,9 miljoen.",
-            "Ongeveer 1,5 miljoen."
-          ],
-          "correctAnswer": 1,
-          "explanation": "<p>Het juiste antwoord is optie 2.</p>"
-        }
-      ]
+      "id": "q5",
+      "type": "multiple_choice",
+      "content": "<p><em>Een brief van de gemeente.</em></p><p>U krijgt een brief van de gemeente. U moet voor 1 april uw adres bijwerken in het bevolkingsregister. Wat is de deadline?</p>",
+      "options": ["1 januari.", "1 april.", "1 juli."],
+      "correctAnswer": 1
     },
     {
-      "content": "<h3>Tekst 6</h3><p>Clara schrijft deze e-mail aan haar baas, Karel de Schone.<br>\nLees eerst de vraag. Lees daarna de tekst.</p>\n<p>Aan: karel@deschone.nl<br>\nCC:<br>\nOnderwerp: stoppen met werken bij De Schone B.V.</p>\n\n<p>Beste Karel de Schone,</p>\n\n<p>Ik schrijf u deze mail om u te vertellen dat ik stop met het werk bij het bedrijf De Schone B.V.<br>\nIk heb twee jaar lang bij u gewerkt, maar u wilt mij geen vast contract geven. Ook vind ik het salaris onvoldoende. Daarom ga ik weg.<br>\nIk heb met plezier het werk gedaan en ik heb fijne collega’s gehad, maar ik kan bij een andere werkgever een beter contract krijgen.<br>\nIk wil per direct stoppen. Ik kom dus morgen ook niet werken.<br>\nMijn collega’s Maria en Carolien kunnen deze week mijn werk overnemen. Zij weten, dat ik stop bij uw bedrijf en zij weten dat ik deze mail aan u schrijf.</p>\n\n<p>Met vriendelijke groet,<br>\nClara Marks.</p>\n",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "s6q1",
-          "type": "multiple_choice",
-          "content": "<p>Waarom stopt Clara met werken bij De Schone B.V.?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Zij is ontevreden over haar salaris en over haar contract.",
-            "Zij vindt dat werk niet leuk.",
-            "Zij heeft ruzie met haar collega’s Maria en Carolien."
-          ],
-          "correctAnswer": 0,
-          "explanation": "<p>Het juiste antwoord is optie 1.</p>"
-        },
-        {
-          "id": "s6q2",
-          "type": "multiple_choice",
-          "content": "<p>Wanneer stopt Clara precies met het werk bij De Schone B.V.?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Over twee jaar.", "Overmorgen.", "Over een week.", "Vandaag."],
-          "correctAnswer": 3,
-          "explanation": "<p>Het juiste antwoord is optie 4.</p>"
-        }
-      ]
+      "id": "q6",
+      "type": "multiple_choice",
+      "content": "<p><em>Een recept op de verpakking.</em></p><p>U leest een recept. De soep moet 20 minuten op laag vuur koken. Daarna moet u zout naar smaak toevoegen. Wanneer voegt u zout toe?</p>",
+      "options": ["Voor het koken.", "Tijdens het koken.", "Na het koken."],
+      "correctAnswer": 2
     },
     {
-      "content": "<h3>Tekst 7</h3><p>Ivan zoekt informatie over werken in de zorgsector. Hij leest dit op een website.<br>\nLees eerst de vraag. Lees daarna de tekst.</p>\n<p><strong>Werken in de zorg.</strong></p>\n\n<p>In Nederland hebben in 2019 ruim 1 miljoen mensen betaald werk in de zorg. Ruim een derde van hen (36%) werkt in de verpleging, verzorging en thuiszorg (VVT), een kwart (27%) werkt in een ziekenhuis. Tussen 2013 en 2019 hebben steeds minder mensen een betaalde baan in de zorg gevonden.<br>\nWel zijn er veel meer vrijwilligers in de zorg gaan werken.<br>\nDat heet mantelzorg: zieke en oude mensen worden verzorgd door hun familie of door een bekende.<br>\nHet aantal mantelzorgers is tussen de drie en vier miljoen.</p>\n\n<table cellspacing=\"1\" cellpadding=\"1\" border=\"1\">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>Branche</td>\n\t\t\t<td>percentage werknemers</td>\n\t\t\t<td>aantal werknemers</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Verpleging, verzorging en thuiszorg (VVT)</td>\n\t\t\t<td>36%</td>\n\t\t\t<td>370.000</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Ziekenhuizen</td>\n\t\t\t<td>27%</td>\n\t\t\t<td>280.000</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Gehandicaptenzorg</td>\n\t\t\t<td>15%</td>\n\t\t\t<td>160.000</td>\n\t\t</tr>\n\t</tbody>\n</table>\n\n<p>(Cijfers 2015. Bron: CBS en UWV)</p>\n",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "s7q1",
-          "type": "multiple_choice",
-          "content": "<p>Ivan leest dat veel Nederlanders actief zijn in de zorgsector. Hoeveel Nederlanders hebben een betaalde baan in de zorg?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Meer dan 1 miljoen.",
-            "370.000",
-            "Tussen de drie en vier miljoen.",
-            "280.000"
-          ],
-          "correctAnswer": 0,
-          "explanation": "<p>Het juiste antwoord is optie 1.</p>"
-        },
-        {
-          "id": "s7q2",
-          "type": "multiple_choice",
-          "content": "<p>Wat is een mantelzorger volgens deze tekst?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Iemand die werkt met gehandicapten.",
-            "Iemand die werkt in een ziekenhuis.",
-            "Iemand die vrijwilligerswerk doet."
-          ],
-          "correctAnswer": 2,
-          "explanation": "<p>Het juiste antwoord is optie 3.</p>"
-        }
-      ]
+      "id": "q7",
+      "type": "multiple_choice",
+      "content": "<p><em>Een aankondiging op het prikbord.</em></p><p>Op het prikbord staat een aankondiging. De buurtvereniging houdt op vrijdag 14 maart een vergadering in het buurthuis. Wanneer is de vergadering?</p>",
+      "options": ["Vrijdag 14 februari.", "Vrijdag 14 maart.", "Zaterdag 14 maart."],
+      "correctAnswer": 1
     },
     {
-      "content": "<h3>Tekst 8</h3><p>Manou is 18 weken zwanger. Zij krijgt een folder van haar huisarts.<br>\nLees eerst de vraag. Lees daarna de tekst.</p>\n<p><strong><span style=\"color:#8e44ad;\">‘Fit voor de bevalling’ </span></strong><br>\nJe krijgt binnenkort een kindje. Spannend!<br>\nGeef je nu op voor de zwangerschapscursus ‘Fit voor de bevalling’. Tijdens de cursus die begint op 1 maart, krijg je veel informatie over de zwangerschap en je doet ook wekelijks yoga-oefeningen in Het Buurtcentrum in Kollum. Deze oefeningen zijn belangrijk als na 9 maanden de baby komt! Met speciale ademhaling kun je in deze periode tot en met de geboorte van je kindje fit blijven. Je komt naar de cursus samen met andere aanstaande moeders.</p>\n\n<p><strong><span style=\"color:#8e44ad;\">Lesinformatie </span></strong><br>\nDe cursus bestaat uit 7 lessen à 90 minuten en vindt plaats in kleine groepen (maximaal 10 deelnemers).</p>\n\n<p><strong><span style=\"color:#8e44ad;\">Kosten Zwangerschapsyoga</span></strong>: <strong>€ 85</strong><br>\n<strong><span style=\"color:#8e44ad;\">Tijdstip</span></strong>: <strong>Maandagavond 19.15 uur.</strong> <strong><span style=\"color:#8e44ad;\">Start:</span></strong> <strong>1 maart. </strong><br>\n<strong><span style=\"color:#8e44ad;\">Plaats:</span></strong> <strong>Buurtcentrum, Hoofdstraat 1, Kollum</strong></p>\n\n<p><strong><img alt=\"\" src=\"https://nt2taalmenu.nl/wp-content/uploads/A2-inburgeringsexamen/zwangerschapsyoga.jpg\"></strong></p>\n",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "s8q1",
-          "type": "multiple_choice",
-          "content": "<p>Manou wil graag fit blijven in de periode van de zwangerschap. Wat gaat zij doen?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Zij gaat 7 weken lang meedoen aan een cursus zwangerschapsyoga.",
-            "Zij gaat 9 maanden lang meedoen aan de cursus zwangerschapsyoga.",
-            "Zij gaat 18 weken lang meedoen aan de cursus zwangerschapsyoga."
-          ],
-          "correctAnswer": 0,
-          "explanation": "<p>Het juiste antwoord is optie 1.</p>"
-        },
-        {
-          "id": "s8q2",
-          "type": "multiple_choice",
-          "content": "<p>Manou wil meedoen aan deze cursus. Wat krijgt zij tijdens de cursus?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Een kindje.",
-            "Betere ademhaling.",
-            "Zij krijgt veel informatie en zij gaat veel yoga-oefeningen doen."
-          ],
-          "correctAnswer": 2,
-          "explanation": "<p>Het juiste antwoord is optie 3.</p>"
-        },
-        {
-          "id": "s8q3",
-          "type": "multiple_choice",
-          "content": "<p>Hoe lang duurt één les?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["1 uur.", "1,5 uur.", "Dat staat niet in deze tekst."],
-          "correctAnswer": 1,
-          "explanation": "<p>Het juiste antwoord is optie 2.</p>"
-        }
-      ]
+      "id": "q8",
+      "type": "multiple_choice",
+      "content": "<p><em>Een folder van de sportschool.</em></p><p>U leest een folder. Nieuwe leden betalen de eerste maand geen contributie. Daarna betalen ze €25 per maand. Hoeveel betaalt een nieuw lid de eerste maand?</p>",
+      "options": ["€25.", "€50.", "Niets."],
+      "correctAnswer": 2
     },
     {
-      "content": "<h3>Tekst 9</h3><p>Ahmed huurt een woning in de Roordaflat in de Boerhaavewijk. Hij leest dit bericht in de wijkkrant over zijn flat.<br>\nLees eerst de vraag. Lees daarna de tekst.</p>\n<p><strong><span style=\"color:#660066;\">FEESTJE NA RENOVATIE ROORDASTRAAT BOERHAAVEWIJK </span></strong></p>\n\n<p><strong>In de Roordastraat was het feest op donderdagmiddag 18 mei 2019. Bewoners van de Roordastraat vierden samen met hun woningbouwvereniging Elan Wonen de renovatie van de flat in hun straat. </strong><br>\nDit zei de wethouder van de gemeente: ‘Er is én er wordt hard gewerkt in de Boerhaavewijk. De Roordastraat ziet er weer modern uit en de 40 woningen zijn nu heel goed verbeterd.”<br>\nDe entree en de balkons zijn gemoderniseerd. Ook de liften in het gebouw zijn vernieuwd. Tenslotte zijn alle kozijnen en buitendeuren gerenoveerd.<br>\nDe renovatie heeft ongeveer 18 maanden geduurd, van januari 2018 tot augustus 2019.<br>\nDe huurprijzen veranderen in 2019 voor de bewoners niet.<br>\nDe huurprijzen in de Roordastraat zijn gelijk gebleven.<br>\nKijk voor meer informatie op <u>www.elanwonen.nl</u>.</p>\n\n<p><img alt=\"\" src=\"https://nt2taalmenu.nl/wp-content/uploads/A2-inburgeringsexamen/elan-wonen.jpg\"></p>\n",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "s9q1",
-          "type": "multiple_choice",
-          "content": "<p>In welke periode zijn de woningen gerenoveerd?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "<p>In de periode 2018-2019.</p>\n",
-            "<p>Op 18 mei 2019.</p>\n",
-            "<p>In het jaar 2019.</p>\n",
-            "<p>In het jaar 2018.</p>\n"
-          ],
-          "correctAnswer": 0,
-          "explanation": "<p>Het juiste antwoord is optie 1.</p>"
-        },
-        {
-          "id": "s9q2",
-          "type": "multiple_choice",
-          "content": "<p>Wat is niet veranderd bij de renovatie van de Roordastraat?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["De liften.", "De kozijnen en de buitendeuren.", "De huurprijs."],
-          "correctAnswer": 2,
-          "explanation": "<p>Het juiste antwoord is optie 3.</p>"
-        },
-        {
-          "id": "s9q3",
-          "type": "multiple_choice",
-          "content": "<p>Wie is de eigenaar van de woning van Ahmed in de Roordastraat?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Ahmed.", "De wethouder van de gemeente.", "De vereniging Elan Wonen."],
-          "correctAnswer": 2,
-          "explanation": "<p>Het juiste antwoord is optie 3.</p>"
-        }
-      ]
+      "id": "q9",
+      "type": "multiple_choice",
+      "content": "<p><em>Een sms-bericht.</em></p><p>U krijgt een sms. Uw pakket wordt morgen tussen 10:00 en 12:00 bezorgd. Als u er niet bent, gaat het naar het postkantoor. Wat gebeurt er als u er niet bent?</p>",
+      "options": [
+        "Het pakket wordt teruggestuurd.",
+        "Het pakket gaat naar het postkantoor.",
+        "De bezorger komt de volgende dag terug."
+      ],
+      "correctAnswer": 1
     },
     {
-      "content": "<h3>Tekst 10</h3><p>Ineke komt op zondagavond thuis van vakantie. Zij ziet een e-mail van haar collega Marleen.<br>\nLees eerst de vraag. Lees daarna de tekst.</p>\n<p>Hoi Ineke,</p>\n\n<p>Het is nu zondagavond en ik stuur je even een e-mailtje.<br>\nHoe was je vakantie? Ik hoop dat je goed uitgerust bent …<br>\nWelkom terug en succes morgen! Er is veel te doen …<br>\nJe kunt morgenochtend in de agenda zien wat er gebeurd is in jouw vakantie.<br>\nGa je met mij mee naar de HEMA morgen of op dinsdag? We kopen daar dan spullen voor het afscheidsfeest van Ad. Dat feest is over twee weken, op 2 september. Ook moeten we weten wie er komt op die dag. Misschien komen er op die dag wel 100 mensen, dus we moeten veel organiseren!<br>\nOp donderdag kom ik weer werken.<br>\nAls je dus morgen of overmorgen met mij naar de HEMA wil, stuur me dan even een bericht of bel me!</p>\n\n<p>Goede start morgen en groetjes,<br>\nMarleen</p>\n\n<p><img alt=\"\" src=\"https://nt2taalmenu.nl/wp-content/uploads/A2-inburgeringsexamen/bellen.jpg\"></p>\n",
-      "audioUrl": null,
-      "videoUrl": null,
-      "questions": [
-        {
-          "id": "s10q1",
-          "type": "multiple_choice",
-          "content": "<p>Wat wil Marleen graag met Ineke afspreken?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": [
-            "Zij wil graag met Ineke naar de HEMA.",
-            "Zij wil graag met Ineke naar Ad.",
-            "Zij wil graag met Ineke op vakantie.",
-            "Zij wil graag met Ineke naar een feest."
-          ],
-          "correctAnswer": 0,
-          "explanation": "<p>Het juiste antwoord is optie 1.</p>"
-        },
-        {
-          "id": "s10q2",
-          "type": "multiple_choice",
-          "content": "<p>Wanneer gaat Marleen weer naar haar werk?</p>\n",
-          "audioUrl": null,
-          "videoUrl": null,
-          "options": ["Op 2 september.", "Op maandag.", "Op dinsdag.", "Op donderdag."],
-          "correctAnswer": 3,
-          "explanation": "<p>Het juiste antwoord is optie 4.</p>"
-        }
-      ]
+      "id": "q10",
+      "type": "multiple_choice",
+      "content": "<p><em>Een menu in het restaurant.</em></p><p>U leest een menu. Het dagmenu bestaat uit soep, een hoofdgerecht en koffie. Het kost €12,50. Wat is er niet inbegrepen?</p>",
+      "options": ["Soep.", "Koffie.", "Een dessert."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q11",
+      "type": "multiple_choice",
+      "content": "<p><em>Een waarschuwing op een product.</em></p><p>U leest een waarschuwing. Dit product bevat noten. Niet geschikt voor mensen met een notenallergie. Voor wie is dit product niet geschikt?</p>",
+      "options": ["Voor kinderen.", "Voor mensen met een notenallergie.", "Voor vegetariërs."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q12",
+      "type": "multiple_choice",
+      "content": "<p><em>Een brief van het energiebedrijf.</em></p><p>U krijgt een brief van het energiebedrijf. Uw contract loopt af op 31 december. U kunt een nieuw contract afsluiten via de website. Wanneer loopt uw contract af?</p>",
+      "options": ["31 oktober.", "31 november.", "31 december."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q13",
+      "type": "multiple_choice",
+      "content": "<p><em>Een informatiebord in het park.</em></p><p>U leest een bord in het park. Honden zijn welkom maar moeten aan de lijn. Na 18:00 mogen honden los lopen. Wanneer mogen honden los lopen?</p>",
+      "options": ["De hele dag.", "Na 18:00.", "Alleen in het weekend."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q14",
+      "type": "multiple_choice",
+      "content": "<p><em>Een uitnodiging.</em></p><p>U ontvangt een uitnodiging. Uw collega nodigt u uit voor zijn afscheidsfeest op vrijdag 20 mei om 17:00 uur op kantoor. Hoe laat begint het feest?</p>",
+      "options": ["Om 15:00 uur.", "Om 17:00 uur.", "Om 19:00 uur."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q15",
+      "type": "multiple_choice",
+      "content": "<p><em>Een bijsluiter van medicijnen.</em></p><p>U leest de bijsluiter. Neem twee tabletten per dag, bij voorkeur na de maaltijd. Niet meer dan vier tabletten per dag. Hoeveel tabletten mag u maximaal per dag nemen?</p>",
+      "options": ["Twee.", "Drie.", "Vier."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q16",
+      "type": "multiple_choice",
+      "content": "<p><em>Een aankondiging in de supermarkt.</em></p><p>U leest een aankondiging. De supermarkt is op eerste kerstdag gesloten en op tweede kerstdag open van 10:00 tot 17:00. Wanneer is de supermarkt gesloten?</p>",
+      "options": ["Op tweede kerstdag.", "Op eerste kerstdag.", "Op beide kerstdagen."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q17",
+      "type": "multiple_choice",
+      "content": "<p><em>Een formulier.</em></p><p>U vult een formulier in. Bij 'BSN' moet u uw burgerservicenummer invullen. Waar vindt u dit nummer?</p>",
+      "options": ["Op uw bankpas.", "Op uw paspoort of identiteitskaart.", "Op uw huurcontract."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q18",
+      "type": "multiple_choice",
+      "content": "<p><em>Een bericht in een app.</em></p><p>U krijgt een bericht in een app. De vergadering van morgen is verplaatst naar donderdag om dezelfde tijd. Wat is er veranderd?</p>",
+      "options": ["Het tijdstip.", "De dag.", "De locatie."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q19",
+      "type": "multiple_choice",
+      "content": "<p><em>Een folder van de gemeente.</em></p><p>U leest een folder. Inwoners kunnen gratis een afvalcontainer aanvragen via de website of per telefoon. Hoe kunt u een container aanvragen?</p>",
+      "options": [
+        "Alleen via de website.",
+        "Via de website of per telefoon.",
+        "Alleen per telefoon."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q20",
+      "type": "multiple_choice",
+      "content": "<p><em>Een advertentie voor een woning.</em></p><p>U leest een advertentie. Een appartement van 65m² met twee slaapkamers te huur voor €900 per maand exclusief gas en licht. Wat is er niet inbegrepen in de huurprijs?</p>",
+      "options": ["Internet.", "Gas en licht.", "Parkeerplaats."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q21",
+      "type": "multiple_choice",
+      "content": "<p><em>Een brief van de belastingdienst.</em></p><p>U krijgt een brief. U moet voor 1 mei aangifte doen van uw inkomsten over het afgelopen jaar. Wat moet u doen?</p>",
+      "options": [
+        "Belasting betalen.",
+        "Aangifte doen van uw inkomsten.",
+        "Naar het belastingkantoor gaan."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q22",
+      "type": "multiple_choice",
+      "content": "<p><em>Een bord bij een zwembad.</em></p><p>U leest een bord. Kinderen onder de 6 jaar mogen alleen zwemmen als een volwassene meezwemt. Voor wie geldt deze regel?</p>",
+      "options": ["Kinderen onder de 12 jaar.", "Kinderen onder de 6 jaar.", "Alle kinderen."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q23",
+      "type": "multiple_choice",
+      "content": "<p><em>Een reclamefolder.</em></p><p>U leest een folder. Bij aankoop van drie producten krijgt u de goedkoopste gratis. U koopt producten van €5, €8 en €12. Welk product is gratis?</p>",
+      "options": ["Het product van €12.", "Het product van €8.", "Het product van €5."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q24",
+      "type": "multiple_choice",
+      "content": "<p><em>Een bericht op de deur.</em></p><p>U leest een bericht op een deur. Het kantoor is gesloten vanwege een personeelsuitje. U kunt maandag weer binnenkomen. Wanneer is het kantoor weer open?</p>",
+      "options": ["Vandaag later.", "Morgen.", "Maandag."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q25",
+      "type": "multiple_choice",
+      "content": "<p><em>Een informatieboekje.</em></p><p>U leest een boekje. Als u niet tevreden bent over uw zorgverzekeraar, kunt u elk jaar in november van verzekeraar wisselen. Wanneer kunt u wisselen?</p>",
+      "options": ["Het hele jaar.", "In november.", "In januari."],
+      "correctAnswer": 1
     }
   ]
 }

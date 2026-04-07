@@ -4,23 +4,13 @@
   "level": "<exam_level>", -- one of "A2", "B1", null
   "title": "<Skill> Exam 1",
   "timeLimitMinutes": <skill_time_limit>,
-  "sections": [
+  "questions": [
     {
-      "content": "<h3>Section Title</h3><p>Section instructions or description.</p>", -- CAN BE NULL
-      "audioUrl": "{{section_audio_url}}", -- CAN BE NULL
-      "videoUrl": "{{section_video_url}}", -- CAN BE NULL
-      "questions": [
-        {
-          "id": "q1",
-          "type": "<question_type>", -- one of "multiple_choice", "speaking", "writing"
-          "content": "<p>Question content goes here.</p>",
-          "audioUrl": "{{audio_url}}", -- CAN BE NULL
-          "videoUrl": "{{video_url}}", -- CAN BE NULL
-          "options": ["Option 1", "Option 2", "Option 3", "Option 4"], -- CAN BE NULL
-          "correctAnswer": 0, -- CAN BE NULL
-          "explanation": "<p>Explanation for the correct answer goes here.</p>" -- CAN BE NULL
-        }
-      ]
+      "id": "q1",
+      "type": "<question_type>", -- one of "multiple_choice", "speaking", "writing"
+      "content": "<p>Question content goes here.</p>",
+      "options": ["Option 1", "Option 2", "Option 3", "Option 4"], -- CAN BE NULL
+      "correctAnswer": 0 -- CAN BE NULL
     }
   ]
 }
