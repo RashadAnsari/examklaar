@@ -49,8 +49,12 @@ export default function ReviewPage() {
   const [filter, setFilter] = useState<FilterType>("all");
 
   const filtered = QUESTIONS.filter((q) => {
-    if (filter === "correct") return q.userIndex === q.correctIndex;
-    if (filter === "incorrect") return q.userIndex !== q.correctIndex;
+    if (filter === "correct") {
+      return q.userIndex === q.correctIndex;
+    }
+    if (filter === "incorrect") {
+      return q.userIndex !== q.correctIndex;
+    }
     return true;
   });
 
@@ -186,8 +190,11 @@ function ReviewQuestionCard({
           const isWrongUserAnswer = isUserAnswer && !isCorrect;
 
           let optionClass = "review-option";
-          if (isWrongUserAnswer) optionClass += " user-wrong";
-          else if (isCorrectAnswer) optionClass += " correct-answer";
+          if (isWrongUserAnswer) {
+            optionClass += " user-wrong";
+          } else if (isCorrectAnswer) {
+            optionClass += " correct-answer";
+          }
 
           return (
             <div key={i} className={optionClass}>

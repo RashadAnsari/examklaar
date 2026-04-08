@@ -1,25 +1,32 @@
-dev:
-	bun run dev
+# --------- Code quality ----------
 
 lint:
-	bunx prettier --check "**/*.{ts,tsx,css,json,md}" --ignore-path .gitignore
 	bun run lint
+	bunx prettier --check "**/*.{ts,tsx,css,json,md}" --ignore-path .gitignore
 	bunx tsc --noEmit
 
 format:
 	bunx prettier --write "**/*.{ts,tsx,css,json,md}" --ignore-path .gitignore
 	bun run lint --fix
 
+# ---------- Database ----------
+
 migrate:
 	bunx supabase db push --yes
 
-# Never use this in production, it drops all data!
-migrate-reset:
-	bunx supabase db query --linked --yes "delete from supabase_migrations.schema_migrations;"
-	bunx supabase db push --yes
+# ---------- LLM server (for grading) ----------
 
-seed:
-	@test -n "$(USER_ID)" || (echo "Error: USER_ID is required. Usage: make seed USER_ID=<uuid>"; exit 1)
-	sed 's/USER_ID_PLACEHOLDER/$(USER_ID)/g' supabase/seed.sql > /tmp/examklaar_seed.sql
-	bunx supabase db query --linked --file /tmp/examklaar_seed.sql
-	rm /tmp/examklaar_seed.sql
+start-local-llm:
+	@export PATH="/Users/rashad/.lmstudio/bin:$$PATH"; \
+	if ! command -v lms >/dev/null 2>&1; then \
+		echo "Installing LM Studio CLI..."; \
+		curl -fsSL https://lmstudio.ai/install.sh | bash; \
+	fi; \
+	if ! lms ls 2>/dev/null | grep -q "google/gemma-4-e2b"; then \
+		echo "Downloading google/gemma-4-e2b..."; \
+		lms get google/gemma-4-e2b --yes; \
+	fi; \
+	lms server start
+
+stop-local-llm:
+	lms server stop

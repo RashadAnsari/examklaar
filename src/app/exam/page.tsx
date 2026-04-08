@@ -24,7 +24,9 @@ export default async function ExamPage(props: {
   const { skill, n: nStr } = await props.searchParams;
   const n = parseInt(nStr ?? "1");
 
-  if (!skill || isNaN(n)) notFound();
+  if (!skill || isNaN(n)) {
+    notFound();
+  }
 
   const filePath = getExamFilePath(skill, n);
 

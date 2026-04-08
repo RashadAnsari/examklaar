@@ -71,7 +71,9 @@ export function Navbar() {
         setMenuOpen(false);
       }
     }
-    if (menuOpen) document.addEventListener("mousedown", handleClickOutside);
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
 

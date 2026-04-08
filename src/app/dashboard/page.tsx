@@ -16,7 +16,9 @@ async function loadSkillGroups(): Promise<SkillGroup[]> {
 
   for (const skill of skillDirs) {
     const skillPath = path.join(EXAMS_DIR, skill);
-    if (!(await fs.stat(skillPath)).isDirectory()) continue;
+    if (!(await fs.stat(skillPath)).isDirectory()) {
+      continue;
+    }
 
     const entries = await fs.readdir(skillPath);
     const hasLevelDirs = (await fs.stat(path.join(skillPath, entries[0]))).isDirectory();
@@ -24,10 +26,14 @@ async function loadSkillGroups(): Promise<SkillGroup[]> {
     if (hasLevelDirs) {
       for (const levelDir of entries) {
         const levelPath = path.join(skillPath, levelDir);
-        if (!(await fs.stat(levelPath)).isDirectory()) continue;
+        if (!(await fs.stat(levelPath)).isDirectory()) {
+          continue;
+        }
 
         const examFiles = (await fs.readdir(levelPath)).filter((f) => f.endsWith(".json"));
-        if (examFiles.length === 0) continue;
+        if (examFiles.length === 0) {
+          continue;
+        }
 
         const firstExam = JSON.parse(
           await fs.readFile(path.join(levelPath, examFiles[0]), "utf-8")
@@ -46,7 +52,9 @@ async function loadSkillGroups(): Promise<SkillGroup[]> {
       }
     } else {
       const examFiles = entries.filter((f) => f.endsWith(".json"));
-      if (examFiles.length === 0) continue;
+      if (examFiles.length === 0) {
+        continue;
+      }
 
       const firstExam = JSON.parse(await fs.readFile(path.join(skillPath, examFiles[0]), "utf-8"));
 
@@ -70,14 +78,21 @@ export default async function DashboardPage() {
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
-  const { data: results } = await supabase.from("exam_results").select("exam_id");
+  const { data: results } = await supabase
+    .from("exam_results")
+    .select("exam_id")
+    .eq("grading_status", "complete");
 
   const completedByGroup = new Map<string, Set<string>>();
   for (const r of results ?? []) {
     const match = r.exam_id.match(/^(.+)-exam-\d+$/);
-    if (!match) continue;
+    if (!match) {
+      continue;
+    }
     const groupId = match[1];
-    if (!completedByGroup.has(groupId)) completedByGroup.set(groupId, new Set());
+    if (!completedByGroup.has(groupId)) {
+      completedByGroup.set(groupId, new Set());
+    }
     completedByGroup.get(groupId)!.add(r.exam_id);
   }
 

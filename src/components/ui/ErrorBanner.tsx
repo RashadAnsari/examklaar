@@ -11,12 +11,16 @@ interface ErrorBannerProps {
 
 export function ErrorBanner({ message, onHide, duration = 6000 }: ErrorBannerProps) {
   useEffect(() => {
-    if (!message) return;
+    if (!message) {
+      return;
+    }
     const timer = setTimeout(onHide, duration);
     return () => clearTimeout(timer);
   }, [message, duration, onHide]);
 
-  if (!message) return null;
+  if (!message) {
+    return null;
+  }
 
   return (
     <div

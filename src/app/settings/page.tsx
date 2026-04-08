@@ -49,16 +49,25 @@ export default function SettingsPage() {
     const supabase = createClient();
     const { error } = await supabase.auth.updateUser({ data: { full_name: name } });
     setNameLoading(false);
-    if (error) setNameError(error.message);
-    else setProfileSuccess("Profile updated successfully.");
+    if (error) {
+      setNameError(error.message);
+    } else {
+      setProfileSuccess("Profile updated successfully.");
+    }
   }
 
   async function changePassword(e: React.SyntheticEvent) {
     e.preventDefault();
     const errs: typeof pwErrors = {};
-    if (!passwords.current) errs.current = "Required";
-    if (!passwords.next || passwords.next.length < 8) errs.next = "Must be at least 8 characters";
-    if (passwords.next !== passwords.confirm) errs.confirm = "Passwords do not match";
+    if (!passwords.current) {
+      errs.current = "Required";
+    }
+    if (!passwords.next || passwords.next.length < 8) {
+      errs.next = "Must be at least 8 characters";
+    }
+    if (passwords.next !== passwords.confirm) {
+      errs.confirm = "Passwords do not match";
+    }
     if (Object.keys(errs).length) {
       setPwErrors(errs);
       return;
@@ -91,8 +100,9 @@ export default function SettingsPage() {
       !confirm(
         "Are you sure you want to delete your account? Your subscription will be cancelled and all your data will be permanently removed. This action cannot be undone."
       )
-    )
+    ) {
       return;
+    }
     setDeleteLoading(true);
     const res = await fetch("/api/account", { method: "DELETE" });
     if (!res.ok) {
@@ -207,7 +217,9 @@ export default function SettingsPage() {
               value={passwords.current}
               onChange={(e) => {
                 setPasswords((p) => ({ ...p, current: e.target.value }));
-                if (pwErrors.current) setPwErrors((p) => ({ ...p, current: undefined }));
+                if (pwErrors.current) {
+                  setPwErrors((p) => ({ ...p, current: undefined }));
+                }
               }}
               error={pwErrors.current}
               autoComplete="current-password"
@@ -218,7 +230,9 @@ export default function SettingsPage() {
               value={passwords.next}
               onChange={(e) => {
                 setPasswords((p) => ({ ...p, next: e.target.value }));
-                if (pwErrors.next) setPwErrors((p) => ({ ...p, next: undefined }));
+                if (pwErrors.next) {
+                  setPwErrors((p) => ({ ...p, next: undefined }));
+                }
               }}
               error={pwErrors.next}
               autoComplete="new-password"
@@ -229,7 +243,9 @@ export default function SettingsPage() {
               value={passwords.confirm}
               onChange={(e) => {
                 setPasswords((p) => ({ ...p, confirm: e.target.value }));
-                if (pwErrors.confirm) setPwErrors((p) => ({ ...p, confirm: undefined }));
+                if (pwErrors.confirm) {
+                  setPwErrors((p) => ({ ...p, confirm: undefined }));
+                }
               }}
               error={pwErrors.confirm}
               autoComplete="new-password"

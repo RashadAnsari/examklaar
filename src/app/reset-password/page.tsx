@@ -18,8 +18,12 @@ export default function ResetPasswordPage() {
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     const errs: typeof errors = {};
-    if (!passwords.next || passwords.next.length < 8) errs.next = "Must be at least 8 characters";
-    if (passwords.next !== passwords.confirm) errs.confirm = "Passwords do not match";
+    if (!passwords.next || passwords.next.length < 8) {
+      errs.next = "Must be at least 8 characters";
+    }
+    if (passwords.next !== passwords.confirm) {
+      errs.confirm = "Passwords do not match";
+    }
     if (Object.keys(errs).length) {
       setErrors(errs);
       return;
@@ -70,7 +74,9 @@ export default function ResetPasswordPage() {
               value={passwords.next}
               onChange={(e) => {
                 setPasswords((p) => ({ ...p, next: e.target.value }));
-                if (errors.next) setErrors((p) => ({ ...p, next: undefined }));
+                if (errors.next) {
+                  setErrors((p) => ({ ...p, next: undefined }));
+                }
               }}
               error={errors.next}
               autoComplete="new-password"
@@ -82,7 +88,9 @@ export default function ResetPasswordPage() {
               value={passwords.confirm}
               onChange={(e) => {
                 setPasswords((p) => ({ ...p, confirm: e.target.value }));
-                if (errors.confirm) setErrors((p) => ({ ...p, confirm: undefined }));
+                if (errors.confirm) {
+                  setErrors((p) => ({ ...p, confirm: undefined }));
+                }
               }}
               error={errors.confirm}
               autoComplete="new-password"

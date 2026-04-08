@@ -11,7 +11,9 @@ export function DashboardClient({ skills }: { skills: SkillGroup[] }) {
   const [level, setLevel] = useState<Level>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("dashboard:level");
-      if (saved === "A2" || saved === "B1") return saved;
+      if (saved === "A2" || saved === "B1") {
+        return saved;
+      }
     }
     return "A2";
   });

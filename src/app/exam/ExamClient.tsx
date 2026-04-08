@@ -120,7 +120,9 @@ function SpeakingRecorder({
       mediaRecorderRef.current = mr;
       chunksRef.current = [];
       mr.ondataavailable = (e) => {
-        if (e.data.size > 0) chunksRef.current.push(e.data);
+        if (e.data.size > 0) {
+          chunksRef.current.push(e.data);
+        }
       };
       mr.onstop = () => {
         clearCountdown();
@@ -166,7 +168,9 @@ function SpeakingRecorder({
         };
         recognition.onend = () => {
           const final = accumulatedRef.current.trim();
-          if (final) onTranscribed(final);
+          if (final) {
+            onTranscribed(final);
+          }
         };
         recognition.start();
         recognitionRef.current = recognition;
@@ -375,11 +379,15 @@ export function ExamClient({ exam, skillId, n }: Props) {
   const [showModal, setShowModal] = useState(false);
   const [showExitDialog, setShowExitDialog] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [grading, setGrading] = useState(false);
+  const [gradingFailed, setGradingFailed] = useState(false);
+  const [gradingResultId, setGradingResultId] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [timeUp, setTimeUp] = useState(false);
   const [showTimeWarning, setShowTimeWarning] = useState(false);
 
   const blockNavRef = useRef(true);
+  const gradingRef = useRef(false);
   const attemptIdRef = useRef(crypto.randomUUID());
   const timeUpRef = useRef(false);
 
@@ -391,8 +399,12 @@ export function ExamClient({ exam, skillId, n }: Props) {
     exam.questions
       .filter((q) => {
         const a = answers[q.id];
-        if (a === undefined) return false;
-        if (q.type === "writing") return typeof a === "string" && a.trim().length > 0;
+        if (a === undefined) {
+          return false;
+        }
+        if (q.type === "writing") {
+          return typeof a === "string" && a.trim().length > 0;
+        }
         return true; // MCQ (number) or speaking (blob URL string)
       })
       .map((q) => q.id)
@@ -405,9 +417,13 @@ export function ExamClient({ exam, skillId, n }: Props) {
     window.history.pushState(null, "", window.location.href);
 
     function handlePopState() {
-      if (!blockNavRef.current) return;
+      if (!blockNavRef.current && !gradingRef.current) {
+        return;
+      }
       window.history.pushState(null, "", window.location.href);
-      if (!timeUpRef.current) setShowExitDialog(true);
+      if (!timeUpRef.current && !gradingRef.current) {
+        setShowExitDialog(true);
+      }
     }
 
     window.addEventListener("popstate", handlePopState);
@@ -417,7 +433,9 @@ export function ExamClient({ exam, skillId, n }: Props) {
   // Block browser refresh / tab close
   useEffect(() => {
     function handleBeforeUnload(e: BeforeUnloadEvent) {
-      if (!blockNavRef.current) return;
+      if (!blockNavRef.current && !gradingRef.current) {
+        return;
+      }
       e.preventDefault();
     }
 
@@ -426,17 +444,23 @@ export function ExamClient({ exam, skillId, n }: Props) {
   }, []);
 
   function selectOption(index: number) {
-    if (timeUp) return;
+    if (timeUp) {
+      return;
+    }
     setAnswers((prev) => ({ ...prev, [question.id]: index }));
   }
 
   function setWritingAnswer(text: string) {
-    if (timeUp) return;
+    if (timeUp) {
+      return;
+    }
     setAnswers((prev) => ({ ...prev, [question.id]: text }));
   }
 
   function setSpeakingAnswer(blobUrl: string) {
-    if (timeUp) return;
+    if (timeUp) {
+      return;
+    }
     setAnswers((prev) => ({ ...prev, [question.id]: blobUrl }));
   }
 
@@ -446,13 +470,33 @@ export function ExamClient({ exam, skillId, n }: Props) {
   }
 
   useEffect(() => {
-    if (!showTimeWarning) return;
+    if (!showTimeWarning) {
+      return;
+    }
     const id = setTimeout(() => setShowTimeWarning(false), 8000);
     return () => clearTimeout(id);
   }, [showTimeWarning]);
 
+  async function callGradeApi(resultId: string): Promise<void> {
+    setGradingFailed(false);
+    const res = await fetch("/api/grade", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ result_id: resultId }),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) {
+      setGradingFailed(true);
+      return;
+    }
+    gradingRef.current = false;
+    router.push(`/results?skill=${skillId}&n=${n}`);
+  }
+
   async function submitExam() {
-    if (submitting) return;
+    if (submitting || grading) {
+      return;
+    }
     setSubmitting(true);
     blockNavRef.current = false;
 
@@ -471,7 +515,9 @@ export function ExamClient({ exam, skillId, n }: Props) {
         {};
       for (const q of exam.questions) {
         const a = answers[q.id];
-        if (a === undefined) continue;
+        if (a === undefined) {
+          continue;
+        }
 
         if (q.type === "speaking" && typeof a === "string" && a.startsWith("blob:")) {
           // Upload audio blob to Supabase Storage
@@ -492,15 +538,30 @@ export function ExamClient({ exam, skillId, n }: Props) {
         }
       }
 
-      await supabase.from("exam_results").insert({
-        user_id: user.id,
-        exam_id: exam.id,
-        skill: exam.skill,
-        level: exam.level ?? null,
-        score,
-        total_score: totalQuestions,
-        answers: answersJson,
-      });
+      const { data: inserted } = await supabase
+        .from("exam_results")
+        .insert({
+          user_id: user.id,
+          exam_id: exam.id,
+          skill: exam.skill,
+          level: exam.level ?? null,
+          score,
+          total_score: totalQuestions,
+          answers: answersJson,
+          grading_status: isMcq ? "complete" : "pending",
+        })
+        .select("id")
+        .single();
+
+      if (inserted && !isMcq) {
+        setGradingResultId(inserted.id);
+        setSubmitting(false);
+        setShowModal(false);
+        setGrading(true);
+        gradingRef.current = true;
+        await callGradeApi(inserted.id);
+        return;
+      }
     }
 
     router.push(`/results?skill=${skillId}&n=${n}`);
@@ -733,8 +794,80 @@ export function ExamClient({ exam, skillId, n }: Props) {
         </div>
       )}
 
+      {/* AI grading overlay — in-progress or failed */}
+      {grading && (
+        <div className="modal-overlay">
+          <div className="modal-content" style={{ textAlign: "center" }}>
+            {gradingFailed ? (
+              <>
+                <h3
+                  className="font-bold mb-2"
+                  style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
+                >
+                  Grading failed
+                </h3>
+                <p style={{ color: "var(--gray-600)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
+                  Something went wrong while grading your answers. You can try again or go back to
+                  the dashboard.
+                </p>
+                <div className="flex gap-6 justify-center">
+                  <Button
+                    variant="secondary"
+                    onClick={() => {
+                      gradingRef.current = false;
+                      setGrading(false);
+                      router.push(`/exams/${skillId}`);
+                    }}
+                  >
+                    Back to dashboard
+                  </Button>
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      if (gradingResultId) {
+                        callGradeApi(gradingResultId);
+                      }
+                    }}
+                  >
+                    Retry grading
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <>
+                {/* Spinner */}
+                <div className="flex justify-center mb-6">
+                  <div
+                    style={{
+                      width: 56,
+                      height: 56,
+                      borderRadius: "50%",
+                      border: "4px solid var(--gray-200)",
+                      borderTopColor: "var(--green-900)",
+                      animation: "spin 0.9s linear infinite",
+                    }}
+                  />
+                </div>
+                <h3
+                  className="font-bold mb-2"
+                  style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
+                >
+                  Grading your answers…
+                </h3>
+                <p style={{ color: "var(--gray-600)", lineHeight: 1.6, marginBottom: "0.75rem" }}>
+                  The AI is reviewing your answers. This may take several minutes.
+                </p>
+                <p className="text-sm" style={{ color: "var(--gray-400)" }}>
+                  Please do not close this window.
+                </p>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Submit confirmation modal */}
-      {showModal && !timeUp && (
+      {showModal && !timeUp && !grading && (
         <div className="modal-overlay">
           <div className="modal-content">
             <h3

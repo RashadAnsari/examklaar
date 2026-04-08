@@ -388,6 +388,12 @@ body {
   animation: pulse-timer 1s infinite;
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes pulse-timer {
   0%,
   100% {

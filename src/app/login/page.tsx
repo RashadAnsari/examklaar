@@ -19,8 +19,12 @@ export default function LoginPage() {
 
   function validate() {
     const next: typeof errors = {};
-    if (!email || !email.includes("@")) next.email = "Please enter a valid email";
-    if (!password) next.password = "Password is required";
+    if (!email || !email.includes("@")) {
+      next.email = "Please enter a valid email";
+    }
+    if (!password) {
+      next.password = "Password is required";
+    }
     return next;
   }
 
@@ -78,7 +82,9 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
-                if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }));
+                if (errors.email) {
+                  setErrors((prev) => ({ ...prev, email: undefined }));
+                }
               }}
               error={errors.email}
               autoComplete="email"
@@ -91,7 +97,9 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
-                if (errors.password) setErrors((prev) => ({ ...prev, password: undefined }));
+                if (errors.password) {
+                  setErrors((prev) => ({ ...prev, password: undefined }));
+                }
               }}
               error={errors.password}
               autoComplete="current-password"

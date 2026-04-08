@@ -26,11 +26,18 @@ export default function SignupPage() {
 
   function validate() {
     const next: typeof errors = {};
-    if (!form.name.trim()) next.name = "Please enter your name";
-    if (!form.email || !form.email.includes("@")) next.email = "Please enter a valid email";
-    if (!form.password || form.password.length < 8)
+    if (!form.name.trim()) {
+      next.name = "Please enter your name";
+    }
+    if (!form.email || !form.email.includes("@")) {
+      next.email = "Please enter a valid email";
+    }
+    if (!form.password || form.password.length < 8) {
       next.password = "Password must be at least 8 characters";
-    if (!termsAccepted) next.terms = "You must accept the terms to continue";
+    }
+    if (!termsAccepted) {
+      next.terms = "You must accept the terms to continue";
+    }
     return next;
   }
 
@@ -67,7 +74,9 @@ export default function SignupPage() {
 
   function update(field: keyof typeof form, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
+    }
   }
 
   return (
@@ -152,7 +161,9 @@ export default function SignupPage() {
                       checked={termsAccepted}
                       onChange={(e) => {
                         setTermsAccepted(e.target.checked);
-                        if (errors.terms) setErrors((prev) => ({ ...prev, terms: undefined }));
+                        if (errors.terms) {
+                          setErrors((prev) => ({ ...prev, terms: undefined }));
+                        }
                       }}
                       className="cursor-pointer flex-shrink-0"
                       style={{ accentColor: "var(--green-900)" }}

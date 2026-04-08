@@ -15,7 +15,8 @@ const EXAMS_DIR = path.join(process.cwd(), "src/data/exams");
 function getScoreFeedback(
   skill: string,
   _level: string | null,
-  score: number
+  score: number,
+  totalScore: number
 ): { label: string; color: string } | null {
   if (skill === "knm") {
     return score >= 28
@@ -26,17 +27,38 @@ function getScoreFeedback(
         };
   }
   if (skill === "reading") {
-    if (score <= 12) return { label: "No chance of passing the real exam", color: "var(--red)" };
-    if (score <= 16) return { label: "Small chance of passing the real exam", color: "#ea580c" };
-    if (score <= 22)
+    if (score <= 12) {
+      return { label: "No chance of passing the real exam", color: "var(--red)" };
+    }
+    if (score <= 16) {
+      return { label: "Small chance of passing the real exam", color: "#ea580c" };
+    }
+    if (score <= 22) {
       return { label: "Reasonable chance of passing the real exam", color: "#a16207" };
+    }
     return { label: "High chance of passing the real exam", color: "var(--green-700)" };
   }
   if (skill === "listening") {
-    if (score <= 15) return { label: "No chance of passing the real exam", color: "var(--red)" };
-    if (score <= 18) return { label: "Little chance of passing the real exam", color: "#ea580c" };
-    if (score <= 21) return { label: "A chance of passing the real exam", color: "#a16207" };
+    if (score <= 15) {
+      return { label: "No chance of passing the real exam", color: "var(--red)" };
+    }
+    if (score <= 18) {
+      return { label: "Little chance of passing the real exam", color: "#ea580c" };
+    }
+    if (score <= 21) {
+      return { label: "A chance of passing the real exam", color: "#a16207" };
+    }
     return { label: "High chance of passing the real exam", color: "var(--green-700)" };
+  }
+  if (skill === "writing" || skill === "speaking") {
+    const passing = Math.ceil(totalScore * 0.6);
+    const percentage = totalScore > 0 ? score / totalScore : 0;
+    return percentage >= 0.6
+      ? { label: `Passed — you scored ${score}/${totalScore}`, color: "var(--green-700)" }
+      : {
+          label: `Not yet passing — you scored ${score}/${totalScore}, need ${passing} to pass`,
+          color: "var(--red)",
+        };
   }
   return null;
 }
@@ -63,13 +85,17 @@ async function loadExams(
   const skill = isLevel ? parts.slice(0, -1).join("-") : id;
   const levelDir = isLevel ? lastPart : null;
 
-  if (!(skill in SKILL_TITLES)) return null;
+  if (!(skill in SKILL_TITLES)) {
+    return null;
+  }
 
   const dir = levelDir ? path.join(EXAMS_DIR, skill, levelDir) : path.join(EXAMS_DIR, skill);
 
   try {
     const files = (await fs.readdir(dir)).filter((f) => f.endsWith(".json")).sort();
-    if (files.length === 0) return null;
+    if (files.length === 0) {
+      return null;
+    }
 
     const cookieStore = await cookies();
     const supabase = createClient(cookieStore);
@@ -78,6 +104,7 @@ async function loadExams(
       .from("exam_results")
       .select("exam_id, score, total_score, completed_at")
       .like("exam_id", `${id}-exam-%`)
+      .eq("grading_status", "complete")
       .order("completed_at", { ascending: false });
 
     const resultsByExamId = new Map<string, ExamResult>();
@@ -116,7 +143,9 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
   const { id } = await props.params;
   const data = await loadExams(id);
 
-  if (!data) notFound();
+  if (!data) {
+    notFound();
+  }
 
   const { skill, level, exams } = data;
 
@@ -189,7 +218,12 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
                 {exam.result?.score !== null &&
                   exam.result?.score !== undefined &&
                   (() => {
-                    const feedback = getScoreFeedback(skill, level, exam.result!.score!);
+                    const feedback = getScoreFeedback(
+                      skill,
+                      level,
+                      exam.result!.score!,
+                      exam.result!.total_score
+                    );
                     return feedback ? (
                       <p className="text-xs mt-1" style={{ color: feedback.color }}>
                         {feedback.label}
