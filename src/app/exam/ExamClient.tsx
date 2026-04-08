@@ -8,6 +8,8 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ExclamationTriangleIcon,
+  MicrophoneIcon,
+  StopIcon,
 } from "@heroicons/react/24/outline";
 import { ClockIcon } from "@heroicons/react/20/solid";
 import { ProgressBar } from "@/components/ui/ProgressBar";
@@ -15,10 +17,10 @@ import { createClient } from "@/utils/supabase/client";
 
 export interface Question {
   id: string;
-  type: string;
+  type: string; // "multiple_choice" | "writing" | "speaking"
   content: string;
-  options: string[];
-  correctAnswer: number;
+  options: string[] | null;
+  correctAnswer: number | null;
 }
 
 export interface Exam {
@@ -30,10 +32,182 @@ export interface Exam {
   questions: Question[];
 }
 
+// --- WritingInput ---
+
+function WritingInput({
+  value,
+  disabled,
+  onChange,
+}: {
+  value: string;
+  disabled: boolean;
+  onChange: (text: string) => void;
+}) {
+  return (
+    <div>
+      <textarea
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        disabled={disabled}
+        rows={8}
+        className="w-full rounded-xl border p-4 resize-y"
+        style={{
+          borderColor: value.trim() ? "var(--green-900)" : "var(--gray-200)",
+          color: "var(--gray-800)",
+          lineHeight: 1.7,
+          fontSize: "0.9375rem",
+          outline: "none",
+          transition: "border-color 0.15s",
+        }}
+        placeholder="Schrijf hier uw antwoord…"
+      />
+      {value.length > 0 && (
+        <p className="text-xs mt-1 text-right" style={{ color: "var(--gray-400)" }}>
+          {value.length} tekens
+        </p>
+      )}
+    </div>
+  );
+}
+
+// --- SpeakingRecorder ---
+
+function SpeakingRecorder({
+  disabled,
+  blobUrl,
+  onRecorded,
+}: {
+  disabled: boolean;
+  blobUrl: string | null;
+  onRecorded: (url: string) => void;
+}) {
+  const [recording, setRecording] = useState(false);
+  const [permissionError, setPermissionError] = useState(false);
+  const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
+  const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const MAX_SECONDS = 60;
+
+  function clearCountdown() {
+    if (countdownRef.current) {
+      clearInterval(countdownRef.current);
+      countdownRef.current = null;
+    }
+  }
+
+  async function startRecording() {
+    setPermissionError(false);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mr = new MediaRecorder(stream);
+      mediaRecorderRef.current = mr;
+      chunksRef.current = [];
+      mr.ondataavailable = (e) => {
+        if (e.data.size > 0) chunksRef.current.push(e.data);
+      };
+      mr.onstop = () => {
+        clearCountdown();
+        setSecondsLeft(null);
+        setRecording(false);
+        const blob = new Blob(chunksRef.current, { type: "audio/webm" });
+        onRecorded(URL.createObjectURL(blob));
+        stream.getTracks().forEach((t) => t.stop());
+      };
+      mr.start();
+      setRecording(true);
+      setSecondsLeft(MAX_SECONDS);
+      countdownRef.current = setInterval(() => {
+        setSecondsLeft((s) => {
+          if (s === null || s <= 1) {
+            mr.stop(); // triggers mr.onstop which cleans up
+            return null;
+          }
+          return s - 1;
+        });
+      }, 1000);
+    } catch {
+      setPermissionError(true);
+    }
+  }
+
+  function stopRecording() {
+    mediaRecorderRef.current?.stop(); // triggers mr.onstop which cleans up
+  }
+
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex items-center gap-4 flex-wrap">
+        {!recording ? (
+          <button
+            key="record"
+            onClick={startRecording}
+            disabled={disabled}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm"
+            style={{
+              background: blobUrl ? "var(--gray-100)" : "var(--green-900)",
+              color: blobUrl ? "var(--gray-700)" : "white",
+              border: "none",
+              cursor: disabled ? "not-allowed" : "pointer",
+              opacity: disabled ? 0.5 : 1,
+            }}
+          >
+            <MicrophoneIcon style={{ width: 18, height: 18 }} />
+            {blobUrl ? "Opnieuw opnemen" : "Begin met opnemen"}
+          </button>
+        ) : (
+          <button
+            key="stop"
+            onClick={stopRecording}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm"
+            style={{
+              background: "var(--red)",
+              color: "white",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            <StopIcon style={{ width: 18, height: 18 }} />
+            Stop opname
+          </button>
+        )}
+        {recording && (
+          <span className="flex items-center gap-2 text-sm" style={{ color: "var(--red)" }}>
+            <span
+              className="inline-block w-2.5 h-2.5 rounded-full animate-pulse"
+              style={{ background: "var(--red)" }}
+            />
+            Opname bezig… {secondsLeft !== null && `(${secondsLeft}s)`}
+          </span>
+        )}
+      </div>
+
+      {permissionError && (
+        <p className="text-sm" style={{ color: "var(--red)" }}>
+          Geen toegang tot microfoon. Controleer uw browserinstellingen.
+        </p>
+      )}
+
+      {blobUrl && !recording && (
+        <div>
+          <p className="text-xs mb-2" style={{ color: "var(--gray-500)" }}>
+            Uw opname:
+          </p>
+          {}
+          <audio src={blobUrl} controls className="w-full" style={{ maxWidth: "420px" }} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+// --- NavigatorPanel ---
+
 interface NavigatorPanelProps {
   questions: Question[];
   currentQ: number;
-  answers: Record<string, number>;
+  answeredIds: Set<string>;
   answeredCount: number;
   totalQuestions: number;
   unansweredCount: number;
@@ -45,7 +219,7 @@ interface NavigatorPanelProps {
 function NavigatorPanel({
   questions,
   currentQ,
-  answers,
+  answeredIds,
   answeredCount,
   totalQuestions,
   unansweredCount,
@@ -75,7 +249,7 @@ function NavigatorPanel({
               onClick={() => onGoTo(i)}
               disabled={disabled}
               className={`question-btn ${
-                i === currentQ ? "current" : answers[q.id] !== undefined ? "answered" : ""
+                i === currentQ ? "current" : answeredIds.has(q.id) ? "answered" : ""
               }`}
             >
               {i + 1}
@@ -125,6 +299,8 @@ function NavigatorPanel({
   );
 }
 
+// --- ExamClient ---
+
 interface Props {
   exam: Exam;
   skillId: string;
@@ -134,21 +310,34 @@ interface Props {
 export function ExamClient({ exam, skillId, n }: Props) {
   const router = useRouter();
   const [currentQ, setCurrentQ] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, number>>({});
+  // number for MCQ, string for writing (text) or speaking (blob URL)
+  const [answers, setAnswers] = useState<Record<string, number | string>>({});
   const [showModal, setShowModal] = useState(false);
   const [showExitDialog, setShowExitDialog] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [timeUp, setTimeUp] = useState(false);
   const [showTimeWarning, setShowTimeWarning] = useState(false);
 
-  // Refs so event handlers always read the latest values without re-registering
   const blockNavRef = useRef(true);
+  const attemptIdRef = useRef(crypto.randomUUID());
   const timeUpRef = useRef(false);
 
   const totalQuestions = exam.questions.length;
   const question = exam.questions[currentQ];
-  const answeredCount = Object.keys(answers).length;
-  const selectedOption = answers[question?.id];
+
+  // Compute which questions are "answered" (non-empty for writing, any value for others)
+  const answeredIds = new Set<string>(
+    exam.questions
+      .filter((q) => {
+        const a = answers[q.id];
+        if (a === undefined) return false;
+        if (q.type === "writing") return typeof a === "string" && a.trim().length > 0;
+        return true; // MCQ (number) or speaking (blob URL string)
+      })
+      .map((q) => q.id)
+  );
+  const answeredCount = answeredIds.size;
   const unansweredCount = totalQuestions - answeredCount;
 
   // Block browser back button
@@ -157,9 +346,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
 
     function handlePopState() {
       if (!blockNavRef.current) return;
-      // Push state again to undo the back navigation
       window.history.pushState(null, "", window.location.href);
-      // If time is up, the submit overlay is already shown — don't stack dialogs
       if (!timeUpRef.current) setShowExitDialog(true);
     }
 
@@ -181,6 +368,16 @@ export function ExamClient({ exam, skillId, n }: Props) {
   function selectOption(index: number) {
     if (timeUp) return;
     setAnswers((prev) => ({ ...prev, [question.id]: index }));
+  }
+
+  function setWritingAnswer(text: string) {
+    if (timeUp) return;
+    setAnswers((prev) => ({ ...prev, [question.id]: text }));
+  }
+
+  function setSpeakingAnswer(blobUrl: string) {
+    if (timeUp) return;
+    setAnswers((prev) => ({ ...prev, [question.id]: blobUrl }));
   }
 
   function handleExpire() {
@@ -205,11 +402,35 @@ export function ExamClient({ exam, skillId, n }: Props) {
     } = await supabase.auth.getUser();
 
     if (user) {
-      const score = exam.questions.filter((q) => answers[q.id] === q.correctAnswer).length;
-      const answersJson: Record<string, number> = {};
+      const isMcq = exam.skill !== "writing" && exam.skill !== "speaking";
+      const score = isMcq
+        ? exam.questions.filter((q) => answers[q.id] === q.correctAnswer).length
+        : 0; // writing/speaking scored later by AI
+
+      const answersJson: Record<string, number | string> = {};
       for (const q of exam.questions) {
-        if (answers[q.id] !== undefined) answersJson[q.id] = answers[q.id];
+        const a = answers[q.id];
+        if (a === undefined) continue;
+
+        if (q.type === "speaking" && typeof a === "string" && a.startsWith("blob:")) {
+          // Upload audio blob to Supabase Storage
+          const audioBlob = await fetch(a).then((r) => r.blob());
+          const path = `${user.id}/${exam.id}/${attemptIdRef.current}/${q.id}.webm`;
+          const { error } = await supabase.storage
+            .from("speaking-recordings")
+            .upload(path, audioBlob, { contentType: "audio/webm" });
+          if (error) {
+            setSubmitError("Het uploaden van uw opname is mislukt. Probeer het opnieuw.");
+            setSubmitting(false);
+            blockNavRef.current = true;
+            return;
+          }
+          answersJson[q.id] = path;
+        } else {
+          answersJson[q.id] = a;
+        }
       }
+
       await supabase.from("exam_results").insert({
         user_id: user.id,
         exam_id: exam.id,
@@ -232,7 +453,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
   const navigatorProps: NavigatorPanelProps = {
     questions: exam.questions,
     currentQ,
-    answers,
+    answeredIds,
     answeredCount,
     totalQuestions,
     unansweredCount,
@@ -249,7 +470,6 @@ export function ExamClient({ exam, skillId, n }: Props) {
         style={{ background: "white", boxShadow: "var(--shadow-md)" }}
       >
         <div className="mx-auto px-6 py-5" style={{ maxWidth: "860px" }}>
-          {/* Title + timer */}
           <div className="flex items-center justify-between gap-6 mb-4">
             <h1
               className="font-bold truncate"
@@ -267,7 +487,6 @@ export function ExamClient({ exam, skillId, n }: Props) {
             </div>
           </div>
 
-          {/* Progress */}
           <div>
             <div className="flex justify-between items-center mb-2">
               <span className="text-sm" style={{ color: "var(--gray-500)" }}>
@@ -312,23 +531,46 @@ export function ExamClient({ exam, skillId, n }: Props) {
               className="question-content mb-8"
               dangerouslySetInnerHTML={{ __html: question.content }}
             />
-            <div className="flex flex-col gap-3">
-              {question.options.map((opt, i) => (
-                <button
-                  key={i}
-                  onClick={() => selectOption(i)}
-                  disabled={timeUp}
-                  className={`exam-option ${selectedOption === i ? "selected" : ""}`}
-                >
-                  <span className="option-letter">{String.fromCharCode(65 + i)}</span>
-                  <span
-                    style={{ color: "var(--gray-800)", lineHeight: 1.6, fontSize: "0.9375rem" }}
+
+            {question.type === "writing" && (
+              <WritingInput
+                value={
+                  typeof answers[question.id] === "string" ? (answers[question.id] as string) : ""
+                }
+                disabled={timeUp}
+                onChange={setWritingAnswer}
+              />
+            )}
+
+            {question.type === "speaking" && (
+              <SpeakingRecorder
+                disabled={timeUp}
+                blobUrl={
+                  typeof answers[question.id] === "string" ? (answers[question.id] as string) : null
+                }
+                onRecorded={setSpeakingAnswer}
+              />
+            )}
+
+            {question.type === "multiple_choice" && (
+              <div className="flex flex-col gap-3">
+                {(question.options ?? []).map((opt, i) => (
+                  <button
+                    key={i}
+                    onClick={() => selectOption(i)}
+                    disabled={timeUp}
+                    className={`exam-option ${answers[question.id] === i ? "selected" : ""}`}
                   >
-                    {opt}
-                  </span>
-                </button>
-              ))}
-            </div>
+                    <span className="option-letter">{String.fromCharCode(65 + i)}</span>
+                    <span
+                      style={{ color: "var(--gray-800)", lineHeight: 1.6, fontSize: "0.9375rem" }}
+                    >
+                      {opt}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -406,6 +648,14 @@ export function ExamClient({ exam, skillId, n }: Props) {
             <p className="mb-8" style={{ fontSize: "0.875rem", color: "var(--gray-500)" }}>
               Lever nu in om uw resultaten op te slaan.
             </p>
+            {submitError && (
+              <p
+                className="mb-4 text-sm rounded-xl px-4 py-3"
+                style={{ background: "var(--red-light)", color: "var(--red)" }}
+              >
+                {submitError}
+              </p>
+            )}
             <Button
               variant="primary"
               fullWidth
@@ -443,11 +693,22 @@ export function ExamClient({ exam, skillId, n }: Props) {
                 antwoorden niet meer wijzigen.
               </p>
             )}
+            {submitError && (
+              <p
+                className="mb-4 text-sm rounded-xl px-4 py-3"
+                style={{ background: "var(--red-light)", color: "var(--red)" }}
+              >
+                {submitError}
+              </p>
+            )}
             <div className="flex gap-3">
               <Button
                 variant="outline"
                 fullWidth
-                onClick={() => setShowModal(false)}
+                onClick={() => {
+                  setShowModal(false);
+                  setSubmitError(null);
+                }}
                 disabled={submitting}
               >
                 Doorgaan

@@ -4,7 +4,7 @@
   "level": "A2",
   "title": "Writing Exam 1",
   "timeLimitMinutes": 40,
-  "premiumOnly": true,
+  "premiumOnly": false,
   "questions": [
     {
       "id": "q1",

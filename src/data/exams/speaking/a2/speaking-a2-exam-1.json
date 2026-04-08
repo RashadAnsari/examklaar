@@ -4,7 +4,7 @@
   "level": "A2",
   "title": "Speaking Exam 1",
   "timeLimitMinutes": 35,
-  "premiumOnly": true,
+  "premiumOnly": false,
   "questions": [
     {
       "id": "q1",
