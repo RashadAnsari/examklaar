@@ -76,17 +76,22 @@ function SpeakingRecorder({
   disabled,
   blobUrl,
   onRecorded,
+  onTranscribed,
 }: {
   disabled: boolean;
   blobUrl: string | null;
   onRecorded: (url: string) => void;
+  onTranscribed: (text: string) => void;
 }) {
   const [recording, setRecording] = useState(false);
   const [permissionError, setPermissionError] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
+
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const recognitionRef = useRef<{ stop: () => void } | null>(null);
+  const accumulatedRef = useRef("");
 
   const MAX_SECONDS = 60;
 
@@ -99,8 +104,18 @@ function SpeakingRecorder({
 
   async function startRecording() {
     setPermissionError(false);
+    accumulatedRef.current = "";
+
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+        },
+      });
+
+      // MediaRecorder — captures audio for upload
       const mr = new MediaRecorder(stream);
       mediaRecorderRef.current = mr;
       chunksRef.current = [];
@@ -115,13 +130,56 @@ function SpeakingRecorder({
         onRecorded(URL.createObjectURL(blob));
         stream.getTracks().forEach((t) => t.stop());
       };
+
+      // SpeechRecognition — live transcription
+
+      type SpeechRecognitionCtor = new () => {
+        lang: string;
+        continuous: boolean;
+        interimResults: boolean;
+        onresult:
+          | ((e: {
+              resultIndex: number;
+              results: { isFinal: boolean; 0: { transcript: string } }[];
+            }) => void)
+          | null;
+        onend: (() => void) | null;
+        start: () => void;
+        stop: () => void;
+      };
+      const win = window as Window & {
+        SpeechRecognition?: SpeechRecognitionCtor;
+        webkitSpeechRecognition?: SpeechRecognitionCtor;
+      };
+      const SpeechRecognitionAPI = win.SpeechRecognition ?? win.webkitSpeechRecognition;
+      if (SpeechRecognitionAPI) {
+        const recognition = new SpeechRecognitionAPI();
+        recognition.lang = "nl-NL";
+        recognition.continuous = true;
+        recognition.interimResults = false;
+        recognition.onresult = (e) => {
+          for (let i = e.resultIndex; i < e.results.length; i++) {
+            if (e.results[i].isFinal) {
+              accumulatedRef.current += e.results[i][0].transcript + " ";
+            }
+          }
+        };
+        recognition.onend = () => {
+          const final = accumulatedRef.current.trim();
+          if (final) onTranscribed(final);
+        };
+        recognition.start();
+        recognitionRef.current = recognition;
+      }
+
       mr.start();
       setRecording(true);
       setSecondsLeft(MAX_SECONDS);
       countdownRef.current = setInterval(() => {
         setSecondsLeft((s) => {
           if (s === null || s <= 1) {
-            mr.stop(); // triggers mr.onstop which cleans up
+            recognitionRef.current?.stop();
+            mr.stop();
             return null;
           }
           return s - 1;
@@ -133,7 +191,8 @@ function SpeakingRecorder({
   }
 
   function stopRecording() {
-    mediaRecorderRef.current?.stop(); // triggers mr.onstop which cleans up
+    recognitionRef.current?.stop();
+    mediaRecorderRef.current?.stop();
   }
 
   return (
@@ -312,6 +371,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
   const [currentQ, setCurrentQ] = useState(0);
   // number for MCQ, string for writing (text) or speaking (blob URL)
   const [answers, setAnswers] = useState<Record<string, number | string>>({});
+  const [transcripts, setTranscripts] = useState<Record<string, string>>({});
   const [showModal, setShowModal] = useState(false);
   const [showExitDialog, setShowExitDialog] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -407,7 +467,8 @@ export function ExamClient({ exam, skillId, n }: Props) {
         ? exam.questions.filter((q) => answers[q.id] === q.correctAnswer).length
         : 0; // writing/speaking scored later by AI
 
-      const answersJson: Record<string, number | string> = {};
+      const answersJson: Record<string, number | string | { path: string; transcript: string }> =
+        {};
       for (const q of exam.questions) {
         const a = answers[q.id];
         if (a === undefined) continue;
@@ -425,7 +486,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
             blockNavRef.current = true;
             return;
           }
-          answersJson[q.id] = path;
+          answersJson[q.id] = { path, transcript: transcripts[q.id] ?? "" };
         } else {
           answersJson[q.id] = a;
         }
@@ -549,6 +610,9 @@ export function ExamClient({ exam, skillId, n }: Props) {
                   typeof answers[question.id] === "string" ? (answers[question.id] as string) : null
                 }
                 onRecorded={setSpeakingAnswer}
+                onTranscribed={(text) =>
+                  setTranscripts((prev) => ({ ...prev, [question.id]: text }))
+                }
               />
             )}
 
