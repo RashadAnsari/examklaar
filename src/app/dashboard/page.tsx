@@ -7,8 +7,7 @@ import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam-config";
 import type { SkillGroup } from "@/lib/exam-config";
 import { DashboardClient } from "./DashboardClient";
 import { createClient } from "@/utils/supabase/server";
-
-const EXAMS_DIR = path.join(process.cwd(), "src/data/exams");
+import { EXAMS_DIR } from "@/lib/exams";
 
 async function loadSkillGroups(): Promise<SkillGroup[]> {
   const groups: SkillGroup[] = [];

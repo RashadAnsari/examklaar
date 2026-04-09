@@ -9,8 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { ChevronLeftIcon, LockClosedIcon } from "@heroicons/react/20/solid";
 import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam-config";
 import { createClient } from "@/utils/supabase/server";
-
-const EXAMS_DIR = path.join(process.cwd(), "src/data/exams");
+import { EXAMS_DIR } from "@/lib/exams";
 
 function getScoreFeedback(
   skill: string,

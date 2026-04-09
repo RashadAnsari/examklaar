@@ -3,22 +3,7 @@ import { createClient } from "@/utils/supabase/server";
 import { createAdminClient } from "@/utils/supabase/admin";
 import { cookies } from "next/headers";
 import fs from "fs/promises";
-import path from "path";
-
-const EXAMS_DIR = path.join(process.cwd(), "src/data/exams");
-
-function getExamFilePath(skillId: string, n: number): string {
-  const parts = skillId.split("-");
-  const lastPart = parts[parts.length - 1];
-  const isLevel = ["a2", "b1"].includes(lastPart);
-  const skillBase = isLevel ? parts.slice(0, -1).join("-") : skillId;
-  const level = isLevel ? lastPart : null;
-
-  if (level) {
-    return path.join(EXAMS_DIR, skillBase, level, `${skillBase}-${level}-exam-${n}.json`);
-  }
-  return path.join(EXAMS_DIR, skillBase, `${skillBase}-exam-${n}.json`);
-}
+import { getExamFilePath } from "@/lib/exams";
 
 interface ExamQuestion {
   id: string;
@@ -54,6 +39,17 @@ export async function POST(req: NextRequest) {
   if (!skillId || isNaN(n)) {
     console.warn("[submit] Invalid request — skill_id=%s n=%s user=%s", skillId, n, user.id);
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  }
+
+  const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+  const { count: recentCount } = await admin
+    .from("exam_results")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", user.id)
+    .gte("created_at", oneHourAgo);
+  if ((recentCount ?? 0) >= 5) {
+    console.warn("[submit] Rate limit exceeded — user=%s", user.id);
+    return NextResponse.json({ error: "Too many submissions. Try again later." }, { status: 429 });
   }
 
   let examJson: {

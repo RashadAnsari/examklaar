@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { createClient } from "@/utils/supabase/client";
 import { ErrorBanner } from "@/components/ui/ErrorBanner";
+import { AuthCard } from "@/components/ui/AuthCard";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -41,66 +40,52 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center p-4 py-12"
-      style={{ background: "var(--gray-50)" }}
-    >
-      <div className="w-full" style={{ maxWidth: "440px" }}>
-        <div className="flex justify-center mb-8">
-          <Link href="/" className="logo flex items-center gap-2.5" style={{ fontSize: "1.5rem" }}>
-            <Image src="/examklaar-logo.svg" alt="" width={44} height={44} priority />
-            ExamKlaar
-          </Link>
-        </div>
+    <AuthCard>
+      <h1 className="font-bold mb-1" style={{ fontSize: "1.875rem", color: "var(--gray-900)" }}>
+        Set new password
+      </h1>
+      <p className="mb-8" style={{ color: "var(--gray-600)" }}>
+        Choose a strong password for your account.
+      </p>
 
-        <div className="card" style={{ padding: "3rem" }}>
-          <h1 className="font-bold mb-1" style={{ fontSize: "1.875rem", color: "var(--gray-900)" }}>
-            Set new password
-          </h1>
-          <p className="mb-8" style={{ color: "var(--gray-600)" }}>
-            Choose a strong password for your account.
-          </p>
+      <ErrorBanner
+        message={errors.form ?? null}
+        onHide={() => setErrors((p) => ({ ...p, form: undefined }))}
+      />
 
-          <ErrorBanner
-            message={errors.form ?? null}
-            onHide={() => setErrors((p) => ({ ...p, form: undefined }))}
-          />
-
-          <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
-            <Input
-              label="New password"
-              type="password"
-              placeholder="At least 8 characters"
-              value={passwords.next}
-              onChange={(e) => {
-                setPasswords((p) => ({ ...p, next: e.target.value }));
-                if (errors.next) {
-                  setErrors((p) => ({ ...p, next: undefined }));
-                }
-              }}
-              error={errors.next}
-              autoComplete="new-password"
-            />
-            <Input
-              label="Confirm new password"
-              type="password"
-              placeholder="Repeat your password"
-              value={passwords.confirm}
-              onChange={(e) => {
-                setPasswords((p) => ({ ...p, confirm: e.target.value }));
-                if (errors.confirm) {
-                  setErrors((p) => ({ ...p, confirm: undefined }));
-                }
-              }}
-              error={errors.confirm}
-              autoComplete="new-password"
-            />
-            <Button type="submit" variant="primary" fullWidth disabled={loading}>
-              {loading ? "Updating…" : "Update Password"}
-            </Button>
-          </form>
-        </div>
-      </div>
-    </div>
+      <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
+        <Input
+          label="New password"
+          type="password"
+          placeholder="At least 8 characters"
+          value={passwords.next}
+          onChange={(e) => {
+            setPasswords((p) => ({ ...p, next: e.target.value }));
+            if (errors.next) {
+              setErrors((p) => ({ ...p, next: undefined }));
+            }
+          }}
+          error={errors.next}
+          autoComplete="new-password"
+        />
+        <Input
+          label="Confirm new password"
+          type="password"
+          placeholder="Repeat your password"
+          value={passwords.confirm}
+          onChange={(e) => {
+            setPasswords((p) => ({ ...p, confirm: e.target.value }));
+            if (errors.confirm) {
+              setErrors((p) => ({ ...p, confirm: undefined }));
+            }
+          }}
+          error={errors.confirm}
+          autoComplete="new-password"
+        />
+        <Button type="submit" variant="primary" fullWidth disabled={loading}>
+          {loading ? "Updating…" : "Update Password"}
+        </Button>
+      </form>
+    </AuthCard>
   );
 }

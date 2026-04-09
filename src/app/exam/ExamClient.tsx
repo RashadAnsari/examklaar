@@ -14,6 +14,15 @@ import {
 import { ClockIcon } from "@heroicons/react/20/solid";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 
+function sanitizeHtml(html: string): string {
+  if (typeof window === "undefined") {
+    return html;
+  }
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const DOMPurify = require("dompurify");
+  return DOMPurify.sanitize(html);
+}
+
 export interface Question {
   id: string;
   type: string; // "multiple_choice" | "writing" | "speaking"
@@ -638,7 +647,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
           <div className="p-6 sm:p-10">
             <div
               className="question-content mb-8"
-              dangerouslySetInnerHTML={{ __html: question.content }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(question.content) }}
             />
 
             {question.type === "writing" && (

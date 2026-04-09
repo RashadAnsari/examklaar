@@ -71,6 +71,7 @@ Fall back to Grep/Glob/Read **only** when the graph doesn't cover what you need.
 ## General rules
 
 - No duplicate components: reuse existing ones with props rather than creating variants.
+- **No duplicate code**: before writing a constant, function, or utility, search the codebase first. If it already exists, import it — never redefine it. Shared logic belongs in `src/lib/`. Shared UI belongs in `src/components/ui/`. Shared constants (`EXAMS_DIR`, etc.) live in the relevant lib file.
 - **Punctuation**: no period on short labels, headings, button text, and single-phrase descriptions. Use a period on full sentences, especially multi-clause ones (FAQs, warnings, longer descriptions).
 
 <!-- END:project-structure -->
