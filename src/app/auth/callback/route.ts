@@ -9,7 +9,10 @@ export async function GET(request: Request) {
   if (code) {
     const cookieStore = await cookies();
     const supabase = createClient(cookieStore);
-    await supabase.auth.exchangeCodeForSession(code);
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (error) {
+      console.error("[auth/callback] Failed to exchange code for session:", error.message);
+    }
   }
 
   const raw = searchParams.get("next") ?? "/dashboard";

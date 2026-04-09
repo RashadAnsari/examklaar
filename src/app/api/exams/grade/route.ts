@@ -9,15 +9,17 @@ export async function POST(req: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) {
+    console.warn("[grade] Unauthorized request");
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const { result_id } = await req.json();
   if (!result_id) {
+    console.warn("[grade] Missing result_id — user=%s", user.id);
     return NextResponse.json({ error: "Missing result_id" }, { status: 400 });
   }
 
-  const { data: result } = await supabase
+  const { data: result, error: fetchError } = await supabase
     .from("exam_results")
     .select("id, skill, level, exam_id, answers, grading_status")
     .eq("id", result_id)
@@ -25,6 +27,12 @@ export async function POST(req: NextRequest) {
     .single();
 
   if (!result) {
+    console.warn(
+      "[grade] Result not found — result_id=%s user=%s error=%s",
+      result_id,
+      user.id,
+      fetchError?.message
+    );
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
   if (result.skill !== "writing" && result.skill !== "speaking") {
@@ -38,8 +46,7 @@ export async function POST(req: NextRequest) {
     await gradeExamResult(result_id, result);
     return NextResponse.json({ ok: true });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "Grading failed";
-    console.error(`[grader] Failed to grade result ${result_id}:`, err);
-    return NextResponse.json({ error: message }, { status: 500 });
+    console.error(`[grade] Failed to grade result ${result_id}:`, err);
+    return NextResponse.json({ error: "Grading failed" }, { status: 500 });
   }
 }

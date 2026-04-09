@@ -13,7 +13,6 @@ import {
 } from "@heroicons/react/24/outline";
 import { ClockIcon } from "@heroicons/react/20/solid";
 import { ProgressBar } from "@/components/ui/ProgressBar";
-import { createClient } from "@/utils/supabase/client";
 
 export interface Question {
   id: string;
@@ -479,7 +478,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
 
   async function callGradeApi(resultId: string): Promise<void> {
     setGradingFailed(false);
-    const res = await fetch("/api/grade", {
+    const res = await fetch("/api/exams/grade", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ result_id: resultId }),
@@ -500,68 +499,56 @@ export function ExamClient({ exam, skillId, n }: Props) {
     setSubmitting(true);
     blockNavRef.current = false;
 
-    const supabase = createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    const formData = new FormData();
+    formData.append("skill_id", skillId);
+    formData.append("n", String(n));
+    formData.append("attempt_id", attemptIdRef.current);
 
-    if (user) {
-      const isMcq = exam.skill !== "writing" && exam.skill !== "speaking";
-      const score = isMcq
-        ? exam.questions.filter((q) => answers[q.id] === q.correctAnswer).length
-        : 0; // writing/speaking scored later by AI
+    const answersPayload: Record<string, number | string> = {};
+    const transcriptsPayload: Record<string, string> = {};
 
-      const answersJson: Record<string, number | string | { path: string; transcript: string }> =
-        {};
-      for (const q of exam.questions) {
-        const a = answers[q.id];
-        if (a === undefined) {
-          continue;
-        }
-
-        if (q.type === "speaking" && typeof a === "string" && a.startsWith("blob:")) {
-          // Upload audio blob to Supabase Storage
-          const audioBlob = await fetch(a).then((r) => r.blob());
-          const path = `${user.id}/${exam.id}/${attemptIdRef.current}/${q.id}.webm`;
-          const { error } = await supabase.storage
-            .from("speaking-recordings")
-            .upload(path, audioBlob, { contentType: "audio/webm" });
-          if (error) {
-            setSubmitError("Het uploaden van uw opname is mislukt. Probeer het opnieuw.");
-            setSubmitting(false);
-            blockNavRef.current = true;
-            return;
-          }
-          answersJson[q.id] = { path, transcript: transcripts[q.id] ?? "" };
-        } else {
-          answersJson[q.id] = a;
-        }
+    for (const q of exam.questions) {
+      const a = answers[q.id];
+      if (a === undefined) {
+        continue;
       }
 
-      const { data: inserted } = await supabase
-        .from("exam_results")
-        .insert({
-          user_id: user.id,
-          exam_id: exam.id,
-          skill: exam.skill,
-          level: exam.level ?? null,
-          score,
-          total_score: totalQuestions,
-          answers: answersJson,
-          grading_status: isMcq ? "complete" : "pending",
-        })
-        .select("id")
-        .single();
-
-      if (inserted && !isMcq) {
-        setGradingResultId(inserted.id);
-        setSubmitting(false);
-        setShowModal(false);
-        setGrading(true);
-        gradingRef.current = true;
-        await callGradeApi(inserted.id);
-        return;
+      if (q.type === "speaking" && typeof a === "string" && a.startsWith("blob:")) {
+        const audioBlob = await fetch(a).then((r) => r.blob());
+        formData.append(`audio_${q.id}`, audioBlob, `${q.id}.webm`);
+        transcriptsPayload[q.id] = transcripts[q.id] ?? "";
+        answersPayload[q.id] = "AUDIO";
+      } else {
+        answersPayload[q.id] = a as number | string;
       }
+    }
+
+    formData.append("answers", JSON.stringify(answersPayload));
+    formData.append("transcripts", JSON.stringify(transcriptsPayload));
+
+    const res = await fetch("/api/exams/submit", { method: "POST", body: formData });
+    const data = await res.json();
+
+    if (!res.ok || data.error) {
+      setSubmitError(
+        data.error === "upload_failed"
+          ? "Het uploaden van uw opname is mislukt. Probeer het opnieuw."
+          : "Er is een fout opgetreden. Probeer het opnieuw."
+      );
+      setSubmitting(false);
+      blockNavRef.current = true;
+      return;
+    }
+
+    const isMcq = exam.skill !== "writing" && exam.skill !== "speaking";
+    if (!isMcq) {
+      setGradingResultId(data.id);
+      setSubmitting(false);
+      setShowModal(false);
+      setGrading(true);
+      gradingRef.current = true;
+      await callGradeApi(data.id);
+      return;
     }
 
     router.push(`/results?skill=${skillId}&n=${n}`);
