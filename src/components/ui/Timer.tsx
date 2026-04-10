@@ -12,13 +12,12 @@ interface TimerProps {
 
 export function Timer({ initialSeconds, onExpire, warningAt, onWarning }: TimerProps) {
   const [seconds, setSeconds] = useState(initialSeconds);
+  const [hovered, setHovered] = useState(false);
 
-  // Keep latest callbacks in refs so they never need to enter the deps array
   const onExpireRef = useRef(onExpire);
   const onWarningRef = useRef(onWarning);
   const warningAtRef = useRef(warningAt);
 
-  // Sync refs after every render (useLayoutEffect = after DOM update, not during render)
   useLayoutEffect(() => {
     onExpireRef.current = onExpire;
     onWarningRef.current = onWarning;
@@ -43,13 +42,45 @@ export function Timer({ initialSeconds, onExpire, warningAt, onWarning }: TimerP
   const secs = seconds % 60;
   const display = `${minutes}:${String(secs).padStart(2, "0")}`;
 
-  const timerClass =
-    seconds <= 120 ? "timer timer-danger" : seconds <= 300 ? "timer timer-warning" : "timer";
+  const isWarning = seconds <= 300 && seconds > 120;
+  const isDanger = seconds <= 120;
+
+  const color = isDanger ? "var(--red)" : isWarning ? "var(--amber)" : "var(--gray-400)";
+  const bg = isDanger ? "var(--red-light)" : isWarning ? "var(--amber-light)" : "transparent";
 
   return (
-    <div className={timerClass}>
-      <ClockIcon style={{ width: 20, height: 20 }} />
-      <span>{display}</span>
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      title={display}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "0.4rem",
+        padding: "0",
+        borderRadius: "0.5rem",
+        background: bg,
+        color,
+        fontWeight: 700,
+        fontSize: "1rem",
+        cursor: "default",
+        transition: "background 0.2s ease",
+        animation: isDanger ? "pulse-timer 1s infinite" : "none",
+        userSelect: "none",
+        whiteSpace: "nowrap",
+      }}
+    >
+      <ClockIcon style={{ width: 24, height: 24, flexShrink: 0 }} />
+      <span
+        style={{
+          maxWidth: hovered ? "6rem" : "0",
+          opacity: hovered ? 1 : 0,
+          overflow: "hidden",
+          transition: "max-width 0.2s ease, opacity 0.2s ease",
+        }}
+      >
+        {display}
+      </span>
     </div>
   );
 }

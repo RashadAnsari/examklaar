@@ -588,21 +588,19 @@ export function ExamClient({ exam, skillId, n }: Props) {
         style={{ background: "white", boxShadow: "var(--shadow-md)" }}
       >
         <div className="mx-auto px-6 py-5" style={{ maxWidth: "860px" }}>
-          <div className="flex items-center justify-between gap-6 mb-4">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Timer
+              initialSeconds={exam.timeLimitMinutes * 60}
+              onExpire={handleExpire}
+              warningAt={[900]}
+              onWarning={() => setShowTimeWarning(true)}
+            />
             <h1
               className="font-bold truncate"
               style={{ fontSize: "1.125rem", color: "var(--gray-900)" }}
             >
               {exam.title}
             </h1>
-            <div className="flex-shrink-0">
-              <Timer
-                initialSeconds={exam.timeLimitMinutes * 60}
-                onExpire={handleExpire}
-                warningAt={[900]}
-                onWarning={() => setShowTimeWarning(true)}
-              />
-            </div>
           </div>
 
           <div>
