@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Read the ExamKlaar privacy policy to understand how we collect, use, and protect your personal data.",
+  alternates: { canonical: "https://www.examklaar.nl/privacy" },
+};
 
 const LAST_UPDATED = "10 April 2026";
 

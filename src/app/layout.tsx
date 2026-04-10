@@ -9,9 +9,22 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ExamKlaar - Practice for Your Inburgering Exam",
+  metadataBase: new URL("https://www.examklaar.nl"),
+  title: {
+    default: "ExamKlaar — Practice for Your Dutch Inburgering Exam",
+    template: "%s | ExamKlaar",
+  },
   description:
-    "Realistic mock exams for KNM, Reading, Listening, Writing, and Speaking. Practice with AI-powered feedback.",
+    "Realistic mock exams for all 5 inburgering exam components — KNM, Reading, Listening, Writing, and Speaking — with AI-powered feedback. Start free.",
+  openGraph: {
+    siteName: "ExamKlaar",
+    type: "website",
+    locale: "en_NL",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

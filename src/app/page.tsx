@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
@@ -14,6 +15,19 @@ import {
   AcademicCapIcon,
   BoltIcon,
 } from "@heroicons/react/20/solid";
+
+export const metadata: Metadata = {
+  title: "ExamKlaar — Practice for Your Dutch Inburgering Exam",
+  description:
+    "Prepare for your Dutch inburgering exam with realistic practice exams for KNM, Reading, Listening, Writing, and Speaking. AI feedback included. Start free.",
+  alternates: { canonical: "https://www.examklaar.nl" },
+  openGraph: {
+    title: "ExamKlaar — Practice for Your Dutch Inburgering Exam",
+    description:
+      "Realistic mock exams for all 5 inburgering components with AI-powered feedback. Free to start.",
+    url: "https://www.examklaar.nl",
+  },
+};
 
 export default function LandingPage() {
   return (

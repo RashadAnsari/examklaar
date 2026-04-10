@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions",
+  description:
+    "Read the ExamKlaar terms and conditions. Understand your rights and responsibilities as a user of our exam preparation platform.",
+  alternates: { canonical: "https://www.examklaar.nl/terms" },
+};
 
 const LAST_UPDATED = "10 April 2026";
 

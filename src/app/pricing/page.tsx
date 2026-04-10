@@ -1,8 +1,20 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PricingCards } from "@/components/pricing/PricingCards";
+
+export const metadata: Metadata = {
+  title: "Pricing",
+  description:
+    "Start free or upgrade to Premium for €9.99/month. Get full access to all 5 inburgering exam skills with AI-powered feedback.",
+  alternates: { canonical: "https://www.examklaar.nl/pricing" },
+  openGraph: {
+    title: "Pricing | ExamKlaar",
+    description:
+      "Start free or upgrade to Premium for €9.99/month. Full access to all exam skills with AI feedback.",
+    url: "https://www.examklaar.nl/pricing",
+  },
+};
 
 const FAQS = [
   {
@@ -42,9 +54,26 @@ const FAQS = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function PricingPage() {
   return (
     <div className="min-h-screen" style={{ background: "var(--gray-50)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navbar />
 
       {/* Header */}
