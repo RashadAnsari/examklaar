@@ -6,24 +6,39 @@ import { PricingCards } from "@/components/pricing/PricingCards";
 
 const FAQS = [
   {
-    question: "Can I cancel anytime?",
+    question: "What is the inburgering exam and which parts does ExamKlaar cover?",
     answer:
-      "Yes! You can cancel your Premium subscription at any time. You'll retain access until the end of your billing period, and you won't be charged again.",
+      "The inburgering exam is a Dutch civic integration exam required for most people immigrating to the Netherlands. It tests your knowledge of Dutch society (KNM) and your Dutch language skills across four components: Reading, Listening, Writing, and Speaking. ExamKlaar covers all five of these components with realistic practice exams.",
   },
   {
-    question: "What payment methods do you accept?",
+    question: "Is ExamKlaar officially affiliated with DUO or the Dutch government?",
     answer:
-      "We accept iDEAL, credit cards (Visa, Mastercard), and other payment methods through Mollie. All payments are secure and encrypted.",
+      "No. ExamKlaar is an independent practice platform. We are not affiliated with DUO or the Dutch government. Our content is designed to closely reflect the official exam format and CEFR A2/B1 standards, but we cannot guarantee exam results.",
+  },
+  {
+    question: "Can I upgrade from Free to Premium later?",
+    answer:
+      "Yes. You can start with the Free plan and upgrade to Premium or the 6-Month Plan at any time from your account settings. Your existing progress is always preserved.",
   },
   {
     question: "How does the AI feedback work?",
     answer:
-      "Our AI analyzes your written Dutch and spoken recordings to provide detailed corrections on grammar, vocabulary, and pronunciation. You'll see exactly where you made mistakes and how to improve.",
+      "For writing exercises, our AI reviews your Dutch text and highlights grammar, vocabulary, and sentence structure errors with explanations. For speaking exercises, you record your answer and receive feedback on pronunciation and fluency. All feedback is in plain language so you know exactly what to improve.",
   },
   {
-    question: "Is the content up to date with the 2025 exam format?",
+    question: "Can I cancel my subscription anytime?",
     answer:
-      "Yes! All our content is updated to match the July 2025 KNM exam format and follows the official CEFR A2/B1 standards from DUO.",
+      "Yes. You can cancel your Premium subscription at any time from your account settings. You keep access until the end of the current billing period and won't be charged again.",
+  },
+  {
+    question: "What is your refund policy?",
+    answer:
+      "We do not offer partial refunds for unused days on any subscription plan. If you have an issue, contact us at hallo@examklaar.nl and we'll do our best to help.",
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer:
+      "We accept iDEAL, credit cards (Visa, Mastercard), and other common payment methods. All payments are secure and encrypted.",
   },
 ];
 

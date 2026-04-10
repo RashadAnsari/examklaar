@@ -5,18 +5,21 @@ export const PLANS = [
   {
     id: "free",
     name: "Free",
-    description: "Perfect for trying out the platform",
+    badge: null,
+    description: "Try the platform before you commit",
     price: "€0",
     priceNote: "Forever free",
+    subNote: null,
+    savingsBadge: null,
     features: [
-      { text: "1 practice exam per skill", included: true },
+      { text: "1 exam per skill, unlimited practice attempts", included: true },
+      { text: "All 5 skills: KNM, Reading, Listening, Writing & Speaking", included: true },
       { text: "Basic scoring & results", included: true },
       { text: "Progress overview", included: true },
-      { text: "KNM, Reading, Listening", included: true },
-      { text: "No AI feedback", included: false },
-      { text: "No Writing & Speaking", included: false },
+      { text: "AI feedback on Writing & Speaking (1 exam only)", included: true },
+      { text: "Access to all exams per skill", included: false },
     ],
-    cta: "Get Started",
+    cta: "Get Started for Free",
     ctaVariant: "outline" as const,
     href: "/signup",
     featured: false,
@@ -24,37 +27,45 @@ export const PLANS = [
   {
     id: "premium",
     name: "Premium",
-    description: "Complete exam preparation with AI feedback",
-    price: "€8",
-    period: "/month",
+    badge: "Most Popular",
+    description: "Complete preparation across every exam component",
+    price: "€9.99",
+    priceNote: "/ month",
+    subNote: null,
+    savingsBadge: null,
     features: [
-      { text: "Unlimited practice exams", included: true },
-      { text: "AI writing corrections", included: true },
-      { text: "AI speaking feedback", included: true },
-      { text: "All 5 skills (KNM + 4)", included: true },
+      { text: "Access to all exams per skill (growing library)", included: true },
+      { text: "Unlimited practice attempts", included: true },
+      { text: "All 5 skills: KNM, Reading, Listening, Writing & Speaking", included: true },
+      { text: "AI feedback on every Writing & Speaking exam", included: true },
       { text: "Full progress tracking", included: true },
-      { text: "Priority support", included: true },
+      { text: "Cancel anytime", included: true },
+      { text: "Email support", included: true },
     ],
-    cta: "Upgrade Now",
-    ctaVariant: "primary" as const,
+    cta: "Start Premium",
+    ctaVariant: "white" as const,
     href: "#",
     featured: true,
   },
   {
-    id: "onetime",
-    name: "One-Time Pack",
-    description: "Pay once, practice until you pass",
-    price: "€25",
-    priceNote: "One-time payment",
+    id: "biannual",
+    name: "6-Month Plan",
+    badge: "Best value",
+    description: "Commit for 6 months and save",
+    price: "€29.99",
+    priceNote: "/ 6 months",
+    subNote: "≈ €5 / month",
+    savingsBadge: "Save 50%",
     features: [
-      { text: "20 full practice exams", included: true },
-      { text: "AI feedback included", included: true },
-      { text: "All 5 skills", included: true },
-      { text: "No recurring charge", included: true },
-      { text: "Perfect for focused prep", included: true },
-      { text: "6 months access", included: true },
+      { text: "Access to all exams per skill (growing library)", included: true },
+      { text: "Unlimited practice attempts", included: true },
+      { text: "All 5 skills: KNM, Reading, Listening, Writing & Speaking", included: true },
+      { text: "AI feedback on every Writing & Speaking exam", included: true },
+      { text: "Full progress tracking", included: true },
+      { text: "Cancel anytime", included: true },
+      { text: "Email support", included: true },
     ],
-    cta: "Buy Pack",
+    cta: "Get 6-Month Plan",
     ctaVariant: "outline" as const,
     href: "#",
     featured: false,
@@ -63,7 +74,7 @@ export const PLANS = [
 
 export function PricingCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
       {PLANS.map((plan) => (
         <PricingCard key={plan.id} plan={plan} />
       ))}
@@ -72,79 +83,137 @@ export function PricingCards() {
 }
 
 function PricingCard({ plan }: { plan: (typeof PLANS)[number] }) {
+  const dark = plan.featured;
+
   return (
     <div
-      className="relative rounded-3xl p-12 border-2"
+      className="relative rounded-2xl flex flex-col"
       style={{
-        background: "white",
-        borderColor: plan.featured ? "var(--green-900)" : "var(--gray-200)",
-        boxShadow: plan.featured ? "0 20px 40px rgba(27,107,74,0.15)" : "none",
+        background: dark ? "var(--green-900)" : "white",
+        border: dark ? "none" : "1px solid var(--gray-200)",
+        boxShadow: dark
+          ? "0 24px 48px rgba(27,107,74,0.25), 0 8px 16px rgba(27,107,74,0.15)"
+          : "0 1px 4px rgba(0,0,0,0.06)",
+        padding: "2rem",
+        zIndex: dark ? 1 : 0,
+        transform: dark ? "scale(1.03)" : "none",
       }}
     >
-      {plan.featured && (
-        <span
-          className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-white text-xs font-bold uppercase tracking-wider px-5 py-1.5 rounded-full"
-          style={{ background: "var(--green-900)" }}
-        >
-          Most Popular
-        </span>
-      )}
+      {/* Badge */}
+      <div className="mb-5" style={{ minHeight: "1.5rem" }}>
+        {plan.badge && (
+          <span
+            className="inline-block text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
+            style={{
+              background: dark ? "rgba(255,255,255,0.15)" : "var(--green-50)",
+              color: dark ? "white" : "var(--green-700)",
+            }}
+          >
+            {plan.badge}
+          </span>
+        )}
+      </div>
 
-      <h2 className="font-bold mb-2" style={{ fontSize: "1.5rem", color: "var(--gray-900)" }}>
-        {plan.name}
-      </h2>
-      <p className="mb-8 text-sm leading-relaxed" style={{ color: "var(--gray-600)" }}>
+      {/* Name + description */}
+      <div className="flex items-center gap-2 mb-1">
+        <h2
+          className="font-bold"
+          style={{ fontSize: "1.25rem", color: dark ? "white" : "var(--gray-900)" }}
+        >
+          {plan.name}
+        </h2>
+        {plan.savingsBadge && (
+          <span
+            className="text-xs font-bold px-2.5 py-1 rounded-full"
+            style={{ background: "var(--green-50)", color: "var(--green-700)" }}
+          >
+            {plan.savingsBadge}
+          </span>
+        )}
+      </div>
+      <p
+        className="text-sm mb-6 leading-relaxed"
+        style={{ color: dark ? "rgba(255,255,255,0.65)" : "var(--gray-500)" }}
+      >
         {plan.description}
       </p>
 
-      <div className="mb-8">
-        <span
-          className="font-bold"
-          style={{
-            fontSize: "3rem",
-            color: "var(--green-900)",
-            lineHeight: 1,
-          }}
-        >
-          {plan.price}
-        </span>
-        {"period" in plan && (
-          <span className="ml-2" style={{ color: "var(--gray-500)" }}>
-            {plan.period}
+      {/* Price */}
+      <div className="mb-6">
+        <div className="flex items-end gap-1.5">
+          <span
+            className="font-bold"
+            style={{
+              fontSize: "2.75rem",
+              lineHeight: 1,
+              color: dark ? "white" : "var(--gray-900)",
+            }}
+          >
+            {plan.price}
           </span>
-        )}
-        {"priceNote" in plan && (
-          <p className="mt-2 text-sm" style={{ color: "var(--gray-500)" }}>
+          <span
+            className="text-sm mb-1"
+            style={{ color: dark ? "rgba(255,255,255,0.55)" : "var(--gray-400)" }}
+          >
             {plan.priceNote}
+          </span>
+        </div>
+        {plan.subNote && (
+          <p
+            className="mt-1.5 text-xs"
+            style={{ color: dark ? "rgba(255,255,255,0.5)" : "var(--gray-400)" }}
+          >
+            {plan.subNote}
           </p>
         )}
       </div>
 
-      <ul className="mb-8 flex flex-col gap-0">
+      {/* Divider */}
+      <div
+        className="mb-6"
+        style={{ height: "1px", background: dark ? "rgba(255,255,255,0.12)" : "var(--gray-100)" }}
+      />
+
+      {/* Features */}
+      <ul className="flex flex-col gap-3 mb-8 flex-1">
         {plan.features.map((f) => (
-          <li
-            key={f.text}
-            className="flex items-center gap-3 py-3 border-b last:border-b-0 text-sm"
-            style={{
-              borderColor: "var(--gray-100)",
-              color: f.included ? "var(--gray-700)" : "var(--gray-400)",
-              opacity: f.included ? 1 : 0.6,
-            }}
-          >
+          <li key={f.text} className="flex items-start gap-3 text-sm">
             <span
-              style={{ color: f.included ? "var(--green-900)" : "var(--gray-400)", flexShrink: 0 }}
+              className="mt-0.5 flex-shrink-0"
+              style={{
+                color: f.included
+                  ? dark
+                    ? "rgba(255,255,255,0.9)"
+                    : "var(--green-700)"
+                  : dark
+                    ? "rgba(255,255,255,0.25)"
+                    : "var(--gray-300)",
+              }}
             >
               {f.included ? (
-                <CheckIcon style={{ width: 20, height: 20 }} />
+                <CheckIcon style={{ width: 16, height: 16 }} />
               ) : (
-                <XMarkIcon style={{ width: 20, height: 20 }} />
+                <XMarkIcon style={{ width: 16, height: 16 }} />
               )}
             </span>
-            {f.text}
+            <span
+              style={{
+                color: f.included
+                  ? dark
+                    ? "rgba(255,255,255,0.85)"
+                    : "var(--gray-700)"
+                  : dark
+                    ? "rgba(255,255,255,0.3)"
+                    : "var(--gray-400)",
+              }}
+            >
+              {f.text}
+            </span>
           </li>
         ))}
       </ul>
 
+      {/* CTA */}
       <Button href={plan.href} variant={plan.ctaVariant} fullWidth>
         {plan.cta}
       </Button>
