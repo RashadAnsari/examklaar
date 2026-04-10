@@ -18,9 +18,9 @@ export const SKILL_TITLES: Record<string, string> = {
 };
 
 export const SKILL_DESCRIPTIONS: Record<string, string> = {
-  knm: "Dutch society, culture, and laws.",
-  reading: "Reading comprehension with Dutch texts.",
-  listening: "Dutch audio clips and questions.",
-  writing: "Write in Dutch and get AI-powered feedback.",
-  speaking: "Practice speaking and get pronunciation feedback.",
+  knm: "Test your knowledge of Dutch society, history, culture, and civic rules.",
+  reading: "Read Dutch texts and answer comprehension questions under timed conditions.",
+  listening: "Listen to Dutch audio fragments and answer questions on what you heard.",
+  writing: "Write short Dutch texts and receive instant AI feedback on grammar and vocabulary.",
+  speaking: "Record your spoken answers and get AI feedback on pronunciation and fluency.",
 };

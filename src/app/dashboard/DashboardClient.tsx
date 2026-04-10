@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+import { UpgradeBanner } from "@/components/ui/UpgradeBanner";
 import type { SkillGroup } from "@/lib/exam-config";
 
 type Level = "A2" | "B1";
@@ -30,24 +31,8 @@ export function DashboardClient({ skills }: { skills: SkillGroup[] }) {
   return (
     <>
       {/* Upgrade banner */}
-      <div
-        className="rounded-2xl p-8 mb-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6"
-        style={{
-          background: "linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 100%)",
-          color: "white",
-        }}
-      >
-        <div>
-          <h3 className="font-bold mb-1" style={{ fontSize: "1.5rem" }}>
-            Unlock AI Feedback
-          </h3>
-          <p style={{ opacity: 0.9 }}>
-            Get instant corrections for Writing and Speaking with Premium
-          </p>
-        </div>
-        <Button href="/pricing" variant="white" className="flex-shrink-0">
-          Upgrade Now
-        </Button>
+      <div className="mb-12">
+        <UpgradeBanner />
       </div>
 
       {/* Practice Exams heading + level selector */}

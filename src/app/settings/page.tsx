@@ -167,37 +167,6 @@ export default function SettingsPage() {
           </form>
         </SettingsSection>
 
-        {/* Subscription */}
-        <SettingsSection title="Subscription" description="Manage your plan and billing">
-          <div
-            className="rounded-xl p-6 border-2 mb-6"
-            style={{ background: "var(--gray-50)", borderColor: "var(--gray-200)" }}
-          >
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
-              <span
-                className="font-semibold"
-                style={{ fontSize: "1.125rem", color: "var(--gray-900)" }}
-              >
-                Free Plan
-              </span>
-              <span
-                className="px-3 py-1 text-xs font-semibold uppercase rounded-full"
-                style={{ background: "var(--green-50)", color: "var(--green-900)" }}
-              >
-                Active
-              </span>
-            </div>
-            <p className="text-sm leading-relaxed" style={{ color: "var(--gray-600)" }}>
-              {"You're currently on the free plan with access to basic practice exams."}
-              <br />
-              Upgrade to Premium for unlimited exams and AI feedback.
-            </p>
-          </div>
-          <Button href="/pricing" variant="primary">
-            Upgrade to Premium
-          </Button>
-        </SettingsSection>
-
         {/* Security */}
         <SettingsSection title="Security" description="Manage your password and account security">
           <SuccessBanner message={successMessage} onHide={() => setSuccessMessage(null)} />
