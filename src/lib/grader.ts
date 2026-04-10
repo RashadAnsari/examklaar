@@ -231,7 +231,7 @@ export async function gradeExamResult(resultId: string, result: ResultData): Pro
   const supabase = createAdminClient();
 
   async function setStatus(status: string) {
-    await supabase.rpc("set_grading_status", { p_result_id: resultId, p_status: status });
+    await supabase.from("exam_results").update({ grading_status: status }).eq("id", resultId);
   }
 
   await setStatus("in_progress");
@@ -392,14 +392,18 @@ ${questionBlocks}
     totalMax += maxScore;
   }
 
-  // 8. Persist via SECURITY DEFINER function
-  const { error: updateError } = await supabase.rpc("save_exam_grades", {
-    p_result_id: resultId,
-    p_score: totalScore,
-    p_total_score: totalMax,
-    p_feedback: feedbackMap,
-    p_graded_at: new Date().toISOString(),
-  });
+  // 8. Persist grades
+  const { error: updateError } = await supabase
+    .from("exam_results")
+    .update({
+      score: totalScore,
+      total_score: totalMax,
+      feedback: feedbackMap,
+      ai_graded_at: new Date().toISOString(),
+      grading_status: "complete",
+    })
+    .eq("id", resultId)
+    .is("ai_graded_at", null); // prevent overwriting an already-graded result
 
   if (updateError) {
     throw new Error(`Failed to save grades: ${updateError.message}`);

@@ -41,16 +41,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
-  const { count: recentCount } = await admin
-    .from("exam_results")
-    .select("id", { count: "exact", head: true })
-    .eq("user_id", user.id)
-    .gte("created_at", oneHourAgo);
-  if ((recentCount ?? 0) >= 5) {
-    console.warn("[submit] Rate limit exceeded — user=%s", user.id);
-    return NextResponse.json({ error: "Too many submissions. Try again later." }, { status: 429 });
-  }
+  // const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+  // const { count: recentCount } = await admin
+  //   .from("exam_results")
+  //   .select("id", { count: "exact", head: true })
+  //   .eq("user_id", user.id)
+  //   .gte("created_at", oneHourAgo);
+  // if ((recentCount ?? 0) >= 5) {
+  //   console.warn("[submit] Rate limit exceeded — user=%s", user.id);
+  //   return NextResponse.json({ error: "Too many submissions. Try again later." }, { status: 429 });
+  // }
 
   let examJson: {
     id: string;
