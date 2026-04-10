@@ -1,42 +1,175 @@
+import fs from "fs/promises";
+import { cookies } from "next/headers";
+import { redirect, notFound } from "next/navigation";
+import { createClient } from "@/utils/supabase/server";
 import { Button } from "@/components/ui/Button";
-import { CheckCircleIcon, EyeIcon, ArrowPathIcon, ChartBarIcon } from "@heroicons/react/20/solid";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+import {
+  CheckCircleIcon,
+  XCircleIcon,
+  EyeIcon,
+  ArrowPathIcon,
+  ArrowRightIcon,
+} from "@heroicons/react/20/solid";
+import { getExamFilePath } from "@/lib/exams";
+import { SKILL_TITLES } from "@/lib/exam-config";
+import {
+  getPassThreshold,
+  scorePct,
+  getPassContext,
+  getStatus,
+  computeHistoryStats,
+} from "@/lib/scoring";
+import type { Exam } from "@/app/exam/ExamClient";
+import { BackGuard } from "./BackGuard";
 
-type TopicPerformance = {
-  label: string;
-  percentage: number;
-  variant: "success" | "warning" | "danger" | "default";
+type QuestionFeedback = {
+  score: number;
+  maxScore: number;
+  feedback: string;
 };
 
-const TOPICS: TopicPerformance[] = [
-  { label: "Dutch Society & Culture", percentage: 90, variant: "success" },
-  { label: "Healthcare & Insurance", percentage: 85, variant: "success" },
-  { label: "Work & Education", percentage: 75, variant: "warning" },
-  { label: "Housing & Transport", percentage: 88, variant: "success" },
-  { label: "Laws & Regulations", percentage: 82, variant: "success" },
-];
+type ProgressVariant = "success" | "warning" | "danger" | "default";
 
-export default function ResultsPage() {
+function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export default async function ResultsPage(props: {
+  searchParams: Promise<{ skill?: string; n?: string }>;
+}) {
+  const { skill: skillId, n: nStr } = await props.searchParams;
+  const n = parseInt(nStr ?? "");
+
+  if (!skillId || isNaN(n)) {
+    notFound();
+  }
+
+  const supabase = createClient(await cookies());
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) {
+    redirect("/login");
+  }
+
+  const examId = `${skillId}-exam-${n}`;
+
+  // Most recent completed result for this exam
+  const { data: resultRows } = await supabase
+    .from("exam_results")
+    .select("id, skill, level, score, total_score, answers, feedback, completed_at")
+    .eq("exam_id", examId)
+    .eq("user_id", user.id)
+    .eq("grading_status", "complete")
+    .order("completed_at", { ascending: false })
+    .limit(1);
+
+  const result = resultRows?.[0];
+  if (!result) {
+    notFound();
+  }
+
+  // All completed results for this exam (for stats)
+  const { data: history } = await supabase
+    .from("exam_results")
+    .select("score, total_score")
+    .eq("exam_id", examId)
+    .eq("user_id", user.id)
+    .eq("grading_status", "complete");
+
+  // Load exam JSON
+  let exam: Exam | null = null;
+  try {
+    exam = JSON.parse(await fs.readFile(getExamFilePath(skillId, n), "utf-8"));
+  } catch {
+    // not critical
+  }
+
+  // Check if next exam exists
+  let hasNextExam = false;
+  try {
+    await fs.access(getExamFilePath(skillId, n + 1));
+    hasNextExam = true;
+  } catch {
+    // no next exam
+  }
+
+  const skill = result.skill as string;
+  const level = result.level as string | null;
+  const allResults = history ?? [];
+  const attempts = allResults.length;
+
+  const status = getStatus(skill, level, result.score, result.total_score);
+  const threshold = getPassThreshold(skill, level, result.total_score);
+  const displayPct = scorePct(result.score, result.total_score);
+  const passContext = getPassContext(skill, level);
+  const { bestPct, avgPct, isPersonalBest } = computeHistoryStats(allResults, result.score);
+  const isMcq = skill !== "writing" && skill !== "speaking";
+
+  const skillTitle = SKILL_TITLES[skill] ?? skill;
+  const levelLabel = level && skill !== "knm" ? ` — ${level}` : "";
+  const examTitle = exam?.title ?? `${skillTitle} Exam ${n}`;
+
+  const heading =
+    isPersonalBest && attempts > 1
+      ? "New Personal Best!"
+      : status.passed === true
+        ? "Excellent Work!"
+        : status.passed === false
+          ? "Keep Practicing!"
+          : "Exam Complete";
+
+  // MCQ question breakdown
+  const userAnswers = result.answers as Record<string, number | undefined>;
+  const questionBreakdown =
+    isMcq && exam
+      ? exam.questions.map((q, i) => ({
+          n: i + 1,
+          correct:
+            userAnswers[q.id] !== undefined &&
+            userAnswers[q.id] !== null &&
+            userAnswers[q.id] === q.correctAnswer,
+          skipped: userAnswers[q.id] === undefined || userAnswers[q.id] === null,
+        }))
+      : null;
+
+  // Writing/speaking AI feedback
+  const feedbackMap = result.feedback as Record<string, QuestionFeedback> | null;
+  const feedbackEntries =
+    !isMcq && feedbackMap && exam
+      ? exam.questions
+          .filter((q) => feedbackMap[q.id] !== undefined)
+          .map((q, i) => ({ number: i + 1, id: q.id, ...feedbackMap[q.id] }))
+      : null;
+
   return (
     <div className="min-h-screen" style={{ background: "var(--gray-50)" }}>
+      <BackGuard href={`/exams/${skillId}`} />
       <div className="mx-auto px-6 py-12" style={{ maxWidth: "900px" }}>
-        {/* Results header */}
+        {/* Header */}
         <div className="text-center mb-12">
           <span
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-6"
-            style={{
-              background: "var(--green-success-light)",
-              color: "var(--green-success)",
-            }}
+            style={{ background: status.bg, color: status.color }}
           >
-            <CheckCircleIcon style={{ width: 16, height: 16 }} />
-            Passed
+            {status.passed === true ? (
+              <CheckCircleIcon style={{ width: 16, height: 16 }} />
+            ) : status.passed === false ? (
+              <XCircleIcon style={{ width: 16, height: 16 }} />
+            ) : null}
+            {status.label}
           </span>
           <h1 className="font-bold mb-2" style={{ fontSize: "2.5rem", color: "var(--gray-900)" }}>
-            Excellent Work!
+            {heading}
           </h1>
           <p style={{ fontSize: "1.125rem", color: "var(--gray-600)" }}>
-            KNM Exam – Practice #4 &bull; Completed on April 3, 2026
+            {examTitle}
+            {levelLabel} &bull; Completed on {formatDate(result.completed_at)}
           </p>
         </div>
 
@@ -48,95 +181,204 @@ export default function ResultsPage() {
           <div
             className="font-bold mb-2"
             style={{
-              fontFamily: "var(--font-mono)",
               fontSize: "6rem",
-              color: "var(--green-900)",
+              color: status.passed === false ? "var(--red)" : "var(--green-900)",
               lineHeight: 1,
             }}
           >
-            8.5
+            {displayPct}%
           </div>
-          <p className="mb-10" style={{ fontSize: "1.25rem", color: "var(--gray-600)" }}>
-            Final Score (out of 10)
+          <p className="mb-10" style={{ fontSize: "1rem", color: "var(--gray-500)" }}>
+            {passContext}
           </p>
 
           <div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8"
             style={{ borderTop: "1px solid var(--gray-200)" }}
           >
-            <BreakdownItem value="34/40" label="Correct Answers" />
-            <BreakdownItem value="85%" label="Accuracy" />
-            <BreakdownItem value="43:22" label="Time Taken" />
+            <BreakdownItem
+              value={
+                isMcq
+                  ? `${result.score} / ${result.total_score}`
+                  : `${result.score} / ${result.total_score} pts`
+              }
+              label={isMcq ? "Correct Answers" : "Points Awarded"}
+            />
+            <BreakdownItem
+              value={
+                threshold !== null
+                  ? `${threshold}${isMcq ? ` / ${result.total_score}` : ""}`
+                  : "60%"
+              }
+              label="Pass Threshold"
+            />
           </div>
         </div>
 
         {/* Stats row */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-          <StatCard title="Personal Best" value="Yes! 🎉" />
-          <StatCard title="Average Score" value="7.6" />
-          <StatCard title="Attempts" value="4" />
+          <StatCard title="Attempts" value={String(attempts)} />
+          <StatCard title="Personal Best" value={`${bestPct}%`} />
+          <StatCard title="Average Score" value={`${avgPct}%`} />
         </div>
 
-        {/* Performance by topic */}
-        <div
-          className="rounded-2xl p-8 border mb-8"
-          style={{ background: "white", borderColor: "var(--gray-200)" }}
-        >
-          <h2
-            className="font-semibold mb-6"
-            style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
+        {/* MCQ question grid */}
+        {questionBreakdown && (
+          <div
+            className="rounded-2xl p-8 border mb-8"
+            style={{ background: "white", borderColor: "var(--gray-200)" }}
           >
-            Performance by Topic
-          </h2>
-          <div className="flex flex-col gap-6">
-            {TOPICS.map((topic) => (
-              <div key={topic.label}>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium" style={{ color: "var(--gray-700)" }}>
-                    {topic.label}
-                  </span>
-                  <span
-                    className="text-sm font-semibold"
-                    style={{ fontFamily: "var(--font-mono)", color: "var(--gray-900)" }}
-                  >
-                    {topic.percentage}%
-                  </span>
+            <h2
+              className="font-semibold mb-6"
+              style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
+            >
+              Question Breakdown
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {questionBreakdown.map((q) => (
+                <div
+                  key={q.n}
+                  className="w-9 h-9 rounded-lg flex items-center justify-center text-xs font-semibold"
+                  style={{
+                    background: q.skipped
+                      ? "var(--gray-100)"
+                      : q.correct
+                        ? "var(--green-success-light)"
+                        : "var(--red-light)",
+                    color: q.skipped
+                      ? "var(--gray-500)"
+                      : q.correct
+                        ? "var(--green-success)"
+                        : "var(--red)",
+                  }}
+                  title={
+                    q.skipped
+                      ? `Q${q.n}: Skipped`
+                      : q.correct
+                        ? `Q${q.n}: Correct`
+                        : `Q${q.n}: Incorrect`
+                  }
+                >
+                  {q.n}
                 </div>
-                <ProgressBar value={topic.percentage} variant={topic.variant} />
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className="flex gap-6 mt-4 flex-wrap">
+              <span
+                className="flex items-center gap-2 text-xs"
+                style={{ color: "var(--gray-500)" }}
+              >
+                <span
+                  className="w-3 h-3 rounded-sm inline-block"
+                  style={{ background: "var(--green-success-light)" }}
+                />
+                Correct ({questionBreakdown.filter((q) => q.correct).length})
+              </span>
+              <span
+                className="flex items-center gap-2 text-xs"
+                style={{ color: "var(--gray-500)" }}
+              >
+                <span
+                  className="w-3 h-3 rounded-sm inline-block"
+                  style={{ background: "var(--red-light)" }}
+                />
+                Incorrect ({questionBreakdown.filter((q) => !q.correct && !q.skipped).length})
+              </span>
+              {questionBreakdown.some((q) => q.skipped) && (
+                <span
+                  className="flex items-center gap-2 text-xs"
+                  style={{ color: "var(--gray-500)" }}
+                >
+                  <span
+                    className="w-3 h-3 rounded-sm inline-block"
+                    style={{ background: "var(--gray-100)", border: "1.5px solid var(--gray-200)" }}
+                  />
+                  Skipped ({questionBreakdown.filter((q) => q.skipped).length})
+                </span>
+              )}
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* AI feedback (writing/speaking) */}
+        {feedbackEntries && feedbackEntries.length > 0 && (
+          <div
+            className="rounded-2xl p-8 border mb-8"
+            style={{ background: "white", borderColor: "var(--gray-200)" }}
+          >
+            <h2
+              className="font-semibold mb-6"
+              style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
+            >
+              AI Feedback by Question
+            </h2>
+            <div className="flex flex-col gap-6">
+              {feedbackEntries.map((fb) => {
+                const pct = fb.maxScore > 0 ? fb.score / fb.maxScore : 0;
+                const variant: ProgressVariant =
+                  pct >= 0.7 ? "success" : pct >= 0.5 ? "warning" : "danger";
+                return (
+                  <div key={fb.id}>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm font-medium" style={{ color: "var(--gray-700)" }}>
+                        Question {fb.number}
+                      </span>
+                      <span
+                        className="text-sm font-semibold"
+                        style={{
+                          color: "var(--gray-900)",
+                        }}
+                      >
+                        {fb.score}/{fb.maxScore} pts
+                      </span>
+                    </div>
+                    <ProgressBar value={fb.score} max={fb.maxScore} variant={variant} />
+                    <p
+                      className="text-sm mt-3"
+                      style={{ color: "var(--gray-600)", lineHeight: 1.7 }}
+                    >
+                      {fb.feedback}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Action cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+        <div
+          className={`grid grid-cols-1 gap-6 mb-8 ${hasNextExam ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}
+        >
           <ActionCard
-            href="/review"
+            href={`/review?skill=${skillId}&n=${n}`}
             icon={<EyeIcon style={{ width: 24, height: 24 }} />}
             title="Review Answers"
             description="See detailed explanations for all questions"
           />
           <ActionCard
-            href="/exam"
+            href={`/exam?skill=${skillId}&n=${n}`}
             icon={<ArrowPathIcon style={{ width: 24, height: 24 }} />}
             title="Try Again"
-            description="Practice with another exam to improve further"
+            description="Practice with this exam again to improve"
           />
-          <ActionCard
-            href="/dashboard"
-            icon={<ChartBarIcon style={{ width: 24, height: 24 }} />}
-            title="View Progress"
-            description="See your improvement over time"
-          />
+          {hasNextExam && (
+            <ActionCard
+              href={`/exam?skill=${skillId}&n=${n + 1}`}
+              icon={<ArrowRightIcon style={{ width: 24, height: 24 }} />}
+              title="Next Exam"
+              description={`Continue with exam ${n + 1}`}
+            />
+          )}
         </div>
 
-        {/* Primary CTA buttons */}
+        {/* CTAs */}
         <div className="flex flex-wrap gap-4 justify-center">
-          <Button href="/review" variant="primary">
+          <Button href={`/review?skill=${skillId}&n=${n}`} variant="primary">
             Review All Answers
           </Button>
-          <Button href="/dashboard" variant="secondary">
-            Back to Dashboard
+          <Button href={`/exams/${skillId}`} variant="secondary">
+            Back to Exam List
           </Button>
         </div>
       </div>
@@ -149,10 +391,7 @@ export default function ResultsPage() {
 function BreakdownItem({ value, label }: { value: string; label: string }) {
   return (
     <div className="text-center">
-      <div
-        className="font-bold mb-1"
-        style={{ fontFamily: "var(--font-mono)", fontSize: "2rem", color: "var(--gray-900)" }}
-      >
+      <div className="font-bold mb-1" style={{ fontSize: "2rem", color: "var(--gray-900)" }}>
         {value}
       </div>
       <div className="text-sm" style={{ color: "var(--gray-600)" }}>
@@ -174,10 +413,7 @@ function StatCard({ title, value }: { title: string; value: string }) {
       >
         {title}
       </h3>
-      <div
-        className="font-bold"
-        style={{ fontFamily: "var(--font-mono)", fontSize: "1.5rem", color: "var(--gray-900)" }}
-      >
+      <div className="font-bold" style={{ fontSize: "1.5rem", color: "var(--gray-900)" }}>
         {value}
       </div>
     </div>

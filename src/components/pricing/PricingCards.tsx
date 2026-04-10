@@ -101,7 +101,6 @@ function PricingCard({ plan }: { plan: (typeof PLANS)[number] }) {
         <span
           className="font-bold"
           style={{
-            fontFamily: "var(--font-mono)",
             fontSize: "3rem",
             color: "var(--green-900)",
             lineHeight: 1,

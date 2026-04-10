@@ -78,7 +78,6 @@ export default function ReviewPage() {
           <span
             className="px-5 py-2 rounded-full font-bold"
             style={{
-              fontFamily: "var(--font-mono)",
               fontSize: "1rem",
               background: "var(--green-success-light)",
               color: "var(--green-success)",

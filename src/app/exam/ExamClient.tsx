@@ -498,7 +498,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
       return;
     }
     gradingRef.current = false;
-    router.push(`/results?skill=${skillId}&n=${n}`);
+    router.replace(`/results?skill=${skillId}&n=${n}`);
   }
 
   async function submitExam() {
@@ -560,7 +560,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
       return;
     }
 
-    router.push(`/results?skill=${skillId}&n=${n}`);
+    router.replace(`/results?skill=${skillId}&n=${n}`);
   }
 
   function confirmExit() {
@@ -928,18 +928,18 @@ export function ExamClient({ exam, skillId, n }: Props) {
               className="font-bold mb-2"
               style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
             >
-              Examen verlaten?
+              Leave Exam?
             </h3>
             <p className="mb-6" style={{ color: "var(--gray-600)", lineHeight: 1.6 }}>
-              Uw voortgang wordt niet opgeslagen. Als u vertrekt, gaan uw antwoorden verloren en
-              moet u opnieuw beginnen.
+              Your progress will not be saved. If you leave, your answers will be lost and you will
+              need to start over.
             </p>
             <div className="flex gap-3">
               <Button variant="outline" fullWidth onClick={() => setShowExitDialog(false)}>
-                Blijven
+                Stay
               </Button>
               <Button variant="danger" fullWidth onClick={confirmExit}>
-                Verlaten
+                Leave
               </Button>
             </div>
           </div>

@@ -16,7 +16,7 @@ export default function NotFound() {
               fontSize: "clamp(6rem, 20vw, 10rem)",
               lineHeight: 1,
               color: "var(--green-50)",
-              fontFamily: "var(--font-mono)",
+
               letterSpacing: "-0.05em",
             }}
           >

@@ -10,57 +10,7 @@ import { ChevronLeftIcon, LockClosedIcon } from "@heroicons/react/20/solid";
 import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam-config";
 import { createClient } from "@/utils/supabase/server";
 import { EXAMS_DIR } from "@/lib/exams";
-
-function getScoreFeedback(
-  skill: string,
-  _level: string | null,
-  score: number,
-  totalScore: number
-): { label: string; color: string } | null {
-  if (skill === "knm") {
-    return score >= 28
-      ? { label: "Passed — you answered enough questions correctly", color: "var(--green-700)" }
-      : {
-          label: `You must answer at least 28 questions correctly to pass (${28 - score} more needed)`,
-          color: "var(--red)",
-        };
-  }
-  if (skill === "reading") {
-    if (score <= 12) {
-      return { label: "No chance of passing the real exam", color: "var(--red)" };
-    }
-    if (score <= 16) {
-      return { label: "Small chance of passing the real exam", color: "#ea580c" };
-    }
-    if (score <= 22) {
-      return { label: "Reasonable chance of passing the real exam", color: "#a16207" };
-    }
-    return { label: "High chance of passing the real exam", color: "var(--green-700)" };
-  }
-  if (skill === "listening") {
-    if (score <= 15) {
-      return { label: "No chance of passing the real exam", color: "var(--red)" };
-    }
-    if (score <= 18) {
-      return { label: "Little chance of passing the real exam", color: "#ea580c" };
-    }
-    if (score <= 21) {
-      return { label: "A chance of passing the real exam", color: "#a16207" };
-    }
-    return { label: "High chance of passing the real exam", color: "var(--green-700)" };
-  }
-  if (skill === "writing" || skill === "speaking") {
-    const passing = Math.ceil(totalScore * 0.6);
-    const percentage = totalScore > 0 ? score / totalScore : 0;
-    return percentage >= 0.6
-      ? { label: `Passed — you scored ${score}/${totalScore}`, color: "var(--green-700)" }
-      : {
-          label: `Not yet passing — you scored ${score}/${totalScore}, need ${passing} to pass`,
-          color: "var(--red)",
-        };
-  }
-  return null;
-}
+import { getScoreFeedback } from "@/lib/scoring";
 
 interface ExamResult {
   score: number | null;
