@@ -7,11 +7,12 @@ import {
   CheckCircleIcon,
   SparklesIcon,
   ClipboardDocumentIcon,
-  UsersIcon,
-  CalendarIcon,
-  InformationCircleIcon,
   MicrophoneIcon,
   ChartBarIcon,
+  ClockIcon,
+  UserPlusIcon,
+  AcademicCapIcon,
+  BoltIcon,
 } from "@heroicons/react/20/solid";
 
 export default function LandingPage() {
@@ -20,8 +21,16 @@ export default function LandingPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="py-20 text-center">
+      <section className="py-24 text-center">
         <div className="container">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8"
+            style={{ background: "var(--green-50)", color: "var(--green-700)" }}
+          >
+            <ClockIcon style={{ width: 15, height: 15 }} />
+            Have an exam deadline? Start practicing today — it&apos;s free
+          </div>
+
           <h1
             className="font-bold mb-6"
             style={{
@@ -39,21 +48,21 @@ export default function LandingPage() {
             style={{
               fontSize: "1.25rem",
               color: "var(--gray-600)",
-              maxWidth: "700px",
+              maxWidth: "640px",
               lineHeight: 1.75,
             }}
           >
-            Realistic mock exams for KNM, Reading, Listening, Writing, and Speaking. Practice with
-            AI-powered feedback.
+            Realistic mock exams for all 5 components — KNM, Reading, Listening, Writing, and
+            Speaking — with AI-powered feedback on every answer.
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
             <Button href="/signup" variant="primary" size="lg">
-              Start Free Practice
+              Start Practicing for Free
               <ArrowRightIcon style={{ width: 20, height: 20 }} />
             </Button>
-            <Button href="/pricing" variant="secondary" size="lg">
-              View Pricing
+            <Button href="#how-it-works" variant="secondary" size="lg">
+              See How It Works
             </Button>
           </div>
 
@@ -63,62 +72,107 @@ export default function LandingPage() {
             style={{ borderTop: "1px solid var(--gray-200)" }}
           >
             <TrustItem
-              icon={<CheckCircleIcon style={{ width: 20, height: 20 }} />}
-              text="2025 KNM Format"
+              icon={<CheckCircleIcon style={{ width: 18, height: 18 }} />}
+              text="Free to start"
             />
             <TrustItem
-              icon={<SparklesIcon style={{ width: 20, height: 20 }} />}
-              text="AI Feedback"
+              icon={<AcademicCapIcon style={{ width: 18, height: 18 }} />}
+              text="All 5 exam skills"
+            />
+            <TrustItem
+              icon={<SparklesIcon style={{ width: 18, height: 18 }} />}
+              text="AI feedback"
+            />
+            <TrustItem
+              icon={<CheckCircleIcon style={{ width: 18, height: 18 }} />}
+              text="2025 KNM format"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section id="how-it-works" className="py-20" style={{ background: "white" }}>
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">How It Works</h2>
+            <p className="section-subtitle">Get started in minutes, practice at your own pace</p>
+          </div>
+
+          <div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto"
+            style={{ maxWidth: "900px" }}
+          >
+            <StepCard
+              step="1"
+              icon={<UserPlusIcon style={{ width: 22, height: 22 }} />}
+              title="Create a free account"
+              description="Sign up in seconds. No payment required to get started."
+            />
+            <StepCard
+              step="2"
+              icon={<ClipboardDocumentIcon style={{ width: 22, height: 22 }} />}
+              title="Choose a skill and practice"
+              description="Pick any of the 5 exam components and take a realistic timed practice exam."
+            />
+            <StepCard
+              step="3"
+              icon={<SparklesIcon style={{ width: 22, height: 22 }} />}
+              title="Get feedback and improve"
+              description="Review your results instantly. Get AI feedback on your writing and speaking answers."
             />
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20" style={{ background: "white" }}>
+      <section id="features" className="py-20" style={{ background: "var(--gray-50)" }}>
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Everything You Need to Pass</h2>
             <p className="section-subtitle">Focused on exam practice, not overwhelming courses</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <FeatureCard
               icon={<ClipboardDocumentIcon style={{ width: 24, height: 24 }} />}
-              title="Full Exam Simulations"
-              description="Practice all five skills: KNM, Reading, Listening, Writing, and Speaking with real exam timing and conditions."
+              title="Exam-Like Conditions"
+              description="Timed, structured practice exams that mirror the real inburgering exam. No surprises on exam day."
+              highlight
             />
             <FeatureCard
-              icon={<UsersIcon style={{ width: 24, height: 24 }} />}
-              title="Beginner Friendly"
-              description="Clear instructions and step-by-step guidance so you can focus on practicing, not figuring out the platform."
-            />
-            <FeatureCard
-              icon={<CalendarIcon style={{ width: 24, height: 24 }} />}
-              title="2025 KNM Content"
-              description="Updated for the new July 2025 exam format. Don't waste time on outdated materials."
-            />
-            <FeatureCard
-              icon={<InformationCircleIcon style={{ width: 24, height: 24 }} />}
-              title="AI Writing Corrections"
-              description="Get instant feedback on your written Dutch with detailed grammar and vocabulary suggestions."
+              icon={<SparklesIcon style={{ width: 24, height: 24 }} />}
+              title="AI Writing Feedback"
+              description="Get instant corrections on your written Dutch with clear explanations for every grammar and vocabulary mistake."
+              highlight
             />
             <FeatureCard
               icon={<MicrophoneIcon style={{ width: 24, height: 24 }} />}
               title="Speaking Practice"
-              description="Record your answers and get AI transcription and pronunciation feedback for speaking tasks."
+              description="Record your answers and receive AI feedback on pronunciation, fluency, and structure."
+              highlight
+            />
+            <FeatureCard
+              icon={<AcademicCapIcon style={{ width: 24, height: 24 }} />}
+              title="All 5 Exam Skills"
+              description="KNM, Reading, Listening, Writing, and Speaking — everything covered in one place, at your own pace."
+            />
+            <FeatureCard
+              icon={<BoltIcon style={{ width: 24, height: 24 }} />}
+              title="Updated for 2025"
+              description="Content aligned with the current KNM exam format and CEFR A2/B1 standards set by DUO."
             />
             <FeatureCard
               icon={<ChartBarIcon style={{ width: 24, height: 24 }} />}
               title="Progress Tracking"
-              description="Track your improvement over time with detailed analytics and personalized weak-spot identification."
+              description="See your scores over time across every skill so you know exactly where to focus your preparation."
             />
           </div>
         </div>
       </section>
 
       {/* Pricing Preview */}
-      <section id="pricing" className="py-20" style={{ background: "var(--gray-50)" }}>
+      <section id="pricing" className="py-20" style={{ background: "white" }}>
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Simple, Transparent Pricing</h2>
@@ -136,13 +190,14 @@ export default function LandingPage() {
       >
         <div className="container" style={{ maxWidth: "700px" }}>
           <h2 className="font-bold mb-4" style={{ fontSize: "2.5rem" }}>
-            Ready to Pass Your Exam?
+            Start Preparing Today
           </h2>
-          <p className="mb-8 opacity-90" style={{ fontSize: "1.25rem" }}>
-            Join thousands of people who have passed their inburgering exam with ExamKlaar.
+          <p className="mb-8 opacity-90" style={{ fontSize: "1.25rem", lineHeight: 1.7 }}>
+            Your first exam is free. No credit card required. Practice at your own pace and walk
+            into your exam with confidence.
           </p>
           <Button href="/signup" variant="white" size="lg">
-            Start Practicing for Free
+            Create Your Free Account
             <ArrowRightIcon style={{ width: 20, height: 20 }} />
           </Button>
         </div>
@@ -157,9 +212,52 @@ export default function LandingPage() {
 
 function TrustItem({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="flex items-center gap-2 text-sm" style={{ color: "var(--gray-600)" }}>
-      {icon}
+    <div
+      className="flex items-center gap-2 text-sm font-medium"
+      style={{ color: "var(--gray-600)" }}
+    >
+      <span style={{ color: "var(--green-700)" }}>{icon}</span>
       {text}
+    </div>
+  );
+}
+
+function StepCard({
+  step,
+  icon,
+  title,
+  description,
+}: {
+  step: string;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div
+      className="flex flex-col items-center text-center p-8 rounded-2xl border"
+      style={{ background: "var(--gray-50)", borderColor: "var(--gray-200)" }}
+    >
+      <div className="relative mb-6">
+        <div
+          className="w-14 h-14 rounded-2xl flex items-center justify-center"
+          style={{ background: "var(--green-50)", color: "var(--green-900)" }}
+        >
+          {icon}
+        </div>
+        <span
+          className="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+          style={{ background: "var(--green-900)" }}
+        >
+          {step}
+        </span>
+      </div>
+      <h3 className="font-semibold mb-2" style={{ fontSize: "1.05rem", color: "var(--gray-900)" }}>
+        {title}
+      </h3>
+      <p className="text-sm" style={{ color: "var(--gray-500)", lineHeight: 1.7 }}>
+        {description}
+      </p>
     </div>
   );
 }
@@ -168,15 +266,21 @@ function FeatureCard({
   icon,
   title,
   description,
+  highlight = false,
 }: {
   icon: React.ReactNode;
   title: string;
   description: string;
+  highlight?: boolean;
 }) {
   return (
     <div
       className="p-8 rounded-2xl border"
-      style={{ background: "var(--gray-50)", borderColor: "var(--gray-200)" }}
+      style={{
+        background: highlight ? "white" : "var(--gray-50)",
+        borderColor: highlight ? "var(--gray-200)" : "var(--gray-150)",
+        boxShadow: highlight ? "0 1px 6px rgba(0,0,0,0.06)" : "none",
+      }}
     >
       <div
         className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
@@ -184,10 +288,12 @@ function FeatureCard({
       >
         {icon}
       </div>
-      <h3 className="font-semibold mb-3" style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}>
+      <h3 className="font-semibold mb-3" style={{ fontSize: "1.1rem", color: "var(--gray-900)" }}>
         {title}
       </h3>
-      <p style={{ color: "var(--gray-600)", lineHeight: 1.7 }}>{description}</p>
+      <p style={{ color: "var(--gray-600)", lineHeight: 1.7, fontSize: "0.95rem" }}>
+        {description}
+      </p>
     </div>
   );
 }
