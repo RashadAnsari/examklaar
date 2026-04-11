@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { createAdminClient } from "@/utils/supabase/admin";
+import { getUserSubscription, canAccessPremium } from "@/lib/subscription";
 import { getPaymentProvider } from "@/lib/payment/provider";
 
 const PLAN_DURATION_MONTHS: Record<"premium" | "biannual", number> = {
@@ -22,6 +23,11 @@ export async function POST(req: NextRequest) {
   const planId = body?.planId as string;
   if (planId !== "premium" && planId !== "biannual") {
     return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
+  }
+
+  const currentSubscription = await getUserSubscription(user.id);
+  if (canAccessPremium(currentSubscription)) {
+    return NextResponse.json({ error: "You already have an active subscription" }, { status: 400 });
   }
 
   const origin = req.nextUrl.origin;
