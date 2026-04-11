@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import { Button } from "@/components/ui/Button";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
 const MAX_ATTEMPTS = 10;
 const POLL_INTERVAL_MS = 1500;
@@ -42,10 +44,12 @@ export default function PaymentSuccessPage() {
     poll();
   }, []);
 
+  let content;
+
   if (failed) {
-    return (
+    content = (
       <div
-        className="min-h-screen flex items-center justify-center"
+        className="flex items-center justify-center py-20"
         style={{ background: "var(--gray-50)" }}
       >
         <div className="text-center px-6" style={{ maxWidth: "480px" }}>
@@ -62,12 +66,10 @@ export default function PaymentSuccessPage() {
         </div>
       </div>
     );
-  }
-
-  if (!ready) {
-    return (
+  } else if (!ready) {
+    content = (
       <div
-        className="min-h-screen flex items-center justify-center"
+        className="flex items-center justify-center py-20"
         style={{ background: "var(--gray-50)" }}
       >
         <div className="text-center px-6">
@@ -91,27 +93,35 @@ export default function PaymentSuccessPage() {
         </div>
       </div>
     );
+  } else {
+    content = (
+      <div
+        className="flex items-center justify-center py-20"
+        style={{ background: "var(--gray-50)" }}
+      >
+        <div className="text-center px-6" style={{ maxWidth: "480px" }}>
+          <div className="flex justify-center mb-6">
+            <CheckCircleIcon style={{ width: 56, height: 56, color: "var(--green-700)" }} />
+          </div>
+          <h1 className="font-bold mb-2" style={{ fontSize: "1.75rem", color: "var(--gray-900)" }}>
+            You&apos;re all set
+          </h1>
+          <p className="mb-8" style={{ color: "var(--gray-500)" }}>
+            Your subscription is active. You now have access to all exams and AI feedback.
+          </p>
+          <Button variant="primary" onClick={() => router.push("/dashboard")}>
+            Go to Dashboard
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center"
-      style={{ background: "var(--gray-50)" }}
-    >
-      <div className="text-center px-6" style={{ maxWidth: "480px" }}>
-        <div className="flex justify-center mb-6">
-          <CheckCircleIcon style={{ width: 56, height: 56, color: "var(--green-700)" }} />
-        </div>
-        <h1 className="font-bold mb-2" style={{ fontSize: "1.75rem", color: "var(--gray-900)" }}>
-          You&apos;re all set
-        </h1>
-        <p className="mb-8" style={{ color: "var(--gray-500)" }}>
-          Your subscription is active. You now have access to all exams and AI feedback.
-        </p>
-        <Button variant="primary" onClick={() => router.push("/dashboard")}>
-          Go to Dashboard
-        </Button>
-      </div>
+    <div className="min-h-screen flex flex-col" style={{ background: "var(--gray-50)" }}>
+      <Navbar />
+      <main className="flex-1">{content}</main>
+      <Footer />
     </div>
   );
 }
