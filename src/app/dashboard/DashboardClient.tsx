@@ -60,7 +60,7 @@ export function DashboardClient({ skills }: { skills: SkillGroup[] }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {exams.map((exam) => (
           <ExamCard key={exam.id} skill={exam} />
         ))}
@@ -74,7 +74,7 @@ function ExamCard({ skill }: { skill: SkillGroup }) {
 
   return (
     <div
-      className="rounded-2xl p-8 border-2 flex flex-col"
+      className="rounded-2xl p-5 sm:p-8 border-2 flex flex-col"
       style={{ background: "white", borderColor: "var(--gray-200)" }}
     >
       <h3 className="font-semibold mb-3" style={{ fontSize: "1.125rem", color: "var(--gray-900)" }}>

@@ -5,7 +5,7 @@ export function Footer() {
     <footer style={{ background: "var(--gray-900)", color: "var(--gray-400)" }}>
       <div className="container pt-12 pb-8">
         <div className="flex justify-center mb-10">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10">
             {/* Brand */}
             <div>
               <div className="mb-4">

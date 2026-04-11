@@ -35,7 +35,7 @@ export default function LandingPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="py-24 text-center">
+      <section className="py-14 sm:py-24 text-center">
         <div className="container">
           <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8"
@@ -82,7 +82,7 @@ export default function LandingPage() {
 
           {/* Trust badges */}
           <div
-            className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-8"
+            className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mt-10 sm:mt-12 pt-8"
             style={{ borderTop: "1px solid var(--gray-200)" }}
           >
             <TrustItem
@@ -106,7 +106,7 @@ export default function LandingPage() {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20" style={{ background: "white" }}>
+      <section id="how-it-works" className="py-14 sm:py-20" style={{ background: "white" }}>
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">How It Works</h2>
@@ -140,7 +140,7 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20" style={{ background: "var(--gray-50)" }}>
+      <section id="features" className="py-14 sm:py-20" style={{ background: "var(--gray-50)" }}>
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Everything You Need to Pass</h2>
@@ -186,7 +186,7 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Preview */}
-      <section id="pricing" className="py-20" style={{ background: "white" }}>
+      <section id="pricing" className="py-14 sm:py-20" style={{ background: "white" }}>
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Simple, Transparent Pricing</h2>
@@ -199,11 +199,11 @@ export default function LandingPage() {
 
       {/* CTA Section */}
       <section
-        className="py-20 text-center"
+        className="py-14 sm:py-20 text-center"
         style={{ background: "var(--green-900)", color: "white" }}
       >
         <div className="container" style={{ maxWidth: "700px" }}>
-          <h2 className="font-bold mb-4" style={{ fontSize: "2.5rem" }}>
+          <h2 className="font-bold mb-4" style={{ fontSize: "clamp(1.75rem, 6vw, 2.5rem)" }}>
             Start Preparing Today
           </h2>
           <p className="mb-8 opacity-90" style={{ fontSize: "1.25rem", lineHeight: 1.7 }}>
@@ -249,7 +249,7 @@ function StepCard({
 }) {
   return (
     <div
-      className="flex flex-col items-center text-center p-8 rounded-2xl border"
+      className="flex flex-col items-center text-center p-5 sm:p-8 rounded-2xl border"
       style={{ background: "var(--gray-50)", borderColor: "var(--gray-200)" }}
     >
       <div className="relative mb-6">
@@ -289,7 +289,7 @@ function FeatureCard({
 }) {
   return (
     <div
-      className="p-8 rounded-2xl border"
+      className="p-5 sm:p-8 rounded-2xl border"
       style={{
         background: highlight ? "white" : "var(--gray-50)",
         borderColor: highlight ? "var(--gray-200)" : "var(--gray-150)",

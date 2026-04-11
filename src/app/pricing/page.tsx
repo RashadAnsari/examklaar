@@ -77,8 +77,11 @@ export default function PricingPage() {
       <Navbar />
 
       {/* Header */}
-      <div className="container py-16 text-center">
-        <h1 className="font-bold mb-4" style={{ fontSize: "2.5rem", color: "var(--gray-900)" }}>
+      <div className="container py-12 sm:py-16 text-center">
+        <h1
+          className="font-bold mb-4"
+          style={{ fontSize: "clamp(1.75rem, 6vw, 2.5rem)", color: "var(--gray-900)" }}
+        >
           Choose Your Plan
         </h1>
         <p
@@ -106,7 +109,7 @@ export default function PricingPage() {
           {FAQS.map((faq) => (
             <div
               key={faq.question}
-              className="rounded-xl p-6 border"
+              className="rounded-xl p-4 sm:p-6 border"
               style={{ background: "white", borderColor: "var(--gray-200)" }}
             >
               <h3

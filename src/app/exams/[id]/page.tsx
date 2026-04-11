@@ -144,7 +144,7 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
           {exams.map((exam, i) => (
             <div
               key={exam.n}
-              className="flex items-center gap-4 px-6 py-5"
+              className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 sm:px-6 py-4 sm:py-5"
               style={{
                 borderBottom: i === exams.length - 1 ? "none" : "1px solid var(--gray-100)",
                 opacity: exam.premiumOnly ? 0.6 : 1,
@@ -186,7 +186,7 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
                   })()}
               </div>
 
-              <div className="flex items-center gap-2 flex-shrink-0">
+              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
                 {exam.premiumOnly ? (
                   <Button href="/pricing" variant="outline">
                     <LockClosedIcon style={{ width: 14, height: 14 }} />

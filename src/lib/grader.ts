@@ -280,7 +280,9 @@ ${studentAnswer}
     })
     .join("\n\n---\n\n");
 
-  const userMessage = `Grade the following ${result.skill} exam questions (level: ${result.level ?? "unknown"}).
+  const userMessage = `Grade the following ${result.skill} exam questions (level: ${
+    result.level ?? "unknown"
+  }).
 
 If any questions contain images, call fetch_image for each one first.
 Then call submit_grades with a grade for each question.

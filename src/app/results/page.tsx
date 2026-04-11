@@ -150,9 +150,9 @@ export default async function ResultsPage(props: {
   return (
     <div className="min-h-screen" style={{ background: "var(--gray-50)" }}>
       <BackGuard href={`/exams/${skillId}`} />
-      <div className="mx-auto px-6 py-12" style={{ maxWidth: "900px" }}>
+      <div className="mx-auto px-6 py-8 sm:py-12" style={{ maxWidth: "900px" }}>
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <span
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-6"
             style={{ background: status.bg, color: status.color }}
@@ -164,7 +164,10 @@ export default async function ResultsPage(props: {
             ) : null}
             {status.label}
           </span>
-          <h1 className="font-bold mb-2" style={{ fontSize: "2.5rem", color: "var(--gray-900)" }}>
+          <h1
+            className="font-bold mb-2"
+            style={{ fontSize: "clamp(1.75rem, 6vw, 2.5rem)", color: "var(--gray-900)" }}
+          >
             {heading}
           </h1>
           <p style={{ fontSize: "1.125rem", color: "var(--gray-600)" }}>
@@ -175,13 +178,13 @@ export default async function ResultsPage(props: {
 
         {/* Score card */}
         <div
-          className="rounded-3xl p-12 border text-center mb-8"
+          className="rounded-3xl p-6 sm:p-12 border text-center mb-8"
           style={{ background: "white", borderColor: "var(--gray-200)" }}
         >
           <div
             className="font-bold mb-2"
             style={{
-              fontSize: "6rem",
+              fontSize: "clamp(3rem, 16vw, 6rem)",
               color: status.passed === false ? "var(--red)" : "var(--green-900)",
               lineHeight: 1,
             }}
@@ -348,7 +351,9 @@ export default async function ResultsPage(props: {
 
         {/* Action cards */}
         <div
-          className={`grid grid-cols-1 gap-6 mb-8 ${hasNextExam ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}
+          className={`grid grid-cols-1 gap-6 mb-8 ${
+            hasNextExam ? "sm:grid-cols-3" : "sm:grid-cols-2"
+          }`}
         >
           <ActionCard
             href={`/review?skill=${skillId}&n=${n}`}

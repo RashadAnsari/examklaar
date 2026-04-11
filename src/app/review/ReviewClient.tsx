@@ -179,8 +179,12 @@ export function ReviewClient({
 
       {/* Sticky bottom nav */}
       <div
-        className="fixed bottom-0 left-0 right-0 flex justify-center gap-4 px-6 py-5 border-t"
-        style={{ background: "white", borderColor: "var(--gray-200)" }}
+        className="fixed bottom-0 left-0 right-0 flex justify-center gap-4 px-6 pt-5 border-t"
+        style={{
+          background: "white",
+          borderColor: "var(--gray-200)",
+          paddingBottom: "max(1.25rem, env(safe-area-inset-bottom))",
+        }}
       >
         <Button href={`/exam?skill=${skillId}&n=${n}`} variant="primary">
           Try Again

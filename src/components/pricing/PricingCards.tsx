@@ -87,7 +87,7 @@ function PricingCard({ plan }: { plan: (typeof PLANS)[number] }) {
 
   return (
     <div
-      className="relative rounded-2xl flex flex-col"
+      className={`relative rounded-2xl flex flex-col${dark ? " pricing-featured" : ""}`}
       style={{
         background: dark ? "var(--green-900)" : "white",
         border: dark ? "none" : "1px solid var(--gray-200)",
@@ -96,7 +96,6 @@ function PricingCard({ plan }: { plan: (typeof PLANS)[number] }) {
           : "0 1px 4px rgba(0,0,0,0.06)",
         padding: "2rem",
         zIndex: dark ? 1 : 0,
-        transform: dark ? "scale(1.03)" : "none",
       }}
     >
       {/* Badge */}

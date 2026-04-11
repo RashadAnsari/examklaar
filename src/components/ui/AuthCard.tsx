@@ -21,9 +21,7 @@ export function AuthCard({ children, backLink }: Props) {
           </Link>
         </div>
 
-        <div className="card" style={{ padding: "3rem" }}>
-          {children}
-        </div>
+        <div className="card card-auth">{children}</div>
 
         {backLink && (
           <div className="text-center mt-6">
