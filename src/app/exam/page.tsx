@@ -1,7 +1,10 @@
 import fs from "fs/promises";
-import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
+import { notFound, redirect } from "next/navigation";
 import { ExamClient, Exam } from "./ExamClient";
 import { getExamFilePath } from "@/lib/exams";
+import { createClient } from "@/utils/supabase/server";
+import { getUserSubscription, canAccessPremium } from "@/lib/subscription";
 
 export default async function ExamPage(props: {
   searchParams: Promise<{ skill?: string; n?: string }>;
@@ -20,6 +23,20 @@ export default async function ExamPage(props: {
     json = JSON.parse(await fs.readFile(filePath, "utf-8"));
   } catch {
     notFound();
+  }
+
+  if (json.premiumOnly) {
+    const supabase = createClient(await cookies());
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) {
+      redirect("/login");
+    }
+    const sub = await getUserSubscription(user.id);
+    if (!canAccessPremium(sub)) {
+      redirect("/pricing");
+    }
   }
 
   return <ExamClient exam={json} skillId={skill} n={n} />;

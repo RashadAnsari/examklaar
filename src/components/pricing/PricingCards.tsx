@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { CheckoutButton } from "@/components/pricing/CheckoutButton";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
 
 export const PLANS = [
@@ -213,9 +214,15 @@ function PricingCard({ plan }: { plan: (typeof PLANS)[number] }) {
       </ul>
 
       {/* CTA */}
-      <Button href={plan.href} variant={plan.ctaVariant} fullWidth>
-        {plan.cta}
-      </Button>
+      {plan.id === "free" ? (
+        <Button href={plan.href} variant={plan.ctaVariant} fullWidth>
+          {plan.cta}
+        </Button>
+      ) : (
+        <CheckoutButton planId={plan.id} variant={plan.ctaVariant} fullWidth>
+          {plan.cta}
+        </CheckoutButton>
+      )}
     </div>
   );
 }

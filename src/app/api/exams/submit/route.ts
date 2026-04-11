@@ -4,6 +4,7 @@ import { createAdminClient } from "@/utils/supabase/admin";
 import { cookies } from "next/headers";
 import fs from "fs/promises";
 import { getExamFilePath } from "@/lib/exams";
+import { getUserSubscription, canAccessPremium } from "@/lib/subscription";
 
 interface ExamQuestion {
   id: string;
@@ -41,21 +42,22 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  // const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
-  // const { count: recentCount } = await admin
-  //   .from("exam_results")
-  //   .select("id", { count: "exact", head: true })
-  //   .eq("user_id", user.id)
-  //   .gte("created_at", oneHourAgo);
-  // if ((recentCount ?? 0) >= 5) {
-  //   console.warn("[submit] Rate limit exceeded — user=%s", user.id);
-  //   return NextResponse.json({ error: "Too many submissions. Try again later." }, { status: 429 });
-  // }
+  const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+  const { count: recentCount } = await admin
+    .from("exam_results")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", user.id)
+    .gte("created_at", oneHourAgo);
+  if ((recentCount ?? 0) >= 5) {
+    console.warn("[submit] Rate limit exceeded — user=%s", user.id);
+    return NextResponse.json({ error: "Too many submissions. Try again later." }, { status: 429 });
+  }
 
   let examJson: {
     id: string;
     skill: string;
     level?: string;
+    premiumOnly: boolean;
     questions: ExamQuestion[];
   };
   try {
@@ -63,6 +65,14 @@ export async function POST(req: NextRequest) {
   } catch {
     console.error("[submit] Exam file not found — skill_id=%s n=%s", skillId, n);
     return NextResponse.json({ error: "Exam not found" }, { status: 404 });
+  }
+
+  if (examJson.premiumOnly) {
+    const sub = await getUserSubscription(user.id);
+    if (!canAccessPremium(sub)) {
+      console.warn("[submit] premium exam blocked — user=%s exam=%s-%s", user.id, skillId, n);
+      return NextResponse.json({ error: "upgrade_required" }, { status: 403 });
+    }
   }
 
   const { id: examId, skill, level, questions } = examJson;

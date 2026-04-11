@@ -12,6 +12,7 @@ import { UpgradeBanner } from "@/components/ui/UpgradeBanner";
 import { createClient } from "@/utils/supabase/server";
 import { EXAMS_DIR } from "@/lib/exams";
 import { getScoreFeedback } from "@/lib/scoring";
+import { getUserSubscription, canAccessPremium } from "@/lib/subscription";
 
 interface ExamResult {
   score: number | null;
@@ -99,6 +100,14 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
 
   const { skill, level, exams } = data;
 
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const sub = user ? await getUserSubscription(user.id) : null;
+  const isPaid = sub ? canAccessPremium(sub) : false;
+
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--gray-50)" }}>
       <Navbar />
@@ -113,9 +122,11 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
           Dashboard
         </Link>
 
-        <div className="mb-8">
-          <UpgradeBanner />
-        </div>
+        {!isPaid && (
+          <div className="mb-8">
+            <UpgradeBanner />
+          </div>
+        )}
 
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
@@ -147,7 +158,7 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
               className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 sm:px-6 py-4 sm:py-5"
               style={{
                 borderBottom: i === exams.length - 1 ? "none" : "1px solid var(--gray-100)",
-                opacity: exam.premiumOnly ? 0.6 : 1,
+                opacity: exam.premiumOnly && !isPaid ? 0.6 : 1,
               }}
             >
               <div
@@ -187,7 +198,7 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
               </div>
 
               <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                {exam.premiumOnly ? (
+                {exam.premiumOnly && !isPaid ? (
                   <Button href="/pricing" variant="outline">
                     <LockClosedIcon style={{ width: 14, height: 14 }} />
                     Upgrade

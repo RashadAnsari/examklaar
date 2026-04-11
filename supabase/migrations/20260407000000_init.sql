@@ -39,8 +39,6 @@ create policy "Users can view their own results"
   on public.exam_results for select
   using (auth.uid() = user_id);
 
--- RLS always filters by user_id; most queries also filter by exam_id.
--- A composite index covers both access patterns.
 create index exam_results_user_exam_idx on public.exam_results (user_id, exam_id);
 
 -- ============================================================

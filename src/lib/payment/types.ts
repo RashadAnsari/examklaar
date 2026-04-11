@@ -1,0 +1,61 @@
+export interface CheckoutParams {
+  userId: string;
+  userEmail: string;
+  planId: "premium" | "biannual";
+  successUrl: string;
+  cancelUrl: string;
+  /** Customer ID already on file at this provider, if any. */
+  existingCustomerId?: string;
+}
+
+export interface CheckoutResult {
+  checkoutUrl: string;
+  sessionId: string;
+  /** Customer ID created or used during checkout — persist in provider_customers. */
+  customerId: string;
+}
+
+export interface WebhookEvent {
+  type:
+    | "subscription.activated"
+    | "subscription.renewed"
+    | "subscription.cancelled"
+    | "subscription.expired"
+    | "payment.failed";
+  /** Internal user ID — used by the webhook handler to upsert the subscriptions row. */
+  userId: string;
+  providerCustomerId: string;
+  providerSubscriptionId: string;
+  planId: "premium" | "biannual";
+  status: "active" | "cancelled" | "past_due" | "expired";
+  currentPeriodStart: Date;
+  currentPeriodEnd: Date;
+  cancelAtPeriodEnd: boolean;
+}
+
+export interface ProviderPayment {
+  providerPaymentId: string;
+  amountCents: number;
+  currency: string;
+  status: "paid" | "failed" | "refunded";
+  paidAt: Date | null;
+  description: string;
+}
+
+export interface PaymentProvider {
+  createCheckoutSession(params: CheckoutParams): Promise<CheckoutResult>;
+  /**
+   * Parse and verify a raw webhook payload from the provider.
+   * Returns a normalised WebhookEvent on success; throws on invalid/unhandled payloads.
+   */
+  parseWebhook(rawBody: string, signature: string | null): Promise<WebhookEvent>;
+  /**
+   * Cancel an active subscription at the provider side.
+   * providerCustomerId is required for providers that scope subscriptions under customers (e.g. Mollie).
+   */
+  cancelSubscription(
+    providerSubscriptionId: string,
+    providerCustomerId: string | null
+  ): Promise<void>;
+  getPaymentHistory(providerCustomerId: string): Promise<ProviderPayment[]>;
+}

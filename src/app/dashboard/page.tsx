@@ -8,6 +8,7 @@ import type { SkillGroup } from "@/lib/exam-config";
 import { DashboardClient } from "./DashboardClient";
 import { createClient } from "@/utils/supabase/server";
 import { EXAMS_DIR } from "@/lib/exams";
+import { getUserSubscription, canAccessPremium } from "@/lib/subscription";
 
 async function loadSkillGroups(): Promise<SkillGroup[]> {
   const groups: SkillGroup[] = [];
@@ -77,10 +78,16 @@ export default async function DashboardPage() {
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
-  const { data: results } = await supabase
-    .from("exam_results")
-    .select("exam_id")
-    .eq("grading_status", "complete");
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const [{ data: results }, sub] = await Promise.all([
+    supabase.from("exam_results").select("exam_id").eq("grading_status", "complete"),
+    user ? getUserSubscription(user.id) : Promise.resolve(null),
+  ]);
+
+  const isPaid = sub ? canAccessPremium(sub) : false;
 
   const completedByGroup = new Map<string, Set<string>>();
   for (const r of results ?? []) {
@@ -112,7 +119,7 @@ export default async function DashboardPage() {
           <p style={{ color: "var(--gray-600)" }}>Continue practicing for your inburgering exam</p>
         </div>
 
-        <DashboardClient skills={skills} />
+        <DashboardClient skills={skills} isPaid={isPaid} />
       </div>
 
       <Footer />
