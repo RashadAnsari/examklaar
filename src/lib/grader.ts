@@ -2,15 +2,13 @@ import fs from "fs/promises";
 import path from "path";
 import { generateText, tool, stepCountIs } from "ai";
 import { zodSchema } from "@ai-sdk/provider-utils";
-import { createOpenAI } from "@ai-sdk/openai";
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
 import { createAdminClient } from "@/utils/supabase/admin";
 import type { Exam } from "@/app/exam/ExamClient";
 import { EXAMS_DIR } from "@/lib/exams";
 
-const GRADER_BASE_URL = process.env.GRADER_URL ?? "http://localhost:1234/v1";
-const GRADER_API_KEY = process.env.GRADER_API_KEY ?? "no-key";
-const GRADER_MODEL = process.env.GRADER_MODEL ?? "google/gemma-4-e2b";
+const GRADER_MODEL = process.env.GRADER_MODEL ?? "gemma-4-31b-it";
 
 // ── types ────────────────────────────────────────────────────────────────────
 
@@ -294,9 +292,8 @@ ${questionBlocks}
 </exam_content>`;
 
   // 3. Set up AI SDK client
-  const llm = createOpenAI({
-    baseURL: GRADER_BASE_URL,
-    apiKey: GRADER_API_KEY,
+  const llm = createGoogleGenerativeAI({
+    apiKey: process.env.GRADER_API_KEY,
   });
 
   // 4. Collected grades from submit_grades tool call
