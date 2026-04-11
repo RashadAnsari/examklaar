@@ -46,9 +46,10 @@ export interface PaymentProvider {
   createCheckoutSession(params: CheckoutParams): Promise<CheckoutResult>;
   /**
    * Parse and verify a raw webhook payload from the provider.
-   * Returns a normalised WebhookEvent on success; throws on invalid/unhandled payloads.
+   * Returns a normalised WebhookEvent on success; throws on invalid payloads.
+   * Returns null when the payload is valid but no subscription update is needed.
    */
-  parseWebhook(rawBody: string, signature: string | null): Promise<WebhookEvent>;
+  parseWebhook(rawBody: string, signature: string | null): Promise<WebhookEvent | null>;
   /**
    * Cancel an active subscription at the provider side.
    * providerCustomerId is required for providers that scope subscriptions under customers (e.g. Mollie).

@@ -5,8 +5,9 @@ import type {
   ProviderPayment,
   WebhookEvent,
 } from "./types";
-
-const MOLLIE_BASE_URL = "https://api.mollie.com/v2";
+import createMollieClient, { SequenceType } from "@mollie/api-client";
+import { createHmac, timingSafeEqual } from "crypto";
+import { Buffer } from "buffer";
 
 const PLAN_CONFIG = {
   premium: {
@@ -33,67 +34,59 @@ function addInterval(date: Date, interval: Interval): Date {
   return result;
 }
 
-// ─── Mollie API response shapes ───────────────────────────────────────────────
+function getClient() {
+  const apiKey = process.env.MOLLIE_API_KEY;
+  if (!apiKey) {
+    throw new Error("MOLLIE_API_KEY is not set");
+  }
 
-interface MolliePayment {
-  id: string;
-  status: string;
-  sequenceType: "first" | "recurring" | "oneoff";
-  customerId: string;
-  subscriptionId?: string;
-  paidAt?: string;
-  amount: { value: string; currency: string };
-  metadata?: { userId?: string; planId?: string };
-  _links: { checkout?: { href: string } };
+  return createMollieClient({ apiKey });
 }
 
-interface MollieSubscription {
-  id: string;
-  metadata?: { userId?: string; planId?: string };
-}
+function verifyMollieWebhookSignature(rawBody: string, signature: string | null) {
+  const signingSecret = process.env.MOLLIE_WEBHOOK_SECRET;
+  if (!signingSecret) {
+    throw new Error("MOLLIE_WEBHOOK_SECRET is not set");
+  }
 
-interface MollieCustomerPaymentsResponse {
-  _embedded?: { payments?: MolliePayment[] };
-}
+  if (!signature) {
+    throw new Error("Missing Mollie webhook signature");
+  }
 
-// ─── Provider ─────────────────────────────────────────────────────────────────
+  const signatures = signature
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean)
+    .map((value) => {
+      const [, rawSignature] = value.split("=");
+      return rawSignature?.trim() ?? "";
+    })
+    .filter(Boolean);
+
+  if (signatures.length === 0) {
+    throw new Error("Invalid Mollie webhook signature header");
+  }
+
+  const expectedSignature = createHmac("sha256", signingSecret)
+    .update(rawBody, "utf8")
+    .digest("hex");
+  const expectedBuffer = Buffer.from(expectedSignature, "hex");
+
+  for (const rawSignature of signatures) {
+    const signatureBuffer = Buffer.from(rawSignature, "hex");
+    if (
+      signatureBuffer.length === expectedBuffer.length &&
+      timingSafeEqual(signatureBuffer, expectedBuffer)
+    ) {
+      return;
+    }
+  }
+
+  throw new Error("Mollie webhook signature verification failed");
+}
 
 export class MollieProvider implements PaymentProvider {
-  private apiKey: string;
-
-  constructor() {
-    const key = process.env.MOLLIE_API_KEY;
-    if (!key) {
-      throw new Error("MOLLIE_API_KEY is not set");
-    }
-    this.apiKey = key;
-  }
-
-  private async request<T>(method: string, path: string, body?: object): Promise<T> {
-    const res = await fetch(`${MOLLIE_BASE_URL}${path}`, {
-      method,
-      headers: {
-        Authorization: `Bearer ${this.apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: body ? JSON.stringify(body) : undefined,
-    });
-
-    // DELETE returns 204 No Content on success.
-    if (method === "DELETE" && res.status === 204) {
-      return undefined as T;
-    }
-
-    const data = await res.json();
-    if (!res.ok) {
-      throw new Error(
-        `Mollie API error ${res.status}: ${(data as { detail?: string; title?: string }).detail ?? (data as { title?: string }).title ?? "Unknown error"}`
-      );
-    }
-    return data as T;
-  }
-
-  // ─── createCheckoutSession ────────────────────────────────────────────────
+  private readonly client = getClient();
 
   async createCheckoutSession({
     userId,
@@ -106,22 +99,19 @@ export class MollieProvider implements PaymentProvider {
     const config = PLAN_CONFIG[planId];
     const webhookUrl = `${process.env.APP_URL}/api/webhook/payment`;
 
-    // Reuse existing customer or create a new one.
     let customerId = existingCustomerId;
     if (!customerId) {
-      const customer = await this.request<{ id: string }>("POST", "/customers", {
+      const customer = await this.client.customers.create({
         email: userEmail,
         metadata: { userId },
       });
       customerId = customer.id;
     }
 
-    // Create a first-sequence payment to collect the direct-debit mandate.
-    // The recurring subscription is created in parseWebhook once this payment succeeds.
-    const payment = await this.request<MolliePayment>("POST", "/payments", {
+    const payment = await this.client.customerPayments.create({
       amount: { value: config.amount, currency: "EUR" },
       customerId,
-      sequenceType: "first",
+      sequenceType: SequenceType.first,
       description: config.description,
       redirectUrl: successUrl,
       cancelUrl,
@@ -129,71 +119,69 @@ export class MollieProvider implements PaymentProvider {
       metadata: { userId, planId },
     });
 
-    if (!payment._links.checkout?.href) {
+    const checkoutUrl = payment.getCheckoutUrl();
+    if (!checkoutUrl) {
       throw new Error("Mollie did not return a checkout URL");
     }
 
     return {
-      checkoutUrl: payment._links.checkout.href,
+      checkoutUrl,
       sessionId: payment.id,
       customerId,
     };
   }
 
-  // ─── parseWebhook ─────────────────────────────────────────────────────────
+  async parseWebhook(rawBody: string, signature: string | null): Promise<WebhookEvent | null> {
+    verifyMollieWebhookSignature(rawBody, signature);
 
-  async parseWebhook(rawBody: string): Promise<WebhookEvent> {
-    // Mollie sends form-encoded: id=tr_xxxxx
     const params = new URLSearchParams(rawBody);
     const paymentId = params.get("id");
     if (!paymentId) {
       throw new Error("Missing payment ID in Mollie webhook body");
     }
 
-    const payment = await this.request<MolliePayment>("GET", `/payments/${paymentId}`);
-
+    const payment = await this.client.payments.get(paymentId);
     const customerId = payment.customerId;
-    let userId: string;
-    let planId: "premium" | "biannual";
+    if (!customerId) {
+      throw new Error("Mollie payment is missing customerId");
+    }
+
+    const paymentMetadata = payment.metadata as Record<string, string> | undefined;
+    let userId = paymentMetadata?.userId ?? "";
+    let planId = (paymentMetadata?.planId as "premium" | "biannual") ?? "premium";
     let subscriptionId = payment.subscriptionId;
 
-    if (payment.sequenceType === "first") {
-      // Metadata lives on the first payment itself.
-      userId = payment.metadata?.userId ?? "";
-      planId = (payment.metadata?.planId as "premium" | "biannual") ?? "premium";
-    } else {
-      // Recurring payment: fetch the subscription to get its metadata.
+    if (payment.sequenceType !== SequenceType.first) {
       if (!subscriptionId) {
         throw new Error("Recurring Mollie payment is missing subscriptionId");
       }
-      const sub = await this.request<MollieSubscription>(
-        "GET",
-        `/customers/${customerId}/subscriptions/${subscriptionId}`
-      );
-      userId = sub.metadata?.userId ?? "";
-      planId = (sub.metadata?.planId as "premium" | "biannual") ?? "premium";
+      const subscription = await this.client.customerSubscriptions.get(subscriptionId, {
+        customerId,
+      });
+      const subscriptionMetadata = subscription.metadata as Record<string, string> | undefined;
+      userId = subscriptionMetadata?.userId ?? userId;
+      planId = (subscriptionMetadata?.planId as "premium" | "biannual") ?? planId;
+    }
+
+    if (["open", "canceled", "pending", "authorized"].includes(payment.status)) {
+      return null;
     }
 
     const config = PLAN_CONFIG[planId];
-
     if (payment.status === "paid") {
-      const paidAt = new Date(payment.paidAt!);
+      const paidAt = new Date(payment.paidAt ?? new Date().toISOString());
       const periodEnd = addInterval(paidAt, config.interval);
 
-      if (payment.sequenceType === "first") {
-        // First payment succeeded: create the recurring subscription.
-        const sub = await this.request<{ id: string }>(
-          "POST",
-          `/customers/${customerId}/subscriptions`,
-          {
-            amount: { value: config.amount, currency: "EUR" },
-            interval: config.interval,
-            description: config.description,
-            webhookUrl: `${process.env.APP_URL}/api/webhook/payment`,
-            metadata: { userId, planId },
-          }
-        );
-        subscriptionId = sub.id;
+      if (payment.sequenceType === SequenceType.first) {
+        const subscription = await this.client.customerSubscriptions.create({
+          customerId,
+          amount: { value: config.amount, currency: "EUR" },
+          interval: config.interval,
+          description: config.description,
+          webhookUrl: `${process.env.APP_URL}/api/webhook/payment`,
+          metadata: { userId, planId },
+        });
+        subscriptionId = subscription.id;
 
         return {
           type: "subscription.activated",
@@ -208,7 +196,6 @@ export class MollieProvider implements PaymentProvider {
         };
       }
 
-      // Recurring payment: just update the period.
       return {
         type: "subscription.renewed",
         userId,
@@ -236,12 +223,8 @@ export class MollieProvider implements PaymentProvider {
       };
     }
 
-    // Mollie sends webhooks for other statuses (open, pending, cancelled).
-    // Ignore them by throwing — the webhook handler returns 400 and Mollie stops retrying.
     throw new Error(`Unhandled Mollie payment status: ${payment.status}`);
   }
-
-  // ─── cancelSubscription ───────────────────────────────────────────────────
 
   async cancelSubscription(
     providerSubscriptionId: string,
@@ -250,34 +233,28 @@ export class MollieProvider implements PaymentProvider {
     if (!providerCustomerId) {
       throw new Error("Mollie requires a customer ID to cancel a subscription");
     }
-    await this.request(
-      "DELETE",
-      `/customers/${providerCustomerId}/subscriptions/${providerSubscriptionId}`
-    );
+    await this.client.customerSubscriptions.cancel(providerSubscriptionId, {
+      customerId: providerCustomerId,
+    });
   }
 
-  // ─── getPaymentHistory ────────────────────────────────────────────────────
-
   async getPaymentHistory(providerCustomerId: string): Promise<ProviderPayment[]> {
-    const data = await this.request<MollieCustomerPaymentsResponse>(
-      "GET",
-      `/customers/${providerCustomerId}/payments`
-    );
+    const payments: ProviderPayment[] = [];
+    for await (const payment of this.client.customerPayments.iterate({
+      customerId: providerCustomerId,
+    })) {
+      if (payment.status === "paid") {
+        payments.push({
+          providerPaymentId: payment.id,
+          amountCents: Math.round(parseFloat(payment.amount.value) * 100),
+          currency: payment.amount.currency,
+          status: "paid",
+          paidAt: payment.paidAt ? new Date(payment.paidAt) : null,
+          description: payment.description,
+        });
+      }
+    }
 
-    const payments = data._embedded?.payments ?? [];
-
-    return payments
-      .filter((p) => ["paid", "failed", "refunded"].includes(p.status))
-      .map((p) => ({
-        providerPaymentId: p.id,
-        amountCents: Math.round(parseFloat(p.amount.value) * 100),
-        currency: p.amount.currency,
-        status: (p.status === "paid" ? "paid" : p.status === "refunded" ? "refunded" : "failed") as
-          | "paid"
-          | "failed"
-          | "refunded",
-        paidAt: p.paidAt ? new Date(p.paidAt) : null,
-        description: "",
-      }));
+    return payments;
   }
 }

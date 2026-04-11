@@ -4,7 +4,7 @@ import { getPaymentProvider } from "@/lib/payment/provider";
 
 export async function POST(req: NextRequest) {
   const rawBody = await req.text();
-  const signature = req.headers.get("x-payment-signature");
+  const signature = req.headers.get("x-mollie-signature") ?? req.headers.get("x-payment-signature");
 
   let event;
   try {
@@ -13,6 +13,11 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("[webhook] failed to parse event:", err);
     return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
+  }
+
+  if (event === null) {
+    console.info("[webhook] no-op event received, returning OK");
+    return NextResponse.json({ ok: true });
   }
 
   const admin = createAdminClient();

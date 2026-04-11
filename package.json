@@ -12,6 +12,7 @@
   "dependencies": {
     "@ai-sdk/google": "^3.0.61",
     "@heroicons/react": "^2.2.0",
+    "@mollie/api-client": "^4.5.0",
     "@supabase/ssr": "^0.10.0",
     "@supabase/supabase-js": "^2.101.1",
     "@types/dompurify": "^3.2.0",

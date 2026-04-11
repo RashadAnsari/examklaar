@@ -10,6 +10,7 @@ const PUBLIC_PATHS = [
   "/signup",
   "/forgot-password",
   "/auth",
+  "/webhook/payment",
 ];
 
 const GUEST_ONLY_PATHS = ["/login", "/signup", "/forgot-password"];

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type {
   CheckoutParams,
   CheckoutResult,
@@ -17,15 +18,18 @@ export class StubPaymentProvider implements PaymentProvider {
     return { checkoutUrl: successUrl, sessionId: "stub", customerId: "stub_customer" };
   }
 
-  async parseWebhook(rawBody: string): Promise<WebhookEvent> {
+  async parseWebhook(rawBody: string, _signature: string | null): Promise<WebhookEvent | null> {
     return JSON.parse(rawBody) as WebhookEvent;
   }
 
-  async cancelSubscription(): Promise<void> {
+  async cancelSubscription(
+    _providerSubscriptionId: string,
+    _providerCustomerId: string | null
+  ): Promise<void> {
     // no-op: cancel route updates the DB directly in stub mode
   }
 
-  async getPaymentHistory(): Promise<ProviderPayment[]> {
+  async getPaymentHistory(_providerCustomerId: string): Promise<ProviderPayment[]> {
     return [];
   }
 }
