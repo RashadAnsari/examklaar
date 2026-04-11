@@ -588,7 +588,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
         style={{ background: "white", boxShadow: "var(--shadow-md)" }}
       >
         <div className="mx-auto px-6 py-5" style={{ maxWidth: "860px" }}>
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="flex items-center justify-center gap-2">
             <Timer
               initialSeconds={exam.timeLimitMinutes * 60}
               onExpire={handleExpire}
