@@ -326,7 +326,20 @@ function SubscriptionSection() {
       ) : (
         <>
           <SettingsItem
-            label="Current Plan"
+            label={
+              <div className="flex flex-wrap items-center gap-2">
+                <span>Current Plan</span>
+                <span
+                  className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold"
+                  style={{
+                    background: isPaid ? "var(--green-50)" : "var(--gray-100)",
+                    color: isPaid ? "var(--green-900)" : "var(--gray-600)",
+                  }}
+                >
+                  {planLabel}
+                </span>
+              </div>
+            }
             description={
               isPaid && periodEnd
                 ? sub.cancelAtPeriodEnd
@@ -335,17 +348,8 @@ function SubscriptionSection() {
                 : "Access to 1 free exam per skill"
             }
           >
-            <div className="flex items-center gap-3">
-              <span
-                className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold"
-                style={{
-                  background: isPaid ? "var(--green-50)" : "var(--gray-100)",
-                  color: isPaid ? "var(--green-900)" : "var(--gray-600)",
-                }}
-              >
-                {planLabel}
-              </span>
-              {isPaid && !sub.cancelAtPeriodEnd && (
+            <div className="flex items-center gap-3 flex-wrap">
+              {isPaid && !sub.cancelAtPeriodEnd ? (
                 <Button
                   variant="outline"
                   type="button"
@@ -354,11 +358,12 @@ function SubscriptionSection() {
                 >
                   {cancelling ? "Cancelling…" : "Cancel plan"}
                 </Button>
-              )}
-              {!isPaid && (
-                <Button href="/pricing" variant="primary">
-                  Upgrade
-                </Button>
+              ) : (
+                !isPaid && (
+                  <Button href="/pricing" variant="primary">
+                    Upgrade
+                  </Button>
+                )
               )}
             </div>
           </SettingsItem>
@@ -509,7 +514,7 @@ function SettingsItem({
   description,
   children,
 }: {
-  label: string;
+  label: React.ReactNode;
   description: string;
   children: React.ReactNode;
 }) {
@@ -519,12 +524,12 @@ function SettingsItem({
       style={{ borderColor: "var(--gray-100)" }}
     >
       <div className="flex-1">
-        <p
+        <div
           className="font-semibold mb-0.5"
           style={{ fontSize: "0.9375rem", color: "var(--gray-900)" }}
         >
           {label}
-        </p>
+        </div>
         <p className="text-sm" style={{ color: "var(--gray-600)", lineHeight: 1.6 }}>
           {description}
         </p>
