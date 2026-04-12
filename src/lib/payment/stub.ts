@@ -31,22 +31,22 @@ export class StubPaymentProvider implements PaymentProvider {
 
   async getPaymentHistory(_providerCustomerId: string): Promise<ProviderPayment[]> {
     return [
-      {
-        providerPaymentId: "stub_payment_1",
-        amountCents: 999,
-        currency: "EUR",
-        status: "paid",
-        paidAt: new Date("2026-04-01T10:00:00Z"),
-        description: "Premium",
-      },
-      {
-        providerPaymentId: "stub_payment_2",
-        amountCents: 2999,
-        currency: "EUR",
-        status: "paid",
-        paidAt: new Date("2026-03-01T10:00:00Z"),
-        description: "6-Month Plan",
-      },
+      // {
+      //   providerPaymentId: "stub_payment_1",
+      //   amountCents: 999,
+      //   currency: "EUR",
+      //   status: "paid",
+      //   paidAt: new Date("2026-04-01T10:00:00Z"),
+      //   description: "Premium",
+      // },
+      // {
+      //   providerPaymentId: "stub_payment_2",
+      //   amountCents: 2999,
+      //   currency: "EUR",
+      //   status: "paid",
+      //   paidAt: new Date("2026-03-01T10:00:00Z"),
+      //   description: "6-Month Plan",
+      // },
     ];
   }
 }
