@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CheckCircleIcon } from "@heroicons/react/20/solid";
+import { CheckCircleIcon, SparklesIcon, XCircleIcon } from "@heroicons/react/20/solid";
 import { Button } from "@/components/ui/Button";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -32,7 +32,7 @@ export default function PaymentSuccessPage() {
         // ignore transient errors, keep polling
       }
 
-      attempts++;
+      attempts += 1;
       if (attempts >= MAX_ATTEMPTS) {
         setFailed(true);
         return;
@@ -48,77 +48,126 @@ export default function PaymentSuccessPage() {
 
   if (failed) {
     content = (
-      <div
-        className="flex items-center justify-center py-20"
-        style={{ background: "var(--gray-50)" }}
-      >
-        <div className="text-center px-6" style={{ maxWidth: "480px" }}>
-          <p className="font-semibold mb-2" style={{ color: "var(--gray-900)" }}>
-            Payment received — still processing
-          </p>
-          <p className="text-sm mb-6" style={{ color: "var(--gray-500)" }}>
-            Your subscription is being activated. If it doesn&apos;t appear in a few minutes, please
-            contact support.
-          </p>
-          <Button variant="primary" onClick={() => router.push("/dashboard")}>
-            Go to Dashboard
-          </Button>
+      <div className="flex items-center justify-center py-20 px-4 sm:px-6">
+        <div className="w-full max-w-2xl rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
+          <div className="flex flex-col items-center text-center gap-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-rose-100 text-rose-700">
+              <XCircleIcon className="h-8 w-8" />
+            </div>
+            <div>
+              <p className="text-2xl font-semibold text-slate-900">
+                Payment received — still processing
+              </p>
+              <p className="mt-3 text-sm leading-6 text-slate-500">
+                We&apos;re finalizing your subscription in the background. If your plan doesn&apos;t
+                appear shortly, refresh this page or go to your dashboard.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left">
+              <p className="text-sm font-semibold text-slate-900">What to expect</p>
+              <p className="mt-2 text-sm text-slate-500">
+                Your payment is complete. The final activation can take a few seconds, and
+                we&apos;ll confirm as soon as it&apos;s ready.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left">
+              <p className="text-sm font-semibold text-slate-900">Next step</p>
+              <p className="mt-2 text-sm text-slate-500">
+                Check your dashboard for plan access, then jump into exams and AI feedback.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <Button variant="primary" fullWidth onClick={() => router.push("/dashboard")}>
+              Go to dashboard
+            </Button>
+            <Button href="/pricing" variant="outline" fullWidth>
+              Review plans
+            </Button>
+          </div>
         </div>
       </div>
     );
   } else if (!ready) {
     content = (
-      <div
-        className="flex items-center justify-center py-20"
-        style={{ background: "var(--gray-50)" }}
-      >
-        <div className="text-center px-6">
-          <div
-            className="mx-auto mb-4 rounded-full flex items-center justify-center"
-            style={{ width: 48, height: 48, background: "var(--green-50)" }}
-          >
-            <div
-              className="rounded-full border-2 border-t-transparent animate-spin"
-              style={{
-                width: 24,
-                height: 24,
-                borderColor: "var(--green-700)",
-                borderTopColor: "transparent",
-              }}
-            />
+      <div className="flex items-center justify-center py-20 px-4 sm:px-6">
+        <div className="w-full max-w-2xl rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
+          <div className="flex flex-col items-center text-center gap-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+              <div className="h-10 w-10 animate-spin rounded-full border-4 border-current border-t-transparent" />
+            </div>
+            <div>
+              <p className="text-2xl font-semibold text-slate-900">Activating your subscription…</p>
+              <p className="mt-3 text-sm leading-6 text-slate-500">
+                We&apos;re checking your payment status and updating your account. This should only
+                take a few seconds.
+              </p>
+            </div>
           </div>
-          <p className="font-medium" style={{ color: "var(--gray-700)" }}>
-            Activating your subscription…
-          </p>
+
+          <div className="mt-10 rounded-3xl border border-slate-200 bg-slate-50 p-5">
+            <div className="flex items-center gap-3">
+              <SparklesIcon className="h-5 w-5 text-emerald-700" />
+              <p className="text-sm font-semibold text-slate-900">Ready soon</p>
+            </div>
+            <p className="mt-2 text-sm text-slate-500">
+              Once we confirm your plan, you can start using all premium exam content right away.
+            </p>
+          </div>
         </div>
       </div>
     );
   } else {
     content = (
-      <div
-        className="flex items-center justify-center py-20"
-        style={{ background: "var(--gray-50)" }}
-      >
-        <div className="text-center px-6" style={{ maxWidth: "480px" }}>
-          <div className="flex justify-center mb-6">
-            <CheckCircleIcon style={{ width: 56, height: 56, color: "var(--green-700)" }} />
+      <div className="flex items-center justify-center py-20 px-4 sm:px-6">
+        <div className="w-full max-w-2xl rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
+          <div className="flex flex-col items-center text-center gap-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+              <CheckCircleIcon className="h-8 w-8" />
+            </div>
+            <div>
+              <h1 className="text-3xl font-semibold text-slate-900">You&apos;re all set</h1>
+              <p className="mt-3 text-sm leading-6 text-slate-500">
+                Your subscription is active. You now have access to every exam type, premium review,
+                and AI feedback.
+              </p>
+            </div>
           </div>
-          <h1 className="font-bold mb-2" style={{ fontSize: "1.75rem", color: "var(--gray-900)" }}>
-            You&apos;re all set
-          </h1>
-          <p className="mb-8" style={{ color: "var(--gray-500)" }}>
-            Your subscription is active. You now have access to all exams and AI feedback.
-          </p>
-          <Button variant="primary" onClick={() => router.push("/dashboard")}>
-            Go to Dashboard
-          </Button>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left">
+              <p className="text-sm font-semibold text-slate-900">Jump into practice</p>
+              <p className="mt-3 text-sm text-slate-500">
+                Launch your next exam from the dashboard and monitor progress across every skill.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left">
+              <p className="text-sm font-semibold text-slate-900">Choose your next focus</p>
+              <p className="mt-2 text-sm text-slate-500">
+                Continue with the next exam or review recent results to improve faster.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <Button variant="primary" fullWidth onClick={() => router.push("/dashboard")}>
+              Go to dashboard
+            </Button>
+            <Button href="/pricing" variant="outline" fullWidth>
+              View plans
+            </Button>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: "var(--gray-50)" }}>
+    <div className="min-h-screen flex flex-col bg-slate-50">
       <Navbar />
       <main className="flex-1">{content}</main>
       <Footer />
