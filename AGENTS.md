@@ -1,12 +1,10 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# Project agent instructions
+
+These rules are the source of truth for working in this repository. Always read and follow this file before making code changes or refactors.
 
 ## This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-
-<!-- END:nextjs-agent-rules -->
-
-<!-- BEGIN:project-structure -->
 
 ## UI patterns
 
@@ -19,7 +17,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## Routing & auth protection
 
 - Auth-protected pages are guarded in `proxy.ts` (NOT `middleware.ts` — that convention is deprecated in this Next.js version; the function must be named `proxy`).
-- Public paths: `/`, `/pricing`, `/terms`, `/privacy`, `/login`, `/signup`, `/forgot-password`, `/reset-password`, `/auth/*`.
+- Public paths: `/`, `/pricing`, `/terms`, `/privacy`, `/login`, `/signup`, `/forgot-password`, `/reset-password`, `/auth/callback`, `/api/webhook/payment`.
 - All other pages require a valid session; unauthenticated requests are redirected to `/login`.
 
 ## Package manager
@@ -36,5 +34,3 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - No duplicate components: reuse existing ones with props rather than creating variants.
 - **No duplicate code**: before writing a constant, function, or utility, search the codebase first. If it already exists, import it — never redefine it. Shared logic belongs in `src/lib/`. Shared UI belongs in `src/components/ui/`. Shared constants (`EXAMS_DIR`, etc.) live in the relevant lib file.
 - **Punctuation**: no period on short labels, headings, button text, and single-phrase descriptions. Use a period on full sentences, especially multi-clause ones (FAQs, warnings, longer descriptions).
-
-<!-- END:project-structure -->

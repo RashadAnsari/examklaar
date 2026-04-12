@@ -13,22 +13,25 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   ref
 ) {
   const inputId = id ?? label?.toLowerCase().replace(/\s+/g, "-");
+  const errorClasses = error
+    ? "border-[var(--red)] focus:ring-[var(--red-light)]"
+    : "border-[var(--gray-300)] focus:ring-[var(--green-50)]";
 
   return (
     <div className="flex flex-col gap-1.5">
       {label && (
-        <label htmlFor={inputId} className="input-label">
+        <label htmlFor={inputId} className="text-sm font-medium text-[var(--gray-700)]">
           {label}
         </label>
       )}
       <input
         ref={ref}
         id={inputId}
-        className={`input ${error ? "input-error" : ""} ${className}`}
+        className={`w-full rounded-2xl border px-4 py-3 text-base text-[var(--gray-900)] bg-white placeholder:text-[var(--gray-400)] transition-all focus:outline-none focus:border-[var(--green-900)] focus:ring-2 ${errorClasses} ${className}`}
         {...props}
       />
-      {hint && !error && <p className="input-hint">{hint}</p>}
-      {error && <p className="input-error-msg">{error}</p>}
+      {hint && !error && <p className="text-xs text-[var(--gray-500)] mt-1">{hint}</p>}
+      {error && <p className="text-sm text-[var(--red)] mt-1">{error}</p>}
     </div>
   );
 });

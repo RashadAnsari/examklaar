@@ -23,15 +23,8 @@ export function ErrorBanner({ message, onHide, duration = 6000 }: ErrorBannerPro
   }
 
   return (
-    <div
-      className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium mb-6"
-      style={{
-        background: "var(--red-50, #fef2f2)",
-        color: "var(--red, #dc2626)",
-        border: "1px solid var(--red, #dc2626)",
-      }}
-    >
-      <XCircleIcon style={{ width: 18, height: 18, flexShrink: 0 }} />
+    <div className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium mb-6 bg-[var(--red-light)] text-[var(--red)] border border-[var(--red)]">
+      <XCircleIcon className="w-4 h-4 flex-shrink-0" />
       {/email rate limit exceeded/i.test(message)
         ? "Something went wrong. Please try again later."
         : message}

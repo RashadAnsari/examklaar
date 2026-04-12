@@ -18,16 +18,18 @@ export function ProgressBar({
   const percentage = Math.min(100, Math.max(0, (value / max) * 100));
 
   const variantMap: Record<ProgressVariant, string> = {
-    default: "",
-    success: "progress-bar-success",
-    warning: "progress-bar-warning",
-    danger: "progress-bar-danger",
+    default: "bg-[var(--green-900)]",
+    success: "bg-[var(--green-success)]",
+    warning: "bg-[var(--amber)]",
+    danger: "bg-[var(--red)]",
   };
 
   return (
-    <div className={`progress-container ${thin ? "progress-bar-thin" : ""} ${className}`}>
+    <div
+      className={`w-full overflow-hidden rounded-full bg-[var(--gray-100)] ${thin ? "h-1.5" : "h-2"} ${className}`}
+    >
       <div
-        className={`progress-bar ${variantMap[variant]}`}
+        className={`h-full rounded-full transition-all duration-300 ${variantMap[variant]}`}
         style={{ width: `${percentage}%` }}
         role="progressbar"
         aria-valuenow={value}

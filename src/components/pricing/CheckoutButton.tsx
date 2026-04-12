@@ -57,11 +57,7 @@ export function CheckoutButton({
       <Button variant={variant} fullWidth={fullWidth} disabled={loading} onClick={handleClick}>
         {loading ? "Redirecting…" : children}
       </Button>
-      {error && (
-        <p className="text-xs text-center" style={{ color: "var(--red)" }}>
-          {error}
-        </p>
-      )}
+      {error && <p className="text-xs text-center text-[var(--red)]">{error}</p>}
     </div>
   );
 }

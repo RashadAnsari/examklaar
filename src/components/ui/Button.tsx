@@ -33,27 +33,35 @@ function getClassNames(
   fullWidth: boolean,
   className?: string
 ) {
+  const base =
+    "inline-flex items-center justify-center gap-2 rounded-2xl font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--green-700)] disabled:opacity-50 disabled:cursor-not-allowed";
+
   const variantMap: Record<ButtonVariant, string> = {
-    primary: "btn-primary",
-    secondary: "btn-secondary",
-    outline: "btn-outline",
-    ghost: "btn-ghost",
-    danger: "btn-danger",
-    white: "btn-white",
+    primary:
+      "bg-[var(--green-900)] text-white border border-transparent hover:bg-[var(--green-700)]",
+    secondary:
+      "bg-white text-[var(--green-900)] border border-[var(--green-900)] hover:bg-[var(--green-50)]",
+    outline:
+      "bg-white text-[var(--gray-700)] border border-[var(--gray-300)] hover:bg-[var(--gray-50)]",
+    ghost:
+      "bg-transparent text-[var(--gray-600)] border border-transparent hover:bg-[var(--gray-100)]",
+    danger: "bg-[var(--red)] text-white border border-[var(--red)] hover:bg-[#b91c1c]",
+    white: "bg-white text-[var(--green-900)] border border-white hover:bg-[var(--gray-100)]",
   };
+
   const sizeMap: Record<ButtonSize, string> = {
-    sm: "btn-sm",
-    md: "",
-    lg: "btn-lg",
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3 text-base",
+    lg: "px-8 py-3 text-lg",
   };
-  return ["btn", variantMap[variant], sizeMap[size], fullWidth ? "btn-full" : "", className ?? ""]
+
+  return [base, variantMap[variant], sizeMap[size], fullWidth ? "w-full" : "", className ?? ""]
     .filter(Boolean)
     .join(" ");
 }
 
 export function Button(props: Props) {
   const { variant = "primary", size = "md", fullWidth = false, className, children } = props;
-
   const classes = getClassNames(variant, size, fullWidth, className);
 
   if (props.href !== undefined) {

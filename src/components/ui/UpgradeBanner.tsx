@@ -2,18 +2,10 @@ import { Button } from "@/components/ui/Button";
 
 export function UpgradeBanner() {
   return (
-    <div
-      className="rounded-2xl p-5 sm:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6"
-      style={{
-        background: "linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 100%)",
-        color: "white",
-      }}
-    >
+    <div className="rounded-2xl p-5 sm:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 bg-gradient-to-br from-[var(--green-900)] to-[var(--green-700)] text-white">
       <div>
-        <h3 className="font-bold mb-1" style={{ fontSize: "1.5rem" }}>
-          Unlock the Full Experience
-        </h3>
-        <p style={{ opacity: 0.9 }}>
+        <h3 className="font-bold mb-1 text-xl">Unlock the Full Experience</h3>
+        <p className="text-sm text-white/90">
           Upgrade to access all exams per skill, unlimited practice attempts, and AI feedback on
           every Writing &amp; Speaking exam
         </p>

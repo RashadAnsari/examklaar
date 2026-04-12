@@ -8,34 +8,23 @@ interface ToggleProps {
 }
 
 export function Toggle({ checked, onChange, label, description }: ToggleProps) {
-  if (label) {
-    return (
-      <div className="flex justify-between items-start gap-8">
-        <div className="flex-1">
-          {label && (
-            <p
-              style={{
-                fontSize: "0.9375rem",
-                fontWeight: 600,
-                color: "var(--gray-900)",
-                marginBottom: "0.25rem",
-              }}
-            >
-              {label}
-            </p>
-          )}
-          {description && (
-            <p style={{ fontSize: "0.875rem", color: "var(--gray-600)", lineHeight: 1.6 }}>
-              {description}
-            </p>
-          )}
+  return (
+    <div className="flex flex-col gap-3">
+      {label ? (
+        <div className="flex justify-between items-start gap-8">
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-[var(--gray-900)] mb-1">{label}</p>
+            {description && (
+              <p className="text-sm text-[var(--gray-600)] leading-[1.6]">{description}</p>
+            )}
+          </div>
+          <ToggleSwitch checked={checked} onChange={onChange} />
         </div>
+      ) : (
         <ToggleSwitch checked={checked} onChange={onChange} />
-      </div>
-    );
-  }
-
-  return <ToggleSwitch checked={checked} onChange={onChange} />;
+      )}
+    </div>
+  );
 }
 
 function ToggleSwitch({ checked, onChange }: { checked: boolean; onChange: (v: boolean) => void }) {
@@ -45,9 +34,15 @@ function ToggleSwitch({ checked, onChange }: { checked: boolean; onChange: (v: b
       role="switch"
       aria-checked={checked}
       onClick={() => onChange(!checked)}
-      className={`toggle-switch ${checked ? "active" : ""}`}
+      className={`relative inline-flex h-8 w-14 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ${
+        checked ? "bg-[var(--green-900)]" : "bg-[var(--gray-300)]"
+      }`}
     >
-      <span className="toggle-slider" />
+      <span
+        className={`absolute left-1 top-1 h-6 w-6 rounded-full bg-white shadow transition-transform duration-200 ${
+          checked ? "translate-x-6" : "translate-x-0"
+        }`}
+      />
     </button>
   );
 }

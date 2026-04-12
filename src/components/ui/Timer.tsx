@@ -45,39 +45,25 @@ export function Timer({ initialSeconds, onExpire, warningAt, onWarning }: TimerP
   const isWarning = seconds <= 300 && seconds > 120;
   const isDanger = seconds <= 120;
 
-  const color = isDanger ? "var(--red)" : isWarning ? "var(--amber)" : "var(--gray-400)";
-  const bg = isDanger ? "var(--red-light)" : isWarning ? "var(--amber-light)" : "transparent";
+  const stateClasses = isDanger
+    ? "bg-[var(--red-light)] text-[var(--red)] animate-[pulse_1s_infinite]"
+    : isWarning
+      ? "bg-[var(--amber-light)] text-[var(--amber)]"
+      : "bg-transparent text-[var(--gray-400)]";
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       title={display}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "0.4rem",
-        padding: "0",
-        borderRadius: "0.5rem",
-        background: bg,
-        color,
-        fontWeight: 700,
-        fontSize: "1rem",
-        cursor: "default",
-        transition: "background 0.2s ease",
-        animation: isDanger ? "pulse-timer 1s infinite" : "none",
-        userSelect: "none",
-        whiteSpace: "nowrap",
-      }}
+      className={`inline-flex items-center gap-2 rounded-xl font-semibold transition-colors duration-200 whitespace-nowrap ${stateClasses}`}
+      style={{ cursor: "default" }}
     >
-      <ClockIcon style={{ width: 24, height: 24, flexShrink: 0 }} />
+      <ClockIcon className="w-6 h-6 flex-shrink-0" />
       <span
-        style={{
-          maxWidth: hovered ? "6rem" : "0",
-          opacity: hovered ? 1 : 0,
-          overflow: "hidden",
-          transition: "max-width 0.2s ease, opacity 0.2s ease",
-        }}
+        className={`overflow-hidden transition-all duration-200 ${
+          hovered ? "max-w-[6rem] opacity-100" : "max-w-0 opacity-0"
+        }`}
       >
         {display}
       </span>

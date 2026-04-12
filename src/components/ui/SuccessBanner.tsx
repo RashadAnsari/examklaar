@@ -23,15 +23,8 @@ export function SuccessBanner({ message, onHide, duration = 4000 }: SuccessBanne
   }
 
   return (
-    <div
-      className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium mb-6"
-      style={{
-        background: "var(--green-50)",
-        color: "var(--green-900)",
-        border: "1px solid var(--green-900)",
-      }}
-    >
-      <CheckCircleIcon style={{ width: 18, height: 18, flexShrink: 0 }} />
+    <div className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium mb-6 bg-[var(--green-success-light)] text-[var(--green-900)] border border-[var(--green-900)]">
+      <CheckCircleIcon className="w-4 h-4 flex-shrink-0" />
       {message}
     </div>
   );

@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer style={{ background: "var(--gray-900)", color: "var(--gray-400)" }}>
+    <footer className="bg-[var(--gray-900)] text-[var(--gray-400)]">
       <div className="container pt-12 pb-8">
         <div className="flex justify-center mb-10">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10">
             {/* Brand */}
             <div>
               <div className="mb-4">
-                <Link href="/" className="font-semibold text-sm" style={{ color: "white" }}>
+                <Link href="/" className="font-semibold text-sm text-white">
                   ExamKlaar
                 </Link>
               </div>
@@ -21,9 +21,7 @@ export function Footer() {
 
             {/* Info */}
             <div>
-              <h4 className="font-semibold mb-4 text-sm" style={{ color: "white" }}>
-                Info
-              </h4>
+              <h4 className="font-semibold mb-4 text-sm text-white">Info</h4>
               <ul className="flex flex-col gap-2 text-sm">
                 <li>
                   <Link href="/pricing" className="hover:text-white transition-colors">
@@ -45,14 +43,11 @@ export function Footer() {
 
             {/* Contact */}
             <div>
-              <h4 className="font-semibold mb-4 text-sm" style={{ color: "white" }}>
-                Contact
-              </h4>
+              <h4 className="font-semibold mb-4 text-sm text-white">Contact</h4>
               <p className="text-sm mb-2">Have a question or need help?</p>
               <a
                 href="mailto:hallo@examklaar.nl"
-                className="text-sm hover:text-white transition-colors"
-                style={{ color: "var(--green-500)" }}
+                className="text-sm text-[var(--green-500)] hover:text-white transition-colors"
               >
                 hallo@examklaar.nl
               </a>
@@ -60,10 +55,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div
-          className="pt-6 text-center text-sm"
-          style={{ borderTop: "1px solid var(--gray-800)" }}
-        >
+        <div className="pt-6 text-center text-sm border-t border-[var(--gray-800)]">
           <p>&copy; 2026 ExamKlaar. All rights reserved.</p>
         </div>
       </div>
