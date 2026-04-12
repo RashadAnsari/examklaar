@@ -11,7 +11,7 @@ export interface CheckoutParams {
 export interface CheckoutResult {
   checkoutUrl: string;
   sessionId: string;
-  /** Customer ID created or used during checkout — persist in provider_customers. */
+  /** Customer ID created or used during checkout — persist in payment_customers. */
   customerId: string;
 }
 

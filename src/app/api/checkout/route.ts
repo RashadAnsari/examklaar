@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
 
   // Look up existing customer ID for this provider, if any.
   const { data: existingCustomer } = await admin
-    .from("provider_customers")
+    .from("payment_customers")
     .select("customer_id")
     .eq("user_id", user.id)
     .eq("provider", providerName)
@@ -91,7 +91,7 @@ export async function POST(req: NextRequest) {
 
     // Persist the customer ID if it's newly created.
     if (result.customerId && !existingCustomer) {
-      await admin.from("provider_customers").insert({
+      await admin.from("payment_customers").insert({
         user_id: user.id,
         provider: providerName,
         customer_id: result.customerId,

@@ -1,8 +1,8 @@
 -- ============================================================
--- provider_customers
+-- payment_customers
 -- ============================================================
 
-create table public.provider_customers (
+create table public.payment_customers (
   id          uuid        primary key default gen_random_uuid(),
   user_id     uuid        not null references auth.users (id) on delete cascade,
   provider    text        not null,
@@ -10,21 +10,21 @@ create table public.provider_customers (
   created_at  timestamptz not null default now()
 );
 
-comment on column public.provider_customers.provider     is 'stub | mollie';
-comment on column public.provider_customers.customer_id  is 'customer ID at the named payment provider';
+comment on column public.payment_customers.provider     is 'stub | mollie';
+comment on column public.payment_customers.customer_id  is 'customer ID at the named payment provider';
 
-alter table public.provider_customers enable row level security;
+alter table public.payment_customers enable row level security;
 
-grant select on public.provider_customers to authenticated;
-grant select, insert, update on public.provider_customers to service_role;
+grant select on public.payment_customers to authenticated;
+grant select, insert, update on public.payment_customers to service_role;
 
-create policy "Users can view their own provider customers"
-  on public.provider_customers for select
+create policy "Users can view their own payment customers"
+  on public.payment_customers for select
   using (auth.uid() = user_id);
 
 -- One customer per provider per user.
-create unique index provider_customers_user_provider_idx
-  on public.provider_customers (user_id, provider);
+create unique index payment_customers_user_provider_idx
+  on public.payment_customers (user_id, provider);
 
 -- ============================================================
 -- subscriptions
