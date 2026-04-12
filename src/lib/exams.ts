@@ -1,6 +1,8 @@
 import path from "path";
+import { fileURLToPath } from "url";
 
-export const EXAMS_DIR = path.join(process.cwd(), "src/data/exams");
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+export const EXAMS_DIR = path.join(/*turbopackIgnore: true*/ __dirname, "../data/exams");
 
 export function getExamFilePath(skillId: string, n: number): string {
   const parts = skillId.split("-");
@@ -11,13 +13,22 @@ export function getExamFilePath(skillId: string, n: number): string {
 
   let filePath: string;
   if (level) {
-    filePath = path.join(EXAMS_DIR, skillBase, level, `${skillBase}-${level}-exam-${n}.json`);
+    filePath = path.join(
+      /*turbopackIgnore: true*/ EXAMS_DIR,
+      skillBase,
+      level,
+      `${skillBase}-${level}-exam-${n}.json`
+    );
   } else {
-    filePath = path.join(EXAMS_DIR, skillBase, `${skillBase}-exam-${n}.json`);
+    filePath = path.join(
+      /*turbopackIgnore: true*/ EXAMS_DIR,
+      skillBase,
+      `${skillBase}-exam-${n}.json`
+    );
   }
 
-  const resolved = path.resolve(filePath);
-  const base = path.resolve(EXAMS_DIR);
+  const resolved = path.resolve(/*turbopackIgnore: true*/ filePath);
+  const base = path.resolve(/*turbopackIgnore: true*/ EXAMS_DIR);
   if (!resolved.startsWith(base + path.sep)) {
     throw new Error(`Path traversal attempt blocked for skill: ${skillId}`);
   }

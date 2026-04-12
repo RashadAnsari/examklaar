@@ -41,13 +41,17 @@ function resolveExamPath(examId: string): string {
   if (isLevel) {
     const skillBase = skillParts.slice(0, -1).join("-");
     const level = lastPart;
-    filePath = path.join(EXAMS_DIR, skillBase, level, `${examId}.json`);
+    filePath = path.join(/*turbopackIgnore: true*/ EXAMS_DIR, skillBase, level, `${examId}.json`);
   } else {
-    filePath = path.join(EXAMS_DIR, skillParts.join("-"), `${examId}.json`);
+    filePath = path.join(
+      /*turbopackIgnore: true*/ EXAMS_DIR,
+      skillParts.join("-"),
+      `${examId}.json`
+    );
   }
 
-  const resolved = path.resolve(filePath);
-  const base = path.resolve(EXAMS_DIR);
+  const resolved = path.resolve(/*turbopackIgnore: true*/ filePath);
+  const base = path.resolve(/*turbopackIgnore: true*/ EXAMS_DIR);
   if (!resolved.startsWith(base + path.sep)) {
     throw new Error(`Path traversal attempt blocked for exam id: ${examId}`);
   }
@@ -249,7 +253,7 @@ async function doGrade(
 ): Promise<void> {
   // 1. Load exam JSON
   const examPath = resolveExamPath(result.exam_id);
-  const exam: Exam = JSON.parse(await fs.readFile(examPath, "utf-8"));
+  const exam: Exam = JSON.parse(await fs.readFile(/*turbopackIgnore: true*/ examPath, "utf-8"));
 
   // 2. Build question blocks
   const gradableQuestions = exam.questions.filter(
