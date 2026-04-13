@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Timer } from "@/components/ui/Timer";
 import { Button } from "@/components/ui/Button";
+import { useWhisperTranscriber } from "@/hooks/useWhisperTranscriber";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -96,11 +97,26 @@ function SpeakingRecorder({
   const [permissionError, setPermissionError] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
 
+  const {
+    status: transcribeStatus,
+    transcript,
+    error: transcribeError,
+    transcribe,
+  } = useWhisperTranscriber();
+  const processing = transcribeStatus === "transcribing";
+  const onTranscribedRef = useRef(onTranscribed);
+  useEffect(() => {
+    onTranscribedRef.current = onTranscribed;
+  });
+  useEffect(() => {
+    if (transcribeStatus === "done" && transcript) {
+      onTranscribedRef.current?.(transcript);
+    }
+  }, [transcribeStatus, transcript]);
+
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const recognitionRef = useRef<{ stop: () => void } | null>(null);
-  const accumulatedRef = useRef("");
 
   const MAX_SECONDS = 60;
 
@@ -113,18 +129,12 @@ function SpeakingRecorder({
 
   async function startRecording() {
     setPermissionError(false);
-    accumulatedRef.current = "";
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true,
-        },
+        audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
       });
 
-      // MediaRecorder — captures audio for upload
       const mr = new MediaRecorder(stream);
       mediaRecorderRef.current = mr;
       chunksRef.current = [];
@@ -138,52 +148,11 @@ function SpeakingRecorder({
         setSecondsLeft(null);
         setRecording(false);
         const blob = new Blob(chunksRef.current, { type: "audio/webm" });
-        onRecorded(URL.createObjectURL(blob));
+        const url = URL.createObjectURL(blob);
+        onRecorded(url);
         stream.getTracks().forEach((t) => t.stop());
+        transcribe(blob, "nl");
       };
-
-      // SpeechRecognition — live transcription
-
-      type SpeechRecognitionCtor = new () => {
-        lang: string;
-        continuous: boolean;
-        interimResults: boolean;
-        onresult:
-          | ((e: {
-              resultIndex: number;
-              results: { isFinal: boolean; 0: { transcript: string } }[];
-            }) => void)
-          | null;
-        onend: (() => void) | null;
-        start: () => void;
-        stop: () => void;
-      };
-      const win = window as Window & {
-        SpeechRecognition?: SpeechRecognitionCtor;
-        webkitSpeechRecognition?: SpeechRecognitionCtor;
-      };
-      const SpeechRecognitionAPI = win.SpeechRecognition ?? win.webkitSpeechRecognition;
-      if (SpeechRecognitionAPI) {
-        const recognition = new SpeechRecognitionAPI();
-        recognition.lang = "nl-NL";
-        recognition.continuous = true;
-        recognition.interimResults = false;
-        recognition.onresult = (e) => {
-          for (let i = e.resultIndex; i < e.results.length; i++) {
-            if (e.results[i].isFinal) {
-              accumulatedRef.current += e.results[i][0].transcript + " ";
-            }
-          }
-        };
-        recognition.onend = () => {
-          const final = accumulatedRef.current.trim();
-          if (final) {
-            onTranscribed(final);
-          }
-        };
-        recognition.start();
-        recognitionRef.current = recognition;
-      }
 
       mr.start();
       setRecording(true);
@@ -191,7 +160,6 @@ function SpeakingRecorder({
       countdownRef.current = setInterval(() => {
         setSecondsLeft((s) => {
           if (s === null || s <= 1) {
-            recognitionRef.current?.stop();
             mr.stop();
             return null;
           }
@@ -204,7 +172,6 @@ function SpeakingRecorder({
   }
 
   function stopRecording() {
-    recognitionRef.current?.stop();
     mediaRecorderRef.current?.stop();
   }
 
@@ -215,35 +182,63 @@ function SpeakingRecorder({
           <button
             key="record"
             onClick={startRecording}
-            disabled={disabled}
+            disabled={disabled || processing}
             className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm"
             style={{
-              background: blobUrl ? "var(--gray-100)" : "var(--green-900)",
-              color: blobUrl ? "var(--gray-700)" : "white",
+              background: processing
+                ? "var(--gray-200)"
+                : blobUrl
+                  ? "var(--gray-100)"
+                  : "var(--green-900)",
+              color: processing ? "var(--gray-500)" : blobUrl ? "var(--gray-700)" : "white",
               border: "none",
-              cursor: disabled ? "not-allowed" : "pointer",
+              cursor: disabled || processing ? "not-allowed" : "pointer",
               opacity: disabled ? 0.5 : 1,
             }}
           >
-            <MicrophoneIcon style={{ width: 18, height: 18 }} />
-            {blobUrl ? "Opnieuw opnemen" : "Begin met opnemen"}
+            {processing ? (
+              <>
+                <svg
+                  className="animate-spin"
+                  style={{ width: 18, height: 18 }}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  />
+                </svg>
+                Verwerken…
+              </>
+            ) : (
+              <>
+                <MicrophoneIcon style={{ width: 18, height: 18 }} />
+                {blobUrl ? "Opnieuw opnemen" : "Begin met opnemen"}
+              </>
+            )}
           </button>
         ) : (
           <button
             key="stop"
             onClick={stopRecording}
             className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm"
-            style={{
-              background: "var(--red)",
-              color: "white",
-              border: "none",
-              cursor: "pointer",
-            }}
+            style={{ background: "var(--red)", color: "white", border: "none", cursor: "pointer" }}
           >
             <StopIcon style={{ width: 18, height: 18 }} />
             Stop opname
           </button>
         )}
+
         {recording && (
           <span className="flex items-center gap-2 text-sm" style={{ color: "var(--red)" }}>
             <span
@@ -261,12 +256,17 @@ function SpeakingRecorder({
         </p>
       )}
 
-      {blobUrl && !recording && (
+      {transcribeError && (
+        <p className="text-sm" style={{ color: "var(--red)" }}>
+          Transcriptie mislukt. Uw opname is wel opgeslagen.
+        </p>
+      )}
+
+      {blobUrl && !recording && !processing && (
         <div>
           <p className="text-xs mb-2" style={{ color: "var(--gray-500)" }}>
             Uw opname:
           </p>
-          {}
           <audio src={blobUrl} controls className="w-full" style={{ maxWidth: "420px" }} />
         </div>
       )}

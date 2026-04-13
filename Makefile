@@ -1,3 +1,8 @@
+# ---------- Development ----------
+
+dev:
+	bun run dev 2>&1 | grep -v "CleanUnusedInitializersAndNodeArgs"
+
 # --------- Code quality ----------
 
 lint:
