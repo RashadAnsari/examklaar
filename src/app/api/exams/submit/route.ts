@@ -4,7 +4,7 @@ import { createAdminClient } from "@/utils/supabase/admin";
 import { cookies } from "next/headers";
 import fs from "fs/promises";
 import { getExamFilePath } from "@/lib/exams";
-import { getUserSubscription, canAccessPremium } from "@/lib/subscription";
+import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
 
 interface ExamQuestion {
   id: string;

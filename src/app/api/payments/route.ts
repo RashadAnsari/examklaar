@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
-import { getUserSubscription } from "@/lib/subscription";
+import { getUserSubscription } from "@/lib/payment/subscription";
 import { getPaymentProvider } from "@/lib/payment/provider";
 
 export async function GET() {

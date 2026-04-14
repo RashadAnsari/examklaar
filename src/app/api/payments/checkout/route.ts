@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { createAdminClient } from "@/utils/supabase/admin";
-import { getUserSubscription, canAccessPremium } from "@/lib/subscription";
+import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
 import { getPaymentProvider } from "@/lib/payment/provider";
 
 const PLAN_DURATION_MONTHS: Record<"premium" | "biannual", number> = {

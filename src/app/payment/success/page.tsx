@@ -20,7 +20,7 @@ export default function PaymentSuccessPage() {
 
     async function poll() {
       try {
-        const res = await fetch("/api/subscription");
+        const res = await fetch("/api/payments/subscription");
         if (res.ok) {
           const sub = await res.json();
           if (sub.planId !== "free") {

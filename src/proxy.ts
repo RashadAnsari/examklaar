@@ -3,14 +3,14 @@ import { createClient } from "@/utils/supabase/middleware";
 
 const PUBLIC_PATHS = [
   "/",
-  "/pricing",
   "/terms",
-  "/privacy",
   "/login",
   "/signup",
-  "/forgot-password",
+  "/privacy",
+  "/pricing",
   "/auth/callback",
-  "/api/webhook/payment",
+  "/forgot-password",
+  "/api/payments/webhook",
 ];
 
 const GUEST_ONLY_PATHS = ["/login", "/signup", "/forgot-password"];

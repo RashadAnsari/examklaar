@@ -12,7 +12,7 @@ import { UpgradeBanner } from "@/components/ui/UpgradeBanner";
 import { createClient } from "@/utils/supabase/server";
 import { EXAMS_DIR } from "@/lib/exams";
 import { getScoreFeedback } from "@/lib/scoring";
-import { getUserSubscription, canAccessPremium } from "@/lib/subscription";
+import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
 
 interface ExamResult {
   score: number | null;

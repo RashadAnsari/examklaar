@@ -97,7 +97,7 @@ export class MollieProvider implements PaymentProvider {
     existingCustomerId,
   }: CheckoutParams): Promise<CheckoutResult> {
     const config = PLAN_CONFIG[planId];
-    const webhookUrl = `${process.env.APP_URL}/api/webhook/payment`;
+    const webhookUrl = `${process.env.APP_URL}/api/payments/webhook`;
 
     let customerId = existingCustomerId;
     if (!customerId) {
@@ -178,7 +178,7 @@ export class MollieProvider implements PaymentProvider {
           amount: { value: config.amount, currency: "EUR" },
           interval: config.interval,
           description: config.description,
-          webhookUrl: `${process.env.APP_URL}/api/webhook/payment`,
+          webhookUrl: `${process.env.APP_URL}/api/payments/webhook`,
           metadata: { userId, planId },
         });
         subscriptionId = subscription.id;

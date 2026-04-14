@@ -4,7 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { ExamClient, Exam } from "./ExamClient";
 import { getExamFilePath } from "@/lib/exams";
 import { createClient } from "@/utils/supabase/server";
-import { getUserSubscription, canAccessPremium } from "@/lib/subscription";
+import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
 
 export default async function ExamPage(props: {
   searchParams: Promise<{ skill?: string; n?: string }>;

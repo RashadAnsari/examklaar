@@ -26,7 +26,7 @@ export function CheckoutButton({
     setError(null);
 
     try {
-      const res = await fetch("/api/checkout", {
+      const res = await fetch("/api/payments/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ planId }),

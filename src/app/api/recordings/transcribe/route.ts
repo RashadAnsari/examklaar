@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ transcript: result.text.trim() });
   } catch (err) {
-    console.error("[/api/transcribe]", err);
+    console.error("[/api/recordings/transcribe]", err);
     return NextResponse.json({ error: "Transcription failed" }, { status: 500 });
   }
 }

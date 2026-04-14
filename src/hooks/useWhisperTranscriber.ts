@@ -88,7 +88,7 @@ export function useWhisperTranscriber(): TranscriberState {
       formData.append("file", wav, "audio.wav");
       formData.append("language", language);
 
-      const res = await fetch("/api/transcribe", {
+      const res = await fetch("/api/recordings/transcribe", {
         method: "POST",
         body: formData,
       });

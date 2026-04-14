@@ -8,7 +8,7 @@ import type { SkillGroup } from "@/lib/exam-config";
 import { DashboardClient } from "./DashboardClient";
 import { createClient } from "@/utils/supabase/server";
 import { EXAMS_DIR } from "@/lib/exams";
-import { getUserSubscription, canAccessPremium } from "@/lib/subscription";
+import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
 
 async function loadSkillGroups(): Promise<SkillGroup[]> {
   const groups: SkillGroup[] = [];

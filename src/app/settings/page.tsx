@@ -9,7 +9,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SuccessBanner } from "@/components/ui/SuccessBanner";
 import { ErrorBanner } from "@/components/ui/ErrorBanner";
-import type { UserSubscription } from "@/lib/subscription";
+import type { UserSubscription } from "@/lib/payment/subscription";
 import type { ProviderPayment } from "@/lib/payment/types";
 
 export default function SettingsPage() {
@@ -272,7 +272,7 @@ function SubscriptionSection() {
   useEffect(() => {
     async function load() {
       const [subRes, paymentsRes] = await Promise.all([
-        fetch("/api/subscription"),
+        fetch("/api/payments/subscription"),
         fetch("/api/payments"),
       ]);
       if (subRes.ok) {
@@ -297,7 +297,7 @@ function SubscriptionSection() {
     }
     setCancelling(true);
     setCancelError(null);
-    const res = await fetch("/api/subscription/cancel", { method: "POST" });
+    const res = await fetch("/api/payments/subscription/cancel", { method: "POST" });
     setCancelling(false);
     if (res.ok) {
       setCancelSuccess(
