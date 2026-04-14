@@ -64,3 +64,22 @@ create policy "Service role can read recordings"
   on storage.objects for select
   to service_role
   using (bucket_id = 'speaking-recordings');
+
+-- ============================================================
+-- 30-day retention policy for speaking-recordings bucket
+-- Runs daily at 02:00 UTC via pg_cron.
+-- Deleting from storage.objects causes Supabase to remove the
+-- underlying object from the blob store as well.
+-- ============================================================
+
+create extension if not exists pg_cron with schema extensions;
+
+select cron.schedule(
+  'delete-old-speaking-recordings',
+  '0 2 * * *',
+  $$
+    delete from storage.objects
+    where bucket_id = 'speaking-recordings'
+      and created_at < now() - interval '30 days';
+  $$
+);
