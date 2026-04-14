@@ -8,7 +8,7 @@ import { createAdminClient } from "@/utils/supabase/admin";
 import type { Exam } from "@/app/exam/ExamClient";
 import { EXAMS_DIR } from "@/lib/exams";
 
-const GRADER_MODEL = process.env.GRADER_MODEL ?? "gemma-4-31b-it";
+const GRADER_MODEL = "gemma-4-31b-it";
 
 // ── types ────────────────────────────────────────────────────────────────────
 
@@ -297,7 +297,7 @@ ${questionBlocks}
 
   // 3. Set up AI SDK client
   const llm = createGoogleGenerativeAI({
-    apiKey: process.env.GRADER_API_KEY,
+    apiKey: process.env.GOOGLE_API_KEY,
   });
 
   // 4. Collected grades from submit_grades tool call
