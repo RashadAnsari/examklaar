@@ -43,6 +43,7 @@ next-env.d.ts
 
 # supabase
 supabase/*
+!supabase/emails
 !supabase/migrations
 
 # claude
