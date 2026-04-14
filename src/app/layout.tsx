@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -44,6 +45,13 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen" suppressHydrationWarning>
         {children}
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="bb0ff60f-c421-4173-b118-f7200d0b210e"
+          />
+        )}
       </body>
     </html>
   );
