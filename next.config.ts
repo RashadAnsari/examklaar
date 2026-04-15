@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["@xenova/transformers", "onnxruntime-node", "sharp"],
   // Expose public vars to the client bundle (replaces the NEXT_PUBLIC_ convention).
   env: {
+    PADDLE_CLIENT_TOKEN: process.env.PADDLE_CLIENT_TOKEN ?? "",
     SUPABASE_PUBLIC_URL: process.env.SUPABASE_PUBLIC_URL ?? "",
     SUPABASE_PUBLISHABLE_DEFAULT_KEY: process.env.SUPABASE_PUBLISHABLE_DEFAULT_KEY ?? "",
   },

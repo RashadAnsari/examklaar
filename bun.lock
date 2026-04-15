@@ -8,6 +8,8 @@
         "@ai-sdk/google": "^3.0.61",
         "@heroicons/react": "^2.2.0",
         "@mollie/api-client": "^4.5.0",
+        "@paddle/paddle-js": "^1.6.2",
+        "@paddle/paddle-node-sdk": "^3.7.0",
         "@supabase/ssr": "^0.10.0",
         "@supabase/supabase-js": "^2.101.1",
         "@types/dompurify": "^3.2.0",
@@ -209,6 +211,10 @@
     "@nolyfill/is-core-module": ["@nolyfill/is-core-module@1.0.39", "", {}, "sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA=="],
 
     "@opentelemetry/api": ["@opentelemetry/api@1.9.0", "", {}, "sha512-3giAOQvZiH5F9bMlMiv8+GSPMeqg0dbaeo58/0SlA9sxSqZhnUtxzX9/2FzyhS9sWQf5S0GJE0AKBrFqjpeYcg=="],
+
+    "@paddle/paddle-js": ["@paddle/paddle-js@1.6.2", "", {}, "sha512-nx1NXCzwWUWjf0iaRDiXZlfWgFjNZ6996RFcTDk0G0ggzrh514Zsc6jGTPOUGdLB1sYJXVQiKKoNLoKoXhH+sA=="],
+
+    "@paddle/paddle-node-sdk": ["@paddle/paddle-node-sdk@3.7.0", "", {}, "sha512-VUlmBCGmCJU7mv1H/t7PDVg2GvnPy9tt3rnqbkf4BqpxL6zxKtgFxxXT/B7k6QX//L5lW6fC58ax/a86DJ/zcw=="],
 
     "@protobufjs/aspromise": ["@protobufjs/aspromise@1.1.2", "", {}, "sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ=="],
 
