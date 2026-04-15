@@ -1,4 +1,4 @@
-FROM oven/bun:1.2 AS builder
+FROM oven/bun:1.3 AS builder
 WORKDIR /app
 
 # These vars are baked into the client bundle at build time
