@@ -17,10 +17,16 @@ function getClient(): Paddle {
   if (!apiKey) {
     throw new Error("PADDLE_API_KEY is not set");
   }
-  return new Paddle(apiKey, {
-    environment:
-      process.env.NODE_ENV === "production" ? Environment.production : Environment.sandbox,
-  });
+  const env =
+    process.env.PADDLE_ENVIRONMENT === "production"
+      ? Environment.production
+      : process.env.PADDLE_ENVIRONMENT === "sandbox"
+        ? Environment.sandbox
+        : process.env.NODE_ENV === "production"
+          ? Environment.production
+          : Environment.sandbox;
+
+  return new Paddle(apiKey, { environment: env });
 }
 
 function getPriceId(planId: "premium" | "biannual"): string {

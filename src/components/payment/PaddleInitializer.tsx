@@ -13,7 +13,11 @@ export function PaddleInitializer() {
     }
 
     initializePaddle({
-      environment: process.env.NODE_ENV === "production" ? "production" : "sandbox",
+      environment:
+        process.env.PADDLE_ENVIRONMENT === "production" ||
+        (!process.env.PADDLE_ENVIRONMENT && process.env.NODE_ENV === "production")
+          ? "production"
+          : "sandbox",
       token,
       checkout: {
         settings: {

@@ -41,6 +41,7 @@ jobs:
           tags: examklaar:${{ github.sha }}
           build-args: |
             GIT_SHA=${{ github.sha }}
+            PADDLE_ENVIRONMENT=${{ secrets.PADDLE_ENVIRONMENT }}
             PADDLE_CLIENT_TOKEN=${{ secrets.PADDLE_CLIENT_TOKEN }}
             SUPABASE_PUBLIC_URL=${{ secrets.SUPABASE_PUBLIC_URL }}
             SUPABASE_PUBLISHABLE_DEFAULT_KEY=${{ secrets.SUPABASE_PUBLISHABLE_DEFAULT_KEY }}
@@ -69,6 +70,7 @@ jobs:
             -e "supabase_service_role_key=${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}"
             -e "supabase_publishable_default_key=${{ secrets.SUPABASE_PUBLISHABLE_DEFAULT_KEY }}"
             -e "paddle_api_key=${{ secrets.PADDLE_API_KEY }}"
+            -e "paddle_environment=${{ secrets.PADDLE_ENVIRONMENT }}"
             -e "paddle_client_token=${{ secrets.PADDLE_CLIENT_TOKEN }}"
             -e "paddle_webhook_secret=${{ secrets.PADDLE_WEBHOOK_SECRET }}"
             -e "paddle_price_id_premium=${{ secrets.PADDLE_PRICE_ID_PREMIUM }}"
