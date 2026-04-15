@@ -19,7 +19,6 @@ export async function POST() {
     return NextResponse.json({ error: "No active subscription to cancel" }, { status: 400 });
   }
 
-  // Call the provider first (no-op for stub).
   if (sub.providerSubscriptionId) {
     try {
       const provider = getPaymentProvider();

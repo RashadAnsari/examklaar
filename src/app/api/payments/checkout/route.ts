@@ -5,11 +5,6 @@ import { createAdminClient } from "@/utils/supabase/admin";
 import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
 import { getPaymentProvider } from "@/lib/payment/provider";
 
-const PLAN_DURATION_MONTHS: Record<"premium" | "biannual", number> = {
-  premium: 1,
-  biannual: 6,
-};
-
 export async function POST(req: NextRequest) {
   const supabase = createClient(await cookies());
   const {
@@ -30,44 +25,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "You already have an active subscription" }, { status: 400 });
   }
 
+  const providerName = process.env.PAYMENT_PROVIDER;
+  if (!providerName) {
+    return NextResponse.json({ error: "No payment provider configured" }, { status: 503 });
+  }
+
   const origin = req.nextUrl.origin;
   const successUrl = `${origin}/payment/success`;
   const cancelUrl = `${origin}/payment/cancel`;
 
-  const isStub = !process.env.PAYMENT_PROVIDER;
-  if (isStub) {
-    // Stub mode: write subscription directly and redirect to success page.
-    const now = new Date();
-    const periodEnd = new Date(now);
-    periodEnd.setMonth(periodEnd.getMonth() + PLAN_DURATION_MONTHS[planId]);
-
-    const admin = createAdminClient();
-    const { error } = await admin.from("subscriptions").upsert(
-      {
-        user_id: user.id,
-        plan_id: planId,
-        status: "active",
-        payment_provider: "stub",
-        provider_customer_id: null,
-        provider_subscription_id: null,
-        current_period_start: now.toISOString(),
-        current_period_end: periodEnd.toISOString(),
-        cancel_at_period_end: false,
-        updated_at: now.toISOString(),
-      },
-      { onConflict: "user_id" }
-    );
-
-    if (error) {
-      console.error("[checkout] stub upsert error:", error);
-      return NextResponse.json({ error: "Failed to activate subscription" }, { status: 500 });
-    }
-
-    return NextResponse.json({ checkoutUrl: successUrl });
-  }
-
-  // Real provider mode.
-  const providerName = process.env.PAYMENT_PROVIDER!;
   const admin = createAdminClient();
 
   // Look up existing customer ID for this provider, if any.

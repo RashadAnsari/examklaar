@@ -1,3 +1,6 @@
+import { cookies } from "next/headers";
+import { createClient } from "@/utils/supabase/server";
+import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
 import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/pricing/CheckoutButton";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
@@ -73,17 +76,45 @@ export const PLANS = [
   },
 ] as const;
 
-export function PricingCards() {
+export async function PricingCards() {
+  const supabase = createClient(await cookies());
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const loggedIn = !!user;
+  const providerConfigured = !!process.env.PAYMENT_PROVIDER;
+  const showContactUs = loggedIn && !providerConfigured;
+
+  let hasActiveSubscription = false;
+  if (user) {
+    const sub = await getUserSubscription(user.id);
+    hasActiveSubscription = canAccessPremium(sub);
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
       {PLANS.map((plan) => (
-        <PricingCard key={plan.id} plan={plan} />
+        <PricingCard
+          key={plan.id}
+          plan={plan}
+          showContactUs={showContactUs}
+          hasActiveSubscription={hasActiveSubscription}
+        />
       ))}
     </div>
   );
 }
 
-function PricingCard({ plan }: { plan: (typeof PLANS)[number] }) {
+function PricingCard({
+  plan,
+  showContactUs,
+  hasActiveSubscription,
+}: {
+  plan: (typeof PLANS)[number];
+  showContactUs: boolean;
+  hasActiveSubscription: boolean;
+}) {
   const dark = plan.featured;
 
   return (
@@ -217,6 +248,18 @@ function PricingCard({ plan }: { plan: (typeof PLANS)[number] }) {
       {plan.id === "free" ? (
         <Button href={plan.href} variant={plan.ctaVariant} fullWidth>
           {plan.cta}
+        </Button>
+      ) : hasActiveSubscription ? (
+        <Button variant={plan.ctaVariant} fullWidth disabled>
+          {plan.cta}
+        </Button>
+      ) : showContactUs ? (
+        <Button
+          href={`mailto:hallo@examklaar.nl?subject=${encodeURIComponent(`${plan.name} subscription`)}&body=${encodeURIComponent(`Hi,\n\nI'm interested in the ${plan.name} plan (${plan.price} ${plan.priceNote}).\n\nCould you help me get started?\n\nThanks`)}`}
+          variant={plan.ctaVariant}
+          fullWidth
+        >
+          Contact Us
         </Button>
       ) : (
         <CheckoutButton planId={plan.id} variant={plan.ctaVariant} fullWidth>

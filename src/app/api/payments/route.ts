@@ -13,16 +13,14 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const isStub = !process.env.PAYMENT_PROVIDER;
-
   const sub = await getUserSubscription(user.id);
-  if (!sub.providerCustomerId && !isStub) {
+  if (!sub.providerCustomerId) {
     return NextResponse.json({ payments: [] });
   }
 
   try {
     const provider = getPaymentProvider();
-    const payments = await provider.getPaymentHistory(sub.providerCustomerId || "stub_customer");
+    const payments = await provider.getPaymentHistory(sub.providerCustomerId);
     return NextResponse.json({ payments });
   } catch (err) {
     console.error("[payments] provider error:", err);

@@ -1,5 +1,4 @@
 import type { PaymentProvider } from "./types";
-import { StubPaymentProvider } from "./stub";
 import { PaddleProvider } from "./paddle";
 
 /**
@@ -15,6 +14,10 @@ export function getPaymentProvider(): PaymentProvider {
     case "paddle":
       return new PaddleProvider();
     default:
-      return new StubPaymentProvider();
+      throw new Error(`No payment provider configured. Set PAYMENT_PROVIDER in your environment.`);
   }
+}
+
+export function hasPaymentProvider(): boolean {
+  return !!process.env.PAYMENT_PROVIDER;
 }
