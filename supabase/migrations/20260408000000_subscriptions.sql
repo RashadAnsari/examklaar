@@ -10,7 +10,7 @@ create table public.payment_customers (
   created_at  timestamptz not null default now()
 );
 
-comment on column public.payment_customers.provider     is 'stub | mollie';
+comment on column public.payment_customers.provider     is 'paddle';
 comment on column public.payment_customers.customer_id  is 'customer ID at the named payment provider';
 
 alter table public.payment_customers enable row level security;
@@ -47,7 +47,7 @@ create table public.subscriptions (
 
 comment on column public.subscriptions.plan_id                  is 'premium = monthly, biannual = 6-month';
 comment on column public.subscriptions.status                   is 'active | cancelled | past_due | expired';
-comment on column public.subscriptions.payment_provider         is 'stripe | mollie | stub';
+comment on column public.subscriptions.payment_provider         is 'paddle';
 comment on column public.subscriptions.provider_customer_id     is 'customer ID at the payment provider';
 comment on column public.subscriptions.provider_subscription_id is 'subscription ID at the payment provider';
 comment on column public.subscriptions.cancel_at_period_end     is 'true when user requested cancellation; access continues until current_period_end';

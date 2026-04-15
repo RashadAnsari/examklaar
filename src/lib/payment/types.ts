@@ -52,7 +52,7 @@ export interface PaymentProvider {
   parseWebhook(rawBody: string, signature: string | null): Promise<WebhookEvent | null>;
   /**
    * Cancel an active subscription at the provider side.
-   * providerCustomerId is required for providers that scope subscriptions under customers (e.g. Mollie).
+   * providerCustomerId is required for providers that scope subscriptions under customers (e.g. paddle).
    */
   cancelSubscription(
     providerSubscriptionId: string,

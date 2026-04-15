@@ -4,10 +4,7 @@ import { getPaymentProvider } from "@/lib/payment/provider";
 
 export async function POST(req: NextRequest) {
   const rawBody = await req.text();
-  const signature =
-    req.headers.get("paddle-signature") ??
-    req.headers.get("x-mollie-signature") ??
-    req.headers.get("x-payment-signature");
+  const signature = req.headers.get("paddle-signature") ?? req.headers.get("x-payment-signature");
 
   let event;
   try {
