@@ -30,4 +30,4 @@ USER nextjs
 EXPOSE 3000
 ENV HOSTNAME=0.0.0.0
 
-CMD ["node_modules/.bin/next", "start"]
+CMD node_modules/.bin/next start 2>&1 | grep --line-buffered -v "CleanUnusedInitializersAndNodeArgs"

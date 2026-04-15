@@ -77,17 +77,10 @@ export default function SettingsPage() {
     setPwLoading(true);
     setPwErrors({});
     const supabase = createClient();
-    // Verify current password before updating
-    const { error: signInError } = await supabase.auth.signInWithPassword({
-      email,
-      password: passwords.current,
+    const { error } = await supabase.auth.updateUser({
+      current_password: passwords.current,
+      password: passwords.next,
     });
-    if (signInError) {
-      setPwLoading(false);
-      setPwErrors({ current: "Incorrect password" });
-      return;
-    }
-    const { error } = await supabase.auth.updateUser({ password: passwords.next });
     setPwLoading(false);
     if (error) {
       setPwErrors({ form: error.message });
