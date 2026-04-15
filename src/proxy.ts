@@ -4,16 +4,17 @@ import { createClient } from "@/utils/supabase/middleware";
 const PUBLIC_PATHS = [
   "/",
   "/terms",
-  "/login",
-  "/signup",
   "/privacy",
   "/pricing",
+  "/auth/login",
+  "/auth/signup",
   "/auth/callback",
-  "/forgot-password",
+  "/auth/forgot-password",
+  "/auth/reset-password",
   "/api/payments/webhook",
 ];
 
-const GUEST_ONLY_PATHS = ["/login", "/signup", "/forgot-password"];
+const GUEST_ONLY_PATHS = ["/auth/login", "/auth/signup", "/auth/forgot-password"];
 
 function isPublic(pathname: string) {
   return PUBLIC_PATHS.some((path) => pathname === path || pathname.startsWith(path + "/"));
@@ -44,7 +45,7 @@ export async function proxy(request: NextRequest) {
 
     if (!session) {
       const loginUrl = request.nextUrl.clone();
-      loginUrl.pathname = "/login";
+      loginUrl.pathname = "/auth/login";
       return NextResponse.redirect(loginUrl);
     }
 
@@ -54,7 +55,7 @@ export async function proxy(request: NextRequest) {
       return NextResponse.next();
     }
     const loginUrl = request.nextUrl.clone();
-    loginUrl.pathname = "/login";
+    loginUrl.pathname = "/auth/login";
     return NextResponse.redirect(loginUrl);
   }
 }

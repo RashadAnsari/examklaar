@@ -26,7 +26,7 @@ export default async function ReviewPage(props: {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) {
-    redirect("/login");
+    redirect("/auth/login");
   }
 
   const examId = `${skillId}-exam-${n}`;

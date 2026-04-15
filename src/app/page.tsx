@@ -71,7 +71,7 @@ export default function LandingPage() {
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/signup" variant="primary" size="lg">
+            <Button href="/auth/signup" variant="primary" size="lg">
               Start Practicing for Free
               <ArrowRightIcon style={{ width: 20, height: 20 }} />
             </Button>
@@ -210,7 +210,7 @@ export default function LandingPage() {
             Your first exam is free. No credit card required. Practice at your own pace and walk
             into your exam with confidence.
           </p>
-          <Button href="/signup" variant="white" size="lg">
+          <Button href="/auth/signup" variant="white" size="lg">
             Create Your Free Account
             <ArrowRightIcon style={{ width: 20, height: 20 }} />
           </Button>

@@ -97,7 +97,7 @@ export default function LoginPage() {
 
       <div className="text-right mt-3">
         <Link
-          href="/forgot-password"
+          href="/auth/forgot-password"
           className="text-sm font-medium"
           style={{ color: "var(--green-900)" }}
         >
@@ -111,7 +111,7 @@ export default function LoginPage() {
 
       <p className="text-center text-sm" style={{ color: "var(--gray-600)" }}>
         {"Don't have an account? "}
-        <Link href="/signup" className="font-semibold" style={{ color: "var(--green-900)" }}>
+        <Link href="/auth/signup" className="font-semibold" style={{ color: "var(--green-900)" }}>
           Sign up
         </Link>
       </p>

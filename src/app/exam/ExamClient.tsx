@@ -499,7 +499,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
       return;
     }
     gradingRef.current = false;
-    router.replace(`/results?skill=${skillId}&n=${n}`);
+    router.replace(`/exam/results?skill=${skillId}&n=${n}`);
   }
 
   async function submitExam() {
@@ -561,7 +561,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
       return;
     }
 
-    router.replace(`/results?skill=${skillId}&n=${n}`);
+    router.replace(`/exam/results?skill=${skillId}&n=${n}`);
   }
 
   function confirmExit() {

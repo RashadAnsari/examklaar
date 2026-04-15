@@ -193,12 +193,12 @@ export function Navbar() {
             ) : (
               <>
                 <Link
-                  href="/login"
+                  href="/auth/login"
                   className="text-sm font-medium text-[var(--gray-600)] transition hover:text-[var(--green-900)]"
                 >
                   Log in
                 </Link>
-                <Button href="/signup" variant="primary" size="sm">
+                <Button href="/auth/signup" variant="primary" size="sm">
                   Start Practicing
                 </Button>
               </>
@@ -293,13 +293,13 @@ export function Navbar() {
           ) : (
             <>
               <Link
-                href="/login"
+                href="/auth/login"
                 className="flex w-full items-center justify-center rounded-lg border border-[var(--gray-200)] bg-white px-4 py-2.5 text-sm font-medium text-[var(--gray-700)] transition hover:border-[var(--green-900)] hover:text-[var(--green-900)]"
               >
                 Log in
               </Link>
               <Link
-                href="/signup"
+                href="/auth/signup"
                 className="mt-2 flex w-full items-center justify-center rounded-lg bg-[var(--green-900)] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[var(--green-700)]"
               >
                 Start Practicing

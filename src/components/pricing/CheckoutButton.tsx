@@ -33,7 +33,7 @@ export function CheckoutButton({
       });
 
       if (res.status === 401) {
-        router.push("/signup?next=/pricing");
+        router.push("/auth/signup?next=/pricing");
         return;
       }
 

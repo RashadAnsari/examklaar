@@ -205,7 +205,7 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
                   </Button>
                 ) : exam.result ? (
                   <>
-                    <Button href={`/results?skill=${id}&n=${exam.n}`} variant="outline">
+                    <Button href={`/exam/results?skill=${id}&n=${exam.n}`} variant="outline">
                       Review
                     </Button>
                     <Button href={`/exam?skill=${id}&n=${exam.n}`} variant="primary">

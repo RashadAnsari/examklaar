@@ -179,7 +179,11 @@ export default function SignupPage() {
 
           <p className="text-center text-sm" style={{ color: "var(--gray-600)" }}>
             Already have an account?{" "}
-            <Link href="/login" className="font-semibold" style={{ color: "var(--green-900)" }}>
+            <Link
+              href="/auth/login"
+              className="font-semibold"
+              style={{ color: "var(--green-900)" }}
+            >
               Log in
             </Link>
           </p>

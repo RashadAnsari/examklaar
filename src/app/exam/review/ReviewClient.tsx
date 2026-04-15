@@ -189,7 +189,7 @@ export function ReviewClient({
         <Button href={`/exam?skill=${skillId}&n=${n}`} variant="primary">
           Try Again
         </Button>
-        <Button href={`/results?skill=${skillId}&n=${n}`} variant="outline">
+        <Button href={`/exam/results?skill=${skillId}&n=${n}`} variant="outline">
           Back to Results
         </Button>
       </div>

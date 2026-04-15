@@ -54,7 +54,7 @@ export default async function ResultsPage(props: {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) {
-    redirect("/login");
+    redirect("/auth/login");
   }
 
   const examId = `${skillId}-exam-${n}`;
@@ -356,7 +356,7 @@ export default async function ResultsPage(props: {
           }`}
         >
           <ActionCard
-            href={`/review?skill=${skillId}&n=${n}`}
+            href={`/exam/review?skill=${skillId}&n=${n}`}
             icon={<EyeIcon style={{ width: 24, height: 24 }} />}
             title="Review Answers"
             description="See detailed explanations for all questions"
@@ -379,7 +379,7 @@ export default async function ResultsPage(props: {
 
         {/* CTAs */}
         <div className="flex flex-wrap gap-4 justify-center">
-          <Button href={`/review?skill=${skillId}&n=${n}`} variant="primary">
+          <Button href={`/exam/review?skill=${skillId}&n=${n}`} variant="primary">
             Review All Answers
           </Button>
           <Button href={`/exams/${skillId}`} variant="secondary">

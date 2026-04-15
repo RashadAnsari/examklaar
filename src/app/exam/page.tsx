@@ -31,7 +31,7 @@ export default async function ExamPage(props: {
       data: { user },
     } = await supabase.auth.getUser();
     if (!user) {
-      redirect("/login");
+      redirect("/auth/login");
     }
     const sub = await getUserSubscription(user.id);
     if (!canAccessPremium(sub)) {
