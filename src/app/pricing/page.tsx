@@ -49,8 +49,7 @@ const FAQS = [
   },
   {
     question: "What payment methods do you accept?",
-    answer:
-      "We accept iDEAL, credit cards (Visa, Mastercard), and other common payment methods. All payments are secure and encrypted.",
+    answer: "We accept cards (Visa, Mastercard) and iDEAL. All payments are secure and encrypted.",
   },
 ];
 
