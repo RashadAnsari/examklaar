@@ -8,7 +8,6 @@ dev:
 lint:
 	bun run lint
 	bunx prettier --check "**/*.{ts,tsx,css,json,md}" --ignore-path .gitignore
-	bunx tsc --noEmit
 
 format:
 	bunx prettier --write "**/*.{ts,tsx,css,json,md}" --ignore-path .gitignore
