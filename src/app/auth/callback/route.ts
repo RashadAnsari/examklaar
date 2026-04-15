@@ -16,6 +16,8 @@ export async function GET(request: Request) {
   }
 
   const raw = searchParams.get("next") ?? "/dashboard";
-  const next = raw.startsWith("/") ? raw : "/dashboard";
+  // Reject protocol-relative (//evil.com) and absolute URLs — only allow
+  // paths that start with "/" but not "//".
+  const next = raw.startsWith("/") && !raw.startsWith("//") ? raw : "/dashboard";
   redirect(next);
 }

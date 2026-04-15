@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
 // Singleton pipeline — loaded once per server process, reused across requests
 let transcriber: ((audio: Float32Array, opts: object) => Promise<{ text: string }>) | null = null;
@@ -36,6 +38,14 @@ function decodeWav(buffer: Buffer): Float32Array {
 }
 
 export async function POST(req: NextRequest) {
+  const supabase = createClient(await cookies());
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   try {
     const formData = await req.formData();
     const file = formData.get("file");

@@ -10,7 +10,6 @@ const PUBLIC_PATHS = [
   "/auth/signup",
   "/auth/callback",
   "/auth/forgot-password",
-  "/auth/reset-password",
   "/api/payments/webhook",
 ];
 

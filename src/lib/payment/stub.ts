@@ -18,7 +18,14 @@ export class StubPaymentProvider implements PaymentProvider {
     return { checkoutUrl: successUrl, sessionId: "stub", customerId: "stub_customer" };
   }
 
-  async parseWebhook(rawBody: string, _signature: string | null): Promise<WebhookEvent | null> {
+  async parseWebhook(rawBody: string, signature: string | null): Promise<WebhookEvent | null> {
+    const secret = process.env.STUB_WEBHOOK_SECRET;
+    if (!secret) {
+      throw new Error("Stub webhook is disabled: set STUB_WEBHOOK_SECRET to enable it");
+    }
+    if (signature !== secret) {
+      throw new Error("Stub webhook: invalid signature");
+    }
     return JSON.parse(rawBody) as WebhookEvent;
   }
 
