@@ -287,7 +287,7 @@ export class PaddleProvider implements PaymentProvider {
 
       payments.push({
         providerPaymentId: tx.id,
-        amountCents: Math.round(parseFloat(total) * 100),
+        amountCents: Math.round(parseFloat(total)),
         currency: tx.currencyCode,
         status: "paid",
         paidAt: tx.billedAt ? new Date(tx.billedAt) : null,
