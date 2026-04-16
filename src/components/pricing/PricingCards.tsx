@@ -98,6 +98,7 @@ export async function PricingCards() {
         <PricingCard
           key={plan.id}
           plan={plan}
+          loggedIn={loggedIn}
           showContactUs={showContactUs}
           hasActiveSubscription={hasActiveSubscription}
         />
@@ -108,10 +109,12 @@ export async function PricingCards() {
 
 function PricingCard({
   plan,
+  loggedIn,
   showContactUs,
   hasActiveSubscription,
 }: {
   plan: (typeof PLANS)[number];
+  loggedIn: boolean;
   showContactUs: boolean;
   hasActiveSubscription: boolean;
 }) {
@@ -251,6 +254,10 @@ function PricingCard({
         </Button>
       ) : hasActiveSubscription ? (
         <Button variant={plan.ctaVariant} fullWidth disabled>
+          {plan.cta}
+        </Button>
+      ) : !loggedIn ? (
+        <Button href="/auth/login?next=/pricing" variant={plan.ctaVariant} fullWidth>
           {plan.cta}
         </Button>
       ) : showContactUs ? (
