@@ -25,7 +25,7 @@ export const PLANS = [
     ],
     cta: "Get Started for Free",
     ctaVariant: "outline" as const,
-    href: "/signup",
+    href: "/auth/signup",
     featured: false,
   },
   {
@@ -249,8 +249,8 @@ function PricingCard({
 
       {/* CTA */}
       {plan.id === "free" ? (
-        <Button href={plan.href} variant={plan.ctaVariant} fullWidth>
-          {plan.cta}
+        <Button href={loggedIn ? "/dashboard" : plan.href} variant={plan.ctaVariant} fullWidth>
+          {loggedIn ? "Go to Dashboard" : plan.cta}
         </Button>
       ) : hasActiveSubscription ? (
         <Button variant={plan.ctaVariant} fullWidth disabled>
