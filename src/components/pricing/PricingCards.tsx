@@ -253,8 +253,8 @@ function PricingCard({
           {loggedIn ? "Go to Dashboard" : plan.cta}
         </Button>
       ) : hasActiveSubscription ? (
-        <Button variant={plan.ctaVariant} fullWidth disabled>
-          {plan.cta}
+        <Button href="/dashboard" variant={plan.ctaVariant} fullWidth>
+          Go to Dashboard
         </Button>
       ) : !loggedIn ? (
         <Button href="/auth/login?next=/pricing" variant={plan.ctaVariant} fullWidth>
