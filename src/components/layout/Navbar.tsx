@@ -158,26 +158,30 @@ export function Navbar() {
 
                 {menuOpen && (
                   <div className="absolute right-0 mt-2 w-48 overflow-hidden rounded-xl border border-[var(--gray-200)] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.1)] py-1.5">
-                    {pathname !== "/dashboard" && (
-                      <Link
-                        href="/dashboard"
-                        className="flex items-center gap-2.5 px-4 py-2 text-sm text-[var(--gray-700)] transition hover:bg-[var(--gray-50)]"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        <Squares2X2Icon className="h-4 w-4" />
-                        Dashboard
-                      </Link>
-                    )}
-                    {pathname !== "/settings" && (
-                      <Link
-                        href="/settings"
-                        className="flex items-center gap-2.5 px-4 py-2 text-sm text-[var(--gray-700)] transition hover:bg-[var(--gray-50)]"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        <Cog6ToothIcon className="h-4 w-4" />
-                        Settings
-                      </Link>
-                    )}
+                    <Link
+                      href="/dashboard"
+                      className={`flex items-center gap-2.5 px-4 py-2 text-sm transition ${
+                        pathname === "/dashboard"
+                          ? "bg-[var(--green-50)] text-[var(--green-900)]"
+                          : "text-[var(--gray-700)] hover:bg-[var(--gray-50)]"
+                      }`}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      <Squares2X2Icon className="h-4 w-4" />
+                      Dashboard
+                    </Link>
+                    <Link
+                      href="/settings"
+                      className={`flex items-center gap-2.5 px-4 py-2 text-sm transition ${
+                        pathname === "/settings"
+                          ? "bg-[var(--green-50)] text-[var(--green-900)]"
+                          : "text-[var(--gray-700)] hover:bg-[var(--gray-50)]"
+                      }`}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      <Cog6ToothIcon className="h-4 w-4" />
+                      Settings
+                    </Link>
                     <div className="my-1 h-px bg-[var(--gray-100)]" />
                     <button
                       type="button"
@@ -256,17 +260,17 @@ export function Navbar() {
         </div>
 
         <nav className="flex flex-col flex-1 gap-0.5 overflow-y-auto px-3 py-3">
+          {user && (
+            <>
+              <MobileNavLink href="/dashboard">Dashboard</MobileNavLink>
+              <MobileNavLink href="/settings">Settings</MobileNavLink>
+              <div className="my-2 h-px bg-[var(--gray-100)]" />
+            </>
+          )}
           <MobileNavLink href="/#features">Features</MobileNavLink>
           <MobileNavLink href="/pricing">Pricing</MobileNavLink>
           <MobileNavLink href="/privacy">Privacy</MobileNavLink>
           <MobileNavLink href="/terms">Terms</MobileNavLink>
-          {user && (
-            <>
-              <div className="my-2 h-px bg-[var(--gray-100)]" />
-              <MobileNavLink href="/dashboard">Dashboard</MobileNavLink>
-              <MobileNavLink href="/settings">Settings</MobileNavLink>
-            </>
-          )}
         </nav>
 
         <div className="border-t border-[var(--gray-200)] px-4 py-5">
