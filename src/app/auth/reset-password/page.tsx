@@ -4,9 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { createClient } from "@/utils/supabase/client";
 import { ErrorBanner } from "@/components/ui/ErrorBanner";
 import { AuthCard } from "@/components/ui/AuthCard";
+import { resetPassword } from "./actions";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -29,11 +29,10 @@ export default function ResetPasswordPage() {
     }
     setLoading(true);
     setErrors({});
-    const supabase = createClient();
-    const { error } = await supabase.auth.updateUser({ password: passwords.next });
+    const { error } = await resetPassword(passwords.next);
     setLoading(false);
     if (error) {
-      setErrors({ form: error.message });
+      setErrors({ form: error });
       return;
     }
     router.push("/dashboard");
