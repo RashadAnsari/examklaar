@@ -29,7 +29,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Audio recordings",
-        text: "For speaking practice exercises, we collect audio recordings you submit. These are used to provide AI-powered pronunciation and language feedback.",
+        text: "For speaking practice exercises, we collect audio recordings you submit. These are used to provide AI-powered language and fluency feedback.",
       },
       {
         subtitle: "Payment information",

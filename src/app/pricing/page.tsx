@@ -41,7 +41,7 @@ const FAQS = [
   {
     question: "How does the AI feedback work?",
     answer:
-      "For writing exercises, our AI reviews your Dutch text and highlights grammar, vocabulary, and sentence structure errors with explanations. For speaking exercises, you record your answer and receive feedback on pronunciation and fluency. All feedback is in plain language so you know exactly what to improve.",
+      "For writing exercises, our AI reviews your Dutch text and highlights grammar, vocabulary, and sentence structure errors with explanations. For speaking exercises, you record your answer and receive feedback on fluency and language use. All feedback is in plain language so you know exactly what to improve.",
   },
   {
     question: "Can I cancel my subscription anytime?",

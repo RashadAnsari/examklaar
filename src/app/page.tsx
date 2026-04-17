@@ -199,7 +199,7 @@ export default function LandingPage() {
             <FeatureCard
               icon={<MicrophoneIcon style={{ width: 24, height: 24 }} />}
               title="Speaking Practice"
-              description="Record your answers and receive AI feedback on pronunciation, fluency, and structure."
+              description="Record your answers and receive AI feedback on fluency, clarity, and structure."
               highlight
             />
             <FeatureCard
