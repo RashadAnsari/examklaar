@@ -271,6 +271,15 @@ export class PaddleProvider implements PaymentProvider {
   }
 
   async getPaymentHistory(providerCustomerId: string): Promise<ProviderPayment[]> {
+    const refundedTransactionIds = new Set<string>();
+    for await (const adj of this.client.adjustments.list({
+      customerId: [providerCustomerId],
+      action: "refund",
+      status: ["approved"],
+    })) {
+      refundedTransactionIds.add(adj.transactionId);
+    }
+
     const payments: ProviderPayment[] = [];
     for await (const tx of this.client.transactions.list({
       customerId: [providerCustomerId],
@@ -289,7 +298,7 @@ export class PaddleProvider implements PaymentProvider {
         providerPaymentId: tx.id,
         amountCents: Math.round(parseFloat(total)),
         currency: tx.currencyCode,
-        status: "paid",
+        status: refundedTransactionIds.has(tx.id) ? "refunded" : "paid",
         paidAt: tx.billedAt ? new Date(tx.billedAt) : null,
         description,
       });

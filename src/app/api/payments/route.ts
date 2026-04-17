@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
-import { getUserSubscription } from "@/lib/payment/subscription";
-import { getPaymentProvider } from "@/lib/payment/provider";
+import { createAdminClient } from "@/utils/supabase/admin";
+import { getPaymentProviderByName } from "@/lib/payment/provider";
 
 export async function GET() {
   const supabase = createClient(await cookies());
@@ -13,14 +13,31 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const sub = await getUserSubscription(user.id);
-  if (!sub.providerCustomerId) {
+  const admin = createAdminClient();
+  const { data: customerRows } = await admin
+    .from("payment_customers")
+    .select("provider, customer_id")
+    .eq("user_id", user.id);
+
+  if (!customerRows?.length) {
     return NextResponse.json({ payments: [] });
   }
 
   try {
-    const provider = getPaymentProvider();
-    const payments = await provider.getPaymentHistory(sub.providerCustomerId);
+    const results = await Promise.allSettled(
+      customerRows.map(({ provider, customer_id }) => {
+        const p = getPaymentProviderByName(provider);
+        return p ? p.getPaymentHistory(customer_id) : Promise.resolve([]);
+      })
+    );
+
+    const payments = results.flatMap((r) => (r.status === "fulfilled" ? r.value : []));
+    payments.sort((a, b) => {
+      const aTime = a.paidAt?.getTime() ?? 0;
+      const bTime = b.paidAt?.getTime() ?? 0;
+      return bTime - aTime;
+    });
+
     return NextResponse.json({ payments });
   } catch (err) {
     console.error("[payments] provider error:", err);

@@ -337,7 +337,7 @@ function SubscriptionSection() {
               isPaid && periodEnd
                 ? sub.cancelAtPeriodEnd
                   ? `Cancels on ${periodEnd.toLocaleDateString("en-NL", { day: "numeric", month: "long", year: "numeric" })}`
-                  : `Active until ${periodEnd.toLocaleDateString("en-NL", { day: "numeric", month: "long", year: "numeric" })}`
+                  : `Renews on ${periodEnd.toLocaleDateString("en-NL", { day: "numeric", month: "long", year: "numeric" })}`
                 : "Access to 1 free exam per skill"
             }
           >
@@ -394,13 +394,13 @@ function SubscriptionSection() {
                         Description
                       </th>
                       <th
-                        className="text-right px-4 py-3 font-medium"
+                        className="text-left px-4 py-3 font-medium"
                         style={{ color: "var(--gray-500)" }}
                       >
                         Amount
                       </th>
                       <th
-                        className="text-right px-4 py-3 font-medium"
+                        className="text-left px-4 py-3 font-medium"
                         style={{ color: "var(--gray-500)" }}
                       >
                         Status
@@ -425,13 +425,13 @@ function SubscriptionSection() {
                         <td className="px-4 py-3" style={{ color: "var(--gray-700)" }}>
                           {p.description}
                         </td>
-                        <td className="px-4 py-3 text-right" style={{ color: "var(--gray-700)" }}>
+                        <td className="px-4 py-3" style={{ color: "var(--gray-700)" }}>
                           {(p.amountCents / 100).toLocaleString("nl-NL", {
                             style: "currency",
                             currency: p.currency,
                           })}
                         </td>
-                        <td className="px-4 py-3 text-right">
+                        <td className="px-4 py-3">
                           <span
                             className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold"
                             style={{
