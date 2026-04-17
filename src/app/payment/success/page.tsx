@@ -56,7 +56,7 @@ export default function PaymentSuccessPage() {
             </div>
             <div>
               <p className="text-2xl font-semibold text-slate-900">
-                Payment received — still processing
+                Payment received, still processing
               </p>
               <p className="mt-3 text-sm leading-6 text-slate-500">
                 We&apos;re finalizing your subscription in the background. If your plan doesn&apos;t

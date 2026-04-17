@@ -17,21 +17,57 @@ import {
 } from "@heroicons/react/20/solid";
 
 export const metadata: Metadata = {
-  title: "ExamKlaar — Practice for Your Dutch Inburgering Exam",
+  title: "ExamKlaar: Practice for Your Dutch Inburgering Exam",
   description:
-    "Prepare for your Dutch inburgering exam with realistic practice exams for KNM, Reading, Listening, Writing, and Speaking. AI feedback included. Start free.",
+    "Prepare for your Dutch inburgering exam (A2/B1) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. Free to start.",
   alternates: { canonical: "https://www.examklaar.nl" },
   openGraph: {
-    title: "ExamKlaar — Practice for Your Dutch Inburgering Exam",
+    title: "ExamKlaar: Practice for Your Dutch Inburgering Exam",
     description:
-      "Realistic mock exams for all 5 inburgering components with AI-powered feedback. Free to start.",
+      "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. Free to start.",
     url: "https://www.examklaar.nl",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ExamKlaar: Practice for Your Dutch Inburgering Exam",
+    description:
+      "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. Free to start.",
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "ExamKlaar",
+  url: "https://www.examklaar.nl",
+  description:
+    "Realistic oefenexamens for all 5 Dutch inburgering exam components with AI-powered feedback.",
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "ExamKlaar",
+  url: "https://www.examklaar.nl",
+  logo: "https://www.examklaar.nl/examklaar-logo.svg",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "hallo@examklaar.nl",
+    contactType: "customer support",
   },
 };
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -42,7 +78,7 @@ export default function LandingPage() {
             style={{ background: "var(--green-50)", color: "var(--green-700)" }}
           >
             <ClockIcon style={{ width: 15, height: 15 }} />
-            Have an exam deadline? Start practicing today — it&apos;s free
+            Have an exam deadline? Start practicing today. It&apos;s free.
           </div>
 
           <h1
@@ -66,8 +102,8 @@ export default function LandingPage() {
               lineHeight: 1.75,
             }}
           >
-            Realistic mock exams for all 5 components — KNM, Reading, Listening, Writing, and
-            Speaking — with AI-powered feedback on every answer.
+            Realistic mock exams for all 5 components: KNM, Reading, Listening, Writing, and
+            Speaking. AI-powered feedback on every answer.
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
@@ -169,7 +205,7 @@ export default function LandingPage() {
             <FeatureCard
               icon={<AcademicCapIcon style={{ width: 24, height: 24 }} />}
               title="All 5 Exam Skills"
-              description="KNM, Reading, Listening, Writing, and Speaking — everything covered in one place, at your own pace."
+              description="KNM, Reading, Listening, Writing, and Speaking. Everything covered in one place, at your own pace."
             />
             <FeatureCard
               icon={<BoltIcon style={{ width: 24, height: 24 }} />}

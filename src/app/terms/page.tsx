@@ -78,7 +78,7 @@ const SECTIONS = [
   },
   {
     title: "6. Intellectual Property",
-    content: `All content on ExamKlaar — including exam questions, explanations, audio, design, and software — is owned by ExamKlaar or its licensors. You are granted a limited, non-transferable licence to use the platform for personal exam preparation only. You may not reproduce, distribute, or create derivative works from our content without written permission.`,
+    content: `All content on ExamKlaar, including exam questions, explanations, audio, design, and software, is owned by ExamKlaar or its licensors. You are granted a limited, non-transferable licence to use the platform for personal exam preparation only. You may not reproduce, distribute, or create derivative works from our content without written permission.`,
   },
   {
     title: "7. AI Feedback Disclaimer",
@@ -169,7 +169,7 @@ export default function TermsPage() {
                       {"subtitle" in item && item.subtitle ? (
                         <>
                           <strong style={{ color: "var(--gray-800)" }}>{item.subtitle}</strong>
-                          {" — "}
+                          {": "}
                           {item.text}
                         </>
                       ) : (

@@ -76,7 +76,7 @@ export default async function ReviewPage(props: {
   }));
 
   const skillTitle = SKILL_TITLES[skill] ?? skill;
-  const levelLabel = level && skill !== "knm" ? ` — ${level}` : "";
+  const levelLabel = level && skill !== "knm" ? ` (${level})` : "";
   const examTitle = `${exam.title ?? `${skillTitle} Exam ${n}`}${levelLabel}`;
   const displayPct = scorePct(result.score, result.total_score);
   const threshold = getPassThreshold(skill, level, result.total_score);

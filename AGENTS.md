@@ -34,3 +34,4 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - No duplicate components: reuse existing ones with props rather than creating variants.
 - **No duplicate code**: before writing a constant, function, or utility, search the codebase first. If it already exists, import it — never redefine it. Shared logic belongs in `src/lib/`. Shared UI belongs in `src/components/ui/`. Shared constants (`EXAMS_DIR`, etc.) live in the relevant lib file.
 - **Punctuation**: no period on short labels, headings, button text, and single-phrase descriptions. Use a period on full sentences, especially multi-clause ones (FAQs, warnings, longer descriptions).
+- **Em dash**: never use the em dash character (—) in any user-facing text, copy, labels, or metadata. Use a colon, comma, or period instead.

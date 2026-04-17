@@ -81,9 +81,9 @@ export function getScoreFeedback(
 
   if (skill === "writing" || skill === "speaking") {
     return pct >= 60
-      ? { label: `Passed — ${pct}% (need 60%+)`, color: "var(--green-700)" }
+      ? { label: `Passed: ${pct}% (need 60%+)`, color: "var(--green-700)" }
       : {
-          label: `Not yet passing — ${pct}% (need ${threshold}/${total} pts)`,
+          label: `Not yet passing: ${pct}% (need ${threshold}/${total} pts)`,
           color: "var(--red)",
         };
   }
@@ -91,12 +91,12 @@ export function getScoreFeedback(
   const approx = isApproxThreshold(skill, level);
   if (score >= threshold) {
     return {
-      label: `Passed — ${pct}% (need ${approx ? "≈" : ""}${thresholdPct}%+)`,
+      label: `Passed: ${pct}% (need ${approx ? "≈" : ""}${thresholdPct}%+)`,
       color: "var(--green-700)",
     };
   }
   return {
-    label: `Not yet passing — ${pct}% (${threshold - score} more correct needed)`,
+    label: `Not yet passing: ${pct}% (${threshold - score} more correct needed)`,
     color: "var(--red)",
   };
 }

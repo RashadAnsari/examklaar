@@ -51,9 +51,9 @@ const SECTIONS = [
     title: "4. Legal Basis (GDPR)",
     content: `We process your personal data on the following legal grounds under the General Data Protection Regulation (GDPR):`,
     items: [
-      { text: "Contract performance — to deliver the service you signed up for" },
-      { text: "Legitimate interest — to improve the platform and prevent abuse" },
-      { text: "Consent — for any optional communications you opt into" },
+      { text: "Contract performance: to deliver the service you signed up for" },
+      { text: "Legitimate interest: to improve the platform and prevent abuse" },
+      { text: "Consent: for any optional communications you opt into" },
     ],
   },
   {
@@ -62,7 +62,7 @@ const SECTIONS = [
     items: [
       { text: "Database and authentication infrastructure providers" },
       { text: "Payment processing providers" },
-      { text: "AI providers — for analysing exam responses and audio feedback" },
+      { text: "AI providers, for analysing exam responses and audio feedback" },
     ],
     footer:
       "All third parties are bound by data processing agreements and may only use your data to provide services on our behalf.",
@@ -75,12 +75,12 @@ const SECTIONS = [
     title: "7. Your Rights",
     content: `Under the GDPR, you have the following rights:`,
     items: [
-      { text: "Access — request a copy of the personal data we hold about you" },
-      { text: "Correction — ask us to correct inaccurate or incomplete data" },
-      { text: "Deletion — request the erasure of your personal data" },
-      { text: "Portability — receive your data in a structured, machine-readable format" },
-      { text: "Objection — object to processing based on legitimate interest" },
-      { text: "Restriction — ask us to limit how we process your data" },
+      { text: "Access: request a copy of the personal data we hold about you" },
+      { text: "Correction: ask us to correct inaccurate or incomplete data" },
+      { text: "Deletion: request the erasure of your personal data" },
+      { text: "Portability: receive your data in a structured, machine-readable format" },
+      { text: "Objection: object to processing based on legitimate interest" },
+      { text: "Restriction: ask us to limit how we process your data" },
     ],
     footer:
       "To exercise any of these rights, contact us at hallo@examklaar.nl. We will respond within 30 days.",
@@ -162,7 +162,7 @@ export default function PrivacyPage() {
                       {"subtitle" in item && item.subtitle ? (
                         <>
                           <strong style={{ color: "var(--gray-800)" }}>{item.subtitle}</strong>
-                          {" — "}
+                          {": "}
                           {item.text}
                         </>
                       ) : (

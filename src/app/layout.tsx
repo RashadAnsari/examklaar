@@ -13,15 +13,34 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.examklaar.nl"),
   title: {
-    default: "ExamKlaar — Practice for Your Dutch Inburgering Exam",
+    default: "ExamKlaar: Practice for Your Dutch Inburgering Exam",
     template: "%s | ExamKlaar",
   },
   description:
-    "Realistic mock exams for all 5 inburgering exam components — KNM, Reading, Listening, Writing, and Speaking — with AI-powered feedback. Start free.",
+    "Prepare for your Dutch inburgering exam (A2/B1) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. Free to start.",
+  keywords: [
+    "oefenexamen inburgering",
+    "inburgering oefenen",
+    "inburgeringsexamen voorbereiding",
+    "KNM oefenen",
+    "KNM oefenexamen",
+    "inburgering gratis",
+    "inburgering exam practice",
+    "Dutch civic integration exam",
+    "Nederlands A2 oefenen",
+    "inburgering A2",
+    "oefenen Nederlands online",
+    "DUO inburgering",
+  ],
   openGraph: {
     siteName: "ExamKlaar",
     type: "website",
-    locale: "en_NL",
+    locale: "en_US",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "ExamKlaar" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,

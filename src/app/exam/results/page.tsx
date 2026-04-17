@@ -112,7 +112,7 @@ export default async function ResultsPage(props: {
   const isMcq = skill !== "writing" && skill !== "speaking";
 
   const skillTitle = SKILL_TITLES[skill] ?? skill;
-  const levelLabel = level && skill !== "knm" ? ` — ${level}` : "";
+  const levelLabel = level && skill !== "knm" ? ` (${level})` : "";
   const examTitle = exam?.title ?? `${skillTitle} Exam ${n}`;
 
   const heading =

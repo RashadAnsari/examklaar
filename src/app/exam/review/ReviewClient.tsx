@@ -105,7 +105,7 @@ export function ReviewClient({
           style={{ maxWidth: "900px" }}
         >
           <h1 className="font-semibold" style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}>
-            {examTitle} — Review
+            {examTitle}: Review
           </h1>
           <span
             className="px-5 py-2 rounded-full font-bold"

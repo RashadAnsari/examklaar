@@ -4,15 +4,21 @@ import { Footer } from "@/components/layout/Footer";
 import { PricingCards } from "@/components/pricing/PricingCards";
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Pricing: Inburgering Exam Practice Plans",
   description:
-    "Start free or upgrade to Premium for €9.99/month. Get full access to all 5 inburgering exam skills with AI-powered feedback.",
+    "Start free or upgrade for €9.99/month. Get unlimited access to all 5 inburgering exam components — KNM, Reading, Listening, Writing, and Speaking — with AI-powered feedback.",
   alternates: { canonical: "https://www.examklaar.nl/pricing" },
   openGraph: {
-    title: "Pricing | ExamKlaar",
+    title: "Pricing: Inburgering Exam Practice Plans | ExamKlaar",
     description:
-      "Start free or upgrade to Premium for €9.99/month. Full access to all exam skills with AI feedback.",
+      "Start free or upgrade for €9.99/month. Unlimited access to all 5 inburgering exam components with AI-powered feedback.",
     url: "https://www.examklaar.nl/pricing",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pricing: Inburgering Exam Practice Plans | ExamKlaar",
+    description:
+      "Start free or upgrade for €9.99/month. Unlimited access to all 5 inburgering exam components with AI-powered feedback.",
   },
 };
 
