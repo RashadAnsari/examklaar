@@ -107,8 +107,6 @@ export class PaddleProvider implements PaymentProvider {
 
     const event = await this.client.webhooks.unmarshal(rawBody, secret, signature);
 
-    console.info("[webhook] received eventType=%s", event.eventType);
-
     switch (event.eventType) {
       case EventName.SubscriptionCreated:
       case EventName.SubscriptionActivated: {
@@ -271,15 +269,10 @@ export class PaddleProvider implements PaymentProvider {
       case EventName.AdjustmentUpdated: {
         const adj = (event as AdjustmentCreatedEvent | AdjustmentUpdatedEvent).data;
         const isRefund = adj.action === "refund" || adj.action === "chargeback";
-        console.info(
-          "[webhook] adjustment action=%s status=%s subscriptionId=%s",
-          adj.action,
-          adj.status,
-          adj.subscriptionId
-        );
         if (!isRefund || adj.status !== "approved" || !adj.subscriptionId) {
           return null;
         }
+
         return {
           type: "subscription.refunded",
           userId: "",
