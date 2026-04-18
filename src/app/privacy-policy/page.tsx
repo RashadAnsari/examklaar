@@ -91,8 +91,8 @@ const SECTIONS = [
       "We do not sell your personal data. We share data only with the following service providers, each bound by appropriate agreements:",
     items: [
       {
-        subtitle: "Supabase Inc. (USA), Data Processor",
-        text: "Our database, authentication, and file storage provider. Your account data, exam results, and audio recordings are stored on Supabase infrastructure. Data is transferred under Standard Contractual Clauses (SCCs).",
+        subtitle: "Supabase Inc., Data Processor",
+        text: "Our database, authentication, and file storage provider. Your account data, exam results, and audio recordings are stored on Supabase infrastructure hosted in Ireland (EU). No data is transferred outside the EEA.",
       },
       {
         subtitle: "Google LLC (USA), Data Processor",
@@ -113,11 +113,11 @@ const SECTIONS = [
   {
     title: "6. International Data Transfers",
     content:
-      "Some of our service providers are located outside the European Economic Area (EEA). Where we transfer personal data outside the EEA, we ensure that appropriate safeguards are in place:",
+      "Your core data (account, exam results, recordings) is stored within the EEA on Supabase infrastructure in Ireland and is not transferred internationally. Some of our other service providers are based outside the EEA. Where such transfers occur, we ensure appropriate safeguards are in place:",
     items: [
       {
         subtitle: "Standard Contractual Clauses (SCCs)",
-        text: "For transfers to Supabase, Google, and Umami (all based in the USA), we rely on the European Commission's Standard Contractual Clauses under Article 46(2)(c) GDPR.",
+        text: "For transfers to Google (AI feedback) and Umami (analytics), both based in the USA, we rely on the European Commission's Standard Contractual Clauses under Article 46(2)(c) GDPR.",
       },
       {
         subtitle: "Adequacy decision",
