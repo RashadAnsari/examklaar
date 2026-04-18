@@ -152,12 +152,16 @@ export default function SignupPage() {
                 />
                 <span className="text-sm" style={{ color: "var(--gray-600)", lineHeight: 1.5 }}>
                   I agree to the{" "}
-                  <Link href="/terms" className="font-medium" style={{ color: "var(--green-900)" }}>
+                  <Link
+                    href="/terms-and-conditions"
+                    className="font-medium"
+                    style={{ color: "var(--green-900)" }}
+                  >
                     Terms of Service
                   </Link>{" "}
                   and{" "}
                   <Link
-                    href="/privacy"
+                    href="/privacy-policy"
                     className="font-medium"
                     style={{ color: "var(--green-900)" }}
                   >

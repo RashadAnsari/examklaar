@@ -10,7 +10,7 @@ ExamKlaar lets users take timed, realistic practice exams across all 5 component
 - **Reading** — Dutch reading comprehension
 - **Listening** — Dutch listening comprehension
 - **Writing** — Written Dutch with AI-graded feedback
-- **Speaking** — Recorded answers with AI pronunciation feedback
+- **Speaking** — Recorded answers with AI feedback
 
 Users get one free exam, then subscribe for unlimited access.
 

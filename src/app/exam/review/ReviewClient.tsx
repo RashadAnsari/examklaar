@@ -421,18 +421,21 @@ function OpenCard({ question, displayIndex }: { question: ReviewQuestion; displa
 function AudioPlayer({ storagePath }: { storagePath: string }) {
   const [url, setUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [expired, setExpired] = useState(false);
   const [error, setError] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     let cancelled = false;
     fetch(`/api/recordings/signed-url?path=${encodeURIComponent(storagePath)}`)
-      .then((r) => r.json())
-      .then((data) => {
+      .then(async (r) => {
+        const data = await r.json();
         if (cancelled) {
           return;
         }
-        if (data.url) {
+        if (r.status === 404 && data.expired) {
+          setExpired(true);
+        } else if (data.url) {
           setUrl(data.url);
         } else {
           setError(true);
@@ -458,14 +461,27 @@ function AudioPlayer({ storagePath }: { storagePath: string }) {
       </p>
     );
   }
+  if (expired) {
+    return (
+      <p className="text-sm italic" style={{ color: "var(--gray-400)" }}>
+        Recording expired after 30 days.
+      </p>
+    );
+  }
   if (error || !url) {
     return (
       <p className="text-sm italic" style={{ color: "var(--gray-400)" }}>
-        Recording unavailable
+        Recording unavailable.
       </p>
     );
   }
   return (
-    <audio ref={audioRef} src={url} controls style={{ width: "100%", borderRadius: "0.5rem" }} />
+    <audio
+      ref={audioRef}
+      src={url}
+      controls
+      style={{ width: "100%", borderRadius: "0.5rem" }}
+      onError={() => setError(true)}
+    />
   );
 }

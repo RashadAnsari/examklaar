@@ -6,7 +6,7 @@ import { PricingCards } from "@/components/pricing/PricingCards";
 export const metadata: Metadata = {
   title: "Pricing: Inburgering Exam Practice Plans",
   description:
-    "Start free or upgrade for €9.99/month. Get unlimited access to all 5 inburgering exam components — KNM, Reading, Listening, Writing, and Speaking — with AI-powered feedback.",
+    "Start free or upgrade for €9.99/month. Get unlimited access to all 5 inburgering exam components (KNM, Reading, Listening, Writing, and Speaking) with AI-powered feedback.",
   alternates: { canonical: "https://www.examklaar.nl/pricing" },
   openGraph: {
     title: "Pricing: Inburgering Exam Practice Plans | ExamKlaar",
@@ -51,7 +51,7 @@ const FAQS = [
   {
     question: "What is your refund policy?",
     answer:
-      "We do not offer partial refunds for unused days on any subscription plan. If you have an issue, contact us at hallo@examklaar.nl and we'll do our best to help.",
+      "ExamKlaar does not offer discretionary refunds. All payments are processed by Paddle, who acts as Merchant of Record and handles all refund requests. For full details, see our Refund Policy at examklaar.nl/refund-policy.",
   },
   {
     question: "What payment methods do you accept?",

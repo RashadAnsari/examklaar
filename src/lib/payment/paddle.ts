@@ -264,9 +264,13 @@ export class PaddleProvider implements PaymentProvider {
     }
   }
 
-  async cancelSubscription(providerSubscriptionId: string): Promise<void> {
+  async cancelSubscription(
+    providerSubscriptionId: string,
+    _providerCustomerId: string | null,
+    immediately = false
+  ): Promise<void> {
     await this.client.subscriptions.cancel(providerSubscriptionId, {
-      effectiveFrom: "next_billing_period",
+      effectiveFrom: immediately ? "immediately" : "next_billing_period",
     });
   }
 

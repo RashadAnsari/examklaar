@@ -9,7 +9,6 @@ export async function POST(req: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) {
-    console.warn("[grade] Unauthorized request");
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 

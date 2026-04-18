@@ -23,6 +23,19 @@ export async function GET(req: NextRequest) {
   }
 
   const admin = createAdminClient();
+
+  // Check the file still exists before issuing a signed URL.
+  // Recordings are auto-deleted after 30 days, so this can legitimately return nothing.
+  const lastSlash = path.lastIndexOf("/");
+  const dir = path.slice(0, lastSlash);
+  const filename = path.slice(lastSlash + 1);
+  const { data: listed } = await admin.storage.from("speaking-recordings").list(dir, {
+    search: filename,
+  });
+  if (!listed?.length) {
+    return NextResponse.json({ expired: true }, { status: 404 });
+  }
+
   const { data, error } = await admin.storage
     .from("speaking-recordings")
     .createSignedUrl(path, 300); // 5 minutes

@@ -121,13 +121,13 @@ export function Navbar() {
                 Pricing
               </Link>
               <Link
-                href="/privacy"
+                href="/privacy-policy"
                 className="text-sm font-medium text-[var(--gray-600)] transition hover:text-[var(--green-900)]"
               >
                 Privacy
               </Link>
               <Link
-                href="/terms"
+                href="/terms-and-conditions"
                 className="text-sm font-medium text-[var(--gray-600)] transition hover:text-[var(--green-900)]"
               >
                 Terms
@@ -269,8 +269,8 @@ export function Navbar() {
           )}
           <MobileNavLink href="/#features">Features</MobileNavLink>
           <MobileNavLink href="/pricing">Pricing</MobileNavLink>
-          <MobileNavLink href="/privacy">Privacy</MobileNavLink>
-          <MobileNavLink href="/terms">Terms</MobileNavLink>
+          <MobileNavLink href="/privacy-policy">Privacy</MobileNavLink>
+          <MobileNavLink href="/terms-and-conditions">Terms</MobileNavLink>
         </nav>
 
         <div className="border-t border-[var(--gray-200)] px-4 py-5">

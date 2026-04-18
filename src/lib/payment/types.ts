@@ -56,7 +56,8 @@ export interface PaymentProvider {
    */
   cancelSubscription(
     providerSubscriptionId: string,
-    providerCustomerId: string | null
+    providerCustomerId: string | null,
+    immediately?: boolean
   ): Promise<void>;
   getPaymentHistory(providerCustomerId: string): Promise<ProviderPayment[]>;
 }
