@@ -1,4 +1,9 @@
-import { Paddle, Environment, EventName } from "@paddle/paddle-node-sdk";
+import {
+  Paddle,
+  Environment,
+  EventName,
+  type AdjustmentCreatedEvent,
+} from "@paddle/paddle-node-sdk";
 import type {
   CheckoutParams,
   CheckoutResult,
@@ -253,6 +258,25 @@ export class PaddleProvider implements PaymentProvider {
           providerSubscriptionId: tx.subscriptionId ?? "",
           planId,
           status: "past_due",
+          currentPeriodStart: new Date(),
+          currentPeriodEnd: new Date(),
+          cancelAtPeriodEnd: false,
+        };
+      }
+
+      case EventName.AdjustmentCreated: {
+        const adj = (event as AdjustmentCreatedEvent).data;
+        const isRefund = adj.action === "refund" || adj.action === "chargeback";
+        if (!isRefund || adj.status !== "approved" || !adj.subscriptionId) {
+          return null;
+        }
+        return {
+          type: "subscription.refunded",
+          userId: "",
+          providerCustomerId: adj.customerId,
+          providerSubscriptionId: adj.subscriptionId,
+          planId: "premium",
+          status: "cancelled",
           currentPeriodStart: new Date(),
           currentPeriodEnd: new Date(),
           cancelAtPeriodEnd: false,

@@ -21,6 +21,7 @@ export interface WebhookEvent {
     | "subscription.renewed"
     | "subscription.cancelled"
     | "subscription.expired"
+    | "subscription.refunded"
     | "payment.failed";
   /** Internal user ID — used by the webhook handler to upsert the subscriptions row. */
   userId: string;

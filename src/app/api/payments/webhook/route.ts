@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/utils/supabase/admin";
-import { getPaymentProvider } from "@/lib/payment/provider";
+import { getPaymentProvider, getPaymentProviderByName } from "@/lib/payment/provider";
 
 export async function POST(req: NextRequest) {
   const rawBody = await req.text();
@@ -24,6 +24,29 @@ export async function POST(req: NextRequest) {
   const now = new Date().toISOString();
 
   try {
+    if (event.type === "subscription.refunded") {
+      const { data: sub } = await admin
+        .from("subscriptions")
+        .select("user_id, status, payment_provider")
+        .eq("provider_subscription_id", event.providerSubscriptionId)
+        .single();
+
+      if (sub && (sub.status === "active" || sub.status === "past_due")) {
+        const provider = getPaymentProviderByName(sub.payment_provider);
+        await provider?.cancelSubscription(
+          event.providerSubscriptionId,
+          event.providerCustomerId,
+          true
+        );
+      }
+
+      console.info(
+        "[webhook] refund processed, subscription cancelled for subscriptionId=%s",
+        event.providerSubscriptionId
+      );
+      return NextResponse.json({ ok: true });
+    }
+
     if (event.type === "payment.failed") {
       // Only update the status — don't overwrite period dates.
       await admin
