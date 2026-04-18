@@ -54,7 +54,9 @@ const SECTIONS = [
     items: [
       { text: "To create and manage your account and authenticate your access" },
       { text: "To deliver our exam practice services and AI-generated feedback" },
-      { text: "To send transactional emails (e.g. email confirmation, password reset)" },
+      {
+        text: "To send transactional emails via our email service provider (e.g. email confirmation, password reset, subscription updates)",
+      },
       { text: "To manage your subscription status in coordination with Paddle" },
       { text: "To monitor for fraud, abuse, and security threats on the platform" },
       {
@@ -101,6 +103,10 @@ const SECTIONS = [
       {
         subtitle: "Paddle.com Market Ltd (UK), Independent Data Controller",
         text: "Paddle acts as Merchant of Record for all payments. Paddle is independently responsible for processing your payment and billing data under their own privacy policy. Transfers from the EU to the UK are lawful under the EU adequacy decision for the UK.",
+      },
+      {
+        subtitle: "Brevo SAS (France), Data Processor",
+        text: "Our email service provider for transactional emails (account verification, password reset, subscription notifications) and optional marketing communications. Only your email address and name are shared. Brevo is based in the EU (Paris, France), so no international data transfer occurs.",
       },
       {
         subtitle: "Umami Analytics (USA), Data Processor",
