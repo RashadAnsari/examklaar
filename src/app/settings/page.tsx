@@ -305,7 +305,27 @@ function SubscriptionSection() {
 
   const planLabel = sub ? (PLAN_LABELS[sub.planId] ?? sub.planId) : "Free";
   const isPaid = sub && sub.planId !== "free";
+  const isCancelled = sub?.status === "cancelled" || sub?.status === "expired";
+  const isActive = isPaid && !isCancelled;
   const periodEnd = sub?.currentPeriodEnd ? new Date(sub.currentPeriodEnd) : null;
+
+  function planDescription() {
+    if (!isPaid || !periodEnd) {
+      return "Access to 1 free exam per skill";
+    }
+    const formatted = periodEnd.toLocaleDateString("en-NL", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+    if (isCancelled) {
+      return `Subscription cancelled`;
+    }
+    if (sub.cancelAtPeriodEnd) {
+      return `Cancels on ${formatted}`;
+    }
+    return `Renews on ${formatted}`;
+  }
 
   return (
     <SettingsSection title="Subscription" description="Your current plan and billing history">
@@ -325,24 +345,18 @@ function SubscriptionSection() {
                 <span
                   className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold"
                   style={{
-                    background: isPaid ? "var(--green-50)" : "var(--gray-100)",
-                    color: isPaid ? "var(--green-900)" : "var(--gray-600)",
+                    background: isActive ? "var(--green-50)" : "var(--gray-100)",
+                    color: isActive ? "var(--green-900)" : "var(--gray-600)",
                   }}
                 >
                   {planLabel}
                 </span>
               </div>
             }
-            description={
-              isPaid && periodEnd
-                ? sub.cancelAtPeriodEnd
-                  ? `Cancels on ${periodEnd.toLocaleDateString("en-NL", { day: "numeric", month: "long", year: "numeric" })}`
-                  : `Renews on ${periodEnd.toLocaleDateString("en-NL", { day: "numeric", month: "long", year: "numeric" })}`
-                : "Access to 1 free exam per skill"
-            }
+            description={planDescription()}
           >
             <div className="flex items-center gap-3 flex-wrap">
-              {isPaid && !sub.cancelAtPeriodEnd ? (
+              {isActive && !sub.cancelAtPeriodEnd ? (
                 <Button
                   variant="outline"
                   type="button"
@@ -352,7 +366,7 @@ function SubscriptionSection() {
                   {cancelling ? "Cancelling…" : "Cancel plan"}
                 </Button>
               ) : (
-                !isPaid && (
+                (!isPaid || isCancelled) && (
                   <Button href="/pricing" variant="primary">
                     Upgrade
                   </Button>
