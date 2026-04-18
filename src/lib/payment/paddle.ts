@@ -3,6 +3,7 @@ import {
   Environment,
   EventName,
   type AdjustmentCreatedEvent,
+  type AdjustmentUpdatedEvent,
 } from "@paddle/paddle-node-sdk";
 import type {
   CheckoutParams,
@@ -105,6 +106,8 @@ export class PaddleProvider implements PaymentProvider {
     }
 
     const event = await this.client.webhooks.unmarshal(rawBody, secret, signature);
+
+    console.info("[webhook] received eventType=%s", event.eventType);
 
     switch (event.eventType) {
       case EventName.SubscriptionCreated:
@@ -264,9 +267,16 @@ export class PaddleProvider implements PaymentProvider {
         };
       }
 
-      case EventName.AdjustmentCreated: {
-        const adj = (event as AdjustmentCreatedEvent).data;
+      case EventName.AdjustmentCreated:
+      case EventName.AdjustmentUpdated: {
+        const adj = (event as AdjustmentCreatedEvent | AdjustmentUpdatedEvent).data;
         const isRefund = adj.action === "refund" || adj.action === "chargeback";
+        console.info(
+          "[webhook] adjustment action=%s status=%s subscriptionId=%s",
+          adj.action,
+          adj.status,
+          adj.subscriptionId
+        );
         if (!isRefund || adj.status !== "approved" || !adj.subscriptionId) {
           return null;
         }
