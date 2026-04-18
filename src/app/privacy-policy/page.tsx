@@ -198,7 +198,7 @@ const SECTIONS = [
       },
     ],
     footer:
-      "If you are not satisfied with our response, you have the right to lodge a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens), Hoge Nieuwstraat 8, 2514 EL Den Haag, at autoriteitpersoonsgegevens.nl, or by calling +31 88 1805 250.",
+      "If you are not satisfied with our response, you have the right to lodge a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens), Postbus 93374, 2509 AJ Den Haag, at autoriteitpersoonsgegevens.nl, or by calling +31 70 888 8500.",
   },
   {
     title: "9. Cookies and Analytics",
