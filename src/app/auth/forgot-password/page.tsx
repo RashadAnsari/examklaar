@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { createClient } from "@/utils/supabase/client";
+import { analytics } from "@/lib/analytics";
 import { ErrorBanner } from "@/components/ui/ErrorBanner";
 import { AuthCard } from "@/components/ui/AuthCard";
 
@@ -32,6 +33,7 @@ export default function ForgotPasswordPage() {
       setFormError(error.message);
       return;
     }
+    analytics.passwordReset();
     setSent(true);
   }
 

@@ -15,6 +15,7 @@ import {
   ArrowRightStartOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import type { User } from "@supabase/supabase-js";
+import { analytics } from "@/lib/analytics";
 
 function getInitials(name: string) {
   return name
@@ -84,6 +85,7 @@ export function Navbar() {
   async function signOut() {
     const supabase = createClient();
     await supabase.auth.signOut();
+    analytics.logOut();
     router.push("/");
   }
 

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CheckCircleIcon, SparklesIcon, XCircleIcon } from "@heroicons/react/20/solid";
 import { Button } from "@/components/ui/Button";
+import { analytics } from "@/lib/analytics";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
@@ -24,6 +25,7 @@ export default function PaymentSuccessPage() {
         if (res.ok) {
           const sub = await res.json();
           if (sub.planId !== "free") {
+            analytics.checkoutCompleted(sub.planId);
             setReady(true);
             return;
           }

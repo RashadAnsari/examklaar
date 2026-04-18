@@ -11,6 +11,7 @@ import { SuccessBanner } from "@/components/ui/SuccessBanner";
 import { ErrorBanner } from "@/components/ui/ErrorBanner";
 import type { UserSubscription } from "@/lib/payment/subscription";
 import type { ProviderPayment } from "@/lib/payment/types";
+import { analytics } from "@/lib/analytics";
 
 export default function SettingsPage() {
   const router = useRouter();
@@ -106,6 +107,7 @@ export default function SettingsPage() {
       setDeleteLoading(false);
       return;
     }
+    analytics.deleteAccount();
     const supabase = createClient();
     await supabase.auth.signOut();
     router.push("/");
@@ -293,6 +295,7 @@ function SubscriptionSection() {
     const res = await fetch("/api/payments/subscription/cancel", { method: "POST" });
     setCancelling(false);
     if (res.ok) {
+      analytics.cancelSubscription();
       setCancelSuccess(
         "Your subscription has been cancelled. Access continues until the end of your billing period."
       );

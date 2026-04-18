@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
+import { analytics } from "@/lib/analytics";
 
 interface CheckoutButtonProps {
   planId: "premium" | "biannual";
@@ -45,6 +46,7 @@ export function CheckoutButton({
         return;
       }
 
+      analytics.checkoutStarted(planId);
       window.location.href = data.checkoutUrl;
     } catch {
       setError("Something went wrong. Please try again.");

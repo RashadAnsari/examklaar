@@ -14,6 +14,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { ClockIcon } from "@heroicons/react/20/solid";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+import { analytics } from "@/lib/analytics";
 
 function sanitizeHtml(html: string): string {
   if (typeof window === "undefined") {
@@ -421,6 +422,10 @@ export function ExamClient({ exam, skillId, n }: Props) {
   const answeredCount = answeredIds.size;
   const unansweredCount = totalQuestions - answeredCount;
 
+  useEffect(() => {
+    analytics.examStarted(`${skillId}-${n}`);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   // Block browser back button
   useEffect(() => {
     window.history.pushState(null, "", window.location.href);
@@ -550,6 +555,8 @@ export function ExamClient({ exam, skillId, n }: Props) {
       return;
     }
 
+    analytics.examCompleted(`${skillId}-${n}`);
+
     const isMcq = exam.skill !== "writing" && exam.skill !== "speaking";
     if (!isMcq) {
       setGradingResultId(data.id);
@@ -565,6 +572,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
   }
 
   function confirmExit() {
+    analytics.examAbandoned(`${skillId}-${n}`);
     blockNavRef.current = false;
     router.push(`/exams/${skillId}`);
   }
