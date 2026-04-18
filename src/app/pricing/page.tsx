@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { PricingCards } from "@/components/pricing/PricingCards";
 
 export const metadata: Metadata = {
-  title: "Pricing: Inburgering Exam Practice Plans",
+  title: "Pricing",
   description:
     "Start free or upgrade for €9.99/month. Get unlimited access to all 5 inburgering exam components (KNM, Reading, Listening, Writing, and Speaking) with AI-powered feedback.",
   alternates: { canonical: "https://www.examklaar.nl/pricing" },

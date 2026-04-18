@@ -1,14 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
-import { initializePaddle, type Paddle } from "@paddle/paddle-js";
-
-let paddle: Paddle | undefined;
+import { initializePaddle, CheckoutEventNames } from "@paddle/paddle-js";
 
 export function PaddleInitializer() {
   useEffect(() => {
     const token = process.env.PADDLE_CLIENT_TOKEN;
-    if (!token || paddle) {
+    if (!token) {
       return;
     }
 
@@ -21,11 +19,22 @@ export function PaddleInitializer() {
       token,
       checkout: {
         settings: {
+          locale: "en",
+          variant: "one-page",
+          allowLogout: false,
+          showAddTaxId: false,
+          displayMode: "overlay",
+          showAddDiscounts: false,
+          allowDiscountRemoval: false,
+          allowedPaymentMethods: ["card", "ideal"],
           successUrl: `${window.location.origin}/payment/success`,
         },
       },
-    }).then((instance) => {
-      paddle = instance;
+      eventCallback(event) {
+        if (event.name === CheckoutEventNames.CHECKOUT_CLOSED) {
+          window.location.href = "/pricing";
+        }
+      },
     });
   }, []);
 

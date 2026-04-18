@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
-import { PaddleInitializer } from "@/components/payment/PaddleInitializer";
 import "./globals.css";
 
 const inter = Inter({
@@ -64,7 +63,6 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className="min-h-screen" suppressHydrationWarning>
-        {process.env.PAYMENT_PROVIDER === "paddle" && <PaddleInitializer />}
         {children}
         {process.env.NODE_ENV === "production" && (
           <Script
