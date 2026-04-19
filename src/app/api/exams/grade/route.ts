@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing result_id" }, { status: 400 });
   }
 
-  const { data: result, error: fetchError } = await supabase
+  const { data: result } = await supabase
     .from("exam_results")
     .select("id, skill, level, exam_id, answers, grading_status")
     .eq("id", result_id)
@@ -26,12 +26,6 @@ export async function POST(req: NextRequest) {
     .single();
 
   if (!result) {
-    console.warn(
-      "[grade] Result not found — result_id=%s user=%s error=%s",
-      result_id,
-      user.id,
-      fetchError?.message
-    );
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
   if (result.skill !== "writing" && result.skill !== "speaking") {

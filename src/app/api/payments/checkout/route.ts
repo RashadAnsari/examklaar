@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ checkoutUrl: result.checkoutUrl });
   } catch (err) {
-    console.error("[checkout] provider error:", err);
+    console.error("[checkout] Payment provider error:", err);
     return NextResponse.json({ error: "Payment provider error" }, { status: 500 });
   }
 }

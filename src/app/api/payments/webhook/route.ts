@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const provider = getPaymentProvider();
     event = await provider.parseWebhook(rawBody, signature);
   } catch (err) {
-    console.error("[webhook] failed to parse event:", err);
+    console.error("[webhook] Failed to parse event:", err);
     return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
   }
 
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       }
 
       console.info(
-        "[webhook] refund processed, subscription cancelled for subscriptionId=%s",
+        "[webhook] Refund processed, subscription cancelled for subscriptionId=%s",
         event.providerSubscriptionId
       );
       return NextResponse.json({ ok: true });
@@ -76,6 +76,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "DB error" }, { status: 500 });
   }
 
-  console.info("[webhook] processed type=%s userId=%s", event.type, event.userId);
+  console.info("[webhook] Processed type=%s userId=%s", event.type, event.userId);
   return NextResponse.json({ ok: true });
 }

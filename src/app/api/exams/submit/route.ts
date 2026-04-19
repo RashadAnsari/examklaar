@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
   if (examJson.premiumOnly) {
     const sub = await getUserSubscription(user.id);
     if (!canAccessPremium(sub)) {
-      console.warn("[submit] premium exam blocked — user=%s exam=%s-%s", user.id, skillId, n);
+      console.warn("[submit] Premium exam blocked — user=%s exam=%s-%s", user.id, skillId, n);
       return NextResponse.json({ error: "upgrade_required" }, { status: 403 });
     }
   }
@@ -124,7 +124,7 @@ export async function POST(req: NextRequest) {
     .single();
 
   if (insertError || !inserted) {
-    console.error("[submit-exam] insert error:", insertError);
+    console.error("[submit-exam] Insert error:", insertError);
     return NextResponse.json({ error: "Failed to save result" }, { status: 500 });
   }
 

@@ -24,7 +24,7 @@ export async function POST() {
       const provider = getPaymentProvider();
       await provider.cancelSubscription(sub.providerSubscriptionId, sub.providerCustomerId);
     } catch (err) {
-      console.error("[subscription/cancel] provider error:", err);
+      console.error("[subscription/cancel] Payment provider error:", err);
       return NextResponse.json({ error: "Failed to cancel with provider" }, { status: 500 });
     }
   }

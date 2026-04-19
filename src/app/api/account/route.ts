@@ -19,7 +19,7 @@ export async function DELETE() {
     try {
       await provider?.cancelSubscription(sub.providerSubscriptionId, sub.providerCustomerId, true);
     } catch (err) {
-      console.error("[account] Failed to cancel Paddle subscription for user=%s:", user.id, err);
+      console.error("[account] Failed to cancel subscription for user=%s:", user.id, err);
       return Response.json({ error: "Failed to cancel subscription" }, { status: 500 });
     }
   }

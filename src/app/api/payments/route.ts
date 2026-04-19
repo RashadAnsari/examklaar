@@ -40,7 +40,7 @@ export async function GET() {
 
     return NextResponse.json({ payments });
   } catch (err) {
-    console.error("[payments] provider error:", err);
+    console.error("[payments] Payment provider error:", err);
     return NextResponse.json({ error: "Failed to fetch payment history" }, { status: 500 });
   }
 }
