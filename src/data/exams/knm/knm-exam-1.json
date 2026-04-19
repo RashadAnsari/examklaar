@@ -1,7 +1,7 @@
 {
   "id": "knm-exam-1",
   "skill": "knm",
-  "level": "A2",
+  "level": null,
   "title": "KNM Exam 1",
   "timeLimitMinutes": 45,
   "premiumOnly": false,
