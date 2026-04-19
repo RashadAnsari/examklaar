@@ -2,7 +2,7 @@ FROM oven/bun:1.3 AS builder
 WORKDIR /app
 
 # These vars are baked into the client bundle at build time
-ARG GIT_SHA=development
+ARG GIT_SHA
 ARG SUPABASE_PUBLIC_URL
 ARG SUPABASE_PUBLISHABLE_DEFAULT_KEY
 ENV GIT_SHA=$GIT_SHA
