@@ -114,7 +114,7 @@ export default async function DashboardPage() {
       <div className="container py-8" style={{ maxWidth: "1280px" }}>
         <div className="mb-8">
           <h1 className="font-bold mb-1" style={{ fontSize: "2rem", color: "var(--gray-900)" }}>
-            Welcome back, Rashad
+            Welcome back{user?.user_metadata?.full_name ? `, ${user.user_metadata.full_name}` : ""}
           </h1>
           <p style={{ color: "var(--gray-600)" }}>Continue practicing for your inburgering exam</p>
         </div>
