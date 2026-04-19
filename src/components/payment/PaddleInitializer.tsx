@@ -3,19 +3,15 @@
 import { useEffect } from "react";
 import { initializePaddle, CheckoutEventNames } from "@paddle/paddle-js";
 
-export function PaddleInitializer() {
-  useEffect(() => {
-    const token = process.env.PADDLE_CLIENT_TOKEN;
-    if (!token) {
-      return;
-    }
+interface Props {
+  token: string;
+  environment: "production" | "sandbox";
+}
 
+export function PaddleInitializer({ token, environment }: Props) {
+  useEffect(() => {
     initializePaddle({
-      environment:
-        process.env.PADDLE_ENVIRONMENT === "production" ||
-        (!process.env.PADDLE_ENVIRONMENT && process.env.NODE_ENV === "production")
-          ? "production"
-          : "sandbox",
+      environment,
       token,
       checkout: {
         settings: {
@@ -36,7 +32,7 @@ export function PaddleInitializer() {
         }
       },
     });
-  }, []);
+  }, [token, environment]);
 
   return null;
 }

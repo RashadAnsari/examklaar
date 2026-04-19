@@ -23,16 +23,12 @@ function getClient(): Paddle {
   if (!apiKey) {
     throw new Error("PADDLE_API_KEY is not set");
   }
-  const env =
-    process.env.PADDLE_ENVIRONMENT === "production"
-      ? Environment.production
-      : process.env.PADDLE_ENVIRONMENT === "sandbox"
-        ? Environment.sandbox
-        : process.env.NODE_ENV === "production"
-          ? Environment.production
-          : Environment.sandbox;
 
-  return new Paddle(apiKey, { environment: env });
+  // const environment = process.env.NODE_ENV === "production" ? Environment.production : Environment.sandbox;
+  // FIXME: Use above line once we have separate Paddle environments for production and development.
+  const environment = Environment.sandbox;
+
+  return new Paddle(apiKey, { environment: environment });
 }
 
 function getPriceId(planId: "premium" | "biannual"): string {
