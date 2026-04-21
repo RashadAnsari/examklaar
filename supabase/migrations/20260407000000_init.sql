@@ -51,7 +51,7 @@ values (
   'speaking-recordings',
   false,
   2097152, -- 2 MB per file (sufficient for ~1 min of audio/webm)
-  array['audio/webm', 'audio/ogg', 'audio/mp4', 'audio/mpeg', 'audio/wav']
+  array['audio/webm']
 );
 
 -- Uploads and signed URL generation go through the server-side API (service role) only.
@@ -82,4 +82,16 @@ select cron.schedule(
     where bucket_id = 'speaking-recordings'
       and created_at < now() - interval '30 days';
   $$
+);
+
+-- ============================================================
+-- exam-assets storage bucket
+-- ============================================================
+
+insert into storage.buckets (id, name, public, allowed_mime_types)
+values (
+  'exam-assets',
+  'exam-assets',
+  true,
+  array['audio/*', 'image/*', 'video/*']
 );
