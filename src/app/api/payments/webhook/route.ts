@@ -1,21 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/utils/supabase/admin";
-import { getPaymentProvider, getPaymentProviderByName } from "@/lib/payment/provider";
+import { getPaymentProviderByName } from "@/lib/payment/provider";
 
 export async function POST(req: NextRequest) {
   const rawBody = await req.text();
-  const signature = req.headers.get("paddle-signature") ?? req.headers.get("x-payment-signature");
+
+  let providerName;
+  const paddleSignature = req.headers.get("paddle-signature");
+  if (paddleSignature) {
+    providerName = "paddle";
+  } else {
+    console.error("[webhook] No signature header found");
+    return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
+  }
+
+  const provider = getPaymentProviderByName(providerName);
+  if (!provider) {
+    console.error("[webhook] No provider found for name:", providerName);
+    return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
+  }
 
   let event;
   try {
-    const provider = getPaymentProvider();
-    event = await provider.parseWebhook(rawBody, signature);
+    event = await provider.parseWebhook(rawBody, paddleSignature);
   } catch (err) {
     console.error("[webhook] Failed to parse event:", err);
     return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
   }
 
-  if (event === null) {
+  if (!event) {
     console.info("[webhook] no-op event received, returning OK");
     return NextResponse.json({ ok: true });
   }
@@ -32,8 +45,7 @@ export async function POST(req: NextRequest) {
         .single();
 
       if (sub && (sub.status === "active" || sub.status === "past_due")) {
-        const provider = getPaymentProviderByName(sub.payment_provider);
-        await provider?.cancelSubscription(
+        await provider.cancelSubscription(
           event.providerSubscriptionId,
           event.providerCustomerId,
           true
@@ -59,7 +71,7 @@ export async function POST(req: NextRequest) {
           user_id: event.userId,
           plan_id: event.planId,
           status: event.status,
-          payment_provider: process.env.PAYMENT_PROVIDER,
+          payment_provider: providerName,
           provider_customer_id: event.providerCustomerId,
           provider_subscription_id: event.providerSubscriptionId,
           current_period_start: event.currentPeriodStart.toISOString(),
@@ -71,7 +83,7 @@ export async function POST(req: NextRequest) {
       );
     }
   } catch (err) {
-    console.error("[webhook] db error:", err);
+    console.error("[webhook] DB error:", err);
     // Return 500 so the provider retries.
     return NextResponse.json({ error: "DB error" }, { status: 500 });
   }
