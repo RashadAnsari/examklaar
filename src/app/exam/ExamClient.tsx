@@ -253,13 +253,13 @@ function SpeakingRecorder({
 
       {permissionError && (
         <p className="text-sm" style={{ color: "var(--red)" }}>
-          Geen toegang tot microfoon. Controleer uw browserinstellingen.
+          No microphone access. Check your browser settings.
         </p>
       )}
 
       {transcribeError && (
         <p className="text-sm" style={{ color: "var(--red)" }}>
-          Transcriptie mislukt. Uw opname is wel opgeslagen.
+          There was a problem processing your recording. Please try again.
         </p>
       )}
 
