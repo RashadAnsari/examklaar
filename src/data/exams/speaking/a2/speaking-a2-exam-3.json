@@ -9,28 +9,28 @@
     {
       "id": "q1",
       "type": "speaking",
-      "content": "<video controls style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-3/32d3b66d-6056-4d0d-b7a9-b22cbe0e03d5.mp4\" type=\"video/mp4\" /></video>",
+      "content": "<video controls data-transcription=\"Op sommige scholen krijgen de leerlingen online les. Wat vindt u fijn aan online lessen? Vertel ook wat u lastig vindt aan online lessen.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-3/32d3b66d-6056-4d0d-b7a9-b22cbe0e03d5.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q2",
       "type": "speaking",
-      "content": "<video controls style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-3/72183dda-b18f-419c-bae4-964ee1279cfa.mp4\" type=\"video/mp4\" /></video>",
+      "content": "<video controls data-transcription=\"Sinds een jaar heb ik mijn eigen kledingwinkel. Wat vindt u daarvan? Vertel ook waarom u dat vindt.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-3/72183dda-b18f-419c-bae4-964ee1279cfa.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q3",
       "type": "speaking",
-      "content": "<video controls style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-3/d029cda4-d144-4278-94cd-28ea6c5ad6bc.mp4\" type=\"video/mp4\" /></video>",
+      "content": "<video controls data-transcription=\"Ik koop mijn boodschappen in de supermarkt. Waar koopt u uw boodschappen? Vertel ook wat u dan koopt.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-3/d029cda4-d144-4278-94cd-28ea6c5ad6bc.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q4",
       "type": "speaking",
-      "content": "<video controls style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-3/71a7960e-24f2-4fa6-b6e3-e4634c380b46.mp4\" type=\"video/mp4\" /></video>",
+      "content": "<video controls data-transcription=\"Ik maak vaak muziek op mijn gitaar. Maakt u wel eens muziek? Vertel ook waarom.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-3/71a7960e-24f2-4fa6-b6e3-e4634c380b46.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },

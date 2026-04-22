@@ -9,28 +9,28 @@
     {
       "id": "q1",
       "type": "speaking",
-      "content": "<video controls style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-2/52367d68-8632-474f-bfb8-cc220bc6dc01.mp4\" type=\"video/mp4\" /></video>",
+      "content": "<video controls data-transcription=\"Ik vind het fijn om in de bibliotheek te leren. Wat vindt u een fijne plek om te leren? Vertel ook iets over die plek.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-2/52367d68-8632-474f-bfb8-cc220bc6dc01.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q2",
       "type": "speaking",
-      "content": "<video controls style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-2/2c614f98-644b-49a3-a4ba-3059b3197c62.mp4\" type=\"video/mp4\" /></video>",
+      "content": "<video controls data-transcription=\"Ik werk bij een bakker. Dus brood bakken is een belangrijke taak van mij. Wat is een belangrijke taak van u? Vertel ook wat u van die taak vindt.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-2/2c614f98-644b-49a3-a4ba-3059b3197c62.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q3",
       "type": "speaking",
-      "content": "<video controls style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-2/b22c9370-39c1-4231-abfb-ad18b2588a72.mp4\" type=\"video/mp4\" /></video>",
+      "content": "<video controls data-transcription=\"Ik schilder graag in mijn vrije tijd. Wat doet u graag in uw vrije tijd? Vertel ook waarom u dat graag doet.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-2/b22c9370-39c1-4231-abfb-ad18b2588a72.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q4",
       "type": "speaking",
-      "content": "<video controls style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-2/aec61533-04dd-4157-ac31-7b264af07864.mp4\" type=\"video/mp4\" /></video>",
+      "content": "<video controls data-transcription=\"Ik vind de herfst een fijn seizoen. Wat vindt u een fijn seizoen? Vertel ook waarom u dat een fijn seizoen vindt.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"https://owbsyrxtjvkbgzmdazwa.supabase.co/storage/v1/object/public/exam-assets/speaking/a2/exam-2/aec61533-04dd-4157-ac31-7b264af07864.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },

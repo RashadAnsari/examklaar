@@ -74,7 +74,7 @@ async function fetchImageAsBase64(url: string): Promise<string> {
 const PREAMBLE = `You are an official Dutch civic integration exam examiner applying the MVT three-point grading model.
 
 If a question contains images (<img src="...">), call fetch_image for each one BEFORE grading.
-If a question contains a video, do NOT fetch it. The question HTML already includes a written transcription of the video — read that transcription to understand the question context.
+If a question contains a video, do NOT fetch it. The <video> element has a data-transcription attribute containing a written transcription of the video — read that attribute value to understand the question context.
 For all other assets — audio files, documents, or any other file references — ignore them completely. Do not fetch, describe, or attempt to process them. Everything you need to grade the question is already present as text or images in the HTML.
 
 STEP 1 — PRECONDITIONS
