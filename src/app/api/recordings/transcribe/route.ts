@@ -54,6 +54,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
+    const MAX_BYTES = 2 * 1024 * 1024; // 2 MB
+    if (file.size > MAX_BYTES) {
+      return NextResponse.json({ error: "File too large" }, { status: 413 });
+    }
+
     const language = (formData.get("language") as string) ?? "nl";
     if (language !== "nl") {
       return NextResponse.json({ error: "Unsupported language" }, { status: 400 });

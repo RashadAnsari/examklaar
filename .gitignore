@@ -47,5 +47,4 @@ supabase/*
 !supabase/migrations
 
 # claude
-.claude
-graphify-out
+.claude/settings.local.json

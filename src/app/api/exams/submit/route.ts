@@ -89,6 +89,10 @@ export async function POST(req: NextRequest) {
     if (q.type === "speaking") {
       const audioFile = formData.get(`audio_${q.id}`) as File | null;
       if (audioFile) {
+        const MAX_BYTES = 2 * 1024 * 1024; // 2 MB
+        if (audioFile.size > MAX_BYTES) {
+          return NextResponse.json({ error: "Audio file too large" }, { status: 413 });
+        }
         const storagePath = `${user.id}/${examId}/${attemptId}/${q.id}.webm`;
         const { error } = await admin.storage
           .from("speaking-recordings")
