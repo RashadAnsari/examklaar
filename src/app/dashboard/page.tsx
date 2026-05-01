@@ -35,17 +35,12 @@ async function loadSkillGroups(): Promise<SkillGroup[]> {
           continue;
         }
 
-        const firstExam = JSON.parse(
-          await fs.readFile(path.join(levelPath, examFiles[0]), "utf-8")
-        );
-
         groups.push({
           id: `${skill}-${levelDir}`,
           skill,
           level: levelDir.toUpperCase(),
           title: SKILL_TITLES[skill] ?? skill,
           description: SKILL_DESCRIPTIONS[skill] ?? "",
-          timeLimitMinutes: firstExam.timeLimitMinutes,
           examCount: examFiles.length,
           completedCount: 0,
         });
@@ -56,15 +51,12 @@ async function loadSkillGroups(): Promise<SkillGroup[]> {
         continue;
       }
 
-      const firstExam = JSON.parse(await fs.readFile(path.join(skillPath, examFiles[0]), "utf-8"));
-
       groups.push({
         id: skill,
         skill,
         level: null,
         title: SKILL_TITLES[skill] ?? skill,
         description: SKILL_DESCRIPTIONS[skill] ?? "",
-        timeLimitMinutes: firstExam.timeLimitMinutes,
         examCount: examFiles.length,
         completedCount: 0,
       });

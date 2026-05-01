@@ -72,7 +72,7 @@ export function DashboardClient({ skills, isPaid }: { skills: SkillGroup[]; isPa
 }
 
 function ExamCard({ skill }: { skill: SkillGroup }) {
-  const { id, title, level, description, examCount, completedCount, timeLimitMinutes } = skill;
+  const { id, title, level, description, examCount, completedCount } = skill;
 
   return (
     <div
@@ -85,7 +85,7 @@ function ExamCard({ skill }: { skill: SkillGroup }) {
       </h3>
 
       <p className="text-sm mb-6" style={{ color: "var(--gray-600)", lineHeight: 1.6 }}>
-        {description} {timeLimitMinutes} minutes
+        {description}
       </p>
 
       <div className="mb-6 flex-1">

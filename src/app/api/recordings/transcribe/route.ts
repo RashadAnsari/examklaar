@@ -48,11 +48,15 @@ export async function POST(req: NextRequest) {
 
   try {
     const formData = await req.formData();
-    const file = formData.get("file");
-    const language = (formData.get("language") as string) ?? "nl";
 
+    const file = formData.get("file");
     if (!(file instanceof File)) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
+    }
+
+    const language = (formData.get("language") as string) ?? "nl";
+    if (language !== "nl") {
+      return NextResponse.json({ error: "Unsupported language" }, { status: 400 });
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());

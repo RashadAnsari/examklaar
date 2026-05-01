@@ -4,7 +4,6 @@ export interface SkillGroup {
   level: string | null;
   title: string;
   description: string;
-  timeLimitMinutes: number;
   examCount: number;
   completedCount: number;
 }

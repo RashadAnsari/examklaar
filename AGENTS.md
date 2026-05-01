@@ -14,12 +14,6 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **Success feedback**: use `<SuccessBanner>` from `@/components/ui/SuccessBanner` — it auto-dismisses after 4 s. Pass a `string | null` state as `message` and clear it in `onHide`. Never use inline success `<p>` text.
 - **Loading state**: disable the submit button and replace its label with a `…` suffix (e.g. `"Saving…"`) while a request is in flight.
 
-## Routing & auth protection
-
-- Auth-protected pages are guarded in `proxy.ts` (NOT `middleware.ts` — that convention is deprecated in this Next.js version; the function must be named `proxy`).
-- Public paths: `/`, `/pricing`, `/terms`, `/privacy`, `/login`, `/signup`, `/forgot-password`, `/reset-password`, `/auth/callback`, `/api/webhook/payment`.
-- All other pages require a valid session; unauthenticated requests are redirected to `/login`.
-
 ## Package manager
 
 - This project uses **bun**. Always use `bun` / `bunx` — never `npm`, `npx`, or `yarn`.
