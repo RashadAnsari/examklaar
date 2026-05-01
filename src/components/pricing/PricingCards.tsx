@@ -56,10 +56,10 @@ export const PLANS = [
     name: "6-Month Plan",
     badge: "Best value",
     description: "Commit for 6 months and save",
-    price: "€29.99",
+    price: "€44.99",
     priceNote: "/ 6 months",
-    subNote: "≈ €5 / month",
-    savingsBadge: "Save 50%",
+    subNote: "≈ €7.50 / month",
+    savingsBadge: "Save 25%",
     features: [
       { text: "Access to all exams per skill (growing library)", included: true },
       { text: "Unlimited practice attempts", included: true },
