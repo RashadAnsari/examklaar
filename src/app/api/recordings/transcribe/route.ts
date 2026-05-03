@@ -54,6 +54,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
+    if (file.type !== "audio/wav" && file.type !== "audio/wave") {
+      return NextResponse.json(
+        { error: "Invalid file type. Only WAV audio is accepted." },
+        { status: 415 }
+      );
+    }
+
     const MAX_BYTES = 2 * 1024 * 1024; // 2 MB
     if (file.size > MAX_BYTES) {
       return NextResponse.json({ error: "File too large" }, { status: 413 });
