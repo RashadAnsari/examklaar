@@ -391,6 +391,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
 
   const blockNavRef = useRef(true);
   const gradingRef = useRef(false);
+  const gradingInFlightRef = useRef(false);
   const attemptIdRef = useRef(crypto.randomUUID());
   const timeUpRef = useRef(false);
 
@@ -490,6 +491,10 @@ export function ExamClient({ exam, skillId, n }: Props) {
   }, [showTimeWarning]);
 
   async function callGradeApi(resultId: string): Promise<void> {
+    if (gradingInFlightRef.current) {
+      return;
+    }
+    gradingInFlightRef.current = true;
     setGradingFailed(false);
     try {
       const res = await fetch("/api/exams/grade", {
@@ -500,12 +505,14 @@ export function ExamClient({ exam, skillId, n }: Props) {
       const data = await res.json();
       if (!res.ok || data.error) {
         setGradingFailed(true);
+        gradingInFlightRef.current = false;
         return;
       }
       gradingRef.current = false;
       router.replace(`/exam/results?skill=${skillId}&n=${n}`);
     } catch {
       setGradingFailed(true);
+      gradingInFlightRef.current = false;
     }
   }
 
