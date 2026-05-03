@@ -15,19 +15,11 @@ import {
 import { ClockIcon } from "@heroicons/react/20/solid";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { analytics } from "@/lib/analytics";
-
-function sanitizeHtml(html: string): string {
-  if (typeof window === "undefined") {
-    return html;
-  }
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const DOMPurify = require("dompurify");
-  return DOMPurify.sanitize(html);
-}
+import { sanitizeHtml } from "@/lib/sanitize";
 
 export interface Question {
   id: string;
-  type: string; // "multiple_choice" | "writing" | "speaking"
+  type: "multiple_choice" | "writing" | "speaking";
   content: string;
   options: string[] | null;
   correctAnswer: number | null;
@@ -422,9 +414,14 @@ export function ExamClient({ exam, skillId, n }: Props) {
   const answeredCount = answeredIds.size;
   const unansweredCount = totalQuestions - answeredCount;
 
+  const didTrackRef = useRef(false);
   useEffect(() => {
+    if (didTrackRef.current) {
+      return;
+    }
+    didTrackRef.current = true;
     analytics.examStarted(`${skillId}-${n}`);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [skillId, n]);
 
   // Block browser back button
   useEffect(() => {
@@ -731,7 +728,12 @@ export function ExamClient({ exam, skillId, n }: Props) {
       {/* 15-minute warning dialog */}
       {showTimeWarning && !timeUp && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div
+            className="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-time-warning-title"
+          >
             <div
               className="w-12 h-12 rounded-full flex items-center justify-center mb-5"
               style={{ background: "var(--amber-light)" }}
@@ -739,6 +741,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
               <ClockIcon style={{ width: 24, height: 24, color: "var(--amber)" }} />
             </div>
             <h3
+              id="modal-time-warning-title"
               className="font-bold mb-2"
               style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
             >
@@ -758,14 +761,24 @@ export function ExamClient({ exam, skillId, n }: Props) {
       {/* Time's up overlay */}
       {timeUp && (
         <div className="modal-overlay">
-          <div className="modal-content" style={{ textAlign: "center" }}>
+          <div
+            className="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-times-up-title"
+            style={{ textAlign: "center" }}
+          >
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
               style={{ background: "var(--red-light)" }}
             >
               <ClockIcon style={{ width: 32, height: 32, color: "var(--red)" }} />
             </div>
-            <h3 className="font-bold mb-2" style={{ fontSize: "1.5rem", color: "var(--gray-900)" }}>
+            <h3
+              id="modal-times-up-title"
+              className="font-bold mb-2"
+              style={{ fontSize: "1.5rem", color: "var(--gray-900)" }}
+            >
               Tijd is om!
             </h3>
             <p className="mb-2" style={{ color: "var(--gray-600)", lineHeight: 1.6 }}>
@@ -800,10 +813,17 @@ export function ExamClient({ exam, skillId, n }: Props) {
       {/* AI grading overlay — in-progress or failed */}
       {grading && (
         <div className="modal-overlay">
-          <div className="modal-content" style={{ textAlign: "center" }}>
+          <div
+            className="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-grading-title"
+            style={{ textAlign: "center" }}
+          >
             {gradingFailed ? (
               <>
                 <h3
+                  id="modal-grading-title"
                   className="font-bold mb-2"
                   style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
                 >
@@ -852,6 +872,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
                   />
                 </div>
                 <h3
+                  id="modal-grading-title"
                   className="font-bold mb-2"
                   style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
                 >
@@ -872,8 +893,14 @@ export function ExamClient({ exam, skillId, n }: Props) {
       {/* Submit confirmation modal */}
       {showModal && !timeUp && !grading && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div
+            className="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-submit-title"
+          >
             <h3
+              id="modal-submit-title"
               className="font-bold mb-2"
               style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
             >
@@ -924,7 +951,12 @@ export function ExamClient({ exam, skillId, n }: Props) {
       {/* Exit confirmation dialog */}
       {showExitDialog && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div
+            className="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-exit-title"
+          >
             <div
               className="w-12 h-12 rounded-full flex items-center justify-center mb-5"
               style={{ background: "var(--amber-light)" }}
@@ -932,6 +964,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
               <ExclamationTriangleIcon style={{ width: 24, height: 24, color: "var(--amber)" }} />
             </div>
             <h3
+              id="modal-exit-title"
               className="font-bold mb-2"
               style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
             >

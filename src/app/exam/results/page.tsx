@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { redirect, notFound } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import { Button } from "@/components/ui/Button";
-import { ProgressBar } from "@/components/ui/ProgressBar";
+import { ProgressBar, type ProgressVariant } from "@/components/ui/ProgressBar";
 import {
   CheckCircleIcon,
   XCircleIcon,
@@ -28,8 +28,6 @@ type QuestionFeedback = {
   maxScore: number;
   feedback: string;
 };
-
-type ProgressVariant = "success" | "warning" | "danger" | "default";
 
 function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString("en-US", {

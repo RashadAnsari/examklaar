@@ -4,15 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
-
-function sanitizeHtml(html: string): string {
-  if (typeof window === "undefined") {
-    return html;
-  }
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const DOMPurify = require("dompurify");
-  return DOMPurify.sanitize(html);
-}
+import { sanitizeHtml } from "@/lib/sanitize";
 
 export type ReviewQuestion = {
   id: string;

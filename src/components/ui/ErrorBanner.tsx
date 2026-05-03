@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { XCircleIcon } from "@heroicons/react/20/solid";
 
 interface ErrorBannerProps {
@@ -10,13 +10,18 @@ interface ErrorBannerProps {
 }
 
 export function ErrorBanner({ message, onHide, duration = 6000 }: ErrorBannerProps) {
+  const onHideRef = useRef(onHide);
+  useLayoutEffect(() => {
+    onHideRef.current = onHide;
+  });
+
   useEffect(() => {
     if (!message) {
       return;
     }
-    const timer = setTimeout(onHide, duration);
+    const timer = setTimeout(() => onHideRef.current(), duration);
     return () => clearTimeout(timer);
-  }, [message, duration, onHide]);
+  }, [message, duration]);
 
   if (!message) {
     return null;

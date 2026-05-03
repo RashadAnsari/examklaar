@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 
 interface SuccessBannerProps {
@@ -10,13 +10,18 @@ interface SuccessBannerProps {
 }
 
 export function SuccessBanner({ message, onHide, duration = 4000 }: SuccessBannerProps) {
+  const onHideRef = useRef(onHide);
+  useLayoutEffect(() => {
+    onHideRef.current = onHide;
+  });
+
   useEffect(() => {
     if (!message) {
       return;
     }
-    const timer = setTimeout(onHide, duration);
+    const timer = setTimeout(() => onHideRef.current(), duration);
     return () => clearTimeout(timer);
-  }, [message, duration, onHide]);
+  }, [message, duration]);
 
   if (!message) {
     return null;

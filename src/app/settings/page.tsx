@@ -392,7 +392,7 @@ function SubscriptionSection() {
               </p>
             ) : (
               <div
-                className="rounded-xl overflow-hidden border"
+                className="rounded-xl overflow-x-auto border"
                 style={{ borderColor: "var(--gray-100)" }}
               >
                 <table className="w-full text-sm">
@@ -437,7 +437,7 @@ function SubscriptionSection() {
                                 month: "short",
                                 year: "numeric",
                               })
-                            : "—"}
+                            : "N/A"}
                         </td>
                         <td className="px-4 py-3" style={{ color: "var(--gray-700)" }}>
                           {p.description}

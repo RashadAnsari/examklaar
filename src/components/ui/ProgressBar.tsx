@@ -1,4 +1,4 @@
-type ProgressVariant = "default" | "success" | "warning" | "danger";
+export type ProgressVariant = "default" | "success" | "warning" | "danger";
 
 interface ProgressBarProps {
   value: number;
