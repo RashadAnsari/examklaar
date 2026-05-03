@@ -1,5 +1,12 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/middleware";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
+
+// Expensive AI/ML routes get a tight per-IP limit; all other API routes get a
+// generous limit just to prevent runaway scripts.
+const TIGHT_ROUTES = ["/api/recordings/transcribe", "/api/exams/grade"];
+const TIGHT_LIMIT = { max: 10, windowMs: 5 * 60 * 1000 }; // 10 / 5 min
+const API_LIMIT = { max: 60, windowMs: 60 * 1000 }; // 60 / 1 min
 
 const PUBLIC_PATHS = [
   "/",
@@ -26,6 +33,23 @@ function isGuestOnly(pathname: string) {
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  if (pathname.startsWith("/api/")) {
+    const ip = getClientIp(request);
+    const isTight = TIGHT_ROUTES.some((r) => pathname.startsWith(r));
+    const { max, windowMs } = isTight ? TIGHT_LIMIT : API_LIMIT;
+    const { allowed, retryAfterSeconds } = checkRateLimit(
+      `api:${isTight ? pathname : ""}:${ip}`,
+      max,
+      windowMs
+    );
+    if (!allowed) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429, headers: { "Retry-After": String(retryAfterSeconds) } }
+      );
+    }
+  }
 
   try {
     const { supabase, supabaseResponse } = createClient(request);
