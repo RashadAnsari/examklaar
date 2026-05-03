@@ -105,7 +105,9 @@ export async function POST(req: NextRequest) {
           );
           return NextResponse.json({ error: "upload_failed" }, { status: 500 });
         }
-        answersJson[q.id] = { path: storagePath, transcript: transcriptsRaw[q.id] ?? "" };
+        const MAX_TRANSCRIPT_CHARS = 2000;
+        const rawTranscript = (transcriptsRaw[q.id] ?? "").slice(0, MAX_TRANSCRIPT_CHARS);
+        answersJson[q.id] = { path: storagePath, transcript: rawTranscript };
       }
     } else {
       answersJson[q.id] = answersRaw[q.id];

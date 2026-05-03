@@ -1,5 +1,10 @@
 import fs from "fs/promises";
 import path from "path";
+
+// Prevent user-controlled text from breaking out of the XML tags used in grading prompts.
+function escapeXml(text: string): string {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
 import { generateText, tool, stepCountIs } from "ai";
 import { zodSchema } from "@ai-sdk/provider-utils";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
@@ -285,9 +290,11 @@ async function gradeBatch(
 
       if (q.type === "speaking") {
         const ans = raw as SpeakingAnswer | undefined;
-        studentAnswer = ans?.transcript?.trim() || "(no spoken answer / transcript available)";
+        const transcript = ans?.transcript?.trim() || "(no spoken answer / transcript available)";
+        studentAnswer = escapeXml(transcript);
       } else {
-        studentAnswer = typeof raw === "string" && raw.trim() ? raw.trim() : "(no answer given)";
+        const written = typeof raw === "string" && raw.trim() ? raw.trim() : "(no answer given)";
+        studentAnswer = escapeXml(written);
       }
 
       const contentWithPlaceholders = q.content.replace(
