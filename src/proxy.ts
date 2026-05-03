@@ -64,10 +64,10 @@ export async function proxy(request: NextRequest) {
   try {
     const { supabase, supabaseResponse } = createClient(request);
     const {
-      data: { session },
-    } = await supabase.auth.getSession();
+      data: { user },
+    } = await supabase.auth.getUser();
 
-    if (session && isGuestOnly(pathname)) {
+    if (user && isGuestOnly(pathname)) {
       const dashboardUrl = request.nextUrl.clone();
       dashboardUrl.pathname = "/dashboard";
       return NextResponse.redirect(dashboardUrl);
@@ -77,7 +77,7 @@ export async function proxy(request: NextRequest) {
       return supabaseResponse;
     }
 
-    if (!session) {
+    if (!user) {
       const loginUrl = request.nextUrl.clone();
       loginUrl.pathname = "/auth/login";
       return NextResponse.redirect(loginUrl);
