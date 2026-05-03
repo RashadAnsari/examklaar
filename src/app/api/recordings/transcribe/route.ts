@@ -34,7 +34,8 @@ function decodeWav(buffer: Buffer): Float32Array {
       }
       return float32;
     }
-    offset += 8 + chunkSize;
+    // RIFF chunks are WORD-aligned: skip the padding byte when chunkSize is odd
+    offset += 8 + chunkSize + (chunkSize & 1);
   }
   throw new Error("Invalid WAV: data chunk not found");
 }
