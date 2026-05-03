@@ -3,18 +3,20 @@ import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 
 // Singleton pipeline — loaded once per server process, reused across requests
-let transcriber: ((audio: Float32Array, opts: object) => Promise<{ text: string }>) | null = null;
+let initPromise: Promise<(audio: Float32Array, opts: object) => Promise<{ text: string }>> | null =
+  null;
 
 async function getTranscriber() {
-  if (!transcriber) {
-    const { pipeline, env } = await import("@xenova/transformers");
-    env.allowLocalModels = false;
-    transcriber = (await pipeline("automatic-speech-recognition", "Xenova/whisper-base")) as (
-      audio: Float32Array,
-      opts: object
-    ) => Promise<{ text: string }>;
+  if (!initPromise) {
+    initPromise = (async () => {
+      const { pipeline, env } = await import("@xenova/transformers");
+      env.allowLocalModels = false;
+      return pipeline("automatic-speech-recognition", "Xenova/whisper-base") as Promise<
+        (audio: Float32Array, opts: object) => Promise<{ text: string }>
+      >;
+    })();
   }
-  return transcriber;
+  return initPromise;
 }
 
 // Parse a WAV buffer (16-bit PCM) → Float32Array. Scans for the 'data' chunk dynamically.
