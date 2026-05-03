@@ -4,14 +4,15 @@
 // B1 rates are published percentages — the raw pass mark varies per
 // administration due to IRT equating, so no fixed question count is used.
 export function getPassRate(skill: string, level: string | null): number {
+  const lvl = level?.toUpperCase() ?? null;
   if (skill === "knm") {
     return 28 / 40; // 0.700 — DUO official
   }
   if (skill === "reading") {
-    return level === "B1" ? 0.65 : 19 / 25; // 0.650 or 0.760
+    return lvl === "B1" ? 0.65 : 19 / 25; // 0.650 or 0.760
   }
   if (skill === "listening") {
-    return level === "B1" ? 0.65 : 18 / 25; // 0.650 or 0.720
+    return lvl === "B1" ? 0.65 : 18 / 25; // 0.650 or 0.720
   }
   return 0.6; // writing / speaking (MVT model)
 }
@@ -23,7 +24,7 @@ export function getPassThreshold(skill: string, level: string | null, total: num
 
 // Returns true when the B1 threshold is an approximation (not a fixed official count).
 function isApproxThreshold(skill: string, level: string | null): boolean {
-  return level === "B1" && (skill === "reading" || skill === "listening");
+  return level?.toUpperCase() === "B1" && (skill === "reading" || skill === "listening");
 }
 
 // Percentage score as a 0–100 integer.
