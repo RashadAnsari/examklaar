@@ -128,6 +128,7 @@ export function ReviewClient({
                 .map((f) => (
                   <button
                     key={f}
+                    aria-pressed={filter === f}
                     onClick={() => setFilter(f)}
                     className="px-4 py-2 text-sm font-medium rounded-lg transition-all"
                     style={{
@@ -147,6 +148,7 @@ export function ReviewClient({
             : (["all", "good", "needs_work"] as WritingFilterType[]).map((f) => (
                 <button
                   key={f}
+                  aria-pressed={writingFilter === f}
                   onClick={() => setWritingFilter(f)}
                   className="px-4 py-2 text-sm font-medium rounded-lg transition-all"
                   style={{

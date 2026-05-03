@@ -49,6 +49,7 @@ function WritingInput({
   return (
     <div>
       <textarea
+        aria-label="Your answer"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}

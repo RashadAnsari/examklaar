@@ -142,6 +142,9 @@ export function Navbar() {
               <div className="relative" ref={menuRef}>
                 <button
                   type="button"
+                  id="user-menu-button"
+                  aria-haspopup="menu"
+                  aria-expanded={menuOpen}
                   onClick={() => setMenuOpen((open) => !open)}
                   className={`flex items-center gap-2.5 rounded-full px-3 py-1.5 transition-colors ${
                     menuOpen ? "bg-[var(--gray-200)]" : "bg-[var(--gray-100)]"
@@ -159,8 +162,13 @@ export function Navbar() {
                 </button>
 
                 {menuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 overflow-hidden rounded-xl border border-[var(--gray-200)] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.1)] py-1.5">
+                  <div
+                    role="menu"
+                    aria-labelledby="user-menu-button"
+                    className="absolute right-0 mt-2 w-48 overflow-hidden rounded-xl border border-[var(--gray-200)] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.1)] py-1.5"
+                  >
                     <Link
+                      role="menuitem"
                       href="/dashboard"
                       className={`flex items-center gap-2.5 px-4 py-2 text-sm transition ${
                         pathname === "/dashboard"
@@ -173,6 +181,7 @@ export function Navbar() {
                       Dashboard
                     </Link>
                     <Link
+                      role="menuitem"
                       href="/settings"
                       className={`flex items-center gap-2.5 px-4 py-2 text-sm transition ${
                         pathname === "/settings"
@@ -186,6 +195,7 @@ export function Navbar() {
                     </Link>
                     <div className="my-1 h-px bg-[var(--gray-100)]" />
                     <button
+                      role="menuitem"
                       type="button"
                       onClick={signOut}
                       className="flex w-full items-center gap-2.5 px-4 py-2 text-sm text-[var(--red)] transition hover:bg-[var(--red-light)]"

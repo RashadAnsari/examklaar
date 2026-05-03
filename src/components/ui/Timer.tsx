@@ -53,6 +53,9 @@ export function Timer({ initialSeconds, onExpire, warningAt, onWarning }: TimerP
 
   return (
     <div
+      role="timer"
+      aria-label={`${display} remaining`}
+      aria-live="off"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       title={display}

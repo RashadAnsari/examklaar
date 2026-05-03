@@ -46,6 +46,7 @@ export function DashboardClient({ skills, isPaid }: { skills: SkillGroup[]; isPa
           {(["A2", "B1"] as Level[]).map((l) => (
             <button
               key={l}
+              aria-pressed={level === l}
               onClick={() => handleLevelChange(l)}
               className="rounded-md px-4 py-1.5 text-sm font-semibold transition-all"
               style={{
