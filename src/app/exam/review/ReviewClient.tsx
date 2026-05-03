@@ -24,7 +24,7 @@ export type ReviewQuestion = {
   feedback: { score: number; maxScore: number; feedback: string } | null;
 };
 
-type FilterType = "all" | "correct" | "incorrect";
+type FilterType = "all" | "correct" | "incorrect" | "skipped";
 type WritingFilterType = "all" | "good" | "needs_work";
 
 interface Props {
@@ -55,7 +55,10 @@ export function ReviewClient({
 
   // MCQ counts
   const correctCount = isMcq ? questions.filter((q) => q.userAnswer === q.correctAnswer).length : 0;
-  const incorrectCount = isMcq ? questions.length - correctCount : 0;
+  const skippedCount = isMcq
+    ? questions.filter((q) => q.userAnswer === null || q.userAnswer === undefined).length
+    : 0;
+  const incorrectCount = isMcq ? questions.length - correctCount - skippedCount : 0;
 
   // Writing/speaking counts
   const goodCount = !isMcq
@@ -71,8 +74,13 @@ export function ReviewClient({
         if (filter === "correct") {
           return q.userAnswer === q.correctAnswer;
         }
+        if (filter === "skipped") {
+          return q.userAnswer === null || q.userAnswer === undefined;
+        }
         if (filter === "incorrect") {
-          return q.userAnswer !== q.correctAnswer;
+          return (
+            q.userAnswer !== null && q.userAnswer !== undefined && q.userAnswer !== q.correctAnswer
+          );
         }
         return true;
       })
@@ -123,23 +131,27 @@ export function ReviewClient({
           style={{ background: "white", borderColor: "var(--gray-200)" }}
         >
           {isMcq
-            ? (["all", "correct", "incorrect"] as FilterType[]).map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setFilter(f)}
-                  className="px-4 py-2 text-sm font-medium rounded-lg transition-all"
-                  style={{
-                    background: filter === f ? "var(--green-900)" : "var(--gray-100)",
-                    color: filter === f ? "white" : "var(--gray-700)",
-                  }}
-                >
-                  {f === "all"
-                    ? `All (${questions.length})`
-                    : f === "correct"
-                      ? `Correct (${correctCount})`
-                      : `Incorrect (${incorrectCount})`}
-                </button>
-              ))
+            ? (["all", "correct", "incorrect", "skipped"] as FilterType[])
+                .filter((f) => f !== "skipped" || skippedCount > 0)
+                .map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => setFilter(f)}
+                    className="px-4 py-2 text-sm font-medium rounded-lg transition-all"
+                    style={{
+                      background: filter === f ? "var(--green-900)" : "var(--gray-100)",
+                      color: filter === f ? "white" : "var(--gray-700)",
+                    }}
+                  >
+                    {f === "all"
+                      ? `All (${questions.length})`
+                      : f === "correct"
+                        ? `Correct (${correctCount})`
+                        : f === "skipped"
+                          ? `Skipped (${skippedCount})`
+                          : `Incorrect (${incorrectCount})`}
+                  </button>
+                ))
             : (["all", "good", "needs_work"] as WritingFilterType[]).map((f) => (
                 <button
                   key={f}
