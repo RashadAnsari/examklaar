@@ -27,14 +27,30 @@ export async function POST(req: NextRequest) {
   const skillId = formData.get("skill_id") as string;
   const n = parseInt(formData.get("n") as string);
   const attemptId = formData.get("attempt_id") as string;
-  const answersRaw = JSON.parse(formData.get("answers") as string) as Record<
-    string,
-    number | string
-  >;
-  const transcriptsRaw = JSON.parse((formData.get("transcripts") as string) ?? "{}") as Record<
-    string,
-    string
-  >;
+  const answersField = formData.get("answers") as string | null;
+  const transcriptsField = (formData.get("transcripts") as string | null) ?? "{}";
+
+  if (!answersField || answersField.length > 50_000) {
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  }
+  if (transcriptsField.length > 20_000) {
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  }
+
+  let answersRaw: Record<string, unknown>;
+  let transcriptsRaw: Record<string, string>;
+  try {
+    answersRaw = JSON.parse(answersField);
+    transcriptsRaw = JSON.parse(transcriptsField);
+    if (typeof answersRaw !== "object" || Array.isArray(answersRaw)) {
+      throw new Error();
+    }
+    if (typeof transcriptsRaw !== "object" || Array.isArray(transcriptsRaw)) {
+      throw new Error();
+    }
+  } catch {
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  }
 
   if (!skillId || isNaN(n)) {
     console.warn("[submit] Invalid request — skill_id=%s n=%s user=%s", skillId, n, user.id);
@@ -110,7 +126,17 @@ export async function POST(req: NextRequest) {
         answersJson[q.id] = { path: storagePath, transcript: rawTranscript };
       }
     } else {
-      answersJson[q.id] = answersRaw[q.id];
+      const val = answersRaw[q.id];
+      if (q.type === "writing") {
+        if (typeof val === "string") {
+          answersJson[q.id] = val.slice(0, 10_000);
+        }
+      } else {
+        // MCQ: must be a finite integer
+        if (typeof val === "number" && Number.isFinite(val)) {
+          answersJson[q.id] = val;
+        }
+      }
     }
   }
 
