@@ -490,18 +490,22 @@ export function ExamClient({ exam, skillId, n }: Props) {
 
   async function callGradeApi(resultId: string): Promise<void> {
     setGradingFailed(false);
-    const res = await fetch("/api/exams/grade", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ result_id: resultId }),
-    });
-    const data = await res.json();
-    if (!res.ok || data.error) {
+    try {
+      const res = await fetch("/api/exams/grade", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ result_id: resultId }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) {
+        setGradingFailed(true);
+        return;
+      }
+      gradingRef.current = false;
+      router.replace(`/exam/results?skill=${skillId}&n=${n}`);
+    } catch {
       setGradingFailed(true);
-      return;
     }
-    gradingRef.current = false;
-    router.replace(`/exam/results?skill=${skillId}&n=${n}`);
   }
 
   async function submitExam() {
@@ -511,61 +515,67 @@ export function ExamClient({ exam, skillId, n }: Props) {
     setSubmitting(true);
     blockNavRef.current = false;
 
-    const formData = new FormData();
-    formData.append("skill_id", skillId);
-    formData.append("n", String(n));
-    formData.append("attempt_id", attemptIdRef.current);
+    try {
+      const formData = new FormData();
+      formData.append("skill_id", skillId);
+      formData.append("n", String(n));
+      formData.append("attempt_id", attemptIdRef.current);
 
-    const answersPayload: Record<string, number | string> = {};
-    const transcriptsPayload: Record<string, string> = {};
+      const answersPayload: Record<string, number | string> = {};
+      const transcriptsPayload: Record<string, string> = {};
 
-    for (const q of exam.questions) {
-      const a = answers[q.id];
-      if (a === undefined) {
-        continue;
+      for (const q of exam.questions) {
+        const a = answers[q.id];
+        if (a === undefined) {
+          continue;
+        }
+
+        if (q.type === "speaking" && typeof a === "string" && a.startsWith("blob:")) {
+          const audioBlob = await fetch(a).then((r) => r.blob());
+          formData.append(`audio_${q.id}`, audioBlob, `${q.id}.webm`);
+          transcriptsPayload[q.id] = transcripts[q.id] ?? "";
+          answersPayload[q.id] = "AUDIO";
+        } else {
+          answersPayload[q.id] = a as number | string;
+        }
       }
 
-      if (q.type === "speaking" && typeof a === "string" && a.startsWith("blob:")) {
-        const audioBlob = await fetch(a).then((r) => r.blob());
-        formData.append(`audio_${q.id}`, audioBlob, `${q.id}.webm`);
-        transcriptsPayload[q.id] = transcripts[q.id] ?? "";
-        answersPayload[q.id] = "AUDIO";
-      } else {
-        answersPayload[q.id] = a as number | string;
+      formData.append("answers", JSON.stringify(answersPayload));
+      formData.append("transcripts", JSON.stringify(transcriptsPayload));
+
+      const res = await fetch("/api/exams/submit", { method: "POST", body: formData });
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        setSubmitError(
+          data.error === "upload_failed"
+            ? "Failed to upload your recording. Please try again."
+            : "Something went wrong. Please try again."
+        );
+        setSubmitting(false);
+        blockNavRef.current = true;
+        return;
       }
-    }
 
-    formData.append("answers", JSON.stringify(answersPayload));
-    formData.append("transcripts", JSON.stringify(transcriptsPayload));
+      analytics.examCompleted(`${skillId}-${n}`);
 
-    const res = await fetch("/api/exams/submit", { method: "POST", body: formData });
-    const data = await res.json();
+      const isMcq = exam.skill !== "writing" && exam.skill !== "speaking";
+      if (!isMcq) {
+        setGradingResultId(data.id);
+        setSubmitting(false);
+        setShowModal(false);
+        setGrading(true);
+        gradingRef.current = true;
+        await callGradeApi(data.id);
+        return;
+      }
 
-    if (!res.ok || data.error) {
-      setSubmitError(
-        data.error === "upload_failed"
-          ? "Het uploaden van uw opname is mislukt. Probeer het opnieuw."
-          : "Er is een fout opgetreden. Probeer het opnieuw."
-      );
+      router.replace(`/exam/results?skill=${skillId}&n=${n}`);
+    } catch {
+      setSubmitError("Something went wrong. Check your connection and try again.");
       setSubmitting(false);
       blockNavRef.current = true;
-      return;
     }
-
-    analytics.examCompleted(`${skillId}-${n}`);
-
-    const isMcq = exam.skill !== "writing" && exam.skill !== "speaking";
-    if (!isMcq) {
-      setGradingResultId(data.id);
-      setSubmitting(false);
-      setShowModal(false);
-      setGrading(true);
-      gradingRef.current = true;
-      await callGradeApi(data.id);
-      return;
-    }
-
-    router.replace(`/exam/results?skill=${skillId}&n=${n}`);
   }
 
   function confirmExit() {
