@@ -31,24 +31,34 @@ function isGuestOnly(pathname: string) {
   return GUEST_ONLY_PATHS.some((path) => pathname === path || pathname.startsWith(path + "/"));
 }
 
+function applyRateLimit(request: NextRequest): NextResponse | null {
+  const { pathname } = request.nextUrl;
+  if (!pathname.startsWith("/api/") || pathname.startsWith("/api/payments/webhook")) {
+    return null;
+  }
+  const ip = getClientIp(request);
+  const isTight = TIGHT_ROUTES.some((r) => pathname.startsWith(r));
+  const { max, windowMs } = isTight ? TIGHT_LIMIT : API_LIMIT;
+  const { allowed, retryAfterSeconds } = checkRateLimit(
+    `api:${isTight ? pathname : ""}:${ip}`,
+    max,
+    windowMs
+  );
+  if (!allowed) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429, headers: { "Retry-After": String(retryAfterSeconds) } }
+    );
+  }
+  return null;
+}
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname.startsWith("/api/")) {
-    const ip = getClientIp(request);
-    const isTight = TIGHT_ROUTES.some((r) => pathname.startsWith(r));
-    const { max, windowMs } = isTight ? TIGHT_LIMIT : API_LIMIT;
-    const { allowed, retryAfterSeconds } = checkRateLimit(
-      `api:${isTight ? pathname : ""}:${ip}`,
-      max,
-      windowMs
-    );
-    if (!allowed) {
-      return NextResponse.json(
-        { error: "Too many requests. Please try again later." },
-        { status: 429, headers: { "Retry-After": String(retryAfterSeconds) } }
-      );
-    }
+  const rateLimitResponse = applyRateLimit(request);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
   }
 
   try {
