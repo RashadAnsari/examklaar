@@ -47,4 +47,6 @@ supabase/*
 !supabase/migrations
 
 # claude
-.claude/settings.local.json
+.claude/
+.claude-flow/
+.mcp.json
