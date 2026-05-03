@@ -1,26 +1,18 @@
 import type { NextConfig } from "next";
 
-const supabaseUrl = (process.env.SUPABASE_PUBLIC_URL ?? "").replace(/\/$/, "");
-const supabaseWss = supabaseUrl.replace(/^https?:\/\//, "wss://");
-
 const csp = [
-  "default-src 'self'",
-  // Next.js requires 'unsafe-inline' for hydration scripts unless nonces are used
-  `script-src 'self' 'unsafe-inline' https://cdn.paddle.com https://cloud.umami.is`,
-  "style-src 'self' 'unsafe-inline'",
-  // Supabase Storage serves exam assets; blob: for client-side audio recording
-  `img-src 'self' data: blob: ${supabaseUrl}`,
   "font-src 'self'",
-  // Supabase REST + Realtime (WSS), Paddle checkout API, Umami event ping
-  `connect-src 'self' ${supabaseUrl} ${supabaseWss} https://*.paddle.com https://cloud.umami.is`,
-  // Paddle checkout overlay iframe — exact subdomain varies by environment, wildcard covers all
-  "frame-src https://*.paddle.com",
-  "frame-ancestors 'none'",
-  "object-src 'none'",
   "base-uri 'self'",
+  "object-src 'none'",
+  "default-src 'self'",
   "form-action 'self'",
-  // blob: needed for recording playback in the speaking exam
-  "media-src 'self' blob:",
+  "frame-ancestors 'none'",
+  "frame-src https://*.paddle.com",
+  "style-src 'self' 'unsafe-inline'",
+  "media-src 'self' blob: https://*.supabase.co",
+  "img-src 'self' data: blob: https://*.supabase.co",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.paddle.com https://cloud.umami.is",
+  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://cdn.paddle.com https://cloud.umami.is`,
 ].join("; ");
 
 const nextConfig: NextConfig = {
