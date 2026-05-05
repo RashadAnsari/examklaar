@@ -1,5 +1,3 @@
-import fs from "fs/promises";
-import path from "path";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
@@ -10,7 +8,7 @@ import { ChevronLeftIcon, LockClosedIcon } from "@heroicons/react/20/solid";
 import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam-config";
 import { UpgradeBanner } from "@/components/ui/UpgradeBanner";
 import { createClient } from "@/utils/supabase/server";
-import { EXAMS_DIR } from "@/lib/exams";
+import { listSkillExams } from "@/data/exams";
 import { getScoreFeedback } from "@/lib/scoring";
 import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
 
@@ -30,64 +28,40 @@ interface ExamItem {
 async function loadExams(
   id: string
 ): Promise<{ skill: string; level: string | null; exams: ExamItem[] } | null> {
-  const parts = id.split("-");
-  const lastPart = parts[parts.length - 1];
-  const isLevel = ["a2", "b1"].includes(lastPart);
-  const skill = isLevel ? parts.slice(0, -1).join("-") : id;
-  const levelDir = isLevel ? lastPart : null;
-
-  if (!(skill in SKILL_TITLES)) {
+  const fileData = await listSkillExams(id);
+  if (!fileData) {
     return null;
   }
 
-  const dir = levelDir ? path.join(EXAMS_DIR, skill, levelDir) : path.join(EXAMS_DIR, skill);
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
 
-  try {
-    const files = (await fs.readdir(dir)).filter((f) => f.endsWith(".json")).sort();
-    if (files.length === 0) {
-      return null;
+  const { data: results } = await supabase
+    .from("exam_results")
+    .select("exam_id, score, total_score, completed_at")
+    .like("exam_id", `${id}-exam-%`)
+    .eq("grading_status", "complete")
+    .order("completed_at", { ascending: false });
+
+  const resultsByExamId = new Map<string, ExamResult>();
+  for (const r of results ?? []) {
+    if (!resultsByExamId.has(r.exam_id)) {
+      resultsByExamId.set(r.exam_id, {
+        score: r.score,
+        total_score: r.total_score,
+        completed_at: r.completed_at,
+      });
     }
-
-    const cookieStore = await cookies();
-    const supabase = createClient(cookieStore);
-
-    const { data: results } = await supabase
-      .from("exam_results")
-      .select("exam_id, score, total_score, completed_at")
-      .like("exam_id", `${id}-exam-%`)
-      .eq("grading_status", "complete")
-      .order("completed_at", { ascending: false });
-
-    const resultsByExamId = new Map<string, ExamResult>();
-    for (const r of results ?? []) {
-      if (!resultsByExamId.has(r.exam_id)) {
-        resultsByExamId.set(r.exam_id, {
-          score: r.score,
-          total_score: r.total_score,
-          completed_at: r.completed_at,
-        });
-      }
-    }
-
-    const exams: ExamItem[] = await Promise.all(
-      files.map(async (filename) => {
-        const json = JSON.parse(await fs.readFile(path.join(dir, filename), "utf-8"));
-        const match = filename.match(/(\d+)\.json$/);
-        const n = match ? parseInt(match[1]) : 0;
-        const examId = `${id}-exam-${n}`;
-        return {
-          n,
-          timeLimitMinutes: json.timeLimitMinutes,
-          premiumOnly: json.premiumOnly ?? false,
-          result: resultsByExamId.get(examId) ?? null,
-        };
-      })
-    );
-
-    return { skill, level: levelDir ? levelDir.toUpperCase() : null, exams };
-  } catch {
-    return null;
   }
+
+  const exams: ExamItem[] = fileData.exams.map(({ n, timeLimitMinutes, premiumOnly }) => ({
+    n,
+    timeLimitMinutes,
+    premiumOnly,
+    result: resultsByExamId.get(`${id}-exam-${n}`) ?? null,
+  }));
+
+  return { skill: fileData.skill, level: fileData.level, exams };
 }
 
 export default async function ExamsPage(props: PageProps<"/exams/[id]">) {

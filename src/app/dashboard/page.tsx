@@ -1,70 +1,10 @@
-import fs from "fs/promises";
-import path from "path";
 import { cookies } from "next/headers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam-config";
-import type { SkillGroup } from "@/lib/exam-config";
 import { DashboardClient } from "./DashboardClient";
 import { createClient } from "@/utils/supabase/server";
-import { EXAMS_DIR } from "@/lib/exams";
+import { listSkillGroups } from "@/data/exams";
 import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
-
-async function loadSkillGroups(): Promise<SkillGroup[]> {
-  const groups: SkillGroup[] = [];
-  const skillDirs = await fs.readdir(EXAMS_DIR);
-
-  for (const skill of skillDirs) {
-    const skillPath = path.join(EXAMS_DIR, skill);
-    if (!(await fs.stat(skillPath)).isDirectory()) {
-      continue;
-    }
-
-    const entries = await fs.readdir(skillPath);
-    const hasLevelDirs = (await fs.stat(path.join(skillPath, entries[0]))).isDirectory();
-
-    if (hasLevelDirs) {
-      for (const levelDir of entries) {
-        const levelPath = path.join(skillPath, levelDir);
-        if (!(await fs.stat(levelPath)).isDirectory()) {
-          continue;
-        }
-
-        const examFiles = (await fs.readdir(levelPath)).filter((f) => f.endsWith(".json"));
-        if (examFiles.length === 0) {
-          continue;
-        }
-
-        groups.push({
-          id: `${skill}-${levelDir}`,
-          skill,
-          level: levelDir.toUpperCase(),
-          title: SKILL_TITLES[skill] ?? skill,
-          description: SKILL_DESCRIPTIONS[skill] ?? "",
-          examCount: examFiles.length,
-          completedCount: 0,
-        });
-      }
-    } else {
-      const examFiles = entries.filter((f) => f.endsWith(".json"));
-      if (examFiles.length === 0) {
-        continue;
-      }
-
-      groups.push({
-        id: skill,
-        skill,
-        level: null,
-        title: SKILL_TITLES[skill] ?? skill,
-        description: SKILL_DESCRIPTIONS[skill] ?? "",
-        examCount: examFiles.length,
-        completedCount: 0,
-      });
-    }
-  }
-
-  return groups;
-}
 
 export default async function DashboardPage() {
   const cookieStore = await cookies();
@@ -94,7 +34,7 @@ export default async function DashboardPage() {
     completedByGroup.get(groupId)!.add(r.exam_id);
   }
 
-  const skills = (await loadSkillGroups()).map((g) => ({
+  const skills = (await listSkillGroups()).map((g) => ({
     ...g,
     completedCount: completedByGroup.get(g.id)?.size ?? 0,
   }));

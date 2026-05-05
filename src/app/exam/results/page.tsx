@@ -1,4 +1,3 @@
-import fs from "fs/promises";
 import { cookies } from "next/headers";
 import { redirect, notFound } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
@@ -11,7 +10,7 @@ import {
   ArrowPathIcon,
   ArrowRightIcon,
 } from "@heroicons/react/20/solid";
-import { getExamFilePath } from "@/lib/exams";
+import { readExamOrNull, examFileExists } from "@/data/exams";
 import { SKILL_TITLES } from "@/lib/exam-config";
 import {
   getPassThreshold,
@@ -20,7 +19,6 @@ import {
   getStatus,
   computeHistoryStats,
 } from "@/lib/scoring";
-import type { Exam } from "@/app/exam/ExamClient";
 import { BackGuard } from "./BackGuard";
 
 type QuestionFeedback = {
@@ -80,22 +78,10 @@ export default async function ResultsPage(props: {
     .eq("user_id", user.id)
     .eq("grading_status", "complete");
 
-  // Load exam JSON
-  let exam: Exam | null = null;
-  try {
-    exam = JSON.parse(await fs.readFile(getExamFilePath(skillId, n), "utf-8"));
-  } catch {
-    // not critical
-  }
-
-  // Check if next exam exists
-  let hasNextExam = false;
-  try {
-    await fs.access(getExamFilePath(skillId, n + 1));
-    hasNextExam = true;
-  } catch {
-    // no next exam
-  }
+  const [exam, hasNextExam] = await Promise.all([
+    readExamOrNull(skillId, n),
+    examFileExists(skillId, n + 1),
+  ]);
 
   const skill = result.skill as string;
   const level = result.level as string | null;

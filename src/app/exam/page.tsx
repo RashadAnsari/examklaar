@@ -1,8 +1,7 @@
-import fs from "fs/promises";
 import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import { ExamClient, Exam } from "./ExamClient";
-import { getExamFilePath } from "@/lib/exams";
+import { readExam } from "@/data/exams";
 import { createClient } from "@/utils/supabase/server";
 import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
 
@@ -16,11 +15,9 @@ export default async function ExamPage(props: {
     notFound();
   }
 
-  const filePath = getExamFilePath(skill, n);
-
   let json: Exam;
   try {
-    json = JSON.parse(await fs.readFile(filePath, "utf-8"));
+    json = await readExam(skill, n);
   } catch {
     notFound();
   }

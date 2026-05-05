@@ -2,15 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 import { createAdminClient } from "@/utils/supabase/admin";
 import { cookies } from "next/headers";
-import fs from "fs/promises";
-import { getExamFilePath } from "@/lib/exams";
+import { readExam } from "@/data/exams";
+import type { Exam } from "@/app/exam/ExamClient";
 import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
-
-interface ExamQuestion {
-  id: string;
-  type: string;
-  correctAnswer: number | null;
-}
 
 export async function POST(req: NextRequest) {
   const supabase = createClient(await cookies());
@@ -68,15 +62,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Too many submissions. Try again later." }, { status: 429 });
   }
 
-  let examJson: {
-    id: string;
-    skill: string;
-    level?: string;
-    premiumOnly: boolean;
-    questions: ExamQuestion[];
-  };
+  let examJson: Exam;
   try {
-    examJson = JSON.parse(await fs.readFile(getExamFilePath(skillId, n), "utf-8"));
+    examJson = await readExam(skillId, n);
   } catch {
     console.error("[submit] Exam file not found — skill_id=%s n=%s", skillId, n);
     return NextResponse.json({ error: "Exam not found" }, { status: 404 });

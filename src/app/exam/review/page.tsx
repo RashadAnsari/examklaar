@@ -1,8 +1,7 @@
-import fs from "fs/promises";
 import { cookies } from "next/headers";
 import { redirect, notFound } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
-import { getExamFilePath } from "@/lib/exams";
+import { readExam } from "@/data/exams";
 import { SKILL_TITLES } from "@/lib/exam-config";
 import { scorePct, getPassThreshold } from "@/lib/scoring";
 import type { Exam } from "@/app/exam/ExamClient";
@@ -45,13 +44,10 @@ export default async function ReviewPage(props: {
     notFound();
   }
 
-  let exam: Exam | null = null;
+  let exam: Exam;
   try {
-    exam = JSON.parse(await fs.readFile(getExamFilePath(skillId, n), "utf-8"));
+    exam = await readExam(skillId, n);
   } catch {
-    notFound();
-  }
-  if (!exam) {
     notFound();
   }
 

@@ -1,6 +1,3 @@
-import fs from "fs/promises";
-import path from "path";
-
 // Prevent user-controlled text from breaking out of the XML tags used in grading prompts.
 function escapeXml(text: string): string {
   return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -11,7 +8,7 @@ import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
 import { createAdminClient } from "@/utils/supabase/admin";
 import type { Exam } from "@/app/exam/ExamClient";
-import { EXAMS_DIR } from "@/lib/exams";
+import { readExamById } from "@/data/exams";
 
 const GRADER_MODEL = "gemma-4-31b-it";
 
@@ -25,38 +22,6 @@ export interface ResultData {
   skill: string;
   level: string | null;
   answers: Record<string, unknown>;
-}
-
-function resolveExamPath(examId: string): string {
-  const parts = examId.split("-");
-  const examIdx = parts.indexOf("exam");
-  if (examIdx === -1) {
-    throw new Error(`Cannot resolve path for exam id: ${examId}`);
-  }
-
-  const skillParts = parts.slice(0, examIdx);
-  const lastPart = skillParts[skillParts.length - 1];
-  const isLevel = lastPart === "a2" || lastPart === "b1";
-
-  let filePath: string;
-  if (isLevel) {
-    const skillBase = skillParts.slice(0, -1).join("-");
-    const level = lastPart;
-    filePath = path.join(/*turbopackIgnore: true*/ EXAMS_DIR, skillBase, level, `${examId}.json`);
-  } else {
-    filePath = path.join(
-      /*turbopackIgnore: true*/ EXAMS_DIR,
-      skillParts.join("-"),
-      `${examId}.json`
-    );
-  }
-
-  const resolved = path.resolve(/*turbopackIgnore: true*/ filePath);
-  const base = path.resolve(/*turbopackIgnore: true*/ EXAMS_DIR);
-  if (!resolved.startsWith(base + path.sep)) {
-    throw new Error(`Path traversal attempt blocked for exam id: ${examId}`);
-  }
-  return resolved;
 }
 
 async function fetchImageBuffer(url: string): Promise<{ buffer: Buffer; mimeType: string }> {
@@ -392,9 +357,7 @@ async function doGrade(
   result: ResultData,
   supabase: ReturnType<typeof createAdminClient>
 ): Promise<void> {
-  // Load exam JSON
-  const examPath = resolveExamPath(result.exam_id);
-  const exam: Exam = JSON.parse(await fs.readFile(/*turbopackIgnore: true*/ examPath, "utf-8"));
+  const exam: Exam = await readExamById(result.exam_id);
 
   // Filter gradable questions
   const gradableQuestions = exam.questions.filter(
