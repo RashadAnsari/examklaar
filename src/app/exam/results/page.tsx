@@ -11,14 +11,14 @@ import {
   ArrowRightIcon,
 } from "@heroicons/react/20/solid";
 import { readExamOrNull, examFileExists } from "@/data/exams";
-import { SKILL_TITLES } from "@/lib/exam-config";
+import { SKILL_TITLES } from "@/lib/exam/config";
 import {
   getPassThreshold,
   scorePct,
   getPassContext,
   getStatus,
   computeHistoryStats,
-} from "@/lib/scoring";
+} from "@/lib/exam/scoring";
 import { BackGuard } from "./BackGuard";
 
 type QuestionFeedback = {

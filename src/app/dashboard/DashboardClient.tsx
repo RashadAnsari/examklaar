@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { UpgradeBanner } from "@/components/ui/UpgradeBanner";
-import type { SkillGroup } from "@/lib/exam-config";
+import type { SkillGroup } from "@/lib/exam/config";
 
 type Level = "A2" | "B1";
 

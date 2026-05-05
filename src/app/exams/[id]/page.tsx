@@ -5,11 +5,11 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
 import { ChevronLeftIcon, LockClosedIcon } from "@heroicons/react/20/solid";
-import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam-config";
+import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam/config";
 import { UpgradeBanner } from "@/components/ui/UpgradeBanner";
 import { createClient } from "@/utils/supabase/server";
 import { listSkillExams } from "@/data/exams";
-import { getScoreFeedback } from "@/lib/scoring";
+import { getScoreFeedback } from "@/lib/exam/scoring";
 import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
 
 interface ExamResult {

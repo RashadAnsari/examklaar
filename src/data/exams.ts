@@ -2,8 +2,8 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import type { Exam } from "@/app/exam/ExamClient";
-import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam-config";
-import type { SkillGroup } from "@/lib/exam-config";
+import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam/config";
+import type { SkillGroup } from "@/lib/exam/config";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const EXAMS_DIR = path.join(/*turbopackIgnore: true*/ __dirname, "exams");

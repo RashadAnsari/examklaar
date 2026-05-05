@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
-import { gradeExamResult } from "@/lib/grader";
+import { gradeExamResult } from "@/lib/exam/grader";
 import { cookies } from "next/headers";
 
 export async function POST(req: NextRequest) {

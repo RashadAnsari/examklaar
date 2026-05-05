@@ -2,8 +2,8 @@ import { cookies } from "next/headers";
 import { redirect, notFound } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import { readExam } from "@/data/exams";
-import { SKILL_TITLES } from "@/lib/exam-config";
-import { scorePct, getPassThreshold } from "@/lib/scoring";
+import { SKILL_TITLES } from "@/lib/exam/config";
+import { scorePct, getPassThreshold } from "@/lib/exam/scoring";
 import type { Exam } from "@/app/exam/ExamClient";
 import { ReviewClient, type ReviewQuestion } from "./ReviewClient";
 
