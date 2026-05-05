@@ -31,7 +31,10 @@ export async function GET() {
       })
     );
 
-    const payments = results.flatMap((r) => (r.status === "fulfilled" ? r.value : []));
+    const registeredAt = new Date(user.created_at);
+    const payments = results
+      .flatMap((r) => (r.status === "fulfilled" ? r.value : []))
+      .filter((p) => p.paidAt != null && p.paidAt >= registeredAt);
     payments.sort((a, b) => {
       const aTime = a.paidAt?.getTime() ?? 0;
       const bTime = b.paidAt?.getTime() ?? 0;
