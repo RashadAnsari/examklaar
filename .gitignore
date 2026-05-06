@@ -50,3 +50,7 @@ supabase/*
 .claude/
 .claude-flow/
 .mcp.json
+
+# codex
+.codex/
+.agents/
