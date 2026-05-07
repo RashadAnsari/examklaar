@@ -3,9 +3,11 @@ WORKDIR /app
 
 # These vars are baked into the client bundle at build time
 ARG GIT_SHA
+ARG NODE_ENV
 ARG SUPABASE_PUBLIC_URL
 ARG SUPABASE_PUBLISHABLE_DEFAULT_KEY
 ENV GIT_SHA=$GIT_SHA
+ENV NODE_ENV=$NODE_ENV
 ENV SUPABASE_PUBLIC_URL=$SUPABASE_PUBLIC_URL
 ENV SUPABASE_PUBLISHABLE_DEFAULT_KEY=$SUPABASE_PUBLISHABLE_DEFAULT_KEY
 
@@ -18,7 +20,6 @@ RUN bun run build
 # (onnxruntime-node, sharp) work correctly at runtime.
 FROM node:20-slim AS runner
 WORKDIR /app
-ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN addgroup --system --gid 1001 nodejs && \

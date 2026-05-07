@@ -20,7 +20,7 @@ export const PLANS = [
       { text: "All 5 skills: KNM, Reading, Listening, Writing & Speaking", included: true },
       { text: "Basic scoring & results", included: true },
       { text: "Progress overview", included: true },
-      { text: "AI feedback on Writing & Speaking (1 exam only)", included: true },
+      { text: "AI feedback on Writing & Speaking", included: true },
       { text: "Access to all exams per skill", included: false },
     ],
     cta: "Get Started for Free",
