@@ -22,9 +22,6 @@ export default async function CheckoutPage({ searchParams }: CheckoutPageProps) 
     redirect("/pricing");
   }
 
-  // const environment = process.env.NODE_ENV === "production" ? "production" : "sandbox";
-  // FIXME: Use above line once we have separate Paddle environments for production and
-  const environment = "sandbox";
-
+  const environment = process.env.NODE_ENV === "production" ? "production" : "sandbox";
   return <PaddleInitializer token={token} environment={environment} />;
 }
