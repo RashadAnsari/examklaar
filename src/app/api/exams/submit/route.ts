@@ -46,8 +46,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  if (!skillId || isNaN(n)) {
-    console.warn("[submit] Invalid request — skill_id=%s n=%s user=%s", skillId, n, user.id);
+  const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if (!skillId || isNaN(n) || !attemptId || !UUID_RE.test(attemptId)) {
+    console.warn(
+      "[submit] Invalid request — skill_id=%s n=%s attempt_id=%s user=%s",
+      skillId,
+      n,
+      attemptId,
+      user.id
+    );
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
