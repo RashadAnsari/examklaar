@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "grant-subscription": "bun scripts/grant-subscription.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^3.0.61",
