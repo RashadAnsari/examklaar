@@ -23,53 +23,53 @@ jobs:
       - name: Lint
         run: make lint
 
-  deploy:
-    name: Deploy
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    needs: lint
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+  # deploy:
+  #   name: Deploy
+  #   if: github.ref == 'refs/heads/master'
+  #   runs-on: ubuntu-latest
+  #   needs: lint
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
 
-      - name: Docker Build
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: Dockerfile
-          push: false
-          tags: examklaar:${{ github.sha }}
-          build-args: |
-            NODE_ENV=production
-            GIT_SHA=${{ github.sha }}
-            SUPABASE_PUBLIC_URL=${{ secrets.SUPABASE_PUBLIC_URL }}
-            SUPABASE_PUBLISHABLE_DEFAULT_KEY=${{ secrets.SUPABASE_PUBLISHABLE_DEFAULT_KEY }}
+  #     - name: Docker Build
+  #       uses: docker/build-push-action@v6
+  #       with:
+  #         context: .
+  #         file: Dockerfile
+  #         push: false
+  #         tags: examklaar:${{ github.sha }}
+  #         build-args: |
+  #           NODE_ENV=production
+  #           GIT_SHA=${{ github.sha }}
+  #           SUPABASE_PUBLIC_URL=${{ secrets.SUPABASE_PUBLIC_URL }}
+  #           SUPABASE_PUBLISHABLE_DEFAULT_KEY=${{ secrets.SUPABASE_PUBLISHABLE_DEFAULT_KEY }}
 
-      - name: Docker Save
-        run: docker save examklaar:${{ github.sha }} > /tmp/docker-image.tar
+  #     - name: Docker Save
+  #       run: docker save examklaar:${{ github.sha }} > /tmp/docker-image.tar
 
-      - name: Run Playbook
-        uses: dawidd6/action-ansible-playbook@v7
-        with:
-          directory: deploy
-          playbook: main.yaml
-          configuration: |
-            [defaults]
-            inventory = inventory.yaml
-            host_key_checking = False
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          inventory: |
-            [examklaar]
-            DEPLOY_HOST ansible_user=root
-          options: |
-            -e "docker_image_tag=${{ github.sha }}"
-            -e "docker_image_path=/tmp/docker-image.tar"
-            -e "google_api_key=${{ secrets.GOOGLE_API_KEY }}"
-            -e "supabase_public_url=${{ secrets.SUPABASE_PUBLIC_URL }}"
-            -e "supabase_service_role_key=${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}"
-            -e "supabase_publishable_default_key=${{ secrets.SUPABASE_PUBLISHABLE_DEFAULT_KEY }}"
-            -e "paddle_api_key=${{ secrets.PADDLE_API_KEY }}"
-            -e "paddle_client_token=${{ secrets.PADDLE_CLIENT_TOKEN }}"
-            -e "paddle_webhook_secret=${{ secrets.PADDLE_WEBHOOK_SECRET }}"
-            -e "paddle_price_id_premium=${{ secrets.PADDLE_PRICE_ID_PREMIUM }}"
-            -e "paddle_price_id_bianual=${{ secrets.PADDLE_PRICE_ID_BIANNUAL }}"
+  #     - name: Run Playbook
+  #       uses: dawidd6/action-ansible-playbook@v7
+  #       with:
+  #         directory: deploy
+  #         playbook: main.yaml
+  #         configuration: |
+  #           [defaults]
+  #           inventory = inventory.yaml
+  #           host_key_checking = False
+  #         key: ${{ secrets.SSH_PRIVATE_KEY }}
+  #         inventory: |
+  #           [examklaar]
+  #           DEPLOY_HOST ansible_user=root
+  #         options: |
+  #           -e "docker_image_tag=${{ github.sha }}"
+  #           -e "docker_image_path=/tmp/docker-image.tar"
+  #           -e "google_api_key=${{ secrets.GOOGLE_API_KEY }}"
+  #           -e "supabase_public_url=${{ secrets.SUPABASE_PUBLIC_URL }}"
+  #           -e "supabase_service_role_key=${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}"
+  #           -e "supabase_publishable_default_key=${{ secrets.SUPABASE_PUBLISHABLE_DEFAULT_KEY }}"
+  #           -e "paddle_api_key=${{ secrets.PADDLE_API_KEY }}"
+  #           -e "paddle_client_token=${{ secrets.PADDLE_CLIENT_TOKEN }}"
+  #           -e "paddle_webhook_secret=${{ secrets.PADDLE_WEBHOOK_SECRET }}"
+  #           -e "paddle_price_id_premium=${{ secrets.PADDLE_PRICE_ID_PREMIUM }}"
+  #           -e "paddle_price_id_bianual=${{ secrets.PADDLE_PRICE_ID_BIANNUAL }}"
