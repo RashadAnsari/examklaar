@@ -1,6 +1,9 @@
+import type { PlanId } from "./subscription";
+
 export interface CheckoutParams {
   userId: string;
   userEmail: string;
+  planId: PlanId;
   successUrl: string;
   cancelUrl: string;
   /** Customer ID already on file at this provider, if any. */
@@ -31,7 +34,7 @@ export interface WebhookEvent {
   userId: string;
   providerCustomerId: string;
   providerSubscriptionId: string;
-  planId: "monthly";
+  planId: PlanId;
   status: "trialing" | "active" | "cancelled" | "past_due" | "expired";
   currentPeriodStart: Date;
   currentPeriodEnd: Date;

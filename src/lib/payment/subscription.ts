@@ -3,6 +3,14 @@ import { createAdminClient } from "@/utils/supabase/admin";
 export type PlanId = "monthly";
 export type SubscriptionStatus = "trialing" | "active" | "cancelled" | "past_due" | "expired";
 
+/** Every plan the app currently offers. Add new plan ids here. */
+export const PLAN_IDS: readonly PlanId[] = ["monthly"];
+export const DEFAULT_PLAN_ID: PlanId = "monthly";
+
+export function isPlanId(value: unknown): value is PlanId {
+  return typeof value === "string" && (PLAN_IDS as readonly string[]).includes(value);
+}
+
 export interface UserSubscription {
   planId: PlanId | null; // null = no subscription row (never subscribed)
   status: SubscriptionStatus | null;

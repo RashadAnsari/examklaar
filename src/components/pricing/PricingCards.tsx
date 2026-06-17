@@ -173,7 +173,7 @@ function PlanCta({
     );
   }
   return (
-    <CheckoutButton variant={PLAN.ctaVariant} fullWidth>
+    <CheckoutButton planId={PLAN.id} variant={PLAN.ctaVariant} fullWidth>
       {PLAN.cta}
     </CheckoutButton>
   );

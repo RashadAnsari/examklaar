@@ -12,6 +12,11 @@ import type {
   ProviderPayment,
   WebhookEvent,
 } from "./types";
+import { DEFAULT_PLAN_ID, isPlanId, type PlanId } from "./subscription";
+
+function planIdFromCustomData(customData: Record<string, string> | null): PlanId {
+  return isPlanId(customData?.planId) ? customData.planId : DEFAULT_PLAN_ID;
+}
 
 const PLAN_DESCRIPTION = "ExamKlaar Monthly";
 
@@ -43,6 +48,7 @@ export class PaddleProvider implements PaymentProvider {
   async createCheckoutSession({
     userId,
     userEmail,
+    planId,
     existingCustomerId,
     skipTrial = false,
   }: CheckoutParams): Promise<CheckoutResult> {
@@ -70,7 +76,7 @@ export class PaddleProvider implements PaymentProvider {
     const transaction = await this.client.transactions.create({
       items: [{ priceId, quantity: 1 }],
       customerId,
-      customData: { userId },
+      customData: { userId, planId },
     });
 
     const checkoutUrl = transaction.checkout?.url;
@@ -114,7 +120,7 @@ export class PaddleProvider implements PaymentProvider {
           userId,
           providerCustomerId: sub.customerId,
           providerSubscriptionId: sub.id,
-          planId: "monthly",
+          planId: planIdFromCustomData(customData),
           status: sub.status === "trialing" ? "trialing" : "active",
           currentPeriodStart: periodStart,
           currentPeriodEnd: periodEnd,
@@ -143,7 +149,7 @@ export class PaddleProvider implements PaymentProvider {
             userId,
             providerCustomerId: sub.customerId,
             providerSubscriptionId: sub.id,
-            planId: "monthly",
+            planId: planIdFromCustomData(customData),
             status: "cancelled",
             currentPeriodStart: periodStart,
             currentPeriodEnd: cancelEnd,
@@ -157,7 +163,7 @@ export class PaddleProvider implements PaymentProvider {
             userId,
             providerCustomerId: sub.customerId,
             providerSubscriptionId: sub.id,
-            planId: "monthly",
+            planId: planIdFromCustomData(customData),
             status: "past_due",
             currentPeriodStart: periodStart,
             currentPeriodEnd: periodEnd,
@@ -171,7 +177,7 @@ export class PaddleProvider implements PaymentProvider {
             userId,
             providerCustomerId: sub.customerId,
             providerSubscriptionId: sub.id,
-            planId: "monthly",
+            planId: planIdFromCustomData(customData),
             status: sub.status === "trialing" ? "trialing" : "active",
             currentPeriodStart: periodStart,
             currentPeriodEnd: periodEnd,
@@ -195,7 +201,7 @@ export class PaddleProvider implements PaymentProvider {
           userId,
           providerCustomerId: sub.customerId,
           providerSubscriptionId: sub.id,
-          planId: "monthly",
+          planId: planIdFromCustomData(customData),
           status: "cancelled",
           currentPeriodStart: new Date(sub.currentBillingPeriod?.startsAt ?? new Date()),
           currentPeriodEnd: new Date(
@@ -218,7 +224,7 @@ export class PaddleProvider implements PaymentProvider {
           userId,
           providerCustomerId: sub.customerId,
           providerSubscriptionId: sub.id,
-          planId: "monthly",
+          planId: planIdFromCustomData(customData),
           status: "past_due",
           currentPeriodStart: new Date(sub.currentBillingPeriod?.startsAt ?? new Date()),
           currentPeriodEnd: new Date(sub.currentBillingPeriod?.endsAt ?? new Date()),
@@ -239,7 +245,7 @@ export class PaddleProvider implements PaymentProvider {
           userId,
           providerCustomerId: tx.customerId ?? "",
           providerSubscriptionId: tx.subscriptionId ?? "",
-          planId: "monthly",
+          planId: planIdFromCustomData(customData),
           status: "past_due",
           currentPeriodStart: new Date(),
           currentPeriodEnd: new Date(),
@@ -260,7 +266,7 @@ export class PaddleProvider implements PaymentProvider {
           userId: "",
           providerCustomerId: adj.customerId,
           providerSubscriptionId: adj.subscriptionId,
-          planId: "monthly",
+          planId: DEFAULT_PLAN_ID,
           status: "cancelled",
           currentPeriodStart: new Date(),
           currentPeriodEnd: new Date(),

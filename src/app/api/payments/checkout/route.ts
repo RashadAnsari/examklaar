@@ -2,7 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { createAdminClient } from "@/utils/supabase/admin";
-import { getUserSubscription, hasAccess } from "@/lib/payment/subscription";
+import {
+  getUserSubscription,
+  hasAccess,
+  isPlanId,
+  DEFAULT_PLAN_ID,
+} from "@/lib/payment/subscription";
 import { getPaymentProvider } from "@/lib/payment/provider";
 
 export async function POST(req: NextRequest) {
@@ -12,6 +17,12 @@ export async function POST(req: NextRequest) {
   } = await supabase.auth.getUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const body = await req.json().catch(() => ({}));
+  const planId = body?.planId ?? DEFAULT_PLAN_ID;
+  if (!isPlanId(planId)) {
+    return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
   }
 
   const currentSubscription = await getUserSubscription(user.id);
@@ -47,6 +58,7 @@ export async function POST(req: NextRequest) {
     const result = await provider.createCheckoutSession({
       userId: user.id,
       userEmail: user.email ?? "",
+      planId,
       successUrl,
       cancelUrl,
       existingCustomerId: existingCustomer?.customer_id,
