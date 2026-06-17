@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { createAdminClient } from "@/utils/supabase/admin";
-import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
+import { getUserSubscription, hasAccess } from "@/lib/payment/subscription";
 import { getPaymentProvider } from "@/lib/payment/provider";
 
 export async function POST(req: NextRequest) {
@@ -14,16 +14,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const body = await req.json();
-  const planId = body?.planId as string;
-  if (planId !== "premium" && planId !== "biannual") {
-    return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
-  }
-
   const currentSubscription = await getUserSubscription(user.id);
-  if (canAccessPremium(currentSubscription)) {
+  if (hasAccess(currentSubscription)) {
     return NextResponse.json({ error: "You already have an active subscription" }, { status: 400 });
   }
+
+  // A subscription row only exists for users who have subscribed (or trialed)
+  // before. They are not eligible for the free trial again.
+  const skipTrial = currentSubscription.planId !== null;
 
   const providerName = process.env.PAYMENT_PROVIDER;
   if (!providerName) {
@@ -49,10 +47,10 @@ export async function POST(req: NextRequest) {
     const result = await provider.createCheckoutSession({
       userId: user.id,
       userEmail: user.email ?? "",
-      planId,
       successUrl,
       cancelUrl,
       existingCustomerId: existingCustomer?.customer_id,
+      skipTrial,
     });
 
     // Persist the customer ID if it's newly created.

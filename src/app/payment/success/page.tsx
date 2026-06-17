@@ -24,7 +24,7 @@ export default function PaymentSuccessPage() {
         const res = await fetch("/api/payments/subscription");
         if (res.ok) {
           const sub = await res.json();
-          if (sub.planId !== "free") {
+          if (sub.planId) {
             analytics.checkoutCompleted(sub.planId);
             setReady(true);
             return;
@@ -117,7 +117,7 @@ export default function PaymentSuccessPage() {
               <p className="text-sm font-semibold text-slate-900">Ready soon</p>
             </div>
             <p className="mt-2 text-sm text-slate-500">
-              Once we confirm your plan, you can start using all premium exam content right away.
+              Once we confirm your plan, you can start using all exam content right away.
             </p>
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function PaymentSuccessPage() {
             <div>
               <h1 className="text-3xl font-semibold text-slate-900">You&apos;re all set</h1>
               <p className="mt-3 text-sm leading-6 text-slate-500">
-                Your subscription is active. You now have access to every exam type, premium review,
+                Your subscription is active. You now have access to every exam type, exam review,
                 and AI feedback.
               </p>
             </div>

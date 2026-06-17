@@ -157,7 +157,7 @@ export async function listSkillGroups(): Promise<SkillGroup[]> {
 export async function listSkillExams(id: string): Promise<{
   skill: string;
   level: string | null;
-  exams: Array<{ n: number; timeLimitMinutes: number; premiumOnly: boolean }>;
+  exams: Array<{ n: number; timeLimitMinutes: number }>;
 } | null> {
   const parts = id.split("-");
   const lastPart = parts[parts.length - 1];
@@ -185,7 +185,6 @@ export async function listSkillExams(id: string): Promise<{
         return {
           n,
           timeLimitMinutes: json.timeLimitMinutes as number,
-          premiumOnly: (json.premiumOnly as boolean) ?? false,
         };
       })
     );

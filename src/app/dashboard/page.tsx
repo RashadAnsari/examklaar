@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { DashboardClient } from "./DashboardClient";
 import { createClient } from "@/utils/supabase/server";
 import { listSkillGroups } from "@/data/exams";
-import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
+import { getUserSubscription, hasAccess } from "@/lib/payment/subscription";
 
 export default async function DashboardPage() {
   const cookieStore = await cookies();
@@ -19,7 +19,7 @@ export default async function DashboardPage() {
     user ? getUserSubscription(user.id) : Promise.resolve(null),
   ]);
 
-  const isPaid = sub ? canAccessPremium(sub) : false;
+  const isPaid = sub ? hasAccess(sub) : false;
 
   const completedByGroup = new Map<string, Set<string>>();
   for (const r of results ?? []) {

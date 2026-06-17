@@ -50,9 +50,9 @@ const SECTIONS = [
       "We reserve the right to update, add, or remove features at any time. We will notify you of changes that materially affect a paid service. ExamKlaar is not a governmental organisation and is not affiliated with or endorsed by the Dutch government or DUO.",
   },
   {
-    title: "Article 4. Free Access",
+    title: "Article 4. Free Trial",
     content:
-      "New users receive one free practice exam upon registration, without requiring a payment method. The free exam is provided as-is. We reserve the right to modify or withdraw the free tier at any time with reasonable notice to registered users.",
+      "New users may start a 7-day free trial of the paid subscription. A valid payment method is required to begin the trial, but no charge is made during the trial period. Unless you cancel before the trial ends, your subscription renews automatically into a paid monthly subscription at the then-current price. If you cancel during the trial, your access ends immediately and no charge is made. Each user is eligible for one free trial. We reserve the right to modify or withdraw the trial offer at any time with reasonable notice to registered users.",
   },
   {
     title: "Article 5. Subscriptions and Payments",
@@ -65,7 +65,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Cancellation",
-        text: "You may cancel your subscription at any time via the account settings page or by contacting us at hallo@examklaar.nl. Access to paid features continues until the end of the current billing period.",
+        text: "You may cancel your subscription at any time via the account settings page or by contacting us at hallo@examklaar.nl. If you cancel a paid subscription, access continues until the end of the current billing period. If you cancel during the free trial, access ends immediately.",
       },
       {
         subtitle: "Price changes",

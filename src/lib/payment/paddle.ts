@@ -13,10 +13,7 @@ import type {
   WebhookEvent,
 } from "./types";
 
-const PLAN_DESCRIPTIONS = {
-  premium: "ExamKlaar Premium",
-  biannual: "ExamKlaar 6-Month Plan",
-} as const;
+const PLAN_DESCRIPTION = "ExamKlaar Monthly";
 
 function getClient(): Paddle {
   const apiKey = process.env.PADDLE_API_KEY;
@@ -29,17 +26,15 @@ function getClient(): Paddle {
   return new Paddle(apiKey, { environment: environment });
 }
 
-function getPriceId(planId: "premium" | "biannual"): string {
-  const envVar = planId === "premium" ? "PADDLE_PRICE_ID_PREMIUM" : "PADDLE_PRICE_ID_BIANNUAL";
+function getPriceId(skipTrial: boolean): string {
+  // Returning customers use the no-trial price so they are charged immediately
+  // instead of receiving a second free trial.
+  const envVar = skipTrial ? "PADDLE_PRICE_ID_MONTHLY_NO_TRIAL" : "PADDLE_PRICE_ID_MONTHLY";
   const id = process.env[envVar];
   if (!id) {
     throw new Error(`${envVar} is not set`);
   }
   return id;
-}
-
-function planIdFromPriceId(priceId: string): "premium" | "biannual" {
-  return priceId === process.env.PADDLE_PRICE_ID_BIANNUAL ? "biannual" : "premium";
 }
 
 export class PaddleProvider implements PaymentProvider {
@@ -48,10 +43,10 @@ export class PaddleProvider implements PaymentProvider {
   async createCheckoutSession({
     userId,
     userEmail,
-    planId,
     existingCustomerId,
+    skipTrial = false,
   }: CheckoutParams): Promise<CheckoutResult> {
-    const priceId = getPriceId(planId);
+    const priceId = getPriceId(skipTrial);
 
     let customerId = existingCustomerId;
     if (!customerId) {
@@ -75,7 +70,7 @@ export class PaddleProvider implements PaymentProvider {
     const transaction = await this.client.transactions.create({
       items: [{ priceId, quantity: 1 }],
       customerId,
-      customData: { userId, planId },
+      customData: { userId },
     });
 
     const checkoutUrl = transaction.checkout?.url;
@@ -111,8 +106,6 @@ export class PaddleProvider implements PaymentProvider {
           return null;
         }
 
-        const priceId = sub.items[0]?.price?.id;
-        const planId = priceId ? planIdFromPriceId(priceId) : "premium";
         const periodStart = new Date(sub.currentBillingPeriod?.startsAt ?? new Date());
         const periodEnd = new Date(sub.currentBillingPeriod?.endsAt ?? new Date());
 
@@ -121,8 +114,8 @@ export class PaddleProvider implements PaymentProvider {
           userId,
           providerCustomerId: sub.customerId,
           providerSubscriptionId: sub.id,
-          planId,
-          status: "active",
+          planId: "monthly",
+          status: sub.status === "trialing" ? "trialing" : "active",
           currentPeriodStart: periodStart,
           currentPeriodEnd: periodEnd,
           cancelAtPeriodEnd: sub.scheduledChange?.action === "cancel",
@@ -137,21 +130,23 @@ export class PaddleProvider implements PaymentProvider {
           return null;
         }
 
-        const priceId = sub.items[0]?.price?.id;
-        const planId = priceId ? planIdFromPriceId(priceId) : "premium";
         const periodStart = new Date(sub.currentBillingPeriod?.startsAt ?? new Date());
         const periodEnd = new Date(sub.currentBillingPeriod?.endsAt ?? new Date());
 
         if (sub.status === "canceled") {
+          // Access ends when the cancellation actually takes effect. For an
+          // immediately-cancelled trial this is now; for a scheduled cancellation
+          // it is the period boundary. Falling back to the billing period end.
+          const cancelEnd = sub.canceledAt ? new Date(sub.canceledAt) : periodEnd;
           return {
             type: "subscription.cancelled",
             userId,
             providerCustomerId: sub.customerId,
             providerSubscriptionId: sub.id,
-            planId,
+            planId: "monthly",
             status: "cancelled",
             currentPeriodStart: periodStart,
-            currentPeriodEnd: periodEnd,
+            currentPeriodEnd: cancelEnd,
             cancelAtPeriodEnd: false,
           };
         }
@@ -162,7 +157,7 @@ export class PaddleProvider implements PaymentProvider {
             userId,
             providerCustomerId: sub.customerId,
             providerSubscriptionId: sub.id,
-            planId,
+            planId: "monthly",
             status: "past_due",
             currentPeriodStart: periodStart,
             currentPeriodEnd: periodEnd,
@@ -176,8 +171,8 @@ export class PaddleProvider implements PaymentProvider {
             userId,
             providerCustomerId: sub.customerId,
             providerSubscriptionId: sub.id,
-            planId,
-            status: "active",
+            planId: "monthly",
+            status: sub.status === "trialing" ? "trialing" : "active",
             currentPeriodStart: periodStart,
             currentPeriodEnd: periodEnd,
             cancelAtPeriodEnd: sub.scheduledChange?.action === "cancel",
@@ -195,18 +190,17 @@ export class PaddleProvider implements PaymentProvider {
           return null;
         }
 
-        const priceId = sub.items[0]?.price?.id;
-        const planId = priceId ? planIdFromPriceId(priceId) : "premium";
-
         return {
           type: "subscription.cancelled",
           userId,
           providerCustomerId: sub.customerId,
           providerSubscriptionId: sub.id,
-          planId,
+          planId: "monthly",
           status: "cancelled",
           currentPeriodStart: new Date(sub.currentBillingPeriod?.startsAt ?? new Date()),
-          currentPeriodEnd: new Date(sub.currentBillingPeriod?.endsAt ?? new Date()),
+          currentPeriodEnd: new Date(
+            sub.canceledAt ?? sub.currentBillingPeriod?.endsAt ?? new Date()
+          ),
           cancelAtPeriodEnd: false,
         };
       }
@@ -219,15 +213,12 @@ export class PaddleProvider implements PaymentProvider {
           return null;
         }
 
-        const priceId = sub.items[0]?.price?.id;
-        const planId = priceId ? planIdFromPriceId(priceId) : "premium";
-
         return {
           type: "payment.failed",
           userId,
           providerCustomerId: sub.customerId,
           providerSubscriptionId: sub.id,
-          planId,
+          planId: "monthly",
           status: "past_due",
           currentPeriodStart: new Date(sub.currentBillingPeriod?.startsAt ?? new Date()),
           currentPeriodEnd: new Date(sub.currentBillingPeriod?.endsAt ?? new Date()),
@@ -243,15 +234,12 @@ export class PaddleProvider implements PaymentProvider {
           return null;
         }
 
-        const priceId = tx.items[0]?.price?.id;
-        const planId = priceId ? planIdFromPriceId(priceId) : "premium";
-
         return {
           type: "payment.failed",
           userId,
           providerCustomerId: tx.customerId ?? "",
           providerSubscriptionId: tx.subscriptionId ?? "",
-          planId,
+          planId: "monthly",
           status: "past_due",
           currentPeriodStart: new Date(),
           currentPeriodEnd: new Date(),
@@ -272,7 +260,7 @@ export class PaddleProvider implements PaymentProvider {
           userId: "",
           providerCustomerId: adj.customerId,
           providerSubscriptionId: adj.subscriptionId,
-          planId: "premium",
+          planId: "monthly",
           status: "cancelled",
           currentPeriodStart: new Date(),
           currentPeriodEnd: new Date(),
@@ -315,9 +303,7 @@ export class PaddleProvider implements PaymentProvider {
         continue;
       }
 
-      const priceId = tx.items[0]?.price?.id ?? "";
-      const planId = planIdFromPriceId(priceId);
-      const description = tx.items[0]?.price?.description ?? PLAN_DESCRIPTIONS[planId];
+      const description = tx.items[0]?.price?.description ?? PLAN_DESCRIPTION;
 
       payments.push({
         providerPaymentId: tx.id,

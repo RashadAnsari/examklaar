@@ -1,11 +1,11 @@
 import { createAdminClient } from "@/utils/supabase/admin";
 
-export type PlanId = "free" | "premium" | "biannual";
-export type SubscriptionStatus = "active" | "cancelled" | "past_due" | "expired";
+export type PlanId = "monthly";
+export type SubscriptionStatus = "trialing" | "active" | "cancelled" | "past_due" | "expired";
 
 export interface UserSubscription {
-  planId: PlanId;
-  status: SubscriptionStatus | null; // null = free (no row in subscriptions table)
+  planId: PlanId | null; // null = no subscription row (never subscribed)
+  status: SubscriptionStatus | null;
   currentPeriodEnd: Date | null;
   cancelAtPeriodEnd: boolean;
   providerSubscriptionId: string | null;
@@ -13,8 +13,8 @@ export interface UserSubscription {
   paymentProvider: string | null;
 }
 
-const FREE_SUBSCRIPTION: UserSubscription = {
-  planId: "free",
+const NO_SUBSCRIPTION: UserSubscription = {
+  planId: null,
   status: null,
   currentPeriodEnd: null,
   cancelAtPeriodEnd: false,
@@ -34,7 +34,7 @@ export async function getUserSubscription(userId: string): Promise<UserSubscript
     .single();
 
   if (!data) {
-    return FREE_SUBSCRIPTION;
+    return NO_SUBSCRIPTION;
   }
 
   return {
@@ -48,24 +48,20 @@ export async function getUserSubscription(userId: string): Promise<UserSubscript
   };
 }
 
-export function isPaidPlan(planId: PlanId): boolean {
-  return planId === "premium" || planId === "biannual";
-}
-
 /**
- * Returns true when the user should be allowed to access premium content.
+ * Returns true when the user should be allowed to access exam content.
  *
- * - active subscription → allow
- * - cancelled but still within the paid period → allow (user paid through the end)
+ * - trialing → allow (within the 7-day free trial)
+ * - active → allow
  * - past_due → allow (provider is still retrying payment; revoke only on expired)
- * - expired / free → deny
+ * - cancelled but still within the paid period → allow (user paid through the end)
+ * - expired / no subscription → deny
+ *
+ * A trial cancelled immediately has current_period_end set to now, so it falls
+ * through to denied here.
  */
-export function canAccessPremium(sub: UserSubscription): boolean {
-  if (!isPaidPlan(sub.planId)) {
-    return false;
-  }
-
-  if (sub.status === "active" || sub.status === "past_due") {
+export function hasAccess(sub: UserSubscription): boolean {
+  if (sub.status === "active" || sub.status === "trialing" || sub.status === "past_due") {
     return true;
   }
 

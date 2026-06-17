@@ -4,7 +4,7 @@ import { createAdminClient } from "@/utils/supabase/admin";
 import { cookies } from "next/headers";
 import { readExam } from "@/data/exams";
 import type { Exam } from "@/app/exam/ExamClient";
-import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
+import { getUserSubscription, hasAccess } from "@/lib/payment/subscription";
 
 export async function POST(req: NextRequest) {
   const supabase = createClient(await cookies());
@@ -77,12 +77,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Exam not found" }, { status: 404 });
   }
 
-  if (examJson.premiumOnly) {
-    const sub = await getUserSubscription(user.id);
-    if (!canAccessPremium(sub)) {
-      console.warn("[submit] Premium exam blocked — user=%s exam=%s-%s", user.id, skillId, n);
-      return NextResponse.json({ error: "upgrade_required" }, { status: 403 });
-    }
+  const sub = await getUserSubscription(user.id);
+  if (!hasAccess(sub)) {
+    console.warn("[submit] Exam blocked, no access — user=%s exam=%s-%s", user.id, skillId, n);
+    return NextResponse.json({ error: "upgrade_required" }, { status: 403 });
   }
 
   const { id: examId, skill, level, questions } = examJson;

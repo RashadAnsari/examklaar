@@ -6,19 +6,19 @@ import { PricingCards } from "@/components/pricing/PricingCards";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Start free or upgrade for €9.99/month. Get unlimited access to all 5 inburgering exam components (KNM, Reading, Listening, Writing, and Speaking) with AI-powered feedback.",
+    "Try ExamKlaar free for 7 days, then €9.99/month. Get unlimited access to all 5 inburgering exam components (KNM, Reading, Listening, Writing, and Speaking) with AI-powered feedback.",
   alternates: { canonical: "https://www.examklaar.nl/pricing" },
   openGraph: {
     title: "Pricing: Inburgering Exam Practice Plans | ExamKlaar",
     description:
-      "Start free or upgrade for €9.99/month. Unlimited access to all 5 inburgering exam components with AI-powered feedback.",
+      "Try ExamKlaar free for 7 days, then €9.99/month. Unlimited access to all 5 inburgering exam components with AI-powered feedback.",
     url: "https://www.examklaar.nl/pricing",
   },
   twitter: {
     card: "summary_large_image",
     title: "Pricing: Inburgering Exam Practice Plans | ExamKlaar",
     description:
-      "Start free or upgrade for €9.99/month. Unlimited access to all 5 inburgering exam components with AI-powered feedback.",
+      "Try ExamKlaar free for 7 days, then €9.99/month. Unlimited access to all 5 inburgering exam components with AI-powered feedback.",
   },
 };
 
@@ -34,9 +34,14 @@ const FAQS = [
       "No. ExamKlaar is an independent practice platform. We are not affiliated with DUO or the Dutch government. Our content is designed to closely reflect the official exam format and CEFR A2/B1 standards, but we cannot guarantee exam results.",
   },
   {
-    question: "Can I upgrade from Free to Premium later?",
+    question: "How does the 7-day free trial work?",
     answer:
-      "Yes. You can start with the Free plan and upgrade to Premium or the 6-Month Plan at any time from your account settings. Your existing progress is always preserved.",
+      "When you start your trial you get full access to every exam and all AI feedback for 7 days. You add a payment method at signup, but you are not charged during the trial. After 7 days your subscription renews automatically at €9.99/month unless you cancel before the trial ends.",
+  },
+  {
+    question: "What happens if I cancel during the trial?",
+    answer:
+      "If you cancel during the 7-day trial, your access ends immediately and you are never charged. If you cancel after the trial while on a paid subscription, you keep access until the end of your current billing period.",
   },
   {
     question: "How does the AI feedback work?",
@@ -46,7 +51,7 @@ const FAQS = [
   {
     question: "Can I cancel my subscription anytime?",
     answer:
-      "Yes. You can cancel your Premium subscription at any time from your account settings. You keep access until the end of the current billing period and won't be charged again.",
+      "Yes. You can cancel your subscription at any time from your account settings. If you cancel a paid subscription, you keep access until the end of the current billing period and won't be charged again. If you cancel during the free trial, access ends immediately.",
   },
   {
     question: "What is your refund policy?",
@@ -82,18 +87,18 @@ export default function PricingPage() {
       <Navbar />
 
       {/* Header */}
-      <div className="container py-12 sm:py-16 text-center">
+      <div className="container pt-12 pb-10 sm:pt-16 sm:pb-12 text-center">
         <h1
           className="font-bold mb-4"
           style={{ fontSize: "clamp(1.75rem, 6vw, 2.5rem)", color: "var(--gray-900)" }}
         >
-          Choose Your Plan
+          Everything you need to pass
         </h1>
         <p
           className="mx-auto"
-          style={{ fontSize: "1.25rem", color: "var(--gray-600)", maxWidth: "700px" }}
+          style={{ fontSize: "1.25rem", color: "var(--gray-600)", maxWidth: "640px" }}
         >
-          Get unlimited access to all exam practice with AI-powered feedback
+          Try everything free for 7 days, then €9.99 / month. Cancel anytime.
         </p>
       </div>
 

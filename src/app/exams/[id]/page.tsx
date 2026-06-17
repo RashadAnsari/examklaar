@@ -10,7 +10,7 @@ import { UpgradeBanner } from "@/components/ui/UpgradeBanner";
 import { createClient } from "@/utils/supabase/server";
 import { listSkillExams } from "@/data/exams";
 import { getScoreFeedback } from "@/lib/exam/scoring";
-import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
+import { getUserSubscription, hasAccess } from "@/lib/payment/subscription";
 
 interface ExamResult {
   score: number | null;
@@ -21,7 +21,6 @@ interface ExamResult {
 interface ExamItem {
   n: number;
   timeLimitMinutes: number;
-  premiumOnly: boolean;
   result: ExamResult | null;
 }
 
@@ -54,10 +53,9 @@ async function loadExams(
     }
   }
 
-  const exams: ExamItem[] = fileData.exams.map(({ n, timeLimitMinutes, premiumOnly }) => ({
+  const exams: ExamItem[] = fileData.exams.map(({ n, timeLimitMinutes }) => ({
     n,
     timeLimitMinutes,
-    premiumOnly,
     result: resultsByExamId.get(`${id}-exam-${n}`) ?? null,
   }));
 
@@ -80,7 +78,7 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
     data: { user },
   } = await supabase.auth.getUser();
   const sub = user ? await getUserSubscription(user.id) : null;
-  const isPaid = sub ? canAccessPremium(sub) : false;
+  const isPaid = sub ? hasAccess(sub) : false;
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--gray-50)" }}>
@@ -132,7 +130,7 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
               className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 sm:px-6 py-4 sm:py-5"
               style={{
                 borderBottom: i === exams.length - 1 ? "none" : "1px solid var(--gray-100)",
-                opacity: exam.premiumOnly && !isPaid ? 0.6 : 1,
+                opacity: !isPaid ? 0.6 : 1,
               }}
             >
               <div
@@ -172,10 +170,10 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
               </div>
 
               <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                {exam.premiumOnly && !isPaid ? (
+                {!isPaid ? (
                   <Button href="/pricing" variant="outline">
                     <LockClosedIcon style={{ width: 14, height: 14 }} />
-                    Upgrade
+                    Subscribe
                   </Button>
                 ) : exam.result ? (
                   <>

@@ -6,12 +6,12 @@ export function UpgradeBanner() {
       <div>
         <h3 className="font-bold mb-1 text-xl">Unlock the Full Experience</h3>
         <p className="text-sm text-white/90">
-          Upgrade to access all exams per skill, unlimited practice attempts, and AI feedback on
-          every Writing &amp; Speaking exam
+          Start your 7-day free trial to access all exams per skill, unlimited practice attempts,
+          and AI feedback on every Writing &amp; Speaking exam
         </p>
       </div>
       <Button href="/pricing" variant="white" className="flex-shrink-0">
-        Upgrade Now
+        Start Free Trial
       </Button>
     </div>
   );

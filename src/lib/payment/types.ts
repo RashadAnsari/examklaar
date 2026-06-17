@@ -1,11 +1,15 @@
 export interface CheckoutParams {
   userId: string;
   userEmail: string;
-  planId: "premium" | "biannual";
   successUrl: string;
   cancelUrl: string;
   /** Customer ID already on file at this provider, if any. */
   existingCustomerId?: string;
+  /**
+   * When true, use the price without a free trial. Set for returning customers
+   * who have subscribed before, so they cannot claim the trial a second time.
+   */
+  skipTrial?: boolean;
 }
 
 export interface CheckoutResult {
@@ -27,8 +31,8 @@ export interface WebhookEvent {
   userId: string;
   providerCustomerId: string;
   providerSubscriptionId: string;
-  planId: "premium" | "biannual";
-  status: "active" | "cancelled" | "past_due" | "expired";
+  planId: "monthly";
+  status: "trialing" | "active" | "cancelled" | "past_due" | "expired";
   currentPeriodStart: Date;
   currentPeriodEnd: Date;
   cancelAtPeriodEnd: boolean;

@@ -1,16 +1,16 @@
 #!/usr/bin/env bun
 /**
- * Manually grant a subscription to a user without a payment provider.
+ * Manually grant a monthly subscription to a user without a payment provider.
  *
  * Usage:
- *   bun scripts/grant-subscription.ts <userId> <plan>
+ *   bun scripts/grant-subscription.ts <userId> [status]
  *
- * Plans:
- *   premium   - monthly (1 month from now)
- *   biannual  - 6-month (6 months from now)
+ * status:
+ *   active   - paid month, 1 month from now (default)
+ *   trialing - 7-day free trial from now
  *
  * Example:
- *   bun scripts/grant-subscription.ts 550e8400-e29b-41d4-a716-446655440000 biannual
+ *   bun scripts/grant-subscription.ts 550e8400-e29b-41d4-a716-446655440000 trialing
  */
 import { createClient } from "@supabase/supabase-js";
 
@@ -20,21 +20,21 @@ function usage(msg?: string): never {
   if (msg) {
     console.error(`Error: ${msg}\n`);
   }
-  console.error("Usage: bun scripts/grant-subscription.ts <userId> <plan>");
-  console.error("  plan: premium (1 month) | biannual (6 months)");
+  console.error("Usage: bun scripts/grant-subscription.ts <userId> [status]");
+  console.error("  status: active (1 month, default) | trialing (7-day trial)");
   process.exit(1);
 }
 
-const [userId, plan] = process.argv.slice(2);
+const [userId, statusArg = "active"] = process.argv.slice(2);
 
-if (!userId || !plan) {
+if (!userId) {
   usage("missing arguments");
 }
 if (!UUID_RE.test(userId)) {
   usage(`"${userId}" is not a valid UUID`);
 }
-if (plan !== "premium" && plan !== "biannual") {
-  usage(`plan must be "premium" or "biannual"`);
+if (statusArg !== "active" && statusArg !== "trialing") {
+  usage(`status must be "active" or "trialing"`);
 }
 
 const supabaseUrl = process.env.SUPABASE_PUBLIC_URL;
@@ -51,13 +51,17 @@ const admin = createClient(supabaseUrl, supabaseKey, {
 
 const now = new Date();
 const periodEnd = new Date(now);
-periodEnd.setMonth(periodEnd.getMonth() + (plan === "premium" ? 1 : 6));
+if (statusArg === "trialing") {
+  periodEnd.setDate(periodEnd.getDate() + 7);
+} else {
+  periodEnd.setMonth(periodEnd.getMonth() + 1);
+}
 
 const { error } = await admin.from("subscriptions").upsert(
   {
     user_id: userId,
-    plan_id: plan,
-    status: "active",
+    plan_id: "monthly",
+    status: statusArg,
     payment_provider: null,
     provider_customer_id: null,
     provider_subscription_id: null,
@@ -74,6 +78,6 @@ if (error) {
   process.exit(1);
 }
 
-const label = plan === "premium" ? "Premium (1 month)" : "Biannual (6 months)";
+const label = statusArg === "trialing" ? "Monthly (7-day trial)" : "Monthly (1 month)";
 console.log(`Granted ${label} to user ${userId}`);
 console.log(`  Expires: ${periodEnd.toISOString()}`);

@@ -20,7 +20,6 @@ export const analytics = {
   logIn: () => track("log_in"),
   logOut: () => track("log_out"),
   passwordReset: () => track("password_reset"),
-  deleteAccount: () => track("delete_account"),
 
   // Exam
   examStarted: (examId: string) => track("exam_started", { exam_id: examId }),

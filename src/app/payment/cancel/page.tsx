@@ -14,24 +14,25 @@ export default function PaymentCancelPage() {
               <XCircleIcon className="h-8 w-8" />
             </div>
             <div>
-              <h1 className="text-3xl font-semibold text-slate-900">Payment cancelled</h1>
+              <h1 className="text-3xl font-semibold text-slate-900">Checkout cancelled</h1>
               <p className="mt-3 text-sm leading-6 text-slate-500">
-                No charge was made. Your free plan remains active, and you can upgrade anytime.
+                No charge was made. You can start your 7-day free trial anytime.
               </p>
             </div>
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left">
-              <p className="text-sm font-semibold text-slate-900">Keep practicing</p>
+              <p className="text-sm font-semibold text-slate-900">Start when you&apos;re ready</p>
               <p className="mt-2 text-sm text-slate-500">
-                Continue with the free plan while you decide which premium option fits your goals.
+                Begin your 7-day free trial whenever you want full access to every exam and AI
+                feedback.
               </p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left">
-              <p className="text-sm font-semibold text-slate-900">Compare plans</p>
+              <p className="text-sm font-semibold text-slate-900">See what&apos;s included</p>
               <p className="mt-2 text-sm text-slate-500">
-                Review pricing and exam benefits before choosing the best subscription for you.
+                Review the pricing page for everything the subscription unlocks.
               </p>
             </div>
           </div>
@@ -41,13 +42,13 @@ export default function PaymentCancelPage() {
               View pricing
             </Button>
             <Button href="/dashboard" variant="outline" fullWidth>
-              Continue free
+              Back to dashboard
             </Button>
           </div>
 
           <p className="mt-6 text-center text-sm text-slate-500">
-            Need help choosing a plan? Visit the pricing page for a feature comparison before you
-            upgrade.
+            Need help? Visit the pricing page for a full feature overview before you start your
+            trial.
           </p>
         </div>
       </main>

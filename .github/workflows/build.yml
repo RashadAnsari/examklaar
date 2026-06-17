@@ -71,5 +71,5 @@ jobs:
   #           -e "paddle_api_key=${{ secrets.PADDLE_API_KEY }}"
   #           -e "paddle_client_token=${{ secrets.PADDLE_CLIENT_TOKEN }}"
   #           -e "paddle_webhook_secret=${{ secrets.PADDLE_WEBHOOK_SECRET }}"
-  #           -e "paddle_price_id_premium=${{ secrets.PADDLE_PRICE_ID_PREMIUM }}"
-  #           -e "paddle_price_id_bianual=${{ secrets.PADDLE_PRICE_ID_BIANNUAL }}"
+  #           -e "paddle_price_id_monthly=${{ secrets.PADDLE_PRICE_ID_MONTHLY }}"
+  #           -e "paddle_price_id_monthly_no_trial=${{ secrets.PADDLE_PRICE_ID_MONTHLY_NO_TRIAL }}"

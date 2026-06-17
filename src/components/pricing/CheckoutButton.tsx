@@ -6,18 +6,12 @@ import { Button } from "@/components/ui/Button";
 import { analytics } from "@/lib/analytics";
 
 interface CheckoutButtonProps {
-  planId: "premium" | "biannual";
   variant?: "primary" | "outline" | "white";
   fullWidth?: boolean;
   children: React.ReactNode;
 }
 
-export function CheckoutButton({
-  planId,
-  variant = "primary",
-  fullWidth,
-  children,
-}: CheckoutButtonProps) {
+export function CheckoutButton({ variant = "primary", fullWidth, children }: CheckoutButtonProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +24,6 @@ export function CheckoutButton({
       const res = await fetch("/api/payments/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planId }),
       });
 
       if (res.status === 401) {
@@ -46,7 +39,7 @@ export function CheckoutButton({
         return;
       }
 
-      analytics.checkoutStarted(planId);
+      analytics.checkoutStarted("monthly");
       window.location.href = data.checkoutUrl;
     } catch {
       setError("Something went wrong. Please try again.");

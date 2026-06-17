@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { ExamClient, Exam } from "./ExamClient";
 import { readExam } from "@/data/exams";
 import { createClient } from "@/utils/supabase/server";
-import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
+import { getUserSubscription, hasAccess } from "@/lib/payment/subscription";
 
 export default async function ExamPage(props: {
   searchParams: Promise<{ skill?: string; n?: string }>;
@@ -22,18 +22,16 @@ export default async function ExamPage(props: {
     notFound();
   }
 
-  if (json.premiumOnly) {
-    const supabase = createClient(await cookies());
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (!user) {
-      redirect("/auth/login");
-    }
-    const sub = await getUserSubscription(user.id);
-    if (!canAccessPremium(sub)) {
-      redirect("/pricing");
-    }
+  const supabase = createClient(await cookies());
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) {
+    redirect("/auth/login");
+  }
+  const sub = await getUserSubscription(user.id);
+  if (!hasAccess(sub)) {
+    redirect("/pricing");
   }
 
   return <ExamClient exam={json} skillId={skill} n={n} />;

@@ -15,25 +15,35 @@ export async function POST() {
   }
 
   const sub = await getUserSubscription(user.id);
-  if (sub.planId === "free" || sub.status !== "active") {
+  if (!sub.planId || (sub.status !== "active" && sub.status !== "trialing")) {
     return NextResponse.json({ error: "No active subscription to cancel" }, { status: 400 });
   }
+
+  // Cancelling during the trial revokes access immediately; cancelling an active
+  // paid plan keeps access until the end of the current billing period.
+  const cancelImmediately = sub.status === "trialing";
 
   if (sub.providerSubscriptionId) {
     try {
       const provider = getPaymentProvider();
-      await provider.cancelSubscription(sub.providerSubscriptionId, sub.providerCustomerId);
+      await provider.cancelSubscription(
+        sub.providerSubscriptionId,
+        sub.providerCustomerId,
+        cancelImmediately
+      );
     } catch (err) {
       console.error("[subscription/cancel] Payment provider error:", err);
       return NextResponse.json({ error: "Failed to cancel with provider" }, { status: 500 });
     }
   }
 
+  const now = new Date().toISOString();
+  const update = cancelImmediately
+    ? { status: "cancelled", cancel_at_period_end: false, current_period_end: now, updated_at: now }
+    : { cancel_at_period_end: true, updated_at: now };
+
   const admin = createAdminClient();
-  const { error } = await admin
-    .from("subscriptions")
-    .update({ cancel_at_period_end: true, updated_at: new Date().toISOString() })
-    .eq("user_id", user.id);
+  const { error } = await admin.from("subscriptions").update(update).eq("user_id", user.id);
   if (error) {
     console.error("[subscription/cancel] db error:", error);
     return NextResponse.json({ error: "Failed to update subscription" }, { status: 500 });

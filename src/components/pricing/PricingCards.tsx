@@ -1,80 +1,34 @@
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
-import { getUserSubscription, canAccessPremium } from "@/lib/payment/subscription";
+import { getUserSubscription, hasAccess } from "@/lib/payment/subscription";
 import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/pricing/CheckoutButton";
-import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
+import {
+  CheckIcon,
+  ShieldCheckIcon,
+  ArrowPathIcon,
+  CreditCardIcon,
+} from "@heroicons/react/20/solid";
 
-export const PLANS = [
-  {
-    id: "free",
-    name: "Free",
-    badge: null,
-    description: "Try the platform before you commit",
-    price: "€0",
-    priceNote: "Forever free",
-    subNote: null,
-    savingsBadge: null,
-    features: [
-      { text: "1 exam per skill, unlimited practice attempts", included: true },
-      { text: "All 5 skills: KNM, Reading, Listening, Writing & Speaking", included: true },
-      { text: "Basic scoring & results", included: true },
-      { text: "Progress overview", included: true },
-      { text: "AI feedback on Writing & Speaking", included: true },
-      { text: "Access to all exams per skill", included: false },
-    ],
-    cta: "Get Started for Free",
-    ctaVariant: "outline" as const,
-    href: "/auth/signup",
-    featured: false,
-  },
-  {
-    id: "premium",
-    name: "Premium",
-    badge: "Most Popular",
-    description: "Complete preparation across every exam component",
-    price: "€9.99",
-    priceNote: "/ month",
-    subNote: null,
-    savingsBadge: null,
-    features: [
-      { text: "Access to all exams per skill (growing library)", included: true },
-      { text: "Unlimited practice attempts", included: true },
-      { text: "All 5 skills: KNM, Reading, Listening, Writing & Speaking", included: true },
-      { text: "AI feedback on every Writing & Speaking exam", included: true },
-      { text: "Full progress tracking", included: true },
-      { text: "Cancel anytime", included: true },
-      { text: "Email support", included: true },
-    ],
-    cta: "Start Premium",
-    ctaVariant: "white" as const,
-    href: "#",
-    featured: true,
-  },
-  {
-    id: "biannual",
-    name: "6-Month Plan",
-    badge: "Best value",
-    description: "Commit for 6 months and save",
-    price: "€39.99",
-    priceNote: "/ 6 months",
-    subNote: "≈ €6.67 / month",
-    savingsBadge: "Save 33%",
-    features: [
-      { text: "Access to all exams per skill (growing library)", included: true },
-      { text: "Unlimited practice attempts", included: true },
-      { text: "All 5 skills: KNM, Reading, Listening, Writing & Speaking", included: true },
-      { text: "AI feedback on every Writing & Speaking exam", included: true },
-      { text: "Full progress tracking", included: true },
-      { text: "Cancel anytime", included: true },
-      { text: "Email support", included: true },
-    ],
-    cta: "Get 6-Month Plan",
-    ctaVariant: "outline" as const,
-    href: "#",
-    featured: false,
-  },
-] as const;
+export const PLAN = {
+  id: "monthly",
+  name: "Monthly plan",
+  badge: "7-day free trial",
+  headline: "Full access to every exam",
+  price: "€9.99",
+  priceNote: "/ month",
+  subNote: "7 days free, then €9.99 / month. Cancel anytime.",
+  features: [
+    { text: "All exams per skill (growing library)" },
+    { text: "Unlimited practice attempts" },
+    { text: "KNM, Reading, Listening, Writing & Speaking" },
+    { text: "AI feedback on every Writing & Speaking exam" },
+    { text: "Full progress tracking" },
+    { text: "Email support" },
+  ],
+  cta: "Start free trial",
+  ctaVariant: "primary" as const,
+} as const;
 
 export async function PricingCards() {
   const supabase = createClient(await cookies());
@@ -89,190 +43,147 @@ export async function PricingCards() {
   let hasActiveSubscription = false;
   if (user) {
     const sub = await getUserSubscription(user.id);
-    hasActiveSubscription = canAccessPremium(sub);
+    hasActiveSubscription = hasAccess(sub);
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-      {PLANS.map((plan) => (
-        <PricingCard
-          key={plan.id}
-          plan={plan}
-          loggedIn={loggedIn}
-          showContactUs={showContactUs}
-          hasActiveSubscription={hasActiveSubscription}
+    <div className="mx-auto" style={{ maxWidth: "1040px" }}>
+      <div
+        className="rounded-2xl border-2 overflow-hidden grid md:grid-cols-2"
+        style={{
+          borderColor: "var(--green-900)",
+          boxShadow: "0 16px 40px rgba(27,107,74,0.14), 0 2px 8px rgba(0,0,0,0.04)",
+        }}
+      >
+        {/* Offer */}
+        <div className="bg-white p-8 sm:p-10 flex flex-col">
+          <span
+            className="inline-flex self-start items-center text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-6"
+            style={{ background: "var(--green-50)", color: "var(--green-700)" }}
+          >
+            {PLAN.badge}
+          </span>
+
+          <h2 className="font-bold mb-5" style={{ fontSize: "1.5rem", color: "var(--gray-900)" }}>
+            {PLAN.headline}
+          </h2>
+
+          <div className="flex items-end gap-1.5">
+            <span
+              className="font-bold"
+              style={{ fontSize: "3.5rem", lineHeight: 1, color: "var(--green-900)" }}
+            >
+              {PLAN.price}
+            </span>
+            <span className="text-base mb-2" style={{ color: "var(--green-700)" }}>
+              {PLAN.priceNote}
+            </span>
+          </div>
+          <p className="mt-3 text-sm" style={{ color: "var(--gray-600)" }}>
+            {PLAN.subNote}
+          </p>
+
+          <div className="mt-auto pt-8">
+            <PlanCta
+              loggedIn={loggedIn}
+              showContactUs={showContactUs}
+              hasActiveSubscription={hasActiveSubscription}
+            />
+            <p className="mt-3 text-center text-xs" style={{ color: "var(--gray-500)" }}>
+              No charge during your 7-day trial
+            </p>
+          </div>
+        </div>
+
+        {/* Features */}
+        <div className="p-8 sm:p-10" style={{ background: "var(--green-50)" }}>
+          <p
+            className="text-xs font-semibold uppercase tracking-widest mb-6"
+            style={{ color: "var(--green-700)" }}
+          >
+            Everything included
+          </p>
+          <ul className="flex flex-col gap-4">
+            {PLAN.features.map((f) => (
+              <li key={f.text} className="flex items-start gap-3 text-sm">
+                <span
+                  className="mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full"
+                  style={{ width: 22, height: 22, background: "white", color: "var(--green-700)" }}
+                >
+                  <CheckIcon style={{ width: 14, height: 14 }} />
+                </span>
+                <span style={{ color: "var(--gray-800)", lineHeight: 1.5 }}>{f.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Trust row */}
+      <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+        <TrustItem
+          icon={<ShieldCheckIcon style={{ width: 16, height: 16 }} />}
+          text="Secure checkout"
         />
-      ))}
+        <TrustItem
+          icon={<ArrowPathIcon style={{ width: 16, height: 16 }} />}
+          text="Cancel anytime"
+        />
+        <TrustItem
+          icon={<CreditCardIcon style={{ width: 16, height: 16 }} />}
+          text="iDEAL and cards accepted"
+        />
+      </div>
     </div>
   );
 }
 
-function PricingCard({
-  plan,
+function PlanCta({
   loggedIn,
   showContactUs,
   hasActiveSubscription,
 }: {
-  plan: (typeof PLANS)[number];
   loggedIn: boolean;
   showContactUs: boolean;
   hasActiveSubscription: boolean;
 }) {
-  const dark = plan.featured;
-
-  return (
-    <div
-      className={`relative rounded-2xl flex flex-col${dark ? " pricing-featured" : ""}`}
-      style={{
-        background: dark ? "var(--green-900)" : "white",
-        border: dark ? "none" : "1px solid var(--gray-200)",
-        boxShadow: dark
-          ? "0 24px 48px rgba(27,107,74,0.25), 0 8px 16px rgba(27,107,74,0.15)"
-          : "0 1px 4px rgba(0,0,0,0.06)",
-        padding: "2rem",
-        zIndex: dark ? 1 : 0,
-      }}
-    >
-      {/* Badge */}
-      <div className="mb-5" style={{ minHeight: "1.5rem" }}>
-        {plan.badge && (
-          <span
-            className="inline-block text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
-            style={{
-              background: dark ? "rgba(255,255,255,0.15)" : "var(--green-50)",
-              color: dark ? "white" : "var(--green-700)",
-            }}
-          >
-            {plan.badge}
-          </span>
-        )}
-      </div>
-
-      {/* Name + description */}
-      <div className="flex items-center gap-2 mb-1">
-        <h2
-          className="font-bold"
-          style={{ fontSize: "1.25rem", color: dark ? "white" : "var(--gray-900)" }}
-        >
-          {plan.name}
-        </h2>
-        {plan.savingsBadge && (
-          <span
-            className="text-xs font-bold px-2.5 py-1 rounded-full"
-            style={{ background: "var(--green-50)", color: "var(--green-700)" }}
-          >
-            {plan.savingsBadge}
-          </span>
-        )}
-      </div>
-      <p
-        className="text-sm mb-6 leading-relaxed"
-        style={{ color: dark ? "rgba(255,255,255,0.65)" : "var(--gray-500)" }}
+  if (hasActiveSubscription) {
+    return (
+      <Button href="/dashboard" variant={PLAN.ctaVariant} fullWidth>
+        Go to Dashboard
+      </Button>
+    );
+  }
+  if (!loggedIn) {
+    return (
+      <Button href="/auth/login?next=/pricing" variant={PLAN.ctaVariant} fullWidth>
+        {PLAN.cta}
+      </Button>
+    );
+  }
+  if (showContactUs) {
+    return (
+      <Button
+        href={`mailto:hallo@examklaar.nl?subject=${encodeURIComponent(`${PLAN.name} subscription`)}&body=${encodeURIComponent(`Hi,\n\nI'm interested in the ${PLAN.name} (${PLAN.price} ${PLAN.priceNote}).\n\nCould you help me get started?\n\nThanks`)}`}
+        variant={PLAN.ctaVariant}
+        fullWidth
       >
-        {plan.description}
-      </p>
+        Contact Us
+      </Button>
+    );
+  }
+  return (
+    <CheckoutButton variant={PLAN.ctaVariant} fullWidth>
+      {PLAN.cta}
+    </CheckoutButton>
+  );
+}
 
-      {/* Price */}
-      <div className="mb-6">
-        <div className="flex items-end gap-1.5">
-          <span
-            className="font-bold"
-            style={{
-              fontSize: "2.75rem",
-              lineHeight: 1,
-              color: dark ? "white" : "var(--gray-900)",
-            }}
-          >
-            {plan.price}
-          </span>
-          <span
-            className="text-sm mb-1"
-            style={{ color: dark ? "rgba(255,255,255,0.55)" : "var(--gray-400)" }}
-          >
-            {plan.priceNote}
-          </span>
-        </div>
-        {plan.subNote && (
-          <p
-            className="mt-1.5 text-xs"
-            style={{ color: dark ? "rgba(255,255,255,0.5)" : "var(--gray-400)" }}
-          >
-            {plan.subNote}
-          </p>
-        )}
-      </div>
-
-      {/* Divider */}
-      <div
-        className="mb-6"
-        style={{ height: "1px", background: dark ? "rgba(255,255,255,0.12)" : "var(--gray-100)" }}
-      />
-
-      {/* Features */}
-      <ul className="flex flex-col gap-3 mb-8 flex-1">
-        {plan.features.map((f) => (
-          <li key={f.text} className="flex items-start gap-3 text-sm">
-            <span
-              className="mt-0.5 flex-shrink-0"
-              style={{
-                color: f.included
-                  ? dark
-                    ? "rgba(255,255,255,0.9)"
-                    : "var(--green-700)"
-                  : dark
-                    ? "rgba(255,255,255,0.25)"
-                    : "var(--gray-300)",
-              }}
-            >
-              {f.included ? (
-                <CheckIcon style={{ width: 16, height: 16 }} />
-              ) : (
-                <XMarkIcon style={{ width: 16, height: 16 }} />
-              )}
-            </span>
-            <span
-              style={{
-                color: f.included
-                  ? dark
-                    ? "rgba(255,255,255,0.85)"
-                    : "var(--gray-700)"
-                  : dark
-                    ? "rgba(255,255,255,0.3)"
-                    : "var(--gray-400)",
-              }}
-            >
-              {f.text}
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      {/* CTA */}
-      {plan.id === "free" ? (
-        <Button href={loggedIn ? "/dashboard" : plan.href} variant={plan.ctaVariant} fullWidth>
-          {loggedIn ? "Go to Dashboard" : plan.cta}
-        </Button>
-      ) : hasActiveSubscription ? (
-        <Button href="/dashboard" variant={plan.ctaVariant} fullWidth>
-          Go to Dashboard
-        </Button>
-      ) : !loggedIn ? (
-        <Button href="/auth/login?next=/pricing" variant={plan.ctaVariant} fullWidth>
-          {plan.cta}
-        </Button>
-      ) : showContactUs ? (
-        <Button
-          href={`mailto:hallo@examklaar.nl?subject=${encodeURIComponent(`${plan.name} subscription`)}&body=${encodeURIComponent(`Hi,\n\nI'm interested in the ${plan.name} plan (${plan.price} ${plan.priceNote}).\n\nCould you help me get started?\n\nThanks`)}`}
-          variant={plan.ctaVariant}
-          fullWidth
-        >
-          Contact Us
-        </Button>
-      ) : (
-        <CheckoutButton planId={plan.id} variant={plan.ctaVariant} fullWidth>
-          {plan.cta}
-        </CheckoutButton>
-      )}
+function TrustItem({ icon, text }: { icon: React.ReactNode; text: string }) {
+  return (
+    <div className="flex items-center gap-2 text-sm" style={{ color: "var(--gray-500)" }}>
+      <span style={{ color: "var(--green-700)" }}>{icon}</span>
+      {text}
     </div>
   );
 }

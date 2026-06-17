@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { createClient } from "@/utils/supabase/client";
@@ -14,7 +13,6 @@ import type { ProviderPayment } from "@/lib/payment/types";
 import { analytics } from "@/lib/analytics";
 
 export default function SettingsPage() {
-  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [nameLoading, setNameLoading] = useState(false);
@@ -30,7 +28,6 @@ export default function SettingsPage() {
   }>({});
   const [pwLoading, setPwLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [deleteLoading, setDeleteLoading] = useState(false);
 
   useEffect(() => {
     const supabase = createClient();
@@ -90,28 +87,6 @@ export default function SettingsPage() {
       setPasswords({ current: "", next: "", confirm: "" });
     }
   }
-
-  const deleteAccount = useCallback(async () => {
-    if (
-      !confirm(
-        "Are you sure you want to delete your account? Your subscription will be cancelled and all your data will be permanently removed. This action cannot be undone."
-      )
-    ) {
-      return;
-    }
-    setDeleteLoading(true);
-    const res = await fetch("/api/account", { method: "DELETE" });
-    if (!res.ok) {
-      const { error } = await res.json();
-      alert(error ?? "Something went wrong. Please try again.");
-      setDeleteLoading(false);
-      return;
-    }
-    analytics.deleteAccount();
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    router.push("/");
-  }, [router]);
 
   return (
     <div className="min-h-screen" style={{ background: "var(--gray-50)" }}>
@@ -226,22 +201,6 @@ export default function SettingsPage() {
 
         {/* Subscription */}
         <SubscriptionSection />
-
-        {/* Danger zone */}
-        <SettingsSection
-          title="Danger Zone"
-          description="Irreversible actions for your account"
-          danger
-        >
-          <SettingsItem
-            label="Delete Account"
-            description="Permanently delete your account, cancel your subscription, and remove all your data. This action cannot be undone."
-          >
-            <Button variant="danger" type="button" onClick={deleteAccount} disabled={deleteLoading}>
-              {deleteLoading ? "Deleting…" : "Delete Account"}
-            </Button>
-          </SettingsItem>
-        </SettingsSection>
       </div>
       <Footer />
     </div>
@@ -250,11 +209,7 @@ export default function SettingsPage() {
 
 /* ==================== SUBSCRIPTION SECTION ==================== */
 
-const PLAN_LABELS: Record<string, string> = {
-  free: "Free",
-  premium: "Premium",
-  biannual: "6-Month Plan",
-};
+const PLAN_LABEL = "Monthly";
 
 function SubscriptionSection() {
   const [sub, setSub] = useState<UserSubscription | null>(null);
@@ -282,12 +237,13 @@ function SubscriptionSection() {
     load();
   }, []);
 
+  const isTrialing = sub?.status === "trialing";
+
   async function handleCancel() {
-    if (
-      !confirm(
-        "Are you sure you want to cancel your subscription? You'll keep access until the end of your current billing period."
-      )
-    ) {
+    const message = isTrialing
+      ? "Are you sure you want to cancel your free trial? You'll lose access immediately."
+      : "Are you sure you want to cancel your subscription? You'll keep access until the end of your current billing period.";
+    if (!confirm(message)) {
       return;
     }
     setCancelling(true);
@@ -296,25 +252,32 @@ function SubscriptionSection() {
     setCancelling(false);
     if (res.ok) {
       analytics.cancelSubscription();
-      setCancelSuccess(
-        "Your subscription has been cancelled. Access continues until the end of your billing period."
-      );
-      setSub((prev) => (prev ? { ...prev, cancelAtPeriodEnd: true } : prev));
+      if (isTrialing) {
+        setCancelSuccess("Your free trial has been cancelled and access has ended.");
+        setSub((prev) =>
+          prev ? { ...prev, status: "cancelled", currentPeriodEnd: new Date() } : prev
+        );
+      } else {
+        setCancelSuccess(
+          "Your subscription has been cancelled. Access continues until the end of your billing period."
+        );
+        setSub((prev) => (prev ? { ...prev, cancelAtPeriodEnd: true } : prev));
+      }
     } else {
       const data = await res.json();
       setCancelError(data.error ?? "Failed to cancel subscription. Please try again.");
     }
   }
 
-  const planLabel = sub ? (PLAN_LABELS[sub.planId] ?? sub.planId) : "Free";
-  const isPaid = sub && sub.planId !== "free";
+  const isSubscribed = !!sub?.planId;
+  const planLabel = isSubscribed ? PLAN_LABEL : "No plan";
   const isCancelled = sub?.status === "cancelled" || sub?.status === "expired";
-  const isActive = isPaid && !isCancelled;
+  const isActive = isSubscribed && !isCancelled;
   const periodEnd = sub?.currentPeriodEnd ? new Date(sub.currentPeriodEnd) : null;
 
   function planDescription() {
-    if (!isPaid || !periodEnd) {
-      return "Access to 1 free exam per skill";
+    if (!isSubscribed || !periodEnd) {
+      return "No active plan";
     }
     const formatted = periodEnd.toLocaleDateString("en-NL", {
       day: "numeric",
@@ -323,6 +286,11 @@ function SubscriptionSection() {
     });
     if (isCancelled) {
       return `Subscription cancelled`;
+    }
+    if (isTrialing) {
+      return sub.cancelAtPeriodEnd
+        ? `Free trial cancels on ${formatted}`
+        : `Free trial ends ${formatted}`;
     }
     if (sub.cancelAtPeriodEnd) {
       return `Cancels on ${formatted}`;
@@ -366,12 +334,12 @@ function SubscriptionSection() {
                   onClick={handleCancel}
                   disabled={cancelling}
                 >
-                  {cancelling ? "Cancelling…" : "Cancel plan"}
+                  {cancelling ? "Cancelling…" : isTrialing ? "Cancel trial" : "Cancel plan"}
                 </Button>
               ) : (
-                (!isPaid || isCancelled) && (
+                (!isSubscribed || isCancelled) && (
                   <Button href="/pricing" variant="primary">
-                    Upgrade
+                    Subscribe
                   </Button>
                 )
               )}

@@ -19,19 +19,19 @@ import {
 export const metadata: Metadata = {
   title: "ExamKlaar: Practice for Your Dutch Inburgering Exam",
   description:
-    "Prepare for your Dutch inburgering exam (A2/B1) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. Free to start.",
+    "Prepare for your Dutch inburgering exam (A2/B1) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. 7-day free trial.",
   alternates: { canonical: "https://www.examklaar.nl" },
   openGraph: {
     title: "ExamKlaar: Practice for Your Dutch Inburgering Exam",
     description:
-      "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. Free to start.",
+      "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. 7-day free trial.",
     url: "https://www.examklaar.nl",
   },
   twitter: {
     card: "summary_large_image",
     title: "ExamKlaar: Practice for Your Dutch Inburgering Exam",
     description:
-      "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. Free to start.",
+      "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. 7-day free trial.",
   },
 };
 
@@ -78,7 +78,7 @@ export default function LandingPage() {
             style={{ background: "var(--green-50)", color: "var(--green-700)" }}
           >
             <ClockIcon style={{ width: 15, height: 15 }} />
-            Have an exam deadline? Start practicing today. It&apos;s free.
+            Have an exam deadline? Try it free for 7 days.
           </div>
 
           <h1
@@ -108,7 +108,7 @@ export default function LandingPage() {
 
           <div className="flex flex-wrap gap-4 justify-center">
             <Button href="/auth/signup" variant="primary" size="lg">
-              Start Practicing for Free
+              Start Your Free Trial
               <ArrowRightIcon style={{ width: 20, height: 20 }} />
             </Button>
             <Button href="#how-it-works" variant="secondary" size="lg">
@@ -123,7 +123,7 @@ export default function LandingPage() {
           >
             <TrustItem
               icon={<CheckCircleIcon style={{ width: 18, height: 18 }} />}
-              text="Free to start"
+              text="7-day free trial"
             />
             <TrustItem
               icon={<AcademicCapIcon style={{ width: 18, height: 18 }} />}
@@ -156,8 +156,8 @@ export default function LandingPage() {
             <StepCard
               step="1"
               icon={<UserPlusIcon style={{ width: 22, height: 22 }} />}
-              title="Create a free account"
-              description="Sign up in seconds. No payment required to get started."
+              title="Start your free trial"
+              description="Sign up and start your 7-day free trial. Cancel anytime before it ends."
             />
             <StepCard
               step="2"
@@ -226,7 +226,7 @@ export default function LandingPage() {
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Simple, Transparent Pricing</h2>
-            <p className="section-subtitle">Start for free, upgrade when you need more</p>
+            <p className="section-subtitle">7-day free trial, then €9.99/month. Cancel anytime.</p>
           </div>
 
           <PricingCards />
@@ -243,11 +243,11 @@ export default function LandingPage() {
             Start Preparing Today
           </h2>
           <p className="mb-8 opacity-90" style={{ fontSize: "1.25rem", lineHeight: 1.7 }}>
-            Your first exam is free. No credit card required. Practice at your own pace and walk
-            into your exam with confidence.
+            Try ExamKlaar free for 7 days. Cancel anytime. Practice at your own pace and walk into
+            your exam with confidence.
           </p>
           <Button href="/auth/signup" variant="white" size="lg">
-            Create Your Free Account
+            Start Your Free Trial
             <ArrowRightIcon style={{ width: 20, height: 20 }} />
           </Button>
         </div>

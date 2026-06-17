@@ -30,7 +30,7 @@ export function DashboardClient({ skills, isPaid }: { skills: SkillGroup[]; isPa
 
   return (
     <>
-      {/* Upgrade banner — only shown to free users */}
+      {/* Upgrade banner — only shown to users without access */}
       {!isPaid && (
         <div className="mb-12">
           <UpgradeBanner />

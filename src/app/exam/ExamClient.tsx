@@ -31,7 +31,6 @@ export interface Exam {
   level: string | null;
   title: string;
   timeLimitMinutes: number;
-  premiumOnly: boolean;
   questions: Question[];
 }
 
