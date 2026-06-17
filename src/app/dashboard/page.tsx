@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { DashboardClient } from "./DashboardClient";
 import { createClient } from "@/utils/supabase/server";
 import { listSkillGroups } from "@/data/exams";
-import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
+import { getUserSubscription, hasPremiumAccess, isTrialEligible } from "@/lib/payment/subscription";
 
 export default async function DashboardPage() {
   const cookieStore = await cookies();
@@ -20,6 +20,7 @@ export default async function DashboardPage() {
   ]);
 
   const isPaid = sub ? hasPremiumAccess(sub) : false;
+  const trialEligible = sub ? isTrialEligible(sub) : true;
 
   const completedByGroup = new Map<string, Set<string>>();
   for (const r of results ?? []) {
@@ -51,7 +52,7 @@ export default async function DashboardPage() {
           <p style={{ color: "var(--gray-600)" }}>Continue practicing for your inburgering exam</p>
         </div>
 
-        <DashboardClient skills={skills} isPaid={isPaid} />
+        <DashboardClient skills={skills} isPaid={isPaid} trialEligible={trialEligible} />
       </div>
 
       <Footer />

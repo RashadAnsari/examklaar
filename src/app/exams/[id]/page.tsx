@@ -6,7 +6,6 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
 import { ChevronLeftIcon, LockClosedIcon } from "@heroicons/react/20/solid";
 import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam/config";
-import { UpgradeBanner } from "@/components/ui/UpgradeBanner";
 import { createClient } from "@/utils/supabase/server";
 import { listSkillExams } from "@/data/exams";
 import { getScoreFeedback } from "@/lib/exam/scoring";
@@ -93,12 +92,6 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
           <ChevronLeftIcon style={{ width: 16, height: 16 }} />
           Dashboard
         </Link>
-
-        {!isPaid && (
-          <div className="mb-8">
-            <UpgradeBanner />
-          </div>
-        )}
 
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">

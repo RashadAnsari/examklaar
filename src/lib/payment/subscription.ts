@@ -59,16 +59,34 @@ export async function getUserSubscription(userId: string): Promise<UserSubscript
 /**
  * Returns true when the user should be allowed to access exam content.
  *
+ * Manually granted subscriptions (no payment provider, e.g. via
+ * scripts/grant-subscription.ts) have no provider to update their status when
+ * the period ends, so current_period_end is the sole authority: access lasts
+ * only until that date.
+ *
+ * For provider-backed (Paddle) subscriptions we trust the status, which the
+ * provider keeps in sync via webhooks:
  * - trialing → allow (within the 7-day free trial)
  * - active → allow
  * - past_due → allow (provider is still retrying payment; revoke only on expired)
  * - cancelled but still within the paid period → allow (user paid through the end)
  * - expired / no subscription → deny
  *
- * A trial cancelled immediately has current_period_end set to now, so it falls
- * through to denied here.
+ * We intentionally do NOT enforce current_period_end for an active provider sub:
+ * that would falsely deny access during the renewal window (period ended, renewal
+ * webhook not yet processed). A trial cancelled immediately has current_period_end
+ * set to now, so it falls through to denied here.
  */
 export function hasPremiumAccess(sub: UserSubscription): boolean {
+  if (sub.planId === null) {
+    return false;
+  }
+
+  // Manually granted (no payment provider): the period end is the only authority.
+  if (!sub.paymentProvider) {
+    return !!sub.currentPeriodEnd && sub.currentPeriodEnd > new Date();
+  }
+
   if (sub.status === "active" || sub.status === "trialing" || sub.status === "past_due") {
     return true;
   }
@@ -78,4 +96,13 @@ export function hasPremiumAccess(sub: UserSubscription): boolean {
   }
 
   return false;
+}
+
+/**
+ * Whether the user is eligible for the free trial. Only users who have never
+ * subscribed (no subscription row) get the trial; anyone who has subscribed or
+ * trialed before is billed immediately on checkout.
+ */
+export function isTrialEligible(sub: UserSubscription): boolean {
+  return sub.planId === null;
 }

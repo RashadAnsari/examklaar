@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
-import { getUserSubscription } from "@/lib/payment/subscription";
+import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
 
 export async function GET() {
   const supabase = createClient(await cookies());
@@ -13,5 +13,5 @@ export async function GET() {
   }
 
   const sub = await getUserSubscription(user.id);
-  return NextResponse.json(sub);
+  return NextResponse.json({ ...sub, hasAccess: hasPremiumAccess(sub) });
 }

@@ -211,8 +211,10 @@ export default function SettingsPage() {
 
 const PLAN_LABEL = "Monthly";
 
+type SubscriptionInfo = UserSubscription & { hasAccess: boolean };
+
 function SubscriptionSection() {
-  const [sub, setSub] = useState<UserSubscription | null>(null);
+  const [sub, setSub] = useState<SubscriptionInfo | null>(null);
   const [payments, setPayments] = useState<ProviderPayment[]>([]);
   const [loading, setLoading] = useState(true);
   const [cancelling, setCancelling] = useState(false);
@@ -255,7 +257,9 @@ function SubscriptionSection() {
       if (isTrialing) {
         setCancelSuccess("Your free trial has been cancelled and access has ended.");
         setSub((prev) =>
-          prev ? { ...prev, status: "cancelled", currentPeriodEnd: new Date() } : prev
+          prev
+            ? { ...prev, status: "cancelled", currentPeriodEnd: new Date(), hasAccess: false }
+            : prev
         );
       } else {
         setCancelSuccess(
@@ -270,9 +274,15 @@ function SubscriptionSection() {
   }
 
   const isSubscribed = !!sub?.planId;
+  const hasAccess = !!sub?.hasAccess;
   const planLabel = isSubscribed ? PLAN_LABEL : "No plan";
-  const isCancelled = sub?.status === "cancelled" || sub?.status === "expired";
-  const isActive = isSubscribed && !isCancelled;
+  // Only Paddle-backed active/trialing subscriptions can be cancelled, and only
+  // while access is live and a cancellation isn't already scheduled.
+  const canCancel =
+    hasAccess &&
+    !!sub?.paymentProvider &&
+    (sub.status === "active" || sub.status === "trialing") &&
+    !sub.cancelAtPeriodEnd;
   const periodEnd = sub?.currentPeriodEnd ? new Date(sub.currentPeriodEnd) : null;
 
   function planDescription() {
@@ -286,8 +296,8 @@ function SubscriptionSection() {
       year: "numeric",
     });
 
-    if (isCancelled) {
-      return `Subscription cancelled`;
+    if (!hasAccess) {
+      return "Access ended";
     }
 
     if (isTrialing) {
@@ -325,8 +335,8 @@ function SubscriptionSection() {
                 <span
                   className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold"
                   style={{
-                    background: isActive ? "var(--green-50)" : "var(--gray-100)",
-                    color: isActive ? "var(--green-900)" : "var(--gray-600)",
+                    background: hasAccess ? "var(--green-50)" : "var(--gray-100)",
+                    color: hasAccess ? "var(--green-900)" : "var(--gray-600)",
                   }}
                 >
                   {planLabel}
@@ -336,7 +346,7 @@ function SubscriptionSection() {
             description={planDescription()}
           >
             <div className="flex items-center gap-3 flex-wrap">
-              {isActive && !sub.cancelAtPeriodEnd ? (
+              {canCancel ? (
                 <Button
                   variant="outline"
                   type="button"
@@ -346,7 +356,7 @@ function SubscriptionSection() {
                   {cancelling ? "Cancelling…" : isTrialing ? "Cancel trial" : "Cancel plan"}
                 </Button>
               ) : (
-                (!isSubscribed || isCancelled) && (
+                !hasAccess && (
                   <Button href="/pricing" variant="primary">
                     Subscribe
                   </Button>

@@ -5,6 +5,7 @@ import { createAdminClient } from "@/utils/supabase/admin";
 import {
   getUserSubscription,
   hasPremiumAccess,
+  isTrialEligible,
   isPlanId,
   DEFAULT_PLAN_ID,
 } from "@/lib/payment/subscription";
@@ -30,9 +31,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "You already have an active subscription" }, { status: 400 });
   }
 
-  // A subscription row only exists for users who have subscribed (or trialed)
-  // before. They are not eligible for the free trial again.
-  const skipTrial = currentSubscription.planId !== null;
+  // Users who have subscribed or trialed before are not eligible for the trial again.
+  const skipTrial = !isTrialEligible(currentSubscription);
 
   const providerName = process.env.PAYMENT_PROVIDER;
   if (!providerName) {

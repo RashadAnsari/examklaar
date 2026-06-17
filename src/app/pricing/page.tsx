@@ -98,7 +98,7 @@ export default function PricingPage() {
           className="mx-auto"
           style={{ fontSize: "1.25rem", color: "var(--gray-600)", maxWidth: "640px" }}
         >
-          Try everything free for 7 days, then €9.99 / month. Cancel anytime.
+          Full access to every exam with AI feedback. €9.99 / month, cancel anytime.
         </p>
       </div>
 

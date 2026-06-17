@@ -8,7 +8,15 @@ import type { SkillGroup } from "@/lib/exam/config";
 
 type Level = "A2" | "B1";
 
-export function DashboardClient({ skills, isPaid }: { skills: SkillGroup[]; isPaid: boolean }) {
+export function DashboardClient({
+  skills,
+  isPaid,
+  trialEligible,
+}: {
+  skills: SkillGroup[];
+  isPaid: boolean;
+  trialEligible: boolean;
+}) {
   const [level, setLevel] = useState<Level>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("dashboard:level");
@@ -33,7 +41,7 @@ export function DashboardClient({ skills, isPaid }: { skills: SkillGroup[]; isPa
       {/* Upgrade banner — only shown to users without access */}
       {!isPaid && (
         <div className="mb-12">
-          <UpgradeBanner />
+          <UpgradeBanner trialEligible={trialEligible} />
         </div>
       )}
 

@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
-import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
+import { getUserSubscription, hasPremiumAccess, isTrialEligible } from "@/lib/payment/subscription";
 import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/pricing/CheckoutButton";
 import {
@@ -18,6 +18,7 @@ export const PLAN = {
   price: "€9.99",
   priceNote: "/ month",
   subNote: "7 days free, then €9.99 / month. Cancel anytime.",
+  subNoteReturning: "Billed monthly. Cancel anytime.",
   features: [
     { text: "All exams per skill (growing library)" },
     { text: "Unlimited practice attempts" },
@@ -27,6 +28,7 @@ export const PLAN = {
     { text: "Email support" },
   ],
   cta: "Start free trial",
+  ctaReturning: "Subscribe",
   ctaVariant: "primary" as const,
 } as const;
 
@@ -41,9 +43,13 @@ export async function PricingCards() {
   const showContactUs = loggedIn && !providerConfigured;
 
   let hasActiveSubscription = false;
+  // Logged-out visitors are treated as trial-eligible (most are prospective users);
+  // a returning customer who already used the trial is billed immediately.
+  let trialEligible = true;
   if (user) {
     const sub = await getUserSubscription(user.id);
     hasActiveSubscription = hasPremiumAccess(sub);
+    trialEligible = isTrialEligible(sub);
   }
 
   return (
@@ -57,12 +63,14 @@ export async function PricingCards() {
       >
         {/* Offer */}
         <div className="bg-white p-8 sm:p-10 flex flex-col">
-          <span
-            className="inline-flex self-start items-center text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-6"
-            style={{ background: "var(--green-50)", color: "var(--green-700)" }}
-          >
-            {PLAN.badge}
-          </span>
+          {trialEligible && (
+            <span
+              className="inline-flex self-start items-center text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-6"
+              style={{ background: "var(--green-50)", color: "var(--green-700)" }}
+            >
+              {PLAN.badge}
+            </span>
+          )}
 
           <h2 className="font-bold mb-5" style={{ fontSize: "1.5rem", color: "var(--gray-900)" }}>
             {PLAN.headline}
@@ -80,7 +88,7 @@ export async function PricingCards() {
             </span>
           </div>
           <p className="mt-3 text-sm" style={{ color: "var(--gray-600)" }}>
-            {PLAN.subNote}
+            {trialEligible ? PLAN.subNote : PLAN.subNoteReturning}
           </p>
 
           <div className="mt-auto pt-8">
@@ -88,10 +96,13 @@ export async function PricingCards() {
               loggedIn={loggedIn}
               showContactUs={showContactUs}
               hasActiveSubscription={hasActiveSubscription}
+              trialEligible={trialEligible}
             />
-            <p className="mt-3 text-center text-xs" style={{ color: "var(--gray-500)" }}>
-              No charge during your 7-day trial
-            </p>
+            {!hasActiveSubscription && trialEligible && (
+              <p className="mt-3 text-center text-xs" style={{ color: "var(--gray-500)" }}>
+                No charge during your 7-day trial
+              </p>
+            )}
           </div>
         </div>
 
@@ -142,10 +153,12 @@ function PlanCta({
   loggedIn,
   showContactUs,
   hasActiveSubscription,
+  trialEligible,
 }: {
   loggedIn: boolean;
   showContactUs: boolean;
   hasActiveSubscription: boolean;
+  trialEligible: boolean;
 }) {
   if (hasActiveSubscription) {
     return (
@@ -154,10 +167,11 @@ function PlanCta({
       </Button>
     );
   }
+  const ctaLabel = trialEligible ? PLAN.cta : PLAN.ctaReturning;
   if (!loggedIn) {
     return (
       <Button href="/auth/login?next=/pricing" variant={PLAN.ctaVariant} fullWidth>
-        {PLAN.cta}
+        {ctaLabel}
       </Button>
     );
   }
@@ -174,7 +188,7 @@ function PlanCta({
   }
   return (
     <CheckoutButton planId={PLAN.id} variant={PLAN.ctaVariant} fullWidth>
-      {PLAN.cta}
+      {ctaLabel}
     </CheckoutButton>
   );
 }
