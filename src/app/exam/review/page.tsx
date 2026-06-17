@@ -6,6 +6,7 @@ import { SKILL_TITLES } from "@/lib/exam/config";
 import { scorePct, getPassThreshold } from "@/lib/exam/scoring";
 import type { Exam } from "@/app/exam/ExamClient";
 import { ReviewClient, type ReviewQuestion } from "./ReviewClient";
+import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
 
 type QuestionFeedback = { score: number; maxScore: number; feedback: string };
 type SpeakingAnswer = { path: string; transcript: string };
@@ -26,6 +27,11 @@ export default async function ReviewPage(props: {
   } = await supabase.auth.getUser();
   if (!user) {
     redirect("/auth/login");
+  }
+
+  const sub = await getUserSubscription(user.id);
+  if (!hasPremiumAccess(sub)) {
+    redirect("/pricing");
   }
 
   const examId = `${skillId}-exam-${n}`;

@@ -4,7 +4,7 @@ import { createAdminClient } from "@/utils/supabase/admin";
 import { cookies } from "next/headers";
 import { readExam } from "@/data/exams";
 import type { Exam } from "@/app/exam/ExamClient";
-import { getUserSubscription, hasAccess } from "@/lib/payment/subscription";
+import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
 
 export async function POST(req: NextRequest) {
   const supabase = createClient(await cookies());
@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
   }
 
   const sub = await getUserSubscription(user.id);
-  if (!hasAccess(sub)) {
+  if (!hasPremiumAccess(sub)) {
     console.warn("[submit] Exam blocked, no access — user=%s exam=%s-%s", user.id, skillId, n);
     return NextResponse.json({ error: "upgrade_required" }, { status: 403 });
   }

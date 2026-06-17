@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { ExamClient, Exam } from "./ExamClient";
 import { readExam } from "@/data/exams";
 import { createClient } from "@/utils/supabase/server";
-import { getUserSubscription, hasAccess } from "@/lib/payment/subscription";
+import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
 
 export default async function ExamPage(props: {
   searchParams: Promise<{ skill?: string; n?: string }>;
@@ -29,8 +29,9 @@ export default async function ExamPage(props: {
   if (!user) {
     redirect("/auth/login");
   }
+
   const sub = await getUserSubscription(user.id);
-  if (!hasAccess(sub)) {
+  if (!hasPremiumAccess(sub)) {
     redirect("/pricing");
   }
 

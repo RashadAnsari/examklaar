@@ -20,6 +20,7 @@ import {
   computeHistoryStats,
 } from "@/lib/exam/scoring";
 import { BackGuard } from "./BackGuard";
+import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
 
 type QuestionFeedback = {
   score: number;
@@ -51,6 +52,11 @@ export default async function ResultsPage(props: {
   } = await supabase.auth.getUser();
   if (!user) {
     redirect("/auth/login");
+  }
+
+  const sub = await getUserSubscription(user.id);
+  if (!hasPremiumAccess(sub)) {
+    redirect("/pricing");
   }
 
   const examId = `${skillId}-exam-${n}`;

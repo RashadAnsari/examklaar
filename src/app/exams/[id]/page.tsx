@@ -10,7 +10,7 @@ import { UpgradeBanner } from "@/components/ui/UpgradeBanner";
 import { createClient } from "@/utils/supabase/server";
 import { listSkillExams } from "@/data/exams";
 import { getScoreFeedback } from "@/lib/exam/scoring";
-import { getUserSubscription, hasAccess } from "@/lib/payment/subscription";
+import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
 
 interface ExamResult {
   score: number | null;
@@ -78,7 +78,7 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
     data: { user },
   } = await supabase.auth.getUser();
   const sub = user ? await getUserSubscription(user.id) : null;
-  const isPaid = sub ? hasAccess(sub) : false;
+  const isPaid = sub ? hasPremiumAccess(sub) : false;
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--gray-50)" }}>

@@ -68,7 +68,7 @@ export async function getUserSubscription(userId: string): Promise<UserSubscript
  * A trial cancelled immediately has current_period_end set to now, so it falls
  * through to denied here.
  */
-export function hasAccess(sub: UserSubscription): boolean {
+export function hasPremiumAccess(sub: UserSubscription): boolean {
   if (sub.status === "active" || sub.status === "trialing" || sub.status === "past_due") {
     return true;
   }

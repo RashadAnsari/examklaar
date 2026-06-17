@@ -279,22 +279,31 @@ function SubscriptionSection() {
     if (!isSubscribed || !periodEnd) {
       return "No active plan";
     }
+
     const formatted = periodEnd.toLocaleDateString("en-NL", {
       day: "numeric",
       month: "long",
       year: "numeric",
     });
+
     if (isCancelled) {
       return `Subscription cancelled`;
     }
+
     if (isTrialing) {
       return sub.cancelAtPeriodEnd
         ? `Free trial cancels on ${formatted}`
-        : `Free trial ends ${formatted}`;
+        : `Free trial ends ${formatted} then renews to ${PLAN_LABEL} plan`;
     }
+
     if (sub.cancelAtPeriodEnd) {
       return `Cancels on ${formatted}`;
     }
+
+    if (!sub.paymentProvider) {
+      return `Ends on ${formatted}`;
+    }
+
     return `Renews on ${formatted}`;
   }
 

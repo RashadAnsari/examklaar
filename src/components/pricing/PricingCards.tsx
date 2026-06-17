@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
-import { getUserSubscription, hasAccess } from "@/lib/payment/subscription";
+import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
 import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/pricing/CheckoutButton";
 import {
@@ -43,7 +43,7 @@ export async function PricingCards() {
   let hasActiveSubscription = false;
   if (user) {
     const sub = await getUserSubscription(user.id);
-    hasActiveSubscription = hasAccess(sub);
+    hasActiveSubscription = hasPremiumAccess(sub);
   }
 
   return (

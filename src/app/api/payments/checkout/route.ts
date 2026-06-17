@@ -4,7 +4,7 @@ import { createClient } from "@/utils/supabase/server";
 import { createAdminClient } from "@/utils/supabase/admin";
 import {
   getUserSubscription,
-  hasAccess,
+  hasPremiumAccess,
   isPlanId,
   DEFAULT_PLAN_ID,
 } from "@/lib/payment/subscription";
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
   }
 
   const currentSubscription = await getUserSubscription(user.id);
-  if (hasAccess(currentSubscription)) {
+  if (hasPremiumAccess(currentSubscription)) {
     return NextResponse.json({ error: "You already have an active subscription" }, { status: 400 });
   }
 
