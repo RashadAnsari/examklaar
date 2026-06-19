@@ -7,6 +7,12 @@ export type SubscriptionStatus = "trialing" | "active" | "cancelled" | "past_due
 export const PLAN_IDS: readonly PlanId[] = ["monthly"];
 export const DEFAULT_PLAN_ID: PlanId = "monthly";
 
+/**
+ * Months of free access granted to a new user while no payment provider is
+ * configured (early-stage launch). See grantComplimentaryAccess.
+ */
+export const COMPLIMENTARY_ACCESS_MONTHS = 3;
+
 export function isPlanId(value: unknown): value is PlanId {
   return typeof value === "string" && (PLAN_IDS as readonly string[]).includes(value);
 }
@@ -105,4 +111,56 @@ export function hasPremiumAccess(sub: UserSubscription): boolean {
  */
 export function isTrialEligible(sub: UserSubscription): boolean {
   return sub.planId === null;
+}
+
+/**
+ * While no payment provider is configured (early-stage launch), give a brand
+ * new user COMPLIMENTARY_ACCESS_MONTHS of free access. Creates a provider-less
+ * subscription row (the same shape grant-subscription.ts produces), so
+ * hasPremiumAccess grants access purely on current_period_end.
+ *
+ * Idempotent: the unique index on subscriptions.user_id means a user who
+ * already has a row keeps it and is not re-granted. Returns whether a row was
+ * newly created, which the caller uses to show the welcome gift modal once.
+ */
+export async function grantComplimentaryAccess(userId: string): Promise<{ granted: boolean }> {
+  // Only complimentary while there is no provider to bill through.
+  if (process.env.PAYMENT_PROVIDER) {
+    return { granted: false };
+  }
+
+  const now = new Date();
+  const periodEnd = new Date(now);
+  periodEnd.setMonth(periodEnd.getMonth() + COMPLIMENTARY_ACCESS_MONTHS);
+
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("subscriptions")
+    .upsert(
+      {
+        user_id: userId,
+        plan_id: DEFAULT_PLAN_ID,
+        status: "active",
+        payment_provider: null,
+        provider_customer_id: null,
+        provider_subscription_id: null,
+        current_period_start: now.toISOString(),
+        current_period_end: periodEnd.toISOString(),
+        cancel_at_period_end: false,
+        updated_at: now.toISOString(),
+      },
+      { onConflict: "user_id", ignoreDuplicates: true }
+    )
+    .select("id");
+
+  if (error) {
+    console.error(
+      "[subscription] Failed to grant complimentary access — user=%s error=%o",
+      userId,
+      error
+    );
+    return { granted: false };
+  }
+
+  return { granted: !!data?.length };
 }

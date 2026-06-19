@@ -4,7 +4,14 @@ import { Footer } from "@/components/layout/Footer";
 import { DashboardClient } from "./DashboardClient";
 import { createClient } from "@/utils/supabase/server";
 import { listSkillGroups } from "@/data/exams";
-import { getUserSubscription, hasPremiumAccess, isTrialEligible } from "@/lib/payment/subscription";
+import { WelcomeGiftModal } from "@/components/ui/WelcomeGiftModal";
+import {
+  COMPLIMENTARY_ACCESS_MONTHS,
+  getUserSubscription,
+  grantComplimentaryAccess,
+  hasPremiumAccess,
+  isTrialEligible,
+} from "@/lib/payment/subscription";
 
 export default async function DashboardPage() {
   const cookieStore = await cookies();
@@ -13,6 +20,14 @@ export default async function DashboardPage() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  // While no payment provider is configured, grant a new user free access on
+  // their first dashboard visit. Done before reading the subscription so the
+  // grant is reflected in this same render; granted is true only on the visit
+  // that creates the row, which is when we show the welcome gift modal.
+  const { granted: showWelcomeGift } = user
+    ? await grantComplimentaryAccess(user.id)
+    : { granted: false };
 
   const [{ data: results }, sub] = await Promise.all([
     supabase.from("exam_results").select("exam_id").eq("grading_status", "complete"),
@@ -53,6 +68,7 @@ export default async function DashboardPage() {
         </div>
 
         <DashboardClient skills={skills} isPaid={isPaid} trialEligible={trialEligible} />
+        {showWelcomeGift && <WelcomeGiftModal months={COMPLIMENTARY_ACCESS_MONTHS} />}
       </div>
 
       <Footer />
