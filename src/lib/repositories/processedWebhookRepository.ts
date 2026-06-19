@@ -21,13 +21,17 @@ export class ProcessedWebhookRepository {
   }
 
   /**
-   * Mark an event key as processed. Idempotent: a duplicate key is ignored.
+   * Mark an event key as processed. Idempotent: a duplicate key is ignored via
+   * ON CONFLICT DO NOTHING, so this needs only INSERT (no UPDATE) privilege.
    * Never throws; a failure here must not fail an otherwise successful webhook.
    */
   async markProcessed(eventKey: string, eventType: string): Promise<void> {
     const { error } = await this.db
       .from(TABLE)
-      .upsert({ event_key: eventKey, event_type: eventType }, { onConflict: "event_key" });
+      .upsert(
+        { event_key: eventKey, event_type: eventType },
+        { onConflict: "event_key", ignoreDuplicates: true }
+      );
     if (error) {
       console.error("[processed_webhook_events] Failed to record key error=%o", error);
     }
