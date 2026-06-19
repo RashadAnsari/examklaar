@@ -29,9 +29,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
   if (result.skill !== "writing" && result.skill !== "speaking") {
+    console.warn("[grade] No grading needed for skill=%s — result_id=%s", result.skill, result_id);
     return NextResponse.json({ ok: true, message: "No grading needed" });
   }
   if (result.grading_status === "in_progress" || result.grading_status === "complete") {
+    console.warn(
+      "[grade] Grading already in progress or complete for result_id=%s, status=%s",
+      result_id,
+      result.grading_status
+    );
     return NextResponse.json({ ok: true, message: "Already grading or graded" });
   }
 

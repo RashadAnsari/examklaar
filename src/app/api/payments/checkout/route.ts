@@ -23,11 +23,13 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   const planId = body?.planId ?? DEFAULT_PLAN_ID;
   if (!isPlanId(planId)) {
+    console.warn("[checkout] Invalid planId in request — user=%s planId=%s", user.id, body?.planId);
     return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
   }
 
   const currentSubscription = await getUserSubscription(user.id);
   if (hasPremiumAccess(currentSubscription)) {
+    console.warn("[checkout] User already has access — user=%s", user.id);
     return NextResponse.json({ error: "You already have an active subscription" }, { status: 400 });
   }
 
@@ -36,6 +38,7 @@ export async function POST(req: NextRequest) {
 
   const providerName = process.env.PAYMENT_PROVIDER;
   if (!providerName) {
+    console.error("[checkout] No payment provider configured");
     return NextResponse.json({ error: "No payment provider configured" }, { status: 503 });
   }
 

@@ -54,10 +54,12 @@ export async function POST(req: NextRequest) {
 
     const file = formData.get("file");
     if (!(file instanceof File)) {
+      console.warn("[transcribe] No file provided in request — user=%s", user.id);
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
     if (file.type !== "audio/wav" && file.type !== "audio/wave") {
+      console.warn("[transcribe] Invalid file type — user=%s", user.id);
       return NextResponse.json(
         { error: "Invalid file type. Only WAV audio is accepted." },
         { status: 415 }
@@ -66,11 +68,13 @@ export async function POST(req: NextRequest) {
 
     const MAX_BYTES = 2 * 1024 * 1024; // 2 MB
     if (file.size > MAX_BYTES) {
+      console.warn("[transcribe] File too large — user=%s", user.id);
       return NextResponse.json({ error: "File too large" }, { status: 413 });
     }
 
     const language = (formData.get("language") as string) ?? "nl";
     if (language !== "nl") {
+      console.warn("[transcribe] Unsupported language — user=%s", user.id);
       return NextResponse.json({ error: "Unsupported language" }, { status: 400 });
     }
 
@@ -87,7 +91,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ transcript: result.text.trim() });
   } catch (err) {
-    console.error("[/api/recordings/transcribe]", err);
+    console.error("[transcribe] Failed to transcribe audio — user=%s error=%o", user.id, err);
     return NextResponse.json({ error: "Transcription failed" }, { status: 500 });
   }
 }

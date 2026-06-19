@@ -25,9 +25,21 @@ export async function POST(req: NextRequest) {
   const transcriptsField = (formData.get("transcripts") as string | null) ?? "{}";
 
   if (!answersField || answersField.length > 50_000) {
+    console.warn(
+      "[submit] Invalid request — missing or too large answers field, user=%s skill_id=%s n=%s",
+      user.id,
+      skillId,
+      n
+    );
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
   if (transcriptsField.length > 20_000) {
+    console.warn(
+      "[submit] Invalid request — too large transcripts field, user=%s skill_id=%s n=%s",
+      user.id,
+      skillId,
+      n
+    );
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
@@ -43,6 +55,12 @@ export async function POST(req: NextRequest) {
       throw new Error();
     }
   } catch {
+    console.warn(
+      "[submit] Invalid request — invalid JSON, user=%s skill_id=%s n=%s",
+      user.id,
+      skillId,
+      n
+    );
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
@@ -100,6 +118,14 @@ export async function POST(req: NextRequest) {
       if (audioFile) {
         const MAX_BYTES = 2 * 1024 * 1024; // 2 MB
         if (audioFile.size > MAX_BYTES) {
+          console.warn(
+            "[submit] Audio file too large — user=%s exam=%s-%s question=%s size=%d bytes",
+            user.id,
+            skillId,
+            n,
+            q.id,
+            audioFile.size
+          );
           return NextResponse.json({ error: "Audio file too large" }, { status: 413 });
         }
         const storagePath = `${user.id}/${examId}/${attemptId}/${q.id}.webm`;

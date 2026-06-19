@@ -16,6 +16,7 @@ export async function POST() {
 
   const sub = await getUserSubscription(user.id);
   if (!sub.planId || (sub.status !== "active" && sub.status !== "trialing")) {
+    console.warn("[subscription/cancel] No active subscription to cancel for user=%s", user.id);
     return NextResponse.json({ error: "No active subscription to cancel" }, { status: 400 });
   }
 

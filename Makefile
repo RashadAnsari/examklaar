@@ -5,6 +5,8 @@ dev:
 
 # --------- Code quality ----------
 
+local: format lint
+
 lint:
 	bun run lint
 	bunx prettier --check "**/*.{ts,tsx,css,json,md}" --ignore-path .gitignore
