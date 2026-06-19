@@ -2,15 +2,17 @@ type EventPayload = Record<string, string | number | boolean>;
 
 declare global {
   interface Window {
-    umami?: {
-      track: (event: string, data?: EventPayload) => void;
-    };
+    gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
   }
 }
 
+// Sends a custom event to Google Analytics. gtag only exists once the visitor
+// has accepted analytics cookies (see GoogleAnalytics.tsx), so before consent
+// every call is a no-op.
 function track(event: string, data?: EventPayload) {
-  if (typeof window !== "undefined" && window.umami) {
-    window.umami.track(event, data);
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", event, data);
   }
 }
 

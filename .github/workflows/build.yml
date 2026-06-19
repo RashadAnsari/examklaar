@@ -44,6 +44,7 @@ jobs:
   #           GIT_SHA=${{ github.sha }}
   #           SUPABASE_PUBLIC_URL=${{ secrets.SUPABASE_PUBLIC_URL }}
   #           SUPABASE_PUBLISHABLE_DEFAULT_KEY=${{ secrets.SUPABASE_PUBLISHABLE_DEFAULT_KEY }}
+  #           ANALYTICS_GA_MEASUREMENT_ID=${{ secrets.ANALYTICS_GA_MEASUREMENT_ID }}
 
   #     - name: Docker Save
   #       run: docker save examklaar:${{ github.sha }} > /tmp/docker-image.tar
@@ -68,3 +69,4 @@ jobs:
   #           -e "supabase_public_url=${{ secrets.SUPABASE_PUBLIC_URL }}"
   #           -e "supabase_service_role_key=${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}"
   #           -e "supabase_publishable_default_key=${{ secrets.SUPABASE_PUBLISHABLE_DEFAULT_KEY }}"
+  #           -e "analytics_ga_measurement_id=${{ secrets.ANALYTICS_GA_MEASUREMENT_ID }}"

@@ -10,9 +10,9 @@ const csp = [
   "frame-src https://*.paddle.com",
   "style-src 'self' 'unsafe-inline'",
   "media-src 'self' blob: https://*.supabase.co",
-  "img-src 'self' data: blob: https://*.supabase.co",
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.paddle.com https://cloud.umami.is",
-  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://cdn.paddle.com https://cloud.umami.is`,
+  "img-src 'self' data: blob: https://*.supabase.co https://www.google-analytics.com https://*.google-analytics.com",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.paddle.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
+  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://cdn.paddle.com https://www.googletagmanager.com`,
 ].join("; ");
 
 const nextConfig: NextConfig = {
@@ -44,6 +44,7 @@ const nextConfig: NextConfig = {
   env: {
     SUPABASE_PUBLIC_URL: process.env.SUPABASE_PUBLIC_URL ?? "",
     SUPABASE_PUBLISHABLE_DEFAULT_KEY: process.env.SUPABASE_PUBLISHABLE_DEFAULT_KEY ?? "",
+    ANALYTICS_GA_MEASUREMENT_ID: process.env.ANALYTICS_GA_MEASUREMENT_ID ?? "",
   },
 };
 

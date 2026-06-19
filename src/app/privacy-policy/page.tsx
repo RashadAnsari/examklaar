@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.examklaar.nl/privacy-policy" },
 };
 
-const LAST_UPDATED = "17 April 2026";
+const LAST_UPDATED = "19 June 2026";
 
 const SECTIONS = [
   {
@@ -40,7 +40,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Usage and analytics data",
-        text: "Anonymised data about how visitors use our website, including page views, referral source, and general device and browser type. IP addresses are used only to derive a country-level location and are not stored in identifiable form.",
+        text: "If you accept analytics cookies, we use Google Analytics to collect data about how you use our website, including pages viewed, referral source, approximate (city or country level) location derived from your IP address, and general device and browser type. These cookies are set only after you give consent via our cookie banner. We do not enable advertising or remarketing features, and we do not use this data to identify you personally.",
       },
       {
         subtitle: "Technical logs",
@@ -60,7 +60,7 @@ const SECTIONS = [
       { text: "To manage your subscription status in coordination with Paddle" },
       { text: "To monitor for fraud, abuse, and security threats on the platform" },
       {
-        text: "To analyse anonymised, aggregated usage patterns to improve the platform",
+        text: "With your consent, to analyse how visitors use the platform so we can improve it",
       },
     ],
   },
@@ -75,7 +75,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Legitimate interest (Art. 6(1)(f))",
-        text: "We process anonymised analytics data and security logs to improve the platform and prevent abuse. We have assessed that these interests do not override your fundamental rights.",
+        text: "We process security logs to protect the platform and prevent abuse. We have assessed that this interest does not override your fundamental rights.",
       },
       {
         subtitle: "Legal obligation (Art. 6(1)(c))",
@@ -83,7 +83,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Consent (Art. 6(1)(a))",
-        text: "Where we rely on your consent (for example, for optional marketing communications), you may withdraw it at any time by contacting hallo@examklaar.nl or using the unsubscribe link in any email. Withdrawal does not affect the lawfulness of prior processing.",
+        text: "We rely on your consent to place analytics cookies and to send optional marketing communications. You may withdraw analytics consent at any time via the 'Cookie Preferences' link in our footer, and marketing consent by contacting hallo@examklaar.nl or using the unsubscribe link in any email. Withdrawal does not affect the lawfulness of prior processing.",
       },
     ],
   },
@@ -109,8 +109,8 @@ const SECTIONS = [
         text: "Our email service provider for transactional emails (account verification, password reset, subscription notifications) and optional marketing communications. Only your email address and name are shared. Brevo is based in the EU (Paris, France), so no international data transfer occurs.",
       },
       {
-        subtitle: "Umami Analytics (USA), Data Processor",
-        text: "We use Umami to understand how visitors use our website. Umami does not use persistent tracking cookies and does not collect personally identifiable information. Only anonymised, aggregated usage data is processed. Transfers are covered by SCCs.",
+        subtitle: "Google LLC (USA), Data Processor (Google Analytics)",
+        text: "If you accept analytics cookies, we use Google Analytics to understand how visitors use our website. Google processes usage and device data on our behalf and sets cookies to do so. We have enabled IP anonymisation and disabled advertising and data-sharing features. Transfers to the USA are covered by the EU-US Data Privacy Framework. No analytics data is collected until you consent.",
       },
     ],
     footer:
@@ -122,8 +122,8 @@ const SECTIONS = [
       "Your core data (account, exam results, recordings) is stored within the EEA on Supabase infrastructure in Ireland and is not transferred internationally. Some of our other service providers are based outside the EEA. Where such transfers occur, we ensure appropriate safeguards are in place:",
     items: [
       {
-        subtitle: "Standard Contractual Clauses (SCCs)",
-        text: "For transfers to Google (AI feedback) and Umami (analytics), both based in the USA, we rely on the European Commission's Standard Contractual Clauses under Article 46(2)(c) GDPR.",
+        subtitle: "EU-US Data Privacy Framework",
+        text: "For transfers to Google (both AI feedback and Google Analytics), based in the USA, we rely on the EU-US Data Privacy Framework, under which the European Commission has recognised certified US organisations as providing an adequate level of data protection. Standard Contractual Clauses under Article 46(2)(c) GDPR apply as an additional safeguard.",
       },
       {
         subtitle: "Adequacy decision",
@@ -159,7 +159,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Analytics data",
-        text: "Aggregated and anonymised. No individual retention period applies.",
+        text: "Collected only with your consent and retained in Google Analytics for up to 14 months, after which it is automatically deleted. Withdrawing consent stops further collection.",
       },
     ],
   },
@@ -202,18 +202,24 @@ const SECTIONS = [
   },
   {
     title: "9. Cookies and Analytics",
+    content:
+      "When you first visit ExamKlaar, a cookie banner asks whether you accept analytics cookies. Analytics cookies are placed only if you accept; if you reject, none are set.",
     items: [
       {
         subtitle: "Essential cookies",
-        text: "We use session cookies that are strictly necessary for authentication and platform functionality. These cannot be disabled without breaking the service.",
+        text: "We use session cookies that are strictly necessary for authentication and platform functionality. These do not require consent and cannot be disabled without breaking the service.",
       },
       {
-        subtitle: "Analytics (Umami)",
-        text: "We use Umami Analytics to understand traffic patterns. Umami does not use advertising or tracking cookies, does not build individual user profiles, and does not share data with third parties. It collects only anonymised, aggregated data.",
+        subtitle: "Analytics cookies (Google Analytics)",
+        text: "If you accept, Google Analytics sets cookies to measure traffic and understand how the platform is used. We have enabled IP anonymisation and disabled advertising, remarketing, and data-sharing features. These cookies are placed only after consent and are not used to build advertising profiles.",
+      },
+      {
+        subtitle: "Managing and withdrawing consent",
+        text: "You can change or withdraw your consent at any time using the 'Cookie Preferences' link in the footer. Withdrawing consent stops further analytics collection. You can also block or delete cookies through your browser settings.",
       },
       {
         subtitle: "No advertising or tracking cookies",
-        text: "We do not use Google Analytics, Facebook Pixel, or any third-party advertising or retargeting cookies.",
+        text: "We do not use Facebook Pixel or any third-party advertising or retargeting cookies, and we do not sell your data.",
       },
     ],
   },

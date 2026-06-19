@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { ConsentBanner } from "@/components/ui/ConsentBanner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -52,6 +53,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaMeasurementId = process.env.ANALYTICS_GA_MEASUREMENT_ID;
+
   return (
     <html lang="en" className={inter.variable}>
       <head>
@@ -64,12 +67,11 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen" suppressHydrationWarning>
         {children}
-        {process.env.NODE_ENV === "production" && (
-          <Script
-            defer
-            src="https://cloud.umami.is/script.js"
-            data-website-id="bb0ff60f-c421-4173-b118-f7200d0b210e"
-          />
+        {gaMeasurementId && (
+          <>
+            <GoogleAnalytics measurementId={gaMeasurementId} />
+            <ConsentBanner measurementId={gaMeasurementId} />
+          </>
         )}
       </body>
     </html>
