@@ -33,8 +33,14 @@ Paddle delivers webhooks server-to-server, so to receive them locally you expose
    ngrok http 3000
    ```
 
-2. In the Paddle sandbox dashboard, create a notification destination of type **URL** pointing at `<tunnel-url>/api/payments/webhook`.
-3. Trigger a real event in the sandbox (e.g. start or cancel a subscription). Paddle delivers it to your destination, and the tunnel forwards it to your local endpoint. Paddle's destination view shows each delivery's payload, request, and your handler's response, so you can confirm it returned `200`.
+2. Allow the tunnel host in `next.config.ts` so Next.js accepts dev requests through it:
+
+   ```ts
+   allowedDevOrigins: ['<tunnel-url>'],
+   ```
+
+3. In the Paddle sandbox dashboard, create a notification destination of type **URL** pointing at `<tunnel-url>/api/payments/webhook`.
+4. Trigger a real event in the sandbox (e.g. start or cancel a subscription). Paddle delivers it to your destination, and the tunnel forwards it to your local endpoint. Paddle's destination view shows each delivery's payload, request, and your handler's response, so you can confirm it returned `200`.
 
 Events carry a real `paddle-signature` header signed with your endpoint secret, so signature verification runs exactly as it does in production. No CORS or signing workarounds are needed.
 
