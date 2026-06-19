@@ -10,6 +10,7 @@ import {
   DEFAULT_PLAN_ID,
 } from "@/lib/payment/subscription";
 import { getPaymentProvider } from "@/lib/payment/provider";
+import { PaymentCustomerRepository } from "@/lib/repositories/paymentCustomerRepository";
 
 export async function POST(req: NextRequest) {
   const supabase = createClient(await cookies());
@@ -47,14 +48,10 @@ export async function POST(req: NextRequest) {
   const cancelUrl = `${origin}/payment/cancel`;
 
   const admin = createAdminClient();
+  const paymentCustomers = new PaymentCustomerRepository(admin);
 
   // Look up existing customer ID for this provider, if any.
-  const { data: existingCustomer } = await admin
-    .from("payment_customers")
-    .select("customer_id")
-    .eq("user_id", user.id)
-    .eq("provider", providerName)
-    .single();
+  const existingCustomer = await paymentCustomers.findByUserAndProvider(user.id, providerName);
 
   try {
     const provider = getPaymentProvider();
@@ -70,7 +67,7 @@ export async function POST(req: NextRequest) {
 
     // Persist the customer ID if it's newly created.
     if (result.customerId && !existingCustomer) {
-      await admin.from("payment_customers").insert({
+      await paymentCustomers.create({
         user_id: user.id,
         provider: providerName,
         customer_id: result.customerId,

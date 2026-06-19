@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { createAdminClient } from "@/utils/supabase/admin";
 import { getPaymentProviderByName } from "@/lib/payment/provider";
+import { PaymentCustomerRepository } from "@/lib/repositories/paymentCustomerRepository";
 
 export async function GET() {
   const supabase = createClient(await cookies());
@@ -14,12 +15,9 @@ export async function GET() {
   }
 
   const admin = createAdminClient();
-  const { data: customerRows } = await admin
-    .from("payment_customers")
-    .select("provider, customer_id")
-    .eq("user_id", user.id);
+  const customerRows = await new PaymentCustomerRepository(admin).listByUserId(user.id);
 
-  if (!customerRows?.length) {
+  if (!customerRows.length) {
     return NextResponse.json({ payments: [] });
   }
 

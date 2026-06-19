@@ -4,6 +4,8 @@ import { createClient } from "@/utils/supabase/server";
 import { createAdminClient } from "@/utils/supabase/admin";
 import { getUserSubscription } from "@/lib/payment/subscription";
 import { getPaymentProvider } from "@/lib/payment/provider";
+import { SubscriptionRepository } from "@/lib/repositories/subscriptionRepository";
+import { SubscriptionEventRepository } from "@/lib/repositories/subscriptionEventRepository";
 
 export async function POST() {
   const supabase = createClient(await cookies());
@@ -44,11 +46,24 @@ export async function POST() {
     : { cancel_at_period_end: true, updated_at: now };
 
   const admin = createAdminClient();
-  const { error } = await admin.from("subscriptions").update(update).eq("user_id", user.id);
+  const { error } = await new SubscriptionRepository(admin).updateByUserId(user.id, update);
   if (error) {
     console.error("[subscription/cancel] db error:", error);
     return NextResponse.json({ error: "Failed to update subscription" }, { status: 500 });
   }
+
+  await new SubscriptionEventRepository(admin).record({
+    user_id: user.id,
+    event_type: cancelImmediately ? "cancelled" : "cancel_scheduled",
+    plan_id: sub.planId,
+    status: cancelImmediately ? "cancelled" : sub.status,
+    payment_provider: sub.paymentProvider,
+    provider_customer_id: sub.providerCustomerId,
+    provider_subscription_id: sub.providerSubscriptionId,
+    current_period_end: cancelImmediately ? now : (sub.currentPeriodEnd?.toISOString() ?? null),
+    cancel_at_period_end: !cancelImmediately,
+    occurred_at: now,
+  });
 
   return NextResponse.json({ ok: true });
 }

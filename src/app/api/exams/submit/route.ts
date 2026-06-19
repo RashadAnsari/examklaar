@@ -5,6 +5,8 @@ import { cookies } from "next/headers";
 import { readExam } from "@/data/exams";
 import type { Exam } from "@/app/exam/ExamClient";
 import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
+import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
+import { RecordingsRepository } from "@/lib/repositories/recordingsRepository";
 
 export async function POST(req: NextRequest) {
   const supabase = createClient(await cookies());
@@ -16,6 +18,8 @@ export async function POST(req: NextRequest) {
   }
 
   const admin = createAdminClient();
+  const examResults = new ExamResultsRepository(admin);
+  const recordings = new RecordingsRepository(admin);
 
   const formData = await req.formData();
   const skillId = formData.get("skill_id") as string;
@@ -77,12 +81,8 @@ export async function POST(req: NextRequest) {
   }
 
   const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
-  const { count: recentCount } = await admin
-    .from("exam_results")
-    .select("id", { count: "exact", head: true })
-    .eq("user_id", user.id)
-    .gte("created_at", oneHourAgo);
-  if ((recentCount ?? 0) >= 5) {
+  const recentCount = await examResults.countForUserSince(user.id, oneHourAgo);
+  if (recentCount >= 5) {
     console.warn("[submit] Rate limit exceeded — user=%s", user.id);
     return NextResponse.json({ error: "Too many submissions. Try again later." }, { status: 429 });
   }
@@ -129,9 +129,11 @@ export async function POST(req: NextRequest) {
           return NextResponse.json({ error: "Audio file too large" }, { status: 413 });
         }
         const storagePath = `${user.id}/${examId}/${attemptId}/${q.id}.webm`;
-        const { error } = await admin.storage
-          .from("speaking-recordings")
-          .upload(storagePath, await audioFile.arrayBuffer(), { contentType: "audio/webm" });
+        const { error } = await recordings.upload(
+          storagePath,
+          await audioFile.arrayBuffer(),
+          "audio/webm"
+        );
         if (error) {
           console.error(
             "[submit] Storage upload failed — path=%s error=%s",
@@ -159,20 +161,16 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  const { data: inserted, error: insertError } = await admin
-    .from("exam_results")
-    .insert({
-      user_id: user.id,
-      exam_id: examId,
-      skill,
-      level: level ?? null,
-      score,
-      total_score: totalQuestions,
-      answers: answersJson,
-      grading_status: isMcq ? "complete" : "pending",
-    })
-    .select("id")
-    .single();
+  const { data: inserted, error: insertError } = await examResults.create({
+    user_id: user.id,
+    exam_id: examId,
+    skill,
+    level: level ?? null,
+    score,
+    total_score: totalQuestions,
+    answers: answersJson,
+    grading_status: isMcq ? "complete" : "pending",
+  });
 
   if (insertError || !inserted) {
     console.error("[submit-exam] Insert error:", insertError);

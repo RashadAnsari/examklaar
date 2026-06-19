@@ -7,6 +7,7 @@ import { scorePct, getPassThreshold } from "@/lib/exam/scoring";
 import type { Exam } from "@/app/exam/ExamClient";
 import { ReviewClient, type ReviewQuestion } from "./ReviewClient";
 import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
+import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 type QuestionFeedback = { score: number; maxScore: number; feedback: string };
 type SpeakingAnswer = { path: string; transcript: string };
@@ -36,16 +37,10 @@ export default async function ReviewPage(props: {
 
   const examId = `${skillId}-exam-${n}`;
 
-  const { data: resultRows } = await supabase
-    .from("exam_results")
-    .select("skill, level, score, total_score, answers, feedback, completed_at")
-    .eq("exam_id", examId)
-    .eq("user_id", user.id)
-    .eq("grading_status", "complete")
-    .order("completed_at", { ascending: false })
-    .limit(1);
-
-  const result = resultRows?.[0];
+  const result = await new ExamResultsRepository(supabase).findLatestCompletedByExam(
+    examId,
+    user.id
+  );
   if (!result) {
     notFound();
   }

@@ -7,6 +7,7 @@ import { zodSchema } from "@ai-sdk/provider-utils";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
 import { createAdminClient } from "@/utils/supabase/admin";
+import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 import type { Exam } from "@/app/exam/ExamClient";
 import { readExamById } from "@/data/exams";
 
@@ -219,16 +220,16 @@ function buildQuestionBatches<T extends { content: string }>(questions: T[]): T[
 }
 
 export async function gradeExamResult(resultId: string, result: ResultData): Promise<void> {
-  const supabase = createAdminClient();
+  const examResults = new ExamResultsRepository(createAdminClient());
 
-  async function setStatus(status: string) {
-    await supabase.from("exam_results").update({ grading_status: status }).eq("id", resultId);
+  async function setStatus(status: "pending" | "in_progress" | "complete" | "failed") {
+    await examResults.updateGradingStatus(resultId, status);
   }
 
   await setStatus("in_progress");
 
   try {
-    await doGrade(resultId, result, supabase);
+    await doGrade(resultId, result, examResults);
   } catch (err) {
     await setStatus("failed");
     throw err;
@@ -355,7 +356,7 @@ ${questionBlocks}
 async function doGrade(
   resultId: string,
   result: ResultData,
-  supabase: ReturnType<typeof createAdminClient>
+  examResults: ExamResultsRepository
 ): Promise<void> {
   const exam: Exam = await readExamById(result.exam_id);
 
@@ -412,18 +413,12 @@ async function doGrade(
     totalMax += maxScore;
   }
 
-  // Persist grades
-  const { error: updateError } = await supabase
-    .from("exam_results")
-    .update({
-      score: totalScore,
-      total_score: totalMax,
-      feedback: feedbackMap,
-      ai_graded_at: new Date().toISOString(),
-      grading_status: "complete",
-    })
-    .eq("id", resultId)
-    .is("ai_graded_at", null); // prevent overwriting an already-graded result
+  // Persist grades (saveGrades guards against overwriting an already-graded result)
+  const { error: updateError } = await examResults.saveGrades(resultId, {
+    score: totalScore,
+    total_score: totalMax,
+    feedback: feedbackMap,
+  });
 
   if (updateError) {
     throw new Error(`Failed to save grades: ${updateError.message}`);

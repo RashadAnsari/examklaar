@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { DashboardClient } from "./DashboardClient";
 import { createClient } from "@/utils/supabase/server";
 import { listSkillGroups } from "@/data/exams";
+import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 import { WelcomeGiftModal } from "@/components/ui/WelcomeGiftModal";
 import {
   COMPLIMENTARY_ACCESS_MONTHS,
@@ -29,8 +30,8 @@ export default async function DashboardPage() {
     ? await grantComplimentaryAccess(user.id)
     : { granted: false };
 
-  const [{ data: results }, sub] = await Promise.all([
-    supabase.from("exam_results").select("exam_id").eq("grading_status", "complete"),
+  const [results, sub] = await Promise.all([
+    new ExamResultsRepository(supabase).listCompletedExamIds(),
     user ? getUserSubscription(user.id) : Promise.resolve(null),
   ]);
 
@@ -38,7 +39,7 @@ export default async function DashboardPage() {
   const trialEligible = sub ? isTrialEligible(sub) : true;
 
   const completedByGroup = new Map<string, Set<string>>();
-  for (const r of results ?? []) {
+  for (const r of results) {
     const match = r.exam_id.match(/^(.+)-exam-\d+$/);
     if (!match) {
       continue;

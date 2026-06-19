@@ -10,6 +10,7 @@ import { createClient } from "@/utils/supabase/server";
 import { listSkillExams } from "@/data/exams";
 import { getScoreFeedback } from "@/lib/exam/scoring";
 import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
+import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 interface ExamResult {
   score: number | null;
@@ -34,15 +35,10 @@ async function loadExams(
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
-  const { data: results } = await supabase
-    .from("exam_results")
-    .select("exam_id, score, total_score, completed_at")
-    .like("exam_id", `${id}-exam-%`)
-    .eq("grading_status", "complete")
-    .order("completed_at", { ascending: false });
+  const results = await new ExamResultsRepository(supabase).listCompletedByExamPrefix(id);
 
   const resultsByExamId = new Map<string, ExamResult>();
-  for (const r of results ?? []) {
+  for (const r of results) {
     if (!resultsByExamId.has(r.exam_id)) {
       resultsByExamId.set(r.exam_id, {
         score: r.score,

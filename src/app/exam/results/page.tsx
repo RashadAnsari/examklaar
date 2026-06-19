@@ -21,6 +21,7 @@ import {
 } from "@/lib/exam/scoring";
 import { BackGuard } from "./BackGuard";
 import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
+import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 type QuestionFeedback = {
   score: number;
@@ -60,29 +61,16 @@ export default async function ResultsPage(props: {
   }
 
   const examId = `${skillId}-exam-${n}`;
+  const examResults = new ExamResultsRepository(supabase);
 
   // Most recent completed result for this exam
-  const { data: resultRows } = await supabase
-    .from("exam_results")
-    .select("id, skill, level, score, total_score, answers, feedback, completed_at")
-    .eq("exam_id", examId)
-    .eq("user_id", user.id)
-    .eq("grading_status", "complete")
-    .order("completed_at", { ascending: false })
-    .limit(1);
-
-  const result = resultRows?.[0];
+  const result = await examResults.findLatestCompletedByExam(examId, user.id);
   if (!result) {
     notFound();
   }
 
   // All completed results for this exam (for stats)
-  const { data: history } = await supabase
-    .from("exam_results")
-    .select("score, total_score")
-    .eq("exam_id", examId)
-    .eq("user_id", user.id)
-    .eq("grading_status", "complete");
+  const history = await examResults.listCompletedScoresByExam(examId, user.id);
 
   const [exam, hasNextExam] = await Promise.all([
     readExamOrNull(skillId, n),
@@ -91,7 +79,7 @@ export default async function ResultsPage(props: {
 
   const skill = result.skill as string;
   const level = result.level as string | null;
-  const allResults = history ?? [];
+  const allResults = history;
   const attempts = allResults.length;
 
   const status = getStatus(skill, level, result.score, result.total_score);

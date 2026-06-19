@@ -9,6 +9,8 @@
  *   bun scripts/grant-subscription.ts 550e8400-e29b-41d4-a716-446655440000
  */
 import { createClient } from "@supabase/supabase-js";
+import { SubscriptionRepository } from "@/lib/repositories/subscriptionRepository";
+import { SubscriptionEventRepository } from "@/lib/repositories/subscriptionEventRepository";
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -45,26 +47,35 @@ const now = new Date();
 const periodEnd = new Date(now);
 periodEnd.setMonth(periodEnd.getMonth() + 1);
 
-const { error } = await admin.from("subscriptions").upsert(
-  {
-    user_id: userId,
-    plan_id: "monthly",
-    status: "active",
-    payment_provider: null,
-    provider_customer_id: null,
-    provider_subscription_id: null,
-    current_period_start: now.toISOString(),
-    current_period_end: periodEnd.toISOString(),
-    cancel_at_period_end: false,
-    updated_at: now.toISOString(),
-  },
-  { onConflict: "user_id" }
-);
+const { error } = await new SubscriptionRepository(admin).upsert({
+  user_id: userId,
+  plan_id: "monthly",
+  status: "active",
+  payment_provider: null,
+  provider_customer_id: null,
+  provider_subscription_id: null,
+  current_period_start: now.toISOString(),
+  current_period_end: periodEnd.toISOString(),
+  cancel_at_period_end: false,
+  updated_at: now.toISOString(),
+});
 
 if (error) {
   console.error("Failed:", error.message);
   process.exit(1);
 }
+
+await new SubscriptionEventRepository(admin).record({
+  user_id: userId,
+  event_type: "manual_grant",
+  plan_id: "monthly",
+  status: "active",
+  payment_provider: null,
+  current_period_start: now.toISOString(),
+  current_period_end: periodEnd.toISOString(),
+  cancel_at_period_end: false,
+  occurred_at: now.toISOString(),
+});
 
 console.log(`Granted 1 month of access to user ${userId}`);
 console.log(`  Expires: ${periodEnd.toISOString()}`);

@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/utils/supabase/admin";
 import { getPaymentProviderByName } from "@/lib/payment/provider";
+import type { WebhookEvent } from "@/lib/payment/types";
+import { SubscriptionRepository } from "@/lib/repositories/subscriptionRepository";
+import { SubscriptionEventRepository } from "@/lib/repositories/subscriptionEventRepository";
+
+/** JSON-safe snapshot of a webhook event for the history's raw_event column. */
+function serializeEvent(event: WebhookEvent) {
+  return {
+    ...event,
+    currentPeriodStart: event.currentPeriodStart.toISOString(),
+    currentPeriodEnd: event.currentPeriodEnd.toISOString(),
+  };
+}
 
 export async function POST(req: NextRequest) {
   const rawBody = await req.text();
@@ -34,15 +46,13 @@ export async function POST(req: NextRequest) {
   }
 
   const admin = createAdminClient();
+  const subscriptions = new SubscriptionRepository(admin);
+  const events = new SubscriptionEventRepository(admin);
   const now = new Date().toISOString();
 
   try {
     if (event.type === "subscription.refunded") {
-      const { data: sub } = await admin
-        .from("subscriptions")
-        .select("user_id, status, payment_provider")
-        .eq("provider_subscription_id", event.providerSubscriptionId)
-        .single();
+      const sub = await subscriptions.findByProviderSubscriptionId(event.providerSubscriptionId);
 
       if (sub && (sub.status === "active" || sub.status === "past_due")) {
         await provider.cancelSubscription(
@@ -51,6 +61,16 @@ export async function POST(req: NextRequest) {
           true
         );
       }
+
+      await events.record({
+        user_id: event.userId,
+        event_type: event.type,
+        payment_provider: providerName,
+        provider_customer_id: event.providerCustomerId,
+        provider_subscription_id: event.providerSubscriptionId,
+        occurred_at: now,
+        raw_event: serializeEvent(event),
+      });
 
       console.info(
         "[webhook] Refund processed, subscription cancelled for subscriptionId=%s",
@@ -61,27 +81,36 @@ export async function POST(req: NextRequest) {
 
     if (event.type === "payment.failed") {
       // Only update the status — don't overwrite period dates.
-      await admin
-        .from("subscriptions")
-        .update({ status: "past_due", updated_at: now })
-        .eq("user_id", event.userId);
+      await subscriptions.updateByUserId(event.userId, { status: "past_due", updated_at: now });
     } else {
-      await admin.from("subscriptions").upsert(
-        {
-          user_id: event.userId,
-          plan_id: event.planId,
-          status: event.status,
-          payment_provider: providerName,
-          provider_customer_id: event.providerCustomerId,
-          provider_subscription_id: event.providerSubscriptionId,
-          current_period_start: event.currentPeriodStart.toISOString(),
-          current_period_end: event.currentPeriodEnd.toISOString(),
-          cancel_at_period_end: event.cancelAtPeriodEnd,
-          updated_at: now,
-        },
-        { onConflict: "user_id" }
-      );
+      await subscriptions.upsert({
+        user_id: event.userId,
+        plan_id: event.planId,
+        status: event.status,
+        payment_provider: providerName,
+        provider_customer_id: event.providerCustomerId,
+        provider_subscription_id: event.providerSubscriptionId,
+        current_period_start: event.currentPeriodStart.toISOString(),
+        current_period_end: event.currentPeriodEnd.toISOString(),
+        cancel_at_period_end: event.cancelAtPeriodEnd,
+        updated_at: now,
+      });
     }
+
+    await events.record({
+      user_id: event.userId,
+      event_type: event.type,
+      plan_id: event.planId,
+      status: event.type === "payment.failed" ? "past_due" : event.status,
+      payment_provider: providerName,
+      provider_customer_id: event.providerCustomerId,
+      provider_subscription_id: event.providerSubscriptionId,
+      current_period_start: event.currentPeriodStart.toISOString(),
+      current_period_end: event.currentPeriodEnd.toISOString(),
+      cancel_at_period_end: event.cancelAtPeriodEnd,
+      occurred_at: now,
+      raw_event: serializeEvent(event),
+    });
   } catch (err) {
     console.error("[webhook] DB error:", err);
     // Return 500 so the provider retries.

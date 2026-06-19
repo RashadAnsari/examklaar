@@ -1,4 +1,6 @@
 import { createAdminClient } from "@/utils/supabase/admin";
+import { SubscriptionRepository } from "@/lib/repositories/subscriptionRepository";
+import { SubscriptionEventRepository } from "@/lib/repositories/subscriptionEventRepository";
 
 export type PlanId = "monthly";
 export type SubscriptionStatus = "trialing" | "active" | "cancelled" | "past_due" | "expired";
@@ -38,14 +40,8 @@ const NO_SUBSCRIPTION: UserSubscription = {
 };
 
 export async function getUserSubscription(userId: string): Promise<UserSubscription> {
-  const admin = createAdminClient();
-  const { data } = await admin
-    .from("subscriptions")
-    .select(
-      "plan_id, status, current_period_end, cancel_at_period_end, provider_subscription_id, provider_customer_id, payment_provider"
-    )
-    .eq("user_id", userId)
-    .single();
+  const repo = new SubscriptionRepository(createAdminClient());
+  const data = await repo.findByUserId(userId);
 
   if (!data) {
     return NO_SUBSCRIPTION;
@@ -134,24 +130,18 @@ export async function grantComplimentaryAccess(userId: string): Promise<{ grante
   periodEnd.setMonth(periodEnd.getMonth() + COMPLIMENTARY_ACCESS_MONTHS);
 
   const admin = createAdminClient();
-  const { data, error } = await admin
-    .from("subscriptions")
-    .upsert(
-      {
-        user_id: userId,
-        plan_id: DEFAULT_PLAN_ID,
-        status: "active",
-        payment_provider: null,
-        provider_customer_id: null,
-        provider_subscription_id: null,
-        current_period_start: now.toISOString(),
-        current_period_end: periodEnd.toISOString(),
-        cancel_at_period_end: false,
-        updated_at: now.toISOString(),
-      },
-      { onConflict: "user_id", ignoreDuplicates: true }
-    )
-    .select("id");
+  const { inserted, error } = await new SubscriptionRepository(admin).insertIfAbsent({
+    user_id: userId,
+    plan_id: DEFAULT_PLAN_ID,
+    status: "active",
+    payment_provider: null,
+    provider_customer_id: null,
+    provider_subscription_id: null,
+    current_period_start: now.toISOString(),
+    current_period_end: periodEnd.toISOString(),
+    cancel_at_period_end: false,
+    updated_at: now.toISOString(),
+  });
 
   if (error) {
     console.error(
@@ -162,5 +152,20 @@ export async function grantComplimentaryAccess(userId: string): Promise<{ grante
     return { granted: false };
   }
 
-  return { granted: !!data?.length };
+  // Record the grant in the append-only history (only when newly created).
+  if (inserted) {
+    await new SubscriptionEventRepository(admin).record({
+      user_id: userId,
+      event_type: "complimentary_grant",
+      plan_id: DEFAULT_PLAN_ID,
+      status: "active",
+      payment_provider: null,
+      current_period_start: now.toISOString(),
+      current_period_end: periodEnd.toISOString(),
+      cancel_at_period_end: false,
+      occurred_at: now.toISOString(),
+    });
+  }
+
+  return { granted: inserted };
 }

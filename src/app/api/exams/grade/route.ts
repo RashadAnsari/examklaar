@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 import { gradeExamResult } from "@/lib/exam/grader";
+import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 import { cookies } from "next/headers";
 
 export async function POST(req: NextRequest) {
@@ -18,12 +19,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing result_id" }, { status: 400 });
   }
 
-  const { data: result } = await supabase
-    .from("exam_results")
-    .select("id, skill, level, exam_id, answers, grading_status")
-    .eq("id", result_id)
-    .eq("user_id", user.id)
-    .single();
+  const result = await new ExamResultsRepository(supabase).getByIdForUser(result_id, user.id);
 
   if (!result) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
