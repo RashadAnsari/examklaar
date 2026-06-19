@@ -23,10 +23,6 @@ bun dev
 
 Requires environment variables for Supabase, Google AI, and Paddle: see `.env.example`.
 
-## Deployment
-
-The app reads the client IP from `X-Forwarded-For` for rate limiting. Behind a reverse proxy, set `TRUSTED_PROXY_COUNT` to the number of proxies in front of the app (default `1`, e.g. a single nginx or Traefik). This makes the app use the IP written by your trusted proxy instead of the spoofable client-supplied value. If you ever run the app with no proxy in front, leave it at `1`.
-
 ## Testing payment webhooks
 
 Paddle delivers webhooks server-to-server, so to receive them locally you expose your dev server through a tunnel and point a Paddle notification destination at it. See Paddle's [webhook docs](https://developer.paddle.com/webhooks/test-webhooks) for details.
