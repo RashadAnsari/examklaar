@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.examklaar.nl/terms-and-conditions" },
 };
 
-const LAST_UPDATED = "17 April 2026";
+const LAST_UPDATED = "19 June 2026";
 
 const SECTIONS = [
   {
@@ -151,7 +151,7 @@ const SECTIONS = [
     items: [
       {
         subtitle: "By you",
-        text: "You may delete your account at any time from the account settings page. Your personal data will be permanently removed within 30 days, subject to legal retention obligations.",
+        text: "You may request deletion of your account at any time by contacting us at hallo@examklaar.nl. Your personal data will be permanently removed within 30 days of your request, subject to legal retention obligations.",
       },
       {
         subtitle: "By us",
