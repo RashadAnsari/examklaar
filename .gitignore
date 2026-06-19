@@ -50,7 +50,4 @@ supabase/*
 .claude/
 .claude-flow/
 .mcp.json
-
-# codex
-.codex/
-.agents/
+REVIEW_REPORT.md

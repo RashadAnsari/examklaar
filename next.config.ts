@@ -16,6 +16,11 @@ const csp = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  // Allow a dev tunnel (e.g. ngrok/cloudflared) to reach the dev server, so the
+  // site is reachable through the tunnel's public URL (for testing Paddle
+  // webhooks, viewing on another device, sharing, etc.). Set DEV_TUNNEL_HOST to
+  // the tunnel host (no protocol, e.g. "abc123.trycloudflare.com").
+  ...(process.env.DEV_TUNNEL_HOST ? { allowedDevOrigins: [process.env.DEV_TUNNEL_HOST] } : {}),
   async headers() {
     return [
       {

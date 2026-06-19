@@ -23,6 +23,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **Desktop is the priority**: design for desktop first. The desktop experience must never be degraded.
 - **Mobile must work**: every UI change must also be considered for mobile (≤640px). Before finishing any component, verify that it does not break, overflow, or become unusable on a small screen.
 
+## Verification
+
+- After every change, run `make local` (formats and lints) and fix anything it reports before considering the work done.
+
 ## General rules
 
 - No duplicate components: reuse existing ones with props rather than creating variants.

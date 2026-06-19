@@ -35,14 +35,15 @@ Paddle delivers webhooks server-to-server, so to receive them locally you expose
    cloudflared tunnel --url http://localhost:3000
    ```
 
-2. Allow the tunnel host in `next.config.ts` so Next.js accepts dev requests through it:
+2. Allow the tunnel host so Next.js accepts dev requests through it. Set `DEV_TUNNEL_HOST` in `.env.local` to the tunnel host (no protocol, e.g. `abc123.trycloudflare.com`), then restart the dev server. `next.config.ts` reads it into `allowedDevOrigins`:
 
-   ```ts
-   allowedDevOrigins: ['<tunnel-url>'],
+   ```bash
+   DEV_TUNNEL_HOST=abc123.trycloudflare.com
    ```
 
 3. In the Paddle sandbox dashboard, create a notification destination of type **URL** pointing at `<tunnel-url>/api/payments/webhook`.
-4. Trigger a real event in the sandbox (e.g. start or cancel a subscription). Paddle delivers it to your destination, and the tunnel forwards it to your local endpoint. Paddle's destination view shows each delivery's payload, request, and your handler's response, so you can confirm it returned `200`.
+4. Also set the tunnel URL as the checkout URL in Paddle. Under **Checkout > Settings**, add the tunnel domain as an approved domain and set the default payment link to `<tunnel-url>/checkout`, so the hosted checkout opens against your local app.
+5. Trigger a real event in the sandbox (e.g. start or cancel a subscription). Paddle delivers it to your destination, and the tunnel forwards it to your local endpoint. Paddle's destination view shows each delivery's payload, request, and your handler's response, so you can confirm it returned `200`.
 
 Events carry a real `paddle-signature` header signed with your endpoint secret, so signature verification runs exactly as it does in production. No CORS or signing workarounds are needed.
 
