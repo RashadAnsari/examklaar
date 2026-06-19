@@ -1,9 +1,11 @@
+import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/utils/supabase/admin";
 import { getPaymentProviderByName } from "@/lib/payment/provider";
 import type { WebhookEvent } from "@/lib/payment/types";
 import { SubscriptionRepository } from "@/lib/repositories/subscriptionRepository";
 import { SubscriptionEventRepository } from "@/lib/repositories/subscriptionEventRepository";
+import { ProcessedWebhookRepository } from "@/lib/repositories/processedWebhookRepository";
 
 /** JSON-safe snapshot of a webhook event for the history's raw_event column. */
 function serializeEvent(event: WebhookEvent) {
@@ -48,13 +50,32 @@ export async function POST(req: NextRequest) {
   const admin = createAdminClient();
   const subscriptions = new SubscriptionRepository(admin);
   const events = new SubscriptionEventRepository(admin);
+  const processed = new ProcessedWebhookRepository(admin);
   const now = new Date().toISOString();
+
+  // Idempotency guard: the key is a hash of the raw, signature-verified body, so
+  // a provider retry or a replayed captured request is processed only once. This
+  // stops a replayed older event from resurrecting or extending access.
+  const eventKey = createHash("sha256").update(rawBody).digest("hex");
+  if (await processed.isProcessed(eventKey)) {
+    console.info("[webhook] Duplicate event ignored type=%s", event.type);
+    return NextResponse.json({ ok: true });
+  }
 
   try {
     if (event.type === "subscription.refunded") {
       const sub = await subscriptions.findByProviderSubscriptionId(event.providerSubscriptionId);
 
-      if (sub && (sub.status === "active" || sub.status === "past_due")) {
+      if (!sub) {
+        console.warn(
+          "[webhook] Refund for unknown subscriptionId=%s, skipping",
+          event.providerSubscriptionId
+        );
+        await processed.markProcessed(eventKey, event.type);
+        return NextResponse.json({ ok: true });
+      }
+
+      if (sub.status === "active" || sub.status === "past_due") {
         await provider.cancelSubscription(
           event.providerSubscriptionId,
           event.providerCustomerId,
@@ -62,8 +83,10 @@ export async function POST(req: NextRequest) {
         );
       }
 
+      // Use the owner resolved from the subscription, not event.userId, which is
+      // empty for refund/adjustment events (the audit trail must name the user).
       await events.record({
-        user_id: event.userId,
+        user_id: sub.user_id,
         event_type: event.type,
         payment_provider: providerName,
         provider_customer_id: event.providerCustomerId,
@@ -72,6 +95,7 @@ export async function POST(req: NextRequest) {
         raw_event: serializeEvent(event),
       });
 
+      await processed.markProcessed(eventKey, event.type);
       console.info(
         "[webhook] Refund processed, subscription cancelled for subscriptionId=%s",
         event.providerSubscriptionId
@@ -113,10 +137,12 @@ export async function POST(req: NextRequest) {
     });
   } catch (err) {
     console.error("[webhook] DB error:", err);
-    // Return 500 so the provider retries.
+    // Return 500 so the provider retries. The event is not marked processed, so
+    // the retry is reprocessed rather than deduped away.
     return NextResponse.json({ error: "DB error" }, { status: 500 });
   }
 
+  await processed.markProcessed(eventKey, event.type);
   console.info("[webhook] Processed type=%s userId=%s", event.type, event.userId);
   return NextResponse.json({ ok: true });
 }

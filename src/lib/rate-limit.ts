@@ -35,10 +35,23 @@ export function checkRateLimit(
   return { allowed: true, retryAfterSeconds: 0 };
 }
 
+// X-Forwarded-For is appended to by every hop, so the left-most value is
+// supplied by the (untrusted) client and is trivially spoofable. We read the
+// entry written by our own trusted proxy instead: the Nth value counting from
+// the right, where N = TRUSTED_PROXY_COUNT (the number of reverse proxies in
+// front of the app, default 1). Falls back to X-Real-IP, then "unknown".
 export function getClientIp(request: Request): string {
+  const trustedHops = Math.max(1, Number(process.env.TRUSTED_PROXY_COUNT ?? "1") || 1);
   const forwarded = request.headers.get("x-forwarded-for");
   if (forwarded) {
-    return forwarded.split(",")[0].trim();
+    const parts = forwarded
+      .split(",")
+      .map((p) => p.trim())
+      .filter(Boolean);
+    const ip = parts[parts.length - trustedHops];
+    if (ip) {
+      return ip;
+    }
   }
   return request.headers.get("x-real-ip") ?? "unknown";
 }
