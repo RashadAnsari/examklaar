@@ -31,6 +31,8 @@ Paddle delivers webhooks server-to-server, so to receive them locally you expose
 
    ```bash
    ngrok http 3000
+   # or
+   cloudflared tunnel --url http://localhost:3000
    ```
 
 2. Allow the tunnel host in `next.config.ts` so Next.js accepts dev requests through it:
