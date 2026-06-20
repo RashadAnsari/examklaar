@@ -14,7 +14,9 @@ const LAST_UPDATED = "19 June 2026";
 const SECTIONS = [
   {
     title: "Article 1. General",
-    content: `ExamKlaar (www.examklaar.nl) is an online platform providing practice exams and AI-powered feedback for people preparing for the Dutch inburgering (civic integration) exam. ExamKlaar is operated by [Legal Entity Name], registered at the Dutch Chamber of Commerce (KvK) under number [KvK Number], located at [Address, City, the Netherlands].`,
+    // TODO: restore business details (legal entity name, KvK number, registered address) once finalised:
+    // content: `ExamKlaar (www.examklaar.nl) is an online platform providing practice exams and AI-powered feedback for people preparing for the Dutch inburgering (civic integration) exam. ExamKlaar is operated by [Legal Entity Name], registered at the Dutch Chamber of Commerce (KvK) under number [KvK Number], located at [Address, City, the Netherlands].`,
+    content: `ExamKlaar (www.examklaar.nl) is an online platform providing practice exams and AI-powered feedback for people preparing for the Dutch inburgering (civic integration) exam. ExamKlaar is operated from the Netherlands.`,
     footer:
       "These Terms & Conditions apply to all use of the ExamKlaar platform. By creating an account or using our services, you agree to these terms. Dutch law governs these terms, though consumers may invoke mandatory provisions of their home country's law.",
   },
@@ -176,7 +178,9 @@ const SECTIONS = [
       },
       {
         subtitle: "Competent court",
-        text: "If a dispute cannot be resolved amicably, it will be submitted to the exclusive jurisdiction of the competent court in [City], the Netherlands, unless mandatory consumer law in your country of residence grants you the right to bring proceedings there.",
+        // TODO: restore the city of the competent court once the registered address is finalised:
+        // text: "If a dispute cannot be resolved amicably, it will be submitted to the exclusive jurisdiction of the competent court in [City], the Netherlands, unless mandatory consumer law in your country of residence grants you the right to bring proceedings there.",
+        text: "If a dispute cannot be resolved amicably, it will be submitted to the exclusive jurisdiction of the competent Dutch court, unless mandatory consumer law in your country of residence grants you the right to bring proceedings there.",
       },
     ],
   },
@@ -194,7 +198,9 @@ const SECTIONS = [
     title: "Article 16. Contact",
     content:
       "Questions about these Terms? Contact us at hallo@examklaar.nl. We aim to respond within 30 days.",
-    footer: "[Legal Entity Name], [Address, City, the Netherlands]. KvK: [KvK Number].",
+    // TODO: restore business details (legal entity name, KvK number, registered address) once finalised:
+    // footer: "[Legal Entity Name], [Address, City, the Netherlands]. KvK: [KvK Number].",
+    footer: "ExamKlaar, the Netherlands. Contact: hallo@examklaar.nl.",
   },
 ];
 

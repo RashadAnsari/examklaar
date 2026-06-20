@@ -14,7 +14,9 @@ const LAST_UPDATED = "19 June 2026";
 const SECTIONS = [
   {
     title: "1. Who We Are",
-    content: `ExamKlaar (www.examklaar.nl) is an online platform that helps people prepare for the Dutch inburgering (civic integration) exam through realistic practice exams and AI-powered feedback. ExamKlaar is operated by [Legal Entity Name], registered at the Dutch Chamber of Commerce (KvK) under number [KvK Number], located at [Address, City, the Netherlands].`,
+    // TODO: restore business details (legal entity name, KvK number, registered address) once finalised:
+    // content: `ExamKlaar (www.examklaar.nl) is an online platform that helps people prepare for the Dutch inburgering (civic integration) exam through realistic practice exams and AI-powered feedback. ExamKlaar is operated by [Legal Entity Name], registered at the Dutch Chamber of Commerce (KvK) under number [KvK Number], located at [Address, City, the Netherlands].`,
+    content: `ExamKlaar (www.examklaar.nl) is an online platform that helps people prepare for the Dutch inburgering (civic integration) exam through realistic practice exams and AI-powered feedback. ExamKlaar is based in the Netherlands and is the data controller responsible for the personal data described in this policy.`,
     footer:
       "Contact: hallo@examklaar.nl. We have not appointed a Data Protection Officer, as we are not required to do so under Article 37 GDPR.",
   },
@@ -242,7 +244,9 @@ const SECTIONS = [
     title: "13. Contact",
     content:
       "If you have questions about this Privacy Policy or our data practices, please contact us at hallo@examklaar.nl. We aim to respond within 30 days.",
-    footer: "[Legal Entity Name], [Address, City, the Netherlands]. KvK: [KvK Number].",
+    // TODO: restore business details (legal entity name, KvK number, registered address) once finalised:
+    // footer: "[Legal Entity Name], [Address, City, the Netherlands]. KvK: [KvK Number].",
+    footer: "ExamKlaar, the Netherlands. Contact: hallo@examklaar.nl.",
   },
 ];
 
