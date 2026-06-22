@@ -3,6 +3,7 @@ import { createClient } from "@/utils/supabase/server";
 import { getUserSubscription, hasPremiumAccess, isTrialEligible } from "@/lib/payment/subscription";
 import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/pricing/CheckoutButton";
+import { ClaimTrialButton } from "@/components/pricing/ClaimTrialButton";
 import {
   CheckIcon,
   ShieldCheckIcon,
@@ -32,6 +33,9 @@ export const PLAN = {
   ctaVariant: "primary" as const,
 } as const;
 
+/** Mailto fallback used when we cannot grant access and there is no checkout. */
+export const CONTACT_MAILTO = `mailto:hallo@examklaar.nl?subject=${encodeURIComponent(`${PLAN.name} subscription`)}&body=${encodeURIComponent(`Hi,\n\nI'm interested in the ${PLAN.name} (${PLAN.price} ${PLAN.priceNote}).\n\nCould you help me get started?\n\nThanks`)}`;
+
 export async function PricingCards() {
   const supabase = createClient(await cookies());
   const {
@@ -40,7 +44,8 @@ export async function PricingCards() {
 
   const loggedIn = !!user;
   const providerConfigured = !!process.env.PAYMENT_PROVIDER;
-  const showContactUs = loggedIn && !providerConfigured;
+  // No provider yet: clicking the CTA grants early-stage complimentary access.
+  const claimComplimentary = loggedIn && !providerConfigured;
 
   let hasActiveSubscription = false;
   // Logged-out visitors are treated as trial-eligible (most are prospective users);
@@ -94,7 +99,7 @@ export async function PricingCards() {
           <div className="mt-auto pt-8">
             <PlanCta
               loggedIn={loggedIn}
-              showContactUs={showContactUs}
+              claimComplimentary={claimComplimentary}
               hasActiveSubscription={hasActiveSubscription}
               trialEligible={trialEligible}
             />
@@ -151,12 +156,12 @@ export async function PricingCards() {
 
 function PlanCta({
   loggedIn,
-  showContactUs,
+  claimComplimentary,
   hasActiveSubscription,
   trialEligible,
 }: {
   loggedIn: boolean;
-  showContactUs: boolean;
+  claimComplimentary: boolean;
   hasActiveSubscription: boolean;
   trialEligible: boolean;
 }) {
@@ -175,15 +180,11 @@ function PlanCta({
       </Button>
     );
   }
-  if (showContactUs) {
+  if (claimComplimentary) {
     return (
-      <Button
-        href={`mailto:hallo@examklaar.nl?subject=${encodeURIComponent(`${PLAN.name} subscription`)}&body=${encodeURIComponent(`Hi,\n\nI'm interested in the ${PLAN.name} (${PLAN.price} ${PLAN.priceNote}).\n\nCould you help me get started?\n\nThanks`)}`}
-        variant={PLAN.ctaVariant}
-        fullWidth
-      >
-        Contact Us
-      </Button>
+      <ClaimTrialButton contactHref={CONTACT_MAILTO} variant={PLAN.ctaVariant} fullWidth>
+        {ctaLabel}
+      </ClaimTrialButton>
     );
   }
   return (

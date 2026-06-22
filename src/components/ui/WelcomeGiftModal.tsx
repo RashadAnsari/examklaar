@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 
 /**
- * One-time welcome modal shown to a user who just received complimentary
- * access on signup (while no payment provider is configured). Dismissed
- * client-side; the server only renders it on the visit that grants access.
+ * One-time welcome modal shown to a user who just claimed complimentary access
+ * from the pricing page (while no payment provider is configured). Dismissed
+ * client-side; the dashboard only renders it on the post-grant redirect.
  */
 export function WelcomeGiftModal({ months }: { months: number }) {
   const [open, setOpen] = useState(true);

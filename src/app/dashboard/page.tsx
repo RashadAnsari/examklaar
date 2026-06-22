@@ -9,12 +9,15 @@ import { WelcomeGiftModal } from "@/components/ui/WelcomeGiftModal";
 import {
   COMPLIMENTARY_ACCESS_MONTHS,
   getUserSubscription,
-  grantComplimentaryAccess,
   hasPremiumAccess,
   isTrialEligible,
 } from "@/lib/payment/subscription";
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ welcome?: string }>;
+}) {
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
@@ -22,13 +25,10 @@ export default async function DashboardPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // While no payment provider is configured, grant a new user free access on
-  // their first dashboard visit. Done before reading the subscription so the
-  // grant is reflected in this same render; granted is true only on the visit
-  // that creates the row, which is when we show the welcome gift modal.
-  const { granted: showWelcomeGift } = user
-    ? await grantComplimentaryAccess(user.id)
-    : { granted: false };
+  // The welcome gift modal is shown right after the pricing page grants
+  // complimentary access and redirects here with ?welcome=1.
+  const { welcome } = await searchParams;
+  const showWelcomeGift = welcome === "gift";
 
   const [results, sub] = await Promise.all([
     new ExamResultsRepository(supabase).listCompletedExamIds(),
