@@ -51,3 +51,6 @@ supabase/*
 .claude-flow/
 .mcp.json
 REVIEW_REPORT.md
+
+# python
+.venv/
