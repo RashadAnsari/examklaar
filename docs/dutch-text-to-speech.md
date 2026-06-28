@@ -1,8 +1,8 @@
 # Generating Dutch speech from text
 
 This is the local, free, offline pipeline for turning Dutch text into natural sounding audio. Use it
-whenever exam content needs spoken audio: listening fragments, dialogues, voicemails, announcements,
-spoken prompts, or any other text where a human voice is expected.
+whenever content needs spoken audio: dialogues, voicemails, announcements, spoken prompts, or any
+other text where a human voice is expected.
 
 It runs entirely on your machine, makes no cloud calls, and produces MP3 files. Audio is generated
 once at authoring time and committed, so none of this tooling ships in the app or runs at request
@@ -38,10 +38,12 @@ come from Homebrew.
 ### 2. Create a project local virtualenv
 
 The virtualenv lives at `.venv/` in the project root and is gitignored. Keeping it in the project
-means the voices and tooling travel with the repo checkout, but nothing heavy gets committed.
+means the voices and tooling travel with the repo checkout, but nothing heavy gets committed. Build
+it with `python3.13` (the system `python3` is 3.9, and the image-generation tooling that shares this
+same `.venv` needs Python 3.10+).
 
 ```bash
-python3 -m venv .venv
+python3.13 -m venv .venv
 .venv/bin/pip install --upgrade pip
 .venv/bin/pip install piper-tts
 ```
