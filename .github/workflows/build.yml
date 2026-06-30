@@ -67,6 +67,7 @@ jobs:
   #           -e "docker_image_path=/tmp/docker-image.tar"
   #           -e "google_api_key=${{ secrets.GOOGLE_API_KEY }}"
   #           -e "supabase_public_url=${{ secrets.SUPABASE_PUBLIC_URL }}"
+  #           -e "exam_assets_base_url=${{ secrets.EXAM_ASSETS_BASE_URL }}"
   #           -e "supabase_service_role_key=${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}"
   #           -e "supabase_publishable_default_key=${{ secrets.SUPABASE_PUBLISHABLE_DEFAULT_KEY }}"
   #           -e "analytics_ga_measurement_id=${{ secrets.ANALYTICS_GA_MEASUREMENT_ID }}"

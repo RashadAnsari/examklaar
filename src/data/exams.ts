@@ -8,6 +8,15 @@ import type { SkillGroup } from "@/lib/exam/config";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const EXAMS_DIR = path.join(/*turbopackIgnore: true*/ __dirname, "exams");
 
+const ASSET_BASE_URL_PLACEHOLDER = "{{EXAM_ASSETS_BASE_URL}}";
+
+// Exam JSON stores asset (image/audio/video) URLs with a placeholder so the
+// storage host is configurable per environment. Substitute it at read time.
+function resolveAssetUrls(content: string): string {
+  const base = process.env.EXAM_ASSETS_BASE_URL ?? "";
+  return content.split(ASSET_BASE_URL_PLACEHOLDER).join(base);
+}
+
 function buildExamPath(skillId: string, n: number): string {
   const parts = skillId.split("-");
   const lastPart = parts[parts.length - 1];
@@ -73,7 +82,7 @@ function buildExamPathById(examId: string): string {
 
 export async function readExam(skillId: string, n: number): Promise<Exam> {
   const content = await fs.readFile(buildExamPath(skillId, n), "utf-8");
-  return JSON.parse(content) as Exam;
+  return JSON.parse(resolveAssetUrls(content)) as Exam;
 }
 
 export async function readExamOrNull(skillId: string, n: number): Promise<Exam | null> {
@@ -95,7 +104,7 @@ export async function examFileExists(skillId: string, n: number): Promise<boolea
 
 export async function readExamById(examId: string): Promise<Exam> {
   const content = await fs.readFile(buildExamPathById(examId), "utf-8");
-  return JSON.parse(content) as Exam;
+  return JSON.parse(resolveAssetUrls(content)) as Exam;
 }
 
 export async function listSkillGroups(): Promise<SkillGroup[]> {
