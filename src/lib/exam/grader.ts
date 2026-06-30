@@ -38,8 +38,8 @@ async function fetchImageBuffer(url: string): Promise<{ buffer: Buffer; mimeType
 const PREAMBLE = `You are an official Dutch civic integration exam examiner applying the MVT three-point grading model.
 
 If a question references images (shown as [Image N] placeholders), those images are provided inline in this message in the same numbered order — look at each one carefully before grading.
-If a question contains a video, do NOT fetch it. The <video> element has a data-transcription attribute containing a written transcription of the video — read that attribute value to understand the question context.
-For all other assets — audio files, documents, or any other file references — ignore them completely. Everything you need to grade the question is already present as text or images in this message.
+If a question contains a video or audio element, do NOT fetch it. The <video> or <audio> element has a data-transcription attribute containing a written transcription of the clip — read that attribute value to understand the question context.
+For all other assets — documents or any other file references — ignore them completely. Everything you need to grade the question is already present as text, images, or transcription attributes in this message.
 
 STEP 1 — PRECONDITIONS
 Before scoring, check two preconditions:
