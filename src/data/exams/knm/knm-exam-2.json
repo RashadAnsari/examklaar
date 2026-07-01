@@ -4,382 +4,313 @@
   "level": null,
   "title": "KNM Exam 2",
   "timeLimitMinutes": 45,
-  "premiumOnly": true,
   "questions": [
     {
       "id": "q1",
       "type": "multiple_choice",
-      "content": "<p>Wat is het alarmnummer in Nederland?</p>",
-      "options": ["911", "112", "999"],
+      "content": "<p>Je hebt gewerkt en bent je baan kwijt. Waar vraag je een WW-uitkering aan?</p>",
+      "options": ["Bij de tandarts.", "Bij UWV.", "Bij de school."],
       "correctAnswer": 1
     },
     {
       "id": "q2",
       "type": "multiple_choice",
-      "content": "<p>Hoe oud moet u zijn om te mogen stemmen in Nederland?</p>",
-      "options": ["16 jaar", "18 jaar", "21 jaar"],
-      "correctAnswer": 1
+      "content": "<p>Je wilt een eigen bedrijf starten. Waar schrijf je je in?</p>",
+      "options": ["Bij de politie.", "Bij de bibliotheek.", "Bij de Kamer van Koophandel (KvK)."],
+      "correctAnswer": 2
     },
     {
       "id": "q3",
       "type": "multiple_choice",
-      "content": "<p>Wat is de hoofdstad van Nederland?</p>",
-      "options": ["Den Haag", "Rotterdam", "Amsterdam"],
-      "correctAnswer": 2
+      "content": "<p>Wat stuur je vaak mee als je solliciteert?</p>",
+      "options": ["Een cv en een brief.", "Een foto van je huis.", "Niets."],
+      "correctAnswer": 0
     },
     {
       "id": "q4",
       "type": "multiple_choice",
-      "content": "<p>Welke dag is het begin van het schooljaar in Nederland?</p>",
-      "options": ["1 september", "In augustus of september", "1 oktober"],
-      "correctAnswer": 1
+      "content": "<p>Wat doet een vakbond?</p>",
+      "options": [
+        "Geeft les op school.",
+        "Verkoopt huizen.",
+        "Komt op voor de rechten van werknemers."
+      ],
+      "correctAnswer": 2
     },
     {
       "id": "q5",
       "type": "multiple_choice",
-      "content": "<p>Wat doet u als u een conflict heeft met uw werkgever?</p>",
-      "options": [
-        "Stoppen met werken",
-        "Contact opnemen met een vakbond of rechtshulp",
-        "De politie bellen"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Wat houdt de werkgever in op je salaris?</p>",
+      "options": ["Belasting en premies.", "Je vakantiedagen.", "Niets."],
+      "correctAnswer": 0
     },
     {
       "id": "q6",
       "type": "multiple_choice",
-      "content": "<p>Wat is de rol van de burgemeester?</p>",
+      "content": "<p>Het Suikerfeest is…</p>",
       "options": [
-        "Hij maakt nationale wetten",
-        "Hij leidt de gemeente",
-        "Hij spreekt recht in de rechtbank"
+        "een nationale vrije dag voor iedereen.",
+        "een feest dat sommige mensen in Nederland vieren.",
+        "verboden."
       ],
       "correctAnswer": 1
     },
     {
       "id": "q7",
       "type": "multiple_choice",
-      "content": "<p>Hoe heet het Nederlandse parlement?</p>",
-      "options": ["De Senaat", "De Staten-Generaal", "De Nationale Vergadering"],
-      "correctAnswer": 1
+      "content": "<p>Je kunt niet naar een afspraak komen. Wat is netjes?</p>",
+      "options": ["Gewoon wegblijven.", "Niets zeggen.", "Op tijd afzeggen."],
+      "correctAnswer": 2
     },
     {
       "id": "q8",
       "type": "multiple_choice",
-      "content": "<p>Wat is een DigiD?</p>",
+      "content": "<p>Veel mensen in Nederland…</p>",
       "options": [
-        "Een digitale bankpas",
-        "Een digitale identiteit voor overheidsdiensten",
-        "Een soort rijbewijs"
+        "zeggen vrij direct hun mening.",
+        "praten nooit met elkaar.",
+        "mogen geen mening hebben."
       ],
-      "correctAnswer": 1
+      "correctAnswer": 0
     },
     {
       "id": "q9",
       "type": "multiple_choice",
-      "content": "<p>Wat moet u doen als u verhuist naar een andere gemeente?</p>",
+      "content": "<p>Wat is een vereniging?</p>",
       "options": [
-        "Niets, het gaat automatisch",
-        "U schrijft zich in bij de nieuwe gemeente",
-        "U meldt het aan de belastingdienst"
+        "Een ziekenhuis.",
+        "Een club waar mensen samen iets doen, bijvoorbeeld sport.",
+        "Een soort belasting."
       ],
       "correctAnswer": 1
     },
     {
       "id": "q10",
       "type": "multiple_choice",
-      "content": "<p>Wat is het BSN?</p>",
-      "options": [
-        "Een bankrekeningnummer",
-        "Een persoonlijk nummer van de overheid",
-        "Een ziektekostennummer"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Wanneer vieren veel mensen Kerst?</p>",
+      "options": ["In juli.", "Op Koningsdag.", "In december."],
+      "correctAnswer": 2
     },
     {
       "id": "q11",
       "type": "multiple_choice",
-      "content": "<p>Hoe werkt het zorgstelsel in Nederland?</p>",
-      "options": [
-        "De overheid betaalt alles",
-        "U moet verplicht een zorgverzekering hebben",
-        "Zorg is gratis voor iedereen"
-      ],
+      "content": "<p>Wat is de koopsector?</p>",
+      "options": ["Huurhuizen van de gemeente.", "Huizen die je koopt.", "Hotels."],
       "correctAnswer": 1
     },
     {
       "id": "q12",
       "type": "multiple_choice",
-      "content": "<p>Wat is de rol van de huisarts?</p>",
-      "options": [
-        "Gespecialiseerde medische zorg bieden",
-        "De eerste zorgverlener die u bezoekt bij ziekte",
-        "Operaties uitvoeren"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Wat kun je doen om je energierekening lager te maken?</p>",
+      "options": ["Energie besparen.", "Meer verwarmen met de ramen open.", "Niets."],
+      "correctAnswer": 0
     },
     {
       "id": "q13",
       "type": "multiple_choice",
-      "content": "<p>Wanneer is het koningsdag in Nederland?</p>",
-      "options": ["30 april", "27 april", "5 mei"],
+      "content": "<p>Waar gooi je lege flessen en potten?</p>",
+      "options": ["In de GFT-bak.", "In de glasbak.", "Bij het papier."],
       "correctAnswer": 1
     },
     {
       "id": "q14",
       "type": "multiple_choice",
-      "content": "<p>Wat vieren Nederlanders op 5 mei?</p>",
-      "options": ["Bevrijdingsdag", "Koningsdag", "Dodenherdenking"],
-      "correctAnswer": 0
+      "content": "<p>Je denkt dat de huurverhoging niet klopt. Wat kun je doen?</p>",
+      "options": ["Direct het huis uit.", "Niets.", "Hulp zoeken; je hebt rechten als huurder."],
+      "correctAnswer": 2
     },
     {
       "id": "q15",
       "type": "multiple_choice",
-      "content": "<p>Wat is het minimumloon in Nederland gebaseerd op?</p>",
-      "options": ["Leeftijd en werkervaring", "Leeftijd en arbeidsduur", "Opleiding en sector"],
-      "correctAnswer": 1
+      "content": "<p>Wat doe je met de meterstanden?</p>",
+      "options": [
+        "Je geeft ze door aan de energieleverancier.",
+        "Je gooit ze weg.",
+        "Je stuurt ze naar de politie."
+      ],
+      "correctAnswer": 0
     },
     {
       "id": "q16",
       "type": "multiple_choice",
-      "content": "<p>Wat doet u als u een ongeluk ziet op straat?</p>",
-      "options": [
-        "Doorlopen",
-        "Hulp verlenen en 112 bellen indien nodig",
-        "Foto's maken en doorgaan"
-      ],
+      "content": "<p>Je bent 's avonds ziek (geen levensgevaar). Waar bel je?</p>",
+      "options": ["De gemeente.", "De huisartsenpost.", "112."],
       "correctAnswer": 1
     },
     {
       "id": "q17",
       "type": "multiple_choice",
-      "content": "<p>Welke organisatie helpt u bij het zoeken naar werk in Nederland?</p>",
-      "options": ["De belastingdienst", "Het UWV", "De gemeente"],
-      "correctAnswer": 1
+      "content": "<p>Wie verwijst je naar een specialist in het ziekenhuis?</p>",
+      "options": ["De huisarts.", "De apotheek.", "De buurman."],
+      "correctAnswer": 0
     },
     {
       "id": "q18",
       "type": "multiple_choice",
-      "content": "<p>Wat is de WW-uitkering?</p>",
-      "options": [
-        "Een uitkering bij ziekte",
-        "Een uitkering bij werkloosheid",
-        "Een uitkering bij pensionering"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Wat is het eigen risico?</p>",
+      "options": ["Je salaris.", "Gratis zorg.", "Een deel van de zorgkosten dat je zelf betaalt."],
+      "correctAnswer": 2
     },
     {
       "id": "q19",
       "type": "multiple_choice",
-      "content": "<p>Hoe lang duurt de basisschool in Nederland?</p>",
-      "options": ["6 jaar", "8 jaar", "10 jaar"],
-      "correctAnswer": 1
+      "content": "<p>Je spreekt nog weinig Nederlands bij de dokter. Waar heb je recht op?</p>",
+      "options": ["Korting.", "Niets.", "Een tolk."],
+      "correctAnswer": 2
     },
     {
       "id": "q20",
       "type": "multiple_choice",
-      "content": "<p>Wat is het doel van inburgering?</p>",
-      "options": [
-        "Een paspoort krijgen",
-        "Integreren in de Nederlandse samenleving",
-        "Gratis wonen in Nederland"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Waar gaan ouders met een baby voor controle en prikken?</p>",
+      "options": ["Het consultatiebureau.", "De KvK.", "De Belastingdienst."],
+      "correctAnswer": 0
     },
     {
       "id": "q21",
       "type": "multiple_choice",
-      "content": "<p>Welk recht heeft iedereen in Nederland?</p>",
-      "options": [
-        "Het recht om gratis te wonen",
-        "Het recht op een eerlijk proces",
-        "Het recht op een auto"
-      ],
+      "content": "<p>Nederland is verdeeld in…</p>",
+      "options": ["werelddelen.", "provincies.", "landen."],
       "correctAnswer": 1
     },
     {
       "id": "q22",
       "type": "multiple_choice",
-      "content": "<p>Wat is de functie van de politie?</p>",
-      "options": [
-        "Wetten maken",
-        "Openbare orde handhaven en criminaliteit bestrijden",
-        "Belastingen innen"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Hoe heet het volkslied van Nederland?</p>",
+      "options": ["Het Koningslied.", "Het Nederlandslied.", "Het Wilhelmus."],
+      "correctAnswer": 2
     },
     {
       "id": "q23",
       "type": "multiple_choice",
-      "content": "<p>Wat is een huurcontract?</p>",
-      "options": [
-        "Een contract voor het kopen van een huis",
-        "Een schriftelijke overeenkomst tussen huurder en verhuurder",
-        "Een hypotheekdocument"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Wat vieren we op 5 mei?</p>",
+      "options": ["Bevrijdingsdag.", "Kerst.", "Pasen."],
+      "correctAnswer": 0
     },
     {
       "id": "q24",
       "type": "multiple_choice",
-      "content": "<p>Hoeveel provincies heeft Nederland?</p>",
-      "options": ["10", "12", "14"],
+      "content": "<p>In de 17e eeuw werd Nederland rijk door…</p>",
+      "options": ["internet.", "handel en scheepvaart.", "voetbal."],
       "correctAnswer": 1
     },
     {
       "id": "q25",
       "type": "multiple_choice",
-      "content": "<p>Wat is de officiële taal van Nederland?</p>",
-      "options": ["Duits", "Engels", "Nederlands"],
-      "correctAnswer": 2
+      "content": "<p>Wat heb je nodig om met de trein te reizen?</p>",
+      "options": ["Niets.", "Een vervoersbewijs (kaartje of OV-chip).", "Een paspoort."],
+      "correctAnswer": 1
     },
     {
       "id": "q26",
       "type": "multiple_choice",
-      "content": "<p>Wat betekent 'tolerantie' in de Nederlandse samenleving?</p>",
-      "options": [
-        "Iedereen moet hetzelfde denken",
-        "Respect voor verschillende meningen en leefstijlen",
-        "Regels zijn niet belangrijk"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Wat is een BSN?</p>",
+      "options": ["Je burgerservicenummer bij de overheid.", "Een bankpas.", "Een buskaart."],
+      "correctAnswer": 0
     },
     {
       "id": "q27",
       "type": "multiple_choice",
-      "content": "<p>Wat is de Tweede Kamer?</p>",
-      "options": [
-        "Een rechtbank",
-        "Het gekozen deel van het parlement",
-        "Een adviesorgaan van de koning"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Je hebt schulden en weet het niet meer. Waar vraag je hulp?</p>",
+      "options": ["Bij de tandarts.", "Bij de KvK.", "Bij de schuldhulpverlening van de gemeente."],
+      "correctAnswer": 2
     },
     {
       "id": "q28",
       "type": "multiple_choice",
-      "content": "<p>Hoe vaak zijn er gemeenteraadsverkiezingen in Nederland?</p>",
-      "options": ["Elke 2 jaar", "Elke 4 jaar", "Elke 6 jaar"],
-      "correctAnswer": 1
+      "content": "<p>Er is bij je ingebroken. Wat doe je?</p>",
+      "options": ["Aangifte doen bij de politie.", "Niets.", "Zelf de buurman straffen."],
+      "correctAnswer": 0
     },
     {
       "id": "q29",
       "type": "multiple_choice",
-      "content": "<p>Wat is een WOZ-waarde?</p>",
-      "options": [
-        "De waarde van uw auto",
-        "De vastgestelde waarde van uw woning door de gemeente",
-        "Uw inkomen per jaar"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Hoe lang bewaar je belangrijke papieren zoals de jaaropgave?</p>",
+      "options": ["Nooit bewaren.", "Eén dag.", "Een aantal jaren."],
+      "correctAnswer": 2
     },
     {
       "id": "q30",
       "type": "multiple_choice",
-      "content": "<p>Wat moet u doen als uw kind ziek is en niet naar school kan?</p>",
-      "options": [
-        "Niets, de school merkt het vanzelf",
-        "De school bellen of een bericht sturen",
-        "Een doktersbriefje sturen naar de gemeente"
-      ],
+      "content": "<p>Wie heft gemeentelijke belastingen (zoals afvalstoffenheffing)?</p>",
+      "options": ["De huisarts.", "De gemeente.", "De school."],
       "correctAnswer": 1
     },
     {
       "id": "q31",
       "type": "multiple_choice",
-      "content": "<p>Wat is de rol van de rechter in Nederland?</p>",
-      "options": ["Wetten maken", "Onpartijdig rechtspreken", "De politie leiden"],
+      "content": "<p>Hoe heet de leider van de regering?</p>",
+      "options": ["De koning.", "De minister-president.", "De burgemeester."],
       "correctAnswer": 1
     },
     {
       "id": "q32",
       "type": "multiple_choice",
-      "content": "<p>Wat is een AOW-uitkering?</p>",
-      "options": [
-        "Uitkering bij ziekte",
-        "Pensioenuitkering van de overheid",
-        "Uitkering bij werkloosheid"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Nederland is lid van…</p>",
+      "options": ["alleen een sportbond.", "geen enkele organisatie.", "de Europese Unie (EU)."],
+      "correctAnswer": 2
     },
     {
       "id": "q33",
       "type": "multiple_choice",
-      "content": "<p>Wat doet u als u iets gevonden heeft op straat?</p>",
-      "options": [
-        "Het houden",
-        "Het inleveren bij de politie of een gevonden-voorwerpenbureau",
-        "Het weggooien"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Je bent het oneens met de uitspraak van de rechter. Wat kun je doen?</p>",
+      "options": ["In hoger beroep gaan.", "Niets, dat mag niet.", "De rechter slaan."],
+      "correctAnswer": 0
     },
     {
       "id": "q34",
       "type": "multiple_choice",
-      "content": "<p>Wat is het belang van de vrijheid van meningsuiting?</p>",
-      "options": [
-        "U mag alles zeggen zonder gevolgen",
-        "U mag uw mening uiten binnen de grenzen van de wet",
-        "Alleen de overheid mag spreken"
-      ],
-      "correctAnswer": 1
+      "content": "<p>Er is vrijheid van godsdienst. Maar wat staat boven religie en traditie?</p>",
+      "options": ["De wet.", "Niets.", "De buurman."],
+      "correctAnswer": 0
     },
     {
       "id": "q35",
       "type": "multiple_choice",
-      "content": "<p>Wat is een hypotheek?</p>",
+      "content": "<p>Wie mag meestal stemmen voor de gemeenteraad?</p>",
       "options": [
-        "Een soort huurcontract",
-        "Een lening om een huis te kopen",
-        "Een verzekering voor het huis"
+        "Niemand.",
+        "Alleen de koning.",
+        "Inwoners, ook niet-Nederlanders die hier lang wonen."
       ],
-      "correctAnswer": 1
+      "correctAnswer": 2
     },
     {
       "id": "q36",
       "type": "multiple_choice",
-      "content": "<p>Wie kiest de leden van de Tweede Kamer?</p>",
-      "options": ["De koning", "De burgers via verkiezingen", "De minister-president"],
+      "content": "<p>Op welke leeftijd gaan kinderen meestal naar de basisschool?</p>",
+      "options": ["Rond 12 jaar.", "Rond 4 jaar.", "Rond 16 jaar."],
       "correctAnswer": 1
     },
     {
       "id": "q37",
       "type": "multiple_choice",
-      "content": "<p>Wat is de kinderbijslag?</p>",
+      "content": "<p>Wat is de vrijwillige ouderbijdrage?</p>",
       "options": [
-        "Een vergoeding voor kinderopvang",
-        "Financiële steun van de overheid voor ouders met kinderen",
-        "Gratis onderwijs voor kinderen"
+        "Een verplichte belasting.",
+        "Je loon.",
+        "Geld dat je mag betalen, maar niet hoeft."
       ],
-      "correctAnswer": 1
+      "correctAnswer": 2
     },
     {
       "id": "q38",
       "type": "multiple_choice",
-      "content": "<p>Welk document heeft u nodig om in Nederland te werken als niet-EU-burger?</p>",
-      "options": ["Alleen een paspoort", "Een werkvergunning", "Een rijbewijs"],
-      "correctAnswer": 1
+      "content": "<p>Scholen geven ook les over…</p>",
+      "options": ["seksualiteit en seksuele diversiteit.", "alleen rekenen.", "niets."],
+      "correctAnswer": 0
     },
     {
       "id": "q39",
       "type": "multiple_choice",
-      "content": "<p>Wat is de taak van de Eerste Kamer?</p>",
-      "options": [
-        "Nieuwe wetten voorstellen",
-        "Wetten van de Tweede Kamer controleren",
-        "De begroting opstellen"
-      ],
+      "content": "<p>Mag je je kind buiten de schoolvakantie meenemen op vakantie?</p>",
+      "options": ["Alleen in de zomer.", "Nee, schoolvakanties zijn bindend.", "Ja, altijd."],
       "correctAnswer": 1
     },
     {
       "id": "q40",
       "type": "multiple_choice",
-      "content": "<p>Wat is een naturalisatie?</p>",
-      "options": [
-        "Een visum aanvragen",
-        "De Nederlandse nationaliteit verkrijgen",
-        "Een verblijfsvergunning verlengen"
-      ],
+      "content": "<p>Wie is verantwoordelijk voor het gedrag van een jong kind?</p>",
+      "options": ["Alleen de school.", "De ouders.", "De buurman."],
       "correctAnswer": 1
     }
   ]

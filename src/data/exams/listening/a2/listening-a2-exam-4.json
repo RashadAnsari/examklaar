@@ -1,0 +1,196 @@
+{
+  "id": "listening-a2-exam-4",
+  "skill": "listening",
+  "level": "A2",
+  "title": "Listening Exam 4",
+  "timeLimitMinutes": 45,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van de coach (vrouw) met Omar.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/62c7cb62-516a-479e-92e6-7d27339f45f8.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom gaat de training van zaterdag niet door?</strong></p>",
+      "options": ["Het veld is te nat.", "Omar is ziek.", "Er is een wedstrijd."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q2",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van de coach (vrouw) met Omar.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/62c7cb62-516a-479e-92e6-7d27339f45f8.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de volgende training?</strong></p>",
+      "options": ["dinsdag om acht uur", "dinsdag om zes uur", "zaterdag om zes uur"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q3",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van de coach (vrouw) met Omar.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/62c7cb62-516a-479e-92e6-7d27339f45f8.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet Omar meenemen?</strong></p>",
+      "options": ["eten", "een bal", "voetbalschoenen en water"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q4",
+      "type": "multiple_choice",
+      "content": "<p><em>Bericht op de radio: vrijwilligers gezocht voor de voedselbank.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/3287fc7a-3920-4f0c-ab00-b37477bbe069.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat doet de voedselbank?</strong></p>",
+      "options": [
+        "eten verkopen",
+        "koken in een restaurant",
+        "eten geven aan mensen met weinig geld"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q5",
+      "type": "multiple_choice",
+      "content": "<p><em>Bericht op de radio: vrijwilligers gezocht voor de voedselbank.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/3287fc7a-3920-4f0c-ab00-b37477bbe069.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat heb je nodig om vrijwilliger te worden?</strong></p>",
+      "options": ["ervaring", "geen ervaring; je krijgt uitleg", "een diploma"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q6",
+      "type": "multiple_choice",
+      "content": "<p><em>Bericht op de radio: vrijwilligers gezocht voor de voedselbank.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/3287fc7a-3920-4f0c-ab00-b37477bbe069.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Krijg je geld voor dit werk?</strong></p>",
+      "options": ["nee, het is niet betaald", "ja, een salaris", "ja, maar alleen dinsdag"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q7",
+      "type": "multiple_choice",
+      "content": "<p><em>Omroepbericht in de supermarkt.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/174968fd-2a8b-4ffe-9290-3f99c0d3c4f7.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kosten twee broden vandaag?</strong></p>",
+      "options": ["zes euro", "drie euro", "vijf euro"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q8",
+      "type": "multiple_choice",
+      "content": "<p><em>Omroepbericht in de supermarkt.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/174968fd-2a8b-4ffe-9290-3f99c0d3c4f7.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat sluit de winkel vandaag?</strong></p>",
+      "options": ["om zes uur", "om zeven uur", "om vijf uur"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q9",
+      "type": "multiple_choice",
+      "content": "<p><em>Omroepbericht in de supermarkt.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/174968fd-2a8b-4ffe-9290-3f99c0d3c4f7.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de winkel dicht?</strong></p>",
+      "options": ["zaterdag", "vandaag", "zondag"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q10",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (vrouw) en een medewerker (man) bij de balie.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/73f9d64b-3262-4c5c-b74d-da5c8d351d5e.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarvoor wil de vrouw zich inschrijven?</strong></p>",
+      "options": ["een cursus", "het examen Lezen", "het examen Luisteren"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q11",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (vrouw) en een medewerker (man) bij de balie.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/73f9d64b-3262-4c5c-b74d-da5c8d351d5e.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe lang duurt het voordat ze een datum krijgt?</strong></p>",
+      "options": ["zes dagen", "ongeveer zes weken", "zes maanden"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q12",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (vrouw) en een medewerker (man) bij de balie.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/73f9d64b-3262-4c5c-b74d-da5c8d351d5e.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost dit onderdeel?</strong></p>",
+      "options": ["vijftien euro", "vijf euro", "veertig euro", "vijftig euro"],
+      "correctAnswer": 3
+    },
+    {
+      "id": "q13",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefonisch bericht van Bibliotheek Zuid voor mevrouw De Wit (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/5dc6cf4f-02e5-434f-935e-76399de2b624.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer moeten de boeken terug zijn?</strong></p>",
+      "options": ["uiterlijk vrijdag", "vandaag", "uiterlijk maandag"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q14",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefonisch bericht van Bibliotheek Zuid voor mevrouw De Wit (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/5dc6cf4f-02e5-434f-935e-76399de2b624.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat gebeurt er als ze te laat is?</strong></p>",
+      "options": ["Ze mag niet meer lenen.", "Ze betaalt 20 cent per dag per boek.", "Niets."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q15",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een gast (vrouw) en de ober (man) in een restaurant.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/f89651cd-afd9-43af-a80b-34a443f358ee.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat neemt de gast als hoofdgerecht?</strong></p>",
+      "options": ["de vis", "de soep", "brood"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q16",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een gast (vrouw) en de ober (man) in een restaurant.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/f89651cd-afd9-43af-a80b-34a443f358ee.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat is gratis?</strong></p>",
+      "options": ["de vis", "water", "brood"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q17",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een gast (vrouw) en de ober (man) in een restaurant.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/f89651cd-afd9-43af-a80b-34a443f358ee.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe lang duurt de vis ongeveer?</strong></p>",
+      "options": ["vijf minuten", "een kwartier", "een uur"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q18",
+      "type": "multiple_choice",
+      "content": "<p><em>Mededeling voor de buurt over een buurtfeest.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/1d9f08e2-25ed-4459-8161-688c9c156f84.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moeten de buren zelf meenemen?</strong></p>",
+      "options": ["een stoel", "eten", "muziek"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q19",
+      "type": "multiple_choice",
+      "content": "<p><em>Mededeling voor de buurt over een buurtfeest.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/1d9f08e2-25ed-4459-8161-688c9c156f84.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat gebeurt er bij regen?</strong></p>",
+      "options": ["Het feest begint later.", "Het feest is binnen.", "Het feest gaat niet door."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q20",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (vrouw) en de apotheker (man).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/f43a41b5-74ce-4e33-913b-2ad72d5e8591.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Tot hoe laat is de apotheek vandaag open?</strong></p>",
+      "options": ["tot half zeven", "tot half zes", "tot zes uur"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q21",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (vrouw) en de apotheker (man).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/f43a41b5-74ce-4e33-913b-2ad72d5e8591.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de apotheek dicht?</strong></p>",
+      "options": ["in het weekend", "nooit", "op werkdagen"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q22",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (vrouw) en de apotheker (man).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/f43a41b5-74ce-4e33-913b-2ad72d5e8591.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar haal je in het weekend medicijnen?</strong></p>",
+      "options": [
+        "bij de supermarkt",
+        "bij de gewone apotheek",
+        "bij de dienstapotheek in het ziekenhuis"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q23",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (man) en een medewerker (vrouw) van het buurthuis.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/6110946f-740d-46f8-a7e0-9596ab20a514.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel lessen zijn er?</strong></p>",
+      "options": ["veertien", "achttien", "veertig", "acht"],
+      "correctAnswer": 3
+    },
+    {
+      "id": "q24",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (man) en een medewerker (vrouw) van het buurthuis.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/6110946f-740d-46f8-a7e0-9596ab20a514.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de cursus?</strong></p>",
+      "options": ["elke woensdag", "elke dag", "elke maandag"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q25",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (man) en een medewerker (vrouw) van het buurthuis.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-4/6110946f-740d-46f8-a7e0-9596ab20a514.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat gebeurt er als de man geen laptop heeft?</strong></p>",
+      "options": [
+        "Hij moet er een kopen.",
+        "Hij kan niet meedoen.",
+        "Hij krijgt er een van het buurthuis."
+      ],
+      "correctAnswer": 2
+    }
+  ]
+}

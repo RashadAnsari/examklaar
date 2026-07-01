@@ -47,10 +47,14 @@ supabase/*
 !supabase/migrations
 
 # claude
-.claude/
+.claude/*
+!.claude/skills/
 .claude-flow/
 .mcp.json
 REVIEW_REPORT.md
 
 # python
 .venv/
+
+# generated exam assets
+exam-export/

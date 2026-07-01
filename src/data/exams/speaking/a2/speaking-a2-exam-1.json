@@ -4,117 +4,116 @@
   "level": "A2",
   "title": "Speaking Exam 1",
   "timeLimitMinutes": 35,
-  "premiumOnly": false,
   "questions": [
     {
       "id": "q1",
       "type": "speaking",
-      "content": "<p>Ik woon al tien jaar in Amsterdam. <strong>Hoe lang woont u al in Nederland en in welke stad woont u?</strong></p>",
+      "content": "<audio controls data-transcription=\"Ik koop op zaterdag altijd brood bij de bakker. Waar koopt u meestal brood? Vertel ook waarom.\" style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/bfa81046-2f7a-4655-93b7-a1309d99eb06.mp3\" type=\"audio/mpeg\" /></audio>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q2",
       "type": "speaking",
-      "content": "<p>Ik werk als verpleger in een ziekenhuis. <strong>Wat is uw beroep en waar werkt u?</strong></p>",
+      "content": "<audio controls data-transcription=\"Ik oefen Nederlands met een klasgenoot. Met wie oefent u Nederlands? Vertel ook wat u samen doet.\" style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/1562a39c-11fb-423a-96c6-0b103d544b17.mp3\" type=\"audio/mpeg\" /></audio>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q3",
       "type": "speaking",
-      "content": "<p>Ik ga elke ochtend hardlopen in het park. <strong>Wat doet u om fit te blijven?</strong></p>",
+      "content": "<audio controls data-transcription=\"Ik haal mijn medicijnen bij de apotheek. Gaat u weleens naar de apotheek? Vertel ook wanneer.\" style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/358a9f64-cecd-4412-ac19-ad8370287fb5.mp3\" type=\"audio/mpeg\" /></audio>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q4",
       "type": "speaking",
-      "content": "<p>Mijn favoriete eten is stamppot. <strong>Wat eet u het liefst en kunt u zelf koken?</strong></p>",
+      "content": "<audio controls data-transcription=\"Ik drink op zondag graag koffie met mijn buren. Wat doet u in het weekend? Vertel ook met wie.\" style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/8ee64efa-d3f3-4e49-953f-4fc1c118957a.mp3\" type=\"audio/mpeg\" /></audio>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q5",
       "type": "speaking",
-      "content": "<p>Ik reis altijd met de trein. <strong>Hoe reist u naar uw werk of school?</strong></p>",
+      "content": "<p><em>Kijk naar het plaatje.</em></p><hr style=\"margin: 1.5rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/7cf456c5-ab79-422e-ac90-514f48d5689d.jpg\" style=\"max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;\" /><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat ziet u op het plaatje? Vertel ook waarom de vrouw daar is.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q6",
       "type": "speaking",
-      "content": "<p>In mijn vrije tijd lees ik graag boeken. <strong>Wat doet u in uw vrije tijd?</strong></p>",
+      "content": "<p><em>Kijk naar het plaatje.</em></p><hr style=\"margin: 1.5rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/ef8832bc-aef2-40ee-b1f9-f0ab4e97cf5a.jpg\" style=\"max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;\" /><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat doet de man? Vertel ook wat u van zelfscannen vindt.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q7",
       "type": "speaking",
-      "content": "<p>Ik heb drie kinderen en woon in een groot huis. <strong>Hoe ziet uw thuissituatie eruit?</strong></p>",
+      "content": "<p><em>Kijk naar het plaatje.</em></p><hr style=\"margin: 1.5rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/1f5b75a1-aa01-4da9-aa38-b7d7eec3e71f.jpg\" style=\"max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;\" /><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat over Sara. Noem drie dingen.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q8",
       "type": "speaking",
-      "content": "<p>Ik spreek vier talen. <strong>Welke talen spreekt u en hoe heeft u die geleerd?</strong></p>",
+      "content": "<p><em>Kijk naar het plaatje.</em></p><hr style=\"margin: 1.5rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/39e3323d-4754-4bed-9c8c-a2605cbb198c.jpg\" style=\"max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;\" /><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat ziet u op het plaatje? Vertel ook wat uw lievelingseten is.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q9",
       "type": "speaking",
-      "content": "<p>Mijn dagelijkse routine begint vroeg. <strong>Hoe ziet uw dag er normaal gesproken uit?</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/b23bc7bf-f713-4c60-b660-0ccae1870fd7.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/3c07c0ec-38b0-4f87-b2dc-863def9cfb2b.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Kies een van de plaatjes. Wat doet u liever na het werk? Vertel ook waarom.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q10",
       "type": "speaking",
-      "content": "<p>Ik doe mijn boodschappen altijd op zaterdag. <strong>Wanneer en waar doet u uw boodschappen?</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/cf1ee5fc-7117-4215-92f8-f8684557983d.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/a42fe983-bfe5-474a-8b2c-c7e0013e24bd.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Kies een van de plaatjes. Waar leert u liever Nederlands? Vertel ook waarom.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q11",
       "type": "speaking",
-      "content": "<p>Ik vind het leren van Nederlands soms moeilijk. <strong>Wat vindt u moeilijk aan het Nederlands leren?</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/9c6707bc-8a4e-4866-8467-66a06b83cd0f.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/2297a004-d74f-4094-984c-ea9368bc0202.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Kies een van de plaatjes. Waar koopt u liever boodschappen? Vertel ook waarom.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q12",
       "type": "speaking",
-      "content": "<p>Ik houd van de zomer. <strong>Welk seizoen heeft uw voorkeur en waarom?</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/1e92cb83-8dcd-4af0-bae1-a49aab86144d.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/716535da-69ee-42b7-8144-e03c02adb222.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Kies een van de plaatjes. Hoe reist u liever? Vertel ook waarom.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q13",
       "type": "speaking",
-      "content": "<p>Ik bezoek mijn familie elke maand. <strong>Hoe vaak ziet u uw familie en wat doet u samen?</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/e3e44315-82d9-4023-8521-ee0b60601c2d.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/2cd26cbc-fb5d-4fae-8e6f-de2c127e27d5.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/b62bb6e2-9d96-4e63-98c5-37db8118b8a0.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Jamal doet. Vertel iets over alle plaatjes.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q14",
       "type": "speaking",
-      "content": "<p>Mijn buurt is rustig en groen. <strong>Hoe is uw buurt en wat vindt u er leuk aan?</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/9f9a8d25-6ee5-4b21-8eeb-9f947b8e14be.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/50b31b28-c702-4ead-8481-1f1f94e28016.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/03e222fd-aa8d-4e59-9e6f-f4426fbf234e.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Hassan doet. Vertel iets over alle plaatjes.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q15",
       "type": "speaking",
-      "content": "<p>Ik gebruik mijn telefoon veel voor het nieuws. <strong>Hoe gebruikt u uw telefoon en hoeveel tijd besteedt u eraan?</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/b5548cf2-2230-4a8b-a5d6-789845abc0f0.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/615f2cc9-fa77-4146-a40f-2278bb5d61e5.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/7a5a261b-3b98-4d91-a018-20df5aa0ae86.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Nora doet. Vertel iets over alle plaatjes.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q16",
       "type": "speaking",
-      "content": "<p>Volgend jaar wil ik een nieuwe opleiding starten. <strong>Heeft u plannen voor de toekomst? Wat wilt u graag bereiken?</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/1b0ed964-ccaf-4e30-9121-913ed8bbf7fe.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/edf466a7-792b-4372-94dc-e77f093175e7.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/967ae41e-5ab6-416f-98df-2a710a0711d6.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Youssef doet. Vertel iets over alle plaatjes.</strong></p>",
       "options": null,
       "correctAnswer": null
     }

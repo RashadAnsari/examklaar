@@ -4,33 +4,32 @@
   "level": "A2",
   "title": "Writing Exam 2",
   "timeLimitMinutes": 40,
-  "premiumOnly": true,
   "questions": [
     {
       "id": "q1",
       "type": "writing",
-      "content": "<p><strong>Schrijf een e-mail</strong> <em>(maximale score: 10)</em></p><p>U bent ziek en kunt niet werken. Schrijf een e-mail aan uw baas. Leg uit waarom u niet komt en wanneer u denkt terug te komen.</p><p><strong>Aan:</strong> baas@werk.nl<br><strong>Onderwerp:</strong> ik ben ziek</p>",
+      "content": "<p><strong>Inschrijven bij de huisarts</strong></p><p>U bent verhuisd en zoekt een nieuwe huisarts. Vul het inschrijfformulier van de huisartsenpraktijk in.</p><p><em>Vul het formulier in.</em></p><p><em>Sommige gegevens mag u zelf verzinnen.</em></p><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Achternaam</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Voornaam</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Geboortedatum</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Adres</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Postcode en woonplaats</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Telefoonnummer</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">E-mailadres</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Naam zorgverzekering</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr></table><p>Gebruikt u medicijnen of heeft u een ziekte? Schrijf een hele zin.</p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q2",
       "type": "writing",
-      "content": "<p><strong>Formulier 'inschrijving taalcursus'</strong> <em>(maximale score: 8)</em></p><p>U wilt een taalcursus Nederlands volgen. Vul het inschrijfformulier in.</p><ul><li>Voornaam en achternaam</li><li>Geboortedatum</li><li>Adres en woonplaats</li><li>Telefoonnummer</li><li>E-mailadres</li><li>Huidig taalniveau</li><li>Beschikbare dagdelen</li></ul>",
+      "content": "<p><strong>Briefje aan het buurmeisje</strong></p><p>Het buurmeisje past vanavond op je hond en je huis. Je bent niet thuis. Je legt een briefje op tafel.</p><p><em>Schrijf een briefje aan het buurmeisje.</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">Schrijf dat ze de hond om 18.00 uur eten geeft.</li><li style=\"margin-bottom: 0.25rem;\">Schrijf dat ze de deur op slot doet.</li><li style=\"margin-bottom: 0.25rem;\">Schrijf waar de sleutel ligt.</li><li style=\"margin-bottom: 0.25rem;\">Schrijf bedank haar.</li></ul><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Aan</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Onderwerp</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td colspan=\"2\" style=\"border: 1px solid #ccc; padding: 0.75rem; vertical-align: top; height: 180px;\"></td></tr></table><p><em>Schrijf minimaal 40 woorden.</em></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q3",
       "type": "writing",
-      "content": "<p><strong>Schrijf een bericht</strong> <em>(maximale score: 8)</em></p><p>Uw buurman heeft overlast. U schrijft een brief aan de verhuurder. Beschrijf het probleem en vraag om hulp. Schrijf minimaal vier zinnen.</p>",
+      "content": "<p><strong>Voorstellen aan nieuwe buren</strong></p><p>Er wonen nieuwe mensen naast u. U stelt uzelf voor met een kort bericht.</p><p><em>Stel uzelf voor. Schrijf minimaal 3 zinnen (±40 woorden).</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">uw naam</li><li style=\"margin-bottom: 0.25rem;\">waar u vandaan komt</li><li style=\"margin-bottom: 0.25rem;\">wat uw hobby is</li></ul><p><em>Schrijf minimaal 40 woorden.</em></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q4",
       "type": "writing",
-      "content": "<p><strong>Stel uzelf voor</strong> <em>(maximale score: 6)</em></p><p>U begint bij een nieuwe sportclub. Schrijf een korte introductie over uzelf voor de clubwebsite. Vertel wie u bent, waar u vandaan komt en waarom u lid wilt worden. Schrijf minimaal vijf zinnen.</p>",
+      "content": "<p><strong>Wijkkrant: je favoriete plek</strong></p><p>U schrijft voor de wijkkrant over uw favoriete plek in de stad.</p><p><em>Beschrijf uw favoriete plek. Schrijf minimaal 3 zinnen (±40–50 woorden).</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">waar het is</li><li style=\"margin-bottom: 0.25rem;\">wat u daar doet</li><li style=\"margin-bottom: 0.25rem;\">waarom u het leuk vindt</li></ul><p><em>Schrijf minimaal 40 woorden.</em></p>",
       "options": null,
       "correctAnswer": null
     }

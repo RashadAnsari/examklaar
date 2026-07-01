@@ -4,206 +4,193 @@
   "level": "A2",
   "title": "Reading Exam 2",
   "timeLimitMinutes": 65,
-  "premiumOnly": true,
   "questions": [
     {
       "id": "q1",
       "type": "multiple_choice",
-      "content": "<p><em>Een advertentie in de krant.</em></p><p>U leest een advertentie. Een winkel verkoopt winterjassen met 30% korting. De aanbieding is geldig tot zaterdag. Wat is de aanbieding?</p>",
-      "options": [
-        "Gratis bezorging bij aankoop.",
-        "30% korting op winterjassen.",
-        "Gratis jas bij aankoop van twee."
-      ],
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Amir,</p><p>Je examen Nederlands is op donderdag 10 april om 13.30 uur. Het examen is op locatie Centrum, niet op je gewone school. Kom 15 minuten eerder. Neem je paspoort mee. Zonder paspoort mag je niet meedoen.</p><p>Veel succes!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar is het examen?</strong></p>",
+      "options": ["thuis", "op locatie Centrum", "op de gewone school"],
       "correctAnswer": 1
     },
     {
       "id": "q2",
       "type": "multiple_choice",
-      "content": "<p><em>Een bericht van school.</em></p><p>U krijgt een bericht van de school van uw kind. De school is woensdag gesloten vanwege een studiedag. Wat moet u doen op woensdag?</p>",
-      "options": ["Uw kind naar school brengen.", "Uw kind thuishouden.", "Een brief terugsturen."],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Amir,</p><p>Je examen Nederlands is op donderdag 10 april om 13.30 uur. Het examen is op locatie Centrum, niet op je gewone school. Kom 15 minuten eerder. Neem je paspoort mee. Zonder paspoort mag je niet meedoen.</p><p>Veel succes!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat heeft Amir nodig om mee te doen?</strong></p>",
+      "options": ["15 euro", "een boek", "zijn paspoort"],
+      "correctAnswer": 2
     },
     {
       "id": "q3",
       "type": "multiple_choice",
-      "content": "<p><em>Een affiche in de bibliotheek.</em></p><p>U ziet een affiche. De bibliotheek organiseert elke donderdagmiddag een voorleesuur voor kinderen van 4 tot 8 jaar. Wie kan meedoen?</p>",
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Een nieuwe buslijn in het dorp</h3><p>Vanaf maandag rijdt er een nieuwe bus in ons dorp: lijn 12. De bus rijdt van het station naar het ziekenhuis. Veel mensen in het dorp zijn blij met de nieuwe bus. Vroeger moesten zij met de auto of de fiets naar het ziekenhuis. Dat was lastig voor oudere mensen.</p><p>De bus rijdt elke dag, één keer per uur. In het weekend rijdt de bus minder vaak: alleen in de ochtend. Een kaartje kost 2 euro. Kinderen tot 4 jaar reizen gratis.</p><p>Wilt u de tijden weten? Kijk op de website van de gemeente of vraag het bij de balie op het station.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom zijn veel mensen blij met de nieuwe bus?</strong></p>",
       "options": [
-        "Kinderen van 4 tot 8 jaar.",
-        "Volwassenen en kinderen.",
-        "Kinderen van 8 tot 12 jaar."
+        "Vroeger was het lastig om bij het ziekenhuis te komen.",
+        "De bus rijdt heel snel.",
+        "De bus is gratis."
       ],
       "correctAnswer": 0
     },
     {
       "id": "q4",
       "type": "multiple_choice",
-      "content": "<p><em>Een e-mail van de huisarts.</em></p><p>Uw huisarts stuurt een e-mail. Uw bloedtestresultaten zijn klaar. U moet een nieuwe afspraak maken. Wat moet u doen?</p>",
-      "options": [
-        "Wachten op een brief.",
-        "Een nieuwe afspraak maken.",
-        "Direct naar het ziekenhuis gaan."
-      ],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Een nieuwe buslijn in het dorp</h3><p>Vanaf maandag rijdt er een nieuwe bus in ons dorp: lijn 12. De bus rijdt van het station naar het ziekenhuis. Veel mensen in het dorp zijn blij met de nieuwe bus. Vroeger moesten zij met de auto of de fiets naar het ziekenhuis. Dat was lastig voor oudere mensen.</p><p>De bus rijdt elke dag, één keer per uur. In het weekend rijdt de bus minder vaak: alleen in de ochtend. Een kaartje kost 2 euro. Kinderen tot 4 jaar reizen gratis.</p><p>Wilt u de tijden weten? Kijk op de website van de gemeente of vraag het bij de balie op het station.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe vaak rijdt de bus in het weekend?</strong></p>",
+      "options": ["helemaal niet", "elk uur, de hele dag", "minder vaak, alleen in de ochtend"],
+      "correctAnswer": 2
     },
     {
       "id": "q5",
       "type": "multiple_choice",
-      "content": "<p><em>Een brief van de gemeente.</em></p><p>U krijgt een brief van de gemeente. U moet voor 1 april uw adres bijwerken in het bevolkingsregister. Wat is de deadline?</p>",
-      "options": ["1 januari.", "1 april.", "1 juli."],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Een nieuwe buslijn in het dorp</h3><p>Vanaf maandag rijdt er een nieuwe bus in ons dorp: lijn 12. De bus rijdt van het station naar het ziekenhuis. Veel mensen in het dorp zijn blij met de nieuwe bus. Vroeger moesten zij met de auto of de fiets naar het ziekenhuis. Dat was lastig voor oudere mensen.</p><p>De bus rijdt elke dag, één keer per uur. In het weekend rijdt de bus minder vaak: alleen in de ochtend. Een kaartje kost 2 euro. Kinderen tot 4 jaar reizen gratis.</p><p>Wilt u de tijden weten? Kijk op de website van de gemeente of vraag het bij de balie op het station.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wie reist gratis met de bus?</strong></p>",
+      "options": ["kinderen tot 4 jaar", "mensen uit het dorp", "oudere mensen"],
+      "correctAnswer": 0
     },
     {
       "id": "q6",
       "type": "multiple_choice",
-      "content": "<p><em>Een recept op de verpakking.</em></p><p>U leest een recept. De soep moet 20 minuten op laag vuur koken. Daarna moet u zout naar smaak toevoegen. Wanneer voegt u zout toe?</p>",
-      "options": ["Voor het koken.", "Tijdens het koken.", "Na het koken."],
-      "correctAnswer": 2
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Ahmed en zijn collega Lisa</h3><p>Ahmed: Lisa, weet jij hoe ik vrij kan vragen? Ik wil volgende week een dag vrij.<br>Lisa: Ja, dat moet je aan de baas vragen. Stuur hem een e-mail.<br>Ahmed: Moet ik een reden geven?<br>Lisa: Niet altijd, maar het is wel netjes. Ik schrijf er meestal kort iets bij.<br>Ahmed: Oké. En hoe snel weet ik of het mag?<br>Lisa: Meestal binnen twee dagen. Vraag het dus op tijd, niet op het laatste moment.<br>Ahmed: Bedankt, dat helpt me echt.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat wil Ahmed?</strong></p>",
+      "options": ["een nieuwe baan", "een dag vrij volgende week", "een hoger salaris"],
+      "correctAnswer": 1
     },
     {
       "id": "q7",
       "type": "multiple_choice",
-      "content": "<p><em>Een aankondiging op het prikbord.</em></p><p>Op het prikbord staat een aankondiging. De buurtvereniging houdt op vrijdag 14 maart een vergadering in het buurthuis. Wanneer is de vergadering?</p>",
-      "options": ["Vrijdag 14 februari.", "Vrijdag 14 maart.", "Zaterdag 14 maart."],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Ahmed en zijn collega Lisa</h3><p>Ahmed: Lisa, weet jij hoe ik vrij kan vragen? Ik wil volgende week een dag vrij.<br>Lisa: Ja, dat moet je aan de baas vragen. Stuur hem een e-mail.<br>Ahmed: Moet ik een reden geven?<br>Lisa: Niet altijd, maar het is wel netjes. Ik schrijf er meestal kort iets bij.<br>Ahmed: Oké. En hoe snel weet ik of het mag?<br>Lisa: Meestal binnen twee dagen. Vraag het dus op tijd, niet op het laatste moment.<br>Ahmed: Bedankt, dat helpt me echt.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet Ahmed doen om vrij te vragen?</strong></p>",
+      "options": ["de baas een e-mail sturen", "niets doen", "een formulier invullen"],
+      "correctAnswer": 0
     },
     {
       "id": "q8",
       "type": "multiple_choice",
-      "content": "<p><em>Een folder van de sportschool.</em></p><p>U leest een folder. Nieuwe leden betalen de eerste maand geen contributie. Daarna betalen ze €25 per maand. Hoeveel betaalt een nieuw lid de eerste maand?</p>",
-      "options": ["€25.", "€50.", "Niets."],
-      "correctAnswer": 2
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Ahmed en zijn collega Lisa</h3><p>Ahmed: Lisa, weet jij hoe ik vrij kan vragen? Ik wil volgende week een dag vrij.<br>Lisa: Ja, dat moet je aan de baas vragen. Stuur hem een e-mail.<br>Ahmed: Moet ik een reden geven?<br>Lisa: Niet altijd, maar het is wel netjes. Ik schrijf er meestal kort iets bij.<br>Ahmed: Oké. En hoe snel weet ik of het mag?<br>Lisa: Meestal binnen twee dagen. Vraag het dus op tijd, niet op het laatste moment.<br>Ahmed: Bedankt, dat helpt me echt.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer weet Ahmed meestal of hij vrij mag?</strong></p>",
+      "options": ["na een week", "binnen twee dagen", "op de dag zelf"],
+      "correctAnswer": 1
     },
     {
       "id": "q9",
       "type": "multiple_choice",
-      "content": "<p><em>Een sms-bericht.</em></p><p>U krijgt een sms. Uw pakket wordt morgen tussen 10:00 en 12:00 bezorgd. Als u er niet bent, gaat het naar het postkantoor. Wat gebeurt er als u er niet bent?</p>",
-      "options": [
-        "Het pakket wordt teruggestuurd.",
-        "Het pakket gaat naar het postkantoor.",
-        "De bezorger komt de volgende dag terug."
-      ],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Aan de bewoners van de Bloemstraat,</p><p>Vanaf 1 mei krijgt u een nieuwe afvalcontainer. De grijze container is voor restafval. De groene container is voor groente, fruit en tuinafval. Papier en glas horen niet in deze containers. Breng papier en glas naar de bakken op het plein.</p><p>Wij legen de grijze container elke twee weken op maandag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat hoort in de groene container?</strong></p>",
+      "options": ["papier", "glas", "groente en fruit"],
+      "correctAnswer": 2
     },
     {
       "id": "q10",
       "type": "multiple_choice",
-      "content": "<p><em>Een menu in het restaurant.</em></p><p>U leest een menu. Het dagmenu bestaat uit soep, een hoofdgerecht en koffie. Het kost €12,50. Wat is er niet inbegrepen?</p>",
-      "options": ["Soep.", "Koffie.", "Een dessert."],
-      "correctAnswer": 2
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Aan de bewoners van de Bloemstraat,</p><p>Vanaf 1 mei krijgt u een nieuwe afvalcontainer. De grijze container is voor restafval. De groene container is voor groente, fruit en tuinafval. Papier en glas horen niet in deze containers. Breng papier en glas naar de bakken op het plein.</p><p>Wij legen de grijze container elke twee weken op maandag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat mag niet in de containers?</strong></p>",
+      "options": ["papier en glas", "tuinafval", "restafval"],
+      "correctAnswer": 0
     },
     {
       "id": "q11",
       "type": "multiple_choice",
-      "content": "<p><em>Een waarschuwing op een product.</em></p><p>U leest een waarschuwing. Dit product bevat noten. Niet geschikt voor mensen met een notenallergie. Voor wie is dit product niet geschikt?</p>",
-      "options": ["Voor kinderen.", "Voor mensen met een notenallergie.", "Voor vegetariërs."],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Aan de bewoners van de Bloemstraat,</p><p>Vanaf 1 mei krijgt u een nieuwe afvalcontainer. De grijze container is voor restafval. De groene container is voor groente, fruit en tuinafval. Papier en glas horen niet in deze containers. Breng papier en glas naar de bakken op het plein.</p><p>Wij legen de grijze container elke twee weken op maandag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe vaak wordt de grijze container geleegd?</strong></p>",
+      "options": ["elke week", "elke dag", "elke twee weken"],
+      "correctAnswer": 2
     },
     {
       "id": "q12",
       "type": "multiple_choice",
-      "content": "<p><em>Een brief van het energiebedrijf.</em></p><p>U krijgt een brief van het energiebedrijf. Uw contract loopt af op 31 december. U kunt een nieuw contract afsluiten via de website. Wanneer loopt uw contract af?</p>",
-      "options": ["31 oktober.", "31 november.", "31 december."],
-      "correctAnswer": 2
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Lunchkaart Café Zon</h3><p>Soep van de dag: 4,50 euro<br>Broodje kaas: 3,50 euro<br>Broodje gezond: 5,00 euro<br>Salade: 6,50 euro<br>Koffie of thee: 2,00 euro</p><p>Wilt u water? Dat is gratis. De lunch is van 12.00 tot 15.00 uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost een broodje gezond?</strong></p>",
+      "options": ["6,50 euro", "5,00 euro", "3,50 euro"],
+      "correctAnswer": 1
     },
     {
       "id": "q13",
       "type": "multiple_choice",
-      "content": "<p><em>Een informatiebord in het park.</em></p><p>U leest een bord in het park. Honden zijn welkom maar moeten aan de lijn. Na 18:00 mogen honden los lopen. Wanneer mogen honden los lopen?</p>",
-      "options": ["De hele dag.", "Na 18:00.", "Alleen in het weekend."],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Lunchkaart Café Zon</h3><p>Soep van de dag: 4,50 euro<br>Broodje kaas: 3,50 euro<br>Broodje gezond: 5,00 euro<br>Salade: 6,50 euro<br>Koffie of thee: 2,00 euro</p><p>Wilt u water? Dat is gratis. De lunch is van 12.00 tot 15.00 uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat is gratis?</strong></p>",
+      "options": ["koffie", "soep", "water"],
+      "correctAnswer": 2
     },
     {
       "id": "q14",
       "type": "multiple_choice",
-      "content": "<p><em>Een uitnodiging.</em></p><p>U ontvangt een uitnodiging. Uw collega nodigt u uit voor zijn afscheidsfeest op vrijdag 20 mei om 17:00 uur op kantoor. Hoe laat begint het feest?</p>",
-      "options": ["Om 15:00 uur.", "Om 17:00 uur.", "Om 19:00 uur."],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Lunchkaart Café Zon</h3><p>Soep van de dag: 4,50 euro<br>Broodje kaas: 3,50 euro<br>Broodje gezond: 5,00 euro<br>Salade: 6,50 euro<br>Koffie of thee: 2,00 euro</p><p>Wilt u water? Dat is gratis. De lunch is van 12.00 tot 15.00 uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Tot hoe laat kun je lunchen?</strong></p>",
+      "options": ["tot 15.00 uur", "tot 17.00 uur", "tot 12.00 uur"],
+      "correctAnswer": 0
     },
     {
       "id": "q15",
       "type": "multiple_choice",
-      "content": "<p><em>Een bijsluiter van medicijnen.</em></p><p>U leest de bijsluiter. Neem twee tabletten per dag, bij voorkeur na de maaltijd. Niet meer dan vier tabletten per dag. Hoeveel tabletten mag u maximaal per dag nemen?</p>",
-      "options": ["Twee.", "Drie.", "Vier."],
-      "correctAnswer": 2
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Medicijn: paracetamol</h3><p>Neem 2 keer per dag 1 tablet: 's morgens en 's avonds. Neem de tablet met water, na het eten. Geef dit medicijn niet aan kinderen jonger dan 12 jaar. Bewaar het medicijn op een droge plek.</p><p>Niet langer dan 7 dagen gebruiken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe vaak per dag neemt u een tablet?</strong></p>",
+      "options": ["1 keer", "2 keer", "7 keer"],
+      "correctAnswer": 1
     },
     {
       "id": "q16",
       "type": "multiple_choice",
-      "content": "<p><em>Een aankondiging in de supermarkt.</em></p><p>U leest een aankondiging. De supermarkt is op eerste kerstdag gesloten en op tweede kerstdag open van 10:00 tot 17:00. Wanneer is de supermarkt gesloten?</p>",
-      "options": ["Op tweede kerstdag.", "Op eerste kerstdag.", "Op beide kerstdagen."],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Medicijn: paracetamol</h3><p>Neem 2 keer per dag 1 tablet: 's morgens en 's avonds. Neem de tablet met water, na het eten. Geef dit medicijn niet aan kinderen jonger dan 12 jaar. Bewaar het medicijn op een droge plek.</p><p>Niet langer dan 7 dagen gebruiken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wie mag dit medicijn niet hebben?</strong></p>",
+      "options": ["kinderen jonger dan 12 jaar", "volwassenen", "zieke mensen"],
+      "correctAnswer": 0
     },
     {
       "id": "q17",
       "type": "multiple_choice",
-      "content": "<p><em>Een formulier.</em></p><p>U vult een formulier in. Bij 'BSN' moet u uw burgerservicenummer invullen. Waar vindt u dit nummer?</p>",
-      "options": ["Op uw bankpas.", "Op uw paspoort of identiteitskaart.", "Op uw huurcontract."],
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Medicijn: paracetamol</h3><p>Neem 2 keer per dag 1 tablet: 's morgens en 's avonds. Neem de tablet met water, na het eten. Geef dit medicijn niet aan kinderen jonger dan 12 jaar. Bewaar het medicijn op een droge plek.</p><p>Niet langer dan 7 dagen gebruiken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer neemt u de tablet?</strong></p>",
+      "options": ["voor het eten", "na het eten", "zonder water"],
       "correctAnswer": 1
     },
     {
       "id": "q18",
       "type": "multiple_choice",
-      "content": "<p><em>Een bericht in een app.</em></p><p>U krijgt een bericht in een app. De vergadering van morgen is verplaatst naar donderdag om dezelfde tijd. Wat is er veranderd?</p>",
-      "options": ["Het tijdstip.", "De dag.", "De locatie."],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Sportschool Fit</h3><p>Word nu lid! Een abonnement kost 25 euro per maand. De eerste maand is gratis. U kunt elke dag sporten van 6.00 tot 23.00 uur. Op zondag zijn wij dicht.</p><p>Wilt u stoppen? Zeg uw abonnement één maand van tevoren op.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel kost de eerste maand?</strong></p>",
+      "options": ["25 euro", "50 euro", "niets"],
+      "correctAnswer": 2
     },
     {
       "id": "q19",
       "type": "multiple_choice",
-      "content": "<p><em>Een folder van de gemeente.</em></p><p>U leest een folder. Inwoners kunnen gratis een afvalcontainer aanvragen via de website of per telefoon. Hoe kunt u een container aanvragen?</p>",
-      "options": [
-        "Alleen via de website.",
-        "Via de website of per telefoon.",
-        "Alleen per telefoon."
-      ],
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Sportschool Fit</h3><p>Word nu lid! Een abonnement kost 25 euro per maand. De eerste maand is gratis. U kunt elke dag sporten van 6.00 tot 23.00 uur. Op zondag zijn wij dicht.</p><p>Wilt u stoppen? Zeg uw abonnement één maand van tevoren op.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Op welke dag is de sportschool dicht?</strong></p>",
+      "options": ["maandag", "zondag", "zaterdag"],
       "correctAnswer": 1
     },
     {
       "id": "q20",
       "type": "multiple_choice",
-      "content": "<p><em>Een advertentie voor een woning.</em></p><p>U leest een advertentie. Een appartement van 65m² met twee slaapkamers te huur voor €900 per maand exclusief gas en licht. Wat is er niet inbegrepen in de huurprijs?</p>",
-      "options": ["Internet.", "Gas en licht.", "Parkeerplaats."],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Sportschool Fit</h3><p>Word nu lid! Een abonnement kost 25 euro per maand. De eerste maand is gratis. U kunt elke dag sporten van 6.00 tot 23.00 uur. Op zondag zijn wij dicht.</p><p>Wilt u stoppen? Zeg uw abonnement één maand van tevoren op.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet u doen als u wilt stoppen?</strong></p>",
+      "options": [
+        "25 euro betalen",
+        "een e-mail sturen op zondag",
+        "een maand van tevoren opzeggen"
+      ],
+      "correctAnswer": 2
     },
     {
       "id": "q21",
       "type": "multiple_choice",
-      "content": "<p><em>Een brief van de belastingdienst.</em></p><p>U krijgt een brief. U moet voor 1 mei aangifte doen van uw inkomsten over het afgelopen jaar. Wat moet u doen?</p>",
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Let op! De trein naar Amsterdam van 8.10 uur rijdt vandaag niet. Neem de trein van 8.40 uur. Deze trein vertrekt van spoor 3.</p><p>Reist u naar Utrecht? Die treinen rijden gewoon. Heeft u vragen? Ga naar de balie in de hal.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Welke trein rijdt vandaag niet?</strong></p>",
       "options": [
-        "Belasting betalen.",
-        "Aangifte doen van uw inkomsten.",
-        "Naar het belastingkantoor gaan."
+        "de trein naar Amsterdam van 8.10 uur",
+        "de trein naar Utrecht",
+        "de trein van 8.40 uur"
       ],
-      "correctAnswer": 1
+      "correctAnswer": 0
     },
     {
       "id": "q22",
       "type": "multiple_choice",
-      "content": "<p><em>Een bord bij een zwembad.</em></p><p>U leest een bord. Kinderen onder de 6 jaar mogen alleen zwemmen als een volwassene meezwemt. Voor wie geldt deze regel?</p>",
-      "options": ["Kinderen onder de 12 jaar.", "Kinderen onder de 6 jaar.", "Alle kinderen."],
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Let op! De trein naar Amsterdam van 8.10 uur rijdt vandaag niet. Neem de trein van 8.40 uur. Deze trein vertrekt van spoor 3.</p><p>Reist u naar Utrecht? Die treinen rijden gewoon. Heeft u vragen? Ga naar de balie in de hal.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Van welk spoor vertrekt de trein van 8.40 uur?</strong></p>",
+      "options": ["spoor 8", "spoor 3", "spoor 1"],
       "correctAnswer": 1
     },
     {
       "id": "q23",
       "type": "multiple_choice",
-      "content": "<p><em>Een reclamefolder.</em></p><p>U leest een folder. Bij aankoop van drie producten krijgt u de goedkoopste gratis. U koopt producten van €5, €8 en €12. Welk product is gratis?</p>",
-      "options": ["Het product van €12.", "Het product van €8.", "Het product van €5."],
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Elke woensdag is er markt op het plein. De markt is van 8.00 tot 16.00 uur. U kunt er groente, fruit, kaas en bloemen kopen. Pinnen kan bij de meeste kramen.</p><p>Bij de viskraam kunt u alleen met contant geld betalen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de markt?</strong></p>",
+      "options": ["elke maandag", "elke zondag", "elke woensdag"],
       "correctAnswer": 2
     },
     {
       "id": "q24",
       "type": "multiple_choice",
-      "content": "<p><em>Een bericht op de deur.</em></p><p>U leest een bericht op een deur. Het kantoor is gesloten vanwege een personeelsuitje. U kunt maandag weer binnenkomen. Wanneer is het kantoor weer open?</p>",
-      "options": ["Vandaag later.", "Morgen.", "Maandag."],
-      "correctAnswer": 2
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Elke woensdag is er markt op het plein. De markt is van 8.00 tot 16.00 uur. U kunt er groente, fruit, kaas en bloemen kopen. Pinnen kan bij de meeste kramen.</p><p>Bij de viskraam kunt u alleen met contant geld betalen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kunt u op de markt kopen?</strong></p>",
+      "options": ["groente, fruit, kaas en bloemen", "alleen vis", "kleren en schoenen"],
+      "correctAnswer": 0
     },
     {
       "id": "q25",
       "type": "multiple_choice",
-      "content": "<p><em>Een informatieboekje.</em></p><p>U leest een boekje. Als u niet tevreden bent over uw zorgverzekeraar, kunt u elk jaar in november van verzekeraar wisselen. Wanneer kunt u wisselen?</p>",
-      "options": ["Het hele jaar.", "In november.", "In januari."],
-      "correctAnswer": 1
+      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Elke woensdag is er markt op het plein. De markt is van 8.00 tot 16.00 uur. U kunt er groente, fruit, kaas en bloemen kopen. Pinnen kan bij de meeste kramen.</p><p>Bij de viskraam kunt u alleen met contant geld betalen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe betaalt u bij de viskraam?</strong></p>",
+      "options": ["met contant geld", "met de pin", "gratis"],
+      "correctAnswer": 0
     }
   ]
 }

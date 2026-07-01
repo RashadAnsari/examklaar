@@ -4,206 +4,185 @@
   "level": "A2",
   "title": "Listening Exam 2",
   "timeLimitMinutes": 45,
-  "premiumOnly": true,
   "questions": [
     {
       "id": "q1",
       "type": "multiple_choice",
-      "content": "<p>Vraag 1 — Luister naar het gesprek in de winkel. Wat wil de klant?</p>",
-      "options": ["Een broek ruilen.", "Zijn geld terug.", "Een andere maat."],
+      "content": "<p><em>Telefoongesprek van mevrouw Visser met de assistent van de huisarts.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/f414cbed-0af2-4062-8f75-2bd92aafab31.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom belt mevrouw Visser?</strong></p>",
+      "options": ["Ze wil de uitslag horen.", "Ze wil een medicijn.", "Ze wil een afspraak maken."],
       "correctAnswer": 2
     },
     {
       "id": "q2",
       "type": "multiple_choice",
-      "content": "<p>Vraag 2 — Luister naar het telefoongesprek. Waarom belt de man?</p>",
-      "options": [
-        "Om een afspraak te maken.",
-        "Om een afspraak te annuleren.",
-        "Om informatie te vragen."
-      ],
+      "content": "<p><em>Telefoongesprek van mevrouw Visser met de assistent van de huisarts.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/f414cbed-0af2-4062-8f75-2bd92aafab31.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom kan mevrouw Visser 's morgens niet komen?</strong></p>",
+      "options": ["Ze moet werken.", "Ze is bang.", "Ze woont te ver."],
       "correctAnswer": 0
     },
     {
       "id": "q3",
       "type": "multiple_choice",
-      "content": "<p>Vraag 3 — Luister naar het bericht op het antwoordapparaat. Wat moet u doen?</p>",
-      "options": ["Terugbellen.", "Een e-mail sturen.", "Langskomen op kantoor."],
-      "correctAnswer": 0
+      "content": "<p><em>Telefoongesprek van mevrouw Visser met de assistent van de huisarts.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/f414cbed-0af2-4062-8f75-2bd92aafab31.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat is de afspraak?</strong></p>",
+      "options": ["kwart over tien", "half vijf", "kwart voor vijf", "half tien"],
+      "correctAnswer": 1
     },
     {
       "id": "q4",
       "type": "multiple_choice",
-      "content": "<p>Vraag 4 — Luister naar het gesprek. Waar gaan de twee vrouwen naartoe?</p>",
-      "options": ["Naar het theater.", "Naar het museum.", "Naar het restaurant."],
-      "correctAnswer": 1
+      "content": "<p><em>Bericht op de radio: nieuws uit het dorp.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/57fcfc60-8330-4470-9c40-bec9e4d0d80e.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar rijdt de nieuwe bus naartoe?</strong></p>",
+      "options": ["naar de school", "naar het strand", "naar het ziekenhuis"],
+      "correctAnswer": 2
     },
     {
       "id": "q5",
       "type": "multiple_choice",
-      "content": "<p>Vraag 5 — Luister naar de aankondiging op het station. Wat is er aan de hand?</p>",
-      "options": [
-        "Een trein heeft vertraging.",
-        "Een trein is geannuleerd.",
-        "Het station is gesloten."
-      ],
+      "content": "<p><em>Bericht op de radio: nieuws uit het dorp.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/57fcfc60-8330-4470-9c40-bec9e4d0d80e.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer rijdt de bus in het weekend?</strong></p>",
+      "options": ["alleen in de ochtend", "de hele dag", "helemaal niet"],
       "correctAnswer": 0
     },
     {
       "id": "q6",
       "type": "multiple_choice",
-      "content": "<p>Vraag 6 — Luister naar het gesprek bij de dokter. Wat is het advies van de dokter?</p>",
-      "options": [
-        "Rust houden en veel drinken.",
-        "Direct naar het ziekenhuis gaan.",
-        "Medicijnen halen bij de apotheek."
-      ],
-      "correctAnswer": 0
+      "content": "<p><em>Bericht op de radio: nieuws uit het dorp.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/57fcfc60-8330-4470-9c40-bec9e4d0d80e.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wie reist gratis met de bus?</strong></p>",
+      "options": ["iedereen", "kinderen tot 4 jaar", "oude mensen"],
+      "correctAnswer": 1
     },
     {
       "id": "q7",
       "type": "multiple_choice",
-      "content": "<p>Vraag 7 — Luister naar het nieuwsbericht. Waar gaat het over?</p>",
-      "options": ["Het weer van morgen.", "Een verkeersongeluk.", "Een nieuwe wet."],
+      "content": "<p><em>Gesprek van Nour en haar collega Daan over haar eerste werkdag.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/0887cb11-d3e6-4b8b-8aec-1529b98ee891.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe voelt Nour zich na haar eerste werkdag?</strong></p>",
+      "options": ["verdrietig", "blij", "boos"],
       "correctAnswer": 1
     },
     {
       "id": "q8",
       "type": "multiple_choice",
-      "content": "<p>Vraag 8 — Luister naar het gesprek. Hoe laat spreken ze af?</p>",
-      "options": ["Om 14:00 uur.", "Om 15:30 uur.", "Om 16:00 uur."],
-      "correctAnswer": 1
+      "content": "<p><em>Gesprek van Nour en haar collega Daan over haar eerste werkdag.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/0887cb11-d3e6-4b8b-8aec-1529b98ee891.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe was het werk volgens Nour?</strong></p>",
+      "options": ["heel moeilijk", "saai", "niet echt moeilijk"],
+      "correctAnswer": 2
     },
     {
       "id": "q9",
       "type": "multiple_choice",
-      "content": "<p>Vraag 9 — Luister naar de les. Wat is het onderwerp van de les?</p>",
-      "options": ["Nederlandse geschiedenis.", "Nederlandse grammatica.", "Nederlandse cultuur."],
-      "correctAnswer": 1
+      "content": "<p><em>Gesprek van Nour en haar collega Daan over haar eerste werkdag.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/0887cb11-d3e6-4b8b-8aec-1529b98ee891.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat begint ze morgen?</strong></p>",
+      "options": ["om acht uur", "om negen uur", "om zeven uur"],
+      "correctAnswer": 0
     },
     {
       "id": "q10",
       "type": "multiple_choice",
-      "content": "<p>Vraag 10 — Luister naar het gesprek in het café. Wat bestelt de vrouw?</p>",
-      "options": [
-        "Een koffie en een appeltaart.",
-        "Een thee en een croissant.",
-        "Een jus d'orange en een broodje."
-      ],
+      "content": "<p><em>Telefonisch bericht van de basisschool voor de ouders (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/dd91cd1c-ec3e-4f13-829c-336462305292.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom zijn de kinderen vrijdag vrij?</strong></p>",
+      "options": ["De leraren hebben een studiedag.", "De school is verhuisd.", "Er is vakantie."],
       "correctAnswer": 0
     },
     {
       "id": "q11",
       "type": "multiple_choice",
-      "content": "<p>Vraag 11 — Luister naar het interview. Wat is het beroep van de man?</p>",
-      "options": ["Leraar.", "Journalist.", "Arts."],
-      "correctAnswer": 0
+      "content": "<p><em>Telefonisch bericht van de basisschool voor de ouders (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/dd91cd1c-ec3e-4f13-829c-336462305292.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat begint de school maandag?</strong></p>",
+      "options": ["negen uur", "half negen", "acht uur"],
+      "correctAnswer": 1
     },
     {
       "id": "q12",
       "type": "multiple_choice",
-      "content": "<p>Vraag 12 — Luister naar het gesprek. Waarom kan de vrouw niet komen?</p>",
-      "options": ["Ze is ziek.", "Ze moet werken.", "Ze heeft een andere afspraak."],
+      "content": "<p><em>Telefonisch bericht van de basisschool voor de ouders (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/dd91cd1c-ec3e-4f13-829c-336462305292.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat doen ouders die opvang nodig hebben?</strong></p>",
+      "options": ["niets", "de juf mailen", "de BSO bellen"],
       "correctAnswer": 2
     },
     {
       "id": "q13",
       "type": "multiple_choice",
-      "content": "<p>Vraag 13 — Luister naar de advertentie op de radio. Wat wordt er aangeboden?</p>",
-      "options": [
-        "Een goedkope vakantiereis.",
-        "Een nieuwe auto.",
-        "Een cursus computervaardigheden."
-      ],
-      "correctAnswer": 0
+      "content": "<p><em>Omroepbericht in het zwembad.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/9ddd291b-766c-4113-9512-de8e737662c4.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat sluit het zwembad vandaag?</strong></p>",
+      "options": ["om zeven uur", "om vijf uur", "om half vijf"],
+      "correctAnswer": 1
     },
     {
       "id": "q14",
       "type": "multiple_choice",
-      "content": "<p>Vraag 14 — Luister naar het gesprek op de markt. Hoeveel kost een kilo appels?</p>",
-      "options": ["€1,50.", "€2,00.", "€2,50."],
-      "correctAnswer": 1
+      "content": "<p><em>Omroepbericht in het zwembad.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/9ddd291b-766c-4113-9512-de8e737662c4.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moeten de bezoekers doen?</strong></p>",
+      "options": ["uit het water komen", "een kaartje kopen", "blijven zwemmen"],
+      "correctAnswer": 0
     },
     {
       "id": "q15",
       "type": "multiple_choice",
-      "content": "<p>Vraag 15 — Luister naar de weersvoorspelling. Hoe wordt het weer morgen?</p>",
-      "options": ["Zonnig en warm.", "Bewolkt met regen.", "Koud met sneeuw."],
-      "correctAnswer": 1
+      "content": "<p><em>Telefoongesprek van Karim met zijn leidinggevende Petra.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/1903359b-d31f-447a-86c1-36aacdd639cf.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom belt Karim?</strong></p>",
+      "options": ["Hij komt te laat.", "Hij wil vrij.", "Hij is ziek."],
+      "correctAnswer": 2
     },
     {
       "id": "q16",
       "type": "multiple_choice",
-      "content": "<p>Vraag 16 — Luister naar het gesprek. Wie is er jarig?</p>",
-      "options": ["De moeder.", "De vader.", "Het kind."],
+      "content": "<p><em>Telefoongesprek van Karim met zijn leidinggevende Petra.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/1903359b-d31f-447a-86c1-36aacdd639cf.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet Karim morgen doen?</strong></p>",
+      "options": ["langskomen", "naar de dokter", "weer bellen hoe het gaat"],
       "correctAnswer": 2
     },
     {
       "id": "q17",
       "type": "multiple_choice",
-      "content": "<p>Vraag 17 — Luister naar het bericht. Wanneer gaat de bibliotheek dicht?</p>",
-      "options": ["Om 17:00 uur.", "Om 18:00 uur.", "Om 20:00 uur."],
-      "correctAnswer": 2
+      "content": "<p><em>Telefoongesprek van Karim met zijn leidinggevende Petra.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/1903359b-d31f-447a-86c1-36aacdd639cf.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat gebeurt er met zijn afspraak van vanmiddag?</strong></p>",
+      "options": [
+        "Die wordt naar volgende week gezet.",
+        "Die gaat gewoon door.",
+        "Die wordt afgezegd."
+      ],
+      "correctAnswer": 0
     },
     {
       "id": "q18",
       "type": "multiple_choice",
-      "content": "<p>Vraag 18 — Luister naar het gesprek. Hoe gaan ze naar het feest?</p>",
-      "options": ["Met de auto.", "Met de fiets.", "Met het openbaar vervoer."],
-      "correctAnswer": 2
+      "content": "<p><em>Het weerbericht op de radio.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/bbc6aba1-f033-44b9-953b-00fa00e03ec4.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat voor weer wordt het morgen?</strong></p>",
+      "options": ["warm en zonnig", "glad, met vorst en sneeuw", "veel regen"],
+      "correctAnswer": 1
     },
     {
       "id": "q19",
       "type": "multiple_choice",
-      "content": "<p>Vraag 19 — Luister naar de instructie. Wat moet u als eerste doen?</p>",
-      "options": ["Het formulier invullen.", "Een foto meenemen.", "Uw paspoort kopiëren."],
+      "content": "<p><em>Het weerbericht op de radio.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/bbc6aba1-f033-44b9-953b-00fa00e03ec4.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar strooit de gemeente zout?</strong></p>",
+      "options": ["alleen op de grote wegen", "nergens", "op alle wegen"],
       "correctAnswer": 0
     },
     {
       "id": "q20",
       "type": "multiple_choice",
-      "content": "<p>Vraag 20 — Luister naar het gesprek op kantoor. Wat is het probleem?</p>",
-      "options": [
-        "De computer werkt niet.",
-        "De printer heeft geen papier.",
-        "Het internet is traag."
-      ],
-      "correctAnswer": 0
+      "content": "<p><em>Het weerbericht op de radio.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/bbc6aba1-f033-44b9-953b-00fa00e03ec4.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat is het advies?</strong></p>",
+      "options": ["ga snel fietsen", "ga zwemmen", "blijf liever binnen"],
+      "correctAnswer": 2
     },
     {
       "id": "q21",
       "type": "multiple_choice",
-      "content": "<p>Vraag 21 — Luister naar het gesprek. Waar woont de nieuwe collega?</p>",
-      "options": ["In Amsterdam.", "In Utrecht.", "In Rotterdam."],
-      "correctAnswer": 1
+      "content": "<p><em>Telefoongesprek van mevrouw Klein met restaurant De Tuin.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/0bc1be86-b393-4416-a8c2-194f01281020.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Voor hoeveel personen is de tafel?</strong></p>",
+      "options": ["twee", "zes", "acht", "vier"],
+      "correctAnswer": 3
     },
     {
       "id": "q22",
       "type": "multiple_choice",
-      "content": "<p>Vraag 22 — Luister naar de aankondiging. Wat verandert er?</p>",
-      "options": ["De openingstijden.", "De prijzen.", "De locatie."],
-      "correctAnswer": 0
+      "content": "<p><em>Telefoongesprek van mevrouw Klein met restaurant De Tuin.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/0bc1be86-b393-4416-a8c2-194f01281020.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat wil mevrouw Klein komen?</strong></p>",
+      "options": ["acht uur", "half acht", "half zeven"],
+      "correctAnswer": 1
     },
     {
       "id": "q23",
       "type": "multiple_choice",
-      "content": "<p>Vraag 23 — Luister naar het gesprek. Wat vindt de man van de film?</p>",
-      "options": ["Hij vond hem geweldig.", "Hij vond hem saai.", "Hij heeft hem niet gezien."],
-      "correctAnswer": 0
+      "content": "<p><em>Gesprek van Sara en haar buurman Peter.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/14d41cf0-4d46-48d4-ae60-f849c668f0f4.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat zoekt Sara?</strong></p>",
+      "options": ["een huis", "een buurman", "een tandarts"],
+      "correctAnswer": 2
     },
     {
       "id": "q24",
       "type": "multiple_choice",
-      "content": "<p>Vraag 24 — Luister naar het telefoongesprek. Welke datum wordt afgesproken?</p>",
-      "options": ["15 maart.", "16 maart.", "17 maart."],
-      "correctAnswer": 0
+      "content": "<p><em>Gesprek van Sara en haar buurman Peter.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/14d41cf0-4d46-48d4-ae60-f849c668f0f4.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe ver is de tandarts?</strong></p>",
+      "options": ["een half uur", "vijf minuten lopen", "met de bus"],
+      "correctAnswer": 1
     },
     {
       "id": "q25",
       "type": "multiple_choice",
-      "content": "<p>Vraag 25 — Luister naar het gesprek. Wat gaat de vrouw kopen?</p>",
-      "options": ["Een nieuwe jas.", "Een paar schoenen.", "Een tas."],
-      "correctAnswer": 1
+      "content": "<p><em>Gesprek van Sara en haar buurman Peter.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-2/14d41cf0-4d46-48d4-ae60-f849c668f0f4.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de tandarts dicht?</strong></p>",
+      "options": ["in het weekend", "op werkdagen", "'s ochtends"],
+      "correctAnswer": 0
     }
   ]
 }

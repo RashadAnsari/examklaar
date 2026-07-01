@@ -1,0 +1,313 @@
+{
+  "id": "knm-exam-4",
+  "skill": "knm",
+  "level": null,
+  "title": "KNM Exam 4",
+  "timeLimitMinutes": 45,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple_choice",
+      "content": "<p>Je verdient weinig. Waarvoor kun je toeslag krijgen?</p>",
+      "options": ["Voor zorg en huur.", "Voor vakantie.", "Voor een auto."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q2",
+      "type": "multiple_choice",
+      "content": "<p>Wat staat er in een arbeidsovereenkomst?</p>",
+      "options": ["Je vakantiefoto's.", "Niets.", "Werktijden, salaris en rechten/plichten."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q3",
+      "type": "multiple_choice",
+      "content": "<p>Je wordt op het werk gepest of gediscrimineerd. Naar wie kun je gaan?</p>",
+      "options": ["Niemand.", "Een vertrouwenspersoon.", "De tandarts."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q4",
+      "type": "multiple_choice",
+      "content": "<p>Wat is parttime (deeltijd) werken?</p>",
+      "options": ["Minder uren dan een volledige baan.", "Alleen nachtwerk.", "Gratis werken."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q5",
+      "type": "multiple_choice",
+      "content": "<p>Je begint voor jezelf. Wat regel je zelf?</p>",
+      "options": ["Je schoolrooster.", "Je pensioen en verzekeringen.", "Niets."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q6",
+      "type": "multiple_choice",
+      "content": "<p>Carnaval wordt vooral gevierd…</p>",
+      "options": ["nooit.", "in heel Nederland verplicht.", "in het zuiden van Nederland."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q7",
+      "type": "multiple_choice",
+      "content": "<p>Bij de meeste instanties moet je…</p>",
+      "options": ["niet komen.", "zomaar binnenlopen.", "vooraf een afspraak maken."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q8",
+      "type": "multiple_choice",
+      "content": "<p>In Nederland wonen veel mensen samen…</p>",
+      "options": ["ook zonder te trouwen.", "dat mag niet.", "alleen na het trouwen."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q9",
+      "type": "multiple_choice",
+      "content": "<p>Hoe leer je je buren kennen?</p>",
+      "options": ["Dat kan niet.", "Meedoen aan een buurtactiviteit.", "Altijd binnenblijven."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q10",
+      "type": "multiple_choice",
+      "content": "<p>Wanneer is Oud en Nieuw?</p>",
+      "options": ["Op 31 december / 1 januari.", "In de zomer.", "Op Koningsdag."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q11",
+      "type": "multiple_choice",
+      "content": "<p>Heeft een huurder rechten in Nederland?</p>",
+      "options": ["Nee.", "Alleen kopers hebben rechten.", "Ja."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q12",
+      "type": "multiple_choice",
+      "content": "<p>Wat hoort in de restafvalbak?</p>",
+      "options": ["Glas.", "Afval dat niet apart kan worden gescheiden.", "Papier."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q13",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een vast energiecontract?</p>",
+      "options": [
+        "Gratis energie.",
+        "Een huurcontract.",
+        "Een vaste prijs voor een bepaalde tijd."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q14",
+      "type": "multiple_choice",
+      "content": "<p>De woningmarkt verschilt per gemeente. Wat is slim?</p>",
+      "options": ["Niets doen.", "Je op tijd inschrijven.", "Wachten."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q15",
+      "type": "multiple_choice",
+      "content": "<p>Waarom is water besparen goed?</p>",
+      "options": [
+        "Beter voor het milieu en je rekening.",
+        "Het maakt niets uit.",
+        "Slechter voor alles."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q16",
+      "type": "multiple_choice",
+      "content": "<p>Je woont net in een nieuwe stad. Wat doe je voor de zorg?</p>",
+      "options": ["Niets.", "Je wacht tot je ziek bent.", "Je schrijft je in bij een huisarts."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q17",
+      "type": "multiple_choice",
+      "content": "<p>Wanneer bel je 112?</p>",
+      "options": ["Bij levensgevaar.", "Voor een recept.", "Voor een gewone afspraak."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q18",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een aanvullende verzekering?</p>",
+      "options": ["Gratis zorg.", "Extra dekking naast het basispakket.", "Een uitkering."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q19",
+      "type": "multiple_choice",
+      "content": "<p>Hoe vaak ga je meestal naar de tandarts?</p>",
+      "options": ["Alleen na een ongeluk.", "Nooit.", "Regelmatig voor controle."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q20",
+      "type": "multiple_choice",
+      "content": "<p>Wat heb je vaak nodig om zorgzaken online te regelen?</p>",
+      "options": ["DigiD.", "Niets.", "Een rijbewijs."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q21",
+      "type": "multiple_choice",
+      "content": "<p>Waar werd Nederland in de 17e eeuw ook bekend om?</p>",
+      "options": ["Auto's.", "Schilderkunst.", "Ruimtevaart."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q22",
+      "type": "multiple_choice",
+      "content": "<p>Noord-Holland en Zuid-Holland zijn…</p>",
+      "options": ["steden.", "landen.", "provincies."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q23",
+      "type": "multiple_choice",
+      "content": "<p>Waarvoor gebruikten mensen vroeger molens bij het water?</p>",
+      "options": ["Om water weg te pompen.", "Om te vliegen.", "Om te koken."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q24",
+      "type": "multiple_choice",
+      "content": "<p>Na de oorlog ging Nederland samenwerken in…</p>",
+      "options": [
+        "alleen met de buurlanden, zonder afspraken.",
+        "de EU, de NAVO en de VN.",
+        "niets."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q25",
+      "type": "multiple_choice",
+      "content": "<p>Sinds de jaren zestig vinden veel Nederlanders … belangrijk.</p>",
+      "options": ["vrijheid en gelijkheid van mensen.", "niets.", "alleen geld."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q26",
+      "type": "multiple_choice",
+      "content": "<p>Wie betaalt de kinderbijslag?</p>",
+      "options": ["De school.", "De Sociale Verzekeringsbank (SVB).", "De huisarts."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q27",
+      "type": "multiple_choice",
+      "content": "<p>Wanneer geef je een verhuizing door aan de gemeente?</p>",
+      "options": ["Pas na tien jaar.", "Nooit.", "Op tijd, rond de verhuizing."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q28",
+      "type": "multiple_choice",
+      "content": "<p>Waarvoor gebruikt de overheid belastinggeld?</p>",
+      "options": [
+        "Voor niets.",
+        "Voor cadeaus voor de koning.",
+        "Voor onderwijs, zorg, wegen en politie."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q29",
+      "type": "multiple_choice",
+      "content": "<p>De overheid behandelt je slecht. Tot wie kun je je richten?</p>",
+      "options": ["De buurman.", "De ombudsman.", "De bakker."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q30",
+      "type": "multiple_choice",
+      "content": "<p>Wat is verplicht als je een auto hebt?</p>",
+      "options": ["Een WA-verzekering.", "Niets.", "Een reisverzekering."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q31",
+      "type": "multiple_choice",
+      "content": "<p>Wat is vooral de rol van de koning?</p>",
+      "options": ["Hij is de politie.", "Ceremonieel.", "Hij maakt alle wetten alleen."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q32",
+      "type": "multiple_choice",
+      "content": "<p>Wie horen bij de regering?</p>",
+      "options": ["Alleen de rechters.", "De leraren.", "De ministers."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q33",
+      "type": "multiple_choice",
+      "content": "<p>Mannen en vrouwen moeten gelijke kansen krijgen bij…</p>",
+      "options": ["werk en scholing.", "alleen sport.", "niets."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q34",
+      "type": "multiple_choice",
+      "content": "<p>Geweld in huis (huiselijk geweld) is…</p>",
+      "options": ["normaal.", "verboden en strafbaar.", "een privézaak die mag."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q35",
+      "type": "multiple_choice",
+      "content": "<p>Welke drie bestuurslagen zijn er?</p>",
+      "options": [
+        "Noord, midden en zuid.",
+        "Koning, kerk en school.",
+        "Rijk, provincie en gemeente."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q36",
+      "type": "multiple_choice",
+      "content": "<p>Wat is voorschoolse educatie (vve)?</p>",
+      "options": ["Leren voor jonge kinderen vóór de basisschool.", "Werk.", "Een belasting."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q37",
+      "type": "multiple_choice",
+      "content": "<p>Voor een vervolgopleiding gelden vaak…</p>",
+      "options": ["geen enkele regel.", "toelatingseisen.", "alleen geld."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q38",
+      "type": "multiple_choice",
+      "content": "<p>Tot welke leeftijd zijn ouders aansprakelijk voor schade door hun kind?</p>",
+      "options": ["Tot 16 jaar.", "Tot 30 jaar.", "Nooit."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q39",
+      "type": "multiple_choice",
+      "content": "<p>Welke schoolkosten kunnen er zijn?</p>",
+      "options": ["Alleen snoep.", "Er zijn nooit kosten.", "Leermiddelen en reiskosten."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q40",
+      "type": "multiple_choice",
+      "content": "<p>Waarom moeten jongeren tot 18 een diploma halen (kwalificatieplicht)?</p>",
+      "options": [
+        "Om belasting te betalen.",
+        "Dat hoeft niet.",
+        "Om betere kansen op werk te hebben."
+      ],
+      "correctAnswer": 2
+    }
+  ]
+}

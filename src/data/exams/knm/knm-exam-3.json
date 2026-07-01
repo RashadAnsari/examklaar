@@ -1,0 +1,337 @@
+{
+  "id": "knm-exam-3",
+  "skill": "knm",
+  "level": null,
+  "title": "KNM Exam 3",
+  "timeLimitMinutes": 45,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een beoordelingsgesprek?</p>",
+      "options": ["Een sollicitatie.", "Een gesprek over hoe je werkt.", "Een feest."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q2",
+      "type": "multiple_choice",
+      "content": "<p>Wat doet een uitzendbureau?</p>",
+      "options": [
+        "Het geeft zorg.",
+        "Het verkoopt huizen.",
+        "Het helpt mensen aan (tijdelijk) werk."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q3",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een cao?</p>",
+      "options": [
+        "Afspraken over loon en arbeidsvoorwaarden in een sector.",
+        "Een soort belasting.",
+        "Een vakantie."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q4",
+      "type": "multiple_choice",
+      "content": "<p>Je krijgt bijstand. Wat wordt van je verwacht?</p>",
+      "options": ["Je best doen om werk te vinden.", "Niets.", "Verhuizen."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q5",
+      "type": "multiple_choice",
+      "content": "<p>Een werkgever wil iemand niet door zijn afkomst. Dat is…</p>",
+      "options": ["normaal.", "discriminatie en verboden.", "verplicht."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q6",
+      "type": "multiple_choice",
+      "content": "<p>Keti Koti herinnert aan…</p>",
+      "options": ["Kerst.", "Koningsdag.", "het einde van de slavernij."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q7",
+      "type": "multiple_choice",
+      "content": "<p>Hoe laat kom je het beste op je werk?</p>",
+      "options": ["Wanneer je wilt.", "Een uur te laat.", "Op tijd."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q8",
+      "type": "multiple_choice",
+      "content": "<p>Naast trouwen kun je in Nederland ook…</p>",
+      "options": [
+        "een geregistreerd partnerschap aangaan.",
+        "alleen zonder regels samenwonen.",
+        "niets regelen."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q9",
+      "type": "multiple_choice",
+      "content": "<p>Een buurman is overleden. Wat is gepast?</p>",
+      "options": ["Een feest geven.", "Condoleren (medeleven tonen).", "Niets, dat mag niet."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q10",
+      "type": "multiple_choice",
+      "content": "<p>Wanneer is pakjesavond (Sinterklaas)?</p>",
+      "options": ["In december (5 december).", "Met Pasen.", "In mei."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q11",
+      "type": "multiple_choice",
+      "content": "<p>Wie verhuurt vaak sociale huurwoningen?</p>",
+      "options": ["De school.", "De politie.", "Een woningcorporatie."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q12",
+      "type": "multiple_choice",
+      "content": "<p>Waarom scheiden mensen hun afval?</p>",
+      "options": ["Voor de sier.", "Het is beter voor het milieu.", "Dat hoeft niet."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q13",
+      "type": "multiple_choice",
+      "content": "<p>Je wilt internet thuis. Wat doe je?</p>",
+      "options": [
+        "Wachten tot het vanzelf komt.",
+        "Een provider kiezen en je aanmelden.",
+        "De gemeente bellen."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q14",
+      "type": "multiple_choice",
+      "content": "<p>Er is een storing in je energie. Wat doe je?</p>",
+      "options": ["Verhuizen.", "Niets.", "De storing melden."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q15",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de vrije sector bij huren?</p>",
+      "options": [
+        "Huurhuizen met een hogere huur, niet via de corporatie.",
+        "Een koophuis.",
+        "Gratis wonen."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q16",
+      "type": "multiple_choice",
+      "content": "<p>Hoe vaak mag je van zorgverzekering wisselen?</p>",
+      "options": ["Elke dag.", "Nooit.", "Eén keer per jaar."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q17",
+      "type": "multiple_choice",
+      "content": "<p>Wat is het medisch beroepsgeheim?</p>",
+      "options": [
+        "De dokter mag jouw informatie niet zomaar delen.",
+        "Je mag niet praten.",
+        "De dokter vertelt alles door."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q18",
+      "type": "multiple_choice",
+      "content": "<p>Waar koop je eenvoudige medicijnen zonder recept?</p>",
+      "options": ["Bij de KvK.", "Bij de drogist.", "Bij de bank."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q19",
+      "type": "multiple_choice",
+      "content": "<p>Bij wie kun je via de huisarts terecht voor bijvoorbeeld psychische klachten?</p>",
+      "options": ["De school.", "De politie.", "De huisarts of de praktijkondersteuner."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q20",
+      "type": "multiple_choice",
+      "content": "<p>Een oudere buurvrouw heeft hulp nodig. Waar kan ze terecht?</p>",
+      "options": ["Bij het wijkteam of gemeenteloket.", "Bij de tandarts.", "Bij de KvK."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q21",
+      "type": "multiple_choice",
+      "content": "<p>Wat deed Nederland vroeger in de koloniën?</p>",
+      "options": [
+        "Niets.",
+        "Het verhandelde en gebruikte tot slaaf gemaakte mensen.",
+        "Alleen handel in kaas."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q22",
+      "type": "multiple_choice",
+      "content": "<p>Wat zijn de Deltawerken?</p>",
+      "options": ["Een museum.", "Een feest.", "Bouwwerken die beschermen tegen het water."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q23",
+      "type": "multiple_choice",
+      "content": "<p>Welke stad is de hoofdstad, maar NIET waar de regering zit?</p>",
+      "options": ["Amsterdam.", "Den Haag.", "Utrecht."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q24",
+      "type": "multiple_choice",
+      "content": "<p>Na de oorlog kwamen er mensen naar Nederland…</p>",
+      "options": [
+        "alleen toeristen.",
+        "uit de koloniën, als arbeidsmigrant of als vluchteling.",
+        "er kwam niemand."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q25",
+      "type": "multiple_choice",
+      "content": "<p>Antisemitisme (haat tegen Joden) is in Nederland…</p>",
+      "options": ["verplicht.", "toegestaan.", "verboden."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q26",
+      "type": "multiple_choice",
+      "content": "<p>Wat is de voedselbank?</p>",
+      "options": [
+        "Een plek die eten geeft aan mensen met weinig geld.",
+        "Een gewone supermarkt.",
+        "Een bank voor geld."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q27",
+      "type": "multiple_choice",
+      "content": "<p>Waar vraag je een paspoort aan?</p>",
+      "options": ["Bij de huisarts.", "Bij de gemeente.", "Bij de KvK."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q28",
+      "type": "multiple_choice",
+      "content": "<p>Wat is belastingaangifte?</p>",
+      "options": [
+        "Een feest.",
+        "Een uitkering.",
+        "Doorgeven wat je verdiend hebt aan de Belastingdienst."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q29",
+      "type": "multiple_choice",
+      "content": "<p>De politie geeft je een aanwijzing. Wat doe je?</p>",
+      "options": ["Je volgt de aanwijzing op.", "Je negeert het.", "Je rent weg."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q30",
+      "type": "multiple_choice",
+      "content": "<p>Je hebt een juridisch probleem en weinig geld. Waar kun je hulp vragen?</p>",
+      "options": ["Bij de bakker.", "Bij het Juridisch Loket.", "Bij de school."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q31",
+      "type": "multiple_choice",
+      "content": "<p>De macht is in Nederland verdeeld. Welke drie machten zijn er?</p>",
+      "options": [
+        "Noord, oost en zuid.",
+        "Wetgevend, uitvoerend en rechterlijk.",
+        "Koning, kerk en leger."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q32",
+      "type": "multiple_choice",
+      "content": "<p>Wat is vrijheid van meningsuiting?</p>",
+      "options": [
+        "Je mag alles zeggen, ook bedreigen.",
+        "Je mag niets zeggen.",
+        "Je mag je mening zeggen, maar niet wat de wet verbiedt."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q33",
+      "type": "multiple_choice",
+      "content": "<p>Waarvoor stem je bij de Tweede Kamerverkiezingen?</p>",
+      "options": ["Voor het landelijke parlement.", "Voor de buurman.", "Voor de koning."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q34",
+      "type": "multiple_choice",
+      "content": "<p>In Nederland is je privacy…</p>",
+      "options": ["beschermd.", "verboden.", "niet belangrijk."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q35",
+      "type": "multiple_choice",
+      "content": "<p>Een vrouw mag zelf beslissen over haar eigen leven en lichaam. Dat heet…</p>",
+      "options": ["belasting.", "leerplicht.", "zelfbeschikkingsrecht."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q36",
+      "type": "multiple_choice",
+      "content": "<p>Voor kinderen die extra hulp nodig hebben is er…</p>",
+      "options": ["alleen thuisles.", "speciaal onderwijs.", "geen school."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q37",
+      "type": "multiple_choice",
+      "content": "<p>Wat is buitenschoolse opvang (bso)?</p>",
+      "options": ["Een belasting.", "Opvang voor en na schooltijd.", "Een ziekenhuis."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q38",
+      "type": "multiple_choice",
+      "content": "<p>Ouders hebben hulp nodig bij de opvoeding. Waar kunnen ze terecht?</p>",
+      "options": ["Bij de KvK.", "Nergens.", "Bij de gemeente, jeugdzorg, school of huisarts."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q39",
+      "type": "multiple_choice",
+      "content": "<p>Een kind van 8 gaat zonder reden niet naar school. Dat mag…</p>",
+      "options": ["niet, er is leerplicht.", "alleen in de zomer.", "wel."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q40",
+      "type": "multiple_choice",
+      "content": "<p>Voor schoolkosten kun je soms hulp krijgen van…</p>",
+      "options": ["de tandarts.", "DUO (tegemoetkoming).", "de politie."],
+      "correctAnswer": 1
+    }
+  ]
+}
