@@ -23,28 +23,17 @@ bun dev
 
 Requires environment variables for Supabase, Google AI, and Paddle: see `.env.example`.
 
-## Testing payment webhooks
+## Documentation
 
-Paddle delivers webhooks server-to-server, so to receive them locally you expose your dev server through a tunnel and point a Paddle notification destination at it. See Paddle's [webhook docs](https://developer.paddle.com/webhooks/test-webhooks) for details.
+- [Exam JSON format](docs/exam-format.md) — the schema, per-skill conventions, and asset rules for exam data files.
+- [A2 exam generation runbook](docs/a2-exam-generation.md) — how to author a new A2 exam for any component in the app's format.
+- [Reference example exams](docs/examples/README.md) — official A2 exams, one or more per component, for inspiration.
+- [Dutch text-to-speech](docs/dutch-text-to-speech.md) — generating spoken Dutch audio locally for listening and speaking prompts.
+- [Image generation](docs/image-generation.md) — generating exam scene images locally.
+- [Testing payment webhooks](docs/testing-payment-webhooks.md) — receiving Paddle webhooks against a local dev server.
 
-1. Start a tunnel to your dev server and copy the public URL it prints:
+## Skills
 
-   ```bash
-   ngrok http 3000
-   # or
-   cloudflared tunnel --url http://localhost:3000
-   ```
+Project skills live in `.claude/skills/` and are invoked with a slash command.
 
-2. Allow the tunnel host so Next.js accepts dev requests through it. Set `DEV_TUNNEL_HOST` in `.env.local` to the tunnel host (no protocol, e.g. `abc123.trycloudflare.com`), then restart the dev server. `next.config.ts` reads it into `allowedDevOrigins`:
-
-   ```bash
-   DEV_TUNNEL_HOST=abc123.trycloudflare.com
-   ```
-
-3. In the Paddle sandbox dashboard, create a notification destination of type **URL** pointing at `<tunnel-url>/api/payments/webhook`.
-4. Also set the tunnel URL as the checkout URL in Paddle. Under **Checkout > Settings**, add the tunnel domain as an approved domain and set the default payment link to `<tunnel-url>/checkout`, so the hosted checkout opens against your local app.
-5. Trigger a real event in the sandbox (e.g. start or cancel a subscription). Paddle delivers it to your destination, and the tunnel forwards it to your local endpoint. Paddle's destination view shows each delivery's payload, request, and your handler's response, so you can confirm it returned `200`.
-
-Events carry a real `paddle-signature` header signed with your endpoint secret, so signature verification runs exactly as it does in production. No CORS or signing workarounds are needed.
-
-**Idempotency caveat**: the handler dedupes on a hash of the raw signature-verified body, so redelivering an identical event is ignored the second time (it returns `ok` early). Clear the matching `processed_webhook_events` row to process the same event again.
+- **`/generate-a2-exam <reading|listening|writing|speaking|knm>`** — generates a new A2 exam for a component, writes the JSON into the exam data, and stages an assets folder to upload to Supabase.
