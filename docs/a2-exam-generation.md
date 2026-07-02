@@ -283,7 +283,7 @@ A full mock = exactly 4 tasks (1 form + 1-2 messages + 1-2 open); `timeLimitMinu
 **Construction rules**
 
 - Part 1: write a short, clearly-articulated A2 spoken-prompt line = **model statement + direct question + "Vertel ook …"** (rendered to a talking-head video, see the output template).
-- Parts 2–4: give **image-production notes** (scene description per picture) + the **exact spoken question** in simple Dutch.
+- Parts 2–4: give **image-production notes** (scene description per picture) + the **exact spoken question** in simple Dutch. The notes must be complete prompts per the completeness checklist in [`image-generation.md`](./image-generation.md): subject with age and clothing, the exact action, every object the question relies on by name, setting, background, and framing; never a bare one-liner.
 - One clear communicative task per item + a sub-instruction to elicit a reason/detail; concrete familiar topics; **no B1 argumentation**; spread themes; no repeated situations.
 
 **Assessment.** The app AI-grades via `grader.ts` (6 criteria, 12 pts/task, pass 60%). DUO's official model scores each answer on six categories (~12 pts): **adequaatheid/begrijpelijkheid** (0-3, precondition; if 0 → all others 0), **woordgebruik** (0-2), **grammatica** (0-2), **vloeiendheid** (0-2), **coherentie** (0-1), **uitspraak** (0-2).
@@ -314,7 +314,7 @@ Parts 2-4 (1 / 2 / 3 generated images + the exact spoken question) open with a `
 }
 ```
 
-A full mock = 16 tasks (4+4+4+4); `timeLimitMinutes: 35`. Not auto-scored: speaking is AI-graded (`grader.ts`, 6 criteria, 12 pts/task, pass 60%); the `data-transcription` text is what the grader reads for context, so it must match the spoken prompt. Write image briefs as English prompts for the image pipeline.
+A full mock = 16 tasks (4+4+4+4); `timeLimitMinutes: 35`. Not auto-scored: speaking is AI-graded (`grader.ts`, 6 criteria, 12 pts/task, pass 60%); the `data-transcription` text is what the grader reads for context, so it must match the spoken prompt. Write image briefs as complete, fully detailed English prompts per the completeness checklist in [`image-generation.md`](./image-generation.md); anything the spoken question asks the candidate to describe must be named in the prompt.
 
 ---
 

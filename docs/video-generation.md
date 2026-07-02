@@ -104,6 +104,11 @@ a portrait animate well:
   one portrait for all prompts spoken by the same voice within an exam, like the single examiner in
   the real exam.
 
+As with every image prompt, write the portrait prompt complete per the completeness checklist in
+[`image-generation.md`](./image-generation.md): age, hair, clothing, expression, framing, background,
+and lighting all named. Vague or appearance-only prompts drift to tight, angled beauty-shot crops
+that animate poorly.
+
 Prompt that works (append the standard realistic style suffix):
 
 ```

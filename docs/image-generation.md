@@ -60,9 +60,23 @@ The commands below use the mirror; swap in `--model schnell --quantize 4` once a
 FLUX understands English far better than Dutch, so each Dutch scene becomes an English prompt in two
 steps:
 
-1. **Translate and lightly expand** the scene, naming the concrete objects so the model has
-   something to draw. Keep it faithful to the source; do not invent a different situation.
+1. **Translate and fully expand** the scene into a complete prompt. The model draws only what the
+   prompt names: a thin one-line prompt produces a generic, often wrongly framed image, so write
+   every prompt out in full (typically 3 to 6 dense clauses). Keep it faithful to the source; do not
+   invent a different situation.
 2. **Append the fixed style suffix**, identical on every image, so the whole set looks consistent.
+
+**Completeness checklist.** Every prompt must specify all of these:
+
+- **Subject(s):** who, approximate age, clothing, expression or posture.
+- **Action:** exactly what they are doing, with which object.
+- **Objects:** every item the scene or question relies on, by name, with color or size when it
+  matters. If a question will ask about a detail, that detail must be named in the prompt.
+- **Setting:** the kind of place, indoor or outdoor, everyday Dutch context.
+- **Background:** what is visible behind the subject; keep it plausible and uncluttered.
+- **Composition:** camera distance and angle, and what is in frame (for example "seen from chest
+  height", "head and shoulders", "whole person visible"). Underspecified framing is the most common
+  failure: portrait-style prompts drift to tight, angled beauty-shot crops.
 
 Realistic style suffix:
 
@@ -75,9 +89,11 @@ Example. Source `Een man scant zelf zijn groente en melk bij een zelfscankassa i
 becomes:
 
 ```
-A man at a self-checkout machine in a supermarket, scanning his own groceries: fresh vegetables and
-a carton of milk, shelves and baskets behind him. realistic photograph, natural lighting, candid
-everyday scene, shallow depth of field, 35mm lens, photorealistic, high detail
+A man in his forties in a casual dark jacket stands at a self-checkout machine in a bright
+supermarket, scanning a red bell pepper with the hand scanner; on the counter next to him a carton
+of milk and a shopping basket with fresh vegetables, rows of stocked shelves behind him, seen from
+chest height with the man and the machine fully in frame. realistic photograph, natural lighting,
+candid everyday scene, shallow depth of field, 35mm lens, photorealistic, high detail
 ```
 
 ## Rendering one image
