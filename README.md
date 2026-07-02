@@ -30,6 +30,7 @@ Requires environment variables for Supabase, Google AI, and Paddle: see `.env.ex
 - [Reference example exams](docs/examples/README.md) — official A2 exams, one or more per component, for inspiration.
 - [Dutch text-to-speech](docs/dutch-text-to-speech.md) — generating spoken Dutch audio locally for listening and speaking prompts.
 - [Image generation](docs/image-generation.md) — generating exam scene images locally.
+- [Video generation](docs/video-generation.md) — generating talking-head videos locally for speaking Part 1 prompts.
 - [Testing payment webhooks](docs/testing-payment-webhooks.md) — receiving Paddle webhooks against a local dev server.
 
 ## Skills

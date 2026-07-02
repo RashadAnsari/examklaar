@@ -19,6 +19,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     ".claude/**",
+    ".venv/**",
     ".claude-flow/**",
     ".mcp.json",
   ]),
