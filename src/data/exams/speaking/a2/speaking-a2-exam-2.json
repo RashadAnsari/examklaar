@@ -8,28 +8,28 @@
     {
       "id": "q1",
       "type": "speaking",
-      "content": "<audio controls data-transcription=\"Ik werk vier dagen per week in een winkel. Wat voor werk doet u, of wilt u doen? Vertel ook waarom.\" style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-2/16190cd6-5cb6-4ce5-b9ac-d17e36b3efe3.mp3\" type=\"audio/mpeg\" /></audio>",
+      "content": "<video controls data-transcription=\"Ik werk vier dagen per week in een winkel. Wat voor werk doet u, of wilt u doen? Vertel ook waarom.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-2/78efd593-9a7d-435e-a38a-a0eaba6fd9de.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q2",
       "type": "speaking",
-      "content": "<audio controls data-transcription=\"Ik sport elke dinsdag bij een sportclub. Wat doet u om gezond te blijven? Vertel ook hoe vaak.\" style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-2/3b51b5a5-e1d5-4a63-bfdf-0f1736fc2dfc.mp3\" type=\"audio/mpeg\" /></audio>",
+      "content": "<video controls data-transcription=\"Ik sport elke dinsdag bij een sportclub. Wat doet u om gezond te blijven? Vertel ook hoe vaak.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-2/7d7cb2ff-bbf7-4292-a2ae-9395acf2a1c3.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q3",
       "type": "speaking",
-      "content": "<audio controls data-transcription=\"Ik ga in de zomer met de auto op vakantie. Waar gaat u graag naartoe? Vertel ook met wie.\" style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-2/7720c4da-c46f-44a2-b36f-830c745f3e7f.mp3\" type=\"audio/mpeg\" /></audio>",
+      "content": "<video controls data-transcription=\"Ik ga in de zomer met de auto op vakantie. Waar gaat u graag naartoe? Vertel ook met wie.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-2/edefa81f-2a44-4821-85a1-2a7831c819ae.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q4",
       "type": "speaking",
-      "content": "<audio controls data-transcription=\"Ik maak een afspraak bij de tandarts via de telefoon. Hoe maakt u een afspraak bij de dokter? Vertel ook wanneer u laatst ging.\" style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-2/1158a535-ff9e-41bf-bc1e-5653af2d2f8e.mp3\" type=\"audio/mpeg\" /></audio>",
+      "content": "<video controls data-transcription=\"Ik maak een afspraak bij de tandarts via de telefoon. Hoe maakt u een afspraak bij de dokter? Vertel ook wanneer u laatst ging.\" style=\"width: 100%; max-width: 560px; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-2/8ad4e7f5-3859-44be-b34a-680b4f5508ae.mp4\" type=\"video/mp4\" /></video>",
       "options": null,
       "correctAnswer": null
     },

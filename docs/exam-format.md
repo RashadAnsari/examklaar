@@ -147,9 +147,9 @@ Tag patterns:
 
 - **Speaking prompt:** a `<video>` (or `<audio>`) whose `data-transcription` attribute holds the
   spoken prompt text. The grader reads that attribute for context instead of fetching the clip, so it
-  is required on every speaking prompt. New exams use the video variant (a talking-head clip
-  generated per [`video-generation.md`](./video-generation.md)); the audio variant appears in older
-  exams.
+  is required on every speaking prompt. All exams use the video variant (a talking-head clip
+  generated per [`video-generation.md`](./video-generation.md)); the audio variant remains supported
+  by the player and grader as a legacy fallback.
 
   Video variant:
 
