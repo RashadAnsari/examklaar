@@ -49,6 +49,7 @@ supabase/*
 # claude
 .claude/*
 !.claude/skills/
+!.claude/agents/
 .claude-flow/
 .mcp.json
 REVIEW_REPORT.md
