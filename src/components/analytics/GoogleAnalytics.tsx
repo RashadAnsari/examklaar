@@ -23,7 +23,10 @@ export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
         {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${measurementId}');`}
+gtag('config', '${measurementId}', {
+  allow_google_signals: false,
+  allow_ad_personalization_signals: false
+});`}
       </Script>
     </>
   );

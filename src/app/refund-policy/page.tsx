@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.examklaar.nl/refund-policy" },
 };
 
-const LAST_UPDATED = "17 April 2026";
+const LAST_UPDATED = "2 July 2026";
 
 const SECTIONS = [
   {
@@ -25,7 +25,7 @@ const SECTIONS = [
   {
     title: "3. Statutory Right of Withdrawal (EU/EEA Consumers)",
     content:
-      "If you are a consumer in the European Union or European Economic Area, you have a statutory 14-day right of withdrawal under the EU Consumer Rights Directive (2011/83/EU). However, by starting to use ExamKlaar immediately after purchase, you expressly request that service delivery begins before the withdrawal period ends. You acknowledge that your right of withdrawal is lost once the service has begun, in accordance with Article 16(m) of the Directive and Article 6:230p(3)(c) of the Dutch Civil Code (BW).",
+      "If you are a consumer in the European Union or European Economic Area, you have a statutory 14-day right of withdrawal under the EU Consumer Rights Directive (2011/83/EU). At checkout you expressly consent to delivery starting immediately and acknowledge that the right of withdrawal is lost once delivery of the digital content has begun, in accordance with Article 16(m) of the Directive and article 6:230p under (g) of the Dutch Civil Code (BW). Where the law treats your subscription as an ongoing digital service rather than digital content, a withdrawal within 14 days entitles you to a refund reduced by a proportionate amount for the service already provided (Article 14(3) of the Directive).",
     footer:
       "If you have not yet accessed any paid features, you may contact Paddle within 14 days of purchase to request a withdrawal. Paddle will assess such requests in accordance with their Buyer Terms.",
   },

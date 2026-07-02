@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.examklaar.nl/privacy-policy" },
 };
 
-const LAST_UPDATED = "19 June 2026";
+const LAST_UPDATED = "2 July 2026";
 
 const SECTIONS = [
   {
@@ -34,7 +34,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Audio recordings",
-        text: "For speaking exercises, we collect the audio you submit. These are used solely to generate AI-powered feedback and are automatically deleted after 30 days.",
+        text: "For speaking exercises, we collect the audio you submit. Recordings are transcribed on our own infrastructure, used solely to generate AI-powered feedback, and automatically deleted after 30 days.",
       },
       {
         subtitle: "Payment reference data",
@@ -96,11 +96,11 @@ const SECTIONS = [
     items: [
       {
         subtitle: "Supabase Inc., Data Processor",
-        text: "Our database, authentication, and file storage provider. Your account data, exam results, and audio recordings are stored on Supabase infrastructure hosted in Ireland (EU). No data is transferred outside the EEA.",
+        text: "Our database, authentication, and file storage provider. Your account data, exam results, and audio recordings are stored on Supabase infrastructure hosted in Ireland (EU). Supabase Inc. is a US company; any incidental access from outside the EEA is covered by Standard Contractual Clauses in Supabase's data processing agreement.",
       },
       {
         subtitle: "Google LLC (USA), Data Processor",
-        text: "We use Google AI models to generate feedback on your written answers and audio. Only exam content is shared, no account identifiers. Transfers are covered by SCCs.",
+        text: "We use Google AI models to generate feedback on your written answers and on transcripts of your speaking recordings. Your audio files are transcribed on our own infrastructure and are not sent to Google. Only exam content is shared, no account identifiers. Transfers are covered by SCCs.",
       },
       {
         subtitle: "Paddle.com Market Ltd (UK), Independent Data Controller",
@@ -112,7 +112,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Google LLC (USA), Data Processor (Google Analytics)",
-        text: "If you accept analytics cookies, we use Google Analytics to understand how visitors use our website. Google processes usage and device data on our behalf and sets cookies to do so. We have enabled IP anonymisation and disabled advertising and data-sharing features. Transfers to the USA are covered by the EU-US Data Privacy Framework. No analytics data is collected until you consent.",
+        text: "If you accept analytics cookies, we use Google Analytics to understand how visitors use our website. Google processes usage and device data on our behalf and sets cookies to do so. Google Analytics 4 does not log or store full IP addresses, and we have disabled advertising, remarketing, and data-sharing (Google signals) features. Transfers to the USA are covered by the EU-US Data Privacy Framework. No analytics data is collected until you consent.",
       },
     ],
     footer:
@@ -121,7 +121,7 @@ const SECTIONS = [
   {
     title: "6. International Data Transfers",
     content:
-      "Your core data (account, exam results, recordings) is stored within the EEA on Supabase infrastructure in Ireland and is not transferred internationally. Some of our other service providers are based outside the EEA. Where such transfers occur, we ensure appropriate safeguards are in place:",
+      "Your core data (account, exam results, recordings) is stored within the EEA on Supabase infrastructure in Ireland. Some of our service providers are based outside the EEA. Where transfers occur, we ensure appropriate safeguards are in place:",
     items: [
       {
         subtitle: "EU-US Data Privacy Framework",
@@ -130,6 +130,10 @@ const SECTIONS = [
       {
         subtitle: "Adequacy decision",
         text: "For transfers to Paddle (United Kingdom), the European Commission has recognised the UK as providing an adequate level of data protection.",
+      },
+      {
+        subtitle: "Standard Contractual Clauses",
+        text: "For any incidental access by Supabase Inc. (USA) to data hosted in the EU, Standard Contractual Clauses under Article 46(2)(c) GDPR apply.",
       },
     ],
     footer:
@@ -213,7 +217,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Analytics cookies (Google Analytics)",
-        text: "If you accept, Google Analytics sets cookies to measure traffic and understand how the platform is used. We have enabled IP anonymisation and disabled advertising, remarketing, and data-sharing features. These cookies are placed only after consent and are not used to build advertising profiles.",
+        text: "If you accept, Google Analytics sets cookies to measure traffic and understand how the platform is used. Google Analytics 4 does not log or store full IP addresses, and we have disabled advertising, remarketing, and data-sharing (Google signals) features. These cookies are placed only after consent and are not used to build advertising profiles.",
       },
       {
         subtitle: "Managing and withdrawing consent",

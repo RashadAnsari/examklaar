@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.examklaar.nl/terms-and-conditions" },
 };
 
-const LAST_UPDATED = "19 June 2026";
+const LAST_UPDATED = "2 July 2026";
 
 const SECTIONS = [
   {
@@ -79,7 +79,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Refunds",
-        text: "ExamKlaar does not offer discretionary refunds. Because Paddle acts as Merchant of Record, all refund requests and payment disputes must be directed to Paddle and are governed by Paddle's Buyer Terms. EU consumers retain any statutory rights of withdrawal that apply under Paddle's Buyer Terms. For full details, see our Refund Policy at examklaar.nl/refund-policy.",
+        text: "ExamKlaar does not offer discretionary refunds. Because Paddle acts as Merchant of Record, all refund requests and payment disputes must be directed to Paddle and are governed by Paddle's Buyer Terms. EU consumers retain their statutory right of withdrawal; withdrawal and refund requests are handled by Paddle under its Buyer Terms. For full details, see our Refund Policy at examklaar.nl/refund-policy.",
       },
     ],
   },
@@ -117,7 +117,7 @@ const SECTIONS = [
   {
     title: "Article 8. AI Feedback Disclaimer",
     content:
-      "ExamKlaar uses third-party artificial intelligence to generate feedback on exam responses and audio recordings. This feedback is for educational purposes only and does not constitute a guarantee of exam results. AI feedback may occasionally contain errors or inaccuracies. We make no warranty that the feedback is correct, complete, or suitable for any particular purpose, and we do not guarantee that using ExamKlaar will result in passing the official inburgering exam.",
+      "ExamKlaar uses third-party artificial intelligence to generate feedback on written exam responses and on transcripts of audio recordings. This feedback is for educational purposes only and does not constitute a guarantee of exam results. AI feedback may occasionally contain errors or inaccuracies. We make no warranty that the feedback is correct, complete, or suitable for any particular purpose, and we do not guarantee that using ExamKlaar will result in passing the official inburgering exam.",
   },
   {
     title: "Article 9. Availability",
@@ -173,8 +173,8 @@ const SECTIONS = [
         text: "If you have a complaint or dispute, contact us first at hallo@examklaar.nl. We aim to resolve all disputes amicably within 30 days.",
       },
       {
-        subtitle: "Online Dispute Resolution (EU consumers)",
-        text: "EU consumers who cannot resolve a complaint directly with us may submit their dispute to the European Online Dispute Resolution platform at https://ec.europa.eu/consumers/odr/. For payment-related disputes, please use the ODR platform in relation to Paddle as the Merchant of Record.",
+        subtitle: "Alternative dispute resolution (EU consumers)",
+        text: "EU consumers who cannot resolve a complaint directly with us may refer the dispute to a recognised alternative dispute resolution body in their country of residence. Payment and billing disputes should be directed to Paddle as the Merchant of Record via paddle.net.",
       },
       {
         subtitle: "Competent court",
