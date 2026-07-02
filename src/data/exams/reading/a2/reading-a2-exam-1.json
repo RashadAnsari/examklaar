@@ -8,28 +8,28 @@
     {
       "id": "q1",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw De Wit,</p><p>U heeft drie boeken geleend bij Bibliotheek Zuid. De boeken moeten uiterlijk vrijdag 14 maart terug zijn. Brengt u de boeken te laat terug? Dan betaalt u 20 cent per dag per boek. U kunt de boeken ook online verlengen via onze website. Verlengen kan tot één dag voor de datum.</p><p>Heeft u vragen? Bel ons op werkdagen tussen 9.00 en 17.00 uur.</p><p>Met vriendelijke groet,<br>Bibliotheek Zuid</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer moeten de boeken uiterlijk terug zijn?</strong></p>",
+      "content": "<p><em>Mevrouw De Wit krijgt een brief van de bibliotheek.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw De Wit,</p><p>U heeft drie boeken geleend bij Bibliotheek Zuid. De boeken moeten uiterlijk vrijdag 14 maart terug zijn. Brengt u de boeken te laat terug? Dan betaalt u 20 cent per dag per boek. U kunt de boeken ook online verlengen via onze website. Verlengen kan tot één dag voor de datum.</p><p>Heeft u vragen? Bel ons op werkdagen tussen 9.00 en 17.00 uur.</p><p>Met vriendelijke groet,<br>Bibliotheek Zuid</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer moeten de boeken uiterlijk terug zijn?</strong></p>",
       "options": ["zaterdag 15 maart", "vrijdag 14 maart", "donderdag 13 maart"],
       "correctAnswer": 1
     },
     {
       "id": "q2",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw De Wit,</p><p>U heeft drie boeken geleend bij Bibliotheek Zuid. De boeken moeten uiterlijk vrijdag 14 maart terug zijn. Brengt u de boeken te laat terug? Dan betaalt u 20 cent per dag per boek. U kunt de boeken ook online verlengen via onze website. Verlengen kan tot één dag voor de datum.</p><p>Heeft u vragen? Bel ons op werkdagen tussen 9.00 en 17.00 uur.</p><p>Met vriendelijke groet,<br>Bibliotheek Zuid</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel betaalt mevrouw De Wit als één boek één dag te laat is?</strong></p>",
+      "content": "<p><em>Mevrouw De Wit krijgt een brief van de bibliotheek.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw De Wit,</p><p>U heeft drie boeken geleend bij Bibliotheek Zuid. De boeken moeten uiterlijk vrijdag 14 maart terug zijn. Brengt u de boeken te laat terug? Dan betaalt u 20 cent per dag per boek. U kunt de boeken ook online verlengen via onze website. Verlengen kan tot één dag voor de datum.</p><p>Heeft u vragen? Bel ons op werkdagen tussen 9.00 en 17.00 uur.</p><p>Met vriendelijke groet,<br>Bibliotheek Zuid</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel betaalt mevrouw De Wit als één boek één dag te laat is?</strong></p>",
       "options": ["9 cent", "14 cent", "20 cent"],
       "correctAnswer": 2
     },
     {
       "id": "q3",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw De Wit,</p><p>U heeft drie boeken geleend bij Bibliotheek Zuid. De boeken moeten uiterlijk vrijdag 14 maart terug zijn. Brengt u de boeken te laat terug? Dan betaalt u 20 cent per dag per boek. U kunt de boeken ook online verlengen via onze website. Verlengen kan tot één dag voor de datum.</p><p>Heeft u vragen? Bel ons op werkdagen tussen 9.00 en 17.00 uur.</p><p>Met vriendelijke groet,<br>Bibliotheek Zuid</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Tot wanneer kan zij de boeken online verlengen?</strong></p>",
+      "content": "<p><em>Mevrouw De Wit krijgt een brief van de bibliotheek.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw De Wit,</p><p>U heeft drie boeken geleend bij Bibliotheek Zuid. De boeken moeten uiterlijk vrijdag 14 maart terug zijn. Brengt u de boeken te laat terug? Dan betaalt u 20 cent per dag per boek. U kunt de boeken ook online verlengen via onze website. Verlengen kan tot één dag voor de datum.</p><p>Heeft u vragen? Bel ons op werkdagen tussen 9.00 en 17.00 uur.</p><p>Met vriendelijke groet,<br>Bibliotheek Zuid</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Tot wanneer kan zij de boeken online verlengen?</strong></p>",
       "options": ["tot één dag voor 14 maart", "tot 17.00 uur", "alleen op vrijdag"],
       "correctAnswer": 0
     },
     {
       "id": "q4",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Een nieuwe speeltuin in de wijk</h3><p>In de wijk Noord komt een nieuwe speeltuin. De oude speeltuin was kapot en niet veilig. Veel ouders klaagden hierover bij de gemeente. Daarom besloot de gemeente om een nieuwe speeltuin te bouwen.</p><p>De speeltuin krijgt een grote glijbaan, drie schommels en een zandbak. Ook komt er een bankje voor de ouders. De gemeente betaalt de helft van het geld. De rest komt van de mensen in de wijk. Zij hielden een markt en verkochten taart en oude spullen. Zo verdienden zij 2.000 euro.</p><p>De nieuwe speeltuin is klaar in september. Dan is er een klein feest voor alle kinderen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom komt er een nieuwe speeltuin?</strong></p>",
+      "content": "<p><em>In de wijkkrant staat een tekst over een nieuwe speeltuin.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Een nieuwe speeltuin in de wijk</h3><p>In de wijk Noord komt een nieuwe speeltuin. De oude speeltuin was kapot en niet veilig. Veel ouders klaagden hierover bij de gemeente. Daarom besloot de gemeente om een nieuwe speeltuin te bouwen.</p><p>De speeltuin krijgt een grote glijbaan, drie schommels en een zandbak. Ook komt er een bankje voor de ouders. De gemeente betaalt de helft van het geld. De rest komt van de mensen in de wijk. Zij hielden een markt en verkochten taart en oude spullen. Zo verdienden zij 2.000 euro.</p><p>De nieuwe speeltuin is klaar in september. Dan is er een klein feest voor alle kinderen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom komt er een nieuwe speeltuin?</strong></p>",
       "options": [
         "De gemeente had te veel geld.",
         "De kinderen wilden een grotere glijbaan.",
@@ -40,7 +40,7 @@
     {
       "id": "q5",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Een nieuwe speeltuin in de wijk</h3><p>In de wijk Noord komt een nieuwe speeltuin. De oude speeltuin was kapot en niet veilig. Veel ouders klaagden hierover bij de gemeente. Daarom besloot de gemeente om een nieuwe speeltuin te bouwen.</p><p>De speeltuin krijgt een grote glijbaan, drie schommels en een zandbak. Ook komt er een bankje voor de ouders. De gemeente betaalt de helft van het geld. De rest komt van de mensen in de wijk. Zij hielden een markt en verkochten taart en oude spullen. Zo verdienden zij 2.000 euro.</p><p>De nieuwe speeltuin is klaar in september. Dan is er een klein feest voor alle kinderen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe kwamen de bewoners aan geld voor de speeltuin?</strong></p>",
+      "content": "<p><em>In de wijkkrant staat een tekst over een nieuwe speeltuin.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Een nieuwe speeltuin in de wijk</h3><p>In de wijk Noord komt een nieuwe speeltuin. De oude speeltuin was kapot en niet veilig. Veel ouders klaagden hierover bij de gemeente. Daarom besloot de gemeente om een nieuwe speeltuin te bouwen.</p><p>De speeltuin krijgt een grote glijbaan, drie schommels en een zandbak. Ook komt er een bankje voor de ouders. De gemeente betaalt de helft van het geld. De rest komt van de mensen in de wijk. Zij hielden een markt en verkochten taart en oude spullen. Zo verdienden zij 2.000 euro.</p><p>De nieuwe speeltuin is klaar in september. Dan is er een klein feest voor alle kinderen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe kwamen de bewoners aan geld voor de speeltuin?</strong></p>",
       "options": [
         "Zij hielden een markt en verkochten taart en spullen.",
         "Zij leenden het van de bank.",
@@ -51,49 +51,49 @@
     {
       "id": "q6",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Een nieuwe speeltuin in de wijk</h3><p>In de wijk Noord komt een nieuwe speeltuin. De oude speeltuin was kapot en niet veilig. Veel ouders klaagden hierover bij de gemeente. Daarom besloot de gemeente om een nieuwe speeltuin te bouwen.</p><p>De speeltuin krijgt een grote glijbaan, drie schommels en een zandbak. Ook komt er een bankje voor de ouders. De gemeente betaalt de helft van het geld. De rest komt van de mensen in de wijk. Zij hielden een markt en verkochten taart en oude spullen. Zo verdienden zij 2.000 euro.</p><p>De nieuwe speeltuin is klaar in september. Dan is er een klein feest voor alle kinderen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de speeltuin klaar?</strong></p>",
+      "content": "<p><em>In de wijkkrant staat een tekst over een nieuwe speeltuin.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Een nieuwe speeltuin in de wijk</h3><p>In de wijk Noord komt een nieuwe speeltuin. De oude speeltuin was kapot en niet veilig. Veel ouders klaagden hierover bij de gemeente. Daarom besloot de gemeente om een nieuwe speeltuin te bouwen.</p><p>De speeltuin krijgt een grote glijbaan, drie schommels en een zandbak. Ook komt er een bankje voor de ouders. De gemeente betaalt de helft van het geld. De rest komt van de mensen in de wijk. Zij hielden een markt en verkochten taart en oude spullen. Zo verdienden zij 2.000 euro.</p><p>De nieuwe speeltuin is klaar in september. Dan is er een klein feest voor alle kinderen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de speeltuin klaar?</strong></p>",
       "options": ["volgend jaar", "in september", "in maart"],
       "correctAnswer": 1
     },
     {
       "id": "q7",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Sara en haar buurman Peter</h3><p>Sara: Hoi Peter, ik zoek een goede tandarts in de buurt. Ken jij er een?<br>Peter: Ja, ik ga naar tandarts Smit op de Kerkstraat. Hij is heel aardig.<br>Sara: Is het ver lopen?<br>Peter: Nee hoor, vijf minuten. Maar je moet wel bellen voor een afspraak. Hij is vaak druk.<br>Sara: Oké, bedankt! Heeft hij ook tijd in het weekend?<br>Peter: Nee, alleen op werkdagen. In het weekend is hij dicht.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat zoekt Sara?</strong></p>",
+      "content": "<p><em>Sara praat met haar buurman Peter voor het huis.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Sara en haar buurman Peter</h3><p>Sara: Hoi Peter, ik zoek een goede tandarts in de buurt. Ken jij er een?<br>Peter: Ja, ik ga naar tandarts Smit op de Kerkstraat. Hij is heel aardig.<br>Sara: Is het ver lopen?<br>Peter: Nee hoor, vijf minuten. Maar je moet wel bellen voor een afspraak. Hij is vaak druk.<br>Sara: Oké, bedankt! Heeft hij ook tijd in het weekend?<br>Peter: Nee, alleen op werkdagen. In het weekend is hij dicht.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat zoekt Sara?</strong></p>",
       "options": ["een nieuwe buurman", "een huis in de Kerkstraat", "een goede tandarts"],
       "correctAnswer": 2
     },
     {
       "id": "q8",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Sara en haar buurman Peter</h3><p>Sara: Hoi Peter, ik zoek een goede tandarts in de buurt. Ken jij er een?<br>Peter: Ja, ik ga naar tandarts Smit op de Kerkstraat. Hij is heel aardig.<br>Sara: Is het ver lopen?<br>Peter: Nee hoor, vijf minuten. Maar je moet wel bellen voor een afspraak. Hij is vaak druk.<br>Sara: Oké, bedankt! Heeft hij ook tijd in het weekend?<br>Peter: Nee, alleen op werkdagen. In het weekend is hij dicht.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe ver is de tandarts?</strong></p>",
+      "content": "<p><em>Sara praat met haar buurman Peter voor het huis.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Sara en haar buurman Peter</h3><p>Sara: Hoi Peter, ik zoek een goede tandarts in de buurt. Ken jij er een?<br>Peter: Ja, ik ga naar tandarts Smit op de Kerkstraat. Hij is heel aardig.<br>Sara: Is het ver lopen?<br>Peter: Nee hoor, vijf minuten. Maar je moet wel bellen voor een afspraak. Hij is vaak druk.<br>Sara: Oké, bedankt! Heeft hij ook tijd in het weekend?<br>Peter: Nee, alleen op werkdagen. In het weekend is hij dicht.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe ver is de tandarts?</strong></p>",
       "options": ["een half uur lopen", "vijf minuten lopen", "met de bus"],
       "correctAnswer": 1
     },
     {
       "id": "q9",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Sara en haar buurman Peter</h3><p>Sara: Hoi Peter, ik zoek een goede tandarts in de buurt. Ken jij er een?<br>Peter: Ja, ik ga naar tandarts Smit op de Kerkstraat. Hij is heel aardig.<br>Sara: Is het ver lopen?<br>Peter: Nee hoor, vijf minuten. Maar je moet wel bellen voor een afspraak. Hij is vaak druk.<br>Sara: Oké, bedankt! Heeft hij ook tijd in het weekend?<br>Peter: Nee, alleen op werkdagen. In het weekend is hij dicht.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de tandarts dicht?</strong></p>",
+      "content": "<p><em>Sara praat met haar buurman Peter voor het huis.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Sara en haar buurman Peter</h3><p>Sara: Hoi Peter, ik zoek een goede tandarts in de buurt. Ken jij er een?<br>Peter: Ja, ik ga naar tandarts Smit op de Kerkstraat. Hij is heel aardig.<br>Sara: Is het ver lopen?<br>Peter: Nee hoor, vijf minuten. Maar je moet wel bellen voor een afspraak. Hij is vaak druk.<br>Sara: Oké, bedankt! Heeft hij ook tijd in het weekend?<br>Peter: Nee, alleen op werkdagen. In het weekend is hij dicht.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de tandarts dicht?</strong></p>",
       "options": ["in het weekend", "op werkdagen", "'s morgens"],
       "correctAnswer": 0
     },
     {
       "id": "q10",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Supermarkt Vers — aanbiedingen deze week</h3><p>Appels: 2 kilo voor 3 euro<br>Brood (heel): 1,50 euro<br>Melk (1 liter): 90 cent<br>Kaas (per stuk): 4,50 euro</p><p>Let op: de aanbiedingen gelden van maandag tot en met zaterdag. Op zondag zijn wij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost een heel brood deze week?</strong></p>",
+      "content": "<p><em>Bij de supermarkt hangt een folder met aanbiedingen.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Supermarkt Vers: aanbiedingen deze week</h3><p>Appels: 2 kilo voor 3 euro<br>Brood (heel): 1,50 euro<br>Melk (1 liter): 90 cent<br>Kaas (per stuk): 4,50 euro</p><p>Let op: de aanbiedingen gelden van maandag tot en met zaterdag. Op zondag zijn wij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost een heel brood deze week?</strong></p>",
       "options": ["4,50 euro", "90 cent", "3 euro", "1,50 euro"],
       "correctAnswer": 3
     },
     {
       "id": "q11",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Supermarkt Vers — aanbiedingen deze week</h3><p>Appels: 2 kilo voor 3 euro<br>Brood (heel): 1,50 euro<br>Melk (1 liter): 90 cent<br>Kaas (per stuk): 4,50 euro</p><p>Let op: de aanbiedingen gelden van maandag tot en met zaterdag. Op zondag zijn wij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Op welke dag gelden de aanbiedingen niet?</strong></p>",
+      "content": "<p><em>Bij de supermarkt hangt een folder met aanbiedingen.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Supermarkt Vers: aanbiedingen deze week</h3><p>Appels: 2 kilo voor 3 euro<br>Brood (heel): 1,50 euro<br>Melk (1 liter): 90 cent<br>Kaas (per stuk): 4,50 euro</p><p>Let op: de aanbiedingen gelden van maandag tot en met zaterdag. Op zondag zijn wij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Op welke dag gelden de aanbiedingen niet?</strong></p>",
       "options": ["zondag", "zaterdag", "maandag"],
       "correctAnswer": 0
     },
     {
       "id": "q12",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Bakker,</p><p>U heeft een afspraak bij dokter Jansen op dinsdag 3 juni om 10.15 uur. Kom op tijd en neem uw identiteitskaart mee. Kunt u niet komen? Bel dan minimaal 24 uur van tevoren. Anders betaalt u 15 euro.</p><p>De praktijk is open van maandag tot en met vrijdag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom krijgt meneer Bakker deze brief?</strong></p>",
+      "content": "<p><em>Meneer Bakker krijgt een brief van de huisartsenpraktijk.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Bakker,</p><p>U heeft een afspraak bij dokter Jansen op dinsdag 3 juni om 10.15 uur. Kom op tijd en neem uw identiteitskaart mee. Kunt u niet komen? Bel dan minimaal 24 uur van tevoren. Anders betaalt u 15 euro.</p><p>De praktijk is open van maandag tot en met vrijdag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom krijgt meneer Bakker deze brief?</strong></p>",
       "options": [
         "De praktijk gaat dicht.",
         "Hij heeft een afspraak bij de dokter.",
@@ -104,21 +104,21 @@
     {
       "id": "q13",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Bakker,</p><p>U heeft een afspraak bij dokter Jansen op dinsdag 3 juni om 10.15 uur. Kom op tijd en neem uw identiteitskaart mee. Kunt u niet komen? Bel dan minimaal 24 uur van tevoren. Anders betaalt u 15 euro.</p><p>De praktijk is open van maandag tot en met vrijdag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet hij meenemen?</strong></p>",
+      "content": "<p><em>Meneer Bakker krijgt een brief van de huisartsenpraktijk.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Bakker,</p><p>U heeft een afspraak bij dokter Jansen op dinsdag 3 juni om 10.15 uur. Kom op tijd en neem uw identiteitskaart mee. Kunt u niet komen? Bel dan minimaal 24 uur van tevoren. Anders betaalt u 15 euro.</p><p>De praktijk is open van maandag tot en met vrijdag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet hij meenemen?</strong></p>",
       "options": ["een brief van de dokter", "15 euro", "zijn identiteitskaart"],
       "correctAnswer": 2
     },
     {
       "id": "q14",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Bakker,</p><p>U heeft een afspraak bij dokter Jansen op dinsdag 3 juni om 10.15 uur. Kom op tijd en neem uw identiteitskaart mee. Kunt u niet komen? Bel dan minimaal 24 uur van tevoren. Anders betaalt u 15 euro.</p><p>De praktijk is open van maandag tot en met vrijdag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer betaalt hij 15 euro?</strong></p>",
+      "content": "<p><em>Meneer Bakker krijgt een brief van de huisartsenpraktijk.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Bakker,</p><p>U heeft een afspraak bij dokter Jansen op dinsdag 3 juni om 10.15 uur. Kom op tijd en neem uw identiteitskaart mee. Kunt u niet komen? Bel dan minimaal 24 uur van tevoren. Anders betaalt u 15 euro.</p><p>De praktijk is open van maandag tot en met vrijdag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer betaalt hij 15 euro?</strong></p>",
       "options": ["als hij te laat afbelt", "als hij op tijd komt", "als hij zijn kaart vergeet"],
       "correctAnswer": 0
     },
     {
       "id": "q15",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Zwembad De Golf</h3><p>Open: maandag tot en met vrijdag van 7.00 tot 21.00 uur. In het weekend van 9.00 tot 17.00 uur. Kinderen jonger dan 10 jaar mogen alleen met een volwassene zwemmen.</p><p>Een kaartje kost 4 euro. Een kaart voor 10 keer kost 35 euro.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat is de regel voor kinderen jonger dan 10 jaar?</strong></p>",
+      "content": "<p><em>Op de website van het zwembad staat informatie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Zwembad De Golf</h3><p>Open: maandag tot en met vrijdag van 7.00 tot 21.00 uur. In het weekend van 9.00 tot 17.00 uur. Kinderen jonger dan 10 jaar mogen alleen met een volwassene zwemmen.</p><p>Een kaartje kost 4 euro. Een kaart voor 10 keer kost 35 euro.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat is de regel voor kinderen jonger dan 10 jaar?</strong></p>",
       "options": [
         "Zij mogen niet zwemmen.",
         "Zij mogen alleen met een volwassene zwemmen.",
@@ -129,28 +129,28 @@
     {
       "id": "q16",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Zwembad De Golf</h3><p>Open: maandag tot en met vrijdag van 7.00 tot 21.00 uur. In het weekend van 9.00 tot 17.00 uur. Kinderen jonger dan 10 jaar mogen alleen met een volwassene zwemmen.</p><p>Een kaartje kost 4 euro. Een kaart voor 10 keer kost 35 euro.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel kost een kaart voor 10 keer?</strong></p>",
+      "content": "<p><em>Op de website van het zwembad staat informatie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Zwembad De Golf</h3><p>Open: maandag tot en met vrijdag van 7.00 tot 21.00 uur. In het weekend van 9.00 tot 17.00 uur. Kinderen jonger dan 10 jaar mogen alleen met een volwassene zwemmen.</p><p>Een kaartje kost 4 euro. Een kaart voor 10 keer kost 35 euro.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel kost een kaart voor 10 keer?</strong></p>",
       "options": ["4 euro", "10 euro", "35 euro"],
       "correctAnswer": 2
     },
     {
       "id": "q17",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Zwembad De Golf</h3><p>Open: maandag tot en met vrijdag van 7.00 tot 21.00 uur. In het weekend van 9.00 tot 17.00 uur. Kinderen jonger dan 10 jaar mogen alleen met een volwassene zwemmen.</p><p>Een kaartje kost 4 euro. Een kaart voor 10 keer kost 35 euro.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat gaat het zwembad in het weekend open?</strong></p>",
+      "content": "<p><em>Op de website van het zwembad staat informatie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Zwembad De Golf</h3><p>Open: maandag tot en met vrijdag van 7.00 tot 21.00 uur. In het weekend van 9.00 tot 17.00 uur. Kinderen jonger dan 10 jaar mogen alleen met een volwassene zwemmen.</p><p>Een kaartje kost 4 euro. Een kaart voor 10 keer kost 35 euro.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat gaat het zwembad in het weekend open?</strong></p>",
       "options": ["om 9.00 uur", "om 17.00 uur", "om 7.00 uur"],
       "correctAnswer": 0
     },
     {
       "id": "q18",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste buren,</p><p>Op zaterdag 21 juni is er een buurtfeest in het park. Het feest begint om 14.00 uur. Er is muziek, eten en drinken. Voor kinderen is er een springkussen. Neem zelf een stoel mee.</p><p>Bij regen gaat het feest niet door. Kijk dan op het bord bij de ingang van het park.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moeten de buren zelf meenemen?</strong></p>",
+      "content": "<p><em>Alle buren krijgen een brief over een buurtfeest.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste buren,</p><p>Op zaterdag 21 juni is er een buurtfeest in het park. Het feest begint om 14.00 uur. Er is muziek, eten en drinken. Voor kinderen is er een springkussen. Neem zelf een stoel mee.</p><p>Bij regen gaat het feest niet door. Kijk dan op het bord bij de ingang van het park.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moeten de buren zelf meenemen?</strong></p>",
       "options": ["eten", "een stoel", "muziek"],
       "correctAnswer": 1
     },
     {
       "id": "q19",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste buren,</p><p>Op zaterdag 21 juni is er een buurtfeest in het park. Het feest begint om 14.00 uur. Er is muziek, eten en drinken. Voor kinderen is er een springkussen. Neem zelf een stoel mee.</p><p>Bij regen gaat het feest niet door. Kijk dan op het bord bij de ingang van het park.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat gebeurt er als het regent?</strong></p>",
+      "content": "<p><em>Alle buren krijgen een brief over een buurtfeest.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste buren,</p><p>Op zaterdag 21 juni is er een buurtfeest in het park. Het feest begint om 14.00 uur. Er is muziek, eten en drinken. Voor kinderen is er een springkussen. Neem zelf een stoel mee.</p><p>Bij regen gaat het feest niet door. Kijk dan op het bord bij de ingang van het park.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat gebeurt er als het regent?</strong></p>",
       "options": [
         "Het feest begint later.",
         "Het feest is in het buurthuis.",
@@ -161,42 +161,42 @@
     {
       "id": "q20",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Buurthuis De Brug — cursussen</h3><p>Wilt u beter Nederlands leren? Kom naar onze cursus! De cursus is op maandagavond van 19.00 tot 21.00 uur. De cursus duurt 10 weken en kost 50 euro. U krijgt een boek.</p><p>Aanmelden kan tot 1 september. Er is plaats voor 12 mensen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel weken duurt de cursus?</strong></p>",
+      "content": "<p><em>In de folder van het buurthuis staat informatie over cursussen.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Buurthuis De Brug: cursussen</h3><p>Wilt u beter Nederlands leren? Kom naar onze cursus! De cursus is op maandagavond van 19.00 tot 21.00 uur. De cursus duurt 10 weken en kost 50 euro. U krijgt een boek.</p><p>Aanmelden kan tot 1 september. Er is plaats voor 12 mensen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel weken duurt de cursus?</strong></p>",
       "options": ["12 weken", "10 weken", "50 weken"],
       "correctAnswer": 1
     },
     {
       "id": "q21",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Buurthuis De Brug — cursussen</h3><p>Wilt u beter Nederlands leren? Kom naar onze cursus! De cursus is op maandagavond van 19.00 tot 21.00 uur. De cursus duurt 10 weken en kost 50 euro. U krijgt een boek.</p><p>Aanmelden kan tot 1 september. Er is plaats voor 12 mensen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat krijgt u bij de cursus?</strong></p>",
+      "content": "<p><em>In de folder van het buurthuis staat informatie over cursussen.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Buurthuis De Brug: cursussen</h3><p>Wilt u beter Nederlands leren? Kom naar onze cursus! De cursus is op maandagavond van 19.00 tot 21.00 uur. De cursus duurt 10 weken en kost 50 euro. U krijgt een boek.</p><p>Aanmelden kan tot 1 september. Er is plaats voor 12 mensen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat krijgt u bij de cursus?</strong></p>",
       "options": ["een fiets", "eten", "een boek"],
       "correctAnswer": 2
     },
     {
       "id": "q22",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Buurthuis De Brug — cursussen</h3><p>Wilt u beter Nederlands leren? Kom naar onze cursus! De cursus is op maandagavond van 19.00 tot 21.00 uur. De cursus duurt 10 weken en kost 50 euro. U krijgt een boek.</p><p>Aanmelden kan tot 1 september. Er is plaats voor 12 mensen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Tot wanneer kunt u zich aanmelden?</strong></p>",
+      "content": "<p><em>In de folder van het buurthuis staat informatie over cursussen.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Buurthuis De Brug: cursussen</h3><p>Wilt u beter Nederlands leren? Kom naar onze cursus! De cursus is op maandagavond van 19.00 tot 21.00 uur. De cursus duurt 10 weken en kost 50 euro. U krijgt een boek.</p><p>Aanmelden kan tot 1 september. Er is plaats voor 12 mensen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Tot wanneer kunt u zich aanmelden?</strong></p>",
       "options": ["tot 1 september", "tot 21.00 uur", "tot maandag"],
       "correctAnswer": 0
     },
     {
       "id": "q23",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Aan de bewoners van de Lindelaan,</p><p>Volgende week maken wij de Lindelaan schoon. Op woensdag 9 april mag u niet parkeren in de straat. Zet uw auto die dag in de Parkstraat of op het parkeerterrein bij het station. Het werk begint om 7.00 uur en is klaar om 16.00 uur. Daarna mag u weer in de Lindelaan parkeren.</p><p>Heeft u geen auto? Dan hoeft u niets te doen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat mag op woensdag 9 april niet?</strong></p>",
+      "content": "<p><em>De bewoners van de Lindelaan krijgen een brief van de gemeente.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Aan de bewoners van de Lindelaan,</p><p>Volgende week maken wij de Lindelaan schoon. Op woensdag 9 april mag u niet parkeren in de straat. Zet uw auto die dag in de Parkstraat of op het parkeerterrein bij het station. Het werk begint om 7.00 uur en is klaar om 16.00 uur. Daarna mag u weer in de Lindelaan parkeren.</p><p>Heeft u geen auto? Dan hoeft u niets te doen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat mag op woensdag 9 april niet?</strong></p>",
       "options": ["lopen in de Lindelaan", "parkeren in de Lindelaan", "parkeren in de Parkstraat"],
       "correctAnswer": 1
     },
     {
       "id": "q24",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Aan de bewoners van de Lindelaan,</p><p>Volgende week maken wij de Lindelaan schoon. Op woensdag 9 april mag u niet parkeren in de straat. Zet uw auto die dag in de Parkstraat of op het parkeerterrein bij het station. Het werk begint om 7.00 uur en is klaar om 16.00 uur. Daarna mag u weer in de Lindelaan parkeren.</p><p>Heeft u geen auto? Dan hoeft u niets te doen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Vanaf hoe laat mag je weer in de Lindelaan parkeren?</strong></p>",
+      "content": "<p><em>De bewoners van de Lindelaan krijgen een brief van de gemeente.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Aan de bewoners van de Lindelaan,</p><p>Volgende week maken wij de Lindelaan schoon. Op woensdag 9 april mag u niet parkeren in de straat. Zet uw auto die dag in de Parkstraat of op het parkeerterrein bij het station. Het werk begint om 7.00 uur en is klaar om 16.00 uur. Daarna mag u weer in de Lindelaan parkeren.</p><p>Heeft u geen auto? Dan hoeft u niets te doen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Vanaf hoe laat mag je weer in de Lindelaan parkeren?</strong></p>",
       "options": ["vanaf 7.00 uur", "vanaf 9.00 uur", "vanaf 16.00 uur"],
       "correctAnswer": 2
     },
     {
       "id": "q25",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Aan de bewoners van de Lindelaan,</p><p>Volgende week maken wij de Lindelaan schoon. Op woensdag 9 april mag u niet parkeren in de straat. Zet uw auto die dag in de Parkstraat of op het parkeerterrein bij het station. Het werk begint om 7.00 uur en is klaar om 16.00 uur. Daarna mag u weer in de Lindelaan parkeren.</p><p>Heeft u geen auto? Dan hoeft u niets te doen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet iemand zonder auto doen?</strong></p>",
+      "content": "<p><em>De bewoners van de Lindelaan krijgen een brief van de gemeente.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Aan de bewoners van de Lindelaan,</p><p>Volgende week maken wij de Lindelaan schoon. Op woensdag 9 april mag u niet parkeren in de straat. Zet uw auto die dag in de Parkstraat of op het parkeerterrein bij het station. Het werk begint om 7.00 uur en is klaar om 16.00 uur. Daarna mag u weer in de Lindelaan parkeren.</p><p>Heeft u geen auto? Dan hoeft u niets te doen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet iemand zonder auto doen?</strong></p>",
       "options": ["niets", "de auto verplaatsen", "de gemeente bellen"],
       "correctAnswer": 0
     }

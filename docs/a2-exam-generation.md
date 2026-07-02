@@ -60,7 +60,7 @@ The `id` field must equal the file name without `.json`. Top-level fields: `id`,
 - **Listening:** `<p><em>context</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr>` then the spoken-media element (`<audio>` now, `<video>` if used later, with the instruction line matched to it), then `<hr>` then the question.
 - **Speaking image tasks:** `<p><em>Kijk naar het plaatje.</em></p>` (one image) or `<p><em>Kijk naar de plaatjes.</em></p>` (two/three), then `<hr>`, then the image(s), then `<hr>` then the question. Part 1 is a spoken-media element (`<audio>` today, `<video>` possible later) with no context line.
 - **Writing:** form label cells use `width: 180px`; content points as `<ul>`; messages get an Aan/Onderwerp header table with an empty body cell.
-- **Fixed style tokens** (copy verbatim): `<audio>`/`<video>` `style="width: 100%; margin: 0.75rem 0; display: block;"` (video adds `max-width: 560px;`); speaking image `style="max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;"`. See the examples in `examples/` for the exact tokens.
+- **Fixed style tokens** (copy verbatim): `<audio>`/`<video>` `style="width: 100%; margin: 0.75rem 0; display: block;"` (video adds `max-width: 560px;`); speaking image styles depend on the image count: one image `style="max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;"`; two images in a flex `<div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;">` each `style="max-width: 48%; max-height: 220px; object-fit: contain;"`; three images in the same flex div each `style="max-width: 32%; max-height: 180px; object-fit: contain;"`. See the examples in `examples/` for the exact tokens.
 
 **Media and assets.** Audio and images are embedded in `content` as HTML tags. Never hardcode a host; every asset URL uses the placeholder `{{EXAM_ASSETS_BASE_URL}}` (substituted at read time). Every asset file name is a fresh **UUID** plus extension, under:
 
@@ -239,9 +239,10 @@ A full mock = 40 items, 5 per theme; `timeLimitMinutes: 45`; pass mark **28/40**
 **Construction rules**
 
 - Structure each message/open task as **situation → instruction → explicit content points** ("Schrijf in je bericht: …" with 2–4 points).
+- Content-point bullets must be grammatical Dutch: never stack "Schrijf" directly before another imperative ("Schrijf bedank haar", "Schrijf stel een vraag" are wrong). Either use the bare imperative ("Stel twee vragen …", "Vraag wat …") or a subordinate clause ("Schrijf dat je haar bedankt …").
 - Choose register deliberately and keep it consistent: **"u"** for employer/school/authority/company; **"je"** for neighbour/friend/family. Never mix within one text.
 - Calibrate: 2–4 content points; ≥3 sentences for open tasks; **never require opinion/argumentation** (that's B1).
-- For forms: authentic field labels + 1–2 open fields with a reason.
+- For forms: authentic field labels + 1–2 open fields with a reason. The open fields go **inside the form table as rows** (label cell + empty answer cell with extra height), never as a floating paragraph after the table. Choices (e.g. jongen/meisje) are static text with `&#9675;` circle markers, never interactive elements like `<select>` or `<input>`: the `content` HTML is a read-only stimulus and the candidate answers in the separate text area.
 
 **Assessment.** The app AI-grades via `grader.ts` (5 criteria, 10 pts/task, pass 60%). The official DUO models (for reference and for the criteria shown to users) use two aspect sets with these scales:
 
@@ -301,7 +302,7 @@ Part 1 (spoken prompt → one MP3 via Piper, embedded as audio carrying the prom
 }
 ```
 
-Parts 2-4 (1 / 2 / 3 generated images + the exact spoken question) open with a `<p><em>Kijk naar het plaatje.</em></p>` (or `Kijk naar de plaatjes.` for two/three) context line and an `<hr>`; two or three images go in a flex `<div>`:
+Parts 2-4 (1 / 2 / 3 generated images + the exact spoken question) open with a `<p><em>Kijk naar het plaatje.</em></p>` (or `Kijk naar de plaatjes.` for two/three) context line and an `<hr>`; two or three images go in a flex `<div>` with the per-count image style from the Section 1 style tokens (48%/220px for two, 32%/180px for three), never the single-image 300px style:
 
 ```jsonc
 {

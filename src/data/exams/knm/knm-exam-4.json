@@ -8,8 +8,8 @@
     {
       "id": "q1",
       "type": "multiple_choice",
-      "content": "<p>Je verdient weinig. Waarvoor kun je toeslag krijgen?</p>",
-      "options": ["Voor zorg en huur.", "Voor vakantie.", "Voor een auto."],
+      "content": "<p>Waar let een werkgever vooral op bij het aannemen van een nieuwe medewerker?</p>",
+      "options": ["Opleiding, ervaring en taal.", "Je schoenmaat.", "Je sterrenbeeld."],
       "correctAnswer": 0
     },
     {

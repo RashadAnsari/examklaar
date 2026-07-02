@@ -8,28 +8,28 @@
     {
       "id": "q1",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Nadia,</p><p>Volgende week maandag is er een vergadering voor alle medewerkers. De vergadering is om 10.00 uur in zaal B. Wij praten over het nieuwe rooster. Kom op tijd. Kun je niet komen? Laat het mij voor vrijdag weten.</p><p>Na de vergadering is er lunch.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarover gaat de vergadering?</strong></p>",
+      "content": "<p><em>Nadia krijgt een e-mail van haar collega over een vergadering.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Nadia,</p><p>Volgende week maandag is er een vergadering voor alle medewerkers. De vergadering is om 10.00 uur in zaal B. Wij praten over het nieuwe rooster. Kom op tijd. Kun je niet komen? Laat het mij voor vrijdag weten.</p><p>Na de vergadering is er lunch.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarover gaat de vergadering?</strong></p>",
       "options": ["over de lunch", "over een feest", "over het nieuwe rooster"],
       "correctAnswer": 2
     },
     {
       "id": "q2",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Nadia,</p><p>Volgende week maandag is er een vergadering voor alle medewerkers. De vergadering is om 10.00 uur in zaal B. Wij praten over het nieuwe rooster. Kom op tijd. Kun je niet komen? Laat het mij voor vrijdag weten.</p><p>Na de vergadering is er lunch.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar is de vergadering?</strong></p>",
+      "content": "<p><em>Nadia krijgt een e-mail van haar collega over een vergadering.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Nadia,</p><p>Volgende week maandag is er een vergadering voor alle medewerkers. De vergadering is om 10.00 uur in zaal B. Wij praten over het nieuwe rooster. Kom op tijd. Kun je niet komen? Laat het mij voor vrijdag weten.</p><p>Na de vergadering is er lunch.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar is de vergadering?</strong></p>",
       "options": ["in zaal B", "in zaal A", "bij Nadia thuis"],
       "correctAnswer": 0
     },
     {
       "id": "q3",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Nadia,</p><p>Volgende week maandag is er een vergadering voor alle medewerkers. De vergadering is om 10.00 uur in zaal B. Wij praten over het nieuwe rooster. Kom op tijd. Kun je niet komen? Laat het mij voor vrijdag weten.</p><p>Na de vergadering is er lunch.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer moet Nadia het laten weten als ze niet kan komen?</strong></p>",
+      "content": "<p><em>Nadia krijgt een e-mail van haar collega over een vergadering.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Nadia,</p><p>Volgende week maandag is er een vergadering voor alle medewerkers. De vergadering is om 10.00 uur in zaal B. Wij praten over het nieuwe rooster. Kom op tijd. Kun je niet komen? Laat het mij voor vrijdag weten.</p><p>Na de vergadering is er lunch.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer moet Nadia het laten weten als ze niet kan komen?</strong></p>",
       "options": ["na de lunch", "voor vrijdag", "op maandag"],
       "correctAnswer": 1
     },
     {
       "id": "q4",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>De markt verhuist naar een nieuw plein</h3><p>De markt in ons dorp is elke zaterdag. Nu staat de markt op de Grote Markt, in het centrum. Maar vanaf volgende maand verhuist de markt naar het Stationsplein.</p><p>De gemeente doet dit omdat het centrum te druk werd. Er was te weinig plaats voor de auto's en de kramen. Op het Stationsplein is meer ruimte. Ook is er een grote parkeerplaats vlakbij. De marktkooplui zijn blij, want zo kunnen meer mensen de markt bezoeken.</p><p>De markt blijft op zaterdag, van 9.00 tot 17.00 uur. Alleen de plaats verandert dus. Kom kijken op het nieuwe plein!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom verhuist de markt?</strong></p>",
+      "content": "<p><em>In de krant staat een tekst over de markt.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>De markt verhuist naar een nieuw plein</h3><p>De markt in ons dorp is elke zaterdag. Nu staat de markt op de Grote Markt, in het centrum. Maar vanaf volgende maand verhuist de markt naar het Stationsplein.</p><p>De gemeente doet dit omdat het centrum te druk werd. Er was te weinig plaats voor de auto's en de kramen. Op het Stationsplein is meer ruimte. Ook is er een grote parkeerplaats vlakbij. De marktkooplui zijn blij, want zo kunnen meer mensen de markt bezoeken.</p><p>De markt blijft op zaterdag, van 9.00 tot 17.00 uur. Alleen de plaats verandert dus. Kom kijken op het nieuwe plein!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom verhuist de markt?</strong></p>",
       "options": [
         "Het centrum werd te druk.",
         "Op zaterdag was er geen markt.",
@@ -40,21 +40,21 @@
     {
       "id": "q5",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>De markt verhuist naar een nieuw plein</h3><p>De markt in ons dorp is elke zaterdag. Nu staat de markt op de Grote Markt, in het centrum. Maar vanaf volgende maand verhuist de markt naar het Stationsplein.</p><p>De gemeente doet dit omdat het centrum te druk werd. Er was te weinig plaats voor de auto's en de kramen. Op het Stationsplein is meer ruimte. Ook is er een grote parkeerplaats vlakbij. De marktkooplui zijn blij, want zo kunnen meer mensen de markt bezoeken.</p><p>De markt blijft op zaterdag, van 9.00 tot 17.00 uur. Alleen de plaats verandert dus. Kom kijken op het nieuwe plein!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat verandert er aan de markt?</strong></p>",
+      "content": "<p><em>In de krant staat een tekst over de markt.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>De markt verhuist naar een nieuw plein</h3><p>De markt in ons dorp is elke zaterdag. Nu staat de markt op de Grote Markt, in het centrum. Maar vanaf volgende maand verhuist de markt naar het Stationsplein.</p><p>De gemeente doet dit omdat het centrum te druk werd. Er was te weinig plaats voor de auto's en de kramen. Op het Stationsplein is meer ruimte. Ook is er een grote parkeerplaats vlakbij. De marktkooplui zijn blij, want zo kunnen meer mensen de markt bezoeken.</p><p>De markt blijft op zaterdag, van 9.00 tot 17.00 uur. Alleen de plaats verandert dus. Kom kijken op het nieuwe plein!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat verandert er aan de markt?</strong></p>",
       "options": ["de dag", "alleen de plaats", "de tijd"],
       "correctAnswer": 1
     },
     {
       "id": "q6",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>De markt verhuist naar een nieuw plein</h3><p>De markt in ons dorp is elke zaterdag. Nu staat de markt op de Grote Markt, in het centrum. Maar vanaf volgende maand verhuist de markt naar het Stationsplein.</p><p>De gemeente doet dit omdat het centrum te druk werd. Er was te weinig plaats voor de auto's en de kramen. Op het Stationsplein is meer ruimte. Ook is er een grote parkeerplaats vlakbij. De marktkooplui zijn blij, want zo kunnen meer mensen de markt bezoeken.</p><p>De markt blijft op zaterdag, van 9.00 tot 17.00 uur. Alleen de plaats verandert dus. Kom kijken op het nieuwe plein!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat is de markt open?</strong></p>",
+      "content": "<p><em>In de krant staat een tekst over de markt.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>De markt verhuist naar een nieuw plein</h3><p>De markt in ons dorp is elke zaterdag. Nu staat de markt op de Grote Markt, in het centrum. Maar vanaf volgende maand verhuist de markt naar het Stationsplein.</p><p>De gemeente doet dit omdat het centrum te druk werd. Er was te weinig plaats voor de auto's en de kramen. Op het Stationsplein is meer ruimte. Ook is er een grote parkeerplaats vlakbij. De marktkooplui zijn blij, want zo kunnen meer mensen de markt bezoeken.</p><p>De markt blijft op zaterdag, van 9.00 tot 17.00 uur. Alleen de plaats verandert dus. Kom kijken op het nieuwe plein!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat is de markt open?</strong></p>",
       "options": ["de hele dag", "van 8.00 tot 16.00 uur", "van 9.00 tot 17.00 uur"],
       "correctAnswer": 2
     },
     {
       "id": "q7",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Gesprek tussen mevrouw De Vries en de receptionist van de huisarts</p><p>Mevrouw De Vries: Goedemorgen, ik wil graag een afspraak maken met de dokter.<br>Receptionist: Natuurlijk. Wat is er aan de hand?<br>Mevrouw De Vries: Ik heb al een week hoofdpijn en ik slaap slecht.<br>Receptionist: Dat is vervelend. Kunt u morgen om 10.15 uur komen?<br>Mevrouw De Vries: Morgen om die tijd kan ik niet, ik moet werken. Heeft u iets in de middag?<br>Receptionist: Ja, morgen om 16.30 uur is er plaats.<br>Mevrouw De Vries: Dat is goed. Tot morgen!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom wil mevrouw De Vries naar de dokter?</strong></p>",
+      "content": "<p><em>Mevrouw De Vries belt de huisartsenpraktijk voor een afspraak.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Gesprek tussen mevrouw De Vries en de receptionist van de huisarts</p><p>Mevrouw De Vries: Goedemorgen, ik wil graag een afspraak maken met de dokter.<br>Receptionist: Natuurlijk. Wat is er aan de hand?<br>Mevrouw De Vries: Ik heb al een week hoofdpijn en ik slaap slecht.<br>Receptionist: Dat is vervelend. Kunt u morgen om 10.15 uur komen?<br>Mevrouw De Vries: Morgen om die tijd kan ik niet, ik moet werken. Heeft u iets in de middag?<br>Receptionist: Ja, morgen om 16.30 uur is er plaats.<br>Mevrouw De Vries: Dat is goed. Tot morgen!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom wil mevrouw De Vries naar de dokter?</strong></p>",
       "options": [
         "Zij heeft hoofdpijn en slaapt slecht.",
         "Zij heeft haar been gebroken.",
@@ -65,126 +65,126 @@
     {
       "id": "q8",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Gesprek tussen mevrouw De Vries en de receptionist van de huisarts</p><p>Mevrouw De Vries: Goedemorgen, ik wil graag een afspraak maken met de dokter.<br>Receptionist: Natuurlijk. Wat is er aan de hand?<br>Mevrouw De Vries: Ik heb al een week hoofdpijn en ik slaap slecht.<br>Receptionist: Dat is vervelend. Kunt u morgen om 10.15 uur komen?<br>Mevrouw De Vries: Morgen om die tijd kan ik niet, ik moet werken. Heeft u iets in de middag?<br>Receptionist: Ja, morgen om 16.30 uur is er plaats.<br>Mevrouw De Vries: Dat is goed. Tot morgen!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom kan zij 's morgens niet komen?</strong></p>",
+      "content": "<p><em>Mevrouw De Vries belt de huisartsenpraktijk voor een afspraak.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Gesprek tussen mevrouw De Vries en de receptionist van de huisarts</p><p>Mevrouw De Vries: Goedemorgen, ik wil graag een afspraak maken met de dokter.<br>Receptionist: Natuurlijk. Wat is er aan de hand?<br>Mevrouw De Vries: Ik heb al een week hoofdpijn en ik slaap slecht.<br>Receptionist: Dat is vervelend. Kunt u morgen om 10.15 uur komen?<br>Mevrouw De Vries: Morgen om die tijd kan ik niet, ik moet werken. Heeft u iets in de middag?<br>Receptionist: Ja, morgen om 16.30 uur is er plaats.<br>Mevrouw De Vries: Dat is goed. Tot morgen!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom kan zij 's morgens niet komen?</strong></p>",
       "options": ["Zij woont te ver weg.", "Zij is bang voor de dokter.", "Zij moet werken."],
       "correctAnswer": 2
     },
     {
       "id": "q9",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Gesprek tussen mevrouw De Vries en de receptionist van de huisarts</p><p>Mevrouw De Vries: Goedemorgen, ik wil graag een afspraak maken met de dokter.<br>Receptionist: Natuurlijk. Wat is er aan de hand?<br>Mevrouw De Vries: Ik heb al een week hoofdpijn en ik slaap slecht.<br>Receptionist: Dat is vervelend. Kunt u morgen om 10.15 uur komen?<br>Mevrouw De Vries: Morgen om die tijd kan ik niet, ik moet werken. Heeft u iets in de middag?<br>Receptionist: Ja, morgen om 16.30 uur is er plaats.<br>Mevrouw De Vries: Dat is goed. Tot morgen!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat is de afspraak?</strong></p>",
+      "content": "<p><em>Mevrouw De Vries belt de huisartsenpraktijk voor een afspraak.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Gesprek tussen mevrouw De Vries en de receptionist van de huisarts</p><p>Mevrouw De Vries: Goedemorgen, ik wil graag een afspraak maken met de dokter.<br>Receptionist: Natuurlijk. Wat is er aan de hand?<br>Mevrouw De Vries: Ik heb al een week hoofdpijn en ik slaap slecht.<br>Receptionist: Dat is vervelend. Kunt u morgen om 10.15 uur komen?<br>Mevrouw De Vries: Morgen om die tijd kan ik niet, ik moet werken. Heeft u iets in de middag?<br>Receptionist: Ja, morgen om 16.30 uur is er plaats.<br>Mevrouw De Vries: Dat is goed. Tot morgen!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat is de afspraak?</strong></p>",
       "options": ["om 10.15 uur", "om 16.30 uur", "vanmiddag"],
       "correctAnswer": 1
     },
     {
       "id": "q10",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>U heeft een nieuw paspoort aangevraagd. Het paspoort is nu klaar. U kunt het afhalen bij de gemeente. Kom langs van maandag tot en met vrijdag, tussen 9.00 en 16.00 uur. Neem uw oude paspoort mee. Het afhalen duurt ongeveer 10 minuten.</p><p>U hoeft geen afspraak te maken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet u meenemen?</strong></p>",
+      "content": "<p><em>Bij de gemeente hangt een mededeling over paspoorten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>U heeft een nieuw paspoort aangevraagd. Het paspoort is nu klaar. U kunt het afhalen bij de gemeente. Kom langs van maandag tot en met vrijdag, tussen 9.00 en 16.00 uur. Neem uw oude paspoort mee. Het afhalen duurt ongeveer 10 minuten.</p><p>U hoeft geen afspraak te maken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet u meenemen?</strong></p>",
       "options": ["10 euro", "uw oude paspoort", "een foto"],
       "correctAnswer": 1
     },
     {
       "id": "q11",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>U heeft een nieuw paspoort aangevraagd. Het paspoort is nu klaar. U kunt het afhalen bij de gemeente. Kom langs van maandag tot en met vrijdag, tussen 9.00 en 16.00 uur. Neem uw oude paspoort mee. Het afhalen duurt ongeveer 10 minuten.</p><p>U hoeft geen afspraak te maken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat hoeft u niet te doen?</strong></p>",
+      "content": "<p><em>Bij de gemeente hangt een mededeling over paspoorten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>U heeft een nieuw paspoort aangevraagd. Het paspoort is nu klaar. U kunt het afhalen bij de gemeente. Kom langs van maandag tot en met vrijdag, tussen 9.00 en 16.00 uur. Neem uw oude paspoort mee. Het afhalen duurt ongeveer 10 minuten.</p><p>U hoeft geen afspraak te maken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat hoeft u niet te doen?</strong></p>",
       "options": ["een afspraak maken", "uw oude paspoort meenemen", "naar de gemeente komen"],
       "correctAnswer": 0
     },
     {
       "id": "q12",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>U heeft een nieuw paspoort aangevraagd. Het paspoort is nu klaar. U kunt het afhalen bij de gemeente. Kom langs van maandag tot en met vrijdag, tussen 9.00 en 16.00 uur. Neem uw oude paspoort mee. Het afhalen duurt ongeveer 10 minuten.</p><p>U hoeft geen afspraak te maken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Tot hoe laat kunt u het paspoort afhalen?</strong></p>",
+      "content": "<p><em>Bij de gemeente hangt een mededeling over paspoorten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>U heeft een nieuw paspoort aangevraagd. Het paspoort is nu klaar. U kunt het afhalen bij de gemeente. Kom langs van maandag tot en met vrijdag, tussen 9.00 en 16.00 uur. Neem uw oude paspoort mee. Het afhalen duurt ongeveer 10 minuten.</p><p>U hoeft geen afspraak te maken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Tot hoe laat kunt u het paspoort afhalen?</strong></p>",
       "options": ["tot 9.00 uur", "tot 10.00 uur", "tot 16.00 uur"],
       "correctAnswer": 2
     },
     {
       "id": "q13",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Grote uitverkoop bij Mode Plus!</p><p>Alle jassen: 20 euro korting<br>T-shirts: nu 2 voor 15 euro<br>Schoenen: 30% korting</p><p>De uitverkoop is van 1 tot en met 10 februari. Op = op. Geen geld terug, ruilen mag wel binnen 14 dagen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel korting krijgt u op een jas?</strong></p>",
+      "content": "<p><em>In de winkel hangt een poster over de uitverkoop.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Grote uitverkoop bij Mode Plus!</p><p>Alle jassen: 20 euro korting<br>T-shirts: nu 2 voor 15 euro<br>Schoenen: 30% korting</p><p>De uitverkoop is van 1 tot en met 10 februari. Op = op. Geen geld terug, ruilen mag wel binnen 14 dagen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel korting krijgt u op een jas?</strong></p>",
       "options": ["20 euro", "15 euro", "30 euro"],
       "correctAnswer": 0
     },
     {
       "id": "q14",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Grote uitverkoop bij Mode Plus!</p><p>Alle jassen: 20 euro korting<br>T-shirts: nu 2 voor 15 euro<br>Schoenen: 30% korting</p><p>De uitverkoop is van 1 tot en met 10 februari. Op = op. Geen geld terug, ruilen mag wel binnen 14 dagen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kunt u doen als iets niet past?</strong></p>",
+      "content": "<p><em>In de winkel hangt een poster over de uitverkoop.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Grote uitverkoop bij Mode Plus!</p><p>Alle jassen: 20 euro korting<br>T-shirts: nu 2 voor 15 euro<br>Schoenen: 30% korting</p><p>De uitverkoop is van 1 tot en met 10 februari. Op = op. Geen geld terug, ruilen mag wel binnen 14 dagen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kunt u doen als iets niet past?</strong></p>",
       "options": ["geld terugkrijgen", "niets", "binnen 14 dagen ruilen"],
       "correctAnswer": 2
     },
     {
       "id": "q15",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Yilmaz,</p><p>U heeft een afspraak bij de tandarts op maandag 12 mei om 14.45 uur. Poets uw tanden voor de afspraak. Kunt u niet komen? Bel dan op tijd, minstens 48 uur van tevoren. Anders kost het 25 euro.</p><p>De afspraak duurt ongeveer een half uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat is de afspraak?</strong></p>",
+      "content": "<p><em>Mevrouw Yilmaz krijgt een brief van de tandarts.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Yilmaz,</p><p>U heeft een afspraak bij de tandarts op maandag 12 mei om 14.45 uur. Poets uw tanden voor de afspraak. Kunt u niet komen? Bel dan op tijd, minstens 48 uur van tevoren. Anders kost het 25 euro.</p><p>De afspraak duurt ongeveer een half uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat is de afspraak?</strong></p>",
       "options": ["om 14.15 uur", "om 14.45 uur", "om 15.45 uur"],
       "correctAnswer": 1
     },
     {
       "id": "q16",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Yilmaz,</p><p>U heeft een afspraak bij de tandarts op maandag 12 mei om 14.45 uur. Poets uw tanden voor de afspraak. Kunt u niet komen? Bel dan op tijd, minstens 48 uur van tevoren. Anders kost het 25 euro.</p><p>De afspraak duurt ongeveer een half uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel uur van tevoren moet u afbellen?</strong></p>",
+      "content": "<p><em>Mevrouw Yilmaz krijgt een brief van de tandarts.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Yilmaz,</p><p>U heeft een afspraak bij de tandarts op maandag 12 mei om 14.45 uur. Poets uw tanden voor de afspraak. Kunt u niet komen? Bel dan op tijd, minstens 48 uur van tevoren. Anders kost het 25 euro.</p><p>De afspraak duurt ongeveer een half uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel uur van tevoren moet u afbellen?</strong></p>",
       "options": ["12 uur", "48 uur", "24 uur"],
       "correctAnswer": 1
     },
     {
       "id": "q17",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Yilmaz,</p><p>U heeft een afspraak bij de tandarts op maandag 12 mei om 14.45 uur. Poets uw tanden voor de afspraak. Kunt u niet komen? Bel dan op tijd, minstens 48 uur van tevoren. Anders kost het 25 euro.</p><p>De afspraak duurt ongeveer een half uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer kost het 25 euro?</strong></p>",
+      "content": "<p><em>Mevrouw Yilmaz krijgt een brief van de tandarts.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Yilmaz,</p><p>U heeft een afspraak bij de tandarts op maandag 12 mei om 14.45 uur. Poets uw tanden voor de afspraak. Kunt u niet komen? Bel dan op tijd, minstens 48 uur van tevoren. Anders kost het 25 euro.</p><p>De afspraak duurt ongeveer een half uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer kost het 25 euro?</strong></p>",
       "options": ["als u te laat afbelt", "als u op tijd komt", "als u uw tanden poetst"],
       "correctAnswer": 0
     },
     {
       "id": "q18",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Kom naar het buurthuis!</p><p>Elke dinsdagmiddag is er een koffieochtend voor ouderen. Van 10.00 tot 12.00 uur. De koffie is gratis. Wij spelen spelletjes en praten met elkaar.</p><p>Ook is er elke donderdag een naailes. De naailes kost 5 euro. Aanmelden is niet nodig.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de koffieochtend?</strong></p>",
+      "content": "<p><em>Bij het buurthuis hangt een poster met activiteiten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Kom naar het buurthuis!</p><p>Elke dinsdagmiddag is er een koffieochtend voor ouderen. Van 10.00 tot 12.00 uur. De koffie is gratis. Wij spelen spelletjes en praten met elkaar.</p><p>Ook is er elke donderdag een naailes. De naailes kost 5 euro. Aanmelden is niet nodig.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de koffieochtend?</strong></p>",
       "options": ["elke donderdag", "elke ochtend", "elke dinsdag"],
       "correctAnswer": 2
     },
     {
       "id": "q19",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Kom naar het buurthuis!</p><p>Elke dinsdagmiddag is er een koffieochtend voor ouderen. Van 10.00 tot 12.00 uur. De koffie is gratis. Wij spelen spelletjes en praten met elkaar.</p><p>Ook is er elke donderdag een naailes. De naailes kost 5 euro. Aanmelden is niet nodig.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost de naailes?</strong></p>",
+      "content": "<p><em>Bij het buurthuis hangt een poster met activiteiten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Kom naar het buurthuis!</p><p>Elke dinsdagmiddag is er een koffieochtend voor ouderen. Van 10.00 tot 12.00 uur. De koffie is gratis. Wij spelen spelletjes en praten met elkaar.</p><p>Ook is er elke donderdag een naailes. De naailes kost 5 euro. Aanmelden is niet nodig.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost de naailes?</strong></p>",
       "options": ["5 euro", "niets", "10 euro"],
       "correctAnswer": 0
     },
     {
       "id": "q20",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Kom naar het buurthuis!</p><p>Elke dinsdagmiddag is er een koffieochtend voor ouderen. Van 10.00 tot 12.00 uur. De koffie is gratis. Wij spelen spelletjes en praten met elkaar.</p><p>Ook is er elke donderdag een naailes. De naailes kost 5 euro. Aanmelden is niet nodig.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat hoeft u niet te doen?</strong></p>",
+      "content": "<p><em>Bij het buurthuis hangt een poster met activiteiten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Kom naar het buurthuis!</p><p>Elke dinsdagmiddag is er een koffieochtend voor ouderen. Van 10.00 tot 12.00 uur. De koffie is gratis. Wij spelen spelletjes en praten met elkaar.</p><p>Ook is er elke donderdag een naailes. De naailes kost 5 euro. Aanmelden is niet nodig.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat hoeft u niet te doen?</strong></p>",
       "options": ["naar het buurthuis komen", "koffie kopen", "u aanmelden"],
       "correctAnswer": 2
     },
     {
       "id": "q21",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bioscoop Star</h3><p>Film: De Reis — duur: 2 uur<br>Tijden: 15.00, 18.00 en 20.30 uur</p><p>Een kaartje kost 11 euro. Kinderen tot 12 jaar betalen 8 euro. Op woensdag is het Kortingsdag: alle kaartjes 8 euro. Popcorn en drinken koopt u bij de balie.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel betaalt een volwassene op maandag?</strong></p>",
+      "content": "<p><em>Op de website van de bioscoop staat informatie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bioscoop Star</h3><p>Film: De Reis, duur: 2 uur<br>Tijden: 15.00, 18.00 en 20.30 uur</p><p>Een kaartje kost 11 euro. Kinderen tot 12 jaar betalen 8 euro. Op woensdag is het Kortingsdag: alle kaartjes 8 euro. Popcorn en drinken koopt u bij de balie.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel betaalt een volwassene op maandag?</strong></p>",
       "options": ["12 euro", "11 euro", "8 euro"],
       "correctAnswer": 1
     },
     {
       "id": "q22",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bioscoop Star</h3><p>Film: De Reis — duur: 2 uur<br>Tijden: 15.00, 18.00 en 20.30 uur</p><p>Een kaartje kost 11 euro. Kinderen tot 12 jaar betalen 8 euro. Op woensdag is het Kortingsdag: alle kaartjes 8 euro. Popcorn en drinken koopt u bij de balie.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe lang duurt de film?</strong></p>",
+      "content": "<p><em>Op de website van de bioscoop staat informatie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bioscoop Star</h3><p>Film: De Reis, duur: 2 uur<br>Tijden: 15.00, 18.00 en 20.30 uur</p><p>Een kaartje kost 11 euro. Kinderen tot 12 jaar betalen 8 euro. Op woensdag is het Kortingsdag: alle kaartjes 8 euro. Popcorn en drinken koopt u bij de balie.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe lang duurt de film?</strong></p>",
       "options": ["2 uur", "3 uur", "1 uur"],
       "correctAnswer": 0
     },
     {
       "id": "q23",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Let op: morgen wordt het glad op de wegen. Het gaat vriezen en sneeuwen. Ga voorzichtig naar buiten. Moet u fietsen? Doe het rustig. De gemeente strooit zout op de grote wegen. Op kleine straten strooien wij niet.</p><p>Blijf binnen als het niet nodig is om naar buiten te gaan.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat voor weer wordt het morgen?</strong></p>",
+      "content": "<p><em>Op de gemeentelijke website staat een waarschuwing.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Let op: morgen wordt het glad op de wegen. Het gaat vriezen en sneeuwen. Ga voorzichtig naar buiten. Moet u fietsen? Doe het rustig. De gemeente strooit zout op de grote wegen. Op kleine straten strooien wij niet.</p><p>Blijf binnen als het niet nodig is om naar buiten te gaan.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat voor weer wordt het morgen?</strong></p>",
       "options": ["warm en zonnig", "glad, met vorst en sneeuw", "veel regen"],
       "correctAnswer": 1
     },
     {
       "id": "q24",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Let op: morgen wordt het glad op de wegen. Het gaat vriezen en sneeuwen. Ga voorzichtig naar buiten. Moet u fietsen? Doe het rustig. De gemeente strooit zout op de grote wegen. Op kleine straten strooien wij niet.</p><p>Blijf binnen als het niet nodig is om naar buiten te gaan.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar strooit de gemeente zout?</strong></p>",
+      "content": "<p><em>Op de gemeentelijke website staat een waarschuwing.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Let op: morgen wordt het glad op de wegen. Het gaat vriezen en sneeuwen. Ga voorzichtig naar buiten. Moet u fietsen? Doe het rustig. De gemeente strooit zout op de grote wegen. Op kleine straten strooien wij niet.</p><p>Blijf binnen als het niet nodig is om naar buiten te gaan.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar strooit de gemeente zout?</strong></p>",
       "options": ["nergens", "op alle straten", "op de grote wegen"],
       "correctAnswer": 2
     },
     {
       "id": "q25",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Let op: morgen wordt het glad op de wegen. Het gaat vriezen en sneeuwen. Ga voorzichtig naar buiten. Moet u fietsen? Doe het rustig. De gemeente strooit zout op de grote wegen. Op kleine straten strooien wij niet.</p><p>Blijf binnen als het niet nodig is om naar buiten te gaan.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat is het advies?</strong></p>",
+      "content": "<p><em>Op de gemeentelijke website staat een waarschuwing.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Let op: morgen wordt het glad op de wegen. Het gaat vriezen en sneeuwen. Ga voorzichtig naar buiten. Moet u fietsen? Doe het rustig. De gemeente strooit zout op de grote wegen. Op kleine straten strooien wij niet.</p><p>Blijf binnen als het niet nodig is om naar buiten te gaan.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat is het advies?</strong></p>",
       "options": ["ga zwemmen", "ga voorzichtig naar buiten", "ga snel fietsen"],
       "correctAnswer": 1
     }

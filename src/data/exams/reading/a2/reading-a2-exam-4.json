@@ -8,28 +8,28 @@
     {
       "id": "q1",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Omar,</p><p>De training van zaterdag gaat niet door. Het veld is te nat. De volgende training is op dinsdag om 18.00 uur. Neem je voetbalschoenen en een fles water mee. Na de training is er een korte vergadering over de wedstrijd van volgende week.</p><p>Tot dinsdag!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom gaat de training van zaterdag niet door?</strong></p>",
+      "content": "<p><em>Omar krijgt een bericht van zijn voetbaltrainer.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Omar,</p><p>De training van zaterdag gaat niet door. Het veld is te nat. De volgende training is op dinsdag om 18.00 uur. Neem je voetbalschoenen en een fles water mee. Na de training is er een korte vergadering over de wedstrijd van volgende week.</p><p>Tot dinsdag!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom gaat de training van zaterdag niet door?</strong></p>",
       "options": ["Omar is ziek.", "Het veld is te nat.", "Er is een wedstrijd."],
       "correctAnswer": 1
     },
     {
       "id": "q2",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Omar,</p><p>De training van zaterdag gaat niet door. Het veld is te nat. De volgende training is op dinsdag om 18.00 uur. Neem je voetbalschoenen en een fles water mee. Na de training is er een korte vergadering over de wedstrijd van volgende week.</p><p>Tot dinsdag!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de volgende training?</strong></p>",
+      "content": "<p><em>Omar krijgt een bericht van zijn voetbaltrainer.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Omar,</p><p>De training van zaterdag gaat niet door. Het veld is te nat. De volgende training is op dinsdag om 18.00 uur. Neem je voetbalschoenen en een fles water mee. Na de training is er een korte vergadering over de wedstrijd van volgende week.</p><p>Tot dinsdag!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de volgende training?</strong></p>",
       "options": ["dinsdag om 8.00 uur", "zaterdag om 18.00 uur", "dinsdag om 18.00 uur"],
       "correctAnswer": 2
     },
     {
       "id": "q3",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Omar,</p><p>De training van zaterdag gaat niet door. Het veld is te nat. De volgende training is op dinsdag om 18.00 uur. Neem je voetbalschoenen en een fles water mee. Na de training is er een korte vergadering over de wedstrijd van volgende week.</p><p>Tot dinsdag!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet Omar meenemen?</strong></p>",
+      "content": "<p><em>Omar krijgt een bericht van zijn voetbaltrainer.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Omar,</p><p>De training van zaterdag gaat niet door. Het veld is te nat. De volgende training is op dinsdag om 18.00 uur. Neem je voetbalschoenen en een fles water mee. Na de training is er een korte vergadering over de wedstrijd van volgende week.</p><p>Tot dinsdag!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet Omar meenemen?</strong></p>",
       "options": ["zijn voetbalschoenen en water", "een bal", "eten"],
       "correctAnswer": 0
     },
     {
       "id": "q4",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Vrijwilligers gezocht voor de voedselbank</h3><p>De voedselbank in onze stad zoekt nieuwe vrijwilligers. De voedselbank geeft eten aan mensen met weinig geld. Elke week komen er meer mensen. Daarom heeft de voedselbank meer hulp nodig.</p><p>Vrijwilligers helpen met het sorteren van het eten en het maken van de pakketten. Je hoeft geen ervaring te hebben. Je krijgt uitleg op de eerste dag. Het werk is op dinsdag en donderdag, van 9.00 tot 13.00 uur. Je kiest zelf hoeveel dagen je komt.</p><p>Het is geen betaald werk, maar je krijgt wel koffie en een lunch. Lijkt het je leuk? Bel dan naar Marleen op nummer 06-23456789.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat doet de voedselbank?</strong></p>",
+      "content": "<p><em>Op een poster staat een oproep voor vrijwilligers.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Vrijwilligers gezocht voor de voedselbank</h3><p>De voedselbank in onze stad zoekt nieuwe vrijwilligers. De voedselbank geeft eten aan mensen met weinig geld. Elke week komen er meer mensen. Daarom heeft de voedselbank meer hulp nodig.</p><p>Vrijwilligers helpen met het sorteren van het eten en het maken van de pakketten. Je hoeft geen ervaring te hebben. Je krijgt uitleg op de eerste dag. Het werk is op dinsdag en donderdag, van 9.00 tot 13.00 uur. Je kiest zelf hoeveel dagen je komt.</p><p>Het is geen betaald werk, maar je krijgt wel koffie en een lunch. Lijkt het je leuk? Bel dan naar Marleen op nummer 06-23456789.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat doet de voedselbank?</strong></p>",
       "options": [
         "Zij geeft eten aan mensen met weinig geld.",
         "Zij verkoopt goedkoop eten.",
@@ -40,7 +40,7 @@
     {
       "id": "q5",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Vrijwilligers gezocht voor de voedselbank</h3><p>De voedselbank in onze stad zoekt nieuwe vrijwilligers. De voedselbank geeft eten aan mensen met weinig geld. Elke week komen er meer mensen. Daarom heeft de voedselbank meer hulp nodig.</p><p>Vrijwilligers helpen met het sorteren van het eten en het maken van de pakketten. Je hoeft geen ervaring te hebben. Je krijgt uitleg op de eerste dag. Het werk is op dinsdag en donderdag, van 9.00 tot 13.00 uur. Je kiest zelf hoeveel dagen je komt.</p><p>Het is geen betaald werk, maar je krijgt wel koffie en een lunch. Lijkt het je leuk? Bel dan naar Marleen op nummer 06-23456789.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet u kunnen om vrijwilliger te worden?</strong></p>",
+      "content": "<p><em>Op een poster staat een oproep voor vrijwilligers.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Vrijwilligers gezocht voor de voedselbank</h3><p>De voedselbank in onze stad zoekt nieuwe vrijwilligers. De voedselbank geeft eten aan mensen met weinig geld. Elke week komen er meer mensen. Daarom heeft de voedselbank meer hulp nodig.</p><p>Vrijwilligers helpen met het sorteren van het eten en het maken van de pakketten. Je hoeft geen ervaring te hebben. Je krijgt uitleg op de eerste dag. Het werk is op dinsdag en donderdag, van 9.00 tot 13.00 uur. Je kiest zelf hoeveel dagen je komt.</p><p>Het is geen betaald werk, maar je krijgt wel koffie en een lunch. Lijkt het je leuk? Bel dan naar Marleen op nummer 06-23456789.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet u kunnen om vrijwilliger te worden?</strong></p>",
       "options": [
         "U moet ervaring hebben.",
         "U hoeft geen ervaring te hebben; u krijgt uitleg.",
@@ -51,7 +51,7 @@
     {
       "id": "q6",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Vrijwilligers gezocht voor de voedselbank</h3><p>De voedselbank in onze stad zoekt nieuwe vrijwilligers. De voedselbank geeft eten aan mensen met weinig geld. Elke week komen er meer mensen. Daarom heeft de voedselbank meer hulp nodig.</p><p>Vrijwilligers helpen met het sorteren van het eten en het maken van de pakketten. Je hoeft geen ervaring te hebben. Je krijgt uitleg op de eerste dag. Het werk is op dinsdag en donderdag, van 9.00 tot 13.00 uur. Je kiest zelf hoeveel dagen je komt.</p><p>Het is geen betaald werk, maar je krijgt wel koffie en een lunch. Lijkt het je leuk? Bel dan naar Marleen op nummer 06-23456789.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Krijgt u geld voor dit werk?</strong></p>",
+      "content": "<p><em>Op een poster staat een oproep voor vrijwilligers.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Vrijwilligers gezocht voor de voedselbank</h3><p>De voedselbank in onze stad zoekt nieuwe vrijwilligers. De voedselbank geeft eten aan mensen met weinig geld. Elke week komen er meer mensen. Daarom heeft de voedselbank meer hulp nodig.</p><p>Vrijwilligers helpen met het sorteren van het eten en het maken van de pakketten. Je hoeft geen ervaring te hebben. Je krijgt uitleg op de eerste dag. Het werk is op dinsdag en donderdag, van 9.00 tot 13.00 uur. Je kiest zelf hoeveel dagen je komt.</p><p>Het is geen betaald werk, maar je krijgt wel koffie en een lunch. Lijkt het je leuk? Bel dan naar Marleen op nummer 06-23456789.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Krijgt u geld voor dit werk?</strong></p>",
       "options": [
         "Ja, een normaal salaris.",
         "Ja, maar alleen op dinsdag.",
@@ -62,7 +62,7 @@
     {
       "id": "q7",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Tom en zijn buurvrouw Anja</h3><p>Tom: Hoi Anja, ik ga volgende week op vakantie. Kun jij op mijn planten letten?<br>Anja: Ja hoor, dat wil ik wel doen. Hoe lang ben je weg?<br>Tom: Tien dagen. De planten moeten twee keer water hebben.<br>Anja: Prima. Geef je me de sleutel?<br>Tom: Ja, ik breng hem morgen langs. Er ligt ook post in de bus; mag die bij jou?<br>Anja: Natuurlijk, ik leg de post op tafel. Fijne vakantie!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat vraagt Tom aan Anja?</strong></p>",
+      "content": "<p><em>Tom praat met zijn buurvrouw Anja voor de vakantie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Tom en zijn buurvrouw Anja</h3><p>Tom: Hoi Anja, ik ga volgende week op vakantie. Kun jij op mijn planten letten?<br>Anja: Ja hoor, dat wil ik wel doen. Hoe lang ben je weg?<br>Tom: Tien dagen. De planten moeten twee keer water hebben.<br>Anja: Prima. Geef je me de sleutel?<br>Tom: Ja, ik breng hem morgen langs. Er ligt ook post in de bus; mag die bij jou?<br>Anja: Natuurlijk, ik leg de post op tafel. Fijne vakantie!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat vraagt Tom aan Anja?</strong></p>",
       "options": [
         "of zij op zijn planten wil letten",
         "of zij zijn auto wil wassen",
@@ -73,14 +73,14 @@
     {
       "id": "q8",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Tom en zijn buurvrouw Anja</h3><p>Tom: Hoi Anja, ik ga volgende week op vakantie. Kun jij op mijn planten letten?<br>Anja: Ja hoor, dat wil ik wel doen. Hoe lang ben je weg?<br>Tom: Tien dagen. De planten moeten twee keer water hebben.<br>Anja: Prima. Geef je me de sleutel?<br>Tom: Ja, ik breng hem morgen langs. Er ligt ook post in de bus; mag die bij jou?<br>Anja: Natuurlijk, ik leg de post op tafel. Fijne vakantie!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe vaak moeten de planten water hebben?</strong></p>",
+      "content": "<p><em>Tom praat met zijn buurvrouw Anja voor de vakantie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Tom en zijn buurvrouw Anja</h3><p>Tom: Hoi Anja, ik ga volgende week op vakantie. Kun jij op mijn planten letten?<br>Anja: Ja hoor, dat wil ik wel doen. Hoe lang ben je weg?<br>Tom: Tien dagen. De planten moeten twee keer water hebben.<br>Anja: Prima. Geef je me de sleutel?<br>Tom: Ja, ik breng hem morgen langs. Er ligt ook post in de bus; mag die bij jou?<br>Anja: Natuurlijk, ik leg de post op tafel. Fijne vakantie!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe vaak moeten de planten water hebben?</strong></p>",
       "options": ["één keer", "twee keer", "elke dag"],
       "correctAnswer": 1
     },
     {
       "id": "q9",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Tom en zijn buurvrouw Anja</h3><p>Tom: Hoi Anja, ik ga volgende week op vakantie. Kun jij op mijn planten letten?<br>Anja: Ja hoor, dat wil ik wel doen. Hoe lang ben je weg?<br>Tom: Tien dagen. De planten moeten twee keer water hebben.<br>Anja: Prima. Geef je me de sleutel?<br>Tom: Ja, ik breng hem morgen langs. Er ligt ook post in de bus; mag die bij jou?<br>Anja: Natuurlijk, ik leg de post op tafel. Fijne vakantie!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat doet Anja met de post?</strong></p>",
+      "content": "<p><em>Tom praat met zijn buurvrouw Anja voor de vakantie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Tom en zijn buurvrouw Anja</h3><p>Tom: Hoi Anja, ik ga volgende week op vakantie. Kun jij op mijn planten letten?<br>Anja: Ja hoor, dat wil ik wel doen. Hoe lang ben je weg?<br>Tom: Tien dagen. De planten moeten twee keer water hebben.<br>Anja: Prima. Geef je me de sleutel?<br>Tom: Ja, ik breng hem morgen langs. Er ligt ook post in de bus; mag die bij jou?<br>Anja: Natuurlijk, ik leg de post op tafel. Fijne vakantie!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat doet Anja met de post?</strong></p>",
       "options": [
         "Zij brengt de post naar Tom.",
         "Zij gooit de post weg.",
@@ -91,112 +91,112 @@
     {
       "id": "q10",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Bent u verhuisd? Geef uw nieuwe adres door aan de gemeente. Dit moet binnen 5 dagen. U kunt dit online doen met uw DigiD, of kom langs bij de gemeente. Het doorgeven is gratis.</p><p>Vergeet niet ook uw post te laten doorsturen. Dat regelt u bij PostNL.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Binnen hoeveel dagen moet u uw nieuwe adres doorgeven?</strong></p>",
+      "content": "<p><em>Op de website van de gemeente staat informatie over verhuizen.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Bent u verhuisd? Geef uw nieuwe adres door aan de gemeente. Dit moet binnen 5 dagen. U kunt dit online doen met uw DigiD, of kom langs bij de gemeente. Het doorgeven is gratis.</p><p>Vergeet niet ook uw post te laten doorsturen. Dat regelt u bij PostNL.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Binnen hoeveel dagen moet u uw nieuwe adres doorgeven?</strong></p>",
       "options": ["binnen 10 dagen", "binnen 1 dag", "binnen 5 dagen"],
       "correctAnswer": 2
     },
     {
       "id": "q11",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Bent u verhuisd? Geef uw nieuwe adres door aan de gemeente. Dit moet binnen 5 dagen. U kunt dit online doen met uw DigiD, of kom langs bij de gemeente. Het doorgeven is gratis.</p><p>Vergeet niet ook uw post te laten doorsturen. Dat regelt u bij PostNL.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost het doorgeven van uw adres?</strong></p>",
+      "content": "<p><em>Op de website van de gemeente staat informatie over verhuizen.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Bent u verhuisd? Geef uw nieuwe adres door aan de gemeente. Dit moet binnen 5 dagen. U kunt dit online doen met uw DigiD, of kom langs bij de gemeente. Het doorgeven is gratis.</p><p>Vergeet niet ook uw post te laten doorsturen. Dat regelt u bij PostNL.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost het doorgeven van uw adres?</strong></p>",
       "options": ["niets", "5 euro", "10 euro"],
       "correctAnswer": 0
     },
     {
       "id": "q12",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Bent u verhuisd? Geef uw nieuwe adres door aan de gemeente. Dit moet binnen 5 dagen. U kunt dit online doen met uw DigiD, of kom langs bij de gemeente. Het doorgeven is gratis.</p><p>Vergeet niet ook uw post te laten doorsturen. Dat regelt u bij PostNL.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar regelt u het doorsturen van uw post?</strong></p>",
+      "content": "<p><em>Op de website van de gemeente staat informatie over verhuizen.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Bent u verhuisd? Geef uw nieuwe adres door aan de gemeente. Dit moet binnen 5 dagen. U kunt dit online doen met uw DigiD, of kom langs bij de gemeente. Het doorgeven is gratis.</p><p>Vergeet niet ook uw post te laten doorsturen. Dat regelt u bij PostNL.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar regelt u het doorsturen van uw post?</strong></p>",
       "options": ["bij de gemeente", "bij PostNL", "online met DigiD"],
       "correctAnswer": 1
     },
     {
       "id": "q13",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bakkerij Het Korenveld</h3><p>Wit brood: 2,20 euro<br>Bruin brood: 2,40 euro<br>Croissant: 1,10 euro<br>Appeltaart (heel): 12,00 euro</p><p>Bestel een taart minstens 2 dagen van tevoren. Op maandag is de bakkerij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost een bruin brood?</strong></p>",
+      "content": "<p><em>In de bakkerij hangt een prijslijst.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bakkerij Het Korenveld</h3><p>Wit brood: 2,20 euro<br>Bruin brood: 2,40 euro<br>Croissant: 1,10 euro<br>Appeltaart (heel): 12,00 euro</p><p>Bestel een taart minstens 2 dagen van tevoren. Op maandag is de bakkerij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost een bruin brood?</strong></p>",
       "options": ["2,40 euro", "2,20 euro", "1,10 euro"],
       "correctAnswer": 0
     },
     {
       "id": "q14",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bakkerij Het Korenveld</h3><p>Wit brood: 2,20 euro<br>Bruin brood: 2,40 euro<br>Croissant: 1,10 euro<br>Appeltaart (heel): 12,00 euro</p><p>Bestel een taart minstens 2 dagen van tevoren. Op maandag is de bakkerij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer moet u een taart bestellen?</strong></p>",
+      "content": "<p><em>In de bakkerij hangt een prijslijst.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bakkerij Het Korenveld</h3><p>Wit brood: 2,20 euro<br>Bruin brood: 2,40 euro<br>Croissant: 1,10 euro<br>Appeltaart (heel): 12,00 euro</p><p>Bestel een taart minstens 2 dagen van tevoren. Op maandag is de bakkerij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer moet u een taart bestellen?</strong></p>",
       "options": ["op de dag zelf", "minstens 2 dagen van tevoren", "op maandag"],
       "correctAnswer": 1
     },
     {
       "id": "q15",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bakkerij Het Korenveld</h3><p>Wit brood: 2,20 euro<br>Bruin brood: 2,40 euro<br>Croissant: 1,10 euro<br>Appeltaart (heel): 12,00 euro</p><p>Bestel een taart minstens 2 dagen van tevoren. Op maandag is de bakkerij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Op welke dag is de bakkerij dicht?</strong></p>",
+      "content": "<p><em>In de bakkerij hangt een prijslijst.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bakkerij Het Korenveld</h3><p>Wit brood: 2,20 euro<br>Bruin brood: 2,40 euro<br>Croissant: 1,10 euro<br>Appeltaart (heel): 12,00 euro</p><p>Bestel een taart minstens 2 dagen van tevoren. Op maandag is de bakkerij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Op welke dag is de bakkerij dicht?</strong></p>",
       "options": ["zondag", "zaterdag", "maandag"],
       "correctAnswer": 2
     },
     {
       "id": "q16",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Sahin,</p><p>U komt vanaf maandag 5 keer naar de fysiotherapie. De afspraken zijn elke week op maandag om 11.00 uur. Trek makkelijke kleding aan. De behandeling duurt 30 minuten. Uw zorgverzekering betaalt de eerste 9 keer.</p><p>Daarna betaalt u zelf.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe vaak komt meneer Sahin naar de fysiotherapie?</strong></p>",
+      "content": "<p><em>Meneer Sahin krijgt een brief van de fysiotherapeut.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Sahin,</p><p>U komt vanaf maandag 5 keer naar de fysiotherapie. De afspraken zijn elke week op maandag om 11.00 uur. Trek makkelijke kleding aan. De behandeling duurt 30 minuten. Uw zorgverzekering betaalt de eerste 9 keer.</p><p>Daarna betaalt u zelf.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe vaak komt meneer Sahin naar de fysiotherapie?</strong></p>",
       "options": ["5 keer", "11 keer", "9 keer"],
       "correctAnswer": 0
     },
     {
       "id": "q17",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Sahin,</p><p>U komt vanaf maandag 5 keer naar de fysiotherapie. De afspraken zijn elke week op maandag om 11.00 uur. Trek makkelijke kleding aan. De behandeling duurt 30 minuten. Uw zorgverzekering betaalt de eerste 9 keer.</p><p>Daarna betaalt u zelf.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet hij aantrekken?</strong></p>",
+      "content": "<p><em>Meneer Sahin krijgt een brief van de fysiotherapeut.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Sahin,</p><p>U komt vanaf maandag 5 keer naar de fysiotherapie. De afspraken zijn elke week op maandag om 11.00 uur. Trek makkelijke kleding aan. De behandeling duurt 30 minuten. Uw zorgverzekering betaalt de eerste 9 keer.</p><p>Daarna betaalt u zelf.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet hij aantrekken?</strong></p>",
       "options": ["sportschoenen", "een pak", "makkelijke kleding"],
       "correctAnswer": 2
     },
     {
       "id": "q18",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Sahin,</p><p>U komt vanaf maandag 5 keer naar de fysiotherapie. De afspraken zijn elke week op maandag om 11.00 uur. Trek makkelijke kleding aan. De behandeling duurt 30 minuten. Uw zorgverzekering betaalt de eerste 9 keer.</p><p>Daarna betaalt u zelf.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wie betaalt de eerste 9 keer?</strong></p>",
+      "content": "<p><em>Meneer Sahin krijgt een brief van de fysiotherapeut.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Sahin,</p><p>U komt vanaf maandag 5 keer naar de fysiotherapie. De afspraken zijn elke week op maandag om 11.00 uur. Trek makkelijke kleding aan. De behandeling duurt 30 minuten. Uw zorgverzekering betaalt de eerste 9 keer.</p><p>Daarna betaalt u zelf.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wie betaalt de eerste 9 keer?</strong></p>",
       "options": ["de fysiotherapeut", "de zorgverzekering", "meneer Sahin zelf"],
       "correctAnswer": 1
     },
     {
       "id": "q19",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Leer werken met de computer!</p><p>In deze cursus leert u e-mailen, zoeken op internet en veilig online betalen. De cursus is voor beginners. Er zijn 8 lessen, elke woensdag van 14.00 tot 16.00 uur. De cursus kost 40 euro.</p><p>Neem uw eigen laptop mee. Heeft u geen laptop? Wij hebben er een paar te leen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat leert u in deze cursus?</strong></p>",
+      "content": "<p><em>Bij de bibliotheek hangt een poster over een computercursus.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Leer werken met de computer!</p><p>In deze cursus leert u e-mailen, zoeken op internet en veilig online betalen. De cursus is voor beginners. Er zijn 8 lessen, elke woensdag van 14.00 tot 16.00 uur. De cursus kost 40 euro.</p><p>Neem uw eigen laptop mee. Heeft u geen laptop? Wij hebben er een paar te leen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat leert u in deze cursus?</strong></p>",
       "options": ["werken met de computer", "koken", "autorijden"],
       "correctAnswer": 0
     },
     {
       "id": "q20",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Leer werken met de computer!</p><p>In deze cursus leert u e-mailen, zoeken op internet en veilig online betalen. De cursus is voor beginners. Er zijn 8 lessen, elke woensdag van 14.00 tot 16.00 uur. De cursus kost 40 euro.</p><p>Neem uw eigen laptop mee. Heeft u geen laptop? Wij hebben er een paar te leen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel lessen zijn er?</strong></p>",
+      "content": "<p><em>Bij de bibliotheek hangt een poster over een computercursus.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Leer werken met de computer!</p><p>In deze cursus leert u e-mailen, zoeken op internet en veilig online betalen. De cursus is voor beginners. Er zijn 8 lessen, elke woensdag van 14.00 tot 16.00 uur. De cursus kost 40 euro.</p><p>Neem uw eigen laptop mee. Heeft u geen laptop? Wij hebben er een paar te leen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel lessen zijn er?</strong></p>",
       "options": ["14 lessen", "8 lessen", "40 lessen"],
       "correctAnswer": 1
     },
     {
       "id": "q21",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Leer werken met de computer!</p><p>In deze cursus leert u e-mailen, zoeken op internet en veilig online betalen. De cursus is voor beginners. Er zijn 8 lessen, elke woensdag van 14.00 tot 16.00 uur. De cursus kost 40 euro.</p><p>Neem uw eigen laptop mee. Heeft u geen laptop? Wij hebben er een paar te leen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat doet u als u geen laptop heeft?</strong></p>",
+      "content": "<p><em>Bij de bibliotheek hangt een poster over een computercursus.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Leer werken met de computer!</p><p>In deze cursus leert u e-mailen, zoeken op internet en veilig online betalen. De cursus is voor beginners. Er zijn 8 lessen, elke woensdag van 14.00 tot 16.00 uur. De cursus kost 40 euro.</p><p>Neem uw eigen laptop mee. Heeft u geen laptop? Wij hebben er een paar te leen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat doet u als u geen laptop heeft?</strong></p>",
       "options": ["een laptop kopen", "de cursus niet doen", "er een lenen van de cursus"],
       "correctAnswer": 2
     },
     {
       "id": "q22",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Klein,</p><p>Bedankt voor uw reservering. U komt met 4 personen op vrijdag 20 juni om 19.00 uur. Wij hebben een tafel bij het raam voor u. Kunt u toch niet komen? Bel ons dan een dag van tevoren.</p><p>Tot vrijdag!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Met hoeveel personen komt mevrouw Klein?</strong></p>",
+      "content": "<p><em>Mevrouw Klein krijgt een bevestiging van haar restaurantreservering.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Klein,</p><p>Bedankt voor uw reservering. U komt met 4 personen op vrijdag 20 juni om 19.00 uur. Wij hebben een tafel bij het raam voor u. Kunt u toch niet komen? Bel ons dan een dag van tevoren.</p><p>Tot vrijdag!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Met hoeveel personen komt mevrouw Klein?</strong></p>",
       "options": ["2 personen", "6 personen", "4 personen"],
       "correctAnswer": 2
     },
     {
       "id": "q23",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Klein,</p><p>Bedankt voor uw reservering. U komt met 4 personen op vrijdag 20 juni om 19.00 uur. Wij hebben een tafel bij het raam voor u. Kunt u toch niet komen? Bel ons dan een dag van tevoren.</p><p>Tot vrijdag!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet zij doen als ze niet kan komen?</strong></p>",
+      "content": "<p><em>Mevrouw Klein krijgt een bevestiging van haar restaurantreservering.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Klein,</p><p>Bedankt voor uw reservering. U komt met 4 personen op vrijdag 20 juni om 19.00 uur. Wij hebben een tafel bij het raam voor u. Kunt u toch niet komen? Bel ons dan een dag van tevoren.</p><p>Tot vrijdag!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet zij doen als ze niet kan komen?</strong></p>",
       "options": ["een dag van tevoren bellen", "een e-mail sturen", "niets"],
       "correctAnswer": 0
     },
     {
       "id": "q24",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Apotheek De Linde</h3><p>Wij zijn open van maandag tot en met vrijdag, van 8.30 tot 17.30 uur. In het weekend zijn wij dicht. Heeft u 's avonds of in het weekend snel medicijnen nodig? Ga dan naar de dienstapotheek in het ziekenhuis. Die is altijd open.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat sluit de apotheek op werkdagen?</strong></p>",
+      "content": "<p><em>Op de deur van de apotheek hangt informatie over openingstijden.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Apotheek De Linde</h3><p>Wij zijn open van maandag tot en met vrijdag, van 8.30 tot 17.30 uur. In het weekend zijn wij dicht. Heeft u 's avonds of in het weekend snel medicijnen nodig? Ga dan naar de dienstapotheek in het ziekenhuis. Die is altijd open.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat sluit de apotheek op werkdagen?</strong></p>",
       "options": ["om 12.00 uur", "om 17.30 uur", "om 8.30 uur"],
       "correctAnswer": 1
     },
     {
       "id": "q25",
       "type": "multiple_choice",
-      "content": "<p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Apotheek De Linde</h3><p>Wij zijn open van maandag tot en met vrijdag, van 8.30 tot 17.30 uur. In het weekend zijn wij dicht. Heeft u 's avonds of in het weekend snel medicijnen nodig? Ga dan naar de dienstapotheek in het ziekenhuis. Die is altijd open.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar gaat u naartoe voor medicijnen in het weekend?</strong></p>",
+      "content": "<p><em>Op de deur van de apotheek hangt informatie over openingstijden.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Apotheek De Linde</h3><p>Wij zijn open van maandag tot en met vrijdag, van 8.30 tot 17.30 uur. In het weekend zijn wij dicht. Heeft u 's avonds of in het weekend snel medicijnen nodig? Ga dan naar de dienstapotheek in het ziekenhuis. Die is altijd open.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar gaat u naartoe voor medicijnen in het weekend?</strong></p>",
       "options": [
         "naar apotheek De Linde",
         "naar de dienstapotheek in het ziekenhuis",
