@@ -1,0 +1,208 @@
+{
+  "id": "listening-a2-exam-5",
+  "skill": "listening",
+  "level": "A2",
+  "title": "Listening Exam 5",
+  "timeLimitMinutes": 45,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van mevrouw Peters met de kapsalon.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/8a5e0c9a-916a-4571-8582-6de4ab7dd763.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer heeft mevrouw Peters een afspraak bij de kapper?</strong></p>",
+      "options": ["woensdag om tien uur", "donderdag om tien uur", "donderdag om twee uur"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q2",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van mevrouw Peters met de kapsalon.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/8a5e0c9a-916a-4571-8582-6de4ab7dd763.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel gaat mevrouw Peters betalen?</strong></p>",
+      "options": ["vijfentwintig euro", "tweeëndertig euro", "vijfendertig euro"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q3",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van mevrouw Peters met de kapsalon.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/8a5e0c9a-916a-4571-8582-6de4ab7dd763.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet mevrouw Peters doen als ze niet kan komen?</strong></p>",
+      "options": ["een e-mail sturen", "niets doen", "uiterlijk een dag van tevoren bellen"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q4",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefonisch bericht van het energiebedrijf voor mevrouw Jansen (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/60e77afa-8bf6-448a-a8aa-a146562529a3.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer komt de monteur?</strong></p>",
+      "options": [
+        "maandag tussen negen en twaalf uur",
+        "maandag tussen twaalf en vijf uur",
+        "dinsdag tussen negen en twaalf uur"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q5",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefonisch bericht van het energiebedrijf voor mevrouw Jansen (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/60e77afa-8bf6-448a-a8aa-a146562529a3.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat komt de monteur doen?</strong></p>",
+      "options": ["de meterstand opnemen", "de meter vervangen", "de verwarming repareren"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q6",
+      "type": "multiple_choice",
+      "content": "<p><em>Omroepbericht op het busstation.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/7c10f947-17fd-4e9a-a0cb-9271e9119ca6.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom rijdt buslijn acht niet via het centrum?</strong></p>",
+      "options": [
+        "Er is een ongeluk gebeurd.",
+        "Het is te druk in het centrum.",
+        "Er zijn werkzaamheden aan de weg."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q7",
+      "type": "multiple_choice",
+      "content": "<p><em>Omroepbericht op het busstation.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/7c10f947-17fd-4e9a-a0cb-9271e9119ca6.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe kunnen reizigers naar het centrum?</strong></p>",
+      "options": ["met tram drie", "met tram tien", "met een andere bus"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q8",
+      "type": "multiple_choice",
+      "content": "<p><em>Omroepbericht op het busstation.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/7c10f947-17fd-4e9a-a0cb-9271e9119ca6.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer rijdt buslijn acht weer normaal?</strong></p>",
+      "options": ["vanaf vrijdag", "vanaf maandag", "vanaf zaterdag"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q9",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (man) en de verkoopster (vrouw) op de markt.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/9740db04-2931-42ce-b03b-fb3174ed540b.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel kilo appels koopt de man?</strong></p>",
+      "options": ["één kilo", "twee kilo", "drie kilo"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q10",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (man) en de verkoopster (vrouw) op de markt.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/9740db04-2931-42ce-b03b-fb3174ed540b.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel betaalt de man?</strong></p>",
+      "options": ["twee euro", "vijf euro", "zes euro"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q11",
+      "type": "multiple_choice",
+      "content": "<p><em>Gesprek van een klant (man) en de verkoopster (vrouw) op de markt.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/9740db04-2931-42ce-b03b-fb3174ed540b.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer zijn er weer aardbeien?</strong></p>",
+      "options": ["vandaag", "volgende week", "volgende maand"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q12",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefonisch bericht van kinderopvang De Regenboog voor de ouders (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/dbfd6c50-e951-44e0-aa2a-5d6fe6abfea3.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom is de kinderopvang vrijdag gesloten?</strong></p>",
+      "options": [
+        "De medewerkers hebben een studiedag.",
+        "De medewerkers zijn ziek.",
+        "Het is een feestdag."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q13",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefonisch bericht van kinderopvang De Regenboog voor de ouders (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/dbfd6c50-e951-44e0-aa2a-5d6fe6abfea3.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moeten de ouders vrijdag doen?</strong></p>",
+      "options": ["hun kind later brengen", "zelf opvang regelen", "de opvang bellen"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q14",
+      "type": "multiple_choice",
+      "content": "<p><em>Bericht op de radio: open dag bij de brandweer.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/94d5e161-617c-445e-b639-7af575100e67.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de open dag?</strong></p>",
+      "options": [
+        "zaterdag van tien tot vier uur",
+        "zaterdag van negen tot vijf uur",
+        "zondag van tien tot vier uur"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q15",
+      "type": "multiple_choice",
+      "content": "<p><em>Bericht op de radio: open dag bij de brandweer.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/94d5e161-617c-445e-b639-7af575100e67.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat mogen kinderen doen op de open dag?</strong></p>",
+      "options": ["een helm kopen", "in een brandweerauto zitten", "een film kijken"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q16",
+      "type": "multiple_choice",
+      "content": "<p><em>Bericht op de radio: open dag bij de brandweer.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/94d5e161-617c-445e-b639-7af575100e67.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost de open dag?</strong></p>",
+      "options": ["vier euro", "tien euro", "twee euro vijftig", "niets"],
+      "correctAnswer": 3
+    },
+    {
+      "id": "q17",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van meneer Costa met de woningcorporatie.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/62d6a8ef-ff1a-4e55-b08a-097675f7eda6.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat is het probleem van meneer Costa?</strong></p>",
+      "options": ["De verwarming doet het niet.", "De kraan lekt.", "Het raam is kapot."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q18",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van meneer Costa met de woningcorporatie.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/62d6a8ef-ff1a-4e55-b08a-097675f7eda6.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer komt de reparateur?</strong></p>",
+      "options": ["vandaag nog", "morgenochtend om negen uur", "morgenmiddag om twee uur"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q19",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van meneer Costa met de woningcorporatie.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/62d6a8ef-ff1a-4e55-b08a-097675f7eda6.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wie betaalt de reparatie?</strong></p>",
+      "options": ["meneer Costa", "de reparateur", "de woningcorporatie"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q20",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van Fatima met de rijschool.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/449542d0-68de-4c29-aced-659f556d667f.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat wil Fatima?</strong></p>",
+      "options": ["haar rijbewijs ophalen", "eerst een proefles nemen", "een auto kopen"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q21",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van Fatima met de rijschool.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/449542d0-68de-4c29-aced-659f556d667f.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost de proefles?</strong></p>",
+      "options": ["vijftien euro", "vijfenveertig euro", "vijfendertig euro", "vijfentwintig euro"],
+      "correctAnswer": 3
+    },
+    {
+      "id": "q22",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefoongesprek van Fatima met de rijschool.</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/449542d0-68de-4c29-aced-659f556d667f.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet Fatima meenemen naar de eerste les?</strong></p>",
+      "options": ["haar identiteitskaart", "geld", "haar diploma"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q23",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefonisch bericht van het ziekenhuis voor mevrouw Demir (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/033e7fd5-f077-4f08-9bc7-42a79ad4ace0.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom belt het ziekenhuis?</strong></p>",
+      "options": [
+        "De afspraak gaat naar een andere dag.",
+        "Mevrouw Demir moet betalen.",
+        "De uitslag is klaar."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q24",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefonisch bericht van het ziekenhuis voor mevrouw Demir (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/033e7fd5-f077-4f08-9bc7-42a79ad4ace0.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de nieuwe afspraak?</strong></p>",
+      "options": ["dinsdag om half elf", "donderdag om half elf", "donderdag om elf uur"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q25",
+      "type": "multiple_choice",
+      "content": "<p><em>Telefonisch bericht van het ziekenhuis voor mevrouw Demir (voicemail).</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><audio controls style=\"width: 100%; margin: 0.75rem 0; display: block;\"><source src=\"{{EXAM_ASSETS_BASE_URL}}/listening/a2/exam-5/033e7fd5-f077-4f08-9bc7-42a79ad4ace0.mp3\" type=\"audio/mpeg\" /></audio><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet mevrouw Demir meenemen?</strong></p>",
+      "options": [
+        "haar medicijnen",
+        "alleen haar geld",
+        "haar verzekeringspas en de brief van de huisarts"
+      ],
+      "correctAnswer": 2
+    }
+  ]
+}

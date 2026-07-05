@@ -1,0 +1,241 @@
+{
+  "id": "reading-a2-exam-5",
+  "skill": "reading",
+  "level": "A2",
+  "title": "Reading Exam 5",
+  "timeLimitMinutes": 65,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple_choice",
+      "content": "<p><em>Meneer Aziz krijgt een brief van zijn energieleverancier.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Aziz,</p><p>Binnenkort maken wij uw jaarafrekening. Daarvoor hebben wij uw meterstanden nodig. Geef uw meterstanden door vóór 28 juni. Dat kan op onze website of in de app. Doorgeven per telefoon kan niet meer.</p><p>Geeft u de meterstanden niet op tijd door? Dan maken wij een schatting van uw verbruik. De jaarafrekening klopt dan misschien niet precies.</p><p>U krijgt de jaarafrekening in de week van 15 juli. Heeft u te veel betaald? Dan krijgt u geld terug. Heeft u te weinig betaald? Dan moet u extra betalen. Wilt u uw maandbedrag veranderen? Dat kan in de app.</p><p>Met vriendelijke groet,<br>EnergieDirect</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Voor welke datum moet meneer Aziz zijn meterstanden doorgeven?</strong></p>",
+      "options": ["vóór 15 juni", "vóór 28 juni", "vóór 15 juli", "vóór 28 juli"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q2",
+      "type": "multiple_choice",
+      "content": "<p><em>Meneer Aziz krijgt een brief van zijn energieleverancier.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Aziz,</p><p>Binnenkort maken wij uw jaarafrekening. Daarvoor hebben wij uw meterstanden nodig. Geef uw meterstanden door vóór 28 juni. Dat kan op onze website of in de app. Doorgeven per telefoon kan niet meer.</p><p>Geeft u de meterstanden niet op tijd door? Dan maken wij een schatting van uw verbruik. De jaarafrekening klopt dan misschien niet precies.</p><p>U krijgt de jaarafrekening in de week van 15 juli. Heeft u te veel betaald? Dan krijgt u geld terug. Heeft u te weinig betaald? Dan moet u extra betalen. Wilt u uw maandbedrag veranderen? Dat kan in de app.</p><p>Met vriendelijke groet,<br>EnergieDirect</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe kan meneer Aziz zijn meterstanden doorgeven?</strong></p>",
+      "options": ["alleen per telefoon", "alleen via de app", "op de website of in de app"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q3",
+      "type": "multiple_choice",
+      "content": "<p><em>Meneer Aziz krijgt een brief van zijn energieleverancier.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Aziz,</p><p>Binnenkort maken wij uw jaarafrekening. Daarvoor hebben wij uw meterstanden nodig. Geef uw meterstanden door vóór 28 juni. Dat kan op onze website of in de app. Doorgeven per telefoon kan niet meer.</p><p>Geeft u de meterstanden niet op tijd door? Dan maken wij een schatting van uw verbruik. De jaarafrekening klopt dan misschien niet precies.</p><p>U krijgt de jaarafrekening in de week van 15 juli. Heeft u te veel betaald? Dan krijgt u geld terug. Heeft u te weinig betaald? Dan moet u extra betalen. Wilt u uw maandbedrag veranderen? Dat kan in de app.</p><p>Met vriendelijke groet,<br>EnergieDirect</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Meneer Aziz geeft zijn meterstanden te laat door. Wat gebeurt er dan?</strong></p>",
+      "options": [
+        "Het bedrijf maakt een schatting van zijn verbruik.",
+        "Hij krijgt geen jaarafrekening.",
+        "Hij moet direct extra betalen."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q4",
+      "type": "multiple_choice",
+      "content": "<p><em>Yusuf gebruikt elke dag medicijnen. Hij kijkt op de website van Apotheek De Linde.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p><strong>Apotheek De Linde</strong></p><p><strong>Herhaalrecepten</strong><br>Gebruikt u een medicijn voor langere tijd? Dan kunt u een herhaalrecept bestellen op deze website of in de app. Bestelt u vóór 12.00 uur? Dan kunt u uw medicijnen de volgende werkdag na 14.00 uur ophalen. Bestelt u na 12.00 uur? Dan duurt het een dag langer.</p><p><strong>Bezorgen</strong><br>Wij kunnen medicijnen thuisbezorgen. Deze service is alleen voor klanten die slecht ter been zijn. Bezorgen is gratis. Wilt u de bezorgservice gebruiken? Bel dan naar de apotheek: 030 - 234 56 78.</p><p><strong>Openingstijden</strong></p><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">dag</th><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">tijden</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">maandag t/m vrijdag</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">08.00 - 17.30 uur</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">zaterdag</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">10.00 - 13.00 uur</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">zondag</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">gesloten</td></tr></table><p>Let op: op zaterdag kunt u alleen medicijnen ophalen. Heeft u een vraag over uw medicijnen? Kom dan op een werkdag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Yusuf bestelt op maandag om 10.00 uur een herhaalrecept. Wanneer kan hij zijn medicijnen ophalen?</strong></p>",
+      "options": ["maandag na 14.00 uur", "dinsdag na 14.00 uur", "woensdag na 14.00 uur"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q5",
+      "type": "multiple_choice",
+      "content": "<p><em>Yusuf gebruikt elke dag medicijnen. Hij kijkt op de website van Apotheek De Linde.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p><strong>Apotheek De Linde</strong></p><p><strong>Herhaalrecepten</strong><br>Gebruikt u een medicijn voor langere tijd? Dan kunt u een herhaalrecept bestellen op deze website of in de app. Bestelt u vóór 12.00 uur? Dan kunt u uw medicijnen de volgende werkdag na 14.00 uur ophalen. Bestelt u na 12.00 uur? Dan duurt het een dag langer.</p><p><strong>Bezorgen</strong><br>Wij kunnen medicijnen thuisbezorgen. Deze service is alleen voor klanten die slecht ter been zijn. Bezorgen is gratis. Wilt u de bezorgservice gebruiken? Bel dan naar de apotheek: 030 - 234 56 78.</p><p><strong>Openingstijden</strong></p><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">dag</th><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">tijden</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">maandag t/m vrijdag</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">08.00 - 17.30 uur</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">zaterdag</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">10.00 - 13.00 uur</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">zondag</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">gesloten</td></tr></table><p>Let op: op zaterdag kunt u alleen medicijnen ophalen. Heeft u een vraag over uw medicijnen? Kom dan op een werkdag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Voor wie is de bezorgservice?</strong></p>",
+      "options": [
+        "voor alle klanten van de apotheek",
+        "voor klanten die vóór 12.00 uur bestellen",
+        "voor klanten die slecht ter been zijn"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q6",
+      "type": "multiple_choice",
+      "content": "<p><em>Yusuf gebruikt elke dag medicijnen. Hij kijkt op de website van Apotheek De Linde.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p><strong>Apotheek De Linde</strong></p><p><strong>Herhaalrecepten</strong><br>Gebruikt u een medicijn voor langere tijd? Dan kunt u een herhaalrecept bestellen op deze website of in de app. Bestelt u vóór 12.00 uur? Dan kunt u uw medicijnen de volgende werkdag na 14.00 uur ophalen. Bestelt u na 12.00 uur? Dan duurt het een dag langer.</p><p><strong>Bezorgen</strong><br>Wij kunnen medicijnen thuisbezorgen. Deze service is alleen voor klanten die slecht ter been zijn. Bezorgen is gratis. Wilt u de bezorgservice gebruiken? Bel dan naar de apotheek: 030 - 234 56 78.</p><p><strong>Openingstijden</strong></p><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">dag</th><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">tijden</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">maandag t/m vrijdag</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">08.00 - 17.30 uur</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">zaterdag</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">10.00 - 13.00 uur</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">zondag</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">gesloten</td></tr></table><p>Let op: op zaterdag kunt u alleen medicijnen ophalen. Heeft u een vraag over uw medicijnen? Kom dan op een werkdag.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kan Yusuf op zaterdag doen bij de apotheek?</strong></p>",
+      "options": [
+        "medicijnen ophalen",
+        "een vraag stellen over zijn medicijnen",
+        "niets, de apotheek is dan gesloten"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q7",
+      "type": "multiple_choice",
+      "content": "<p><em>Fatima heeft een dochter in groep 3. Ze krijgt een brief van de school.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste ouders,</p><p>Op donderdag 12 juni gaan de groepen 3 en 4 op schoolreisje naar dierenpark De Vlinder. We verzamelen om 8.15 uur op het schoolplein. De bus vertrekt om 8.30 uur. Om 16.00 uur zijn we weer terug bij school.</p><p>Het schoolreisje kost € 7,50 per kind. Betaal dit bedrag vóór 5 juni via de app Schoolgeld. Contant betalen bij de juf kan niet.</p><p>De school zorgt voor de lunch. Uw kind hoeft dus geen eten mee te nemen. Geef uw kind wel een flesje water mee. Denk ook aan makkelijke schoenen en een jas.</p><p>Wilt u mee als hulpouder? Meld u dan vóór 1 juni aan bij juf Anke.</p><p>Met vriendelijke groet,<br>Basisschool De Regenboog</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat vertrekt de bus naar het dierenpark?</strong></p>",
+      "options": ["om 8.15 uur", "om 8.30 uur", "om 16.00 uur"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q8",
+      "type": "multiple_choice",
+      "content": "<p><em>Fatima heeft een dochter in groep 3. Ze krijgt een brief van de school.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste ouders,</p><p>Op donderdag 12 juni gaan de groepen 3 en 4 op schoolreisje naar dierenpark De Vlinder. We verzamelen om 8.15 uur op het schoolplein. De bus vertrekt om 8.30 uur. Om 16.00 uur zijn we weer terug bij school.</p><p>Het schoolreisje kost € 7,50 per kind. Betaal dit bedrag vóór 5 juni via de app Schoolgeld. Contant betalen bij de juf kan niet.</p><p>De school zorgt voor de lunch. Uw kind hoeft dus geen eten mee te nemen. Geef uw kind wel een flesje water mee. Denk ook aan makkelijke schoenen en een jas.</p><p>Wilt u mee als hulpouder? Meld u dan vóór 1 juni aan bij juf Anke.</p><p>Met vriendelijke groet,<br>Basisschool De Regenboog</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat hoeft Fatima niet mee te geven aan haar dochter?</strong></p>",
+      "options": ["eten voor de lunch", "een flesje water", "een jas"],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q9",
+      "type": "multiple_choice",
+      "content": "<p><em>Fatima heeft een dochter in groep 3. Ze krijgt een brief van de school.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste ouders,</p><p>Op donderdag 12 juni gaan de groepen 3 en 4 op schoolreisje naar dierenpark De Vlinder. We verzamelen om 8.15 uur op het schoolplein. De bus vertrekt om 8.30 uur. Om 16.00 uur zijn we weer terug bij school.</p><p>Het schoolreisje kost € 7,50 per kind. Betaal dit bedrag vóór 5 juni via de app Schoolgeld. Contant betalen bij de juf kan niet.</p><p>De school zorgt voor de lunch. Uw kind hoeft dus geen eten mee te nemen. Geef uw kind wel een flesje water mee. Denk ook aan makkelijke schoenen en een jas.</p><p>Wilt u mee als hulpouder? Meld u dan vóór 1 juni aan bij juf Anke.</p><p>Met vriendelijke groet,<br>Basisschool De Regenboog</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Fatima wil mee als hulpouder. Wat moet ze doen?</strong></p>",
+      "options": [
+        "Ze betaalt € 7,50 via de app Schoolgeld.",
+        "Ze meldt zich vóór 5 juni aan bij de directie.",
+        "Ze meldt zich vóór 1 juni aan bij juf Anke."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q10",
+      "type": "multiple_choice",
+      "content": "<p><em>Bij de ingang van de sporthal hangt een poster.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p><strong>Volleybalclub Smash zoekt nieuwe leden!</strong></p><p>Houd je van sport? Kom dan volleyballen bij Smash. Iedereen vanaf 16 jaar kan lid worden. Je hoeft geen ervaring te hebben.</p><p>In juni mag je twee keer gratis meetrainen. We trainen op dinsdag van 19.00 tot 20.30 uur en op vrijdag van 20.00 tot 21.30 uur in sporthal De Kamp.</p><p>Wil je daarna lid worden? Een lidmaatschap kost € 15,00 per maand. Sportkleding koop je zelf. Een bal hoef je niet te kopen, die is er in de sporthal. Meld je aan via www.vcsmash.nl.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat staat er op de poster over meetrainen?</strong></p>",
+      "options": [
+        "Je mag in juni twee keer gratis meetrainen.",
+        "Je betaalt € 15,00 per training.",
+        "Je kunt alleen meetrainen als je ervaring hebt."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q11",
+      "type": "multiple_choice",
+      "content": "<p><em>Bij de ingang van de sporthal hangt een poster.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p><strong>Volleybalclub Smash zoekt nieuwe leden!</strong></p><p>Houd je van sport? Kom dan volleyballen bij Smash. Iedereen vanaf 16 jaar kan lid worden. Je hoeft geen ervaring te hebben.</p><p>In juni mag je twee keer gratis meetrainen. We trainen op dinsdag van 19.00 tot 20.30 uur en op vrijdag van 20.00 tot 21.30 uur in sporthal De Kamp.</p><p>Wil je daarna lid worden? Een lidmaatschap kost € 15,00 per maand. Sportkleding koop je zelf. Een bal hoef je niet te kopen, die is er in de sporthal. Meld je aan via www.vcsmash.nl.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wie kan lid worden van de volleybalclub?</strong></p>",
+      "options": [
+        "alleen mensen met ervaring",
+        "iedereen vanaf 16 jaar",
+        "alleen jongeren tot 16 jaar"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q12",
+      "type": "multiple_choice",
+      "content": "<p><em>Bilal heeft geen fiets. Hij kijkt op de website van fietsenwinkel Het Wiel.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p><strong>Een fiets huren bij Het Wiel</strong></p><p>Bij Het Wiel huurt u een goede fiets voor een vaste prijs per maand. Wij hebben drie abonnementen.</p><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">abonnement</th><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">prijs per maand</th><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">informatie</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Basis</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">€ 12,50</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Een gewone fiets. Gaat de fiets kapot? Dan betaalt u de reparatie zelf.</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Plus</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">€ 17,50</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Een gewone fiets. Reparaties zijn gratis. Is uw fiets kapot? Dan krijgt u binnen een dag een andere fiets.</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Elektrisch</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">€ 40,00</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Een elektrische fiets. Reparaties zijn gratis. U betaalt één keer € 25,00 extra voor het slot en de sleutels.</td></tr></table><p>U betaalt elke maand automatisch. Opzeggen kan elke maand. Studenten krijgen € 2,50 korting per maand op alle abonnementen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Bilal wil een gewone fiets. Hij wil niet betalen voor reparaties. Welk abonnement past het beste bij hem?</strong></p>",
+      "options": ["Basis", "Plus", "Elektrisch"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q13",
+      "type": "multiple_choice",
+      "content": "<p><em>Bilal heeft geen fiets. Hij kijkt op de website van fietsenwinkel Het Wiel.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p><strong>Een fiets huren bij Het Wiel</strong></p><p>Bij Het Wiel huurt u een goede fiets voor een vaste prijs per maand. Wij hebben drie abonnementen.</p><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">abonnement</th><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">prijs per maand</th><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">informatie</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Basis</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">€ 12,50</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Een gewone fiets. Gaat de fiets kapot? Dan betaalt u de reparatie zelf.</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Plus</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">€ 17,50</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Een gewone fiets. Reparaties zijn gratis. Is uw fiets kapot? Dan krijgt u binnen een dag een andere fiets.</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Elektrisch</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">€ 40,00</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Een elektrische fiets. Reparaties zijn gratis. U betaalt één keer € 25,00 extra voor het slot en de sleutels.</td></tr></table><p>U betaalt elke maand automatisch. Opzeggen kan elke maand. Studenten krijgen € 2,50 korting per maand op alle abonnementen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Een student neemt het abonnement Plus. Hoeveel betaalt hij per maand?</strong></p>",
+      "options": ["€ 12,50", "€ 15,00", "€ 17,50", "€ 40,00"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q14",
+      "type": "multiple_choice",
+      "content": "<p><em>Bilal heeft geen fiets. Hij kijkt op de website van fietsenwinkel Het Wiel.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p><strong>Een fiets huren bij Het Wiel</strong></p><p>Bij Het Wiel huurt u een goede fiets voor een vaste prijs per maand. Wij hebben drie abonnementen.</p><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">abonnement</th><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">prijs per maand</th><th style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; background: #f5f5f5; text-align: left;\">informatie</th></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Basis</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">€ 12,50</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Een gewone fiets. Gaat de fiets kapot? Dan betaalt u de reparatie zelf.</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Plus</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">€ 17,50</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Een gewone fiets. Reparaties zijn gratis. Is uw fiets kapot? Dan krijgt u binnen een dag een andere fiets.</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Elektrisch</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">€ 40,00</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">Een elektrische fiets. Reparaties zijn gratis. U betaalt één keer € 25,00 extra voor het slot en de sleutels.</td></tr></table><p>U betaalt elke maand automatisch. Opzeggen kan elke maand. Studenten krijgen € 2,50 korting per maand op alle abonnementen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat is speciaal aan het abonnement Elektrisch?</strong></p>",
+      "options": [
+        "U betaalt één keer € 25,00 extra.",
+        "Reparaties zijn niet gratis.",
+        "Opzeggen kan alleen na een jaar."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q15",
+      "type": "multiple_choice",
+      "content": "<p><em>Dario werkt in een magazijn. Hij krijgt een e-mail van zijn baas.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste collega's,</p><p>Volgende week woensdag komt er een nieuwe machine in het magazijn. Met deze machine kunnen we pakketten sneller inpakken. Iedereen moet leren hoe de machine werkt. Daarom geven we woensdag een uitleg.</p><p>De uitleg is om 9.00 uur en om 15.00 uur. De uitleg duurt een uur. Kies één van de twee tijden. Schrijf je naam op de lijst bij de kantine. Doe dat vóór maandag.</p><p>Werk je op woensdag niet? Dan hoef je niet extra te komen. Je krijgt de uitleg later van je teamleider, op een dag dat je wel werkt.</p><p>Heb je vragen? Kom dan even langs op kantoor.</p><p>Groeten,<br>Ruud</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moeten de collega's vóór maandag doen?</strong></p>",
+      "options": [
+        "de nieuwe machine testen",
+        "hun naam op de lijst bij de kantine schrijven",
+        "een e-mail sturen naar Ruud"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q16",
+      "type": "multiple_choice",
+      "content": "<p><em>Dario werkt in een magazijn. Hij krijgt een e-mail van zijn baas.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste collega's,</p><p>Volgende week woensdag komt er een nieuwe machine in het magazijn. Met deze machine kunnen we pakketten sneller inpakken. Iedereen moet leren hoe de machine werkt. Daarom geven we woensdag een uitleg.</p><p>De uitleg is om 9.00 uur en om 15.00 uur. De uitleg duurt een uur. Kies één van de twee tijden. Schrijf je naam op de lijst bij de kantine. Doe dat vóór maandag.</p><p>Werk je op woensdag niet? Dan hoef je niet extra te komen. Je krijgt de uitleg later van je teamleider, op een dag dat je wel werkt.</p><p>Heb je vragen? Kom dan even langs op kantoor.</p><p>Groeten,<br>Ruud</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Dario werkt op woensdag niet. Wat gebeurt er dan?</strong></p>",
+      "options": [
+        "Hij moet op woensdag toch naar het magazijn komen.",
+        "Hij krijgt geen uitleg over de machine.",
+        "Hij krijgt de uitleg later van zijn teamleider."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q17",
+      "type": "multiple_choice",
+      "content": "<p><em>Dario werkt in een magazijn. Hij krijgt een e-mail van zijn baas.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste collega's,</p><p>Volgende week woensdag komt er een nieuwe machine in het magazijn. Met deze machine kunnen we pakketten sneller inpakken. Iedereen moet leren hoe de machine werkt. Daarom geven we woensdag een uitleg.</p><p>De uitleg is om 9.00 uur en om 15.00 uur. De uitleg duurt een uur. Kies één van de twee tijden. Schrijf je naam op de lijst bij de kantine. Doe dat vóór maandag.</p><p>Werk je op woensdag niet? Dan hoef je niet extra te komen. Je krijgt de uitleg later van je teamleider, op een dag dat je wel werkt.</p><p>Heb je vragen? Kom dan even langs op kantoor.</p><p>Groeten,<br>Ruud</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom komt er een nieuwe machine in het magazijn?</strong></p>",
+      "options": [
+        "De oude machine is kapot.",
+        "Het magazijn wordt groter.",
+        "Met de nieuwe machine gaat inpakken sneller."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q18",
+      "type": "multiple_choice",
+      "content": "<p><em>Lena komt thuis. In de brievenbus ligt een briefje van de pakketbezorger.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste klant,</p><p>Wij waren vandaag om 11.20 uur bij u met een pakket. Helaas was u niet thuis. We hebben ook aangebeld bij uw buren op nummer 8. Daar was ook niemand thuis.</p><p>Uw pakket ligt nu bij afhaalpunt Primera, Marktstraat 3. U kunt het pakket vanaf morgen 12.00 uur ophalen. Neem dit briefje en uw identiteitsbewijs mee.</p><p>Let op: het pakket blijft zeven dagen bij het afhaalpunt. Daarna gaat het terug naar de webwinkel.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar is het pakket van Lena nu?</strong></p>",
+      "options": ["bij de buren op nummer 8", "bij de webwinkel", "bij afhaalpunt Primera"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q19",
+      "type": "multiple_choice",
+      "content": "<p><em>Lena komt thuis. In de brievenbus ligt een briefje van de pakketbezorger.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste klant,</p><p>Wij waren vandaag om 11.20 uur bij u met een pakket. Helaas was u niet thuis. We hebben ook aangebeld bij uw buren op nummer 8. Daar was ook niemand thuis.</p><p>Uw pakket ligt nu bij afhaalpunt Primera, Marktstraat 3. U kunt het pakket vanaf morgen 12.00 uur ophalen. Neem dit briefje en uw identiteitsbewijs mee.</p><p>Let op: het pakket blijft zeven dagen bij het afhaalpunt. Daarna gaat het terug naar de webwinkel.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet Lena meenemen naar het afhaalpunt?</strong></p>",
+      "options": [
+        "alleen het briefje",
+        "alleen haar identiteitsbewijs",
+        "haar bankpas en het briefje",
+        "het briefje en haar identiteitsbewijs"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": "q20",
+      "type": "multiple_choice",
+      "content": "<p><em>Amina praat met haar buurvrouw Truus voor de deur.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p><strong>Amina:</strong> Hoi Truus. Ik heb een nieuwe bank gekocht. Weet jij hoe ik mijn oude bank kan weggooien?</p><p><strong>Truus:</strong> Je kunt de bank naar de milieustraat brengen. Dat is gratis. Heb je een auto?</p><p><strong>Amina:</strong> Nee, ik heb geen auto. En de bank is heel zwaar.</p><p><strong>Truus:</strong> Dan kun je de gemeente bellen. Zij halen grote spullen bij je huis op. Je moet wel een afspraak maken. Het kost € 15,00.</p><p><strong>Amina:</strong> Dat is best veel geld.</p><p><strong>Truus:</strong> Is de bank nog goed? Dan kun je ook de kringloopwinkel bellen. Zij halen de bank gratis op. Ze verkopen hem dan in de winkel.</p><p><strong>Amina:</strong> De bank is nog prima. Ik vind alleen de kleur niet meer mooi. Dan bel ik de kringloopwinkel. Bedankt, Truus!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom brengt Amina de bank niet naar de milieustraat?</strong></p>",
+      "options": ["Ze heeft geen auto.", "Dat kost te veel geld.", "De milieustraat is gesloten."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q21",
+      "type": "multiple_choice",
+      "content": "<p><em>Amina praat met haar buurvrouw Truus voor de deur.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p><strong>Amina:</strong> Hoi Truus. Ik heb een nieuwe bank gekocht. Weet jij hoe ik mijn oude bank kan weggooien?</p><p><strong>Truus:</strong> Je kunt de bank naar de milieustraat brengen. Dat is gratis. Heb je een auto?</p><p><strong>Amina:</strong> Nee, ik heb geen auto. En de bank is heel zwaar.</p><p><strong>Truus:</strong> Dan kun je de gemeente bellen. Zij halen grote spullen bij je huis op. Je moet wel een afspraak maken. Het kost € 15,00.</p><p><strong>Amina:</strong> Dat is best veel geld.</p><p><strong>Truus:</strong> Is de bank nog goed? Dan kun je ook de kringloopwinkel bellen. Zij halen de bank gratis op. Ze verkopen hem dan in de winkel.</p><p><strong>Amina:</strong> De bank is nog prima. Ik vind alleen de kleur niet meer mooi. Dan bel ik de kringloopwinkel. Bedankt, Truus!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost het als de gemeente de bank ophaalt?</strong></p>",
+      "options": ["€ 15,00", "€ 50,00", "Dat is gratis."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q22",
+      "type": "multiple_choice",
+      "content": "<p><em>Amina praat met haar buurvrouw Truus voor de deur.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p><strong>Amina:</strong> Hoi Truus. Ik heb een nieuwe bank gekocht. Weet jij hoe ik mijn oude bank kan weggooien?</p><p><strong>Truus:</strong> Je kunt de bank naar de milieustraat brengen. Dat is gratis. Heb je een auto?</p><p><strong>Amina:</strong> Nee, ik heb geen auto. En de bank is heel zwaar.</p><p><strong>Truus:</strong> Dan kun je de gemeente bellen. Zij halen grote spullen bij je huis op. Je moet wel een afspraak maken. Het kost € 15,00.</p><p><strong>Amina:</strong> Dat is best veel geld.</p><p><strong>Truus:</strong> Is de bank nog goed? Dan kun je ook de kringloopwinkel bellen. Zij halen de bank gratis op. Ze verkopen hem dan in de winkel.</p><p><strong>Amina:</strong> De bank is nog prima. Ik vind alleen de kleur niet meer mooi. Dan bel ik de kringloopwinkel. Bedankt, Truus!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat gaat Amina doen met haar oude bank?</strong></p>",
+      "options": [
+        "Ze brengt de bank naar de milieustraat.",
+        "Ze belt de gemeente.",
+        "Ze belt de kringloopwinkel."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q23",
+      "type": "multiple_choice",
+      "content": "<p><em>Meneer Haddad woont in een flat. Hij krijgt een brief van de woningcorporatie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste bewoner,</p><p>Van maandag 7 juli tot en met vrijdag 25 juli schilderen wij de buitenkant van uw flat. De schilders werken op werkdagen van 8.00 tot 16.30 uur.</p><p>Wat vragen wij van u?</p><ul><li>Haal alle spullen van uw balkon.</li><li>Doe uw ramen dicht als de schilders bij uw woning werken.</li><li>Parkeer uw auto in juli niet voor de flat.</li></ul><p>De schilders beginnen bij de woningen met nummer 1 tot en met 20. Woont u op nummer 1 tot en met 20? Dan moet uw balkon leeg zijn vóór 7 juli. Woont u op nummer 21 tot en met 40? Dan moet uw balkon leeg zijn vóór 14 juli.</p><p>Heeft u vragen? Bel ons op werkdagen tussen 9.00 en 12.00 uur: 020 - 123 45 67.</p><p>Met vriendelijke groet,<br>Woningcorporatie Goed Wonen</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moeten de bewoners doen als de schilders bij hun woning werken?</strong></p>",
+      "options": [
+        "de ramen dichtdoen",
+        "de auto voor de flat parkeren",
+        "thuisblijven van 8.00 tot 16.30 uur"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q24",
+      "type": "multiple_choice",
+      "content": "<p><em>Meneer Haddad woont in een flat. Hij krijgt een brief van de woningcorporatie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste bewoner,</p><p>Van maandag 7 juli tot en met vrijdag 25 juli schilderen wij de buitenkant van uw flat. De schilders werken op werkdagen van 8.00 tot 16.30 uur.</p><p>Wat vragen wij van u?</p><ul><li>Haal alle spullen van uw balkon.</li><li>Doe uw ramen dicht als de schilders bij uw woning werken.</li><li>Parkeer uw auto in juli niet voor de flat.</li></ul><p>De schilders beginnen bij de woningen met nummer 1 tot en met 20. Woont u op nummer 1 tot en met 20? Dan moet uw balkon leeg zijn vóór 7 juli. Woont u op nummer 21 tot en met 40? Dan moet uw balkon leeg zijn vóór 14 juli.</p><p>Heeft u vragen? Bel ons op werkdagen tussen 9.00 en 12.00 uur: 020 - 123 45 67.</p><p>Met vriendelijke groet,<br>Woningcorporatie Goed Wonen</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Meneer Haddad woont op nummer 30. Wanneer moet zijn balkon leeg zijn?</strong></p>",
+      "options": ["vóór 7 juli", "vóór 14 juli", "vóór 25 juli"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q25",
+      "type": "multiple_choice",
+      "content": "<p><em>Meneer Haddad woont in een flat. Hij krijgt een brief van de woningcorporatie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste bewoner,</p><p>Van maandag 7 juli tot en met vrijdag 25 juli schilderen wij de buitenkant van uw flat. De schilders werken op werkdagen van 8.00 tot 16.30 uur.</p><p>Wat vragen wij van u?</p><ul><li>Haal alle spullen van uw balkon.</li><li>Doe uw ramen dicht als de schilders bij uw woning werken.</li><li>Parkeer uw auto in juli niet voor de flat.</li></ul><p>De schilders beginnen bij de woningen met nummer 1 tot en met 20. Woont u op nummer 1 tot en met 20? Dan moet uw balkon leeg zijn vóór 7 juli. Woont u op nummer 21 tot en met 40? Dan moet uw balkon leeg zijn vóór 14 juli.</p><p>Heeft u vragen? Bel ons op werkdagen tussen 9.00 en 12.00 uur: 020 - 123 45 67.</p><p>Met vriendelijke groet,<br>Woningcorporatie Goed Wonen</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Meneer Haddad wil de woningcorporatie bellen. Wanneer kan dat?</strong></p>",
+      "options": [
+        "elke dag tussen 8.00 en 16.30 uur",
+        "op werkdagen na 12.00 uur",
+        "op werkdagen tussen 9.00 en 12.00 uur"
+      ],
+      "correctAnswer": 2
+    }
+  ]
+}

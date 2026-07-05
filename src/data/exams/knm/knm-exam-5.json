@@ -1,0 +1,409 @@
+{
+  "id": "knm-exam-5",
+  "skill": "knm",
+  "level": null,
+  "title": "KNM Exam 5",
+  "timeLimitMinutes": 45,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple_choice",
+      "content": "<p>Amir heeft een contract voor zes maanden. Wat voor contract is dit?</p>",
+      "options": ["Een tijdelijk contract.", "Een uitzendcontract.", "Een vast contract."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q2",
+      "type": "multiple_choice",
+      "content": "<p>Sara krijgt een bijstandsuitkering. Ze gaat parttime werken en verdient nu geld. Wat moet ze doen?</p>",
+      "options": [
+        "Haar inkomen doorgeven aan de gemeente.",
+        "Niets doen, haar werkgever geeft het door.",
+        "Wachten tot de gemeente een brief stuurt."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q3",
+      "type": "multiple_choice",
+      "content": "<p>Wat schrijf je in een sollicitatiebrief?</p>",
+      "options": [
+        "Hoeveel salaris je nu verdient.",
+        "Waarom je de baan wilt en wat je kunt.",
+        "Welke hobby's je familie heeft."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q4",
+      "type": "multiple_choice",
+      "content": "<p>Fatima is ziek en kan niet werken. Wat doet ze het beste?</p>",
+      "options": [
+        "Niets zeggen en thuisblijven.",
+        "Wachten tot haar werkgever belt.",
+        "Zich 's ochtends ziek melden bij haar werkgever."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q5",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een ondernemingsraad?</p>",
+      "options": [
+        "Een groep klanten die producten test.",
+        "Een groep werknemers die meepraat over besluiten in het bedrijf.",
+        "Een raad van de gemeente voor bedrijven."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q6",
+      "type": "multiple_choice",
+      "content": "<p>Je bent uitgenodigd voor een verjaardag. Wat nemen veel mensen mee?</p>",
+      "options": ["Een klein cadeau.", "Eten voor alle gasten.", "Niets, dat is normaal."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q7",
+      "type": "multiple_choice",
+      "content": "<p>Wat is vrijwilligerswerk?</p>",
+      "options": [
+        "Werk dat je alleen in het weekend doet.",
+        "Werk voor een uitzendbureau.",
+        "Werk dat je doet zonder salaris."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q8",
+      "type": "multiple_choice",
+      "content": "<p>Bij de buren is een baby geboren. Wat is een gewoon gebruik in Nederland?</p>",
+      "options": [
+        "Een kaartje met een felicitatie sturen.",
+        "Een week lang eten koken voor de buren.",
+        "Elke dag op bezoek gaan."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q9",
+      "type": "multiple_choice",
+      "content": "<p>Wanneer is Koningsdag?</p>",
+      "options": ["Op 5 mei.", "Op 27 april.", "Op 31 december."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q10",
+      "type": "multiple_choice",
+      "content": "<p>Je wilt op bezoek bij een vriend. Wat is gebruikelijk in Nederland?</p>",
+      "options": [
+        "Gewoon langsgaan zonder bericht.",
+        "Wachten tot de vriend jou uitnodigt.",
+        "Eerst bellen of een afspraak maken."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q11",
+      "type": "multiple_choice",
+      "content": "<p>Wat staat er in een huurcontract?</p>",
+      "options": [
+        "De afspraken tussen de huurder en de verhuurder.",
+        "De regels van de gemeente over afval.",
+        "De prijzen van alle woningen in de wijk."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q12",
+      "type": "multiple_choice",
+      "content": "<p>Waar gooi je oude kranten en kartonnen dozen?</p>",
+      "options": ["Bij het glas.", "Bij het oud papier.", "Bij het restafval."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q13",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een variabel energietarief?</p>",
+      "options": [
+        "De prijs blijft het hele jaar hetzelfde.",
+        "De prijs geldt alleen in de winter.",
+        "De prijs kan omhoog en omlaag gaan."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q14",
+      "type": "multiple_choice",
+      "content": "<p>Waar lever je lege batterijen in?</p>",
+      "options": [
+        "Bij de GFT-bak.",
+        "Bij een inleverpunt, bijvoorbeeld in de supermarkt.",
+        "Bij het restafval."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q15",
+      "type": "multiple_choice",
+      "content": "<p>Yusuf wil een huis kopen. Waar leent hij meestal geld voor het huis?</p>",
+      "options": ["Bij de bank.", "Bij de gemeente.", "Bij de woningcorporatie."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q16",
+      "type": "multiple_choice",
+      "content": "<p>Telt een bezoek aan de huisarts mee voor het eigen risico?</p>",
+      "options": [
+        "Ja, altijd.",
+        "Ja, maar alleen in het weekend.",
+        "Nee, de huisarts valt niet onder het eigen risico."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q17",
+      "type": "multiple_choice",
+      "content": "<p>Wat is zorgtoeslag?</p>",
+      "options": [
+        "Extra salaris van je werkgever voor zorgkosten.",
+        "Geld van de overheid voor je zorgverzekering bij een laag inkomen.",
+        "Korting van het ziekenhuis op een operatie."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q18",
+      "type": "multiple_choice",
+      "content": "<p>Een kind van 10 jaar gaat naar de fysiotherapeut. Wie betaalt dat meestal?</p>",
+      "options": [
+        "De zorgverzekering, voor kinderen is dit vergoed.",
+        "De ouders betalen alles zelf.",
+        "De school betaalt de behandeling."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q19",
+      "type": "multiple_choice",
+      "content": "<p>Hoe maak je een afspraak bij de huisarts?</p>",
+      "options": [
+        "Je gaat zonder afspraak naar het spreekuur.",
+        "Je stuurt een brief naar de gemeente.",
+        "Je belt de praktijk of je regelt het online."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q20",
+      "type": "multiple_choice",
+      "content": "<p>Karim voelt zich al weken somber. Naar wie gaat hij eerst?</p>",
+      "options": [
+        "Direct naar een psycholoog in het ziekenhuis.",
+        "Naar de huisarts.",
+        "Naar de spoedeisende hulp."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q21",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een polder?</p>",
+      "options": [
+        "Een gebied met veel heuvels.",
+        "Een oude molen aan een rivier.",
+        "Land dat is drooggemaakt en laag ligt."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q22",
+      "type": "multiple_choice",
+      "content": "<p>Wat gebeurde er met Nederland in de Tweede Wereldoorlog?</p>",
+      "options": [
+        "Nederland bleef neutraal en vrij.",
+        "Nederland was bezet door Duitsland.",
+        "Nederland vocht tegen Engeland."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q23",
+      "type": "multiple_choice",
+      "content": "<p>In welk jaar werd Nederland bevrijd?</p>",
+      "options": ["In 1918.", "In 1960.", "In 1945."],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q24",
+      "type": "multiple_choice",
+      "content": "<p>Welke kleuren heeft de Nederlandse vlag?</p>",
+      "options": ["Rood, wit en blauw.", "Rood, geel en groen.", "Oranje, wit en blauw."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q25",
+      "type": "multiple_choice",
+      "content": "<p>Wat geldt in Nederland voor abortus en euthanasie?</p>",
+      "options": [
+        "Ze zijn altijd verboden.",
+        "Ze zijn geregeld in de wet.",
+        "Ze zijn alleen toegestaan voor Nederlanders."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q26",
+      "type": "multiple_choice",
+      "content": "<p>Wat is je nettosalaris?</p>",
+      "options": [
+        "Het geld dat je krijgt na aftrek van belasting en premies.",
+        "Het geld dat je verdient voor aftrek van belasting.",
+        "Het geld dat je spaart voor je pensioen."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q27",
+      "type": "multiple_choice",
+      "content": "<p>Er is een baby geboren. Wat moeten de ouders doen?</p>",
+      "options": [
+        "De geboorte melden bij de Belastingdienst.",
+        "Niets doen, het ziekenhuis regelt alles.",
+        "De geboorte aangeven bij de gemeente."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q28",
+      "type": "multiple_choice",
+      "content": "<p>Mag je je DigiD-gebruikersnaam en wachtwoord aan iemand anders geven?</p>",
+      "options": [
+        "Ja, aan familie mag dat.",
+        "Ja, als die persoon je helpt.",
+        "Nee, je houdt je DigiD altijd geheim."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q29",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een WA-verzekering?</p>",
+      "options": [
+        "Een verzekering voor je eigen woning.",
+        "Een verzekering voor schade die jij aan anderen maakt.",
+        "Een verzekering voor je zorgkosten."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q30",
+      "type": "multiple_choice",
+      "content": "<p>Een medewerker van een instantie vraagt jou om extra geld voor een paspoort, buiten de normale kosten. Wat is dit?</p>",
+      "options": [
+        "Corruptie, en dat is strafbaar.",
+        "Extra servicekosten, dat is normaal.",
+        "Een fooi, dat is beleefd."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q31",
+      "type": "multiple_choice",
+      "content": "<p>Hoe ontstaat na de verkiezingen een nieuwe regering?</p>",
+      "options": [
+        "De koning kiest de ministers zelf.",
+        "De rechters kiezen de regering.",
+        "Politieke partijen werken samen en vormen een regering."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q32",
+      "type": "multiple_choice",
+      "content": "<p>Wie controleert de regering?</p>",
+      "options": ["De politie.", "De Tweede Kamer.", "De koning."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q33",
+      "type": "multiple_choice",
+      "content": "<p>Vanaf welke leeftijd mag je stemmen bij verkiezingen?</p>",
+      "options": ["Vanaf 18 jaar.", "Vanaf 16 jaar.", "Vanaf 21 jaar."],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q34",
+      "type": "multiple_choice",
+      "content": "<p>Wat geldt in Nederland voor orgaandonatie?</p>",
+      "options": [
+        "Alleen familie mag organen geven.",
+        "Iedereen is automatisch donor, behalve als je zelf een andere keuze doorgeeft.",
+        "Orgaandonatie is verboden."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q35",
+      "type": "multiple_choice",
+      "content": "<p>Wat geldt in Nederland voor eerwraak en vrouwenbesnijdenis?</p>",
+      "options": [
+        "Het is strafbaar.",
+        "Het is een privézaak van de familie.",
+        "Het mag als de traditie het vraagt."
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": "q36",
+      "type": "multiple_choice",
+      "content": "<p>Wat is een openbare school?</p>",
+      "options": [
+        "Een school die alleen in grote steden staat.",
+        "Een school die niet uitgaat van een godsdienst.",
+        "Een school waar ouders veel moeten betalen."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q37",
+      "type": "multiple_choice",
+      "content": "<p>Waar gaan kinderen na de basisschool naartoe?</p>",
+      "options": ["Naar de kinderopvang.", "Naar de middelbare school.", "Naar de universiteit."],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q38",
+      "type": "multiple_choice",
+      "content": "<p>Wat bespreek je in een oudergesprek op school?</p>",
+      "options": [
+        "De salarissen van de leraren.",
+        "De vakantieplannen van de school.",
+        "Hoe het met je kind gaat op school."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q39",
+      "type": "multiple_choice",
+      "content": "<p>Waar kun je na de middelbare school verder leren?</p>",
+      "options": [
+        "Op de basisschool.",
+        "Op het mbo, hbo of de universiteit.",
+        "Op de voorschool (vve)."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q40",
+      "type": "multiple_choice",
+      "content": "<p>Je kind is ziek en kan niet naar school. Wat doe je?</p>",
+      "options": [
+        "Je meldt je kind ziek bij de school.",
+        "Je doet niets, de school merkt het vanzelf.",
+        "Je wacht tot de school jou belt."
+      ],
+      "correctAnswer": 0
+    }
+  ]
+}
