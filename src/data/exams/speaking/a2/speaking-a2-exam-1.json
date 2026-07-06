@@ -78,7 +78,7 @@
     {
       "id": "q11",
       "type": "speaking",
-      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/9c6707bc-8a4e-4866-8467-66a06b83cd0f.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/2297a004-d74f-4094-984c-ea9368bc0202.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Kies een van de plaatjes. Waar koopt u liever boodschappen? Vertel ook waarom.</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/1e98ba7c-20b3-4724-9007-6aa6ca738367.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/735c1427-693b-40cb-afe2-909bddc4d236.jpg\" style=\"max-width: 48%; max-height: 220px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Kies een van de plaatjes. Waar sport u liever? Vertel ook waarom.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
@@ -92,28 +92,28 @@
     {
       "id": "q13",
       "type": "speaking",
-      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/e3e44315-82d9-4023-8521-ee0b60601c2d.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/2cd26cbc-fb5d-4fae-8e6f-de2c127e27d5.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/b62bb6e2-9d96-4e63-98c5-37db8118b8a0.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Jamal doet. Vertel iets over alle plaatjes.</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/1bbd5037-ab20-4ba6-b496-13108a67bc54.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/8d6dc915-2a8f-4cb6-82dd-97814fa39d73.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/47d726b3-0ed8-4dc8-ab97-150aade122b2.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Ali doet. Vertel iets over alle plaatjes.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q14",
       "type": "speaking",
-      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/9f9a8d25-6ee5-4b21-8eeb-9f947b8e14be.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/50b31b28-c702-4ead-8481-1f1f94e28016.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/03e222fd-aa8d-4e59-9e6f-f4426fbf234e.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Hassan doet. Vertel iets over alle plaatjes.</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/086eb19c-a54d-44ab-9b33-d198dab8d0db.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/aaffabd5-64f4-4a7f-a4bf-c1d17338fe61.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/d3adb1f4-42c9-4b62-8a99-b0b055128199.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Emma doet. Vertel iets over alle plaatjes.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q15",
       "type": "speaking",
-      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/b5548cf2-2230-4a8b-a5d6-789845abc0f0.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/615f2cc9-fa77-4146-a40f-2278bb5d61e5.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/7a5a261b-3b98-4d91-a018-20df5aa0ae86.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Nora doet. Vertel iets over alle plaatjes.</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/6fb5a02f-8077-413b-a8ad-79df9b13aa72.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/42eeb8ee-9e34-4acf-880c-5949eb9d6c08.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/a48feaa2-d281-4457-957b-db5e41de1774.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Zara doet. Vertel iets over alle plaatjes.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q16",
       "type": "speaking",
-      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/1b0ed964-ccaf-4e30-9121-913ed8bbf7fe.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/edf466a7-792b-4372-94dc-e77f093175e7.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/967ae41e-5ab6-416f-98df-2a710a0711d6.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Youssef doet. Vertel iets over alle plaatjes.</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/e4334bf6-7139-4899-9dfa-d17a1da453cb.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/fbf51279-2f9e-4b5f-a155-f58c173bb75f.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/bb4b9706-ab73-46b3-a3b8-11a9c8d0f065.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Ibrahim doet. Vertel iets over alle plaatjes.</strong></p>",
       "options": null,
       "correctAnswer": null
     }

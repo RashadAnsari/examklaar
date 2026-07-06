@@ -50,7 +50,7 @@
     {
       "id": "q7",
       "type": "speaking",
-      "content": "<p><em>Kijk naar het plaatje.</em></p><hr style=\"margin: 1.5rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/be744587-246c-46e6-9b5a-c787ec7bfa2a.jpg\" style=\"max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;\" /><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat ziet u op het plaatje? Vertel ook hoe u naar uw werk of school gaat.</strong></p>",
+      "content": "<p><em>Kijk naar het plaatje.</em></p><hr style=\"margin: 1.5rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/aa0d67f5-2555-4acc-81f1-372ce9e410ae.jpg\" style=\"max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;\" /><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat ziet u op het plaatje? Vertel ook of u kunt zwemmen.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
@@ -99,7 +99,7 @@
     {
       "id": "q14",
       "type": "speaking",
-      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/f97e9096-e2f2-48df-82dc-dbd6390c7861.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/5660b713-03e3-4185-8c22-7519a217174c.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/20e6b678-f722-4401-b212-0c8bd2f1e911.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Sam doet. Vertel iets over alle plaatjes.</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/b07a7e52-6843-4db0-a2b0-3cfb9980cc70.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/3446165a-f639-4f6e-a090-811b18da1035.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/2463c00d-a635-4e8a-945e-fbf8328893f0.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Bram doet. Vertel iets over alle plaatjes.</strong></p>",
       "options": null,
       "correctAnswer": null
     },
@@ -113,7 +113,7 @@
     {
       "id": "q16",
       "type": "speaking",
-      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/4f8a3518-64dd-4061-afe1-6ae5d001019f.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/d4d98e76-eb54-4a08-a27b-ba55b8401073.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/90f8cdff-72a8-4ffc-9266-6537f2585ff4.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Tom doet. Vertel iets over alle plaatjes.</strong></p>",
+      "content": "<p><em>Kijk naar de plaatjes.</em></p><hr style=\"margin: 1.5rem 0;\"><div style=\"display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/39bc2168-504d-4eb7-abe8-6865bf079b75.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/0c7ee366-35dd-4195-b735-a14d05df7ade.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-3/868db46e-b373-4cc5-b5b8-6ecf1fb7223f.jpg\" style=\"max-width: 32%; max-height: 180px; object-fit: contain;\" /></div><hr style=\"margin: 1.5rem 0;\"><p><strong>Vertel wat Ruben doet. Vertel iets over alle plaatjes.</strong></p>",
       "options": null,
       "correctAnswer": null
     }
