@@ -8,184 +8,196 @@
     {
       "id": "q1",
       "type": "multiple_choice",
-      "content": "<p><em>Nadia krijgt een e-mail van haar collega over een vergadering.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Nadia,</p><p>Volgende week maandag is er een vergadering voor alle medewerkers. De vergadering is om 10.00 uur in zaal B. Wij praten over het nieuwe rooster. Kom op tijd. Kun je niet komen? Laat het mij voor vrijdag weten.</p><p>Na de vergadering is er lunch.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarover gaat de vergadering?</strong></p>",
-      "options": ["over de lunch", "over een feest", "over het nieuwe rooster"],
-      "correctAnswer": 2
+      "content": "<p><em>Nadia zoekt opvang voor haar zoon van 2 jaar. Ze leest de folder van kinderopvang De Vlinder.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Kinderopvang De Vlinder</h3><p>Wij zijn open op werkdagen van 7.30 tot 18.30 uur.<br>Brengen kan tot 9.30 uur. Ophalen kan vanaf 16.30 uur.<br>Een hele dag kost 89 euro. Een halve dag kost 48 euro.<br>Uw kind krijgt bij ons fruit en een warme lunch. Luiers neemt u zelf mee.<br>Wilt u eerst komen kijken? Elke eerste vrijdag van de maand is er een open ochtend.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Tot hoe laat kan Nadia haar zoon brengen?</strong></p>",
+      "options": ["Tot 7.30 uur", "Tot 9.30 uur", "Tot 16.30 uur"],
+      "correctAnswer": 1
     },
     {
       "id": "q2",
       "type": "multiple_choice",
-      "content": "<p><em>Nadia krijgt een e-mail van haar collega over een vergadering.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Nadia,</p><p>Volgende week maandag is er een vergadering voor alle medewerkers. De vergadering is om 10.00 uur in zaal B. Wij praten over het nieuwe rooster. Kom op tijd. Kun je niet komen? Laat het mij voor vrijdag weten.</p><p>Na de vergadering is er lunch.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar is de vergadering?</strong></p>",
-      "options": ["in zaal B", "in zaal A", "bij Nadia thuis"],
-      "correctAnswer": 0
+      "content": "<p><em>Nadia zoekt opvang voor haar zoon van 2 jaar. Ze leest de folder van kinderopvang De Vlinder.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Kinderopvang De Vlinder</h3><p>Wij zijn open op werkdagen van 7.30 tot 18.30 uur.<br>Brengen kan tot 9.30 uur. Ophalen kan vanaf 16.30 uur.<br>Een hele dag kost 89 euro. Een halve dag kost 48 euro.<br>Uw kind krijgt bij ons fruit en een warme lunch. Luiers neemt u zelf mee.<br>Wilt u eerst komen kijken? Elke eerste vrijdag van de maand is er een open ochtend.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost een halve dag opvang?</strong></p>",
+      "options": ["18 euro", "89 euro", "48 euro"],
+      "correctAnswer": 2
     },
     {
       "id": "q3",
       "type": "multiple_choice",
-      "content": "<p><em>Nadia krijgt een e-mail van haar collega over een vergadering.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Nadia,</p><p>Volgende week maandag is er een vergadering voor alle medewerkers. De vergadering is om 10.00 uur in zaal B. Wij praten over het nieuwe rooster. Kom op tijd. Kun je niet komen? Laat het mij voor vrijdag weten.</p><p>Na de vergadering is er lunch.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer moet Nadia het laten weten als ze niet kan komen?</strong></p>",
-      "options": ["na de lunch", "voor vrijdag", "op maandag"],
-      "correctAnswer": 1
+      "content": "<p><em>Nadia zoekt opvang voor haar zoon van 2 jaar. Ze leest de folder van kinderopvang De Vlinder.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Kinderopvang De Vlinder</h3><p>Wij zijn open op werkdagen van 7.30 tot 18.30 uur.<br>Brengen kan tot 9.30 uur. Ophalen kan vanaf 16.30 uur.<br>Een hele dag kost 89 euro. Een halve dag kost 48 euro.<br>Uw kind krijgt bij ons fruit en een warme lunch. Luiers neemt u zelf mee.<br>Wilt u eerst komen kijken? Elke eerste vrijdag van de maand is er een open ochtend.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat neemt Nadia zelf mee?</strong></p>",
+      "options": ["Fruit", "Een warme lunch", "Luiers"],
+      "correctAnswer": 2
     },
     {
       "id": "q4",
       "type": "multiple_choice",
-      "content": "<p><em>In de krant staat een tekst over de markt.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>De markt verhuist naar een nieuw plein</h3><p>De markt in ons dorp is elke zaterdag. Nu staat de markt op de Grote Markt, in het centrum. Maar vanaf volgende maand verhuist de markt naar het Stationsplein.</p><p>De gemeente doet dit omdat het centrum te druk werd. Er was te weinig plaats voor de auto's en de kramen. Op het Stationsplein is meer ruimte. Ook is er een grote parkeerplaats vlakbij. De marktkooplui zijn blij, want zo kunnen meer mensen de markt bezoeken.</p><p>De markt blijft op zaterdag, van 9.00 tot 17.00 uur. Alleen de plaats verandert dus. Kom kijken op het nieuwe plein!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom verhuist de markt?</strong></p>",
+      "content": "<p><em>Nadia zoekt opvang voor haar zoon van 2 jaar. Ze leest de folder van kinderopvang De Vlinder.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Kinderopvang De Vlinder</h3><p>Wij zijn open op werkdagen van 7.30 tot 18.30 uur.<br>Brengen kan tot 9.30 uur. Ophalen kan vanaf 16.30 uur.<br>Een hele dag kost 89 euro. Een halve dag kost 48 euro.<br>Uw kind krijgt bij ons fruit en een warme lunch. Luiers neemt u zelf mee.<br>Wilt u eerst komen kijken? Elke eerste vrijdag van de maand is er een open ochtend.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer kan Nadia komen kijken?</strong></p>",
       "options": [
-        "Het centrum werd te druk.",
-        "Op zaterdag was er geen markt.",
-        "De kooplui wilden meer geld."
+        "Elke vrijdag",
+        "Elke eerste maandag van de maand",
+        "Elke eerste vrijdag van de maand"
       ],
-      "correctAnswer": 0
+      "correctAnswer": 2
     },
     {
       "id": "q5",
       "type": "multiple_choice",
-      "content": "<p><em>In de krant staat een tekst over de markt.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>De markt verhuist naar een nieuw plein</h3><p>De markt in ons dorp is elke zaterdag. Nu staat de markt op de Grote Markt, in het centrum. Maar vanaf volgende maand verhuist de markt naar het Stationsplein.</p><p>De gemeente doet dit omdat het centrum te druk werd. Er was te weinig plaats voor de auto's en de kramen. Op het Stationsplein is meer ruimte. Ook is er een grote parkeerplaats vlakbij. De marktkooplui zijn blij, want zo kunnen meer mensen de markt bezoeken.</p><p>De markt blijft op zaterdag, van 9.00 tot 17.00 uur. Alleen de plaats verandert dus. Kom kijken op het nieuwe plein!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat verandert er aan de markt?</strong></p>",
-      "options": ["de dag", "alleen de plaats", "de tijd"],
-      "correctAnswer": 1
+      "content": "<p><em>Meneer Costa krijgt een brief van de voetbalvereniging van zijn zoon.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Costa,<br><br>Het nieuwe seizoen begint op 1 september. De contributie voor kinderen is dit jaar 120 euro.<br>Betaal voor 15 augustus op rekening NL12 BANK 0000 1234. Zet de naam van uw zoon erbij.<br>Betaalt u liever in delen? Dat kan. Bel dan met de penningmeester.<br>Zonder betaling kan uw zoon niet meedoen met de wedstrijden.<br><br>Met sportieve groet,<br>VV De Bal</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Voor wanneer moet meneer Costa betalen?</strong></p>",
+      "options": ["Voor 1 september", "Voor 15 september", "Voor 15 augustus"],
+      "correctAnswer": 2
     },
     {
       "id": "q6",
       "type": "multiple_choice",
-      "content": "<p><em>In de krant staat een tekst over de markt.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>De markt verhuist naar een nieuw plein</h3><p>De markt in ons dorp is elke zaterdag. Nu staat de markt op de Grote Markt, in het centrum. Maar vanaf volgende maand verhuist de markt naar het Stationsplein.</p><p>De gemeente doet dit omdat het centrum te druk werd. Er was te weinig plaats voor de auto's en de kramen. Op het Stationsplein is meer ruimte. Ook is er een grote parkeerplaats vlakbij. De marktkooplui zijn blij, want zo kunnen meer mensen de markt bezoeken.</p><p>De markt blijft op zaterdag, van 9.00 tot 17.00 uur. Alleen de plaats verandert dus. Kom kijken op het nieuwe plein!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat is de markt open?</strong></p>",
-      "options": ["de hele dag", "van 8.00 tot 16.00 uur", "van 9.00 tot 17.00 uur"],
-      "correctAnswer": 2
+      "content": "<p><em>Meneer Costa krijgt een brief van de voetbalvereniging van zijn zoon.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Costa,<br><br>Het nieuwe seizoen begint op 1 september. De contributie voor kinderen is dit jaar 120 euro.<br>Betaal voor 15 augustus op rekening NL12 BANK 0000 1234. Zet de naam van uw zoon erbij.<br>Betaalt u liever in delen? Dat kan. Bel dan met de penningmeester.<br>Zonder betaling kan uw zoon niet meedoen met de wedstrijden.<br><br>Met sportieve groet,<br>VV De Bal</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Meneer Costa wil in delen betalen. Wat doet hij?</strong></p>",
+      "options": ["De penningmeester bellen", "Twee keer overmaken", "Een brief schrijven"],
+      "correctAnswer": 0
     },
     {
       "id": "q7",
       "type": "multiple_choice",
-      "content": "<p><em>Mevrouw De Vries belt de huisartsenpraktijk voor een afspraak.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Gesprek tussen mevrouw De Vries en de receptionist van de huisarts</p><p>Mevrouw De Vries: Goedemorgen, ik wil graag een afspraak maken met de dokter.<br>Receptionist: Natuurlijk. Wat is er aan de hand?<br>Mevrouw De Vries: Ik heb al een week hoofdpijn en ik slaap slecht.<br>Receptionist: Dat is vervelend. Kunt u morgen om 10.15 uur komen?<br>Mevrouw De Vries: Morgen om die tijd kan ik niet, ik moet werken. Heeft u iets in de middag?<br>Receptionist: Ja, morgen om 16.30 uur is er plaats.<br>Mevrouw De Vries: Dat is goed. Tot morgen!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom wil mevrouw De Vries naar de dokter?</strong></p>",
+      "content": "<p><em>Meneer Costa krijgt een brief van de voetbalvereniging van zijn zoon.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste meneer Costa,<br><br>Het nieuwe seizoen begint op 1 september. De contributie voor kinderen is dit jaar 120 euro.<br>Betaal voor 15 augustus op rekening NL12 BANK 0000 1234. Zet de naam van uw zoon erbij.<br>Betaalt u liever in delen? Dat kan. Bel dan met de penningmeester.<br>Zonder betaling kan uw zoon niet meedoen met de wedstrijden.<br><br>Met sportieve groet,<br>VV De Bal</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat gebeurt er zonder betaling?</strong></p>",
       "options": [
-        "Zij heeft hoofdpijn en slaapt slecht.",
-        "Zij heeft haar been gebroken.",
-        "Zij wil een nieuwe receptionist."
+        "De contributie wordt hoger.",
+        "Zijn zoon speelt geen wedstrijden.",
+        "Zijn zoon krijgt geen brief meer."
       ],
-      "correctAnswer": 0
+      "correctAnswer": 1
     },
     {
       "id": "q8",
       "type": "multiple_choice",
-      "content": "<p><em>Mevrouw De Vries belt de huisartsenpraktijk voor een afspraak.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Gesprek tussen mevrouw De Vries en de receptionist van de huisarts</p><p>Mevrouw De Vries: Goedemorgen, ik wil graag een afspraak maken met de dokter.<br>Receptionist: Natuurlijk. Wat is er aan de hand?<br>Mevrouw De Vries: Ik heb al een week hoofdpijn en ik slaap slecht.<br>Receptionist: Dat is vervelend. Kunt u morgen om 10.15 uur komen?<br>Mevrouw De Vries: Morgen om die tijd kan ik niet, ik moet werken. Heeft u iets in de middag?<br>Receptionist: Ja, morgen om 16.30 uur is er plaats.<br>Mevrouw De Vries: Dat is goed. Tot morgen!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom kan zij 's morgens niet komen?</strong></p>",
-      "options": ["Zij woont te ver weg.", "Zij is bang voor de dokter.", "Zij moet werken."],
-      "correctAnswer": 2
+      "content": "<p><em>Karim belt met zijn zus Leila.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Karim en Leila</h3><p>Karim: Hoi Leila. Mama wordt zestig. Zullen we samen een cadeau kopen?<br>Leila: Goed idee! Zij wil graag een nieuwe stoel voor in de tuin.<br>Karim: Die kost ongeveer tachtig euro. Doen we ieder de helft?<br>Leila: Prima. Koop jij hem? Jij hebt een auto.<br>Karim: Doe ik. Dan neem ik hem zaterdag mee naar het feest.<br>Leila: Top. Ik koop nog bloemen erbij.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarom bellen Karim en Leila?</strong></p>",
+      "options": [
+        "Hun moeder is bijna jarig.",
+        "Leila zoekt een nieuwe stoel.",
+        "Karim geeft een feest."
+      ],
+      "correctAnswer": 0
     },
     {
       "id": "q9",
       "type": "multiple_choice",
-      "content": "<p><em>Mevrouw De Vries belt de huisartsenpraktijk voor een afspraak.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Gesprek tussen mevrouw De Vries en de receptionist van de huisarts</p><p>Mevrouw De Vries: Goedemorgen, ik wil graag een afspraak maken met de dokter.<br>Receptionist: Natuurlijk. Wat is er aan de hand?<br>Mevrouw De Vries: Ik heb al een week hoofdpijn en ik slaap slecht.<br>Receptionist: Dat is vervelend. Kunt u morgen om 10.15 uur komen?<br>Mevrouw De Vries: Morgen om die tijd kan ik niet, ik moet werken. Heeft u iets in de middag?<br>Receptionist: Ja, morgen om 16.30 uur is er plaats.<br>Mevrouw De Vries: Dat is goed. Tot morgen!</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat is de afspraak?</strong></p>",
-      "options": ["om 10.15 uur", "om 16.30 uur", "vanmiddag"],
-      "correctAnswer": 1
+      "content": "<p><em>Karim belt met zijn zus Leila.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Karim en Leila</h3><p>Karim: Hoi Leila. Mama wordt zestig. Zullen we samen een cadeau kopen?<br>Leila: Goed idee! Zij wil graag een nieuwe stoel voor in de tuin.<br>Karim: Die kost ongeveer tachtig euro. Doen we ieder de helft?<br>Leila: Prima. Koop jij hem? Jij hebt een auto.<br>Karim: Doe ik. Dan neem ik hem zaterdag mee naar het feest.<br>Leila: Top. Ik koop nog bloemen erbij.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wie koopt de stoel?</strong></p>",
+      "options": ["Leila", "Hun moeder", "Karim"],
+      "correctAnswer": 2
     },
     {
       "id": "q10",
       "type": "multiple_choice",
-      "content": "<p><em>Bij de gemeente hangt een mededeling over paspoorten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>U heeft een nieuw paspoort aangevraagd. Het paspoort is nu klaar. U kunt het afhalen bij de gemeente. Kom langs van maandag tot en met vrijdag, tussen 9.00 en 16.00 uur. Neem uw oude paspoort mee. Het afhalen duurt ongeveer 10 minuten.</p><p>U hoeft geen afspraak te maken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moet u meenemen?</strong></p>",
-      "options": ["10 euro", "uw oude paspoort", "een foto"],
-      "correctAnswer": 1
+      "content": "<p><em>Karim belt met zijn zus Leila.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Gesprek tussen Karim en Leila</h3><p>Karim: Hoi Leila. Mama wordt zestig. Zullen we samen een cadeau kopen?<br>Leila: Goed idee! Zij wil graag een nieuwe stoel voor in de tuin.<br>Karim: Die kost ongeveer tachtig euro. Doen we ieder de helft?<br>Leila: Prima. Koop jij hem? Jij hebt een auto.<br>Karim: Doe ik. Dan neem ik hem zaterdag mee naar het feest.<br>Leila: Top. Ik koop nog bloemen erbij.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat koopt Leila erbij?</strong></p>",
+      "options": ["Bloemen", "Een taart", "Een tuintafel"],
+      "correctAnswer": 0
     },
     {
       "id": "q11",
       "type": "multiple_choice",
-      "content": "<p><em>Bij de gemeente hangt een mededeling over paspoorten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>U heeft een nieuw paspoort aangevraagd. Het paspoort is nu klaar. U kunt het afhalen bij de gemeente. Kom langs van maandag tot en met vrijdag, tussen 9.00 en 16.00 uur. Neem uw oude paspoort mee. Het afhalen duurt ongeveer 10 minuten.</p><p>U hoeft geen afspraak te maken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat hoeft u niet te doen?</strong></p>",
-      "options": ["een afspraak maken", "uw oude paspoort meenemen", "naar de gemeente komen"],
-      "correctAnswer": 0
+      "content": "<p><em>Bij ijssalon Venezia hangt een bord aan de deur.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>IJssalon Venezia</h3><p>Een bolletje: 1,80 euro. Twee bolletjes: 3,20 euro. Drie bolletjes: 4,50 euro.<br>Slagroom erbij: 0,80 euro.<br>Milkshakes: 4 euro, alleen in de zomer.<br>Openingstijden: van maart tot en met oktober, elke dag van 12.00 tot 21.00 uur.<br>In november, december, januari en februari zijn wij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kosten twee bolletjes ijs?</strong></p>",
+      "options": ["1,80 euro", "3,20 euro", "4,50 euro", "4 euro"],
+      "correctAnswer": 1
     },
     {
       "id": "q12",
       "type": "multiple_choice",
-      "content": "<p><em>Bij de gemeente hangt een mededeling over paspoorten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>U heeft een nieuw paspoort aangevraagd. Het paspoort is nu klaar. U kunt het afhalen bij de gemeente. Kom langs van maandag tot en met vrijdag, tussen 9.00 en 16.00 uur. Neem uw oude paspoort mee. Het afhalen duurt ongeveer 10 minuten.</p><p>U hoeft geen afspraak te maken.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Tot hoe laat kunt u het paspoort afhalen?</strong></p>",
-      "options": ["tot 9.00 uur", "tot 10.00 uur", "tot 16.00 uur"],
+      "content": "<p><em>Bij ijssalon Venezia hangt een bord aan de deur.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>IJssalon Venezia</h3><p>Een bolletje: 1,80 euro. Twee bolletjes: 3,20 euro. Drie bolletjes: 4,50 euro.<br>Slagroom erbij: 0,80 euro.<br>Milkshakes: 4 euro, alleen in de zomer.<br>Openingstijden: van maart tot en met oktober, elke dag van 12.00 tot 21.00 uur.<br>In november, december, januari en februari zijn wij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de ijssalon gesloten?</strong></p>",
+      "options": ["In de zomer", "Van maart tot en met oktober", "In de wintermaanden"],
       "correctAnswer": 2
     },
     {
       "id": "q13",
       "type": "multiple_choice",
-      "content": "<p><em>In de winkel hangt een poster over de uitverkoop.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Grote uitverkoop bij Mode Plus!</p><p>Alle jassen: 20 euro korting<br>T-shirts: nu 2 voor 15 euro<br>Schoenen: 30% korting</p><p>De uitverkoop is van 1 tot en met 10 februari. Op = op. Geen geld terug, ruilen mag wel binnen 14 dagen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel korting krijgt u op een jas?</strong></p>",
-      "options": ["20 euro", "15 euro", "30 euro"],
+      "content": "<p><em>Bij ijssalon Venezia hangt een bord aan de deur.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>IJssalon Venezia</h3><p>Een bolletje: 1,80 euro. Twee bolletjes: 3,20 euro. Drie bolletjes: 4,50 euro.<br>Slagroom erbij: 0,80 euro.<br>Milkshakes: 4 euro, alleen in de zomer.<br>Openingstijden: van maart tot en met oktober, elke dag van 12.00 tot 21.00 uur.<br>In november, december, januari en februari zijn wij gesloten.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer kunt u een milkshake kopen?</strong></p>",
+      "options": ["Alleen in de zomer", "Het hele jaar", "Alleen in de winter"],
       "correctAnswer": 0
     },
     {
       "id": "q14",
       "type": "multiple_choice",
-      "content": "<p><em>In de winkel hangt een poster over de uitverkoop.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Grote uitverkoop bij Mode Plus!</p><p>Alle jassen: 20 euro korting<br>T-shirts: nu 2 voor 15 euro<br>Schoenen: 30% korting</p><p>De uitverkoop is van 1 tot en met 10 februari. Op = op. Geen geld terug, ruilen mag wel binnen 14 dagen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kunt u doen als iets niet past?</strong></p>",
-      "options": ["geld terugkrijgen", "niets", "binnen 14 dagen ruilen"],
-      "correctAnswer": 2
+      "content": "<p><em>Pavel bezorgt pakketten. Hij krijgt een e-mail van zijn baas.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Pavel,<br><br>Vanaf maandag rijd je een nieuwe route, in de wijk Noord.<br>Je begint om 8.15 uur bij het depot. Dat is een kwartier eerder dan nu.<br>Laad eerst de grote dozen in, daarna de kleine pakketten.<br>Lukt een adres niet? Breng het pakket dan naar het afhaalpunt en laat een briefje achter.<br><br>Groet,<br>Sandra</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat begint Pavel vanaf maandag?</strong></p>",
+      "options": ["Om 8.00 uur", "Om 8.15 uur", "Om 8.30 uur"],
+      "correctAnswer": 1
     },
     {
       "id": "q15",
       "type": "multiple_choice",
-      "content": "<p><em>Mevrouw Yilmaz krijgt een brief van de tandarts.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Yilmaz,</p><p>U heeft een afspraak bij de tandarts op maandag 12 mei om 14.45 uur. Poets uw tanden voor de afspraak. Kunt u niet komen? Bel dan op tijd, minstens 48 uur van tevoren. Anders kost het 25 euro.</p><p>De afspraak duurt ongeveer een half uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe laat is de afspraak?</strong></p>",
-      "options": ["om 14.15 uur", "om 14.45 uur", "om 15.45 uur"],
-      "correctAnswer": 1
+      "content": "<p><em>Pavel bezorgt pakketten. Hij krijgt een e-mail van zijn baas.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Pavel,<br><br>Vanaf maandag rijd je een nieuwe route, in de wijk Noord.<br>Je begint om 8.15 uur bij het depot. Dat is een kwartier eerder dan nu.<br>Laad eerst de grote dozen in, daarna de kleine pakketten.<br>Lukt een adres niet? Breng het pakket dan naar het afhaalpunt en laat een briefje achter.<br><br>Groet,<br>Sandra</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat laadt Pavel eerst in?</strong></p>",
+      "options": ["De kleine pakketten", "De briefjes", "De grote dozen"],
+      "correctAnswer": 2
     },
     {
       "id": "q16",
       "type": "multiple_choice",
-      "content": "<p><em>Mevrouw Yilmaz krijgt een brief van de tandarts.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Yilmaz,</p><p>U heeft een afspraak bij de tandarts op maandag 12 mei om 14.45 uur. Poets uw tanden voor de afspraak. Kunt u niet komen? Bel dan op tijd, minstens 48 uur van tevoren. Anders kost het 25 euro.</p><p>De afspraak duurt ongeveer een half uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel uur van tevoren moet u afbellen?</strong></p>",
-      "options": ["12 uur", "48 uur", "24 uur"],
-      "correctAnswer": 1
+      "content": "<p><em>Pavel bezorgt pakketten. Hij krijgt een e-mail van zijn baas.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste Pavel,<br><br>Vanaf maandag rijd je een nieuwe route, in de wijk Noord.<br>Je begint om 8.15 uur bij het depot. Dat is een kwartier eerder dan nu.<br>Laad eerst de grote dozen in, daarna de kleine pakketten.<br>Lukt een adres niet? Breng het pakket dan naar het afhaalpunt en laat een briefje achter.<br><br>Groet,<br>Sandra</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Een adres lukt niet. Wat doet Pavel met het pakket?</strong></p>",
+      "options": [
+        "Naar het afhaalpunt brengen",
+        "Terug naar het depot brengen",
+        "De volgende dag nog een keer gaan"
+      ],
+      "correctAnswer": 0
     },
     {
       "id": "q17",
       "type": "multiple_choice",
-      "content": "<p><em>Mevrouw Yilmaz krijgt een brief van de tandarts.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste mevrouw Yilmaz,</p><p>U heeft een afspraak bij de tandarts op maandag 12 mei om 14.45 uur. Poets uw tanden voor de afspraak. Kunt u niet komen? Bel dan op tijd, minstens 48 uur van tevoren. Anders kost het 25 euro.</p><p>De afspraak duurt ongeveer een half uur.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer kost het 25 euro?</strong></p>",
-      "options": ["als u te laat afbelt", "als u op tijd komt", "als u uw tanden poetst"],
+      "content": "<p><em>In de bus hangt een mededeling.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Werkzaamheden Stationsweg</h3><p>Van maandag 3 juni tot en met vrijdag 14 juni werken wij aan de Stationsweg.<br>Bus 12 rijdt dan een andere route. De haltes Marktplein en Kerkstraat vervallen.<br>U kunt in die periode in- en uitstappen bij de tijdelijke halte op de Ringweg.<br>Bus 14 rijdt de normale route.<br>Kijk voor actuele tijden in de app.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Welke bus rijdt een andere route?</strong></p>",
+      "options": ["Bus 12", "Bus 14", "Alle bussen"],
       "correctAnswer": 0
     },
     {
       "id": "q18",
       "type": "multiple_choice",
-      "content": "<p><em>Bij het buurthuis hangt een poster met activiteiten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Kom naar het buurthuis!</p><p>Elke dinsdagmiddag is er een koffieochtend voor ouderen. Van 10.00 tot 12.00 uur. De koffie is gratis. Wij spelen spelletjes en praten met elkaar.</p><p>Ook is er elke donderdag een naailes. De naailes kost 5 euro. Aanmelden is niet nodig.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wanneer is de koffieochtend?</strong></p>",
-      "options": ["elke donderdag", "elke ochtend", "elke dinsdag"],
-      "correctAnswer": 2
+      "content": "<p><em>In de bus hangt een mededeling.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Werkzaamheden Stationsweg</h3><p>Van maandag 3 juni tot en met vrijdag 14 juni werken wij aan de Stationsweg.<br>Bus 12 rijdt dan een andere route. De haltes Marktplein en Kerkstraat vervallen.<br>U kunt in die periode in- en uitstappen bij de tijdelijke halte op de Ringweg.<br>Bus 14 rijdt de normale route.<br>Kijk voor actuele tijden in de app.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar kunt u tijdens de werkzaamheden instappen?</strong></p>",
+      "options": ["Bij halte Marktplein", "Bij de halte op de Ringweg", "Bij halte Kerkstraat"],
+      "correctAnswer": 1
     },
     {
       "id": "q19",
       "type": "multiple_choice",
-      "content": "<p><em>Bij het buurthuis hangt een poster met activiteiten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Kom naar het buurthuis!</p><p>Elke dinsdagmiddag is er een koffieochtend voor ouderen. Van 10.00 tot 12.00 uur. De koffie is gratis. Wij spelen spelletjes en praten met elkaar.</p><p>Ook is er elke donderdag een naailes. De naailes kost 5 euro. Aanmelden is niet nodig.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost de naailes?</strong></p>",
-      "options": ["5 euro", "niets", "10 euro"],
-      "correctAnswer": 0
+      "content": "<p><em>In de bus hangt een mededeling.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Werkzaamheden Stationsweg</h3><p>Van maandag 3 juni tot en met vrijdag 14 juni werken wij aan de Stationsweg.<br>Bus 12 rijdt dan een andere route. De haltes Marktplein en Kerkstraat vervallen.<br>U kunt in die periode in- en uitstappen bij de tijdelijke halte op de Ringweg.<br>Bus 14 rijdt de normale route.<br>Kijk voor actuele tijden in de app.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Tot en met wanneer duren de werkzaamheden?</strong></p>",
+      "options": ["Tot en met 3 juni", "Tot en met 12 juni", "Tot en met 14 juni"],
+      "correctAnswer": 2
     },
     {
       "id": "q20",
       "type": "multiple_choice",
-      "content": "<p><em>Bij het buurthuis hangt een poster met activiteiten.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Kom naar het buurthuis!</p><p>Elke dinsdagmiddag is er een koffieochtend voor ouderen. Van 10.00 tot 12.00 uur. De koffie is gratis. Wij spelen spelletjes en praten met elkaar.</p><p>Ook is er elke donderdag een naailes. De naailes kost 5 euro. Aanmelden is niet nodig.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat hoeft u niet te doen?</strong></p>",
-      "options": ["naar het buurthuis komen", "koffie kopen", "u aanmelden"],
-      "correctAnswer": 2
+      "content": "<p><em>In de brievenbus van mevrouw Rossi ligt een folder van de opticien.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Actie bij Optiek Helder</h3><p>Alleen in september: een gratis oogmeting.<br>Normaal kost een oogmeting 25 euro.<br>Maak een afspraak in de winkel of via de website. Bellen kan ook: 010 1234567.<br>Koopt u in september een nieuwe bril? Dan krijgt u het tweede glas voor de helft van de prijs.<br>De actie geldt niet voor contactlenzen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat kost de oogmeting in september?</strong></p>",
+      "options": ["Niets", "25 euro", "De helft van de prijs"],
+      "correctAnswer": 0
     },
     {
       "id": "q21",
       "type": "multiple_choice",
-      "content": "<p><em>Op de website van de bioscoop staat informatie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bioscoop Star</h3><p>Film: De Reis, duur: 2 uur<br>Tijden: 15.00, 18.00 en 20.30 uur</p><p>Een kaartje kost 11 euro. Kinderen tot 12 jaar betalen 8 euro. Op woensdag is het Kortingsdag: alle kaartjes 8 euro. Popcorn en drinken koopt u bij de balie.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoeveel betaalt een volwassene op maandag?</strong></p>",
-      "options": ["12 euro", "11 euro", "8 euro"],
+      "content": "<p><em>In de brievenbus van mevrouw Rossi ligt een folder van de opticien.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Actie bij Optiek Helder</h3><p>Alleen in september: een gratis oogmeting.<br>Normaal kost een oogmeting 25 euro.<br>Maak een afspraak in de winkel of via de website. Bellen kan ook: 010 1234567.<br>Koopt u in september een nieuwe bril? Dan krijgt u het tweede glas voor de helft van de prijs.<br>De actie geldt niet voor contactlenzen.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waarvoor geldt de actie niet?</strong></p>",
+      "options": ["Voor brillen", "Voor contactlenzen", "Voor oogmetingen"],
       "correctAnswer": 1
     },
     {
       "id": "q22",
       "type": "multiple_choice",
-      "content": "<p><em>Op de website van de bioscoop staat informatie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Bioscoop Star</h3><p>Film: De Reis, duur: 2 uur<br>Tijden: 15.00, 18.00 en 20.30 uur</p><p>Een kaartje kost 11 euro. Kinderen tot 12 jaar betalen 8 euro. Op woensdag is het Kortingsdag: alle kaartjes 8 euro. Popcorn en drinken koopt u bij de balie.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Hoe lang duurt de film?</strong></p>",
-      "options": ["2 uur", "3 uur", "1 uur"],
+      "content": "<p><em>In de brievenbus ligt een briefje van de buren.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste buren,<br><br>Op zaterdag 6 juni organiseren wij een straatspeeldag voor alle kinderen uit de straat.<br>De straat is die dag dicht voor auto's, van 10.00 tot 17.00 uur. Zet uw auto vrijdagavond ergens anders neer.<br>Er zijn spelletjes, een springkussen en limonade. Meedoen is gratis.<br>Helpt u mee? Meld u aan bij Fatih op nummer 12.<br><br>De buren van de Tulpstraat</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat moeten de buren met hun auto doen?</strong></p>",
+      "options": [
+        "Vrijdagavond ergens anders neerzetten",
+        "Zaterdag om 10.00 uur wegrijden",
+        "Bij nummer 12 parkeren"
+      ],
       "correctAnswer": 0
     },
     {
       "id": "q23",
       "type": "multiple_choice",
-      "content": "<p><em>Op de gemeentelijke website staat een waarschuwing.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Let op: morgen wordt het glad op de wegen. Het gaat vriezen en sneeuwen. Ga voorzichtig naar buiten. Moet u fietsen? Doe het rustig. De gemeente strooit zout op de grote wegen. Op kleine straten strooien wij niet.</p><p>Blijf binnen als het niet nodig is om naar buiten te gaan.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat voor weer wordt het morgen?</strong></p>",
-      "options": ["warm en zonnig", "glad, met vorst en sneeuw", "veel regen"],
+      "content": "<p><em>In de brievenbus ligt een briefje van de buren.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Beste buren,<br><br>Op zaterdag 6 juni organiseren wij een straatspeeldag voor alle kinderen uit de straat.<br>De straat is die dag dicht voor auto's, van 10.00 tot 17.00 uur. Zet uw auto vrijdagavond ergens anders neer.<br>Er zijn spelletjes, een springkussen en limonade. Meedoen is gratis.<br>Helpt u mee? Meld u aan bij Fatih op nummer 12.<br><br>De buren van de Tulpstraat</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar melden helpers zich aan?</strong></p>",
+      "options": ["Bij het springkussen", "Bij Fatih op nummer 12", "Bij de gemeente"],
       "correctAnswer": 1
     },
     {
       "id": "q24",
       "type": "multiple_choice",
-      "content": "<p><em>Op de gemeentelijke website staat een waarschuwing.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Let op: morgen wordt het glad op de wegen. Het gaat vriezen en sneeuwen. Ga voorzichtig naar buiten. Moet u fietsen? Doe het rustig. De gemeente strooit zout op de grote wegen. Op kleine straten strooien wij niet.</p><p>Blijf binnen als het niet nodig is om naar buiten te gaan.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Waar strooit de gemeente zout?</strong></p>",
-      "options": ["nergens", "op alle straten", "op de grote wegen"],
+      "content": "<p><em>Op de verpakking van een diepvriespizza staat een instructie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Zo maakt u de pizza klaar</h3><p>Verwarm de oven voor op 220 graden.<br>Haal de pizza uit de verpakking en leg hem op het rooster. Gebruik geen bakplaat: de bodem blijft dan niet knapperig.<br>Bak de pizza in 12 tot 14 minuten goudbruin.<br>Laat de pizza na het bakken 2 minuten rusten.<br>Bewaar de pizza in de vriezer, maximaal 6 maanden.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Op hoeveel graden verwarmt u de oven voor?</strong></p>",
+      "options": ["120 graden", "200 graden", "220 graden"],
       "correctAnswer": 2
     },
     {
       "id": "q25",
       "type": "multiple_choice",
-      "content": "<p><em>Op de gemeentelijke website staat een waarschuwing.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><p>Let op: morgen wordt het glad op de wegen. Het gaat vriezen en sneeuwen. Ga voorzichtig naar buiten. Moet u fietsen? Doe het rustig. De gemeente strooit zout op de grote wegen. Op kleine straten strooien wij niet.</p><p>Blijf binnen als het niet nodig is om naar buiten te gaan.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat is het advies?</strong></p>",
-      "options": ["ga zwemmen", "ga voorzichtig naar buiten", "ga snel fietsen"],
+      "content": "<p><em>Op de verpakking van een diepvriespizza staat een instructie.</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr style=\"margin: 1.5rem 0;\"><h3>Zo maakt u de pizza klaar</h3><p>Verwarm de oven voor op 220 graden.<br>Haal de pizza uit de verpakking en leg hem op het rooster. Gebruik geen bakplaat: de bodem blijft dan niet knapperig.<br>Bak de pizza in 12 tot 14 minuten goudbruin.<br>Laat de pizza na het bakken 2 minuten rusten.<br>Bewaar de pizza in de vriezer, maximaal 6 maanden.</p><hr style=\"margin: 1.5rem 0;\"><p><strong>Wat gebruikt u niet?</strong></p>",
+      "options": ["Het rooster", "Een bakplaat", "De oven"],
       "correctAnswer": 1
     }
   ]
