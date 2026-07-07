@@ -1,6 +1,6 @@
 # ExamKlaar
 
-A web app for practicing the Dutch inburgering (civic integration) exam — required for residency in the Netherlands.
+A web app for practicing the Dutch inburgering (civic integration) exams.
 
 ## What It Does
 

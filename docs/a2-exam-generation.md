@@ -1,4 +1,4 @@
-# Generating Standard A2 Dutch Inburgering Exams
+# Generating standard A2 Dutch Inburgering exams
 
 **Purpose.** This is the single source of truth for an AI agent that, on request, generates any **standard A2-level exam** for the Dutch civic-integration exam (_inburgeringsexamen_), administered by **DUO** under the **Wet inburgering 2021**. It covers all five components — **Lezen** (reading), **Luisteren** (listening), **KNM** (knowledge of Dutch society), **Schrijven** (writing), **Spreken** (speaking).
 
