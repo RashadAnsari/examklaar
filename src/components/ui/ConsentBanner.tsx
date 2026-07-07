@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { revokeAnalyticsConsent } from "@/lib/analytics";
 import { OPEN_CONSENT_EVENT, readConsent, writeConsent } from "@/lib/consent";
 
 // Cookie consent banner. Shows on first visit until a choice is made, and can
@@ -32,7 +33,7 @@ export function ConsentBanner({ measurementId }: { measurementId: string }) {
     // Stop GA for the rest of this session if it was already loaded before the
     // visitor withdrew consent. Future page loads simply never render the script.
     (window as unknown as Record<string, boolean>)[`ga-disable-${measurementId}`] = true;
-    window.gtag?.("consent", "update", { analytics_storage: "denied" });
+    revokeAnalyticsConsent();
     setVisible(false);
   }
 

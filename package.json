@@ -13,6 +13,7 @@
   "dependencies": {
     "@ai-sdk/google": "^3.0.61",
     "@heroicons/react": "^2.2.0",
+    "@next/third-parties": "16.2.2",
     "@paddle/paddle-js": "^1.6.2",
     "@paddle/paddle-node-sdk": "^3.7.0",
     "@supabase/ssr": "^0.10.0",

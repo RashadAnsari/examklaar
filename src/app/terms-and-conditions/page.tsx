@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.examklaar.nl/terms-and-conditions" },
 };
 
-const LAST_UPDATED = "2 July 2026";
+const LAST_UPDATED = "7 July 2026";
 
 const SECTIONS = [
   {
@@ -59,7 +59,7 @@ const SECTIONS = [
   {
     title: "Article 5. Subscriptions and Payments",
     content:
-      "All payments on ExamKlaar are processed by Paddle.com Market Ltd ('Paddle'), who acts as the Merchant of Record. This means Paddle is the legal seller for all transactions, handles VAT collection and remittance, and is responsible for payment processing and billing. By making a purchase, you also agree to Paddle's Terms of Service and Privacy Policy.",
+      "All payments on ExamKlaar are processed by Paddle.com Market Limited ('Paddle'), who acts as the Merchant of Record. This means Paddle is the legal seller for all transactions, handles VAT collection and remittance, and is responsible for payment processing and billing. By making a purchase, you also agree to Paddle's Terms of Service and Privacy Policy.",
     items: [
       {
         subtitle: "Billing",
@@ -79,7 +79,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Refunds",
-        text: "ExamKlaar does not offer discretionary refunds. Because Paddle acts as Merchant of Record, all refund requests and payment disputes must be directed to Paddle and are governed by Paddle's Buyer Terms. EU consumers retain their statutory right of withdrawal; withdrawal and refund requests are handled by Paddle under its Buyer Terms. For full details, see our Refund Policy at examklaar.nl/refund-policy.",
+        text: "ExamKlaar itself does not offer refunds beyond your statutory rights. Because Paddle acts as Merchant of Record, all refund requests and payment disputes must be directed to Paddle and are governed by Paddle's Buyer Terms and Refund Policy, under which Paddle may issue discretionary refunds. EU consumers retain their statutory right of withdrawal; withdrawal and refund requests are handled by Paddle. For full details, see our Refund Policy at examklaar.nl/refund-policy.",
       },
     ],
   },

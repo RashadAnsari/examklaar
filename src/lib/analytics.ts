@@ -1,19 +1,25 @@
+import { sendGAEvent } from "@next/third-parties/google";
+
 type EventPayload = Record<string, string | number | boolean>;
 
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-    dataLayer?: unknown[];
+// The dataLayer only exists once the visitor has accepted analytics cookies
+// and GA has loaded (see GoogleAnalytics.tsx), so before consent every
+// command is a no-op. Window.dataLayer is declared by @next/third-parties.
+function gaCommand(...args: (string | EventPayload)[]) {
+  if (typeof window !== "undefined" && window.dataLayer) {
+    sendGAEvent(...args);
   }
 }
 
-// Sends a custom event to Google Analytics. gtag only exists once the visitor
-// has accepted analytics cookies (see GoogleAnalytics.tsx), so before consent
-// every call is a no-op.
+// Sends a custom event to Google Analytics.
 function track(event: string, data?: EventPayload) {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", event, data);
-  }
+  gaCommand("event", event, data ?? {});
+}
+
+// Tells an already-loaded GA to stop using analytics storage after the
+// visitor withdraws consent mid-session.
+export function revokeAnalyticsConsent() {
+  gaCommand("consent", "update", { analytics_storage: "denied" });
 }
 
 export const analytics = {
