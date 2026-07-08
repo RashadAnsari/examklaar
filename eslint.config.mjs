@@ -20,8 +20,6 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     ".claude/**",
     ".venv/**",
-    ".claude-flow/**",
-    ".mcp.json",
   ]),
 ]);
 
