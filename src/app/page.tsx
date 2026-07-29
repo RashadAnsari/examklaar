@@ -135,7 +135,7 @@ export default function LandingPage() {
             />
             <TrustItem
               icon={<CheckCircleIcon style={{ width: 18, height: 18 }} />}
-              text="2025 KNM format"
+              text="Official DUO format"
             />
           </div>
         </div>
@@ -209,8 +209,8 @@ export default function LandingPage() {
             />
             <FeatureCard
               icon={<BoltIcon style={{ width: 24, height: 24 }} />}
-              title="Updated for 2025"
-              description="Content aligned with the current KNM exam format and CEFR A2/B1 standards set by DUO."
+              title="Built to the Official Format"
+              description="Question types, timing, and pass marks follow the real DUO inburgering exam at CEFR level A2."
             />
             <FeatureCard
               icon={<ChartBarIcon style={{ width: 24, height: 24 }} />}

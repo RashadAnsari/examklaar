@@ -76,6 +76,7 @@ export default async function ReviewPage(props: {
   return (
     <ReviewClient
       questions={questions}
+      resultId={result.id}
       isMcq={isMcq}
       skillId={skillId}
       n={n}

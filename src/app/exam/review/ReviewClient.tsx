@@ -21,6 +21,7 @@ type WritingFilterType = "all" | "good" | "needs_work";
 
 interface Props {
   questions: ReviewQuestion[];
+  resultId: string;
   isMcq: boolean;
   skillId: string;
   n: number;
@@ -33,6 +34,7 @@ interface Props {
 
 export function ReviewClient({
   questions,
+  resultId,
   isMcq,
   skillId,
   n,
@@ -176,7 +178,7 @@ export function ReviewClient({
               isMcq ? (
                 <McqCard key={q.id} question={q} displayIndex={displayIndex} />
               ) : (
-                <OpenCard key={q.id} question={q} displayIndex={displayIndex} />
+                <OpenCard key={q.id} question={q} resultId={resultId} displayIndex={displayIndex} />
               )
             )
           )}
@@ -281,7 +283,15 @@ function McqCard({ question, displayIndex }: { question: ReviewQuestion; display
 
 /* ─── Writing / Speaking Card ─── */
 
-function OpenCard({ question, displayIndex }: { question: ReviewQuestion; displayIndex: number }) {
+function OpenCard({
+  question,
+  resultId,
+  displayIndex,
+}: {
+  question: ReviewQuestion;
+  resultId: string;
+  displayIndex: number;
+}) {
   const feedback = question.feedback;
   const pct = feedback && feedback.maxScore > 0 ? feedback.score / feedback.maxScore : null;
   const variant =
@@ -347,7 +357,7 @@ function OpenCard({ question, displayIndex }: { question: ReviewQuestion; displa
           >
             {isSpeaking ? "Your recording" : "Your answer"}
           </p>
-          {speakingAnswer && <AudioPlayer storagePath={speakingAnswer.path} />}
+          {speakingAnswer && <AudioPlayer resultId={resultId} questionId={question.id} />}
           {transcript && (
             <div
               className="rounded-xl px-5 py-4 text-sm mt-3"
@@ -424,7 +434,7 @@ function OpenCard({ question, displayIndex }: { question: ReviewQuestion; displa
 
 /* ─── Audio Player ─── */
 
-function AudioPlayer({ storagePath }: { storagePath: string }) {
+function AudioPlayer({ resultId, questionId }: { resultId: string; questionId: string }) {
   const [url, setUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [expired, setExpired] = useState(false);
@@ -433,7 +443,9 @@ function AudioPlayer({ storagePath }: { storagePath: string }) {
 
   useEffect(() => {
     let cancelled = false;
-    fetch(`/api/recordings/signed-url?path=${encodeURIComponent(storagePath)}`)
+    fetch(
+      `/api/recordings/signed-url?resultId=${encodeURIComponent(resultId)}&questionId=${encodeURIComponent(questionId)}`
+    )
       .then(async (r) => {
         const data = await r.json();
         if (cancelled) {
@@ -458,7 +470,7 @@ function AudioPlayer({ storagePath }: { storagePath: string }) {
     return () => {
       cancelled = true;
     };
-  }, [storagePath]);
+  }, [resultId, questionId]);
 
   if (loading) {
     return (

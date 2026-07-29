@@ -12,13 +12,11 @@ ExamKlaar lets users take timed, realistic practice exams across all 5 component
 - **Writing** — Written Dutch with AI-graded feedback
 - **Speaking** — Recorded answers with AI feedback
 
-Users get one free exam, then subscribe for unlimited access.
-
 ## Getting Started
 
 ```bash
 bun install
-docker up       # local Postgres on port 5432
+make up       # local Postgres on port 5432
 make migrate    # apply db/migrations
 make dev
 ```
