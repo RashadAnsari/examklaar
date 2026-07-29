@@ -9,7 +9,8 @@ import { getSessionUser } from "@/lib/auth-session";
 import { pool } from "@/lib/db";
 import { listSkillExams } from "@/data/exams";
 import { getScoreFeedback } from "@/lib/exam/scoring";
-import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
+import { getUserSubscription } from "@/lib/payment/subscription";
+import { hasPremiumAccess } from "@/lib/payment/plans";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 interface ExamResult {

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth-session";
-import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
+import { getUserSubscription } from "@/lib/payment/subscription";
+import { hasPremiumAccess } from "@/lib/payment/plans";
 
 export async function GET() {
   const user = await getSessionUser();

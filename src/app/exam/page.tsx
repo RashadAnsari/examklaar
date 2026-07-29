@@ -2,7 +2,8 @@ import { notFound, redirect } from "next/navigation";
 import { ExamClient, Exam } from "./ExamClient";
 import { readExam } from "@/data/exams";
 import { getSessionUser } from "@/lib/auth-session";
-import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
+import { getUserSubscription } from "@/lib/payment/subscription";
+import { hasPremiumAccess } from "@/lib/payment/plans";
 
 export default async function ExamPage(props: {
   searchParams: Promise<{ skill?: string; n?: string }>;

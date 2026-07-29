@@ -6,12 +6,12 @@ import { pool } from "@/lib/db";
 import { listSkillGroups } from "@/data/exams";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 import { WelcomeGiftModal } from "@/components/ui/WelcomeGiftModal";
+import { getUserSubscription } from "@/lib/payment/subscription";
 import {
   COMPLIMENTARY_ACCESS_MONTHS,
-  getUserSubscription,
   hasPremiumAccess,
   isTrialEligible,
-} from "@/lib/payment/subscription";
+} from "@/lib/payment/plans";
 
 export default async function DashboardPage({
   searchParams,

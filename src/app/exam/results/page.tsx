@@ -20,7 +20,8 @@ import {
   computeHistoryStats,
 } from "@/lib/exam/scoring";
 import { BackGuard } from "./BackGuard";
-import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
+import { getUserSubscription } from "@/lib/payment/subscription";
+import { hasPremiumAccess } from "@/lib/payment/plans";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 type QuestionFeedback = {

@@ -1,13 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth-session";
 import { pool } from "@/lib/db";
-import {
-  getUserSubscription,
-  hasPremiumAccess,
-  isTrialEligible,
-  isPlanId,
-  DEFAULT_PLAN_ID,
-} from "@/lib/payment/subscription";
+import { getUserSubscription } from "@/lib/payment/subscription";
+import { hasPremiumAccess, isTrialEligible, isPlanId, DEFAULT_PLAN_ID } from "@/lib/payment/plans";
 import { getPaymentProvider } from "@/lib/payment/provider";
 import { PaymentCustomerRepository } from "@/lib/repositories/paymentCustomerRepository";
 

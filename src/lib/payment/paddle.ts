@@ -12,7 +12,7 @@ import type {
   ProviderPayment,
   WebhookEvent,
 } from "./types";
-import { DEFAULT_PLAN_ID, isPlanId, type PlanId } from "./subscription";
+import { DEFAULT_PLAN_ID, isPlanId, type PlanId } from "./plans";
 
 function planIdFromCustomData(customData: Record<string, string> | null): PlanId {
   return isPlanId(customData?.planId) ? customData.planId : DEFAULT_PLAN_ID;

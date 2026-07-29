@@ -1,4 +1,4 @@
-import type { PlanId } from "./subscription";
+import type { PlanId } from "./plans";
 
 export interface CheckoutParams {
   userId: string;

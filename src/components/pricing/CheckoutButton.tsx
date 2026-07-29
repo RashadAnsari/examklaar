@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { analytics } from "@/lib/analytics";
 import { withNext } from "@/lib/redirects";
-import type { PlanId } from "@/lib/payment/subscription";
+import type { PlanId } from "@/lib/payment/plans";
 
 interface CheckoutButtonProps {
   planId: PlanId;

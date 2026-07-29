@@ -8,7 +8,8 @@ import {
   RECORDING_MIME_TYPE,
 } from "@/lib/exam/config";
 import type { Exam } from "@/app/exam/ExamClient";
-import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
+import { getUserSubscription } from "@/lib/payment/subscription";
+import { hasPremiumAccess } from "@/lib/payment/plans";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 import { uploadRecording } from "@/lib/storage/recordings";
 

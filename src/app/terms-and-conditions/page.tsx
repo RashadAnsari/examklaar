@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { LegalPage, type LegalSection } from "@/components/layout/LegalPage";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
 
 const LAST_UPDATED = "29 July 2026";
 
-const SECTIONS = [
+const SECTIONS: LegalSection[] = [
   {
     title: "Article 1. General",
     // TODO: restore business details (legal entity name, KvK number, registered address) once finalised:
@@ -220,88 +219,11 @@ const SECTIONS = [
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen" style={{ background: "var(--gray-50)" }}>
-      <Navbar />
-
-      {/* Header */}
-      <div className="container py-16 text-center">
-        <h1 className="font-bold mb-4" style={{ fontSize: "2.5rem", color: "var(--gray-900)" }}>
-          Terms &amp; Conditions
-        </h1>
-        <p style={{ color: "var(--gray-500)", fontSize: "0.9rem" }}>Last updated: {LAST_UPDATED}</p>
-        <p
-          className="mx-auto mt-4"
-          style={{ fontSize: "1.125rem", color: "var(--gray-600)", maxWidth: "680px" }}
-        >
-          Please read these terms carefully before using ExamKlaar. They explain your rights and
-          responsibilities as a user of our platform.
-        </p>
-      </div>
-
-      {/* Sections */}
-      <div className="mx-auto px-6 pb-20 flex flex-col gap-6" style={{ maxWidth: "800px" }}>
-        {SECTIONS.map((section) => (
-          <div
-            key={section.title}
-            className="rounded-xl p-8 border"
-            style={{ background: "white", borderColor: "var(--gray-200)" }}
-          >
-            <h2
-              className="font-semibold mb-4"
-              style={{ fontSize: "1.125rem", color: "var(--gray-900)" }}
-            >
-              {section.title}
-            </h2>
-
-            {section.content && (
-              <p style={{ color: "var(--gray-600)", lineHeight: 1.7 }} className="mb-4">
-                {section.content}
-              </p>
-            )}
-
-            {section.items && (
-              <ul className="flex flex-col gap-3 mb-4">
-                {section.items.map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex gap-3"
-                    style={{ color: "var(--gray-600)", lineHeight: 1.7 }}
-                  >
-                    <span
-                      className="mt-1 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold"
-                      style={{ background: "var(--green-50)", color: "var(--green-700)" }}
-                    >
-                      ✓
-                    </span>
-                    <span>
-                      {"subtitle" in item && item.subtitle ? (
-                        <>
-                          <strong style={{ color: "var(--gray-800)" }}>{item.subtitle}</strong>
-                          {": "}
-                          {item.text}
-                        </>
-                      ) : (
-                        item.text
-                      )}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {section.footer && (
-              <p
-                className="mt-2 text-sm italic"
-                style={{ color: "var(--gray-500)", lineHeight: 1.7 }}
-              >
-                {section.footer}
-              </p>
-            )}
-          </div>
-        ))}
-      </div>
-
-      <Footer />
-    </div>
+    <LegalPage
+      title="Terms & Conditions"
+      lastUpdated={LAST_UPDATED}
+      intro="Please read these terms carefully before using ExamKlaar. They explain your rights and responsibilities as a user of our platform."
+      sections={SECTIONS}
+    />
   );
 }

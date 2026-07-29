@@ -1,5 +1,6 @@
 import { getSessionUser } from "@/lib/auth-session";
-import { getUserSubscription, hasPremiumAccess, isTrialEligible } from "@/lib/payment/subscription";
+import { getUserSubscription } from "@/lib/payment/subscription";
+import { hasPremiumAccess, isTrialEligible } from "@/lib/payment/plans";
 import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/pricing/CheckoutButton";
 import { ClaimTrialButton } from "@/components/pricing/ClaimTrialButton";
