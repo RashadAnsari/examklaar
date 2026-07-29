@@ -219,17 +219,21 @@ function buildQuestionBatches<T extends { content: string }>(questions: T[]): T[
   return batches;
 }
 
-export async function gradeExamResult(resultId: string, result: ResultData): Promise<void> {
+export async function gradeExamResult(
+  resultId: string,
+  userId: string,
+  result: ResultData
+): Promise<void> {
   const examResults = new ExamResultsRepository(pool);
 
   async function setStatus(status: "pending" | "in_progress" | "complete" | "failed") {
-    await examResults.updateGradingStatus(resultId, status);
+    await examResults.updateGradingStatus(resultId, userId, status);
   }
 
   await setStatus("in_progress");
 
   try {
-    await doGrade(resultId, result, examResults);
+    await doGrade(resultId, userId, result, examResults);
   } catch (err) {
     await setStatus("failed");
     throw err;
@@ -355,6 +359,7 @@ ${questionBlocks}
 
 async function doGrade(
   resultId: string,
+  userId: string,
   result: ResultData,
   examResults: ExamResultsRepository
 ): Promise<void> {
@@ -414,7 +419,7 @@ async function doGrade(
   }
 
   // Persist grades (saveGrades guards against overwriting an already-graded result)
-  const { error: updateError } = await examResults.saveGrades(resultId, {
+  const { error: updateError } = await examResults.saveGrades(resultId, userId, {
     score: totalScore,
     total_score: totalMax,
     feedback: feedbackMap,

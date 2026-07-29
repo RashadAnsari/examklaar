@@ -128,19 +128,24 @@ export class ExamResultsRepository {
     return rows;
   }
 
-  /** Set the grading status of a result. */
-  async updateGradingStatus(resultId: string, status: GradingStatus) {
+  /** Set the grading status of one of the user's results. */
+  async updateGradingStatus(resultId: string, userId: string, status: GradingStatus) {
     return runWrite(() =>
-      this.db.query(`update exam_results set grading_status = $1 where id = $2`, [status, resultId])
+      this.db.query(`update exam_results set grading_status = $1 where id = $2 and user_id = $3`, [
+        status,
+        resultId,
+        userId,
+      ])
     );
   }
 
   /**
-   * Persist AI grades. Guarded by ai_graded_at is null so a result is never
-   * graded twice.
+   * Persist AI grades for one of the user's results. Guarded by ai_graded_at
+   * is null so a result is never graded twice.
    */
   async saveGrades(
     resultId: string,
+    userId: string,
     grades: {
       score: number;
       total_score: number;
@@ -155,8 +160,8 @@ export class ExamResultsRepository {
                 feedback = $3,
                 ai_graded_at = now(),
                 grading_status = 'complete'
-          where id = $4 and ai_graded_at is null`,
-        [grades.score, grades.total_score, grades.feedback, resultId]
+          where id = $4 and user_id = $5 and ai_graded_at is null`,
+        [grades.score, grades.total_score, grades.feedback, resultId, userId]
       )
     );
   }

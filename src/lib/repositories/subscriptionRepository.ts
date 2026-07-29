@@ -40,6 +40,19 @@ const UPSERT_VALUES = (row: SubscriptionUpsert) => [
   row.updated_at,
 ];
 
+/** Columns updateByUserId may write. user_id is excluded: it is the filter. */
+const UPDATABLE_COLUMNS = new Set([
+  "plan_id",
+  "status",
+  "payment_provider",
+  "provider_customer_id",
+  "provider_subscription_id",
+  "current_period_start",
+  "current_period_end",
+  "cancel_at_period_end",
+  "updated_at",
+]);
+
 const INSERT_SQL = `insert into subscriptions
     (user_id, plan_id, status, payment_provider, provider_customer_id,
      provider_subscription_id, current_period_start, current_period_end,
@@ -105,13 +118,21 @@ export class SubscriptionRepository {
     return { inserted: (data?.rowCount ?? 0) > 0, error };
   }
 
-  /** Patch the user's subscription row. */
+  /**
+   * Patch the user's subscription row. Column names are the only part of a
+   * query in this codebase that is not a bound parameter, so they are checked
+   * against a fixed list rather than trusted: a caller that ever passes request
+   * data through here fails loudly instead of building the SET clause from it.
+   */
   async updateByUserId(userId: string, patch: Partial<SubscriptionUpsert>) {
     const entries = Object.entries(patch);
     if (entries.length === 0) {
       return { data: null, error: null };
     }
-    // Column names come from the typed patch, never from request input.
+    const unknown = entries.map(([column]) => column).filter((c) => !UPDATABLE_COLUMNS.has(c));
+    if (unknown.length > 0) {
+      throw new Error(`Refusing to update unknown subscriptions columns: ${unknown.join(", ")}`);
+    }
     const assignments = entries.map(([column], i) => `${column} = $${i + 2}`).join(", ");
     return runWrite(() =>
       this.db.query(`update subscriptions set ${assignments} where user_id = $1`, [

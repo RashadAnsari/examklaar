@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    await gradeExamResult(result_id, result);
+    await gradeExamResult(result_id, user.id, result);
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error(`[grade] Failed to grade result ${result_id}:`, err);
