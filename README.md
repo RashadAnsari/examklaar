@@ -38,20 +38,20 @@ The Content-Security-Policy in `next.config.ts` derives the allowed media origin
 
 ## Deployment
 
-The app and the database are two independent compose stacks on the same host, each with its own playbook, so redeploying the app never restarts Postgres.
+The app and the infra it depends on are two independent compose stacks on the same host, each with its own playbook, so redeploying the app never restarts Postgres.
 
-| Stack    | Playbook               | Template                               | Triggered by                                     |
-| -------- | ---------------------- | -------------------------------------- | ------------------------------------------------ |
-| Database | `deploy/database.yaml` | `deploy/tmpls/database-compose.yml.j2` | the **Database** workflow, manually              |
-| App      | `deploy/app.yaml`      | `deploy/tmpls/app-compose.yml.j2`      | the deploy job in `build.yml`, on push to master |
+| Stack | Playbook            | Template                            | Triggered by                                     |
+| ----- | ------------------- | ----------------------------------- | ------------------------------------------------ |
+| Infra | `deploy/infra.yaml` | `deploy/tmpls/infra-compose.yml.j2` | the **Infra** workflow, manually                 |
+| App   | `deploy/app.yaml`   | `deploy/tmpls/app-compose.yml.j2`   | the deploy job in `build.yml`, on push to master |
 
-The database stack owns the `examklaar_network` Docker network; the app stack joins it as an external network and reaches Postgres by hostname, so the database port is never published. Run the Database workflow once before the first app deploy, and afterwards only to change the Postgres image or its settings. `deploy/app.yaml` fails early with a clear error if the network is missing.
+The infra stack holds the stateful services, currently Postgres and its backup sidecar, and owns the `examklaar_network` Docker network. The app stack joins that network as an external network and reaches Postgres by hostname, so the database port is never published. Run the Infra workflow once before the first app deploy, and afterwards only to change the Postgres image or its settings. `deploy/app.yaml` fails early with a clear error if the network is missing.
 
-Migrations run from `deploy/app.yaml` after the app container starts, since the schema belongs to the app version being deployed rather than to the database stack.
+Migrations run from `deploy/app.yaml` after the app container starts, since the schema belongs to the app version being deployed rather than to the infra stack.
 
 ### Backups
 
-The database stack includes a `db-backup` sidecar running `deploy/files/backup.sh`. Every 24 hours it takes a `pg_dump --format=custom` and uploads it to a private backups bucket under a `YYYY/MM/DD/` key. It runs on the same image as the server so `pg_dump` always matches the server's major version, and it uses its own storage credentials scoped to the backups bucket, so a compromised app container cannot reach a dump of the whole database.
+The infra stack includes a `db-backup` sidecar running `deploy/files/backup.sh`. Every 24 hours it takes a `pg_dump --format=custom` and uploads it to a private backups bucket under a `YYYY/MM/DD/` key. It runs on the same image as the server so `pg_dump` always matches the server's major version, and it uses its own storage credentials scoped to the backups bucket, so a compromised app container cannot reach a dump of the whole database.
 
 Set up once:
 
@@ -65,9 +65,9 @@ To restore, copy a dump down and feed it to `pg_restore`:
 ```bash
 aws s3 cp s3://examklaar-backups/2026/07/29/examklaar-20260729T020000Z.dump . \
   --endpoint-url "$S3_ENDPOINT"
-docker compose -f /etc/examklaar/database-compose.yml cp \
+docker compose -f /etc/examklaar/infra-compose.yml cp \
   examklaar-20260729T020000Z.dump postgres:/tmp/restore.dump
-docker compose -f /etc/examklaar/database-compose.yml exec -T postgres \
+docker compose -f /etc/examklaar/infra-compose.yml exec -T postgres \
   pg_restore -U examklaar -d examklaar --clean --if-exists /tmp/restore.dump
 ```
 
