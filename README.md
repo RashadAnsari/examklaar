@@ -51,6 +51,30 @@ The database stack owns the `examklaar_network` Docker network; the app stack jo
 
 Migrations run from `deploy/app.yaml` after the app container starts, since the schema belongs to the app version being deployed rather than to the database stack.
 
+### Backups
+
+The database stack includes a `db-backup` sidecar running `deploy/files/backup.sh`. Every 24 hours it takes a `pg_dump --format=custom` and uploads it to a private backups bucket under a `YYYY/MM/DD/` key. It runs on the same image as the server so `pg_dump` always matches the server's major version, and it uses its own storage credentials scoped to the backups bucket, so a compromised app container cannot reach a dump of the whole database.
+
+Set up once:
+
+- A private `examklaar-backups` bucket, with a lifecycle rule for however long you want to keep dumps. The script never deletes anything.
+- A storage API token with object read and write, scoped to that bucket alone, supplied as `S3_BACKUP_ACCESS_KEY_ID` and `S3_BACKUP_SECRET_ACCESS_KEY`.
+
+A dump smaller than 1 KB is refused rather than uploaded, so a failed or half-written dump cannot age out the good ones under the lifecycle rule. The container reports unhealthy if no backup has succeeded in 26 hours, which is the signal to watch: `docker ps` shows the status, and `docker logs examklaar_db_backup` shows why.
+
+To restore, copy a dump down and feed it to `pg_restore`:
+
+```bash
+aws s3 cp s3://examklaar-backups/2026/07/29/examklaar-20260729T020000Z.dump . \
+  --endpoint-url "$S3_ENDPOINT"
+docker compose -f /etc/examklaar/database-compose.yml cp \
+  examklaar-20260729T020000Z.dump postgres:/tmp/restore.dump
+docker compose -f /etc/examklaar/database-compose.yml exec -T postgres \
+  pg_restore -U examklaar -d examklaar --clean --if-exists /tmp/restore.dump
+```
+
+Stop the app stack first so nothing writes during the restore. Rehearse this at least once: an untested backup is not a backup.
+
 ## Documentation
 
 - [Exam JSON format](docs/exam-format.md) — the schema, per-skill conventions, and asset rules for exam data files.
