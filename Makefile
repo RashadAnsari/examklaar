@@ -17,7 +17,7 @@ dev:
 
 # --------- Code quality ----------
 
-local: format lint
+local: format lint typecheck
 
 lint:
 	bun run lint
@@ -26,3 +26,6 @@ lint:
 format:
 	bunx prettier --write "**/*.{ts,tsx,css,json,md}" --ignore-path .gitignore
 	bun run lint --fix
+
+typecheck:
+	bun run typecheck

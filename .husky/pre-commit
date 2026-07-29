@@ -1,1 +1,4 @@
+# Typecheck as well as lint: eslint does not catch type errors, so without this
+# a change that breaks the build still commits cleanly.
 make lint
+bun run typecheck
