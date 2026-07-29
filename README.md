@@ -16,7 +16,7 @@ ExamKlaar lets users take timed, realistic practice exams across all 5 component
 
 ```bash
 bun install
-make up       # local Postgres on port 5432
+make up         # local Postgres on port 5432
 make migrate    # apply db/migrations
 make dev
 ```
