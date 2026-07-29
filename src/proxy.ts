@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { getSessionCookie } from "better-auth/cookies";
+import { DEFAULT_AFTER_AUTH, safeNextPath } from "@/lib/redirects";
 
 const PUBLIC_PATHS = [
   "/",
@@ -33,9 +34,12 @@ export async function proxy(request: NextRequest) {
   const hasSession = !!getSessionCookie(request);
 
   if (hasSession && isGuestOnly(pathname)) {
-    const dashboardUrl = request.nextUrl.clone();
-    dashboardUrl.pathname = "/dashboard";
-    return NextResponse.redirect(dashboardUrl);
+    // Honour the `next` the user was carrying, unless it points back at another
+    // guest-only page, which would bounce them straight back here.
+    const requested = safeNextPath(request.nextUrl.searchParams.get("next"));
+    const requestedPath = requested?.split(/[?#]/)[0] ?? "";
+    const target = requested && !isGuestOnly(requestedPath) ? requested : DEFAULT_AFTER_AUTH;
+    return NextResponse.redirect(new URL(target, request.url));
   }
 
   if (isPublic(pathname)) {
@@ -43,8 +47,10 @@ export async function proxy(request: NextRequest) {
   }
 
   if (!hasSession) {
-    const loginUrl = request.nextUrl.clone();
-    loginUrl.pathname = "/auth/login";
+    // Build the URL fresh rather than cloning: cloning would carry the
+    // protected page's own query string onto /auth/login alongside `next`.
+    const loginUrl = new URL("/auth/login", request.url);
+    loginUrl.searchParams.set("next", `${pathname}${request.nextUrl.search}`);
     return NextResponse.redirect(loginUrl);
   }
 

@@ -466,12 +466,10 @@ function SettingsSection({
   title,
   description,
   children,
-  danger = false,
 }: {
   title: string;
   description: string;
   children: React.ReactNode;
-  danger?: boolean;
 }) {
   return (
     <div
@@ -481,10 +479,7 @@ function SettingsSection({
       <div className="mb-8">
         <h2
           className="font-semibold mb-1"
-          style={{
-            fontSize: "1.25rem",
-            color: danger ? "var(--red)" : "var(--gray-900)",
-          }}
+          style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
         >
           {title}
         </h2>

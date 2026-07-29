@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { analytics } from "@/lib/analytics";
+import { withNext } from "@/lib/redirects";
 import type { PlanId } from "@/lib/payment/subscription";
 
 interface CheckoutButtonProps {
@@ -35,7 +36,7 @@ export function CheckoutButton({
       });
 
       if (res.status === 401) {
-        router.push("/auth/signup?next=/pricing");
+        router.push(withNext("/auth/signup", "/pricing"));
         return;
       }
 

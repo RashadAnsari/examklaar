@@ -33,7 +33,6 @@
 
   /* Typography */
   --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: var(--font-jetbrains-mono), "Courier New", monospace;
 
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -44,35 +43,6 @@
   /* Transitions */
   --transition-base: 200ms ease-in-out;
   --transition-slow: 300ms ease-in-out;
-}
-
-/* ==================== TAILWIND THEME EXTENSIONS ==================== */
-
-@theme inline {
-  --color-primary-900: var(--green-900);
-  --color-primary-700: var(--green-700);
-  --color-primary-500: var(--green-500);
-  --color-primary-50: var(--green-50);
-  --color-neutral-900: var(--gray-900);
-  --color-neutral-800: var(--gray-800);
-  --color-neutral-700: var(--gray-700);
-  --color-neutral-600: var(--gray-600);
-  --color-neutral-500: var(--gray-500);
-  --color-neutral-400: var(--gray-400);
-  --color-neutral-300: var(--gray-300);
-  --color-neutral-200: var(--gray-200);
-  --color-neutral-100: var(--gray-100);
-  --color-neutral-50: var(--gray-50);
-  --color-danger: var(--red);
-  --color-danger-light: var(--red-light);
-  --color-warning: var(--amber);
-  --color-warning-light: var(--amber-light);
-  --color-success: var(--green-success);
-  --color-success-light: var(--green-success-light);
-  --color-info: var(--blue);
-  --color-info-light: var(--blue-light);
-  --font-sans: var(--font-body);
-  --font-mono: var(--font-mono);
 }
 
 /* ==================== BASE STYLES ==================== */
@@ -131,16 +101,6 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-.btn-secondary {
-  background: white;
-  color: var(--green-900);
-  border-color: var(--green-900);
-}
-
-.btn-secondary:hover:not(:disabled) {
-  background: var(--green-50);
-}
-
 .btn-outline {
   background: white;
   color: var(--gray-700);
@@ -150,52 +110,6 @@ body {
 .btn-outline:hover:not(:disabled) {
   background: var(--gray-50);
   border-color: var(--gray-400);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--gray-600);
-  border-color: transparent;
-}
-
-.btn-ghost:hover:not(:disabled) {
-  background: var(--gray-100);
-  color: var(--gray-900);
-}
-
-.btn-danger {
-  background: var(--red);
-  color: white;
-  border-color: var(--red);
-}
-
-.btn-danger:hover:not(:disabled) {
-  background: #b91c1c;
-  border-color: #b91c1c;
-}
-
-.btn-white {
-  background: white;
-  color: var(--green-900);
-  border-color: white;
-}
-
-.btn-white:hover:not(:disabled) {
-  background: var(--gray-100);
-}
-
-.btn-sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-}
-
-.btn-lg {
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
-}
-
-.btn-full {
-  width: 100%;
 }
 
 /* ==================== CARD COMPONENT ==================== */
@@ -221,255 +135,18 @@ body {
 
 /* ==================== INPUT COMPONENT ==================== */
 
-.input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--gray-900);
-  background: white;
-  border: 2px solid var(--gray-300);
-  border-radius: 0.5rem;
-  transition: all var(--transition-base);
-}
-
-.input:focus {
-  outline: none;
-  border-color: var(--green-900);
-  box-shadow: 0 0 0 3px var(--green-50);
-}
-
-.input::placeholder {
-  color: var(--gray-400);
-}
-
-.input-error {
-  border-color: var(--red);
-}
-
-.input-error:focus {
-  box-shadow: 0 0 0 3px var(--red-light);
-}
-
-.input-label {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--gray-700);
-  margin-bottom: 0.5rem;
-}
-
-.input-hint {
-  font-size: 0.75rem;
-  color: var(--gray-500);
-  margin-top: 0.375rem;
-}
-
 .input-error-msg {
   font-size: 0.875rem;
   color: var(--red);
   margin-top: 0.375rem;
 }
 
-/* ==================== BADGE COMPONENT ==================== */
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 1.25;
-  border-radius: 9999px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.badge-success {
-  background: var(--green-success-light);
-  color: var(--green-success);
-}
-
-.badge-warning {
-  background: var(--amber-light);
-  color: #b45309;
-}
-
-.badge-error {
-  background: var(--red-light);
-  color: var(--red);
-}
-
-.badge-info {
-  background: var(--blue-light);
-  color: var(--blue);
-}
-
-.badge-neutral {
-  background: var(--gray-100);
-  color: var(--gray-600);
-}
-
-.badge-primary {
-  background: var(--green-900);
-  color: white;
-}
-
-.badge-free {
-  background: var(--blue);
-  color: white;
-}
-
-.badge-premium {
-  background: var(--amber-light);
-  color: #92400e;
-}
-
-/* ==================== PROGRESS BAR ==================== */
-
-.progress-container {
-  width: 100%;
-  height: 8px;
-  background: var(--gray-100);
-  border-radius: 9999px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background: var(--green-900);
-  border-radius: 9999px;
-  transition: width var(--transition-slow);
-}
-
-.progress-bar-thin {
-  height: 6px;
-}
-
-.progress-bar-success {
-  background: var(--green-success);
-}
-
-.progress-bar-warning {
-  background: var(--amber);
-}
-
-.progress-bar-danger {
-  background: var(--red);
-}
-
-/* ==================== TIMER ==================== */
-
-.timer {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--gray-900);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  background: white;
-  border: 2px solid var(--gray-200);
-  border-radius: 0.5rem;
-}
-
-.timer-warning {
-  color: var(--amber);
-  border-color: var(--amber);
-  background: var(--amber-light);
-}
-
-.timer-danger {
-  color: var(--red);
-  border-color: var(--red);
-  background: var(--red-light);
-  animation: pulse-timer 1s infinite;
-}
+/* ==================== ANIMATIONS ==================== */
 
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
-}
-
-@keyframes pulse-timer {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-/* ==================== TOGGLE SWITCH ==================== */
-
-.toggle-switch {
-  position: relative;
-  width: 48px;
-  height: 28px;
-  background: var(--gray-300);
-  border-radius: 9999px;
-  cursor: pointer;
-  transition: background var(--transition-base);
-  flex-shrink: 0;
-}
-
-.toggle-switch.active {
-  background: var(--green-900);
-}
-
-.toggle-slider {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 22px;
-  height: 22px;
-  background: white;
-  border-radius: 50%;
-  transition: transform var(--transition-base);
-}
-
-.toggle-switch.active .toggle-slider {
-  transform: translateX(20px);
-}
-
-/* ==================== NAVIGATION ==================== */
-
-.nav {
-  background: white;
-  border-bottom: 1px solid var(--gray-200);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.nav-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 1rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--green-900);
-  text-decoration: none;
-}
-
-.nav-link {
-  color: var(--gray-600);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color var(--transition-base);
-}
-
-.nav-link:hover {
-  color: var(--green-900);
 }
 
 /* ==================== LAYOUT CONTAINERS ==================== */
@@ -480,14 +157,6 @@ body {
   margin: 0 auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
-
-.container-md {
-  max-width: 900px;
-}
-
-.container-sm {
-  max-width: 640px;
 }
 
 /* ==================== SECTION STYLES ==================== */
@@ -731,16 +400,4 @@ body {
   padding: 2rem;
   max-width: 500px;
   width: 100%;
-}
-
-/* ==================== AUTH CARD RESPONSIVE PADDING ==================== */
-
-.card-auth {
-  padding: 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .card-auth {
-    padding: 3rem;
-  }
 }

@@ -3,6 +3,7 @@ import { getUserSubscription, hasPremiumAccess, isTrialEligible } from "@/lib/pa
 import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/pricing/CheckoutButton";
 import { ClaimTrialButton } from "@/components/pricing/ClaimTrialButton";
+import { withNext } from "@/lib/redirects";
 import {
   CheckIcon,
   ShieldCheckIcon,
@@ -171,7 +172,7 @@ function PlanCta({
   const ctaLabel = trialEligible ? PLAN.cta : PLAN.ctaReturning;
   if (!loggedIn) {
     return (
-      <Button href="/auth/login?next=/pricing" variant={PLAN.ctaVariant} fullWidth>
+      <Button href={withNext("/auth/login", "/pricing")} variant={PLAN.ctaVariant} fullWidth>
         {ctaLabel}
       </Button>
     );

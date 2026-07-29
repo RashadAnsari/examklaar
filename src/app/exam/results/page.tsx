@@ -93,11 +93,9 @@ export default async function ResultsPage(props: {
   const heading =
     isPersonalBest && attempts > 1
       ? "New Personal Best!"
-      : status.passed === true
+      : status.passed
         ? "Excellent Work!"
-        : status.passed === false
-          ? "Keep Practicing!"
-          : "Exam Complete";
+        : "Keep Practicing!";
 
   // MCQ question breakdown
   const userAnswers = result.answers as Record<string, number | undefined>;
@@ -132,11 +130,11 @@ export default async function ResultsPage(props: {
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-6"
             style={{ background: status.bg, color: status.color }}
           >
-            {status.passed === true ? (
+            {status.passed ? (
               <CheckCircleIcon style={{ width: 16, height: 16 }} />
-            ) : status.passed === false ? (
+            ) : (
               <XCircleIcon style={{ width: 16, height: 16 }} />
-            ) : null}
+            )}
             {status.label}
           </span>
           <h1
@@ -160,7 +158,7 @@ export default async function ResultsPage(props: {
             className="font-bold mb-2"
             style={{
               fontSize: "clamp(3rem, 16vw, 6rem)",
-              color: status.passed === false ? "var(--red)" : "var(--green-900)",
+              color: status.passed ? "var(--green-900)" : "var(--red)",
               lineHeight: 1,
             }}
           >
@@ -183,11 +181,7 @@ export default async function ResultsPage(props: {
               label={isMcq ? "Correct Answers" : "Points Awarded"}
             />
             <BreakdownItem
-              value={
-                threshold !== null
-                  ? `${threshold}${isMcq ? ` / ${result.total_score}` : ""}`
-                  : "60%"
-              }
+              value={`${threshold}${isMcq ? ` / ${result.total_score}` : ""}`}
               label="Pass Threshold"
             />
           </div>
