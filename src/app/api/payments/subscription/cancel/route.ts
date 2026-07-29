@@ -1,17 +1,13 @@
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
-import { createAdminClient } from "@/utils/supabase/admin";
+import { getSessionUser } from "@/lib/auth-session";
+import { pool } from "@/lib/db";
 import { getUserSubscription } from "@/lib/payment/subscription";
 import { getPaymentProvider } from "@/lib/payment/provider";
 import { SubscriptionRepository } from "@/lib/repositories/subscriptionRepository";
 import { SubscriptionEventRepository } from "@/lib/repositories/subscriptionEventRepository";
 
 export async function POST() {
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -45,14 +41,13 @@ export async function POST() {
     ? { status: "cancelled", cancel_at_period_end: false, current_period_end: now, updated_at: now }
     : { cancel_at_period_end: true, updated_at: now };
 
-  const admin = createAdminClient();
-  const { error } = await new SubscriptionRepository(admin).updateByUserId(user.id, update);
+  const { error } = await new SubscriptionRepository(pool).updateByUserId(user.id, update);
   if (error) {
     console.error("[subscription/cancel] db error:", error);
     return NextResponse.json({ error: "Failed to update subscription" }, { status: 500 });
   }
 
-  await new SubscriptionEventRepository(admin).record({
+  await new SubscriptionEventRepository(pool).record({
     user_id: user.id,
     event_type: cancelImmediately ? "cancelled" : "cancel_scheduled",
     plan_id: sub.planId,

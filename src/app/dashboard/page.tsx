@@ -1,8 +1,8 @@
-import { cookies } from "next/headers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { DashboardClient } from "./DashboardClient";
-import { createClient } from "@/utils/supabase/server";
+import { getSessionUser } from "@/lib/auth-session";
+import { pool } from "@/lib/db";
 import { listSkillGroups } from "@/data/exams";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 import { WelcomeGiftModal } from "@/components/ui/WelcomeGiftModal";
@@ -18,12 +18,7 @@ export default async function DashboardPage({
 }: {
   searchParams: Promise<{ welcome?: string }>;
 }) {
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
 
   // The welcome gift modal is shown right after the pricing page grants
   // complimentary access and redirects here with ?welcome=1.
@@ -31,7 +26,9 @@ export default async function DashboardPage({
   const showWelcomeGift = welcome === "gift";
 
   const [results, sub] = await Promise.all([
-    new ExamResultsRepository(supabase).listCompletedExamIds(),
+    user
+      ? new ExamResultsRepository(pool).listCompletedExamIds(user.id)
+      : Promise.resolve<{ exam_id: string }[]>([]),
     user ? getUserSubscription(user.id) : Promise.resolve(null),
   ]);
 
@@ -63,7 +60,7 @@ export default async function DashboardPage({
       <div className="container py-8" style={{ maxWidth: "1280px" }}>
         <div className="mb-8">
           <h1 className="font-bold mb-1" style={{ fontSize: "2rem", color: "var(--gray-900)" }}>
-            Welcome back{user?.user_metadata?.full_name ? `, ${user.user_metadata.full_name}` : ""}
+            Welcome back{user?.name ? `, ${user.name}` : ""}
           </h1>
           <p style={{ color: "var(--gray-600)" }}>Continue practicing for your inburgering exam</p>
         </div>

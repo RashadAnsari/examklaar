@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
 import { ChevronLeftIcon, LockClosedIcon } from "@heroicons/react/20/solid";
 import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam/config";
-import { createClient } from "@/utils/supabase/server";
+import { getSessionUser } from "@/lib/auth-session";
+import { pool } from "@/lib/db";
 import { listSkillExams } from "@/data/exams";
 import { getScoreFeedback } from "@/lib/exam/scoring";
 import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
@@ -15,7 +15,7 @@ import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository"
 interface ExamResult {
   score: number | null;
   total_score: number;
-  completed_at: string;
+  completed_at: Date;
 }
 
 interface ExamItem {
@@ -25,17 +25,17 @@ interface ExamItem {
 }
 
 async function loadExams(
-  id: string
+  id: string,
+  userId: string | null
 ): Promise<{ skill: string; level: string | null; exams: ExamItem[] } | null> {
   const fileData = await listSkillExams(id);
   if (!fileData) {
     return null;
   }
 
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
-
-  const results = await new ExamResultsRepository(supabase).listCompletedByExamPrefix(id);
+  const results = userId
+    ? await new ExamResultsRepository(pool).listCompletedByExamPrefix(id, userId)
+    : [];
 
   const resultsByExamId = new Map<string, ExamResult>();
   for (const r of results) {
@@ -59,7 +59,8 @@ async function loadExams(
 
 export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
   const { id } = await props.params;
-  const data = await loadExams(id);
+  const user = await getSessionUser();
+  const data = await loadExams(id, user?.id ?? null);
 
   if (!data) {
     notFound();
@@ -67,11 +68,6 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
 
   const { skill, level, exams } = data;
 
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
   const sub = user ? await getUserSubscription(user.id) : null;
   const isPaid = sub ? hasPremiumAccess(sub) : false;
 

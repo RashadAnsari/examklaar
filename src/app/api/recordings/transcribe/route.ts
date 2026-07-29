@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
+import { getSessionUser } from "@/lib/auth-session";
+import { MAX_AUDIO_UPLOAD_BYTES } from "@/lib/exam/config";
 
 // Singleton pipeline — loaded once per server process, reused across requests
 let initPromise: Promise<(audio: Float32Array, opts: object) => Promise<{ text: string }>> | null =
@@ -41,10 +41,7 @@ function decodeWav(buffer: Buffer): Float32Array {
 }
 
 export async function POST(req: NextRequest) {
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -66,8 +63,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const MAX_BYTES = 2 * 1024 * 1024; // 2 MB
-    if (file.size > MAX_BYTES) {
+    if (file.size > MAX_AUDIO_UPLOAD_BYTES) {
       console.warn("[transcribe] File too large — user=%s", user.id);
       return NextResponse.json({ error: "File too large" }, { status: 413 });
     }

@@ -41,11 +41,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# supabase
-supabase/*
-!supabase/emails
-!supabase/migrations
-
 # claude
 .claude/*
 !.claude/skills/

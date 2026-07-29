@@ -1,7 +1,5 @@
 import type { DbClient } from "./client";
 
-const TABLE = "processed_webhook_events";
-
 /**
  * Idempotency guard for payment webhooks. The key is a hash of the raw,
  * signature-verified webhook body, so a provider retry or a replayed captured
@@ -12,27 +10,25 @@ export class ProcessedWebhookRepository {
 
   /** True when this event key has already been processed. */
   async isProcessed(eventKey: string): Promise<boolean> {
-    const { data } = await this.db
-      .from(TABLE)
-      .select("event_key")
-      .eq("event_key", eventKey)
-      .maybeSingle();
-    return !!data;
+    const { rowCount } = await this.db.query(
+      `select 1 from processed_webhook_events where event_key = $1`,
+      [eventKey]
+    );
+    return (rowCount ?? 0) > 0;
   }
 
   /**
-   * Mark an event key as processed. Idempotent: a duplicate key is ignored via
-   * ON CONFLICT DO NOTHING, so this needs only INSERT (no UPDATE) privilege.
+   * Mark an event key as processed. Idempotent: a duplicate key is ignored.
    * Never throws; a failure here must not fail an otherwise successful webhook.
    */
   async markProcessed(eventKey: string, eventType: string): Promise<void> {
-    const { error } = await this.db
-      .from(TABLE)
-      .upsert(
-        { event_key: eventKey, event_type: eventType },
-        { onConflict: "event_key", ignoreDuplicates: true }
+    try {
+      await this.db.query(
+        `insert into processed_webhook_events (event_key, event_type) values ($1, $2)
+         on conflict (event_key) do nothing`,
+        [eventKey, eventType]
       );
-    if (error) {
+    } catch (error) {
       console.error("[processed_webhook_events] Failed to record key error=%o", error);
     }
   }

@@ -1,7 +1,4 @@
-import type { PostgrestError } from "@supabase/supabase-js";
-import type { DbClient } from "./client";
-
-const TABLE = "payment_customers";
+import { runWrite, type DbClient } from "./client";
 
 /** All payment_customers table access (provider-side customer ids per user). */
 export class PaymentCustomerRepository {
@@ -9,11 +6,11 @@ export class PaymentCustomerRepository {
 
   /** Every provider customer id on file for a user. */
   async listByUserId(userId: string): Promise<{ provider: string; customer_id: string }[]> {
-    const { data } = await this.db
-      .from(TABLE)
-      .select("provider, customer_id")
-      .eq("user_id", userId);
-    return data ?? [];
+    const { rows } = await this.db.query<{ provider: string; customer_id: string }>(
+      `select provider, customer_id from payment_customers where user_id = $1`,
+      [userId]
+    );
+    return rows;
   }
 
   /** The customer id for a user at a specific provider, or null. */
@@ -21,22 +18,20 @@ export class PaymentCustomerRepository {
     userId: string,
     provider: string
   ): Promise<{ customer_id: string } | null> {
-    const { data } = await this.db
-      .from(TABLE)
-      .select("customer_id")
-      .eq("user_id", userId)
-      .eq("provider", provider)
-      .single();
-    return data;
+    const { rows } = await this.db.query<{ customer_id: string }>(
+      `select customer_id from payment_customers where user_id = $1 and provider = $2`,
+      [userId, provider]
+    );
+    return rows[0] ?? null;
   }
 
   /** Persist a newly created provider customer id. */
-  async create(row: {
-    user_id: string;
-    provider: string;
-    customer_id: string;
-  }): Promise<{ error: PostgrestError | null }> {
-    const { error } = await this.db.from(TABLE).insert(row);
-    return { error };
+  async create(row: { user_id: string; provider: string; customer_id: string }) {
+    return runWrite(() =>
+      this.db.query(
+        `insert into payment_customers (user_id, provider, customer_id) values ($1, $2, $3)`,
+        [row.user_id, row.provider, row.customer_id]
+      )
+    );
   }
 }

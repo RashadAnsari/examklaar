@@ -1,14 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/utils/supabase/server";
-import { createAdminClient } from "@/utils/supabase/admin";
-import { RecordingsRepository } from "@/lib/repositories/recordingsRepository";
-import { cookies } from "next/headers";
+import { getSessionUser } from "@/lib/auth-session";
+import { recordingExists, recordingSignedUrl } from "@/lib/storage/recordings";
 
 export async function GET(req: NextRequest) {
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -29,15 +24,9 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
-  const recordings = new RecordingsRepository(createAdminClient());
-
   // Check the file still exists before issuing a signed URL.
-  // Recordings are auto-deleted after 30 days, so this can legitimately return nothing.
-  const lastSlash = path.lastIndexOf("/");
-  const dir = path.slice(0, lastSlash);
-  const filename = path.slice(lastSlash + 1);
-  const listed = await recordings.findInDir(dir, filename);
-  if (!listed.length) {
+  // Recordings are auto-deleted after 30 days, so this can legitimately miss.
+  if (!(await recordingExists(path))) {
     console.warn(
       "[signed-url] File not found when attempting to create signed URL — user=%s path=%s",
       user.id,
@@ -46,9 +35,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ expired: true }, { status: 404 });
   }
 
-  const { data, error } = await recordings.createSignedUrl(path, 300); // 5 minutes
-
-  if (error || !data) {
+  try {
+    const url = await recordingSignedUrl(path, 300); // 5 minutes
+    return NextResponse.json({ url });
+  } catch (error) {
     console.error(
       "[signed-url] Failed to create signed URL — user=%s path=%s error=%o",
       user.id,
@@ -57,6 +47,4 @@ export async function GET(req: NextRequest) {
     );
     return NextResponse.json({ error: "Failed to create signed URL" }, { status: 500 });
   }
-
-  return NextResponse.json({ url: data.signedUrl });
 }

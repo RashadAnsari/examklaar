@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { createClient } from "@/utils/supabase/client";
+import { authClient, authErrorMessage } from "@/lib/auth-client";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SuccessBanner } from "@/components/ui/SuccessBanner";
@@ -13,8 +13,10 @@ import type { ProviderPayment } from "@/lib/payment/types";
 import { analytics } from "@/lib/analytics";
 
 export default function SettingsPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const { data: session } = authClient.useSession();
+  // null until the field is edited, so it shows the session name once it loads.
+  const [editedName, setEditedName] = useState<string | null>(null);
+  const name = editedName ?? session?.user.name ?? "";
   const [nameLoading, setNameLoading] = useState(false);
   const [nameError, setNameError] = useState("");
   const [profileSuccess, setProfileSuccess] = useState<string | null>(null);
@@ -29,16 +31,6 @@ export default function SettingsPage() {
   const [pwLoading, setPwLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  useEffect(() => {
-    const supabase = createClient();
-    supabase.auth.getUser().then(({ data }) => {
-      if (data.user) {
-        setName(data.user.user_metadata?.full_name ?? "");
-        setEmail(data.user.email ?? "");
-      }
-    });
-  }, []);
-
   async function saveName() {
     if (!name.trim()) {
       setNameError("Name cannot be empty");
@@ -46,11 +38,10 @@ export default function SettingsPage() {
     }
     setNameLoading(true);
     setNameError("");
-    const supabase = createClient();
-    const { error } = await supabase.auth.updateUser({ data: { full_name: name } });
+    const { error } = await authClient.updateUser({ name });
     setNameLoading(false);
     if (error) {
-      setNameError(error.message);
+      setNameError(authErrorMessage(error));
     } else {
       setProfileSuccess("Profile updated successfully.");
     }
@@ -74,14 +65,14 @@ export default function SettingsPage() {
     }
     setPwLoading(true);
     setPwErrors({});
-    const supabase = createClient();
-    const { error } = await supabase.auth.updateUser({
-      current_password: passwords.current,
-      password: passwords.next,
+    const { error } = await authClient.changePassword({
+      currentPassword: passwords.current,
+      newPassword: passwords.next,
+      revokeOtherSessions: true,
     });
     setPwLoading(false);
     if (error) {
-      setPwErrors({ form: error.message });
+      setPwErrors({ form: authErrorMessage(error) });
     } else {
       setSuccessMessage("Password updated successfully.");
       setPasswords({ current: "", next: "", confirm: "" });
@@ -118,7 +109,7 @@ export default function SettingsPage() {
               type="text"
               value={name}
               onChange={(e) => {
-                setName(e.target.value);
+                setEditedName(e.target.value);
                 setNameError("");
               }}
               error={nameError}
@@ -127,7 +118,7 @@ export default function SettingsPage() {
             <Input
               label="Email Address"
               type="email"
-              value={email}
+              value={session?.user.email ?? ""}
               readOnly
               style={{ opacity: 0.6, cursor: "not-allowed" }}
             />

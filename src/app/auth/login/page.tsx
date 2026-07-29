@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { createClient } from "@/utils/supabase/client";
+import { authClient, authErrorMessage } from "@/lib/auth-client";
 import { analytics } from "@/lib/analytics";
 import { ErrorBanner } from "@/components/ui/ErrorBanner";
 import { AuthCard } from "@/components/ui/AuthCard";
@@ -37,11 +37,10 @@ export default function LoginPage() {
     }
     setLoading(true);
     setErrors({});
-    const supabase = createClient();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await authClient.signIn.email({ email, password });
     setLoading(false);
     if (error) {
-      setErrors({ form: error.message });
+      setErrors({ form: authErrorMessage(error) });
       return;
     }
     analytics.logIn();

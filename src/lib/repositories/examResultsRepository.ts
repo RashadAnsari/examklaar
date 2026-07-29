@@ -1,7 +1,4 @@
-import type { PostgrestError } from "@supabase/supabase-js";
-import type { DbClient } from "./client";
-
-const TABLE = "exam_results";
+import { runWrite, type DbClient } from "./client";
 
 export interface NewExamResult {
   user_id: string;
@@ -14,93 +11,128 @@ export interface NewExamResult {
   grading_status: "pending" | "in_progress" | "complete" | "failed";
 }
 
+type GradingStatus = NewExamResult["grading_status"];
+
 /**
- * All exam_results table access. Read methods rely on the caller's client for
- * scoping (the RLS server client limits rows to the current user); methods
- * that take a userId filter explicitly for use with the admin client.
+ * All exam_results table access. Every read filters on user_id explicitly:
+ * there is no database-side row scoping, so a missing filter would expose
+ * another user's results.
  */
 export class ExamResultsRepository {
   constructor(private readonly db: DbClient) {}
 
-  /** Every completed result visible to the client (RLS-scoped to the user). */
-  async listCompletedExamIds(): Promise<{ exam_id: string }[]> {
-    const { data } = await this.db.from(TABLE).select("exam_id").eq("grading_status", "complete");
-    return data ?? [];
+  /** Ids of every exam the user has completed. */
+  async listCompletedExamIds(userId: string): Promise<{ exam_id: string }[]> {
+    const { rows } = await this.db.query<{ exam_id: string }>(
+      `select exam_id from exam_results
+        where user_id = $1 and grading_status = 'complete'`,
+      [userId]
+    );
+    return rows;
   }
 
   /** A single result by id, scoped to its owner. */
   async getByIdForUser(resultId: string, userId: string) {
-    const { data } = await this.db
-      .from(TABLE)
-      .select("id, skill, level, exam_id, answers, grading_status")
-      .eq("id", resultId)
-      .eq("user_id", userId)
-      .single();
-    return data;
+    const { rows } = await this.db.query<{
+      id: string;
+      skill: string;
+      level: string | null;
+      exam_id: string;
+      answers: Record<string, unknown>;
+      grading_status: GradingStatus;
+    }>(
+      `select id, skill, level, exam_id, answers, grading_status from exam_results
+        where id = $1 and user_id = $2`,
+      [resultId, userId]
+    );
+    return rows[0] ?? null;
   }
 
   /** Count of a user's results created at or after the given ISO timestamp. */
   async countForUserSince(userId: string, sinceIso: string): Promise<number> {
-    const { count } = await this.db
-      .from(TABLE)
-      .select("id", { count: "exact", head: true })
-      .eq("user_id", userId)
-      .gte("created_at", sinceIso);
-    return count ?? 0;
+    const { rows } = await this.db.query<{ count: string }>(
+      `select count(*) from exam_results where user_id = $1 and created_at >= $2`,
+      [userId, sinceIso]
+    );
+    return Number(rows[0]?.count ?? 0);
   }
 
   /** Insert a new result, returning its id. */
-  async create(
-    result: NewExamResult
-  ): Promise<{ data: { id: string } | null; error: PostgrestError | null }> {
-    return this.db.from(TABLE).insert(result).select("id").single();
+  async create(result: NewExamResult) {
+    return runWrite(async () => {
+      const { rows } = await this.db.query<{ id: string }>(
+        `insert into exam_results
+           (user_id, exam_id, skill, level, score, total_score, answers, grading_status)
+         values ($1, $2, $3, $4, $5, $6, $7, $8)
+         returning id`,
+        [
+          result.user_id,
+          result.exam_id,
+          result.skill,
+          result.level,
+          result.score,
+          result.total_score,
+          result.answers,
+          result.grading_status,
+        ]
+      );
+      return rows[0];
+    });
   }
 
-  /** Completed results for every exam whose id starts with the given prefix (RLS-scoped). */
-  async listCompletedByExamPrefix(examIdPrefix: string) {
-    const { data } = await this.db
-      .from(TABLE)
-      .select("exam_id, score, total_score, completed_at")
-      .like("exam_id", `${examIdPrefix}-exam-%`)
-      .eq("grading_status", "complete")
-      .order("completed_at", { ascending: false });
-    return data ?? [];
+  /** A user's completed results for every exam whose id starts with the given prefix. */
+  async listCompletedByExamPrefix(examIdPrefix: string, userId: string) {
+    const { rows } = await this.db.query<{
+      exam_id: string;
+      score: number;
+      total_score: number;
+      completed_at: Date;
+    }>(
+      `select exam_id, score, total_score, completed_at from exam_results
+        where user_id = $1 and exam_id like $2 and grading_status = 'complete'
+        order by completed_at desc`,
+      [userId, `${examIdPrefix}-exam-%`]
+    );
+    return rows;
   }
 
   /** The most recent completed result for a user's exam, or null. */
   async findLatestCompletedByExam(examId: string, userId: string) {
-    const { data } = await this.db
-      .from(TABLE)
-      .select("id, skill, level, score, total_score, answers, feedback, completed_at")
-      .eq("exam_id", examId)
-      .eq("user_id", userId)
-      .eq("grading_status", "complete")
-      .order("completed_at", { ascending: false })
-      .limit(1);
-    return data?.[0] ?? null;
+    const { rows } = await this.db.query<{
+      id: string;
+      skill: string;
+      level: string | null;
+      score: number;
+      total_score: number;
+      answers: Record<string, unknown>;
+      feedback: Record<string, { score: number; maxScore: number; feedback: string }> | null;
+      completed_at: Date;
+    }>(
+      `select id, skill, level, score, total_score, answers, feedback, completed_at
+         from exam_results
+        where exam_id = $1 and user_id = $2 and grading_status = 'complete'
+        order by completed_at desc
+        limit 1`,
+      [examId, userId]
+    );
+    return rows[0] ?? null;
   }
 
   /** Scores of all completed attempts for a user's exam (for stats). */
   async listCompletedScoresByExam(examId: string, userId: string) {
-    const { data } = await this.db
-      .from(TABLE)
-      .select("score, total_score")
-      .eq("exam_id", examId)
-      .eq("user_id", userId)
-      .eq("grading_status", "complete");
-    return data ?? [];
+    const { rows } = await this.db.query<{ score: number; total_score: number }>(
+      `select score, total_score from exam_results
+        where exam_id = $1 and user_id = $2 and grading_status = 'complete'`,
+      [examId, userId]
+    );
+    return rows;
   }
 
   /** Set the grading status of a result. */
-  async updateGradingStatus(
-    resultId: string,
-    status: "pending" | "in_progress" | "complete" | "failed"
-  ): Promise<{ error: PostgrestError | null }> {
-    const { error } = await this.db
-      .from(TABLE)
-      .update({ grading_status: status })
-      .eq("id", resultId);
-    return { error };
+  async updateGradingStatus(resultId: string, status: GradingStatus) {
+    return runWrite(() =>
+      this.db.query(`update exam_results set grading_status = $1 where id = $2`, [status, resultId])
+    );
   }
 
   /**
@@ -114,18 +146,18 @@ export class ExamResultsRepository {
       total_score: number;
       feedback: Record<string, { score: number; maxScore: number; feedback: string }>;
     }
-  ): Promise<{ error: PostgrestError | null }> {
-    const { error } = await this.db
-      .from(TABLE)
-      .update({
-        score: grades.score,
-        total_score: grades.total_score,
-        feedback: grades.feedback,
-        ai_graded_at: new Date().toISOString(),
-        grading_status: "complete",
-      })
-      .eq("id", resultId)
-      .is("ai_graded_at", null);
-    return { error };
+  ) {
+    return runWrite(() =>
+      this.db.query(
+        `update exam_results
+            set score = $1,
+                total_score = $2,
+                feedback = $3,
+                ai_graded_at = now(),
+                grading_status = 'complete'
+          where id = $4 and ai_graded_at is null`,
+        [grades.score, grades.total_score, grades.feedback, resultId]
+      )
+    );
   }
 }

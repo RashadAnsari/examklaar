@@ -1,6 +1,6 @@
-import { cookies } from "next/headers";
 import { redirect, notFound } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
+import { getSessionUser } from "@/lib/auth-session";
+import { pool } from "@/lib/db";
 import { readExam } from "@/data/exams";
 import { SKILL_TITLES } from "@/lib/exam/config";
 import { scorePct, getPassThreshold } from "@/lib/exam/scoring";
@@ -22,10 +22,7 @@ export default async function ReviewPage(props: {
     notFound();
   }
 
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
   if (!user) {
     redirect("/auth/login");
   }
@@ -37,10 +34,7 @@ export default async function ReviewPage(props: {
 
   const examId = `${skillId}-exam-${n}`;
 
-  const result = await new ExamResultsRepository(supabase).findLatestCompletedByExam(
-    examId,
-    user.id
-  );
+  const result = await new ExamResultsRepository(pool).findLatestCompletedByExam(examId, user.id);
   if (!result) {
     notFound();
   }

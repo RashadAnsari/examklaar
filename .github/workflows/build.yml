@@ -42,8 +42,6 @@ jobs:
   #         build-args: |
   #           NODE_ENV=production
   #           GIT_SHA=${{ github.sha }}
-  #           SUPABASE_PUBLIC_URL=${{ secrets.SUPABASE_PUBLIC_URL }}
-  #           SUPABASE_PUBLISHABLE_DEFAULT_KEY=${{ secrets.SUPABASE_PUBLISHABLE_DEFAULT_KEY }}
   #           ANALYTICS_GA_MEASUREMENT_ID=${{ secrets.ANALYTICS_GA_MEASUREMENT_ID }}
 
   #     - name: Docker Save
@@ -53,7 +51,7 @@ jobs:
   #       uses: dawidd6/action-ansible-playbook@v7
   #       with:
   #         directory: deploy
-  #         playbook: main.yaml
+  #         playbook: app.yaml
   #         configuration: |
   #           [defaults]
   #           inventory = inventory.yaml
@@ -66,8 +64,25 @@ jobs:
   #           -e "docker_image_tag=${{ github.sha }}"
   #           -e "docker_image_path=/tmp/docker-image.tar"
   #           -e "google_api_key=${{ secrets.GOOGLE_API_KEY }}"
-  #           -e "supabase_public_url=${{ secrets.SUPABASE_PUBLIC_URL }}"
+  #           -e "postgres_password=${{ secrets.POSTGRES_PASSWORD }}"
+  #           -e "better_auth_secret=${{ secrets.BETTER_AUTH_SECRET }}"
+  #           -e "better_auth_url=${{ secrets.BETTER_AUTH_URL }}"
+  #           -e "smtp_host=${{ secrets.SMTP_HOST }}"
+  #           -e "smtp_port=${{ secrets.SMTP_PORT }}"
+  #           -e "smtp_user=${{ secrets.SMTP_USER }}"
+  #           -e "smtp_password=${{ secrets.SMTP_PASSWORD }}"
+  #           -e "smtp_from_email=${{ secrets.SMTP_FROM_EMAIL }}"
+  #           -e "smtp_from_name=${{ secrets.SMTP_FROM_NAME }}"
+  #           -e "s3_endpoint=${{ secrets.S3_ENDPOINT }}"
+  #           -e "s3_region=${{ secrets.S3_REGION }}"
+  #           -e "s3_access_key_id=${{ secrets.S3_ACCESS_KEY_ID }}"
+  #           -e "s3_secret_access_key=${{ secrets.S3_SECRET_ACCESS_KEY }}"
+  #           -e "s3_bucket_recordings=${{ secrets.S3_BUCKET_RECORDINGS }}"
   #           -e "exam_assets_base_url=${{ secrets.EXAM_ASSETS_BASE_URL }}"
-  #           -e "supabase_service_role_key=${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}"
-  #           -e "supabase_publishable_default_key=${{ secrets.SUPABASE_PUBLISHABLE_DEFAULT_KEY }}"
   #           -e "analytics_ga_measurement_id=${{ secrets.ANALYTICS_GA_MEASUREMENT_ID }}"
+  #           -e "payment_provider=${{ secrets.PAYMENT_PROVIDER }}"
+  #           -e "paddle_api_key=${{ secrets.PADDLE_API_KEY }}"
+  #           -e "paddle_client_token=${{ secrets.PADDLE_CLIENT_TOKEN }}"
+  #           -e "paddle_webhook_secret=${{ secrets.PADDLE_WEBHOOK_SECRET }}"
+  #           -e "paddle_price_id_monthly=${{ secrets.PADDLE_PRICE_ID_MONTHLY }}"
+  #           -e "paddle_price_id_monthly_no_trial=${{ secrets.PADDLE_PRICE_ID_MONTHLY_NO_TRIAL }}"

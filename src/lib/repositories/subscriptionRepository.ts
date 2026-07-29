@@ -1,10 +1,4 @@
-import type { PostgrestError } from "@supabase/supabase-js";
-import type { DbClient } from "./client";
-
-const TABLE = "subscriptions";
-
-const COLUMNS =
-  "plan_id, status, current_period_end, cancel_at_period_end, provider_subscription_id, provider_customer_id, payment_provider";
+import { runWrite, type DbClient } from "./client";
 
 export interface SubscriptionRow {
   plan_id: string;
@@ -30,30 +24,73 @@ export interface SubscriptionUpsert {
   updated_at: string;
 }
 
+const COLUMNS =
+  "plan_id, status, current_period_end, cancel_at_period_end, provider_subscription_id, provider_customer_id, payment_provider";
+
+const UPSERT_VALUES = (row: SubscriptionUpsert) => [
+  row.user_id,
+  row.plan_id,
+  row.status,
+  row.payment_provider,
+  row.provider_customer_id,
+  row.provider_subscription_id,
+  row.current_period_start,
+  row.current_period_end,
+  row.cancel_at_period_end,
+  row.updated_at,
+];
+
+const INSERT_SQL = `insert into subscriptions
+    (user_id, plan_id, status, payment_provider, provider_customer_id,
+     provider_subscription_id, current_period_start, current_period_end,
+     cancel_at_period_end, updated_at)
+  values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
+
 /** All subscriptions table access. The table holds one row per user. */
 export class SubscriptionRepository {
   constructor(private readonly db: DbClient) {}
 
   /** The user's current subscription row, or null if they never subscribed. */
   async findByUserId(userId: string): Promise<SubscriptionRow | null> {
-    const { data } = await this.db.from(TABLE).select(COLUMNS).eq("user_id", userId).single();
-    return (data as SubscriptionRow | null) ?? null;
+    const { rows } = await this.db.query<SubscriptionRow>(
+      `select ${COLUMNS} from subscriptions where user_id = $1`,
+      [userId]
+    );
+    return rows[0] ?? null;
   }
 
   /** Look up a subscription by its provider-side id (for webhook handling). */
   async findByProviderSubscriptionId(providerSubscriptionId: string) {
-    const { data } = await this.db
-      .from(TABLE)
-      .select("user_id, status, payment_provider")
-      .eq("provider_subscription_id", providerSubscriptionId)
-      .single();
-    return data;
+    const { rows } = await this.db.query<{
+      user_id: string;
+      status: string;
+      payment_provider: string | null;
+    }>(
+      `select user_id, status, payment_provider from subscriptions
+        where provider_subscription_id = $1`,
+      [providerSubscriptionId]
+    );
+    return rows[0] ?? null;
   }
 
   /** Create or replace the user's current subscription snapshot. */
-  async upsert(row: SubscriptionUpsert): Promise<{ error: PostgrestError | null }> {
-    const { error } = await this.db.from(TABLE).upsert(row, { onConflict: "user_id" });
-    return { error };
+  async upsert(row: SubscriptionUpsert) {
+    return runWrite(() =>
+      this.db.query(
+        `${INSERT_SQL}
+         on conflict (user_id) do update set
+           plan_id = excluded.plan_id,
+           status = excluded.status,
+           payment_provider = excluded.payment_provider,
+           provider_customer_id = excluded.provider_customer_id,
+           provider_subscription_id = excluded.provider_subscription_id,
+           current_period_start = excluded.current_period_start,
+           current_period_end = excluded.current_period_end,
+           cancel_at_period_end = excluded.cancel_at_period_end,
+           updated_at = excluded.updated_at`,
+        UPSERT_VALUES(row)
+      )
+    );
   }
 
   /**
@@ -61,22 +98,26 @@ export class SubscriptionRepository {
    * was newly created (false when one already existed). Idempotent via the
    * unique index on user_id.
    */
-  async insertIfAbsent(
-    row: SubscriptionUpsert
-  ): Promise<{ inserted: boolean; error: PostgrestError | null }> {
-    const { data, error } = await this.db
-      .from(TABLE)
-      .upsert(row, { onConflict: "user_id", ignoreDuplicates: true })
-      .select("id");
-    return { inserted: !!data?.length, error };
+  async insertIfAbsent(row: SubscriptionUpsert) {
+    const { data, error } = await runWrite(() =>
+      this.db.query(`${INSERT_SQL} on conflict (user_id) do nothing`, UPSERT_VALUES(row))
+    );
+    return { inserted: (data?.rowCount ?? 0) > 0, error };
   }
 
   /** Patch the user's subscription row. */
-  async updateByUserId(
-    userId: string,
-    patch: Record<string, unknown>
-  ): Promise<{ error: PostgrestError | null }> {
-    const { error } = await this.db.from(TABLE).update(patch).eq("user_id", userId);
-    return { error };
+  async updateByUserId(userId: string, patch: Partial<SubscriptionUpsert>) {
+    const entries = Object.entries(patch);
+    if (entries.length === 0) {
+      return { data: null, error: null };
+    }
+    // Column names come from the typed patch, never from request input.
+    const assignments = entries.map(([column], i) => `${column} = $${i + 2}`).join(", ");
+    return runWrite(() =>
+      this.db.query(`update subscriptions set ${assignments} where user_id = $1`, [
+        userId,
+        ...entries.map(([, value]) => value),
+      ])
+    );
   }
 }

@@ -1,14 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/utils/supabase/server";
+import { getSessionUser } from "@/lib/auth-session";
+import { pool } from "@/lib/db";
 import { gradeExamResult } from "@/lib/exam/grader";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
-import { cookies } from "next/headers";
 
 export async function POST(req: NextRequest) {
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
   if (!user) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -19,7 +16,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing result_id" }, { status: 400 });
   }
 
-  const result = await new ExamResultsRepository(supabase).getByIdForUser(result_id, user.id);
+  const result = await new ExamResultsRepository(pool).getByIdForUser(result_id, user.id);
 
   if (!result) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });

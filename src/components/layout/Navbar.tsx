@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
-import { createClient } from "@/utils/supabase/client";
+import { authClient } from "@/lib/auth-client";
 import {
   Bars3Icon,
   XMarkIcon,
@@ -14,7 +14,6 @@ import {
   Cog6ToothIcon,
   ArrowRightStartOnRectangleIcon,
 } from "@heroicons/react/24/outline";
-import type { User } from "@supabase/supabase-js";
 import { analytics } from "@/lib/analytics";
 
 function getInitials(name: string) {
@@ -31,21 +30,11 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
+  const { data: session } = authClient.useSession();
+  const user = session?.user ?? null;
   const pathname = usePathname();
   const router = useRouter();
   const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const supabase = createClient();
-    supabase.auth.getSession().then(({ data }) => setUser(data.session?.user ?? null));
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_, session) => {
-      setUser(session?.user ?? null);
-    });
-    return () => subscription.unsubscribe();
-  }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -83,13 +72,12 @@ export function Navbar() {
   }, [mobileOpen]);
 
   async function signOut() {
-    const supabase = createClient();
-    await supabase.auth.signOut();
+    await authClient.signOut();
     analytics.logOut();
     router.push("/");
   }
 
-  const userName = user?.user_metadata?.full_name ?? user?.email ?? "User";
+  const userName = user?.name || user?.email || "User";
   const userInitials = user ? getInitials(userName) : "";
 
   return (

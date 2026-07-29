@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    hostname: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_DB: examklaar
+      POSTGRES_USER: examklaar
+      POSTGRES_PASSWORD: "secret"
+    ports:
+      - "5432:5432"
+    volumes:
+      - examklaar_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  examklaar_postgres_data:

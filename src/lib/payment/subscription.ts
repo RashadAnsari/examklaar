@@ -1,4 +1,4 @@
-import { createAdminClient } from "@/utils/supabase/admin";
+import { pool } from "@/lib/db";
 import { SubscriptionRepository } from "@/lib/repositories/subscriptionRepository";
 import { SubscriptionEventRepository } from "@/lib/repositories/subscriptionEventRepository";
 
@@ -40,7 +40,7 @@ const NO_SUBSCRIPTION: UserSubscription = {
 };
 
 export async function getUserSubscription(userId: string): Promise<UserSubscription> {
-  const repo = new SubscriptionRepository(createAdminClient());
+  const repo = new SubscriptionRepository(pool);
   const data = await repo.findByUserId(userId);
 
   if (!data) {
@@ -129,8 +129,7 @@ export async function grantComplimentaryAccess(userId: string): Promise<{ grante
   const periodEnd = new Date(now);
   periodEnd.setMonth(periodEnd.getMonth() + COMPLIMENTARY_ACCESS_MONTHS);
 
-  const admin = createAdminClient();
-  const { inserted, error } = await new SubscriptionRepository(admin).insertIfAbsent({
+  const { inserted, error } = await new SubscriptionRepository(pool).insertIfAbsent({
     user_id: userId,
     plan_id: DEFAULT_PLAN_ID,
     status: "active",
@@ -154,7 +153,7 @@ export async function grantComplimentaryAccess(userId: string): Promise<{ grante
 
   // Record the grant in the append-only history (only when newly created).
   if (inserted) {
-    await new SubscriptionEventRepository(admin).record({
+    await new SubscriptionEventRepository(pool).record({
       user_id: userId,
       event_type: "complimentary_grant",
       plan_id: DEFAULT_PLAN_ID,

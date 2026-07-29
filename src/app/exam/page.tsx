@@ -1,8 +1,7 @@
-import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import { ExamClient, Exam } from "./ExamClient";
 import { readExam } from "@/data/exams";
-import { createClient } from "@/utils/supabase/server";
+import { getSessionUser } from "@/lib/auth-session";
 import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
 
 export default async function ExamPage(props: {
@@ -22,10 +21,7 @@ export default async function ExamPage(props: {
     notFound();
   }
 
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
   if (!user) {
     redirect("/auth/login");
   }

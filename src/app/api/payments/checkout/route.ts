@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
-import { createAdminClient } from "@/utils/supabase/admin";
+import { getSessionUser } from "@/lib/auth-session";
+import { pool } from "@/lib/db";
 import {
   getUserSubscription,
   hasPremiumAccess,
@@ -13,10 +12,7 @@ import { getPaymentProvider } from "@/lib/payment/provider";
 import { PaymentCustomerRepository } from "@/lib/repositories/paymentCustomerRepository";
 
 export async function POST(req: NextRequest) {
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -47,8 +43,7 @@ export async function POST(req: NextRequest) {
   const successUrl = `${origin}/payment/success`;
   const cancelUrl = `${origin}/payment/cancel`;
 
-  const admin = createAdminClient();
-  const paymentCustomers = new PaymentCustomerRepository(admin);
+  const paymentCustomers = new PaymentCustomerRepository(pool);
 
   // Look up existing customer ID for this provider, if any.
   const existingCustomer = await paymentCustomers.findByUserAndProvider(user.id, providerName);

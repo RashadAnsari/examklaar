@@ -1,5 +1,17 @@
 # ---------- Development ----------
 
+up:
+	docker compose up -d
+
+down:
+	docker compose down
+
+migrate:
+	bun scripts/migrate.ts
+
+db-shell:
+	docker compose exec postgres psql -U examklaar -d examklaar
+
 dev:
 	bun run dev 2>&1 | grep --line-buffered -v "CleanUnusedInitializersAndNodeArgs"
 
@@ -14,8 +26,3 @@ lint:
 format:
 	bunx prettier --write "**/*.{ts,tsx,css,json,md}" --ignore-path .gitignore
 	bun run lint --fix
-
-# ---------- Database ----------
-
-migrate:
-	bunx supabase db push --yes

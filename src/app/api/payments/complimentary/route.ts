@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
+import { getSessionUser } from "@/lib/auth-session";
 import { grantComplimentaryAccess } from "@/lib/payment/subscription";
 
 /**
@@ -11,10 +10,7 @@ import { grantComplimentaryAccess } from "@/lib/payment/subscription";
  * grant (granted false), the client falls back to the mailto contact option.
  */
 export async function POST() {
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

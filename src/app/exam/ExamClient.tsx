@@ -509,7 +509,8 @@ export function ExamClient({ exam, skillId, n }: Props) {
       }
       gradingRef.current = false;
       router.replace(`/exam/results?skill=${skillId}&n=${n}`);
-    } catch {
+    } catch (err) {
+      console.error("[grade] Grading request failed", err);
       setGradingFailed(true);
       gradingInFlightRef.current = false;
     }
@@ -578,7 +579,10 @@ export function ExamClient({ exam, skillId, n }: Props) {
       }
 
       router.replace(`/exam/results?skill=${skillId}&n=${n}`);
-    } catch {
+    } catch (err) {
+      // Swallowing this made a failed submit indistinguishable from a network
+      // drop, with nothing in either console to go on.
+      console.error("[submit] Exam submission failed", err);
       setSubmitError("Something went wrong. Check your connection and try again.");
       setSubmitting(false);
       blockNavRef.current = true;

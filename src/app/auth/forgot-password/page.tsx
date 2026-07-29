@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { createClient } from "@/utils/supabase/client";
+import { authClient, authErrorMessage } from "@/lib/auth-client";
 import { analytics } from "@/lib/analytics";
 import { ErrorBanner } from "@/components/ui/ErrorBanner";
 import { AuthCard } from "@/components/ui/AuthCard";
@@ -24,13 +24,13 @@ export default function ForgotPasswordPage() {
     }
     setLoading(true);
     setFormError(null);
-    const supabase = createClient();
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/callback?next=/auth/reset-password`,
+    const { error } = await authClient.requestPasswordReset({
+      email,
+      redirectTo: "/auth/reset-password",
     });
     setLoading(false);
     if (error) {
-      setFormError(error.message);
+      setFormError(authErrorMessage(error));
       return;
     }
     analytics.passwordReset();

@@ -1,6 +1,6 @@
-import { cookies } from "next/headers";
 import { redirect, notFound } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
+import { getSessionUser } from "@/lib/auth-session";
+import { pool } from "@/lib/db";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar, type ProgressVariant } from "@/components/ui/ProgressBar";
 import {
@@ -29,8 +29,8 @@ type QuestionFeedback = {
   feedback: string;
 };
 
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString("en-US", {
+function formatDate(date: Date): string {
+  return date.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -47,10 +47,7 @@ export default async function ResultsPage(props: {
     notFound();
   }
 
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
   if (!user) {
     redirect("/auth/login");
   }
@@ -61,7 +58,7 @@ export default async function ResultsPage(props: {
   }
 
   const examId = `${skillId}-exam-${n}`;
-  const examResults = new ExamResultsRepository(supabase);
+  const examResults = new ExamResultsRepository(pool);
 
   // Most recent completed result for this exam
   const result = await examResults.findLatestCompletedByExam(examId, user.id);

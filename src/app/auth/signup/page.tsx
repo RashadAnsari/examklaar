@@ -2,16 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { createClient } from "@/utils/supabase/client";
+import { authClient, authErrorMessage } from "@/lib/auth-client";
 import { analytics } from "@/lib/analytics";
 import { ErrorBanner } from "@/components/ui/ErrorBanner";
 import { AuthCard } from "@/components/ui/AuthCard";
 
 export default function SignupPage() {
-  const router = useRouter();
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [errors, setErrors] = useState<{
@@ -50,27 +48,21 @@ export default function SignupPage() {
     }
     setLoading(true);
     setErrors({});
-    const supabase = createClient();
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await authClient.signUp.email({
+      name: form.name,
       email: form.email,
       password: form.password,
-      options: {
-        data: { full_name: form.name },
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
-      },
+      callbackURL: "/dashboard",
     });
     setLoading(false);
     if (error) {
-      setErrors({ form: error.message });
+      setErrors({ form: authErrorMessage(error) });
       return;
     }
     analytics.signUp();
-    // If session is null, Supabase requires email confirmation
-    if (data.session) {
-      router.push("/dashboard");
-    } else {
-      setEmailSent(true);
-    }
+    // Email verification is required, so there is no session yet: the account
+    // is activated by the link in the confirmation email.
+    setEmailSent(true);
   }
 
   function update(field: keyof typeof form, value: string) {

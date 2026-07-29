@@ -1,27 +1,43 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/utils/supabase/server";
-import { createAdminClient } from "@/utils/supabase/admin";
-import { cookies } from "next/headers";
+import { getSessionUser } from "@/lib/auth-session";
+import { pool } from "@/lib/db";
 import { readExam } from "@/data/exams";
+import {
+  MAX_AUDIO_UPLOAD_BYTES,
+  MAX_SUBMISSION_BYTES,
+  RECORDING_MIME_TYPE,
+} from "@/lib/exam/config";
 import type { Exam } from "@/app/exam/ExamClient";
 import { getUserSubscription, hasPremiumAccess } from "@/lib/payment/subscription";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
-import { RecordingsRepository } from "@/lib/repositories/recordingsRepository";
+import { uploadRecording } from "@/lib/storage/recordings";
 
 export async function POST(req: NextRequest) {
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const admin = createAdminClient();
-  const examResults = new ExamResultsRepository(admin);
-  const recordings = new RecordingsRepository(admin);
+  const examResults = new ExamResultsRepository(pool);
 
-  const formData = await req.formData();
+  // Reject an oversized submission before buffering it. Absent on a chunked
+  // request, in which case the per-file check below is the remaining guard.
+  const declaredSize = Number(req.headers.get("content-length") ?? 0);
+  if (declaredSize > MAX_SUBMISSION_BYTES) {
+    console.warn("[submit] Submission too large — user=%s size=%d bytes", user.id, declaredSize);
+    return NextResponse.json({ error: "Submission too large" }, { status: 413 });
+  }
+
+  // A truncated or malformed multipart body throws here. Answer with JSON so
+  // the client shows a real message instead of failing to parse an HTML 500.
+  let formData: FormData;
+  try {
+    formData = await req.formData();
+  } catch (err) {
+    console.error("[submit] Could not parse request body — user=%s error=%o", user.id, err);
+    return NextResponse.json({ error: "upload_failed" }, { status: 400 });
+  }
+
   const skillId = formData.get("skill_id") as string;
   const n = parseInt(formData.get("n") as string);
   const attemptId = formData.get("attempt_id") as string;
@@ -116,8 +132,19 @@ export async function POST(req: NextRequest) {
     if (q.type === "speaking") {
       const audioFile = formData.get(`audio_${q.id}`) as File | null;
       if (audioFile) {
-        const MAX_BYTES = 2 * 1024 * 1024; // 2 MB
-        if (audioFile.size > MAX_BYTES) {
+        // Tolerates a codec suffix, e.g. "audio/webm;codecs=opus".
+        if (!audioFile.type.startsWith(RECORDING_MIME_TYPE)) {
+          console.warn(
+            "[submit] Invalid audio type — user=%s exam=%s-%s question=%s type=%s",
+            user.id,
+            skillId,
+            n,
+            q.id,
+            audioFile.type
+          );
+          return NextResponse.json({ error: "Invalid audio type" }, { status: 415 });
+        }
+        if (audioFile.size > MAX_AUDIO_UPLOAD_BYTES) {
           console.warn(
             "[submit] Audio file too large — user=%s exam=%s-%s question=%s size=%d bytes",
             user.id,
@@ -129,10 +156,10 @@ export async function POST(req: NextRequest) {
           return NextResponse.json({ error: "Audio file too large" }, { status: 413 });
         }
         const storagePath = `${user.id}/${examId}/${attemptId}/${q.id}.webm`;
-        const { error } = await recordings.upload(
+        const { error } = await uploadRecording(
           storagePath,
           await audioFile.arrayBuffer(),
-          "audio/webm"
+          RECORDING_MIME_TYPE
         );
         if (error) {
           console.error(

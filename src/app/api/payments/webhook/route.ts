@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
-import { createAdminClient } from "@/utils/supabase/admin";
+import { pool } from "@/lib/db";
 import { getPaymentProviderByName } from "@/lib/payment/provider";
 import type { WebhookEvent } from "@/lib/payment/types";
 import { SubscriptionRepository } from "@/lib/repositories/subscriptionRepository";
@@ -47,10 +47,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   }
 
-  const admin = createAdminClient();
-  const subscriptions = new SubscriptionRepository(admin);
-  const events = new SubscriptionEventRepository(admin);
-  const processed = new ProcessedWebhookRepository(admin);
+  const subscriptions = new SubscriptionRepository(pool);
+  const events = new SubscriptionEventRepository(pool);
+  const processed = new ProcessedWebhookRepository(pool);
   const now = new Date().toISOString();
 
   // Idempotency guard: the key is a hash of the raw, signature-verified body, so

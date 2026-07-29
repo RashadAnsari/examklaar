@@ -10,7 +10,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 - **Forms**: always use `<form onSubmit={...}>` with `type="submit"` on the primary button so Enter on any field submits. Use `gap-6` between fields in every form — never `gap-4` or other values.
 - **Field errors**: pass as `error` prop directly to `<Input>` so they render beneath the field. Never show field errors as standalone elements elsewhere.
-- **Form-level errors** (e.g. Supabase API errors): use `<ErrorBanner>` from `@/components/ui/ErrorBanner` placed just above the `<form>` element. Pass `string | null` and clear in `onHide`. Auto-dismisses after 6 s.
+- **Form-level errors** (e.g. server API errors): use `<ErrorBanner>` from `@/components/ui/ErrorBanner` placed just above the `<form>` element. Pass `string | null` and clear in `onHide`. Auto-dismisses after 6 s.
 - **Success feedback**: use `<SuccessBanner>` from `@/components/ui/SuccessBanner` — it auto-dismisses after 4 s. Pass a `string | null` state as `message` and clear it in `onHide`. Never use inline success `<p>` text.
 - **Loading state**: disable the submit button and replace its label with a `…` suffix (e.g. `"Saving…"`) while a request is in flight.
 

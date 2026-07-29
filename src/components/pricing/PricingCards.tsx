@@ -1,5 +1,4 @@
-import { cookies } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
+import { getSessionUser } from "@/lib/auth-session";
 import { getUserSubscription, hasPremiumAccess, isTrialEligible } from "@/lib/payment/subscription";
 import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/pricing/CheckoutButton";
@@ -37,10 +36,7 @@ export const PLAN = {
 export const CONTACT_MAILTO = `mailto:hallo@examklaar.nl?subject=${encodeURIComponent(`${PLAN.name} subscription`)}&body=${encodeURIComponent(`Hi,\n\nI'm interested in the ${PLAN.name} (${PLAN.price} ${PLAN.priceNote}).\n\nCould you help me get started?\n\nThanks`)}`;
 
 export async function PricingCards() {
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
 
   const loggedIn = !!user;
   const providerConfigured = !!process.env.PAYMENT_PROVIDER;

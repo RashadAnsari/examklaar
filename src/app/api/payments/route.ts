@@ -1,21 +1,16 @@
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
-import { createAdminClient } from "@/utils/supabase/admin";
+import { getSessionUser } from "@/lib/auth-session";
+import { pool } from "@/lib/db";
 import { getPaymentProviderByName } from "@/lib/payment/provider";
 import { PaymentCustomerRepository } from "@/lib/repositories/paymentCustomerRepository";
 
 export async function GET() {
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const admin = createAdminClient();
-  const customerRows = await new PaymentCustomerRepository(admin).listByUserId(user.id);
+  const customerRows = await new PaymentCustomerRepository(pool).listByUserId(user.id);
 
   if (!customerRows.length) {
     return NextResponse.json({ payments: [] });
@@ -29,7 +24,7 @@ export async function GET() {
       })
     );
 
-    const registeredAt = new Date(user.created_at);
+    const registeredAt = new Date(user.createdAt);
     const payments = results
       .flatMap((r) => (r.status === "fulfilled" ? r.value : []))
       .filter((p) => p.paidAt != null && p.paidAt >= registeredAt);

@@ -6,7 +6,7 @@ import { generateText, tool, stepCountIs } from "ai";
 import { zodSchema } from "@ai-sdk/provider-utils";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
-import { createAdminClient } from "@/utils/supabase/admin";
+import { pool } from "@/lib/db";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 import type { Exam } from "@/app/exam/ExamClient";
 import { readExamById } from "@/data/exams";
@@ -220,7 +220,7 @@ function buildQuestionBatches<T extends { content: string }>(questions: T[]): T[
 }
 
 export async function gradeExamResult(resultId: string, result: ResultData): Promise<void> {
-  const examResults = new ExamResultsRepository(createAdminClient());
+  const examResults = new ExamResultsRepository(pool);
 
   async function setStatus(status: "pending" | "in_progress" | "complete" | "failed") {
     await examResults.updateGradingStatus(resultId, status);

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.examklaar.nl/privacy-policy" },
 };
 
-const LAST_UPDATED = "2 July 2026";
+const LAST_UPDATED = "29 July 2026";
 
 const SECTIONS = [
   {
@@ -95,8 +95,12 @@ const SECTIONS = [
       "We do not sell your personal data. We share data only with the following service providers, each bound by appropriate agreements:",
     items: [
       {
-        subtitle: "Supabase Inc., Data Processor",
-        text: "Our database, authentication, and file storage provider. Your account data, exam results, and audio recordings are stored on Supabase infrastructure hosted in Ireland (EU). Supabase Inc. is a US company; any incidental access from outside the EEA is covered by Standard Contractual Clauses in Supabase's data processing agreement.",
+        subtitle: "Hetzner Online GmbH (Germany), Data Processor",
+        text: "Our hosting provider. The application and its database run on a server we control in a Hetzner data centre in the European Union. Your account data, exam results, and subscription reference are stored there and are not transferred outside the EU.",
+      },
+      {
+        subtitle: "Cloudflare, Inc. (USA), Data Processor",
+        text: "Our object storage provider. Your audio recordings are stored in Cloudflare R2 under its EU jurisdiction setting, which keeps the files in European data centres, and are deleted automatically 30 days after upload. Cloudflare, Inc. is a US company; any incidental access from outside the EEA is covered by the Standard Contractual Clauses in Cloudflare's data processing addendum.",
       },
       {
         subtitle: "Google LLC (USA), Data Processor",
@@ -121,7 +125,7 @@ const SECTIONS = [
   {
     title: "6. International Data Transfers",
     content:
-      "Your core data (account, exam results, recordings) is stored within the EEA on Supabase infrastructure in Ireland. Some of our service providers are based outside the EEA. Where transfers occur, we ensure appropriate safeguards are in place:",
+      "Your account data and exam results are stored within the EU on our own server at Hetzner, and your audio recordings are stored within the EU in Cloudflare R2. Some of our service providers are based outside the EEA. Where transfers occur, we ensure appropriate safeguards are in place:",
     items: [
       {
         subtitle: "EU-US Data Privacy Framework",
@@ -133,7 +137,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Standard Contractual Clauses",
-        text: "For any incidental access by Supabase Inc. (USA) to data hosted in the EU, Standard Contractual Clauses under Article 46(2)(c) GDPR apply.",
+        text: "For any incidental access by Cloudflare, Inc. (USA) to recordings hosted in the EU, Standard Contractual Clauses under Article 46(2)(c) GDPR apply.",
       },
     ],
     footer:
