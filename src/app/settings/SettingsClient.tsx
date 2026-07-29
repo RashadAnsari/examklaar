@@ -8,11 +8,11 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SuccessBanner } from "@/components/ui/SuccessBanner";
 import { ErrorBanner } from "@/components/ui/ErrorBanner";
-import type { UserSubscription } from "@/lib/payment/subscription";
+import type { UserSubscription } from "@/lib/payment/plans";
 import type { ProviderPayment } from "@/lib/payment/types";
 import { analytics } from "@/lib/analytics";
 
-export default function SettingsPage() {
+export function SettingsClient() {
   const { data: session } = authClient.useSession();
   // null until the field is edited, so it shows the session name once it loads.
   const [editedName, setEditedName] = useState<string | null>(null);
