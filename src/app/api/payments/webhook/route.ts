@@ -28,7 +28,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
   }
 
-  const provider = getPaymentProviderByName(providerName);
+  // getPaymentProviderByName constructs the provider, and PaddleProvider reads
+  // its API key in a field initializer that throws when the key is absent. That
+  // call has to be guarded: unguarded it returned a 500, which tells Paddle the
+  // delivery failed and has it retry a configuration error indefinitely. Both
+  // this and an unknown provider name answer 400, since neither is transient.
+  let provider;
+  try {
+    provider = getPaymentProviderByName(providerName);
+  } catch (err) {
+    console.error("[webhook] Provider %s is not configured:", providerName, err);
+    return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
+  }
   if (!provider) {
     console.error("[webhook] No provider found for name:", providerName);
     return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
