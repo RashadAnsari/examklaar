@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.examklaar.nl/terms-and-conditions" },
 };
 
-const LAST_UPDATED = "7 July 2026";
+const LAST_UPDATED = "29 July 2026";
 
 const SECTIONS = [
   {
@@ -52,9 +52,23 @@ const SECTIONS = [
       "We reserve the right to update, add, or remove features at any time. We will notify you of changes that materially affect a paid service. ExamKlaar is not a governmental organisation and is not affiliated with or endorsed by the Dutch government or DUO.",
   },
   {
-    title: "Article 4. Free Trial",
+    title: "Article 4. Free Trial and Complimentary Access",
     content:
-      "New users may start a 7-day free trial of the paid subscription. A valid payment method is required to begin the trial, but no charge is made during the trial period. Unless you cancel before the trial ends, your subscription renews automatically into a paid monthly subscription at the then-current price. If you cancel during the trial, your access ends immediately and no charge is made. Each user is eligible for one free trial. We reserve the right to modify or withdraw the trial offer at any time with reasonable notice to registered users.",
+      "We offer free access in two forms. Which one is available to you is shown on the pricing page before you claim it.",
+    items: [
+      {
+        subtitle: "7-day free trial",
+        text: "New users may start a 7-day free trial of the paid subscription. A valid payment method is required to begin the trial, but no charge is made during the trial period. Unless you cancel before the trial ends, your subscription renews automatically into a paid monthly subscription at the then-current price. If you cancel during the trial, your access ends immediately and no charge is made. Each user is eligible for one free trial.",
+      },
+      {
+        subtitle: "Complimentary early access",
+        text: "While the platform is in its early stages we may instead offer a period of complimentary access at no cost and without a payment method. The length of that period is set at the time you claim it and is confirmed to you when it is granted. Complimentary access is granted once per account, ends automatically when the period expires, and does not renew or convert into a paid subscription. No charge is ever made for it and you may stop using it at any time. Claiming complimentary access uses up your eligibility for the 7-day trial, so a later paid subscription starts billing immediately.",
+      },
+      {
+        subtitle: "Changes to these offers",
+        text: "We reserve the right to modify or withdraw either offer at any time with reasonable notice to registered users. Access already granted to you is not shortened by such a change.",
+      },
+    ],
   },
   {
     title: "Article 5. Subscriptions and Payments",
@@ -71,7 +85,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Price changes",
-        text: "We may change subscription prices with at least 30 days' written notice by email. If you do not cancel before the new price takes effect, your continued use constitutes acceptance.",
+        text: "We may change subscription prices with at least 30 days' written notice by email. You may cancel free of charge at any point before the new price takes effect, and the change will not apply to a billing period you have already paid for. If you do not cancel before the new price takes effect, your continued use constitutes acceptance.",
       },
       {
         subtitle: "Failed payments",
@@ -79,7 +93,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Refunds",
-        text: "ExamKlaar itself does not offer refunds beyond your statutory rights. Because Paddle acts as Merchant of Record, all refund requests and payment disputes must be directed to Paddle and are governed by Paddle's Buyer Terms and Refund Policy, under which Paddle may issue discretionary refunds. EU consumers retain their statutory right of withdrawal; withdrawal and refund requests are handled by Paddle. For full details, see our Refund Policy at examklaar.nl/refund-policy.",
+        text: "EU and EEA consumers have a statutory 14-day right of withdrawal, which nothing in these Terms affects. Beyond that, ExamKlaar itself does not offer refunds. Because Paddle acts as Merchant of Record, all withdrawal requests, refund requests and payment disputes are handled by Paddle under its Buyer Terms and Refund Policy. Our Refund Policy at examklaar.nl/refund-policy sets out the full detail and governs in the event of any inconsistency with this article.",
       },
     ],
   },
@@ -107,7 +121,7 @@ const SECTIONS = [
       },
     ],
     footer:
-      "Violation of these rules may result in immediate suspension or permanent termination of your account, at our sole discretion. We may also report illegal activity to the relevant authorities. Terminated accounts are not eligible for a refund of any remaining subscription period.",
+      "Violation of these rules may result in suspension or termination of your account, proportionate to the seriousness of the breach. We will tell you why and, except where the breach is serious or unlawful, give you a chance to put it right first. We may report illegal activity to the relevant authorities. Where an account is terminated for a breach you caused, we do not refund the remaining subscription period, without prejudice to any statutory right of withdrawal or refund you have.",
   },
   {
     title: "Article 7. Intellectual Property",
@@ -135,7 +149,7 @@ const SECTIONS = [
       },
       {
         subtitle: "Consumer protection",
-        text: "Nothing in this article excludes or limits our liability for death or personal injury caused by our negligence, for fraud or fraudulent misrepresentation, or for any other liability that cannot be excluded under Dutch or EU mandatory consumer protection law.",
+        text: "Nothing in this article excludes or limits our liability for death or personal injury caused by our negligence, for damage caused by our intent or conscious recklessness (opzet of bewuste roekeloosheid), for fraud or fraudulent misrepresentation, or for any other liability that cannot be excluded under Dutch or EU mandatory consumer protection law. The cap above does not apply in those cases.",
       },
       {
         subtitle: "Incorrect information",
@@ -157,11 +171,11 @@ const SECTIONS = [
       },
       {
         subtitle: "By us",
-        text: "We reserve the right to suspend or permanently terminate accounts that violate these Terms, with or without prior notice depending on the severity of the breach. We will generally issue a warning for minor or first-time violations.",
+        text: "We may suspend or terminate an account that violates these Terms. We will give you notice and the reason, and for a minor or first-time violation we will issue a warning and a chance to put it right before terminating. We act without prior notice only where the breach is serious or unlawful and delay would cause harm.",
       },
       {
         subtitle: "Effect of termination",
-        text: "Upon termination, your right to access the platform ceases. Accounts terminated for breach of these Terms are not eligible for a refund of any remaining subscription period.",
+        text: "Upon termination, your right to access the platform ceases. Where an account is terminated for a breach you caused, we do not refund the remaining subscription period, without prejudice to any statutory right of withdrawal or refund you have. If we terminate for any other reason, we refund the unused part of the period you paid for.",
       },
     ],
   },
@@ -192,7 +206,7 @@ const SECTIONS = [
   {
     title: "Article 15. Governing Law",
     content:
-      "These Terms are governed exclusively by the laws of the Netherlands. Mandatory consumer protection provisions of your country of residence continue to apply where required by law.",
+      "These Terms are governed by the laws of the Netherlands. This choice of law does not deprive you of the protection of the mandatory consumer provisions of the country where you habitually reside, which continue to apply.",
   },
   {
     title: "Article 16. Contact",

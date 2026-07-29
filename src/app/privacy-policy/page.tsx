@@ -92,7 +92,7 @@ const SECTIONS = [
   {
     title: "5. Data Sharing and Processors",
     content:
-      "We do not sell your personal data. We share data only with the following service providers, each bound by appropriate agreements:",
+      "We do not sell your personal data. We share data only with the following service providers. Those acting as our processors are bound by a data processing agreement; where a party acts as an independent controller for its own purposes, that is stated below.",
     items: [
       {
         subtitle: "Hetzner Online GmbH (Germany), Data Processor",
@@ -103,8 +103,8 @@ const SECTIONS = [
         text: "Our object storage provider. Your audio recordings are stored in Cloudflare R2 under its EU jurisdiction setting, which keeps the files in European data centres, and are deleted automatically 30 days after upload. Cloudflare, Inc. is a US company; any incidental access from outside the EEA is covered by the Standard Contractual Clauses in Cloudflare's data processing addendum.",
       },
       {
-        subtitle: "Google LLC (USA), Data Processor",
-        text: "We use Google AI models to generate feedback on your written answers and on transcripts of your speaking recordings. Your audio files are transcribed on our own infrastructure and are not sent to Google. Only exam content is shared, no account identifiers. Transfers are covered by SCCs.",
+        subtitle: "Google LLC (USA), AI feedback",
+        text: "We use Google AI models to generate feedback on your writing and speaking answers. What we send is the exam question together with the answer you wrote or the transcript of what you said. We never send your name, email address, or any account identifier, and your audio files are transcribed on our own infrastructure and never reach Google. Under the Google AI service tier we currently use, Google may retain the submitted text and use it to improve its models, so please do not include personal details about yourself or anyone else in an exam answer beyond what the question asks for. Transfers to the USA are covered by the EU-US Data Privacy Framework, with Standard Contractual Clauses as an additional safeguard.",
       },
       {
         subtitle: "Paddle.com Market Ltd (UK), Independent Data Controller",
@@ -129,7 +129,7 @@ const SECTIONS = [
     items: [
       {
         subtitle: "EU-US Data Privacy Framework",
-        text: "For transfers to Google (both AI feedback and Google Analytics), based in the USA, we rely on the EU-US Data Privacy Framework, under which the European Commission has recognised certified US organisations as providing an adequate level of data protection. Standard Contractual Clauses under Article 46(2)(c) GDPR apply as an additional safeguard.",
+        text: "For transfers to Google in the USA, covering both AI feedback and Google Analytics, we rely on the EU-US Data Privacy Framework, under which the European Commission has recognised certified US organisations as providing an adequate level of data protection. Standard Contractual Clauses under Article 46(2)(c) GDPR apply as an additional safeguard.",
       },
       {
         subtitle: "Adequacy decision",
@@ -176,7 +176,7 @@ const SECTIONS = [
   {
     title: "8. Your Rights Under the GDPR",
     content:
-      "You have the following rights regarding your personal data. Contact us at hallo@examklaar.nl to exercise them. We will respond within 30 days (extendable by 60 days for complex requests, with notice):",
+      "You have the following rights regarding your personal data. Contact us at hallo@examklaar.nl to exercise them. We will respond without undue delay and in any event within one month, extendable by a further two months for complex requests, in which case we will tell you within the first month:",
     items: [
       {
         subtitle: "Access (Art. 15)",
@@ -216,8 +216,8 @@ const SECTIONS = [
       "When you first visit ExamKlaar, a cookie banner asks whether you accept analytics cookies. Analytics cookies are placed only if you accept; if you reject, none are set.",
     items: [
       {
-        subtitle: "Essential cookies",
-        text: "We use session cookies that are strictly necessary for authentication and platform functionality. These do not require consent and cannot be disabled without breaking the service.",
+        subtitle: "Essential cookies and storage",
+        text: "We use a session cookie that is strictly necessary for authentication, and we store your cookie choice itself in your browser's local storage under the key 'examklaar-cookie-consent' so we can remember it and honour it on your next visit. Both are strictly necessary, so neither requires consent, and neither can be disabled without breaking the service. Nothing is stored for analytics until you accept.",
       },
       {
         subtitle: "Analytics cookies (Google Analytics)",
@@ -236,7 +236,7 @@ const SECTIONS = [
   {
     title: "10. Security",
     content:
-      "We implement appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, or disclosure. All data is encrypted in transit using TLS and encrypted at rest in our database. Access to personal data is restricted to personnel who require it to operate the service, and is subject to confidentiality obligations. In the unlikely event of a data breach that poses a risk to your rights, we will notify the Autoriteit Persoonsgegevens within 72 hours and inform affected users without undue delay.",
+      "We implement appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, or disclosure, as required by Article 32 GDPR. These include encryption of data in transit, storing passwords only in hashed form, and access controls that limit personal data to the people who need it to operate the service, under confidentiality obligations. We review these measures periodically. In the unlikely event of a data breach that poses a risk to your rights, we will notify the Autoriteit Persoonsgegevens within 72 hours and inform affected users without undue delay.",
   },
   {
     title: "11. Children",

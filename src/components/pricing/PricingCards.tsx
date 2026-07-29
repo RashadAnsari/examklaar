@@ -15,10 +15,16 @@ export const PLAN = {
   id: "monthly",
   name: "Monthly plan",
   badge: "7-day free trial",
+  // Shown while no payment provider is configured, when claiming grants
+  // complimentary access instead of the 7-day trial. The length is deliberately
+  // left out here: it can change, and the welcome modal states it on grant.
+  badgeComplimentary: "Free early access",
   headline: "Full access to every exam",
   price: "€9.99",
   priceNote: "/ month",
   subNote: "7 days free, then €9.99 / month. Cancel anytime.",
+  subNoteComplimentary:
+    "Full access while we are in early access, free and with no payment method. It ends on its own and never turns into a paid plan.",
   subNoteReturning: "Billed monthly. Cancel anytime.",
   features: [
     { text: "All exams per skill (growing library)" },
@@ -29,6 +35,7 @@ export const PLAN = {
     { text: "Email support" },
   ],
   cta: "Start free trial",
+  ctaComplimentary: "Claim free access",
   ctaReturning: "Subscribe",
   ctaVariant: "primary" as const,
 } as const;
@@ -41,7 +48,10 @@ export async function PricingCards() {
 
   const loggedIn = !!user;
   const providerConfigured = !!process.env.PAYMENT_PROVIDER;
-  // No provider yet: clicking the CTA grants early-stage complimentary access.
+  // No provider yet: claiming grants early-stage complimentary access instead of
+  // the 7-day trial. The offer regime drives the copy, so a logged-out visitor
+  // sees what they will actually get; loggedIn only decides which button runs.
+  const complimentaryOffer = !providerConfigured;
   const claimComplimentary = loggedIn && !providerConfigured;
 
   let hasActiveSubscription = false;
@@ -70,7 +80,7 @@ export async function PricingCards() {
               className="inline-flex self-start items-center text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-6"
               style={{ background: "var(--green-50)", color: "var(--green-700)" }}
             >
-              {PLAN.badge}
+              {complimentaryOffer ? PLAN.badgeComplimentary : PLAN.badge}
             </span>
           )}
 
@@ -90,19 +100,26 @@ export async function PricingCards() {
             </span>
           </div>
           <p className="mt-3 text-sm" style={{ color: "var(--gray-600)" }}>
-            {trialEligible ? PLAN.subNote : PLAN.subNoteReturning}
+            {!trialEligible
+              ? PLAN.subNoteReturning
+              : complimentaryOffer
+                ? PLAN.subNoteComplimentary
+                : PLAN.subNote}
           </p>
 
           <div className="mt-auto pt-8">
             <PlanCta
               loggedIn={loggedIn}
               claimComplimentary={claimComplimentary}
+              complimentaryOffer={complimentaryOffer}
               hasActiveSubscription={hasActiveSubscription}
               trialEligible={trialEligible}
             />
             {!hasActiveSubscription && trialEligible && (
               <p className="mt-3 text-center text-xs" style={{ color: "var(--gray-500)" }}>
-                No charge during your 7-day trial
+                {complimentaryOffer
+                  ? "No payment method needed"
+                  : "No charge during your 7-day trial"}
               </p>
             )}
           </div>
@@ -154,11 +171,13 @@ export async function PricingCards() {
 function PlanCta({
   loggedIn,
   claimComplimentary,
+  complimentaryOffer,
   hasActiveSubscription,
   trialEligible,
 }: {
   loggedIn: boolean;
   claimComplimentary: boolean;
+  complimentaryOffer: boolean;
   hasActiveSubscription: boolean;
   trialEligible: boolean;
 }) {
@@ -169,10 +188,17 @@ function PlanCta({
       </Button>
     );
   }
-  const ctaLabel = trialEligible ? PLAN.cta : PLAN.ctaReturning;
+  const ctaLabel = !trialEligible
+    ? PLAN.ctaReturning
+    : complimentaryOffer
+      ? PLAN.ctaComplimentary
+      : PLAN.cta;
+  // A logged-out visitor on the pricing page is a prospect, so send them to
+  // signup rather than login. `next` brings them back here to claim once the
+  // account is live, and the signup page links to login for returning users.
   if (!loggedIn) {
     return (
-      <Button href={withNext("/auth/login", "/pricing")} variant={PLAN.ctaVariant} fullWidth>
+      <Button href={withNext("/auth/signup", "/pricing")} variant={PLAN.ctaVariant} fullWidth>
         {ctaLabel}
       </Button>
     );

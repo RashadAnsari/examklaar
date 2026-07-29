@@ -226,7 +226,9 @@ export default function LandingPage() {
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Simple, Transparent Pricing</h2>
-            <p className="section-subtitle">7-day free trial, then €9.99/month. Cancel anytime.</p>
+            <p className="section-subtitle">
+              Full access to every exam with AI feedback. Cancel anytime.
+            </p>
           </div>
 
           <PricingCards />
