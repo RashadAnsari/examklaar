@@ -1,4 +1,8 @@
-const BRAND = "#1b6b4a";
+import { site } from "@/config/site";
+
+// Email clients cannot read CSS variables, so the brand colour is inlined from
+// the one place that holds it rather than repeated as a literal here.
+const BRAND = site.brandColor;
 
 function shell({
   heading,
@@ -15,7 +19,7 @@ function shell({
 }) {
   return `<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 480px; margin: 0 auto; padding: 40px 24px; background: #fafafa;">
   <div style="background: white; border-radius: 16px; padding: 40px; border: 1px solid #e5e7eb;">
-    <p style="font-size: 22px; font-weight: 700; color: ${BRAND}; margin: 0 0 24px;">Examklaar</p>
+    <p style="font-size: 22px; font-weight: 700; color: ${BRAND}; margin: 0 0 24px;">${site.name}</p>
     <h2 style="font-size: 20px; font-weight: 700; color: #111827; margin: 0 0 12px;">${heading}</h2>
     <p style="font-size: 15px; color: #4b5563; margin: 0 0 28px; line-height: 1.6;">${intro}</p>
     <a href="${url}"

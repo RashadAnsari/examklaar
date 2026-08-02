@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { site } from "@/config/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/dashboard", "/settings", "/exams/", "/exam", "/api/", "/auth/"],
       },
     ],
-    sitemap: "https://www.examklaar.nl/sitemap.xml",
+    sitemap: `${site.url}/sitemap.xml`,
   };
 }

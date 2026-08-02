@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { revokeAnalyticsConsent } from "@/lib/analytics";
 import { OPEN_CONSENT_EVENT, readConsent, writeConsent } from "@/lib/consent";
+import { site } from "@/config/site";
 
 // Cookie consent banner. Shows on first visit until a choice is made, and can
 // be re-opened from the footer "Cookie Preferences" link. Reject and Accept are
@@ -66,7 +67,7 @@ export function ConsentBanner({ measurementId }: { measurementId: string }) {
               We value your privacy
             </h2>
             <p className="text-sm" style={{ color: "var(--gray-600)", lineHeight: 1.6 }}>
-              We use analytics cookies to understand how visitors use ExamKlaar so we can improve
+              We use analytics cookies to understand how visitors use {site.name} so we can improve
               it. These cookies load only if you accept. You can change your choice anytime via
               Cookie Preferences in the footer. See our{" "}
               <Link

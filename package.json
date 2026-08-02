@@ -8,8 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "test": "bun test",
     "prepare": "husky",
-    "grant-subscription": "bun scripts/grant-subscription.ts"
+    "grant-subscription": "bun scripts/grant-subscription.ts",
+    "delete-user": "bun scripts/delete-user.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^3.0.61",
@@ -29,15 +31,18 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "server-only": "^0.0.1",
+    "validator": "^13.15.35",
     "zod": "3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/bun": "1.3.14",
     "@types/node": "^20",
     "@types/nodemailer": "^8.0.1",
     "@types/pg": "^8.20.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/validator": "^13.15.10",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
     "husky": "^9.1.7",

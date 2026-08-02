@@ -12,13 +12,14 @@ import type {
   ProviderPayment,
   WebhookEvent,
 } from "./types";
-import { DEFAULT_PLAN_ID, isPlanId, type PlanId } from "./plans";
+import { DEFAULT_PLAN_ID, isPlanId, PLAN_LABEL, type PlanId } from "./plans";
+import { site } from "@/config/site";
 
 function planIdFromCustomData(customData: Record<string, string> | null): PlanId {
   return isPlanId(customData?.planId) ? customData.planId : DEFAULT_PLAN_ID;
 }
 
-const PLAN_DESCRIPTION = "ExamKlaar Monthly";
+const PLAN_DESCRIPTION = `${site.name} ${PLAN_LABEL}`;
 
 function getClient(): Paddle {
   const apiKey = process.env.PADDLE_API_KEY;
@@ -125,6 +126,7 @@ export class PaddleProvider implements PaymentProvider {
           currentPeriodStart: periodStart,
           currentPeriodEnd: periodEnd,
           cancelAtPeriodEnd: sub.scheduledChange?.action === "cancel",
+          occurredAt: new Date(event.occurredAt),
         };
       }
 
@@ -154,6 +156,7 @@ export class PaddleProvider implements PaymentProvider {
             currentPeriodStart: periodStart,
             currentPeriodEnd: cancelEnd,
             cancelAtPeriodEnd: false,
+            occurredAt: new Date(event.occurredAt),
           };
         }
 
@@ -168,6 +171,7 @@ export class PaddleProvider implements PaymentProvider {
             currentPeriodStart: periodStart,
             currentPeriodEnd: periodEnd,
             cancelAtPeriodEnd: false,
+            occurredAt: new Date(event.occurredAt),
           };
         }
 
@@ -182,6 +186,7 @@ export class PaddleProvider implements PaymentProvider {
             currentPeriodStart: periodStart,
             currentPeriodEnd: periodEnd,
             cancelAtPeriodEnd: sub.scheduledChange?.action === "cancel",
+            occurredAt: new Date(event.occurredAt),
           };
         }
 
@@ -208,6 +213,7 @@ export class PaddleProvider implements PaymentProvider {
             sub.canceledAt ?? sub.currentBillingPeriod?.endsAt ?? new Date()
           ),
           cancelAtPeriodEnd: false,
+          occurredAt: new Date(event.occurredAt),
         };
       }
 
@@ -229,6 +235,7 @@ export class PaddleProvider implements PaymentProvider {
           currentPeriodStart: new Date(sub.currentBillingPeriod?.startsAt ?? new Date()),
           currentPeriodEnd: new Date(sub.currentBillingPeriod?.endsAt ?? new Date()),
           cancelAtPeriodEnd: false,
+          occurredAt: new Date(event.occurredAt),
         };
       }
 
@@ -250,6 +257,7 @@ export class PaddleProvider implements PaymentProvider {
           currentPeriodStart: new Date(),
           currentPeriodEnd: new Date(),
           cancelAtPeriodEnd: false,
+          occurredAt: new Date(event.occurredAt),
         };
       }
 
@@ -271,6 +279,7 @@ export class PaddleProvider implements PaymentProvider {
           currentPeriodStart: new Date(),
           currentPeriodEnd: new Date(),
           cancelAtPeriodEnd: false,
+          occurredAt: new Date(event.occurredAt),
         };
       }
 
@@ -287,6 +296,12 @@ export class PaddleProvider implements PaymentProvider {
     await this.client.subscriptions.cancel(providerSubscriptionId, {
       effectiveFrom: immediately ? "immediately" : "next_billing_period",
     });
+  }
+
+  async archiveCustomer(providerCustomerId: string): Promise<void> {
+    // Paddle has no customer delete: archiving is the documented equivalent,
+    // and it keeps the customer out of future checkouts and customer lists.
+    await this.client.customers.archive(providerCustomerId);
   }
 
   async getPaymentHistory(providerCustomerId: string): Promise<ProviderPayment[]> {

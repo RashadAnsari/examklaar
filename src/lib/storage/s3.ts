@@ -1,5 +1,8 @@
 import { S3Client } from "@aws-sdk/client-s3";
 
+// No "server-only" guard here: scripts/delete-user.ts reaches this module
+// through @/lib/storage/recordings under plain bun, where that package throws.
+
 /**
  * S3-compatible object storage. forcePathStyle keeps the client working with
  * providers that do not support virtual-hosted bucket subdomains (MinIO and

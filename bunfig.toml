@@ -1,0 +1,8 @@
+[test]
+preload = ["./test/setup.ts"]
+
+coveragePathIgnorePatterns = ["test/**"]
+
+# The table `make coverage` prints. Nothing consumes a coverage file, so no
+# lcov is written; add "lcov" here if a tool ever needs one.
+coverageReporter = ["text"]

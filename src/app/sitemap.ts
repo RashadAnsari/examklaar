@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
+import { site } from "@/config/site";
 
-const BASE_URL = "https://www.examklaar.nl";
+const BASE_URL = site.url;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

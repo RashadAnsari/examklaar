@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { site } from "@/config/site";
 
 interface Props {
   children: React.ReactNode;
@@ -17,7 +18,7 @@ export function AuthCard({ children, backLink }: Props) {
             className="flex items-center gap-2.5 text-2xl font-bold text-[var(--green-900)]"
           >
             <Image src="/examklaar-logo.svg" alt="" width={44} height={44} priority />
-            ExamKlaar
+            {site.name}
           </Link>
         </div>
 

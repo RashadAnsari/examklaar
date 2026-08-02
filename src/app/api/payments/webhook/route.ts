@@ -7,26 +7,47 @@ import { SubscriptionRepository } from "@/lib/repositories/subscriptionRepositor
 import { SubscriptionEventRepository } from "@/lib/repositories/subscriptionEventRepository";
 import { ProcessedWebhookRepository } from "@/lib/repositories/processedWebhookRepository";
 
+/**
+ * Which provider sent a webhook is decided by its signature header rather than
+ * by PAYMENT_PROVIDER, so events for a provider you have since migrated away
+ * from keep processing correctly instead of being rejected.
+ *
+ * This is the one place outside src/lib/payment/ that names a provider. Adding
+ * one means a line here as well as a case in getPaymentProviderByName.
+ */
+const SIGNATURE_HEADERS = [{ header: "paddle-signature", provider: "paddle" }] as const;
+
+function detectProvider(req: NextRequest) {
+  for (const { header, provider } of SIGNATURE_HEADERS) {
+    const signature = req.headers.get(header);
+    if (signature) {
+      return { providerName: provider, signature };
+    }
+  }
+  return null;
+}
+
 /** JSON-safe snapshot of a webhook event for the history's raw_event column. */
 function serializeEvent(event: WebhookEvent) {
   return {
     ...event,
     currentPeriodStart: event.currentPeriodStart.toISOString(),
     currentPeriodEnd: event.currentPeriodEnd.toISOString(),
+    occurredAt: event.occurredAt.toISOString(),
   };
 }
 
 export async function POST(req: NextRequest) {
+  // Read the body as text, never as JSON: signature verification runs over the
+  // exact bytes the provider signed.
   const rawBody = await req.text();
 
-  let providerName;
-  const paddleSignature = req.headers.get("paddle-signature");
-  if (paddleSignature) {
-    providerName = "paddle";
-  } else {
-    console.error("[webhook] No signature header found");
+  const detected = detectProvider(req);
+  if (!detected) {
+    console.error("[webhook] No known signature header found");
     return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
   }
+  const { providerName, signature } = detected;
 
   // getPaymentProviderByName constructs the provider, and PaddleProvider reads
   // its API key in a field initializer that throws when the key is absent. That
@@ -41,13 +62,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
   }
   if (!provider) {
-    console.error("[webhook] No provider found for name:", providerName);
+    console.error("[webhook] No provider registered for name:", providerName);
     return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
   }
 
   let event;
   try {
-    event = await provider.parseWebhook(rawBody, paddleSignature);
+    event = await provider.parseWebhook(rawBody, signature);
   } catch (err) {
     console.error("[webhook] Failed to parse event:", err);
     return NextResponse.json({ error: "Invalid webhook" }, { status: 400 });
@@ -62,15 +83,24 @@ export async function POST(req: NextRequest) {
   const events = new SubscriptionEventRepository(pool);
   const processed = new ProcessedWebhookRepository(pool);
   const now = new Date().toISOString();
+  const occurredAt = event.occurredAt.toISOString();
 
-  // Idempotency guard: the key is a hash of the raw, signature-verified body, so
-  // a provider retry or a replayed captured request is processed only once. This
-  // stops a replayed older event from resurrecting or extending access.
+  // Idempotency guard keyed on a hash of the verified body, so a retry or a
+  // replayed capture runs once and cannot resurrect access. The claim is taken
+  // before processing, so concurrent deliveries cannot both run the side
+  // effects, and every failure path releases it so the retry is reprocessed. A
+  // hard crash mid-processing is the one case that stays claimed.
   const eventKey = createHash("sha256").update(rawBody).digest("hex");
-  if (await processed.isProcessed(eventKey)) {
+  if (!(await processed.claim(eventKey, event.type))) {
     console.info("[webhook] Duplicate event ignored type=%s", event.type);
     return NextResponse.json({ ok: true });
   }
+
+  /** Answer 500 after releasing the claim, so the provider retry reprocesses. */
+  const fail = async () => {
+    await processed.release(eventKey);
+    return NextResponse.json({ error: "Processing failed" }, { status: 500 });
+  };
 
   try {
     if (event.type === "subscription.refunded") {
@@ -81,7 +111,6 @@ export async function POST(req: NextRequest) {
           "[webhook] Refund for unknown subscriptionId=%s, skipping",
           event.providerSubscriptionId
         );
-        await processed.markProcessed(eventKey, event.type);
         return NextResponse.json({ ok: true });
       }
 
@@ -95,17 +124,20 @@ export async function POST(req: NextRequest) {
 
       // Use the owner resolved from the subscription, not event.userId, which is
       // empty for refund/adjustment events (the audit trail must name the user).
-      await events.record({
+      const recorded = await events.record({
         user_id: sub.user_id,
         event_type: event.type,
         payment_provider: providerName,
         provider_customer_id: event.providerCustomerId,
         provider_subscription_id: event.providerSubscriptionId,
-        occurred_at: now,
+        occurred_at: occurredAt,
         raw_event: serializeEvent(event),
       });
+      if (recorded.error) {
+        // record() logged the failure; retry to write the missing audit row.
+        return fail();
+      }
 
-      await processed.markProcessed(eventKey, event.type);
       console.info(
         "[webhook] Refund processed, subscription cancelled for subscriptionId=%s",
         event.providerSubscriptionId
@@ -113,25 +145,55 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true });
     }
 
+    // Repository writes never throw, so every result is checked by hand: a
+    // swallowed failure would answer 200 and lose the state change for good.
+    // Both writes carry the provider's event time and skip events older than
+    // the last applied one, since deliveries are retried and not ordered.
+    // Skipped events are still recorded in the history below.
     if (event.type === "payment.failed") {
-      // Only update the status — don't overwrite period dates.
-      await subscriptions.updateByUserId(event.userId, { status: "past_due", updated_at: now });
+      // Only update the status: do not overwrite the period dates.
+      const { applied, error } = await subscriptions.markPastDue(event.userId, now, occurredAt);
+      if (error) {
+        console.error(
+          "[webhook] Status update failed type=%s user=%s:",
+          event.type,
+          event.userId,
+          error
+        );
+        return fail();
+      }
+      if (!applied) {
+        console.info(
+          "[webhook] Stale or inapplicable payment.failed skipped user=%s",
+          event.userId
+        );
+      }
     } else {
-      await subscriptions.upsert({
-        user_id: event.userId,
-        plan_id: event.planId,
-        status: event.status,
-        payment_provider: providerName,
-        provider_customer_id: event.providerCustomerId,
-        provider_subscription_id: event.providerSubscriptionId,
-        current_period_start: event.currentPeriodStart.toISOString(),
-        current_period_end: event.currentPeriodEnd.toISOString(),
-        cancel_at_period_end: event.cancelAtPeriodEnd,
-        updated_at: now,
-      });
+      const { applied, error } = await subscriptions.applyProviderEvent(
+        {
+          user_id: event.userId,
+          plan_id: event.planId,
+          status: event.status,
+          payment_provider: providerName,
+          provider_customer_id: event.providerCustomerId,
+          provider_subscription_id: event.providerSubscriptionId,
+          current_period_start: event.currentPeriodStart.toISOString(),
+          current_period_end: event.currentPeriodEnd.toISOString(),
+          cancel_at_period_end: event.cancelAtPeriodEnd,
+          updated_at: now,
+        },
+        occurredAt
+      );
+      if (error) {
+        console.error("[webhook] Upsert failed type=%s user=%s:", event.type, event.userId, error);
+        return fail();
+      }
+      if (!applied) {
+        console.info("[webhook] Stale event skipped type=%s user=%s", event.type, event.userId);
+      }
     }
 
-    await events.record({
+    const recorded = await events.record({
       user_id: event.userId,
       event_type: event.type,
       plan_id: event.planId,
@@ -142,17 +204,20 @@ export async function POST(req: NextRequest) {
       current_period_start: event.currentPeriodStart.toISOString(),
       current_period_end: event.currentPeriodEnd.toISOString(),
       cancel_at_period_end: event.cancelAtPeriodEnd,
-      occurred_at: now,
+      occurred_at: occurredAt,
       raw_event: serializeEvent(event),
     });
+    if (recorded.error) {
+      // record() logged the failure; retry to write the missing audit row.
+      return fail();
+    }
   } catch (err) {
-    console.error("[webhook] DB error:", err);
-    // Return 500 so the provider retries. The event is not marked processed, so
-    // the retry is reprocessed rather than deduped away.
-    return NextResponse.json({ error: "DB error" }, { status: 500 });
+    // Reached by the calls that do throw: the subscription lookup and the
+    // provider cancel API on the refund path.
+    console.error("[webhook] Processing failed type=%s:", event.type, err);
+    return fail();
   }
 
-  await processed.markProcessed(eventKey, event.type);
   console.info("[webhook] Processed type=%s userId=%s", event.type, event.userId);
   return NextResponse.json({ ok: true });
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CookiePreferencesLink } from "@/components/layout/CookiePreferencesLink";
+import { site } from "@/config/site";
 
 export function Footer() {
   return (
@@ -11,7 +12,7 @@ export function Footer() {
             <div>
               <div className="mb-4">
                 <Link href="/" className="font-semibold text-sm text-white">
-                  ExamKlaar
+                  {site.name}
                 </Link>
               </div>
               <p className="text-sm leading-relaxed">
@@ -50,17 +51,17 @@ export function Footer() {
               <h4 className="font-semibold mb-4 text-sm text-white">Contact</h4>
               <p className="text-sm mb-2">Have a question or need help?</p>
               <a
-                href="mailto:hallo@examklaar.nl"
+                href={`mailto:${site.supportEmail}`}
                 className="text-sm text-[var(--green-500)] hover:text-white transition-colors"
               >
-                hallo@examklaar.nl
+                {site.supportEmail}
               </a>
             </div>
           </div>
         </div>
 
         <div className="pt-6 text-center text-sm border-t border-[var(--gray-800)]">
-          <p>&copy; 2026 ExamKlaar. All rights reserved.</p>
+          <p>&copy; 2026 {site.name}. All rights reserved.</p>
         </div>
       </div>
     </footer>

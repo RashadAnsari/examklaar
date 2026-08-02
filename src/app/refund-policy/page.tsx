@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { LegalPage, type LegalSection } from "@/components/layout/LegalPage";
+import { site } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
   description:
     "Read the ExamKlaar refund policy. Understand how refunds and cancellations are handled for subscriptions.",
-  alternates: { canonical: "https://www.examklaar.nl/refund-policy" },
+  alternates: { canonical: `${site.url}/refund-policy` },
 };
 
 const LAST_UPDATED = "29 July 2026";

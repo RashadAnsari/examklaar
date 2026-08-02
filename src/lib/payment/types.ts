@@ -39,6 +39,12 @@ export interface WebhookEvent {
   currentPeriodStart: Date;
   currentPeriodEnd: Date;
   cancelAtPeriodEnd: boolean;
+  /**
+   * When the event happened at the provider. Deliveries are retried and not
+   * ordered, so the webhook handler uses this to skip events older than the
+   * last one it applied.
+   */
+  occurredAt: Date;
 }
 
 export interface ProviderPayment {
@@ -68,4 +74,10 @@ export interface PaymentProvider {
     immediately?: boolean
   ): Promise<void>;
   getPaymentHistory(providerCustomerId: string): Promise<ProviderPayment[]>;
+  /**
+   * Retire a customer record at the provider, used when erasing an account.
+   * Providers keep paid transactions for tax reporting, so this is as far as
+   * deletion goes on their side.
+   */
+  archiveCustomer(providerCustomerId: string): Promise<void>;
 }

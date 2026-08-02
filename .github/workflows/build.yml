@@ -7,12 +7,14 @@ on:
     branches: [master]
 
 jobs:
-  lint:
-    name: Lint
+  check:
+    name: Lint, typecheck, test, build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -20,35 +22,85 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      # The same targets `make local` runs, kept as separate steps so a failure
+      # names itself in the job summary. `make local` itself is not used here:
+      # it starts with `format`, which rewrites files rather than checking them.
       - name: Lint
         run: make lint
+
+      - name: Typecheck
+        run: make typecheck
+
+      - name: Test
+        run: make test
+
+      - name: Build
+        run: make build
+
+  # Builds the production image without publishing or deploying it, so a change
+  # that breaks the Dockerfile fails here rather than at deploy time. The layer
+  # cache lives in GitHub Actions, so only the layers you actually changed are
+  # rebuilt.
+  docker:
+    name: Docker image
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Docker Build
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile
+          push: false
+          load: true
+          tags: examklaar:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          # Secrets are unavailable to pull requests from forks, so this is
+          # empty there. That is harmless: analytics is optional, and the value
+          # is public anyway once inlined into the client bundle.
+          build-args: |
+            NODE_ENV=production
+            GIT_SHA=${{ github.sha }}
+            ANALYTICS_GA_MEASUREMENT_ID=${{ secrets.ANALYTICS_GA_MEASUREMENT_ID }}
 
   # deploy:
   #   name: Deploy
   #   if: github.ref == 'refs/heads/master'
   #   runs-on: ubuntu-latest
-  #   needs: lint
+  #   needs: docker
   #   steps:
   #     - name: Checkout code
-  #       uses: actions/checkout@v4
-
+  #       uses: actions/checkout@v7
+  #
+  #     - name: Set up Buildx
+  #       uses: docker/setup-buildx-action@v4
+  #
   #     - name: Docker Build
-  #       uses: docker/build-push-action@v6
+  #       uses: docker/build-push-action@v7
   #       with:
   #         context: .
   #         file: Dockerfile
   #         push: false
+  #         load: true
   #         tags: examklaar:${{ github.sha }}
+  #         cache-from: type=gha
   #         build-args: |
   #           NODE_ENV=production
   #           GIT_SHA=${{ github.sha }}
   #           ANALYTICS_GA_MEASUREMENT_ID=${{ secrets.ANALYTICS_GA_MEASUREMENT_ID }}
-
+  #
   #     - name: Docker Save
   #       run: docker save examklaar:${{ github.sha }} > /tmp/docker-image.tar
-
+  #
   #     - name: Run Playbook
-  #       uses: dawidd6/action-ansible-playbook@v7
+  #       uses: dawidd6/action-ansible-playbook@v9
   #       with:
   #         directory: deploy
   #         playbook: app.yaml

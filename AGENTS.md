@@ -25,7 +25,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Verification
 
-- After every change, run `make local` (formats and lints) and fix anything it reports before considering the work done.
+- After every change, run `make local` (format, lint, typecheck, tests) and fix anything it reports before considering the work done.
+- Tests run with `bun test`. Pure logic (access rules, redirect validation, the proxy routing table) is tested directly; route handlers are tested with a stub pool and a fake provider, see `src/app/api/payments/webhook/route.test.ts`. `test/setup.ts` neutralises `server-only` for the test runtime.
 
 ## General rules
 

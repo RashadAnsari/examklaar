@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { LegalPage, type LegalSection } from "@/components/layout/LegalPage";
+import { site } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Read the ExamKlaar privacy policy to understand how we collect, use, and protect your personal data.",
-  alternates: { canonical: "https://www.examklaar.nl/privacy-policy" },
+  alternates: { canonical: `${site.url}/privacy-policy` },
 };
 
 const LAST_UPDATED = "29 July 2026";
@@ -157,6 +158,10 @@ const SECTIONS: LegalSection[] = [
       {
         subtitle: "Audio recordings",
         text: "Automatically deleted after 30 days, regardless of account status.",
+      },
+      {
+        subtitle: "Deleted email addresses",
+        text: "When an account is deleted we keep an irreversible cryptographic fingerprint of the email address, and nothing else, so that the address cannot be used to open a new account. The address itself is not retained and the fingerprint cannot be turned back into it. We keep this to prevent repeated use of free trials, which is our legitimate interest under Article 6(1)(f).",
       },
       {
         subtitle: "Subscription reference records",

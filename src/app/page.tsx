@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
 import { PricingCards } from "@/components/pricing/PricingCards";
+import { site } from "@/config/site";
 import {
   ArrowRightIcon,
   CheckCircleIcon,
@@ -17,19 +18,19 @@ import {
 } from "@heroicons/react/20/solid";
 
 export const metadata: Metadata = {
-  title: "ExamKlaar: Practice for Your Dutch Inburgering Exam",
+  title: `${site.name}: ${site.tagline}`,
   description:
     "Prepare for your Dutch inburgering exam (A2/B1) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. 7-day free trial.",
-  alternates: { canonical: "https://www.examklaar.nl" },
+  alternates: { canonical: site.url },
   openGraph: {
-    title: "ExamKlaar: Practice for Your Dutch Inburgering Exam",
+    title: `${site.name}: ${site.tagline}`,
     description:
       "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. 7-day free trial.",
-    url: "https://www.examklaar.nl",
+    url: site.url,
   },
   twitter: {
     card: "summary_large_image",
-    title: "ExamKlaar: Practice for Your Dutch Inburgering Exam",
+    title: `${site.name}: ${site.tagline}`,
     description:
       "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. 7-day free trial.",
   },
@@ -38,8 +39,8 @@ export const metadata: Metadata = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "ExamKlaar",
-  url: "https://www.examklaar.nl",
+  name: site.name,
+  url: site.url,
   description:
     "Realistic oefenexamens for all 5 Dutch inburgering exam components with AI-powered feedback.",
 };
@@ -47,12 +48,12 @@ const websiteSchema = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "ExamKlaar",
-  url: "https://www.examklaar.nl",
-  logo: "https://www.examklaar.nl/examklaar-logo.svg",
+  name: site.name,
+  url: site.url,
+  logo: `${site.url}/examklaar-logo.svg`,
   contactPoint: {
     "@type": "ContactPoint",
-    email: "hallo@examklaar.nl",
+    email: site.supportEmail,
     contactType: "customer support",
   },
 };
@@ -245,7 +246,7 @@ export default function LandingPage() {
             Start Preparing Today
           </h2>
           <p className="mb-8 opacity-90" style={{ fontSize: "1.25rem", lineHeight: 1.7 }}>
-            Try ExamKlaar free for 7 days. Cancel anytime. Practice at your own pace and walk into
+            Try {site.name} free for 7 days. Cancel anytime. Practice at your own pace and walk into
             your exam with confidence.
           </p>
           <Button href="/auth/signup" variant="white" size="lg">

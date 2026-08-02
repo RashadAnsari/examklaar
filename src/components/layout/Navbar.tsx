@@ -15,6 +15,7 @@ import {
   ArrowRightStartOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import { analytics } from "@/lib/analytics";
+import { site } from "@/config/site";
 
 function getInitials(name: string) {
   return name
@@ -94,7 +95,7 @@ export function Navbar() {
               className="flex items-center gap-2 text-lg font-bold text-[var(--green-900)]"
             >
               <Image src="/examklaar-logo.svg" alt="" width={34} height={34} priority />
-              ExamKlaar
+              {site.name}
             </Link>
 
             <div className="hidden md:flex items-center gap-6">
@@ -247,7 +248,7 @@ export function Navbar() {
             className="flex items-center gap-2 text-lg font-bold text-[var(--green-900)]"
           >
             <Image src="/examklaar-logo.svg" alt="" width={30} height={30} />
-            ExamKlaar
+            {site.name}
           </Link>
           <button
             type="button"

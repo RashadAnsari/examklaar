@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/pricing/CheckoutButton";
 import { ClaimTrialButton } from "@/components/pricing/ClaimTrialButton";
 import { withNext } from "@/lib/redirects";
+import { site } from "@/config/site";
 import {
   CheckIcon,
   ShieldCheckIcon,
@@ -42,7 +43,7 @@ export const PLAN = {
 } as const;
 
 /** Mailto fallback used when we cannot grant access and there is no checkout. */
-export const CONTACT_MAILTO = `mailto:hallo@examklaar.nl?subject=${encodeURIComponent(`${PLAN.name} subscription`)}&body=${encodeURIComponent(`Hi,\n\nI'm interested in the ${PLAN.name} (${PLAN.price} ${PLAN.priceNote}).\n\nCould you help me get started?\n\nThanks`)}`;
+export const CONTACT_MAILTO = `mailto:${site.supportEmail}?subject=${encodeURIComponent(`${PLAN.name} subscription`)}&body=${encodeURIComponent(`Hi,\n\nI'm interested in the ${PLAN.name} (${PLAN.price} ${PLAN.priceNote}).\n\nCould you help me get started?\n\nThanks`)}`;
 
 export async function PricingCards() {
   const user = await getSessionUser();

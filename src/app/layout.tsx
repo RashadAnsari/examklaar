@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { ConsentBanner } from "@/components/ui/ConsentBanner";
+import { site } from "@/config/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,10 +12,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.examklaar.nl"),
+  metadataBase: new URL(site.url),
   title: {
-    default: "ExamKlaar: Practice for Your Dutch Inburgering Exam",
-    template: "%s | ExamKlaar",
+    default: `${site.name}: ${site.tagline}`,
+    template: `%s | ${site.name}`,
   },
   description:
     "Prepare for your Dutch inburgering exam (A2/B1) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. Free to start.",
@@ -33,10 +34,10 @@ export const metadata: Metadata = {
     "DUO inburgering",
   ],
   openGraph: {
-    siteName: "ExamKlaar",
+    siteName: site.name,
     type: "website",
     locale: "en_US",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "ExamKlaar" }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
@@ -62,7 +63,7 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <meta name="apple-mobile-web-app-title" content="ExamKlaar" />
+        <meta name="apple-mobile-web-app-title" content={site.name} />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className="min-h-screen" suppressHydrationWarning>

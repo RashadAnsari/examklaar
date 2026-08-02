@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { LegalPage, type LegalSection } from "@/components/layout/LegalPage";
+import { site } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description:
     "Read the ExamKlaar terms and conditions. Understand your rights and responsibilities as a user of our exam preparation platform.",
-  alternates: { canonical: "https://www.examklaar.nl/terms-and-conditions" },
+  alternates: { canonical: `${site.url}/terms-and-conditions` },
 };
 
 const LAST_UPDATED = "29 July 2026";

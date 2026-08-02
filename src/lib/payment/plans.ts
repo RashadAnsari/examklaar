@@ -14,6 +14,9 @@ export type SubscriptionStatus = "trialing" | "active" | "cancelled" | "past_due
 export const PLAN_IDS: readonly PlanId[] = ["monthly"];
 export const DEFAULT_PLAN_ID: PlanId = "monthly";
 
+/** What the paid plan is called in provider-side descriptions and invoices. */
+export const PLAN_LABEL = "Monthly";
+
 /**
  * Months of free access granted to a new user while no payment provider is
  * configured (early-stage launch). See grantComplimentaryAccess.
