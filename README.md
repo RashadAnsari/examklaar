@@ -1,90 +1,159 @@
+<div align="center">
+
+<img src="public/examklaar-logo.svg" alt="ExamKlaar" width="96" height="96" />
+
 # ExamKlaar
 
-A web app for practicing the Dutch inburgering (civic integration) exams.
+**Pass your Dutch inburgering exam with confidence**
 
-## What It Does
+Realistic, timed mock exams for all five components of the Dutch civic integration exam,
+with AI feedback on every written and spoken answer.
 
-ExamKlaar lets users take timed, realistic practice exams across all 5 components of the inburgering exam:
+[![Build](https://github.com/RashadAnsari/examklaar/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/RashadAnsari/examklaar/actions/workflows/build.yml)
+[![Exams](https://img.shields.io/badge/practice_exams-25-1b6b4a)](src/data/exams)
+[![Level](https://img.shields.io/badge/level-A2-1b6b4a)](docs/a2-exam-generation.md)
+[![License](https://img.shields.io/badge/license-proprietary-lightgrey)](#license)
 
-- **KNM** — Civic knowledge (Kennis van de Nederlandse Maatschappij)
-- **Reading** — Dutch reading comprehension
-- **Listening** — Dutch listening comprehension
-- **Writing** — Written Dutch with AI-graded feedback
-- **Speaking** — Recorded answers with AI feedback
+[![Next.js](https://img.shields.io/badge/Next.js-16.2-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19.2-087ea4?logo=react&logoColor=white)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Bun](https://img.shields.io/badge/Bun-1.3-fbf0df?logo=bun&logoColor=black)](https://bun.sh)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169e1?logo=postgresql&logoColor=white)](https://www.postgresql.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.2-38bdf8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
-## Getting Started
+[**Live site**](https://www.examklaar.nl) · [**Documentation**](docs/) · [**Exam format**](docs/exam-format.md) · [**Contributing rules**](AGENTS.md)
+
+</div>
+
+---
+
+<div align="center">
+  <img src="public/og-image.png" alt="ExamKlaar practice exams for the Dutch inburgering exam" width="640" />
+</div>
+
+## What it is
+
+Everyone who settles in the Netherlands has to pass the _inburgeringsexamen_, five separate exams
+administered by DUO. Candidates get no official practice material and only a pass or fail back, so
+the first realistic attempt is usually the real one.
+
+ExamKlaar closes that gap. It reproduces the real exam: the same structure, the same timer, the same
+question types, the same media. Reading, listening and KNM are scored instantly. Writing and
+speaking are graded by an AI examiner applying the official DUO assessment model, so a candidate
+finds out where they stand before paying €250 to find out at DUO.
+
+## The five components
+
+| Component                                   | What the candidate does                                              | How it is scored                   |
+| ------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------- |
+| **KNM** (_Kennis Nederlandse Maatschappij_) | Answers questions on Dutch society, history, culture and civic rules | Instantly, per answer key          |
+| **Lezen** (Reading)                         | Reads Dutch texts and answers comprehension questions                | Instantly, per answer key          |
+| **Luisteren** (Listening)                   | Listens to Dutch audio fragments and answers questions on them       | Instantly, per answer key          |
+| **Schrijven** (Writing)                     | Writes short Dutch texts to a prompt                                 | AI examiner, MVT three-point model |
+| **Spreken** (Speaking)                      | Records spoken answers to a video or audio prompt                    | AI examiner, MVT three-point model |
+
+Five exams per component, 25 in total, all at A2 level. KNM has no level, matching DUO.
+
+## How it works
+
+1. **Sign up** and confirm the email address. A new account gets a 7-day free trial.
+2. **Pick a component and an exam.** The exam opens with the real timer and no way to pause.
+3. **Submit.** Closed questions score immediately, written and spoken answers go to the AI examiner.
+4. **Review.** Every question is replayable next to the correct answer, the candidate's own answer,
+   and the examiner's feedback, including the original recording for speaking.
+
+## Tech stack
+
+| Layer          | Choice                                                                 |
+| -------------- | ---------------------------------------------------------------------- |
+| Framework      | Next.js 16 (App Router), React 19, TypeScript                          |
+| Styling        | Tailwind CSS 4, design tokens in `src/app/globals.css`                 |
+| Runtime, tests | Bun, `bun test`                                                        |
+| Database       | PostgreSQL 17, plain SQL migrations, `pg` pool                         |
+| Auth           | Better Auth, email and password with mandatory verification            |
+| AI grading     | Google AI via the Vercel AI SDK                                        |
+| Speech         | Transcription on the server with Transformers.js, no external call     |
+| Storage        | Any S3-compatible object storage, two buckets                          |
+| Payments       | Paddle, behind a provider interface                                    |
+| Email          | SMTP via Nodemailer                                                    |
+| Deployment     | Docker Compose on a single host, driven by Ansible from GitHub Actions |
+
+## Quick start
 
 ```bash
 bun install
 make up         # local Postgres on port 5432
 make migrate    # apply db/migrations
-make dev
+make dev        # http://localhost:3000
 ```
 
-Requires environment variables for Postgres, S3 storage, SMTP, Google AI, and Paddle: see `.env.example`. `docker-compose.yml` at the repo root is the local development database only; the production stack lives in `deploy/`.
+Copy `.env.example` to `.env.local` and fill it in. Postgres, SMTP, S3 storage, Google AI and Paddle
+each need values, and the file documents what every variable is for.
 
-## Infrastructure
+`docker-compose.yml` at the repo root is the local development database only. The production stack
+lives in [`deploy/`](deploy).
 
-**Database.** Any Postgres reachable through `DATABASE_URL`. Apply the schema with `make migrate`, which runs `db/migrations/*.sql` in filename order and records what it applied in `schema_migrations`. Re-running it is a no-op. `db/migrations/0001_auth.sql` holds Better Auth's own schema and is not hand-written. After changing the Better Auth config or plugins, run `bunx @better-auth/cli generate --config src/lib/auth.ts` against a running database and add what it reports as a new migration, rather than editing that file. The CLI introspects a live database, so it needs one up, and pointed at an already-migrated database it emits only the delta.
+### Everyday commands
 
-**Auth.** Better Auth with email and password, mounted at `/api/auth`. Email verification is required, so a new account is inactive until the confirmation link is clicked. Signup confirmation and password reset emails go out over SMTP.
+| Command          | What it does                                          |
+| ---------------- | ----------------------------------------------------- |
+| `make dev`       | Start the dev server                                  |
+| `make local`     | Format, lint, typecheck and test, the full local gate |
+| `make test`      | Run `bun test`                                        |
+| `make coverage`  | Run the tests with coverage                           |
+| `make build`     | Production build                                      |
+| `make migrate`   | Apply `db/migrations` in order                        |
+| `make db-shell`  | `psql` into the local database                        |
+| `make up`/`down` | Start or stop the local database                      |
 
-**Object storage.** Two S3-compatible buckets:
+Run `make local` before every commit. CI runs the same targets, so a check that passes locally
+passes there too.
 
-- `speaking-recordings` (private): uploaded server-side by `/api/exams/submit`, read back through 5-minute signed URLs. Set a lifecycle rule on this bucket to expire objects after 30 days. The app never deletes recordings itself, and the review page already handles a missing recording.
-- `exam-assets` (public read): the audio, images, and video referenced by the exam JSON. Point `EXAM_ASSETS_BASE_URL` at its public base URL, with no trailing slash.
+## Project structure
 
-The Content-Security-Policy in `next.config.ts` derives the allowed media origins from `EXAM_ASSETS_BASE_URL` and `S3_ENDPOINT`, so there is nothing extra to configure when either host changes.
-
-## Deployment
-
-The app and the infra it depends on are two independent compose stacks on the same host, each with its own playbook, so redeploying the app never restarts Postgres.
-
-| Stack | Playbook            | Template                            | Triggered by                                     |
-| ----- | ------------------- | ----------------------------------- | ------------------------------------------------ |
-| Infra | `deploy/infra.yaml` | `deploy/tmpls/infra-compose.yml.j2` | the **Infra** workflow, manually                 |
-| App   | `deploy/app.yaml`   | `deploy/tmpls/app-compose.yml.j2`   | the deploy job in `build.yml`, on push to master |
-
-The infra stack holds the stateful services, currently Postgres and its backup sidecar, and owns the `examklaar_network` Docker network. The app stack joins that network as an external network and reaches Postgres by hostname, so the database port is never published. Run the Infra workflow once before the first app deploy, and afterwards only to change the Postgres image or its settings. `deploy/app.yaml` fails early with a clear error if the network is missing.
-
-Migrations run from `deploy/app.yaml` after the app container starts, since the schema belongs to the app version being deployed rather than to the infra stack.
-
-### Backups
-
-The infra stack includes a `db-backup` sidecar running `deploy/files/backup.sh`. Every 24 hours it takes a `pg_dump --format=custom` and uploads it to a private backups bucket under a `YYYY/MM/DD/` key. It runs on the same image as the server so `pg_dump` always matches the server's major version, and it uses its own storage credentials scoped to the backups bucket, so a compromised app container cannot reach a dump of the whole database.
-
-Set up once:
-
-- A private `examklaar-backups` bucket, with a lifecycle rule for however long you want to keep dumps. The script never deletes anything.
-- A storage API token with object read and write, scoped to that bucket alone, supplied as `S3_BACKUP_ACCESS_KEY_ID` and `S3_BACKUP_SECRET_ACCESS_KEY`.
-
-A dump smaller than 1 KB is refused rather than uploaded, so a failed or half-written dump cannot age out the good ones under the lifecycle rule. The container reports unhealthy if no backup has succeeded in 26 hours, which is the signal to watch: `docker ps` shows the status, and `docker logs examklaar_db_backup` shows why.
-
-To restore, copy a dump down and feed it to `pg_restore`:
-
-```bash
-aws s3 cp s3://examklaar-backups/2026/07/29/examklaar-20260729T020000Z.dump . \
-  --endpoint-url "$S3_ENDPOINT"
-docker compose -f /etc/examklaar/infra-compose.yml cp \
-  examklaar-20260729T020000Z.dump postgres:/tmp/restore.dump
-docker compose -f /etc/examklaar/infra-compose.yml exec -T postgres \
-  pg_restore -U examklaar -d examklaar --clean --if-exists /tmp/restore.dump
 ```
-
-Stop the app stack first so nothing writes during the restore. Rehearse this at least once: an untested backup is not a backup.
+src/
+  app/              routes, API handlers and page components (App Router)
+  components/       ui/ primitives, layout/, pricing/, payment/, analytics/
+  config/           site.ts, everything that identifies the product
+  data/             exams/ the exam JSON, grading/ the DUO assessment models
+  hooks/            shared client hooks
+  lib/              db, auth, exam scoring and grading, payment, storage, email
+db/migrations/      numbered SQL migrations, applied by scripts/migrate.ts
+deploy/             Ansible playbooks and compose templates for the server
+docs/               authoring, generation and operations documentation
+scripts/            migrate, grant-subscription, delete-user
+test/               test setup and the stub Postgres pool
+```
 
 ## Documentation
 
-- [Exam JSON format](docs/exam-format.md) — the schema, per-skill conventions, and asset rules for exam data files.
-- [A2 exam generation runbook](docs/a2-exam-generation.md) — how to author a new A2 exam for any component in the app's format.
-- [Reference example exams](docs/examples/README.md) — official A2 exams, one or more per component, for inspiration.
-- [Dutch text-to-speech](docs/dutch-text-to-speech.md) — generating spoken Dutch audio locally for listening and speaking prompts.
-- [Image generation](docs/image-generation.md) — generating exam scene images locally.
-- [Video generation](docs/video-generation.md) — generating talking-head videos locally for speaking Part 1 prompts.
-- [Testing payment webhooks](docs/testing-payment-webhooks.md) — receiving Paddle webhooks against a local dev server.
+The full index lives in [`docs/`](docs/README.md).
 
-## Skills
+| Guide                                                        | What it covers                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------------ |
+| [Exam JSON format](docs/exam-format.md)                      | The schema, per-skill conventions and asset rules for exam data    |
+| [A2 exam generation runbook](docs/a2-exam-generation.md)     | How to author a new A2 exam for any component                      |
+| [Reference example exams](docs/examples/README.md)           | Official DUO A2 exams, kept as a calibration reference             |
+| [Dutch text-to-speech](docs/dutch-text-to-speech.md)         | Generating spoken Dutch audio locally for listening and speaking   |
+| [Image generation](docs/image-generation.md)                 | Generating exam scene images locally                               |
+| [Video generation](docs/video-generation.md)                 | Generating talking-head video for speaking Part 1 prompts          |
+| [Infrastructure](docs/infrastructure.md)                     | Database, auth, object storage and the media policy                |
+| [Deployment](docs/deployment.md)                             | The two compose stacks, the workflows that drive them, and backups |
+| [Testing payment webhooks](docs/testing-payment-webhooks.md) | Receiving Paddle webhooks against a local dev server               |
 
-Project skills live in `.claude/skills/` and are invoked with a slash command.
+[`AGENTS.md`](AGENTS.md) holds the conventions every change in this repository follows, for people
+and for coding agents alike. Read it before touching code.
 
-- **`/generate-a2-exam <reading|listening|writing|speaking|knm>`** — generates a new A2 exam for a component, writes the JSON into the exam data, and stages an assets folder to upload to the `exam-assets` bucket.
+## Project skills
+
+Project skills live in `.claude/skills/` and are invoked as a slash command.
+
+| Skill                                                            | What it does                                                                                              |
+| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `/generate-a2-exam <reading\|listening\|writing\|speaking\|knm>` | Generates a new A2 exam for a component, writes the JSON into the exam data, and stages its assets folder |
+
+## License
+
+Proprietary. All rights reserved. This repository and the exam content in it are not licensed for
+reuse or redistribution.

@@ -1,5 +1,7 @@
 # Generating exam images from the scene text
 
+[Documentation index](./README.md)
+
 When content describes a picture in text and needs an actual image, this is the local, free, offline
 pipeline for turning that Dutch scene text into realistic images.
 

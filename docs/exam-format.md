@@ -1,5 +1,7 @@
 # Exam JSON format
 
+[Documentation index](./README.md)
+
 Exams are JSON files under `src/data/exams/`. This is the authoring reference: directory layout,
 file naming, the schema, the per-skill conventions, how to embed media, and how questions are scored.
 

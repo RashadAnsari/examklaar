@@ -1,5 +1,7 @@
 # Generating Dutch speech from text
 
+[Documentation index](./README.md)
+
 This is the local, free, offline pipeline for turning Dutch text into natural sounding audio. Use it
 whenever content needs spoken audio: dialogues, voicemails, announcements, spoken prompts, or any
 other text where a human voice is expected.

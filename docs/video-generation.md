@@ -1,5 +1,7 @@
 # Generating talking-head video from a portrait and audio
 
+[Documentation index](./README.md)
+
 This is the local, free, offline pipeline for turning a portrait image plus a spoken audio clip into
 a lip-synced talking-head video. Use it for the speaking exam Part 1 prompts, where a presenter on
 screen asks the question, matching the real DUO exam (which shows a person on video rather than
