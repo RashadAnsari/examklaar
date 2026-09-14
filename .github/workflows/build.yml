@@ -69,7 +69,7 @@ jobs:
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:fortyfivewegci
+          tags: tag:examklaarci
 
       - name: Run Playbook
         if: github.ref == 'refs/heads/master' && vars.DEPLOY_HOST != ''
