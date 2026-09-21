@@ -160,10 +160,6 @@ const SECTIONS: LegalSection[] = [
         text: "Automatically deleted after 30 days, regardless of account status.",
       },
       {
-        subtitle: "Deleted email addresses",
-        text: "When an account is deleted we keep an irreversible cryptographic fingerprint of the email address, and nothing else, so that the address cannot be used to open a new account. The address itself is not retained and the fingerprint cannot be turned back into it. We keep this to prevent repeated use of free trials, which is our legitimate interest under Article 6(1)(f).",
-      },
-      {
         subtitle: "Subscription reference records",
         text: "Retained for 7 years as required under Dutch tax and accounting law.",
       },

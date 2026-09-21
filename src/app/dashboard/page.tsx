@@ -7,11 +7,7 @@ import { listSkillGroups } from "@/data/exams";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 import { WelcomeGiftModal } from "@/components/ui/WelcomeGiftModal";
 import { getUserSubscription } from "@/lib/payment/subscription";
-import {
-  COMPLIMENTARY_ACCESS_MONTHS,
-  hasPremiumAccess,
-  isTrialEligible,
-} from "@/lib/payment/plans";
+import { COMPLIMENTARY_ACCESS_MONTHS, hasPremiumAccess } from "@/lib/payment/plans";
 
 export default async function DashboardPage({
   searchParams,
@@ -33,7 +29,6 @@ export default async function DashboardPage({
   ]);
 
   const isPaid = sub ? hasPremiumAccess(sub) : false;
-  const trialEligible = sub ? isTrialEligible(sub) : true;
 
   const completedByGroup = new Map<string, Set<string>>();
   for (const r of results) {
@@ -65,7 +60,7 @@ export default async function DashboardPage({
           <p style={{ color: "var(--gray-600)" }}>Continue practicing for your inburgering exam</p>
         </div>
 
-        <DashboardClient skills={skills} isPaid={isPaid} trialEligible={trialEligible} />
+        <DashboardClient skills={skills} isPaid={isPaid} />
         {showWelcomeGift && <WelcomeGiftModal months={COMPLIMENTARY_ACCESS_MONTHS} />}
       </div>
 

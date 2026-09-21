@@ -8,7 +8,7 @@
  */
 
 export type PlanId = "monthly";
-export type SubscriptionStatus = "trialing" | "active" | "cancelled" | "past_due" | "expired";
+export type SubscriptionStatus = "active" | "cancelled" | "past_due" | "expired";
 
 /** Every plan the app currently offers. Add new plan ids here. */
 export const PLAN_IDS: readonly PlanId[] = ["monthly"];
@@ -22,6 +22,16 @@ export const PLAN_LABEL = "Monthly";
  * configured (early-stage launch). See grantComplimentaryAccess.
  */
 export const COMPLIMENTARY_ACCESS_MONTHS = 3;
+
+/**
+ * The exam every skill offers for free. Exams are numbered from 1 per skill,
+ * so this makes the first exam of each skill free for any signed-in user.
+ *
+ * It lives here, next to hasPremiumAccess, because it is an access rule: every
+ * caller that asks whether a single exam may be opened needs both answers in
+ * the same breath (see canAccessExam).
+ */
+export const FREE_EXAM_NUMBER = 1;
 
 export function isPlanId(value: unknown): value is PlanId {
   return typeof value === "string" && (PLAN_IDS as readonly string[]).includes(value);
@@ -57,7 +67,6 @@ export const NO_SUBSCRIPTION: UserSubscription = {
  *
  * For provider-backed (Paddle) subscriptions we trust the status, which the
  * provider keeps in sync via webhooks:
- * - trialing → allow (within the 7-day free trial)
  * - active → allow
  * - past_due → allow (provider is still retrying payment; revoke only on expired)
  * - cancelled but still within the paid period → allow (user paid through the end)
@@ -65,8 +74,7 @@ export const NO_SUBSCRIPTION: UserSubscription = {
  *
  * We intentionally do NOT enforce current_period_end for an active provider sub:
  * that would falsely deny access during the renewal window (period ended, renewal
- * webhook not yet processed). A trial cancelled immediately has current_period_end
- * set to now, so it falls through to denied here.
+ * webhook not yet processed).
  */
 export function hasPremiumAccess(sub: UserSubscription): boolean {
   if (sub.planId === null) {
@@ -78,7 +86,7 @@ export function hasPremiumAccess(sub: UserSubscription): boolean {
     return !!sub.currentPeriodEnd && sub.currentPeriodEnd > new Date();
   }
 
-  if (sub.status === "active" || sub.status === "trialing" || sub.status === "past_due") {
+  if (sub.status === "active" || sub.status === "past_due") {
     return true;
   }
 
@@ -89,11 +97,15 @@ export function hasPremiumAccess(sub: UserSubscription): boolean {
   return false;
 }
 
+/** Whether this exam number is the free sample of its skill. */
+export function isFreeExam(n: number): boolean {
+  return n === FREE_EXAM_NUMBER;
+}
+
 /**
- * Whether the user is eligible for the free trial. Only users who have never
- * subscribed (no subscription row) get the trial; anyone who has subscribed or
- * trialed before is billed immediately on checkout.
+ * Returns true when the user may open one specific exam of a skill: the first
+ * exam of every skill is free for everyone, the rest need a subscription.
  */
-export function isTrialEligible(sub: UserSubscription): boolean {
-  return sub.planId === null;
+export function canAccessExam(sub: UserSubscription, n: number): boolean {
+  return isFreeExam(n) || hasPremiumAccess(sub);
 }

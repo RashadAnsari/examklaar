@@ -20,19 +20,19 @@ import {
 export const metadata: Metadata = {
   title: `${site.name}: ${site.tagline}`,
   description:
-    "Prepare for your Dutch inburgering exam (A2/B1) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. 7-day free trial.",
+    "Prepare for your Dutch inburgering exam (A2/B1) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. The first exam of every skill is free.",
   alternates: { canonical: site.url },
   openGraph: {
     title: `${site.name}: ${site.tagline}`,
     description:
-      "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. 7-day free trial.",
+      "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. The first exam of every skill is free.",
     url: site.url,
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name}: ${site.tagline}`,
     description:
-      "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. 7-day free trial.",
+      "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. The first exam of every skill is free.",
   },
 };
 
@@ -79,7 +79,7 @@ export default function LandingPage() {
             style={{ background: "var(--green-50)", color: "var(--green-700)" }}
           >
             <ClockIcon style={{ width: 15, height: 15 }} />
-            Have an exam deadline? Try it free for 7 days.
+            Have an exam deadline? Start with a free exam today.
           </div>
 
           <h1
@@ -109,7 +109,7 @@ export default function LandingPage() {
 
           <div className="flex flex-wrap gap-4 justify-center">
             <Button href="/auth/signup" variant="primary" size="lg">
-              Start Your Free Trial
+              Start Practicing Free
               <ArrowRightIcon style={{ width: 20, height: 20 }} />
             </Button>
             <Button href="#how-it-works" variant="secondary" size="lg">
@@ -124,7 +124,7 @@ export default function LandingPage() {
           >
             <TrustItem
               icon={<CheckCircleIcon style={{ width: 18, height: 18 }} />}
-              text="7-day free trial"
+              text="First exam of every skill free"
             />
             <TrustItem
               icon={<AcademicCapIcon style={{ width: 18, height: 18 }} />}
@@ -157,8 +157,8 @@ export default function LandingPage() {
             <StepCard
               step="1"
               icon={<UserPlusIcon style={{ width: 22, height: 22 }} />}
-              title="Start your free trial"
-              description="Sign up and start your 7-day free trial. Cancel anytime before it ends."
+              title="Create your free account"
+              description="Sign up and take the first exam of any skill for free. No payment method needed."
             />
             <StepCard
               step="2"
@@ -246,11 +246,11 @@ export default function LandingPage() {
             Start Preparing Today
           </h2>
           <p className="mb-8 opacity-90" style={{ fontSize: "1.25rem", lineHeight: 1.7 }}>
-            Try {site.name} free for 7 days. Cancel anytime. Practice at your own pace and walk into
-            your exam with confidence.
+            Take the first exam of every skill on {site.name} for free. Practice at your own pace
+            and walk into your exam with confidence.
           </p>
           <Button href="/auth/signup" variant="white" size="lg">
-            Start Your Free Trial
+            Start Practicing Free
             <ArrowRightIcon style={{ width: 20, height: 20 }} />
           </Button>
         </div>

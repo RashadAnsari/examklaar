@@ -8,11 +8,6 @@ export interface CheckoutParams {
   cancelUrl: string;
   /** Customer ID already on file at this provider, if any. */
   existingCustomerId?: string;
-  /**
-   * When true, use the price without a free trial. Set for returning customers
-   * who have subscribed before, so they cannot claim the trial a second time.
-   */
-  skipTrial?: boolean;
 }
 
 export interface CheckoutResult {
@@ -35,7 +30,7 @@ export interface WebhookEvent {
   providerCustomerId: string;
   providerSubscriptionId: string;
   planId: PlanId;
-  status: "trialing" | "active" | "cancelled" | "past_due" | "expired";
+  status: "active" | "cancelled" | "past_due" | "expired";
   currentPeriodStart: Date;
   currentPeriodEnd: Date;
   cancelAtPeriodEnd: boolean;
@@ -65,7 +60,9 @@ export interface PaymentProvider {
    */
   parseWebhook(rawBody: string, signature: string | null): Promise<WebhookEvent | null>;
   /**
-   * Cancel an active subscription at the provider side.
+   * Cancel an active subscription at the provider side. By default the customer
+   * keeps access until the end of the period they already paid for; `immediately`
+   * is for account erasure, where there is no account left to keep access for.
    * providerCustomerId is required for providers that scope subscriptions under customers (e.g. paddle).
    */
   cancelSubscription(

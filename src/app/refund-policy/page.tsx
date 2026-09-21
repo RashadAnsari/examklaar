@@ -20,9 +20,9 @@ const SECTIONS: LegalSection[] = [
   {
     title: "2. Statutory Right of Withdrawal (EU/EEA Consumers)",
     content:
-      "Your statutory rights come first, and nothing in this policy limits them. If you are a consumer in the European Union or European Economic Area, you have a statutory 14-day right of withdrawal under the EU Consumer Rights Directive (2011/83/EU). At checkout you expressly consent to delivery starting immediately and acknowledge that the right of withdrawal is lost once delivery of the digital content has begun, in accordance with Article 16(m) of the Directive and article 6:230p under (g) of the Dutch Civil Code (BW). Where the law treats your subscription as an ongoing digital service rather than digital content, a withdrawal within 14 days entitles you to a refund reduced by a proportionate amount for the service already provided (Article 14(3) of the Directive). Free access is never charged for, so there is nothing to withdraw from during a free trial or a complimentary access period, and cancelling during one is always free. In line with Paddle's Refund Policy, when a free trial ends you again have 14 calendar days to exercise your right of withdrawal in respect of the first payment.",
+      "Your statutory rights come first, and nothing in this policy limits them. If you are a consumer in the European Union or European Economic Area, you have a statutory 14-day right of withdrawal under the EU Consumer Rights Directive (2011/83/EU). At checkout you expressly consent to delivery starting immediately and acknowledge that the right of withdrawal is lost once delivery of the digital content has begun, in accordance with Article 16(m) of the Directive and article 6:230p under (g) of the Dutch Civil Code (BW). Where the law treats your subscription as an ongoing digital service rather than digital content, a withdrawal within 14 days entitles you to a refund reduced by a proportionate amount for the service already provided (Article 14(3) of the Directive). Free access is never charged for, so there is nothing to withdraw from where you only use the free exams or a complimentary access period, and stopping is always free.",
     footer:
-      "You may contact Paddle within 14 days of purchase, or within 14 days of the end of a free trial, to request a withdrawal. Paddle will assess such requests in accordance with their Buyer Terms and Refund Policy.",
+      "You may contact Paddle within 14 days of purchase to request a withdrawal. Paddle will assess such requests in accordance with their Buyer Terms and Refund Policy.",
   },
   {
     title: "3. Discretionary Refunds",
@@ -58,7 +58,7 @@ const SECTIONS: LegalSection[] = [
   {
     title: "6. Cancellation",
     content:
-      "You may cancel your subscription at any time from the account settings page or by contacting hallo@examklaar.nl. Cancellation stops future billing. If you cancel during the free trial, your access ends immediately and no charge is made. If you cancel a paid subscription, you retain access to paid features until the end of the current billing period. Cancellation on its own does not entitle you to a refund of the current period, without prejudice to the statutory right of withdrawal described in section 2.",
+      "You may cancel your subscription at any time from the account settings page or by contacting hallo@examklaar.nl. Cancellation stops future billing. You retain access to paid features until the end of the current billing period, and keep the free access that needs no subscription after that. Cancellation on its own does not entitle you to a refund of the current period, without prejudice to the statutory right of withdrawal described in section 2.",
   },
   {
     title: "7. Changes to This Policy",

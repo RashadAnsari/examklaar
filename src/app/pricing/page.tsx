@@ -6,19 +6,19 @@ import { PricingCards } from "@/components/pricing/PricingCards";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Try ExamKlaar free for 7 days, then €9.99/month. Get unlimited access to all 5 inburgering exam components (KNM, Reading, Listening, Writing, and Speaking) with AI-powered feedback.",
+    "The first exam of every skill is free, then €9.99/month for unlimited access to all 5 inburgering exam components (KNM, Reading, Listening, Writing, and Speaking) with AI-powered feedback.",
   alternates: { canonical: "https://www.examklaar.nl/pricing" },
   openGraph: {
     title: "Pricing: Inburgering Exam Practice Plans | ExamKlaar",
     description:
-      "Try ExamKlaar free for 7 days, then €9.99/month. Unlimited access to all 5 inburgering exam components with AI-powered feedback.",
+      "The first exam of every skill is free, then €9.99/month for unlimited access to all 5 inburgering exam components with AI-powered feedback.",
     url: "https://www.examklaar.nl/pricing",
   },
   twitter: {
     card: "summary_large_image",
     title: "Pricing: Inburgering Exam Practice Plans | ExamKlaar",
     description:
-      "Try ExamKlaar free for 7 days, then €9.99/month. Unlimited access to all 5 inburgering exam components with AI-powered feedback.",
+      "The first exam of every skill is free, then €9.99/month for unlimited access to all 5 inburgering exam components with AI-powered feedback.",
   },
 };
 
@@ -34,14 +34,14 @@ const FAQS = [
       "No. ExamKlaar is an independent practice platform. We are not affiliated with DUO or the Dutch government. Our content is designed to closely reflect the official exam format and CEFR A2/B1 standards, but we cannot guarantee exam results.",
   },
   {
-    question: "How does the 7-day free trial work?",
+    question: "Which exams can I take for free?",
     answer:
-      "When you start your trial you get full access to every exam and all AI feedback for 7 days. You add a payment method at signup, but you are not charged during the trial. After 7 days your subscription renews automatically at €9.99/month unless you cancel before the trial ends.",
+      "The first exam of every skill is free. Create an account and you can take exam 1 of KNM, Reading, Listening, Writing, and Speaking at no cost, including the AI feedback on your writing and speaking answers. No payment method is needed. The remaining exams of each skill need a subscription.",
   },
   {
-    question: "What happens if I cancel during the trial?",
+    question: "What do I get when I subscribe?",
     answer:
-      "If you cancel during the 7-day trial, your access ends immediately and you are never charged. If you cancel after the trial while on a paid subscription, you keep access until the end of your current billing period.",
+      "A subscription unlocks every exam of every skill, unlimited practice attempts, AI feedback on all your writing and speaking answers, and full progress tracking. It costs €9.99 per month and you can cancel at any time.",
   },
   {
     question: "How does the AI feedback work?",
@@ -51,7 +51,7 @@ const FAQS = [
   {
     question: "Can I cancel my subscription anytime?",
     answer:
-      "Yes. You can cancel your subscription at any time from your account settings. If you cancel a paid subscription, you keep access until the end of the current billing period and won't be charged again. If you cancel during the free trial, access ends immediately.",
+      "Yes. You can cancel your subscription at any time from your account settings. You keep access until the end of the current billing period and won't be charged again. After that you can still take the free first exam of every skill.",
   },
   {
     question: "What is your refund policy?",
@@ -98,7 +98,8 @@ export default function PricingPage() {
           className="mx-auto"
           style={{ fontSize: "1.25rem", color: "var(--gray-600)", maxWidth: "640px" }}
         >
-          Full access to every exam with AI feedback. €9.99 / month, cancel anytime.
+          The first exam of every skill is free. Unlock all the rest for €9.99 / month, cancel
+          anytime.
         </p>
       </div>
 

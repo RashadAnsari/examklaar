@@ -7,7 +7,7 @@ import { scorePct, getPassThreshold } from "@/lib/exam/scoring";
 import type { Exam } from "@/app/exam/ExamClient";
 import { ReviewClient, type ReviewQuestion } from "./ReviewClient";
 import { getUserSubscription } from "@/lib/payment/subscription";
-import { hasPremiumAccess } from "@/lib/payment/plans";
+import { canAccessExam } from "@/lib/payment/plans";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 type QuestionFeedback = { score: number; maxScore: number; feedback: string };
@@ -29,7 +29,7 @@ export default async function ReviewPage(props: {
   }
 
   const sub = await getUserSubscription(user.id);
-  if (!hasPremiumAccess(sub)) {
+  if (!canAccessExam(sub, n)) {
     redirect("/pricing");
   }
 

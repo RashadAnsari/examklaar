@@ -19,10 +19,6 @@
  * explicit choice, made with --purge-billing-history, rather than a silent
  * side effect of deleting them.
  *
- * The same transaction records the address in deleted_accounts, which blocks a
- * later sign-up on it: an erased account does not get a fresh trial, and the
- * archived customer at the payment provider still holds that address anyway.
- *
  * Every step is safe to repeat, so a run that fails halfway can be run again.
  *
  * Flags:
@@ -34,7 +30,6 @@
  */
 import { pool } from "@/lib/db";
 import { getPaymentProviderByName } from "@/lib/payment/provider";
-import { DeletedAccountRepository } from "@/lib/repositories/deletedAccountRepository";
 import { PaymentCustomerRepository } from "@/lib/repositories/paymentCustomerRepository";
 import { SubscriptionRepository } from "@/lib/repositories/subscriptionRepository";
 import { deleteUserRecordings } from "@/lib/storage/recordings";
@@ -121,8 +116,7 @@ async function printSummary(user: UserRow): Promise<void> {
 async function confirm(user: UserRow): Promise<void> {
   const rl = createInterface({ input: process.stdin, output: process.stdout });
   const answer = await rl.question(
-    `\nThis cannot be undone, and ${user.email} will be blocked from signing up again.\n` +
-      `Type ${user.email} to confirm: `
+    `\nThis cannot be undone.\n` + `Type ${user.email} to confirm: `
   );
   rl.close();
   if (answer.trim() !== user.email) {
@@ -160,7 +154,7 @@ async function assertBillingHistoryDecision(user: UserRow, purge: boolean): Prom
  */
 async function eraseAtPaymentProvider(user: UserRow): Promise<void> {
   const subscription = await new SubscriptionRepository(pool).findByUserId(user.id);
-  const isBillable = subscription?.status === "active" || subscription?.status === "trialing";
+  const isBillable = subscription?.status === "active";
 
   if (subscription?.payment_provider && subscription.provider_subscription_id && isBillable) {
     const provider = getPaymentProviderByName(subscription.payment_provider);
@@ -222,13 +216,6 @@ async function eraseFromDatabase(user: UserRow, purgeBillingHistory: boolean): P
       // the user row: its foreign key is restrict, not cascade.
       await client.query(`delete from subscription_events where user_id = $1`, [user.id]);
     }
-    // Blocks a re-signup on the same address, and records that the erasure was
-    // carried out. In the transaction so the address can never be freed for
-    // re-use by a delete that then rolls back.
-    const { error } = await new DeletedAccountRepository(client).record(user.email);
-    if (error) {
-      throw error;
-    }
     // Cascades to session, account, exam_results, payment_customers and
     // subscriptions.
     await client.query(`delete from "user" where id = $1`, [user.id]);
@@ -274,7 +261,6 @@ async function deleteUser(): Promise<void> {
   console.log(`Deleted ${verificationsDeleted} verification token(s)`);
 
   console.log(`\nDeleted user ${user.email} (${user.id})`);
-  console.log("That address can no longer be used to sign up.");
   if (!skipProvider) {
     console.log(
       "Note: the payment provider keeps paid transactions and invoices for tax reporting, " +

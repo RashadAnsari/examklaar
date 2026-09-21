@@ -16,7 +16,7 @@ export default function PaymentCancelPage() {
             <div>
               <h1 className="text-3xl font-semibold text-slate-900">Checkout cancelled</h1>
               <p className="mt-3 text-sm leading-6 text-slate-500">
-                No charge was made. You can start your 7-day free trial anytime.
+                No charge was made. You can subscribe whenever you are ready.
               </p>
             </div>
           </div>
@@ -25,8 +25,8 @@ export default function PaymentCancelPage() {
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left">
               <p className="text-sm font-semibold text-slate-900">Start when you&apos;re ready</p>
               <p className="mt-2 text-sm text-slate-500">
-                Begin your 7-day free trial whenever you want full access to every exam and AI
-                feedback.
+                The first exam of every skill stays free. Subscribe whenever you want every exam and
+                AI feedback.
               </p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left">
@@ -47,8 +47,7 @@ export default function PaymentCancelPage() {
           </div>
 
           <p className="mt-6 text-center text-sm text-slate-500">
-            Need help? Visit the pricing page for a full feature overview before you start your
-            trial.
+            Need help? Visit the pricing page for a full feature overview before you subscribe.
           </p>
         </div>
       </main>

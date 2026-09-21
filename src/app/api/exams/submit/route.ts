@@ -9,7 +9,7 @@ import {
 } from "@/lib/exam/config";
 import type { Exam } from "@/app/exam/ExamClient";
 import { getUserSubscription } from "@/lib/payment/subscription";
-import { hasPremiumAccess } from "@/lib/payment/plans";
+import { canAccessExam } from "@/lib/payment/plans";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 import { uploadRecording } from "@/lib/storage/recordings";
 
@@ -113,7 +113,7 @@ export async function POST(req: NextRequest) {
   }
 
   const sub = await getUserSubscription(user.id);
-  if (!hasPremiumAccess(sub)) {
+  if (!canAccessExam(sub, n)) {
     console.warn("[submit] Exam blocked, no access — user=%s exam=%s-%s", user.id, skillId, n);
     return NextResponse.json({ error: "upgrade_required" }, { status: 403 });
   }

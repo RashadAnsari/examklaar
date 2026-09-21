@@ -1,8 +1,10 @@
 import { describe, expect, test } from "bun:test";
 import {
+  canAccessExam,
+  FREE_EXAM_NUMBER,
   hasPremiumAccess,
+  isFreeExam,
   isPlanId,
-  isTrialEligible,
   NO_SUBSCRIPTION,
   PLAN_IDS,
   type UserSubscription,
@@ -49,12 +51,6 @@ describe("hasPremiumAccess", () => {
       );
     });
 
-    test("allows trialing", () => {
-      expect(
-        hasPremiumAccess(sub({ ...provider, status: "trialing", currentPeriodEnd: FUTURE }))
-      ).toBe(true);
-    });
-
     test("allows past_due while the provider retries payment", () => {
       expect(
         hasPremiumAccess(sub({ ...provider, status: "past_due", currentPeriodEnd: PAST }))
@@ -81,13 +77,35 @@ describe("hasPremiumAccess", () => {
   });
 });
 
-describe("isTrialEligible", () => {
-  test("eligible only when there is no subscription row", () => {
-    expect(isTrialEligible(NO_SUBSCRIPTION)).toBe(true);
+describe("isFreeExam", () => {
+  test("only the first exam of a skill is free", () => {
+    expect(isFreeExam(FREE_EXAM_NUMBER)).toBe(true);
+    for (const n of [2, 3, 4, 5]) {
+      expect(isFreeExam(n)).toBe(false);
+    }
+  });
+});
+
+describe("canAccessExam", () => {
+  const expired = sub({ planId: "monthly", status: "expired", paymentProvider: "paddle" });
+
+  test("opens the free exam to a user with no subscription at all", () => {
+    expect(canAccessExam(NO_SUBSCRIPTION, FREE_EXAM_NUMBER)).toBe(true);
   });
 
-  test("not eligible once any subscription exists, even a cancelled one", () => {
-    expect(isTrialEligible(sub({ planId: "monthly", status: "cancelled" }))).toBe(false);
+  test("opens the free exam to a user whose access has ended", () => {
+    expect(canAccessExam(expired, FREE_EXAM_NUMBER)).toBe(true);
+  });
+
+  test("keeps every other exam behind the subscription", () => {
+    expect(canAccessExam(NO_SUBSCRIPTION, 2)).toBe(false);
+    expect(canAccessExam(expired, 5)).toBe(false);
+  });
+
+  test("opens every exam to a subscriber", () => {
+    const active = sub({ planId: "monthly", status: "active", paymentProvider: "paddle" });
+    expect(canAccessExam(active, 2)).toBe(true);
+    expect(canAccessExam(active, 5)).toBe(true);
   });
 });
 

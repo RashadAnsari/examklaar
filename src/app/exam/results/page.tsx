@@ -21,7 +21,7 @@ import {
 } from "@/lib/exam/scoring";
 import { BackGuard } from "./BackGuard";
 import { getUserSubscription } from "@/lib/payment/subscription";
-import { hasPremiumAccess } from "@/lib/payment/plans";
+import { canAccessExam } from "@/lib/payment/plans";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 type QuestionFeedback = {
@@ -54,7 +54,7 @@ export default async function ResultsPage(props: {
   }
 
   const sub = await getUserSubscription(user.id);
-  if (!hasPremiumAccess(sub)) {
+  if (!canAccessExam(sub, n)) {
     redirect("/pricing");
   }
 

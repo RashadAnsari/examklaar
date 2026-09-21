@@ -13,35 +13,27 @@ export async function POST() {
   }
 
   const sub = await getUserSubscription(user.id);
-  if (!sub.planId || (sub.status !== "active" && sub.status !== "trialing")) {
+  if (!sub.planId || sub.status !== "active") {
     console.warn("[subscription/cancel] No active subscription to cancel for user=%s", user.id);
     return NextResponse.json({ error: "No active subscription to cancel" }, { status: 400 });
   }
 
-  // Cancelling during the trial revokes access immediately; cancelling an active
-  // paid plan keeps access until the end of the current billing period.
-  const cancelImmediately = sub.status === "trialing";
-
   if (sub.providerSubscriptionId) {
     try {
       const provider = getPaymentProvider();
-      await provider.cancelSubscription(
-        sub.providerSubscriptionId,
-        sub.providerCustomerId,
-        cancelImmediately
-      );
+      await provider.cancelSubscription(sub.providerSubscriptionId, sub.providerCustomerId);
     } catch (err) {
       console.error("[subscription/cancel] Payment provider error:", err);
       return NextResponse.json({ error: "Failed to cancel with provider" }, { status: 500 });
     }
   }
 
+  // Access always runs to the end of the period the customer already paid for.
   const now = new Date().toISOString();
-  const update = cancelImmediately
-    ? { status: "cancelled", cancel_at_period_end: false, current_period_end: now, updated_at: now }
-    : { cancel_at_period_end: true, updated_at: now };
-
-  const { error } = await new SubscriptionRepository(pool).updateByUserId(user.id, update);
+  const { error } = await new SubscriptionRepository(pool).updateByUserId(user.id, {
+    cancel_at_period_end: true,
+    updated_at: now,
+  });
   if (error) {
     console.error("[subscription/cancel] db error:", error);
     return NextResponse.json({ error: "Failed to update subscription" }, { status: 500 });
@@ -49,14 +41,14 @@ export async function POST() {
 
   await new SubscriptionEventRepository(pool).record({
     user_id: user.id,
-    event_type: cancelImmediately ? "cancelled" : "cancel_scheduled",
+    event_type: "cancel_scheduled",
     plan_id: sub.planId,
-    status: cancelImmediately ? "cancelled" : sub.status,
+    status: sub.status,
     payment_provider: sub.paymentProvider,
     provider_customer_id: sub.providerCustomerId,
     provider_subscription_id: sub.providerSubscriptionId,
-    current_period_end: cancelImmediately ? now : (sub.currentPeriodEnd?.toISOString() ?? null),
-    cancel_at_period_end: !cancelImmediately,
+    current_period_end: sub.currentPeriodEnd?.toISOString() ?? null,
+    cancel_at_period_end: true,
     occurred_at: now,
   });
 

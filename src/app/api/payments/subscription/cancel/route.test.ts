@@ -3,11 +3,10 @@ import type { PaymentProvider } from "@/lib/payment/types";
 import { StubPool } from "../../../../../../test/stubPool";
 
 /**
- * Cancelling is the one route that takes access away, and the two cases differ
- * in when it ends: a trial is revoked on the spot, a paid plan runs to the end
- * of the period the customer already paid for. Getting that backwards either
- * refunds nothing or gives away a month, so both are pinned here along with
- * the audit row each writes.
+ * Cancelling is the one route that takes access away, and when it ends matters:
+ * a paid plan runs to the end of the period the customer already paid for.
+ * Ending it sooner takes away a month they paid for, so that is pinned here
+ * along with the audit row it writes.
  */
 
 const SUBSCRIPTION_SELECT = /select .* from subscriptions/;
@@ -99,7 +98,7 @@ describe("POST /api/payments/subscription/cancel", () => {
     withSubscription({ status: "active" });
     const res = await POST();
     expect(res.status).toBe(200);
-    expect(cancelCalls).toEqual([["sub_1", "ctm_1", false]]);
+    expect(cancelCalls).toEqual([["sub_1", "ctm_1"]]);
 
     const update = updatedColumns();
     expect(update.cancel_at_period_end).toBe(true);
@@ -108,31 +107,12 @@ describe("POST /api/payments/subscription/cancel", () => {
     expect(update).not.toHaveProperty("status");
   });
 
-  test("revokes access immediately for a trial", async () => {
-    withSubscription({ status: "trialing" });
-    const res = await POST();
-    expect(res.status).toBe(200);
-    expect(cancelCalls).toEqual([["sub_1", "ctm_1", true]]);
-
-    const update = updatedColumns();
-    expect(update.status).toBe("cancelled");
-    expect(update.cancel_at_period_end).toBe(false);
-    expect(new Date(update.current_period_end as string).getTime()).toBeLessThanOrEqual(Date.now());
-  });
-
   test("records the scheduled cancellation in the audit trail", async () => {
     withSubscription({ status: "active" });
     await POST();
     const [event] = pool.matched(RECORD);
     expect(event.params[0]).toBe("user_1");
     expect(event.params[1]).toBe("cancel_scheduled");
-  });
-
-  test("records an immediate cancellation in the audit trail", async () => {
-    withSubscription({ status: "trialing" });
-    await POST();
-    const [event] = pool.matched(RECORD);
-    expect(event.params[1]).toBe("cancelled");
   });
 
   test("leaves the row untouched when the provider refuses", async () => {

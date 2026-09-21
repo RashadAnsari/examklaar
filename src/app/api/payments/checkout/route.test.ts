@@ -5,9 +5,9 @@ import { StubPool } from "../../../../../test/stubPool";
 
 /**
  * The money path into the provider. What matters here is who is allowed to
- * start a checkout and on which price: a returning customer must not be handed
- * a second free trial, and a user who already has access must not be able to
- * buy a second subscription.
+ * start a checkout: a user who already has access must not be able to buy a
+ * second subscription, and the identity sent to the provider must come from the
+ * session rather than from the request body.
  */
 
 const SUBSCRIPTION_SELECT = /select .* from subscriptions/;
@@ -111,18 +111,11 @@ describe("POST /api/payments/checkout", () => {
     expect(checkoutCalls).toHaveLength(0);
   });
 
-  test("offers the trial to a user who has never subscribed", async () => {
-    const res = await POST(checkoutRequest());
-    expect(res.status).toBe(200);
-    expect(checkoutCalls[0].skipTrial).toBe(false);
-  });
-
-  test("skips the trial for a returning customer", async () => {
-    // Anyone with a subscription row has had their trial already.
+  test("lets a user whose access has ended subscribe again", async () => {
     existingSubscription(EXPIRED_ROW);
     const res = await POST(checkoutRequest());
     expect(res.status).toBe(200);
-    expect(checkoutCalls[0].skipTrial).toBe(true);
+    expect(checkoutCalls).toHaveLength(1);
   });
 
   test("passes the session user id and email, not anything from the body", async () => {

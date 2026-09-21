@@ -52,17 +52,17 @@ const SECTIONS: LegalSection[] = [
       "We reserve the right to update, add, or remove features at any time. We will notify you of changes that materially affect a paid service. ExamKlaar is not a governmental organisation and is not affiliated with or endorsed by the Dutch government or DUO.",
   },
   {
-    title: "Article 4. Free Trial and Complimentary Access",
+    title: "Article 4. Free Access",
     content:
-      "We offer free access in two forms. Which one is available to you is shown on the pricing page before you claim it.",
+      "We offer free access in two forms. Which one is available to you is shown on the pricing page.",
     items: [
       {
-        subtitle: "7-day free trial",
-        text: "New users may start a 7-day free trial of the paid subscription. A valid payment method is required to begin the trial, but no charge is made during the trial period. Unless you cancel before the trial ends, your subscription renews automatically into a paid monthly subscription at the then-current price. If you cancel during the trial, your access ends immediately and no charge is made. Each user is eligible for one free trial.",
+        subtitle: "One free exam per skill",
+        text: "Every registered user can take the first exam of each skill free of charge, including the AI feedback that exam produces. No payment method is required and this access does not expire, is not a subscription, and never turns into one. The remaining exams of each skill require a paid subscription. We may change which exams are free, but a change never takes away access to an exam you have already completed.",
       },
       {
         subtitle: "Complimentary early access",
-        text: "While the platform is in its early stages we may instead offer a period of complimentary access at no cost and without a payment method. The length of that period is set at the time you claim it and is confirmed to you when it is granted. Complimentary access is granted once per account, ends automatically when the period expires, and does not renew or convert into a paid subscription. No charge is ever made for it and you may stop using it at any time. Claiming complimentary access uses up your eligibility for the 7-day trial, so a later paid subscription starts billing immediately.",
+        text: "While the platform is in its early stages we may also offer a period of complimentary access to every exam, at no cost and without a payment method. The length of that period is set at the time you claim it and is confirmed to you when it is granted. Complimentary access is granted once per account, ends automatically when the period expires, and does not renew or convert into a paid subscription. No charge is ever made for it and you may stop using it at any time.",
       },
       {
         subtitle: "Changes to these offers",
@@ -81,7 +81,7 @@ const SECTIONS: LegalSection[] = [
       },
       {
         subtitle: "Cancellation",
-        text: "You may cancel your subscription at any time via the account settings page or by contacting us at hallo@examklaar.nl. If you cancel a paid subscription, access continues until the end of the current billing period. If you cancel during the free trial, access ends immediately.",
+        text: "You may cancel your subscription at any time via the account settings page or by contacting us at hallo@examklaar.nl. Access continues until the end of the current billing period. After that you keep the free access described in Article 4.",
       },
       {
         subtitle: "Price changes",

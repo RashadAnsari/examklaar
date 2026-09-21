@@ -32,13 +32,10 @@ function getClient(): Paddle {
   return new Paddle(apiKey, { environment: environment });
 }
 
-function getPriceId(skipTrial: boolean): string {
-  // Returning customers use the no-trial price so they are charged immediately
-  // instead of receiving a second free trial.
-  const envVar = skipTrial ? "PADDLE_PRICE_ID_MONTHLY_NO_TRIAL" : "PADDLE_PRICE_ID_MONTHLY";
-  const id = process.env[envVar];
+function getPriceId(): string {
+  const id = process.env.PADDLE_PRICE_ID_MONTHLY;
   if (!id) {
-    throw new Error(`${envVar} is not set`);
+    throw new Error("PADDLE_PRICE_ID_MONTHLY is not set");
   }
   return id;
 }
@@ -51,9 +48,8 @@ export class PaddleProvider implements PaymentProvider {
     userEmail,
     planId,
     existingCustomerId,
-    skipTrial = false,
   }: CheckoutParams): Promise<CheckoutResult> {
-    const priceId = getPriceId(skipTrial);
+    const priceId = getPriceId();
 
     let customerId = existingCustomerId;
     if (!customerId) {
@@ -122,7 +118,7 @@ export class PaddleProvider implements PaymentProvider {
           providerCustomerId: sub.customerId,
           providerSubscriptionId: sub.id,
           planId: planIdFromCustomData(customData),
-          status: sub.status === "trialing" ? "trialing" : "active",
+          status: "active",
           currentPeriodStart: periodStart,
           currentPeriodEnd: periodEnd,
           cancelAtPeriodEnd: sub.scheduledChange?.action === "cancel",
@@ -142,9 +138,9 @@ export class PaddleProvider implements PaymentProvider {
         const periodEnd = new Date(sub.currentBillingPeriod?.endsAt ?? new Date());
 
         if (sub.status === "canceled") {
-          // Access ends when the cancellation actually takes effect. For an
-          // immediately-cancelled trial this is now; for a scheduled cancellation
-          // it is the period boundary. Falling back to the billing period end.
+          // Access ends when the cancellation actually takes effect, which for a
+          // scheduled cancellation is the period boundary. Falling back to the
+          // billing period end.
           const cancelEnd = sub.canceledAt ? new Date(sub.canceledAt) : periodEnd;
           return {
             type: "subscription.cancelled",
@@ -175,14 +171,14 @@ export class PaddleProvider implements PaymentProvider {
           };
         }
 
-        if (sub.status === "active" || sub.status === "trialing") {
+        if (sub.status === "active") {
           return {
             type: "subscription.renewed",
             userId,
             providerCustomerId: sub.customerId,
             providerSubscriptionId: sub.id,
             planId: planIdFromCustomData(customData),
-            status: sub.status === "trialing" ? "trialing" : "active",
+            status: "active",
             currentPeriodStart: periodStart,
             currentPeriodEnd: periodEnd,
             cancelAtPeriodEnd: sub.scheduledChange?.action === "cancel",

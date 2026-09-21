@@ -1,9 +1,9 @@
 import { getSessionUser } from "@/lib/auth-session";
 import { getUserSubscription } from "@/lib/payment/subscription";
-import { hasPremiumAccess, isTrialEligible } from "@/lib/payment/plans";
+import { hasPremiumAccess } from "@/lib/payment/plans";
 import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/pricing/CheckoutButton";
-import { ClaimTrialButton } from "@/components/pricing/ClaimTrialButton";
+import { ClaimAccessButton } from "@/components/pricing/ClaimAccessButton";
 import { withNext } from "@/lib/redirects";
 import { site } from "@/config/site";
 import {
@@ -16,18 +16,17 @@ import {
 export const PLAN = {
   id: "monthly",
   name: "Monthly plan",
-  badge: "7-day free trial",
+  badge: "First exam free",
   // Shown while no payment provider is configured, when claiming grants
-  // complimentary access instead of the 7-day trial. The length is deliberately
-  // left out here: it can change, and the welcome modal states it on grant.
+  // complimentary access to every exam. The length is deliberately left out
+  // here: it can change, and the welcome modal states it on grant.
   badgeComplimentary: "Free early access",
   headline: "Full access to every exam",
   price: "€9.99",
   priceNote: "/ month",
-  subNote: "7 days free, then €9.99 / month. Cancel anytime.",
+  subNote: "Billed monthly. Cancel anytime.",
   subNoteComplimentary:
     "Full access while we are in early access, free and with no payment method. It ends on its own and never turns into a paid plan.",
-  subNoteReturning: "Billed monthly. Cancel anytime.",
   features: [
     { text: "All exams per skill (growing library)" },
     { text: "Unlimited practice attempts" },
@@ -36,9 +35,8 @@ export const PLAN = {
     { text: "Full progress tracking" },
     { text: "Email support" },
   ],
-  cta: "Start free trial",
+  cta: "Subscribe",
   ctaComplimentary: "Claim free access",
-  ctaReturning: "Subscribe",
   ctaVariant: "primary" as const,
 } as const;
 
@@ -50,20 +48,15 @@ export async function PricingCards() {
 
   const loggedIn = !!user;
   const providerConfigured = !!process.env.PAYMENT_PROVIDER;
-  // No provider yet: claiming grants early-stage complimentary access instead of
-  // the 7-day trial. The offer regime drives the copy, so a logged-out visitor
-  // sees what they will actually get; loggedIn only decides which button runs.
+  // No provider yet: claiming grants early-stage complimentary access to every
+  // exam. The offer regime drives the copy, so a logged-out visitor sees what
+  // they will actually get; loggedIn only decides which button runs.
   const complimentaryOffer = !providerConfigured;
   const claimComplimentary = loggedIn && !providerConfigured;
 
   let hasActiveSubscription = false;
-  // Logged-out visitors are treated as trial-eligible (most are prospective users);
-  // a returning customer who already used the trial is billed immediately.
-  let trialEligible = true;
   if (user) {
-    const sub = await getUserSubscription(user.id);
-    hasActiveSubscription = hasPremiumAccess(sub);
-    trialEligible = isTrialEligible(sub);
+    hasActiveSubscription = hasPremiumAccess(await getUserSubscription(user.id));
   }
 
   return (
@@ -77,7 +70,7 @@ export async function PricingCards() {
       >
         {/* Offer */}
         <div className="bg-white p-8 sm:p-10 flex flex-col">
-          {trialEligible && (
+          {!hasActiveSubscription && (
             <span
               className="inline-flex self-start items-center text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-6"
               style={{ background: "var(--green-50)", color: "var(--green-700)" }}
@@ -102,11 +95,7 @@ export async function PricingCards() {
             </span>
           </div>
           <p className="mt-3 text-sm" style={{ color: "var(--gray-600)" }}>
-            {!trialEligible
-              ? PLAN.subNoteReturning
-              : complimentaryOffer
-                ? PLAN.subNoteComplimentary
-                : PLAN.subNote}
+            {complimentaryOffer ? PLAN.subNoteComplimentary : PLAN.subNote}
           </p>
 
           <div className="mt-auto pt-8">
@@ -115,13 +104,12 @@ export async function PricingCards() {
               claimComplimentary={claimComplimentary}
               complimentaryOffer={complimentaryOffer}
               hasActiveSubscription={hasActiveSubscription}
-              trialEligible={trialEligible}
             />
-            {!hasActiveSubscription && trialEligible && (
+            {!hasActiveSubscription && (
               <p className="mt-3 text-center text-xs" style={{ color: "var(--gray-500)" }}>
                 {complimentaryOffer
                   ? "No payment method needed"
-                  : "No charge during your 7-day trial"}
+                  : "The first exam of every skill stays free"}
               </p>
             )}
           </div>
@@ -175,13 +163,11 @@ function PlanCta({
   claimComplimentary,
   complimentaryOffer,
   hasActiveSubscription,
-  trialEligible,
 }: {
   loggedIn: boolean;
   claimComplimentary: boolean;
   complimentaryOffer: boolean;
   hasActiveSubscription: boolean;
-  trialEligible: boolean;
 }) {
   if (hasActiveSubscription) {
     return (
@@ -190,11 +176,7 @@ function PlanCta({
       </Button>
     );
   }
-  const ctaLabel = !trialEligible
-    ? PLAN.ctaReturning
-    : complimentaryOffer
-      ? PLAN.ctaComplimentary
-      : PLAN.cta;
+  const ctaLabel = complimentaryOffer ? PLAN.ctaComplimentary : PLAN.cta;
   // A logged-out visitor on the pricing page is a prospect, so send them to
   // signup rather than login. `next` brings them back here to claim once the
   // account is live, and the signup page links to login for returning users.
@@ -207,9 +189,9 @@ function PlanCta({
   }
   if (claimComplimentary) {
     return (
-      <ClaimTrialButton contactHref={CONTACT_MAILTO} variant={PLAN.ctaVariant} fullWidth>
+      <ClaimAccessButton contactHref={CONTACT_MAILTO} variant={PLAN.ctaVariant} fullWidth>
         {ctaLabel}
-      </ClaimTrialButton>
+      </ClaimAccessButton>
     );
   }
   return (

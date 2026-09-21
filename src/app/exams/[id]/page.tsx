@@ -10,7 +10,7 @@ import { pool } from "@/lib/db";
 import { listSkillExams } from "@/data/exams";
 import { getScoreFeedback } from "@/lib/exam/scoring";
 import { getUserSubscription } from "@/lib/payment/subscription";
-import { hasPremiumAccess } from "@/lib/payment/plans";
+import { canAccessExam, hasPremiumAccess, isFreeExam, NO_SUBSCRIPTION } from "@/lib/payment/plans";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 interface ExamResult {
@@ -69,8 +69,8 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
 
   const { skill, level, exams } = data;
 
-  const sub = user ? await getUserSubscription(user.id) : null;
-  const isPaid = sub ? hasPremiumAccess(sub) : false;
+  const sub = user ? await getUserSubscription(user.id) : NO_SUBSCRIPTION;
+  const isPaid = hasPremiumAccess(sub);
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--gray-50)" }}>
@@ -104,80 +104,99 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
             {SKILL_DESCRIPTIONS[skill]} · {exams.length} {exams.length === 1 ? "exam" : "exams"}{" "}
             available
           </p>
+          {!isPaid && (
+            <p className="mt-2 text-sm" style={{ color: "var(--green-700)" }}>
+              The first exam is free. Subscribe to unlock the rest.
+            </p>
+          )}
         </div>
 
         <div
           className="rounded-2xl border overflow-hidden"
           style={{ background: "white", borderColor: "var(--gray-200)" }}
         >
-          {exams.map((exam, i) => (
-            <div
-              key={exam.n}
-              className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 sm:px-6 py-4 sm:py-5"
-              style={{
-                borderBottom: i === exams.length - 1 ? "none" : "1px solid var(--gray-100)",
-                opacity: !isPaid ? 0.6 : 1,
-              }}
-            >
+          {exams.map((exam, i) => {
+            const unlocked = canAccessExam(sub, exam.n);
+            return (
               <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center font-semibold text-sm flex-shrink-0"
-                style={{ background: "var(--gray-100)", color: "var(--gray-500)" }}
+                key={exam.n}
+                className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 sm:px-6 py-4 sm:py-5"
+                style={{
+                  borderBottom: i === exams.length - 1 ? "none" : "1px solid var(--gray-100)",
+                  opacity: unlocked ? 1 : 0.6,
+                }}
               >
-                {exam.n}
-              </div>
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center font-semibold text-sm flex-shrink-0"
+                  style={{ background: "var(--gray-100)", color: "var(--gray-500)" }}
+                >
+                  {exam.n}
+                </div>
 
-              <div className="flex-1 min-w-0">
-                <p className="font-semibold text-sm" style={{ color: "var(--gray-900)" }}>
-                  Exam {exam.n}
-                </p>
-                <p className="text-xs mt-0.5" style={{ color: "var(--gray-500)" }}>
-                  {exam.timeLimitMinutes} minutes
-                  {exam.result
-                    ? exam.result.score !== null
-                      ? ` · ${exam.result.score}/${exam.result.total_score} correct`
-                      : " · Completed"
-                    : " · Not attempted yet"}
-                </p>
-                {exam.result?.score !== null &&
-                  exam.result?.score !== undefined &&
-                  (() => {
-                    const feedback = getScoreFeedback(
-                      skill,
-                      level,
-                      exam.result!.score!,
-                      exam.result!.total_score
-                    );
-                    return feedback ? (
-                      <p className="text-xs mt-1" style={{ color: feedback.color }}>
-                        {feedback.label}
-                      </p>
-                    ) : null;
-                  })()}
-              </div>
+                <div className="flex-1 min-w-0">
+                  <p
+                    className="font-semibold text-sm flex items-center gap-2"
+                    style={{ color: "var(--gray-900)" }}
+                  >
+                    Exam {exam.n}
+                    {!isPaid && isFreeExam(exam.n) && (
+                      <span
+                        className="rounded-full px-2 py-0.5 text-xs font-semibold"
+                        style={{ background: "var(--green-50)", color: "var(--green-700)" }}
+                      >
+                        Free
+                      </span>
+                    )}
+                  </p>
+                  <p className="text-xs mt-0.5" style={{ color: "var(--gray-500)" }}>
+                    {exam.timeLimitMinutes} minutes
+                    {exam.result
+                      ? exam.result.score !== null
+                        ? ` · ${exam.result.score}/${exam.result.total_score} correct`
+                        : " · Completed"
+                      : " · Not attempted yet"}
+                  </p>
+                  {exam.result?.score !== null &&
+                    exam.result?.score !== undefined &&
+                    (() => {
+                      const feedback = getScoreFeedback(
+                        skill,
+                        level,
+                        exam.result!.score!,
+                        exam.result!.total_score
+                      );
+                      return feedback ? (
+                        <p className="text-xs mt-1" style={{ color: feedback.color }}>
+                          {feedback.label}
+                        </p>
+                      ) : null;
+                    })()}
+                </div>
 
-              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                {!isPaid ? (
-                  <Button href="/pricing" variant="outline">
-                    <LockClosedIcon style={{ width: 14, height: 14 }} />
-                    Subscribe
-                  </Button>
-                ) : exam.result ? (
-                  <>
-                    <Button href={`/exam/results?skill=${id}&n=${exam.n}`} variant="outline">
-                      Review
+                <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                  {!unlocked ? (
+                    <Button href="/pricing" variant="outline">
+                      <LockClosedIcon style={{ width: 14, height: 14 }} />
+                      Subscribe
                     </Button>
+                  ) : exam.result ? (
+                    <>
+                      <Button href={`/exam/results?skill=${id}&n=${exam.n}`} variant="outline">
+                        Review
+                      </Button>
+                      <Button href={`/exam?skill=${id}&n=${exam.n}`} variant="primary">
+                        Retake
+                      </Button>
+                    </>
+                  ) : (
                     <Button href={`/exam?skill=${id}&n=${exam.n}`} variant="primary">
-                      Retake
+                      Start
                     </Button>
-                  </>
-                ) : (
-                  <Button href={`/exam?skill=${id}&n=${exam.n}`} variant="primary">
-                    Start
-                  </Button>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

@@ -56,7 +56,8 @@ Five exams per component, 25 in total, all at A2 level. KNM has no level, matchi
 
 ## How it works
 
-1. **Sign up** and confirm the email address. A new account gets a 7-day free trial.
+1. **Sign up** and confirm the email address. Every account can take the first exam of each
+   component for free; the rest need a subscription.
 2. **Pick a component and an exam.** The exam opens with the real timer and no way to pause.
 3. **Submit.** Closed questions score immediately, written and spoken answers go to the AI examiner.
 4. **Review.** Every question is replayable next to the correct answer, the candidate's own answer,

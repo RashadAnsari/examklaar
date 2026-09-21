@@ -3,7 +3,7 @@ import { ExamClient, Exam } from "./ExamClient";
 import { readExam } from "@/data/exams";
 import { getSessionUser } from "@/lib/auth-session";
 import { getUserSubscription } from "@/lib/payment/subscription";
-import { hasPremiumAccess } from "@/lib/payment/plans";
+import { canAccessExam } from "@/lib/payment/plans";
 
 export default async function ExamPage(props: {
   searchParams: Promise<{ skill?: string; n?: string }>;
@@ -28,7 +28,7 @@ export default async function ExamPage(props: {
   }
 
   const sub = await getUserSubscription(user.id);
-  if (!hasPremiumAccess(sub)) {
+  if (!canAccessExam(sub, n)) {
     redirect("/pricing");
   }
 

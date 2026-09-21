@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { withNext } from "@/lib/redirects";
 
-interface ClaimTrialButtonProps {
+interface ClaimAccessButtonProps {
   contactHref: string;
   variant?: "primary" | "outline" | "white";
   fullWidth?: boolean;
@@ -18,12 +18,12 @@ interface ClaimTrialButtonProps {
  * dashboard with the welcome gift modal. When the grant cannot be made, the same
  * button opens the mailto contact option instead.
  */
-export function ClaimTrialButton({
+export function ClaimAccessButton({
   contactHref,
   variant = "primary",
   fullWidth,
   children,
-}: ClaimTrialButtonProps) {
+}: ClaimAccessButtonProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

@@ -37,12 +37,9 @@ export function SubscriptionSection() {
     load();
   }, []);
 
-  const isTrialing = sub?.status === "trialing";
-
   async function handleCancel() {
-    const message = isTrialing
-      ? "Are you sure you want to cancel your free trial? You'll lose access immediately."
-      : "Are you sure you want to cancel your subscription? You'll keep access until the end of your current billing period.";
+    const message =
+      "Are you sure you want to cancel your subscription? You'll keep access until the end of your current billing period.";
     if (!confirm(message)) {
       return;
     }
@@ -52,19 +49,10 @@ export function SubscriptionSection() {
     setCancelling(false);
     if (res.ok) {
       analytics.cancelSubscription();
-      if (isTrialing) {
-        setCancelSuccess("Your free trial has been cancelled and access has ended.");
-        setSub((prev) =>
-          prev
-            ? { ...prev, status: "cancelled", currentPeriodEnd: new Date(), hasAccess: false }
-            : prev
-        );
-      } else {
-        setCancelSuccess(
-          "Your subscription has been cancelled. Access continues until the end of your billing period."
-        );
-        setSub((prev) => (prev ? { ...prev, cancelAtPeriodEnd: true } : prev));
-      }
+      setCancelSuccess(
+        "Your subscription has been cancelled. Access continues until the end of your billing period."
+      );
+      setSub((prev) => (prev ? { ...prev, cancelAtPeriodEnd: true } : prev));
     } else {
       const data = await res.json();
       setCancelError(data.error ?? "Failed to cancel subscription. Please try again.");
@@ -74,13 +62,10 @@ export function SubscriptionSection() {
   const isSubscribed = !!sub?.planId;
   const hasAccess = !!sub?.hasAccess;
   const planLabel = isSubscribed ? PLAN_LABEL : "No plan";
-  // Only Paddle-backed active/trialing subscriptions can be cancelled, and only
-  // while access is live and a cancellation isn't already scheduled.
+  // Only Paddle-backed active subscriptions can be cancelled, and only while
+  // access is live and a cancellation isn't already scheduled.
   const canCancel =
-    hasAccess &&
-    !!sub?.paymentProvider &&
-    (sub.status === "active" || sub.status === "trialing") &&
-    !sub.cancelAtPeriodEnd;
+    hasAccess && !!sub?.paymentProvider && sub.status === "active" && !sub.cancelAtPeriodEnd;
   const periodEnd = sub?.currentPeriodEnd ? new Date(sub.currentPeriodEnd) : null;
 
   function planDescription() {
@@ -96,12 +81,6 @@ export function SubscriptionSection() {
 
     if (!hasAccess) {
       return "Access ended";
-    }
-
-    if (isTrialing) {
-      return sub.cancelAtPeriodEnd
-        ? `Free trial cancels on ${formatted}`
-        : `Free trial ends ${formatted} then renews to ${PLAN_LABEL} plan`;
     }
 
     if (sub.cancelAtPeriodEnd) {
@@ -151,7 +130,7 @@ export function SubscriptionSection() {
                   onClick={handleCancel}
                   disabled={cancelling}
                 >
-                  {cancelling ? "Cancelling…" : isTrialing ? "Cancel trial" : "Cancel plan"}
+                  {cancelling ? "Cancelling…" : "Cancel plan"}
                 </Button>
               ) : (
                 !hasAccess && (

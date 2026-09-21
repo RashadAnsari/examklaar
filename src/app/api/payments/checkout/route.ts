@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth-session";
 import { pool } from "@/lib/db";
 import { getUserSubscription } from "@/lib/payment/subscription";
-import { hasPremiumAccess, isTrialEligible, isPlanId, DEFAULT_PLAN_ID } from "@/lib/payment/plans";
+import { hasPremiumAccess, isPlanId, DEFAULT_PLAN_ID } from "@/lib/payment/plans";
 import { getPaymentProvider } from "@/lib/payment/provider";
 import { PaymentCustomerRepository } from "@/lib/repositories/paymentCustomerRepository";
 
@@ -24,9 +24,6 @@ export async function POST(req: NextRequest) {
     console.warn("[checkout] User already has access — user=%s", user.id);
     return NextResponse.json({ error: "You already have an active subscription" }, { status: 400 });
   }
-
-  // Users who have subscribed or trialed before are not eligible for the trial again.
-  const skipTrial = !isTrialEligible(currentSubscription);
 
   const providerName = process.env.PAYMENT_PROVIDER;
   if (!providerName) {
@@ -52,7 +49,6 @@ export async function POST(req: NextRequest) {
       successUrl,
       cancelUrl,
       existingCustomerId: existingCustomer?.customer_id,
-      skipTrial,
     });
 
     // Persist the customer ID if it's newly created.

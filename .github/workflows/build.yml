@@ -110,4 +110,3 @@ jobs:
             # -e "paddle_client_token=${{ secrets.PADDLE_CLIENT_TOKEN }}"
             # -e "paddle_webhook_secret=${{ secrets.PADDLE_WEBHOOK_SECRET }}"
             # -e "paddle_price_id_monthly=${{ secrets.PADDLE_PRICE_ID_MONTHLY }}"
-            # -e "paddle_price_id_monthly_no_trial=${{ secrets.PADDLE_PRICE_ID_MONTHLY_NO_TRIAL }}"
