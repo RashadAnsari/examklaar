@@ -38,8 +38,8 @@ Two S3-compatible buckets:
 | `exam-assets`         | Public read | The audio, images and video referenced by the exam JSON           |
 
 Recordings are read back through 5-minute signed URLs. Set a lifecycle rule on that bucket to expire
-objects after 30 days: the app never deletes recordings itself, and the review page already handles a
-missing recording.
+objects after 30 days: the app deletes recordings only when an account is erased with
+`scripts/delete-user.ts`, and the review page already handles a missing recording.
 
 For `exam-assets`, point `EXAM_ASSETS_BASE_URL` at the public base URL, with no trailing slash.
 

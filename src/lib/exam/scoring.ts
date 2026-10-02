@@ -33,7 +33,7 @@ export function scorePct(score: number, total: number): number {
 }
 
 // Pass context line shown beneath the hero percentage on the results page.
-// e.g. "Pass: ≥70%"  or  "Pass: ≈67% (practice approximation)"
+// e.g. "Pass: ≥70%"  or  "Pass: ≈65% (practice approximation)"
 export function getPassContext(skill: string, level: string | null): string {
   if (skill === "writing" || skill === "speaking") {
     return "Pass: ≥60% of points";

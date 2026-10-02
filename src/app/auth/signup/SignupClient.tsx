@@ -148,15 +148,15 @@ export function SignupClient({ next }: { next: string | null }) {
                   style={{ accentColor: "var(--green-900)" }}
                 />
                 <span className="text-sm" style={{ color: "var(--gray-600)", lineHeight: 1.5 }}>
-                  I agree to the{" "}
+                  I am 18 or older and agree to the{" "}
                   <Link
                     href="/terms-and-conditions"
                     className="font-medium"
                     style={{ color: "var(--green-900)" }}
                   >
-                    Terms of Service
-                  </Link>{" "}
-                  and{" "}
+                    Terms &amp; Conditions
+                  </Link>
+                  , and I have read the{" "}
                   <Link
                     href="/privacy-policy"
                     className="font-medium"

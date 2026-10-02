@@ -56,7 +56,7 @@ const FAQS = [
   {
     question: "What is your refund policy?",
     answer:
-      "ExamKlaar does not offer discretionary refunds. All payments are processed by Paddle, who acts as Merchant of Record and handles all refund requests. For full details, see our Refund Policy at examklaar.nl/refund-policy.",
+      "Payments are processed by Paddle, which acts as Merchant of Record and handles all refund requests, including your statutory 14-day right of withdrawal. ExamKlaar does not offer refunds beyond your statutory rights. For full details, see our Refund Policy at examklaar.nl/refund-policy.",
   },
   {
     question: "What payment methods do you accept?",

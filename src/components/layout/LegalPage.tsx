@@ -15,9 +15,8 @@ export interface LegalSection {
 }
 
 /**
- * Shared shell for the privacy, terms and refund pages. All three rendered the
- * same markup with only the heading and intro differing, so the layout lives
- * here once and each page supplies just its own section data.
+ * Shared shell for the privacy, terms and refund pages. Each page supplies only
+ * its heading, intro and section data.
  */
 export function LegalPage({
   title,
