@@ -9,8 +9,8 @@ import { getSessionUser } from "@/lib/auth-session";
 import { pool } from "@/lib/db";
 import { listSkillExams } from "@/data/exams";
 import { getScoreFeedback } from "@/lib/exam/scoring";
-import { getUserSubscription } from "@/lib/payment/subscription";
-import { canAccessExam, hasPremiumAccess, isFreeExam, NO_SUBSCRIPTION } from "@/lib/payment/plans";
+import { getUserSubscription, hasFullAccess, isEarlyAccess } from "@/lib/payment/subscription";
+import { canAccessExam, isFreeExam, NO_SUBSCRIPTION } from "@/lib/payment/plans";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 interface ExamResult {
@@ -70,7 +70,8 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
   const { skill, level, exams } = data;
 
   const sub = user ? await getUserSubscription(user.id) : NO_SUBSCRIPTION;
-  const isPaid = hasPremiumAccess(sub);
+  const earlyAccess = isEarlyAccess();
+  const isPaid = hasFullAccess(sub);
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--gray-50)" }}>
@@ -104,9 +105,11 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
             {SKILL_DESCRIPTIONS[skill]} · {exams.length} {exams.length === 1 ? "exam" : "exams"}{" "}
             available
           </p>
-          {!isPaid && (
+          {(earlyAccess || !isPaid) && (
             <p className="mt-2 text-sm" style={{ color: "var(--green-700)" }}>
-              The first exam is free. Subscribe to unlock the rest.
+              {earlyAccess
+                ? "Every exam is free while we are in early access."
+                : "The first exam is free. Subscribe to unlock the rest."}
             </p>
           )}
         </div>
@@ -116,7 +119,7 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
           style={{ background: "white", borderColor: "var(--gray-200)" }}
         >
           {exams.map((exam, i) => {
-            const unlocked = canAccessExam(sub, exam.n);
+            const unlocked = earlyAccess || canAccessExam(sub, exam.n);
             return (
               <div
                 key={exam.n}

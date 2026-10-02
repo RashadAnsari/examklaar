@@ -8,8 +8,7 @@ import {
   RECORDING_MIME_TYPE,
 } from "@/lib/exam/config";
 import type { Exam } from "@/app/exam/ExamClient";
-import { getUserSubscription } from "@/lib/payment/subscription";
-import { canAccessExam } from "@/lib/payment/plans";
+import { userCanAccessExam } from "@/lib/payment/subscription";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 import { uploadRecording } from "@/lib/storage/recordings";
 
@@ -112,8 +111,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Exam not found" }, { status: 404 });
   }
 
-  const sub = await getUserSubscription(user.id);
-  if (!canAccessExam(sub, n)) {
+  if (!(await userCanAccessExam(user.id, n))) {
     console.warn("[submit] Exam blocked, no access — user=%s exam=%s-%s", user.id, skillId, n);
     return NextResponse.json({ error: "upgrade_required" }, { status: 403 });
   }

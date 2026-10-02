@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth-session";
-import { getUserSubscription } from "@/lib/payment/subscription";
+import { getUserSubscription, isEarlyAccess } from "@/lib/payment/subscription";
 import { hasPremiumAccess } from "@/lib/payment/plans";
 
 export async function GET() {
@@ -10,5 +10,9 @@ export async function GET() {
   }
 
   const sub = await getUserSubscription(user.id);
-  return NextResponse.json({ ...sub, hasAccess: hasPremiumAccess(sub) });
+  return NextResponse.json({
+    ...sub,
+    hasAccess: hasPremiumAccess(sub),
+    earlyAccess: isEarlyAccess(),
+  });
 }

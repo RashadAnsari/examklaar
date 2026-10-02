@@ -15,7 +15,7 @@ const SECTIONS: LegalSection[] = [
   {
     title: "1. Who Handles Refunds",
     content:
-      "Subscriptions are sold by Paddle.com Market Limited ('Paddle') as Merchant of Record. Paddle is the seller, processes your payment, and handles all withdrawal and refund requests under its Buyer Terms and Refund Policy.",
+      "No subscriptions are sold during early access, so this policy applies once they are. Subscriptions are sold by Paddle.com Market Limited ('Paddle') as Merchant of Record. Paddle is the seller, processes your payment, and handles all withdrawal and refund requests under its Buyer Terms and Refund Policy.",
   },
   {
     title: "2. Your 14-Day Right of Withdrawal",
@@ -75,7 +75,7 @@ export default function RefundPolicyPage() {
     <LegalPage
       title="Refund Policy"
       lastUpdated={LAST_UPDATED}
-      intro="Payments for ExamKlaar are processed by Paddle, which acts as Merchant of Record and handles refund requests."
+      intro="ExamKlaar is free during early access, so there is nothing to refund. Once paid subscriptions are sold, payments are processed by Paddle, which acts as Merchant of Record and handles refund requests."
       sections={SECTIONS}
     />
   );

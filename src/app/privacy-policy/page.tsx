@@ -37,7 +37,7 @@ const SECTIONS: LegalSection[] = [
       },
       {
         subtitle: "Subscription data",
-        text: "Your customer reference and subscription status, which we receive from our payment provider Paddle. We never receive your card or bank details.",
+        text: "Only once paid subscriptions are sold, which is not the case during early access: your customer reference and subscription status, which we receive from our payment provider Paddle. We never receive your card or bank details.",
       },
       {
         subtitle: "Usage data",
@@ -106,7 +106,7 @@ const SECTIONS: LegalSection[] = [
       },
       {
         subtitle: "Paddle.com Market Limited (UK), independent controller",
-        text: "Sells the subscription to you as Merchant of Record and processes your payment and billing details under its own privacy policy at paddle.com/legal/privacy.",
+        text: "Sells the subscription to you as Merchant of Record and processes your payment and billing details under its own privacy policy at paddle.com/legal/privacy. This applies only once paid subscriptions are sold. During early access, no data is shared with Paddle.",
       },
     ],
     footer:
@@ -203,7 +203,7 @@ const SECTIONS: LegalSection[] = [
       },
       {
         subtitle: "Checkout",
-        text: "When you open the checkout, Paddle may use its own cookies to process your payment, as described in Paddle's privacy policy.",
+        text: "Once paid subscriptions are sold, Paddle may use its own cookies when you open the checkout to process your payment, as described in Paddle's privacy policy. There is no checkout during early access.",
       },
     ],
     footer:

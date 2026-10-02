@@ -1,11 +1,10 @@
 import { getSessionUser } from "@/lib/auth-session";
-import { getUserSubscription } from "@/lib/payment/subscription";
+import { getUserSubscription, isEarlyAccess } from "@/lib/payment/subscription";
 import { hasPremiumAccess } from "@/lib/payment/plans";
 import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/pricing/CheckoutButton";
-import { ClaimAccessButton } from "@/components/pricing/ClaimAccessButton";
+import { PLAN } from "@/components/pricing/plan";
 import { withNext } from "@/lib/redirects";
-import { site } from "@/config/site";
 import {
   CheckIcon,
   ShieldCheckIcon,
@@ -13,46 +12,13 @@ import {
   CreditCardIcon,
 } from "@heroicons/react/20/solid";
 
-export const PLAN = {
-  id: "monthly",
-  name: "Monthly plan",
-  badge: "First exam free",
-  // Shown while no payment provider is configured, when claiming grants
-  // complimentary access to every exam. The length is deliberately left out
-  // here: it can change, and the welcome modal states it on grant.
-  badgeComplimentary: "Free early access",
-  headline: "Full access to every exam",
-  price: "€9.99",
-  priceNote: "/ month",
-  subNote: "Billed monthly. Cancel anytime.",
-  subNoteComplimentary:
-    "Full access while we are in early access, free and with no payment method. It ends on its own and never turns into a paid plan.",
-  features: [
-    { text: "All exams per skill (growing library)" },
-    { text: "Unlimited practice attempts" },
-    { text: "KNM, Reading, Listening, Writing & Speaking" },
-    { text: "AI feedback on every Writing & Speaking exam" },
-    { text: "Full progress tracking" },
-    { text: "Email support" },
-  ],
-  cta: "Subscribe",
-  ctaComplimentary: "Claim free access",
-  ctaVariant: "primary" as const,
-} as const;
-
-/** Mailto fallback used when we cannot grant access and there is no checkout. */
-export const CONTACT_MAILTO = `mailto:${site.supportEmail}?subject=${encodeURIComponent(`${PLAN.name} subscription`)}&body=${encodeURIComponent(`Hi,\n\nI'm interested in the ${PLAN.name} (${PLAN.price} ${PLAN.priceNote}).\n\nCould you help me get started?\n\nThanks`)}`;
-
 export async function PricingCards() {
   const user = await getSessionUser();
 
   const loggedIn = !!user;
-  const providerConfigured = !!process.env.PAYMENT_PROVIDER;
-  // No provider yet: claiming grants early-stage complimentary access to every
-  // exam. The offer regime drives the copy, so a logged-out visitor sees what
-  // they will actually get; loggedIn only decides which button runs.
-  const complimentaryOffer = !providerConfigured;
-  const claimComplimentary = loggedIn && !providerConfigured;
+  // No provider yet: every exam is free, so the card shows the price that
+  // applies later and sends people straight to practicing.
+  const earlyAccess = isEarlyAccess();
 
   let hasActiveSubscription = false;
   if (user) {
@@ -70,12 +36,12 @@ export async function PricingCards() {
       >
         {/* Offer */}
         <div className="bg-white p-8 sm:p-10 flex flex-col">
-          {!hasActiveSubscription && (
+          {(earlyAccess || !hasActiveSubscription) && (
             <span
               className="inline-flex self-start items-center text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-6"
               style={{ background: "var(--green-50)", color: "var(--green-700)" }}
             >
-              {complimentaryOffer ? PLAN.badgeComplimentary : PLAN.badge}
+              {earlyAccess ? PLAN.badgeEarlyAccess : PLAN.badge}
             </span>
           )}
 
@@ -83,31 +49,49 @@ export async function PricingCards() {
             {PLAN.headline}
           </h2>
 
-          <div className="flex items-end gap-1.5">
-            <span
-              className="font-bold"
-              style={{ fontSize: "3.5rem", lineHeight: 1, color: "var(--green-900)" }}
-            >
-              {PLAN.price}
-            </span>
-            <span className="text-base mb-2" style={{ color: "var(--green-700)" }}>
-              {PLAN.priceNote}
-            </span>
-          </div>
+          {earlyAccess ? (
+            <>
+              <div className="flex items-end gap-1.5">
+                <span
+                  className="font-bold"
+                  style={{ fontSize: "3.5rem", lineHeight: 1, color: "var(--green-900)" }}
+                >
+                  Free
+                </span>
+                <span className="text-base mb-2" style={{ color: "var(--green-700)" }}>
+                  during early access
+                </span>
+              </div>
+              <p className="mt-2 text-sm font-semibold" style={{ color: "var(--gray-800)" }}>
+                Later {PLAN.price} {PLAN.priceNote}, incl. VAT
+              </p>
+            </>
+          ) : (
+            <div className="flex items-end gap-1.5">
+              <span
+                className="font-bold"
+                style={{ fontSize: "3.5rem", lineHeight: 1, color: "var(--green-900)" }}
+              >
+                {PLAN.price}
+              </span>
+              <span className="text-base mb-2" style={{ color: "var(--green-700)" }}>
+                {PLAN.priceNote}
+              </span>
+            </div>
+          )}
           <p className="mt-3 text-sm" style={{ color: "var(--gray-600)" }}>
-            {complimentaryOffer ? PLAN.subNoteComplimentary : PLAN.subNote}
+            {earlyAccess ? PLAN.subNoteEarlyAccess : PLAN.subNote}
           </p>
 
           <div className="mt-auto pt-8">
             <PlanCta
               loggedIn={loggedIn}
-              claimComplimentary={claimComplimentary}
-              complimentaryOffer={complimentaryOffer}
+              earlyAccess={earlyAccess}
               hasActiveSubscription={hasActiveSubscription}
             />
             {!hasActiveSubscription && (
               <p className="mt-3 text-center text-xs" style={{ color: "var(--gray-500)" }}>
-                {complimentaryOffer
+                {earlyAccess
                   ? "No payment method needed"
                   : "The first exam of every skill stays free"}
               </p>
@@ -139,64 +123,62 @@ export async function PricingCards() {
         </div>
       </div>
 
-      {/* Trust row */}
-      <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-        <TrustItem
-          icon={<ShieldCheckIcon style={{ width: 16, height: 16 }} />}
-          text="Secure checkout"
-        />
-        <TrustItem
-          icon={<ArrowPathIcon style={{ width: 16, height: 16 }} />}
-          text="Cancel anytime"
-        />
-        <TrustItem
-          icon={<CreditCardIcon style={{ width: 16, height: 16 }} />}
-          text="iDEAL and cards accepted"
-        />
-      </div>
+      {/* Trust row: about checkout, so only once there is one */}
+      {!earlyAccess && (
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          <TrustItem
+            icon={<ShieldCheckIcon style={{ width: 16, height: 16 }} />}
+            text="Secure checkout"
+          />
+          <TrustItem
+            icon={<ArrowPathIcon style={{ width: 16, height: 16 }} />}
+            text="Cancel anytime"
+          />
+          <TrustItem
+            icon={<CreditCardIcon style={{ width: 16, height: 16 }} />}
+            text="iDEAL and cards accepted"
+          />
+        </div>
+      )}
     </div>
   );
 }
 
 function PlanCta({
   loggedIn,
-  claimComplimentary,
-  complimentaryOffer,
+  earlyAccess,
   hasActiveSubscription,
 }: {
   loggedIn: boolean;
-  claimComplimentary: boolean;
-  complimentaryOffer: boolean;
+  earlyAccess: boolean;
   hasActiveSubscription: boolean;
 }) {
-  if (hasActiveSubscription) {
+  // During early access a signed-in user already has every exam, so there is
+  // nothing to buy or claim.
+  if (hasActiveSubscription || (earlyAccess && loggedIn)) {
     return (
       <Button href="/dashboard" variant={PLAN.ctaVariant} fullWidth>
         Go to Dashboard
       </Button>
     );
   }
-  const ctaLabel = complimentaryOffer ? PLAN.ctaComplimentary : PLAN.cta;
   // A logged-out visitor on the pricing page is a prospect, so send them to
-  // signup rather than login. `next` brings them back here to claim once the
-  // account is live, and the signup page links to login for returning users.
+  // signup rather than login. During early access `next` lands them on the
+  // dashboard; otherwise it brings them back here to subscribe.
   if (!loggedIn) {
     return (
-      <Button href={withNext("/auth/signup", "/pricing")} variant={PLAN.ctaVariant} fullWidth>
-        {ctaLabel}
+      <Button
+        href={withNext("/auth/signup", earlyAccess ? "/dashboard" : "/pricing")}
+        variant={PLAN.ctaVariant}
+        fullWidth
+      >
+        {earlyAccess ? PLAN.ctaEarlyAccess : PLAN.cta}
       </Button>
-    );
-  }
-  if (claimComplimentary) {
-    return (
-      <ClaimAccessButton contactHref={CONTACT_MAILTO} variant={PLAN.ctaVariant} fullWidth>
-        {ctaLabel}
-      </ClaimAccessButton>
     );
   }
   return (
     <CheckoutButton planId={PLAN.id} variant={PLAN.ctaVariant} fullWidth>
-      {ctaLabel}
+      {PLAN.cta}
     </CheckoutButton>
   );
 }

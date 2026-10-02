@@ -56,8 +56,9 @@ Five exams per component, 25 in total, all at A2 level. KNM has no level, matchi
 
 ## How it works
 
-1. **Sign up** and confirm the email address. Every account can take the first exam of each
-   component for free; the rest need a subscription.
+1. **Sign up** and confirm the email address. During early access every exam is free. After it,
+   every account can take the first exam of each component for free and the rest need a
+   subscription. See [Billing](docs/infrastructure.md#billing).
 2. **Pick a component and an exam.** The exam opens with the real timer and no way to pause.
 3. **Submit.** Closed questions score immediately, written and spoken answers go to the AI examiner.
 4. **Review.** Every question is replayable next to the correct answer, the candidate's own answer,
@@ -75,7 +76,7 @@ Five exams per component, 25 in total, all at A2 level. KNM has no level, matchi
 | AI grading     | Google AI via the Vercel AI SDK                                        |
 | Speech         | Transcription on the server with Transformers.js, no external call     |
 | Storage        | Any S3-compatible object storage, two buckets                          |
-| Payments       | Paddle, behind a provider interface                                    |
+| Payments       | Paddle, behind a provider interface, off during early access           |
 | Email          | SMTP via Nodemailer                                                    |
 | Deployment     | Docker Compose on a single host, driven by Ansible from GitHub Actions |
 
@@ -88,8 +89,9 @@ make migrate    # apply db/migrations
 make dev        # http://localhost:3000
 ```
 
-Copy `.env.example` to `.env.local` and fill it in. Postgres, SMTP, S3 storage, Google AI and Paddle
-each need values, and the file documents what every variable is for.
+Copy `.env.example` to `.env.local` and fill it in. Postgres, SMTP, S3 storage and Google AI each
+need values. Leave `PAYMENT_PROVIDER` empty to run in early access, with every exam free and no
+Paddle setup. The file documents what every variable is for.
 
 `docker-compose.yml` at the repo root is the local development database only. The production stack
 lives in [`deploy/`](deploy).

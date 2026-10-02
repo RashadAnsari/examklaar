@@ -1,10 +1,9 @@
 import "server-only";
 import { pool } from "@/lib/db";
 import { SubscriptionRepository } from "@/lib/repositories/subscriptionRepository";
-import { SubscriptionEventRepository } from "@/lib/repositories/subscriptionEventRepository";
 import {
-  COMPLIMENTARY_ACCESS_MONTHS,
-  DEFAULT_PLAN_ID,
+  canAccessExam,
+  hasPremiumAccess,
   NO_SUBSCRIPTION,
   type PlanId,
   type SubscriptionStatus,
@@ -35,62 +34,28 @@ export async function getUserSubscription(userId: string): Promise<UserSubscript
     paymentProvider: data.payment_provider,
   };
 }
+
 /**
- * While no payment provider is configured (early-stage launch), give a brand
- * new user COMPLIMENTARY_ACCESS_MONTHS of free access. Creates a provider-less
- * subscription row (the same shape grant-subscription.ts produces), so
- * hasPremiumAccess grants access purely on current_period_end.
+ * Early access: until a payment provider is configured, every exam is free for
+ * every signed-in user. It ends on its own once PAYMENT_PROVIDER is set, at
+ * which point the subscription rules below take over.
  *
- * Idempotent: the unique index on subscriptions.user_id means a user who
- * already has a row keeps it and is not re-granted. Returns whether a row was
- * newly created, which the caller uses to show the welcome gift modal once.
+ * It lives here rather than in ./plans because it reads the server
+ * environment, which client components cannot see.
  */
-export async function grantComplimentaryAccess(userId: string): Promise<{ granted: boolean }> {
-  // Only complimentary while there is no provider to bill through.
-  if (process.env.PAYMENT_PROVIDER) {
-    return { granted: false };
+export function isEarlyAccess(): boolean {
+  return !process.env.PAYMENT_PROVIDER;
+}
+
+/** Whether the user can open every exam: always during early access. */
+export function hasFullAccess(sub: UserSubscription): boolean {
+  return isEarlyAccess() || hasPremiumAccess(sub);
+}
+
+/** Whether the user may open one specific exam right now. */
+export async function userCanAccessExam(userId: string, n: number): Promise<boolean> {
+  if (isEarlyAccess()) {
+    return true;
   }
-
-  const now = new Date();
-  const periodEnd = new Date(now);
-  periodEnd.setMonth(periodEnd.getMonth() + COMPLIMENTARY_ACCESS_MONTHS);
-
-  const { inserted, error } = await new SubscriptionRepository(pool).insertIfAbsent({
-    user_id: userId,
-    plan_id: DEFAULT_PLAN_ID,
-    status: "active",
-    payment_provider: null,
-    provider_customer_id: null,
-    provider_subscription_id: null,
-    current_period_start: now.toISOString(),
-    current_period_end: periodEnd.toISOString(),
-    cancel_at_period_end: false,
-    updated_at: now.toISOString(),
-  });
-
-  if (error) {
-    console.error(
-      "[subscription] Failed to grant complimentary access — user=%s error=%o",
-      userId,
-      error
-    );
-    return { granted: false };
-  }
-
-  // Record the grant in the append-only history (only when newly created).
-  if (inserted) {
-    await new SubscriptionEventRepository(pool).record({
-      user_id: userId,
-      event_type: "complimentary_grant",
-      plan_id: DEFAULT_PLAN_ID,
-      status: "active",
-      payment_provider: null,
-      current_period_start: now.toISOString(),
-      current_period_end: periodEnd.toISOString(),
-      cancel_at_period_end: false,
-      occurred_at: now.toISOString(),
-    });
-  }
-
-  return { granted: inserted };
+  return canAccessExam(await getUserSubscription(userId), n);
 }

@@ -5,21 +5,10 @@ import { getSessionUser } from "@/lib/auth-session";
 import { pool } from "@/lib/db";
 import { listSkillGroups } from "@/data/exams";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
-import { WelcomeGiftModal } from "@/components/ui/WelcomeGiftModal";
-import { getUserSubscription } from "@/lib/payment/subscription";
-import { COMPLIMENTARY_ACCESS_MONTHS, hasPremiumAccess } from "@/lib/payment/plans";
+import { getUserSubscription, hasFullAccess, isEarlyAccess } from "@/lib/payment/subscription";
 
-export default async function DashboardPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ welcome?: string }>;
-}) {
+export default async function DashboardPage() {
   const user = await getSessionUser();
-
-  // The welcome gift modal is shown right after the pricing page grants
-  // complimentary access and redirects here with ?welcome=1.
-  const { welcome } = await searchParams;
-  const showWelcomeGift = welcome === "gift";
 
   const [results, sub] = await Promise.all([
     user
@@ -28,7 +17,7 @@ export default async function DashboardPage({
     user ? getUserSubscription(user.id) : Promise.resolve(null),
   ]);
 
-  const isPaid = sub ? hasPremiumAccess(sub) : false;
+  const isPaid = sub ? hasFullAccess(sub) : false;
 
   const completedByGroup = new Map<string, Set<string>>();
   for (const r of results) {
@@ -60,8 +49,7 @@ export default async function DashboardPage({
           <p style={{ color: "var(--gray-600)" }}>Continue practicing for your inburgering exam</p>
         </div>
 
-        <DashboardClient skills={skills} isPaid={isPaid} />
-        {showWelcomeGift && <WelcomeGiftModal months={COMPLIMENTARY_ACCESS_MONTHS} />}
+        <DashboardClient skills={skills} isPaid={isPaid} earlyAccess={isEarlyAccess()} />
       </div>
 
       <Footer />

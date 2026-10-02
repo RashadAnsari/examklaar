@@ -18,12 +18,6 @@ export const DEFAULT_PLAN_ID: PlanId = "monthly";
 export const PLAN_LABEL = "Monthly";
 
 /**
- * Months of free access granted to a new user while no payment provider is
- * configured (early-stage launch). See grantComplimentaryAccess.
- */
-export const COMPLIMENTARY_ACCESS_MONTHS = 3;
-
-/**
  * The exam every skill offers for free. Exams are numbered from 1 per skill,
  * so this makes the first exam of each skill free for any signed-in user.
  *

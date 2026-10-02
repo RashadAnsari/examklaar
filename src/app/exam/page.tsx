@@ -2,8 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import { ExamClient, Exam } from "./ExamClient";
 import { readExam } from "@/data/exams";
 import { getSessionUser } from "@/lib/auth-session";
-import { getUserSubscription } from "@/lib/payment/subscription";
-import { canAccessExam } from "@/lib/payment/plans";
+import { userCanAccessExam } from "@/lib/payment/subscription";
 
 export default async function ExamPage(props: {
   searchParams: Promise<{ skill?: string; n?: string }>;
@@ -27,8 +26,7 @@ export default async function ExamPage(props: {
     redirect("/auth/login");
   }
 
-  const sub = await getUserSubscription(user.id);
-  if (!canAccessExam(sub, n)) {
+  if (!(await userCanAccessExam(user.id, n))) {
     redirect("/pricing");
   }
 

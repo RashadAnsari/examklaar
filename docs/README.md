@@ -44,7 +44,7 @@ the presenter portrait from the image guide.
 
 | Guide                                                     | What it covers                                                             |
 | --------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [Infrastructure](./infrastructure.md)                     | Database and migrations, auth, the two object storage buckets, environment |
+| [Infrastructure](./infrastructure.md)                     | Database and migrations, auth, storage, billing modes, environment         |
 | [Deployment](./deployment.md)                             | The two compose stacks, the workflows that drive them, backups and restore |
 | [Testing payment webhooks](./testing-payment-webhooks.md) | Receiving real Paddle webhooks against a local dev server through a tunnel |
 

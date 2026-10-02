@@ -161,18 +161,6 @@ export class SubscriptionRepository {
   }
 
   /**
-   * Insert a subscription only if the user has none yet. Returns whether a row
-   * was newly created (false when one already existed). Idempotent via the
-   * unique index on user_id.
-   */
-  async insertIfAbsent(row: SubscriptionUpsert) {
-    const { data, error } = await runWrite(() =>
-      this.db.query(`${INSERT_SQL} on conflict (user_id) do nothing`, UPSERT_VALUES(row))
-    );
-    return { inserted: (data?.rowCount ?? 0) > 0, error };
-  }
-
-  /**
    * Patch the user's subscription row. Column names are the only part of a
    * query in this codebase that is not a bound parameter, so they are checked
    * against a fixed list rather than trusted: a caller that ever passes request

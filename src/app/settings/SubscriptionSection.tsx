@@ -9,7 +9,7 @@ import type { ProviderPayment } from "@/lib/payment/types";
 import { analytics } from "@/lib/analytics";
 import { SettingsItem, SettingsSection } from "./SettingsSection";
 
-type SubscriptionInfo = UserSubscription & { hasAccess: boolean };
+type SubscriptionInfo = UserSubscription & { hasAccess: boolean; earlyAccess: boolean };
 
 export function SubscriptionSection() {
   const [sub, setSub] = useState<SubscriptionInfo | null>(null);
@@ -61,7 +61,9 @@ export function SubscriptionSection() {
 
   const isSubscribed = !!sub?.planId;
   const hasAccess = !!sub?.hasAccess;
-  const planLabel = isSubscribed ? PLAN_LABEL : "No plan";
+  // During early access every exam is open and there is nothing to subscribe to.
+  const earlyAccess = !!sub?.earlyAccess && !isSubscribed;
+  const planLabel = isSubscribed ? PLAN_LABEL : earlyAccess ? "Early access" : "No plan";
   // Only Paddle-backed active subscriptions can be cancelled, and only while
   // access is live and a cancellation isn't already scheduled.
   const canCancel =
@@ -69,6 +71,10 @@ export function SubscriptionSection() {
   const periodEnd = sub?.currentPeriodEnd ? new Date(sub.currentPeriodEnd) : null;
 
   function planDescription() {
+    if (earlyAccess) {
+      return "Every exam is free while we are in early access";
+    }
+
     if (!isSubscribed || !periodEnd) {
       return "No active plan";
     }
@@ -112,8 +118,8 @@ export function SubscriptionSection() {
                 <span
                   className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold"
                   style={{
-                    background: hasAccess ? "var(--green-50)" : "var(--gray-100)",
-                    color: hasAccess ? "var(--green-900)" : "var(--gray-600)",
+                    background: hasAccess || earlyAccess ? "var(--green-50)" : "var(--gray-100)",
+                    color: hasAccess || earlyAccess ? "var(--green-900)" : "var(--gray-600)",
                   }}
                 >
                   {planLabel}
@@ -133,7 +139,8 @@ export function SubscriptionSection() {
                   {cancelling ? "Cancelling…" : "Cancel plan"}
                 </Button>
               ) : (
-                !hasAccess && (
+                !hasAccess &&
+                !earlyAccess && (
                   <Button href="/pricing" variant="primary">
                     Subscribe
                   </Button>

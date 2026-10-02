@@ -2,25 +2,24 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PricingCards } from "@/components/pricing/PricingCards";
+import { isEarlyAccess } from "@/lib/payment/subscription";
 
-export const metadata: Metadata = {
-  title: "Pricing",
-  description:
-    "The first exam of every skill is free, then €9.99/month for unlimited access to all 5 inburgering exam components (KNM, Reading, Listening, Writing, and Speaking) with AI-powered feedback.",
-  alternates: { canonical: "https://www.examklaar.nl/pricing" },
-  openGraph: {
-    title: "Pricing: Inburgering Exam Practice Plans | ExamKlaar",
-    description:
-      "The first exam of every skill is free, then €9.99/month for unlimited access to all 5 inburgering exam components with AI-powered feedback.",
-    url: "https://www.examklaar.nl/pricing",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Pricing: Inburgering Exam Practice Plans | ExamKlaar",
-    description:
-      "The first exam of every skill is free, then €9.99/month for unlimited access to all 5 inburgering exam components with AI-powered feedback.",
-  },
-};
+const PAID_DESCRIPTION =
+  "The first exam of every skill is free, then €9.99/month for unlimited access to all 5 inburgering exam components (KNM, Reading, Listening, Writing, and Speaking) with AI-powered feedback.";
+const EARLY_ACCESS_DESCRIPTION =
+  "Every exam is free during early access: all 5 inburgering exam components (KNM, Reading, Listening, Writing, and Speaking) with AI-powered feedback. Full access will cost €9.99/month when early access ends.";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const description = isEarlyAccess() ? EARLY_ACCESS_DESCRIPTION : PAID_DESCRIPTION;
+  const title = "Pricing: Inburgering Exam Practice Plans | ExamKlaar";
+  return {
+    title: "Pricing",
+    description,
+    alternates: { canonical: "https://www.examklaar.nl/pricing" },
+    openGraph: { title, description, url: "https://www.examklaar.nl/pricing" },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
 
 const FAQS = [
   {
@@ -41,7 +40,7 @@ const FAQS = [
   {
     question: "What do I get when I subscribe?",
     answer:
-      "A subscription unlocks every exam of every skill, unlimited practice attempts, AI feedback on all your writing and speaking answers, and full progress tracking. It costs €9.99 per month and you can cancel at any time.",
+      "A subscription unlocks every exam of every skill, unlimited practice attempts, AI feedback on all your writing and speaking answers, and full progress tracking. It costs €9.99 per month including VAT, and you can cancel at any time.",
   },
   {
     question: "How does the AI feedback work?",
@@ -64,25 +63,41 @@ const FAQS = [
   },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: FAQS.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
+/** Answered first while every exam is free, so nobody has to guess what changes later. */
+const EARLY_ACCESS_FAQ = {
+  question: "Is ExamKlaar free right now?",
+  answer:
+    "Yes. We are in early access, so every exam is free to use, including the AI feedback, and no payment method is needed. When early access ends, full access will cost €9.99 per month including VAT, and the first exam of every skill will stay free. We will email you before that happens. Nothing is charged automatically: you choose whether to subscribe.",
 };
 
+function faqsFor(earlyAccess: boolean) {
+  return earlyAccess ? [EARLY_ACCESS_FAQ, ...FAQS] : FAQS;
+}
+
+function faqSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
 export default function PricingPage() {
+  const earlyAccess = isEarlyAccess();
+  const faqs = faqsFor(earlyAccess);
+
   return (
     <div className="min-h-screen" style={{ background: "var(--gray-50)" }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }}
       />
       <Navbar />
 
@@ -98,8 +113,9 @@ export default function PricingPage() {
           className="mx-auto"
           style={{ fontSize: "1.25rem", color: "var(--gray-600)", maxWidth: "640px" }}
         >
-          The first exam of every skill is free. Unlock all the rest for €9.99 / month, cancel
-          anytime.
+          {earlyAccess
+            ? "We are in early access, so every exam is free for now. Later, full access costs €9.99 / month."
+            : "The first exam of every skill is free. Unlock all the rest for €9.99 / month, cancel anytime."}
         </p>
       </div>
 
@@ -117,7 +133,7 @@ export default function PricingPage() {
           Frequently Asked Questions
         </h2>
         <div className="flex flex-col gap-4">
-          {FAQS.map((faq) => (
+          {faqs.map((faq) => (
             <div
               key={faq.question}
               className="rounded-xl p-4 sm:p-6 border"

@@ -150,29 +150,3 @@ describe("SubscriptionRepository ordering guard", () => {
     ).toBeInstanceOf(Error);
   });
 });
-
-describe("SubscriptionRepository.insertIfAbsent", () => {
-  const row = {
-    user_id: "user_1",
-    plan_id: "monthly",
-    status: "active",
-    payment_provider: null,
-    provider_customer_id: null,
-    provider_subscription_id: null,
-    current_period_start: "2026-07-01T00:00:00.000Z",
-    current_period_end: "2026-10-01T00:00:00.000Z",
-    cancel_at_period_end: false,
-    updated_at: "2026-07-01T00:00:00.000Z",
-  };
-
-  test("reports the insert when a row was created", async () => {
-    pool.on(/insert into subscriptions/, () => ({ rowCount: 1, rows: [] }));
-    expect(await repo.insertIfAbsent(row)).toMatchObject({ inserted: true });
-  });
-
-  test("reports no insert when the user already had a row", async () => {
-    // The unique index on user_id is what makes the grant idempotent.
-    pool.on(/insert into subscriptions/, () => ({ rowCount: 0, rows: [] }));
-    expect(await repo.insertIfAbsent(row)).toMatchObject({ inserted: false });
-  });
-});
