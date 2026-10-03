@@ -81,7 +81,6 @@ jobs:
             [defaults]
             inventory = inventory.yaml
             host_key_checking = False
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
           inventory: |
             [examklaar]
             ${{ vars.DEPLOY_HOST }} ansible_user=root
