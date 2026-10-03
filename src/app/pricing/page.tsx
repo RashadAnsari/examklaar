@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PricingCards } from "@/components/pricing/PricingCards";
+import { site } from "@/config/site";
 import { isEarlyAccess } from "@/lib/payment/subscription";
 
 const PAID_DESCRIPTION =
@@ -15,8 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Pricing",
     description,
-    alternates: { canonical: "https://www.examklaar.nl/pricing" },
-    openGraph: { title, description, url: "https://www.examklaar.nl/pricing" },
+    alternates: { canonical: `${site.url}/pricing` },
+    openGraph: { title, description, url: `${site.url}/pricing` },
     twitter: { card: "summary_large_image", title, description },
   };
 }

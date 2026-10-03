@@ -13,7 +13,7 @@ export const site = {
   /** Used in <title> templates and as the marketing headline suffix. */
   tagline: "Practice for Your Dutch Inburgering Exam",
   /** Canonical origin, no trailing slash. Used by metadata, sitemap, and robots. */
-  url: "https://www.examklaar.nl",
+  url: "https://examklaar.nl",
   /** Shown in the footer and used as the support address everywhere. */
   supportEmail: "hallo@examklaar.nl",
   /** Brand colour, mirrored by --green-900 in globals.css. Emails cannot read CSS variables. */
