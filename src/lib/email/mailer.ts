@@ -1,16 +1,7 @@
-import nodemailer from "nodemailer";
-
-// Brevo SMTP relay. SMTP_USER is the Brevo SMTP login (e.g. 8xxxxx@smtp-brevo.com),
-// not the account email, and SMTP_PASSWORD is an SMTP key, not the API key.
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT ?? 587),
-  secure: false, // port 587 upgrades to TLS via STARTTLS
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASSWORD,
-  },
-});
+// Brevo transactional email over its HTTP API rather than the SMTP relay: the
+// production host is IPv6-only and smtp-relay.brevo.com has no AAAA record,
+// while api.brevo.com does. BREVO_API_KEY is an API key, not an SMTP key.
+const BREVO_SEND_URL = "https://api.brevo.com/v3/smtp/email";
 
 export async function sendEmail({
   to,
@@ -21,13 +12,31 @@ export async function sendEmail({
   subject: string;
   html: string;
 }) {
-  await transporter.sendMail({
-    from: {
-      name: process.env.SMTP_FROM_NAME ?? "Examklaar",
-      address: process.env.SMTP_FROM_EMAIL ?? "",
+  const apiKey = process.env.BREVO_API_KEY;
+  if (!apiKey) {
+    throw new Error("BREVO_API_KEY is not set");
+  }
+
+  const res = await fetch(BREVO_SEND_URL, {
+    method: "POST",
+    headers: {
+      "api-key": apiKey,
+      "content-type": "application/json",
+      accept: "application/json",
     },
-    to,
-    subject,
-    html,
+    body: JSON.stringify({
+      sender: {
+        name: process.env.EMAIL_FROM_NAME ?? "Examklaar",
+        email: process.env.EMAIL_FROM_ADDRESS ?? "",
+      },
+      to: [{ email: to }],
+      subject,
+      htmlContent: html,
+    }),
+    signal: AbortSignal.timeout(10_000),
   });
+
+  if (!res.ok) {
+    throw new Error(`Brevo send failed with ${res.status}: ${await res.text()}`);
+  }
 }

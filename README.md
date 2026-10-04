@@ -77,7 +77,7 @@ Five exams per component, 25 in total, all at A2 level. KNM has no level, matchi
 | Speech         | Transcription on the server with Transformers.js, no external call     |
 | Storage        | Any S3-compatible object storage, two buckets                          |
 | Payments       | Paddle, behind a provider interface, off during early access           |
-| Email          | SMTP via Nodemailer                                                    |
+| Email          | Brevo HTTP API                                                         |
 | Deployment     | Docker Compose on a single host, driven by Ansible from GitHub Actions |
 
 ## Quick start
@@ -89,7 +89,7 @@ make migrate    # apply db/migrations
 make dev        # http://localhost:3000
 ```
 
-Copy `.env.example` to `.env.local` and fill it in. Postgres, SMTP, S3 storage and Google AI each
+Copy `.env.example` to `.env.local` and fill it in. Postgres, Brevo, S3 storage and Google AI each
 need values. Leave `PAYMENT_PROVIDER` empty to run in early access, with every exam free and no
 Paddle setup. The file documents what every variable is for.
 

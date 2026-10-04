@@ -26,7 +26,7 @@ delta.
 
 Better Auth with email and password, mounted at `/api/auth`. Email verification is required, so a
 new account is inactive until the confirmation link is clicked. Signup confirmation and password
-reset emails go out over SMTP.
+reset emails go out through the Brevo HTTP API.
 
 ## Object storage
 
@@ -86,5 +86,5 @@ for example for support cases. In paid mode `hasPremiumAccess` honours it until 
 
 ## Environment
 
-`.env.example` is the reference. Postgres, SMTP, S3 storage and Google AI each need values. Paddle
+`.env.example` is the reference. Postgres, Brevo, S3 storage and Google AI each need values. Paddle
 needs them only when `PAYMENT_PROVIDER=paddle`. The file documents what every variable is for.
