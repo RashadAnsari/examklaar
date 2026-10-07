@@ -32,7 +32,8 @@ Research what the runbook does not give you (vocabulary range, KNM eindtermen, c
 3. **Generate the media** into `exam-export/assets/<component>/a2/exam-<N>/`:
    - reading, writing, knm: none.
    - listening: one MP3 per fragment (`docs/dutch-text-to-speech.md`).
-   - speaking Parts 2-4: one `image_gen` call per image, saved as `<uuid>.jpg`
+   - speaking Parts 2-4: one `image_gen` call per image, saved as `<uuid>.jpg`, then a
+     detailed `data-description` of what the saved image shows on its `<img>`
      (`docs/image-generation.md`).
    - speaking Part 1: per prompt, an MP3 (`docs/dutch-text-to-speech.md`), then a talking-head MP4
      from that MP3 and a presenter portrait (`docs/video-generation.md`). One portrait per voice,

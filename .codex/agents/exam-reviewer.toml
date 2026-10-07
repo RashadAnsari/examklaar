@@ -29,6 +29,8 @@ path, take the most recently modified file under `src/data/exams/`.
    option by its text.
 4. **HTML.** Matches the runbook's Section 1 conventions and the component's output template, style
    tokens verbatim. Speaking Part 1 is a `<video>` whose `data-transcription` matches the prompt.
+   Every `<img>` has a detailed `data-description` per `docs/image-generation.md`; open the image
+   and check the description matches it and leaves out nothing a candidate could mention.
    KNM has no media.
 5. **Assets.** Every `{{EXAM_ASSETS_BASE_URL}}` reference is `/<skill>/a2/exam-<n>/<uuid>.<ext>` and
    resolves to a file in `exam-export/assets/`. Flag a missing file; never invent one.

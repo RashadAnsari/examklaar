@@ -59,6 +59,12 @@ detail, no text, no watermark
    sips -s format jpeg "<generated file>" --out "exam-export/assets/speaking/a2/exam-<N>/<uuid>.jpg"
    ```
 
+4. Look at the saved image and write its `data-description` on the `<img>`: a detailed English
+   description of what it actually shows, at least 25 words. The grader reads only this text, so
+   cover everything a candidate could mention: each person's rough age, hair, clothing and
+   expression; exactly what they do and with what; the objects, with colours; the setting and
+   background; the weather or time of day when visible. Describe the image, not the prompt.
+
 ## Conventions
 
 - **File names are UUIDs:** `<uuid>.jpg`, matching the reference in the exam JSON.

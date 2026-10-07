@@ -122,12 +122,16 @@ of sync with the content. The extension must match the real media type (`.mp4`, 
 
 Tag patterns:
 
-- **Image:**
+- **Image:** in speaking and writing questions, its `data-description` attribute describes in
+  English, in detail, what the image actually shows (see
+  [`image-generation.md`](./image-generation.md)). The grader reads that attribute instead of the
+  image, so it is required there. Multiple-choice questions never reach the grader and need none.
 
   ```html
   <img
-    src="{{EXAM_ASSETS_BASE_URL}}/knm/exam-1/<uuid>.jpg"
-    style="max-width: 100%; margin-bottom: 1rem;"
+    src="{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/<uuid>.jpg"
+    data-description="A man rides a bicycle on a city street."
+    style="max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;"
   />
   ```
 

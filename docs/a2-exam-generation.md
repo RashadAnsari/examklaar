@@ -319,13 +319,13 @@ Parts 2-4 (1 / 2 / 3 generated images + the exact spoken question) open with a `
 {
   "id": "q5",
   "type": "speaking",
-  "content": "<p><em>Kijk naar het plaatje.</em></p><hr style=\"margin: 1.5rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/<uuid>.jpg\" style=\"max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;\" /><hr style=\"margin: 1.5rem 0;\"><p><strong>…exacte vraag…</strong></p>",
+  "content": "<p><em>Kijk naar het plaatje.</em></p><hr style=\"margin: 1.5rem 0;\"><img src=\"{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/<uuid>.jpg\" data-description=\"…what the image shows, in English…\" style=\"max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;\" /><hr style=\"margin: 1.5rem 0;\"><p><strong>…exacte vraag…</strong></p>",
   "options": null,
   "correctAnswer": null,
 }
 ```
 
-A full mock = 16 tasks (4+4+4+4); `timeLimitMinutes: 35`. Not auto-scored: speaking is AI-graded (`grader.ts`, 6 criteria, 12 pts/task, pass 60%); the `data-transcription` text is what the grader reads for context, so it must match the spoken prompt. Anything the spoken question asks the candidate to describe must be named in the image prompt.
+A full mock = 16 tasks (4+4+4+4); `timeLimitMinutes: 35`. Not auto-scored: speaking is AI-graded (`grader.ts`, 6 criteria, 12 pts/task, pass 60%); the grader reads the `data-transcription` text and each image's `data-description` instead of the media, so the transcription must match the spoken prompt and the description must match what the final image actually shows. Anything the spoken question asks the candidate to describe must be named in the image prompt.
 
 ---
 
