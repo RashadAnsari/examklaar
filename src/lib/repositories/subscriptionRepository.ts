@@ -53,12 +53,6 @@ const UPDATABLE_COLUMNS = new Set([
   "updated_at",
 ]);
 
-const INSERT_SQL = `insert into subscriptions
-    (user_id, plan_id, status, payment_provider, provider_customer_id,
-     provider_subscription_id, current_period_start, current_period_end,
-     cancel_at_period_end, updated_at)
-  values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
-
 /** All subscriptions table access. The table holds one row per user. */
 export class SubscriptionRepository {
   constructor(private readonly db: DbClient) {}
@@ -86,29 +80,9 @@ export class SubscriptionRepository {
     return rows[0] ?? null;
   }
 
-  /** Unconditional write, for manual grants. Webhooks use applyProviderEvent. */
-  async upsert(row: SubscriptionUpsert) {
-    return runWrite(() =>
-      this.db.query(
-        `${INSERT_SQL}
-         on conflict (user_id) do update set
-           plan_id = excluded.plan_id,
-           status = excluded.status,
-           payment_provider = excluded.payment_provider,
-           provider_customer_id = excluded.provider_customer_id,
-           provider_subscription_id = excluded.provider_subscription_id,
-           current_period_start = excluded.current_period_start,
-           current_period_end = excluded.current_period_end,
-           cancel_at_period_end = excluded.cancel_at_period_end,
-           updated_at = excluded.updated_at`,
-        UPSERT_VALUES(row)
-      )
-    );
-  }
-
   /**
-   * Apply a provider webhook snapshot. Unlike upsert, the update only wins
-   * when the incoming event is not older than the last applied one
+   * Apply a provider webhook snapshot. The update only wins when
+   * the incoming event is not older than the last applied one
    * (last_event_at), so a delayed retry of an earlier event cannot overwrite
    * newer state, e.g. resurrect access after a cancellation. Returns whether
    * the snapshot was applied; false means the event was stale and skipped.

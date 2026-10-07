@@ -42,6 +42,16 @@ const csp = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  // Ship only the files the server needs (see Dockerfile). Files loaded by paths the tracer cannot
+  // follow are included explicitly: the exam JSON, and the ONNX runtime library that Whisper's
+  // native binding loads for the build's platform.
+  output: "standalone",
+  outputFileTracingIncludes: {
+    "/**": ["./src/data/exams/**/*.json"],
+    "/api/recordings/transcribe": [
+      `./node_modules/onnxruntime-node/bin/napi-v3/${process.platform}/${process.arch}/**`,
+    ],
+  },
   // Allow a dev tunnel (e.g. ngrok/cloudflared) to reach the dev server, so the
   // site is reachable through the tunnel's public URL (for testing Paddle
   // webhooks, viewing on another device, sharing, etc.). Set DEV_TUNNEL_HOST to

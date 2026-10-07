@@ -79,11 +79,6 @@ The terms promise users at least 14 days' notice by email, so in this order:
 2. Email every user at least 14 days before the switch, linking to the updated terms.
 3. On the day, set `PAYMENT_PROVIDER` and the provider's variables, then restart the app.
 
-### Manual grants
-
-`bun scripts/grant-subscription.ts <userId>` gives one user a month of access without a provider,
-for example for support cases. In paid mode `hasPremiumAccess` honours it until its period end.
-
 ## Environment
 
 `.env.example` is the reference. Postgres, Brevo, S3 storage and Google AI each need values. Paddle

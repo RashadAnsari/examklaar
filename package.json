@@ -10,7 +10,6 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "bun test",
     "prepare": "husky",
-    "grant-subscription": "bun scripts/grant-subscription.ts",
     "delete-user": "bun scripts/delete-user.ts"
   },
   "dependencies": {

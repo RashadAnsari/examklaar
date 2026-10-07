@@ -1,12 +1,11 @@
 import fs from "fs/promises";
 import path from "path";
-import { fileURLToPath } from "url";
 import type { Exam } from "@/app/exam/ExamClient";
 import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam/config";
 import type { SkillGroup } from "@/lib/exam/config";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const EXAMS_DIR = path.join(/*turbopackIgnore: true*/ __dirname, "exams");
+// Rooted at the working directory with a fixed subfolder, so the build traces only the exam files
+const EXAMS_DIR = path.join(process.cwd(), "src", "data", "exams");
 
 const ASSET_BASE_URL_PLACEHOLDER = "{{EXAM_ASSETS_BASE_URL}}";
 
@@ -81,7 +80,7 @@ function buildExamPathById(examId: string): string {
 }
 
 export async function readExam(skillId: string, n: number): Promise<Exam> {
-  const content = await fs.readFile(buildExamPath(skillId, n), "utf-8");
+  const content = await fs.readFile(/*turbopackIgnore: true*/ buildExamPath(skillId, n), "utf-8");
   return JSON.parse(resolveAssetUrls(content)) as Exam;
 }
 
@@ -95,7 +94,7 @@ export async function readExamOrNull(skillId: string, n: number): Promise<Exam |
 
 export async function examFileExists(skillId: string, n: number): Promise<boolean> {
   try {
-    await fs.access(buildExamPath(skillId, n));
+    await fs.access(/*turbopackIgnore: true*/ buildExamPath(skillId, n));
     return true;
   } catch {
     return false;
@@ -103,31 +102,35 @@ export async function examFileExists(skillId: string, n: number): Promise<boolea
 }
 
 export async function readExamById(examId: string): Promise<Exam> {
-  const content = await fs.readFile(buildExamPathById(examId), "utf-8");
+  const content = await fs.readFile(/*turbopackIgnore: true*/ buildExamPathById(examId), "utf-8");
   return JSON.parse(resolveAssetUrls(content)) as Exam;
 }
 
 export async function listSkillGroups(): Promise<SkillGroup[]> {
   const groups: SkillGroup[] = [];
-  const skillDirs = await fs.readdir(EXAMS_DIR);
+  const skillDirs = await fs.readdir(/*turbopackIgnore: true*/ EXAMS_DIR);
 
   for (const skill of skillDirs) {
-    const skillPath = path.join(EXAMS_DIR, skill);
-    if (!(await fs.stat(skillPath)).isDirectory()) {
+    const skillPath = path.join(/*turbopackIgnore: true*/ EXAMS_DIR, skill);
+    if (!(await fs.stat(/*turbopackIgnore: true*/ skillPath)).isDirectory()) {
       continue;
     }
 
-    const entries = await fs.readdir(skillPath);
-    const hasLevelDirs = (await fs.stat(path.join(skillPath, entries[0]))).isDirectory();
+    const entries = await fs.readdir(/*turbopackIgnore: true*/ skillPath);
+    const hasLevelDirs = (
+      await fs.stat(path.join(/*turbopackIgnore: true*/ skillPath, entries[0]))
+    ).isDirectory();
 
     if (hasLevelDirs) {
       for (const levelDir of entries) {
-        const levelPath = path.join(skillPath, levelDir);
-        if (!(await fs.stat(levelPath)).isDirectory()) {
+        const levelPath = path.join(/*turbopackIgnore: true*/ skillPath, levelDir);
+        if (!(await fs.stat(/*turbopackIgnore: true*/ levelPath)).isDirectory()) {
           continue;
         }
 
-        const examFiles = (await fs.readdir(levelPath)).filter((f) => f.endsWith(".json"));
+        const examFiles = (await fs.readdir(/*turbopackIgnore: true*/ levelPath)).filter((f) =>
+          f.endsWith(".json")
+        );
         if (examFiles.length === 0) {
           continue;
         }
@@ -178,17 +181,23 @@ export async function listSkillExams(id: string): Promise<{
     return null;
   }
 
-  const dir = levelDir ? path.join(EXAMS_DIR, skill, levelDir) : path.join(EXAMS_DIR, skill);
+  const dir = levelDir
+    ? path.join(/*turbopackIgnore: true*/ EXAMS_DIR, skill, levelDir)
+    : path.join(/*turbopackIgnore: true*/ EXAMS_DIR, skill);
 
   try {
-    const files = (await fs.readdir(dir)).filter((f) => f.endsWith(".json")).sort();
+    const files = (await fs.readdir(/*turbopackIgnore: true*/ dir))
+      .filter((f) => f.endsWith(".json"))
+      .sort();
     if (files.length === 0) {
       return null;
     }
 
     const exams = await Promise.all(
       files.map(async (filename) => {
-        const json = JSON.parse(await fs.readFile(path.join(dir, filename), "utf-8"));
+        const json = JSON.parse(
+          await fs.readFile(path.join(/*turbopackIgnore: true*/ dir, filename), "utf-8")
+        );
         const match = filename.match(/(\d+)\.json$/);
         const n = match ? parseInt(match[1]) : 0;
         return {

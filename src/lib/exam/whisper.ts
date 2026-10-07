@@ -4,4 +4,4 @@ import { join } from "node:path";
 export const WHISPER_MODEL = "Xenova/whisper-base";
 
 /** Where the image keeps the model files, written by scripts/download-whisper.ts. */
-export const WHISPER_MODEL_DIR = join(process.cwd(), "models");
+export const WHISPER_MODEL_DIR = join(/*turbopackIgnore: true*/ process.cwd(), "models");

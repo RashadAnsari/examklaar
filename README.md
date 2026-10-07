@@ -125,7 +125,7 @@ src/
 db/migrations/      numbered SQL migrations, applied by scripts/migrate.ts
 deploy/             Ansible playbooks and compose templates for the server
 docs/               authoring, generation and operations documentation
-scripts/            migrate, grant-subscription, delete-user
+scripts/            migrate, delete-user
 test/               test setup and the stub Postgres pool
 ```
 

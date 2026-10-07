@@ -54,8 +54,7 @@ export const NO_SUBSCRIPTION: UserSubscription = {
 /**
  * Returns true when the user should be allowed to access exam content.
  *
- * Manually granted subscriptions (no payment provider, e.g. via
- * scripts/grant-subscription.ts) have no provider to update their status when
+ * Manually granted subscriptions (no payment provider) have no provider to update their status when
  * the period ends, so current_period_end is the sole authority: access lasts
  * only until that date.
  *
