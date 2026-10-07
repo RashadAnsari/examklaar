@@ -18,6 +18,12 @@ ENV S3_ENDPOINT=$S3_ENDPOINT
 
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
+
+# The Whisper files are served from an IPv4-only host the server cannot reach, so bake them in
+COPY scripts/download-whisper.ts scripts/
+COPY src/lib/exam/whisper.ts src/lib/exam/
+RUN bun scripts/download-whisper.ts
+
 COPY . .
 RUN bun run build
 

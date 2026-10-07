@@ -1,20 +1,46 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth-session";
 import { MAX_AUDIO_UPLOAD_BYTES } from "@/lib/exam/config";
+import { WHISPER_MODEL, WHISPER_MODEL_DIR } from "@/lib/exam/whisper";
+
+type Transcriber = (audio: Float32Array, opts: object) => Promise<{ text: string }>;
 
 // Singleton pipeline — loaded once per server process, reused across requests
-let initPromise: Promise<(audio: Float32Array, opts: object) => Promise<{ text: string }>> | null =
-  null;
+let initPromise: Promise<Transcriber> | null = null;
 
-async function getTranscriber() {
+// Built from its parts rather than with pipeline(): pipeline() falls back to a CTC model when the
+// Whisper model fails to load and reports only "Unsupported model type: whisper", hiding the cause.
+async function loadTranscriber(): Promise<Transcriber> {
+  const {
+    env,
+    AutoTokenizer,
+    AutoProcessor,
+    AutoModelForSpeechSeq2Seq,
+    AutomaticSpeechRecognitionPipeline,
+  } = await import("@xenova/transformers");
+  // The image ships the model in WHISPER_MODEL_DIR; without it (local dev) it is downloaded
+  env.localModelPath = WHISPER_MODEL_DIR;
+  const [tokenizer, processor, model] = await Promise.all([
+    AutoTokenizer.from_pretrained(WHISPER_MODEL),
+    AutoProcessor.from_pretrained(WHISPER_MODEL),
+    AutoModelForSpeechSeq2Seq.from_pretrained(WHISPER_MODEL),
+  ]);
+  const asr = new AutomaticSpeechRecognitionPipeline({
+    task: "automatic-speech-recognition",
+    model,
+    tokenizer,
+    processor,
+  });
+  return (audio, opts) => asr(audio, opts) as Promise<{ text: string }>;
+}
+
+function getTranscriber(): Promise<Transcriber> {
   if (!initPromise) {
-    initPromise = (async () => {
-      const { pipeline, env } = await import("@xenova/transformers");
-      env.allowLocalModels = false;
-      return pipeline("automatic-speech-recognition", "Xenova/whisper-base") as Promise<
-        (audio: Float32Array, opts: object) => Promise<{ text: string }>
-      >;
-    })();
+    // Drop a failed load so the next request retries instead of failing until a restart
+    initPromise = loadTranscriber().catch((err) => {
+      initPromise = null;
+      throw err;
+    });
   }
   return initPromise;
 }
