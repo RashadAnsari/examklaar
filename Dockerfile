@@ -9,6 +9,13 @@ ENV GIT_SHA=$GIT_SHA
 ENV NODE_ENV=$NODE_ENV
 ENV ANALYTICS_GA_MEASUREMENT_ID=$ANALYTICS_GA_MEASUREMENT_ID
 
+# next.config.ts derives the Content-Security-Policy media origins from these,
+# and Next writes headers into the build output, so they must be set here too
+ARG EXAM_ASSETS_BASE_URL
+ARG S3_ENDPOINT
+ENV EXAM_ASSETS_BASE_URL=$EXAM_ASSETS_BASE_URL
+ENV S3_ENDPOINT=$S3_ENDPOINT
+
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 COPY . .

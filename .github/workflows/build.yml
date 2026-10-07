@@ -58,7 +58,9 @@ jobs:
             NODE_ENV=production
             GIT_SHA=${{ github.sha }}
             ANALYTICS_GA_MEASUREMENT_ID=${{ secrets.ANALYTICS_GA_MEASUREMENT_ID }}
-  
+            EXAM_ASSETS_BASE_URL=${{ secrets.EXAM_ASSETS_BASE_URL }}
+            S3_ENDPOINT=${{ secrets.S3_ENDPOINT }}
+
       - name: Docker Save
         if: github.ref == 'refs/heads/master' && vars.DEPLOY_HOST != ''
         run: docker save examklaar:${{ github.sha }} > /tmp/docker-image.tar
