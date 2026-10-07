@@ -42,9 +42,7 @@ yarn-error.log*
 next-env.d.ts
 
 # claude
-.claude/*
-!.claude/skills/
-!.claude/agents/
+.claude/
 .claude-flow/
 .mcp.json
 REVIEW_REPORT.md

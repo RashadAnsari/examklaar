@@ -2,44 +2,20 @@
 
 [Documentation index](./README.md)
 
-This is the local, free, offline pipeline for turning a portrait image plus a spoken audio clip into
-a lip-synced talking-head video. Use it for the speaking exam Part 1 prompts, where a presenter on
-screen asks the question, matching the real DUO exam (which shows a person on video rather than
-playing bare audio).
-
-It runs entirely on your machine, makes no cloud calls, and produces MP4 files. Videos are generated
-once at authoring time and uploaded to the asset bucket, so none of this tooling ships in the app or
-runs at request time.
-
-## Tool choice
-
-We use [SadTalker](https://github.com/OpenTalker/SadTalker), an audio-driven talking-head generator:
-single portrait image + audio in, lip-synced video out. Its license is Apache 2.0 (the project
-explicitly removed its earlier non-commercial restriction), so it is safe for this paid product. It
-has no Apple Silicon GPU path, but CPU inference works fine for authoring-time batches.
-
-The pipeline chains the two sibling docs: the spoken prompt comes from
-[`dutch-text-to-speech.md`](./dutch-text-to-speech.md) (Piper) and the presenter portrait from
-[`image-generation.md`](./image-generation.md) (mflux). `ffmpeg` converts the input audio and
-re-encodes the output video.
+Turns a presenter portrait and a spoken prompt MP3 into a lip-synced talking-head MP4 for the
+speaking Part 1 prompts, locally with [SadTalker](https://github.com/OpenTalker/SadTalker) on the
+CPU. The audio comes from [`dutch-text-to-speech.md`](./dutch-text-to-speech.md), the portrait from
+[`image-generation.md`](./image-generation.md). `ffmpeg` converts the audio and re-encodes the video.
 
 ## One time setup
 
-The install lives at `~/.cache/examklaar-sadtalker`, outside the repo: it is a full upstream
-checkout plus ~3 GB of model weights with its own Python 3.11 virtualenv (the project `.venv` is
-Python 3.13, which SadTalker's dependencies do not support). Requires `uv` (`brew install uv`) and
-`ffmpeg`.
+SadTalker lives at `~/.cache/examklaar-sadtalker` with its own Python 3.11 virtualenv and ~3 GB of
+weights. Requires `uv` (`brew install uv`) and `ffmpeg`. Do not install from the upstream
+`requirements.txt`: the script below pins working versions, installs the numpy 1.x set last, and
+patches the sources for current dependencies.
 
-> **Gotchas that cost hours if you skip them.** SadTalker is a 2023 codebase; with current
-> dependencies it needs five small source patches (removed numpy/PIL/torchvision APIs) and a strict
-> install order: its pinned `imageio==2.19.3` is broken (infinite plugin-import recursion), so
-> imageio must be current, but upgrading imageio drags in numpy 2.x, which binary-breaks
-> scikit-image and scipy. The fix is to install the numpy 1.x set (`numpy==1.26.4`, `scipy<1.14`,
-> `scikit-image==0.21.0`) **last**. The setup script below encodes all of this; do not install from
-> the upstream `requirements.txt`.
-
-Save this as `~/.cache/examklaar-sadtalker/setup.sh` and run it with `bash`. It is idempotent:
-rerun it after any breakage and it repairs the install without re-downloading what is already there.
+Save it as `~/.cache/examklaar-sadtalker/setup.sh` and run it with `bash`. Rerunning it repairs a
+broken install without downloading again.
 
 ```bash
 #!/bin/bash
@@ -96,33 +72,25 @@ echo SETUP_READY
 
 ## The presenter portrait
 
-Generate it with the mflux pipeline from [`image-generation.md`](./image-generation.md). What makes
-a portrait animate well:
+Generate it with `image_gen` per [`image-generation.md`](./image-generation.md), with these rules:
 
-- Head and shoulders, looking directly into the camera, **mouth closed**, neutral expression.
-- Plain, uncluttered background (SadTalker animates the face and blends it back into the frame).
-- **Match the presenter to the Piper voice of the prompt**: a female portrait for
-  `nl_BE-nathalie-medium`, a male portrait for `nl_NL-ronnie-medium` / `nl_NL-pim-medium`. Reuse
-  one portrait for all prompts spoken by the same voice within an exam, like the single examiner in
-  the real exam.
-
-As with every image prompt, write the portrait prompt complete per the completeness checklist in
-[`image-generation.md`](./image-generation.md): age, hair, clothing, expression, framing, background,
-and lighting all named. Vague or appearance-only prompts drift to tight, angled beauty-shot crops
-that animate poorly.
-
-Prompt that works (append the standard realistic style suffix):
+- Head and shoulders, looking straight into the camera, **mouth closed**, neutral expression, plain
+  background, soft even lighting.
+- Match the presenter to the voice: female for `nl_BE-nathalie-medium`, male for
+  `nl_NL-ronnie-medium` / `nl_NL-pim-medium`. Reuse one portrait per voice within an exam.
+- Name age, hair, clothing, expression, framing, background, and lighting; vague prompts drift to
+  tight, angled crops that animate poorly.
 
 ```
 Head and shoulders portrait of a friendly Dutch woman in her thirties, shoulder-length brown hair,
 looking directly into the camera, mouth closed, neutral warm expression, plain light gray
-background, soft even studio lighting. realistic photograph, natural lighting, photorealistic,
-high detail
+background, soft even studio lighting. square 1:1 image, realistic photograph, photorealistic, high
+detail, no text, no watermark
 ```
 
 ## Rendering one video
 
-Inputs: the prompt MP3 from the Piper pipeline and the portrait PNG. SadTalker wants WAV audio.
+SadTalker wants WAV audio.
 
 ```bash
 WORK=~/.cache/examklaar-sadtalker
@@ -136,20 +104,15 @@ cd "$WORK/SadTalker"
   --size 256 --preprocess full --still --cpu
 ```
 
-- `--preprocess full --still` keeps the whole portrait in frame with minimal head motion (right for
-  an exam presenter); without them you get a cropped, moving face.
-- **Timing:** about 14 minutes for a 6 second clip on an M2 Pro (CPU only). A full exam's 4 Part 1
-  prompts is roughly an hour; warn before starting a batch.
-- **Quality:** `--size 512` and/or `--enhancer gfpgan` sharpen the face at roughly 2 to 4x the
-  render time. The 256 model animates the face at 256px inside the full frame, which reads slightly
-  soft; judge the 256 output first before paying for more.
+- `--preprocess full --still` keeps the whole portrait in frame with minimal head motion.
+- About 15 minutes per clip. `--size 512` or `--enhancer gfpgan` sharpen the face at 2 to 4 times
+  the render time.
 
 The result lands at `results/<timestamp>.mp4`.
 
 ## Re-encode and name the output
 
-SadTalker writes legacy `mpeg4` video. Re-encode to H.264 for browser playback, and name the file
-as a fresh lowercase UUID per the asset rules in [`exam-format.md`](./exam-format.md):
+Re-encode to H.264 for browser playback and name the file as a fresh lowercase UUID:
 
 ```bash
 ffmpeg -y -i "$WORK/results/<timestamp>.mp4" \
@@ -157,14 +120,10 @@ ffmpeg -y -i "$WORK/results/<timestamp>.mp4" \
   "$(uuidgen | tr '[:upper:]' '[:lower:]').mp4"
 ```
 
-Place it in the staging tree (`exam-export/assets/speaking/a2/exam-<n>/<uuid>.mp4`) and reference
-it from the exam JSON with the speaking **video variant** markup in
-[`exam-format.md`](./exam-format.md): a `<video>` tag carrying the spoken prompt as
-`data-transcription`, source `{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-<n>/<uuid>.mp4`.
+Put it in `exam-export/assets/speaking/a2/exam-<n>/` and reference it with the Part 1 `<video>`
+markup from [`a2-exam-generation.md`](./a2-exam-generation.md).
 
 ## Batching
 
-Render sequentially (each run saturates the CPU). Loop over the Part 1 prompts, reusing the
-per-voice portrait, then re-encode all results in one pass. Delete the timestamped `results/`
-folders once the re-encoded UUID files are in the staging tree; everything under
-`~/.cache/examklaar-sadtalker` except `setup.sh` can be regenerated.
+Render one clip at a time (each run uses the whole CPU), then re-encode all results. Delete the
+`results/` folders once the UUID files are staged.

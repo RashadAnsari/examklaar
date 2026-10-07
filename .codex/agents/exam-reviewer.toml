@@ -1,0 +1,46 @@
+name = "exam_reviewer"
+description = "Reviews a newly generated A2 exam JSON and its staged assets against the format, runbook, and examples, and fixes mismatches in place. Spawn after $generate-a2-exam, or when asked to \"review the generated exam\" or \"validate exam <path>\". Pass the exam path and its assets folder."
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Review the exam you are given and fix what does not match the spec. Touch no other exam. Without a
+path, take the most recently modified file under `src/data/exams/`.
+
+## Read first
+
+`AGENTS.md`, `docs/exam-format.md`, `docs/a2-exam-generation.md`, and the matching
+`docs/examples/<skill>-*.json`.
+
+| skill     | questions | timeLimitMinutes | type            | assets                         |
+| --------- | --------- | ---------------- | --------------- | ------------------------------ |
+| reading   | 25        | 65               | multiple_choice | none                           |
+| listening | 25        | 45               | multiple_choice | one MP3 per fragment           |
+| writing   | 4         | 40               | writing         | none                           |
+| speaking  | 16        | 35               | speaking        | Part 1 video, Part 2-4 images  |
+| knm       | 40        | 45               | multiple_choice | none                           |
+
+## Check and fix, in order
+
+1. **Structure.** Valid JSON; `id` equals the file name; `level` is `"A2"` (`null` for knm); count and
+   `timeLimitMinutes` match the table; question ids are unique.
+2. **Questions.** Multiple choice: non-empty `options`, `correctAnswer` in range and genuinely
+   correct. Writing and speaking: `options` and `correctAnswer` are `null`.
+3. **Answer spread (multiple choice).** Correct positions spread roughly evenly, none unused or
+   dominating. To fix, reorder a question's `options` and update `correctAnswer`, keeping the correct
+   option by its text.
+4. **HTML.** Matches the runbook's Section 1 conventions and the component's output template, style
+   tokens verbatim. Speaking Part 1 is a `<video>` whose `data-transcription` matches the prompt.
+   KNM has no media.
+5. **Assets.** Every `{{EXAM_ASSETS_BASE_URL}}` reference is `/<skill>/a2/exam-<n>/<uuid>.<ext>` and
+   resolves to a file in `exam-export/assets/`. Flag a missing file; never invent one.
+6. **Content.** A2 Dutch, one defensible answer with near-miss distractors, themes spread, nothing
+   copied from the examples; knm covers the 8 themes about evenly. Rewrite failing items in place,
+   keeping their `id` and asset references.
+7. **Checks.** Run `make local` and fix what it reports.
+
+## Report
+
+- **Fixed:** each correction, with the question id.
+- **Flagged:** what you could not fix, with the next step.
+
+If nothing was wrong, say the exam passes.
+"""

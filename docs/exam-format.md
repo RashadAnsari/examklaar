@@ -147,13 +147,9 @@ Tag patterns:
   </video>
   ```
 
-- **Speaking prompt:** a `<video>` (or `<audio>`) whose `data-transcription` attribute holds the
-  spoken prompt text. The grader reads that attribute for context instead of fetching the clip, so it
-  is required on every speaking prompt. All exams use the video variant (a talking-head clip
-  generated per [`video-generation.md`](./video-generation.md)); the audio variant remains supported
-  by the player and grader as a legacy fallback.
-
-  Video variant:
+- **Speaking prompt:** a talking-head `<video>` whose `data-transcription` attribute holds the
+  spoken prompt text. The grader reads that attribute instead of fetching the clip, so it is
+  required on every speaking prompt.
 
   ```html
   <video
@@ -163,18 +159,6 @@ Tag patterns:
   >
     <source src="{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/<uuid>.mp4" type="video/mp4" />
   </video>
-  ```
-
-  Audio variant (legacy, same `data-transcription` rule):
-
-  ```html
-  <audio
-    controls
-    data-transcription="Waar maakt u graag huiswerk? Vertel ook waarom."
-    style="width: 100%; margin: 0.75rem 0; display: block;"
-  >
-    <source src="{{EXAM_ASSETS_BASE_URL}}/speaking/a2/exam-1/<uuid>.mp3" type="audio/mpeg" />
-  </audio>
   ```
 
 For two-image speaking prompts ("choose one of the pictures"), put two `<img>` tags inside a flex

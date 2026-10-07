@@ -8,7 +8,7 @@
 
 **Reference examples, and sourcing the rest yourself.** [`examples/`](./examples/) holds one **real official DUO exam per component**. Before generating, read the matching example to calibrate tone, register, sentence length, difficulty, question framing, distractor style, and JSON/HTML layout. **Use it for inspiration only, never copy** any text, question, option, scenario, name, or number from it; produce fresh content that merely matches its level and style. This runbook is a **starting point, not a complete dataset**: the facts, themes, and figures below are a scaffold you must **verify and expand yourself**. Actively research whatever a faithful A2 exam needs and this doc does not hand you: the current A2 vocabulary/grammar range, the full KNM eindtermen, per-component length/duration norms, theme balance, and any time-sensitive facts (fees, officials, format dates), and do it from authoritative sources (`inburgeren.nl`, `duo.nl`) before writing.
 
-**Last verified:** June 2026. Flag anything time-sensitive (fees, the minister-president, format-change dates) and re-verify against `inburgeren.nl` / `duo.nl` when in doubt.
+Re-verify time-sensitive facts (fees, the minister-president, format-change dates) against `inburgeren.nl` / `duo.nl` before using them.
 
 ---
 
@@ -59,8 +59,8 @@ The `id` field must equal the file name without `.json`. Top-level fields: `id`,
 
 - Intro/instructions go in `<p><em>…</em></p>`; the question itself in `<p><strong>…</strong></p>`; separators are `<hr style="margin: 1.5rem 0;">`.
 - **Reading:** `<p><em>context</em></p><p><em>Lees eerst de vraag.<br>Lees daarna de tekst.</em></p><hr>` then the stimulus, then `<hr>` then the question.
-- **Listening:** `<p><em>context</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr>` then the spoken-media element (`<audio>` now, `<video>` if used later, with the instruction line matched to it), then `<hr>` then the question.
-- **Speaking image tasks:** `<p><em>Kijk naar het plaatje.</em></p>` (one image) or `<p><em>Kijk naar de plaatjes.</em></p>` (two/three), then `<hr>`, then the image(s), then `<hr>` then the question. Part 1 is a talking-head `<video>` prompt (see [`video-generation.md`](./video-generation.md)) with no context line; the format also supports a legacy `<audio>` variant.
+- **Listening:** `<p><em>context</em></p><p><em>Lees eerst de vraag.<br>Luister daarna naar de tekst.</em></p><hr>` then the `<audio>` element, then `<hr>` then the question.
+- **Speaking image tasks:** `<p><em>Kijk naar het plaatje.</em></p>` (one image) or `<p><em>Kijk naar de plaatjes.</em></p>` (two/three), then `<hr>`, then the image(s), then `<hr>` then the question. Part 1 is a talking-head `<video>` prompt (see [`video-generation.md`](./video-generation.md)) with no context line.
 - **Writing:** form label cells use `width: 180px`; content points as `<ul>`; messages get an Aan/Onderwerp header table with an empty body cell.
 - **Fixed style tokens** (copy verbatim): `<audio>`/`<video>` `style="width: 100%; margin: 0.75rem 0; display: block;"` (video adds `max-width: 560px;`); speaking image styles depend on the image count: one image `style="max-width: 300px; max-height: 260px; object-fit: contain; margin: 0.75rem 0; display: block;"`; two images in a flex `<div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.75rem 0;">` each `style="max-width: 48%; max-height: 220px; object-fit: contain;"`; three images in the same flex div each `style="max-width: 32%; max-height: 180px; object-fit: contain;"`. See the examples in `examples/` for the exact tokens.
 
@@ -70,17 +70,17 @@ The `id` field must equal the file name without `.json`. Top-level fields: `id`,
 {{EXAM_ASSETS_BASE_URL}}/<skill>/a2/exam-<n>/<uuid>.<ext>   // knm would be /knm/exam-<n>/… but see below
 ```
 
-Generate the media with the local pipelines: **audio** (listening fragments, speaking prompt speech) via Piper, **images** (speaking) via mflux in the fixed **photorealistic** style, and **video** (speaking Part 1 talking-head prompts: presenter portrait + prompt audio) via SadTalker. See the three sibling docs.
+Generate the media: **audio** (listening fragments, speaking prompt speech) via Piper, **images** (speaking scenes and presenter portraits) via Codex's built-in image generation in the fixed **photorealistic** style, and **video** (speaking Part 1 talking-head prompts: presenter portrait + prompt audio) via SadTalker. See the three sibling docs.
 
 **Pass thresholds are set in code, not here.** `src/lib/exam/scoring.ts` is the source of truth: reading A2 = 19/25, listening A2 = 18/25, KNM = 28/40 (70%), writing & speaking = 60% of points. Use those, not the generic "unofficial" figures elsewhere in this doc, when calibrating difficulty for this app.
 
 **Project-specific decisions (override the generic component rules below):**
 
 - **KNM is text-only in this app.** Do not generate or reference photos. Each KNM `content` is just `<p>question</p>`; keep the scene in mind for context but do not emit an image tag.
-- **Listening fragments are `<audio>` clips** (generated by Piper); match the reading-instruction line to the element (`Luister daarna naar de tekst` for audio, `Kijk daarna naar de video` for video). **Speaking Part 1 is a talking-head `<video>` clip** (presenter portrait + Piper audio rendered with SadTalker, see [`video-generation.md`](./video-generation.md)); it always carries the spoken prompt as a `data-transcription` attribute. A legacy `<audio>` Part 1 variant is still supported and keeps the same `data-transcription` rule. Speaking Parts 2-4 use generated **images**.
+- **Listening fragments are `<audio>` clips.** **Speaking Part 1 is a talking-head `<video>` clip** carrying the spoken prompt as a `data-transcription` attribute. Speaking Parts 2-4 use generated **images**.
 - **Writing** has no assets; the form/message/open task is rendered as HTML (tables for forms and email headers).
 
-**Build workflow.** Generate into a staging folder (e.g. `exam-export/exams/*.json` + `exam-export/assets/<skill>/a2/exam-<n>/<uuid>.<ext>` mirroring the bucket), generate the audio/images/videos with UUID names, verify every `{{EXAM_ASSETS_BASE_URL}}` reference resolves to a file, then copy the JSON into `src/data/exams/…` and upload the `assets/` tree to the `exam-assets` bucket.
+**Build workflow.** Write the JSON to `src/data/exams/…`, generate the media with UUID names into `exam-export/assets/<skill>/a2/exam-<n>/` (mirroring the bucket), verify every `{{EXAM_ASSETS_BASE_URL}}` reference resolves to a file, then upload the `assets/` tree to the `exam-assets` bucket.
 
 ---
 
@@ -140,7 +140,7 @@ A full mock = ~9 texts, 25 questions, balanced across question types and themes;
 
 **Structure & administration**
 
-- Computer-based. **~45 minutes. ~25 multiple-choice questions** across **~9 fragments**. Auto-scored. The real DUO exam mixes short films and audio-only texts; **in this app the fragment is a spoken-media element (an `<audio>` clip today; `<video>` supported later)**.
+- Computer-based. **~45 minutes. ~25 multiple-choice questions** across **~9 fragments**. Auto-scored. The real DUO exam mixes short films and audio-only texts; **in this app each fragment is an `<audio>` clip**.
 - **~25 seconds** to read the question before each fragment. Options A/B/C (sometimes 4). This app's pass mark is **18/25** (`scoring.ts`); DUO publishes no official cut score.
 - **Playback count is a per-app setting, not a fixed DUO fact:** "plays once" is documented only for the higher NT2 B1/B2 exam; for A2 third-party sources say twice. The app controls replay, so do not assert a count in the content.
 
@@ -286,7 +286,7 @@ A full mock = exactly 4 tasks (1 form + 1-2 messages + 1-2 open); `timeLimitMinu
 
 - Part 1: write a short, clearly-articulated A2 spoken-prompt line = **model statement + direct question + "Vertel ook …"** (rendered to a talking-head video, see the output template).
 - Parts 2–4: give **image-production notes** (scene description per picture) + the **exact spoken question** in simple Dutch. The notes must be complete prompts per the completeness checklist in [`image-generation.md`](./image-generation.md): subject with age and clothing, the exact action, every object the question relies on by name, setting, background, and framing; never a bare one-liner.
-- **Write questions the image pipeline can deliver.** The images are generated later by a **separate agent** from your notes alone; you never see the renders and cannot fix a weak image by rewording the question afterwards. So only build questions around scenes a text-to-image model renders reliably: one or two people performing a single, concrete, everyday action with common objects (shopping, cycling, cooking, cleaning, waiting for a bus). Never let the answer depend on things image models routinely get wrong:
+- **Write questions the image pipeline can deliver.** Images are generated from your notes alone, so only build questions around scenes a text-to-image model renders reliably: one or two people performing a single, concrete, everyday action with common objects (shopping, cycling, cooking, cleaning, waiting for a bus). Never let the answer depend on things image models routinely get wrong:
   - **readable text or numbers** in the picture (signs, price tags, clocks, timetables, screens, letters);
   - **exact counts** above two ("noem drie dingen" is fine only if the three things are large, distinct objects named in the prompt);
   - fine hand or finger detail, specific brands or logos, maps or floor plans;
@@ -325,7 +325,7 @@ Parts 2-4 (1 / 2 / 3 generated images + the exact spoken question) open with a `
 }
 ```
 
-A full mock = 16 tasks (4+4+4+4); `timeLimitMinutes: 35`. Not auto-scored: speaking is AI-graded (`grader.ts`, 6 criteria, 12 pts/task, pass 60%); the `data-transcription` text is what the grader reads for context, so it must match the spoken prompt. Write image briefs as complete, fully detailed English prompts per the completeness checklist in [`image-generation.md`](./image-generation.md); anything the spoken question asks the candidate to describe must be named in the prompt, and the scene itself must pass the renderability rule above (a separate agent generates the images from the brief alone, so no text-in-image, no exact counts, no cross-image character consistency).
+A full mock = 16 tasks (4+4+4+4); `timeLimitMinutes: 35`. Not auto-scored: speaking is AI-graded (`grader.ts`, 6 criteria, 12 pts/task, pass 60%); the `data-transcription` text is what the grader reads for context, so it must match the spoken prompt. Anything the spoken question asks the candidate to describe must be named in the image prompt.
 
 ---
 
@@ -336,7 +336,7 @@ A full mock = 16 tasks (4+4+4+4); `timeLimitMinutes: 35`. Not auto-scored: speak
 3. **Calibrate to A2**: simple language, concrete everyday themes, one clear task per item, no argumentation; spread themes; balance question/task types.
 4. **For MC components** (Lezen/Luisteren/KNM): one unambiguous answer + near-miss distractors; **distribute `correctAnswer` evenly across all option positions over the whole exam** (roughly a third each at 0/1/2, plus index 3 on 4-option items), never all the same position; tag KNM with theme + eindterm.
 5. **For productive components** (Schrijven/Spreken): give explicit content points / exact prompts; set register (u/je); **do not auto-score**: present the official assessment criteria for self-check.
-6. **Always in Dutch.** Emit the project JSON (Section 1), then generate the media: listening audio (`dutch-text-to-speech.md`), speaking images (`image-generation.md`), and speaking Part 1 talking-head videos (`video-generation.md`, from the Piper prompt audio + an mflux presenter portrait), each with a UUID file name and a `{{EXAM_ASSETS_BASE_URL}}` reference. KNM stays text-only.
+6. **Always in Dutch.** Emit the project JSON (Section 1), then generate the media: listening audio (`dutch-text-to-speech.md`), speaking images (`image-generation.md`), and speaking Part 1 talking-head videos (`video-generation.md`, from the Piper prompt audio + a Codex-generated presenter portrait), each with a UUID file name and a `{{EXAM_ASSETS_BASE_URL}}` reference. KNM stays text-only.
 7. **Use the app's thresholds** from `scoring.ts` (reading 19/25, listening 18/25, KNM 28/40, writing/speaking 60%) when calibrating; verify the current minister-president before naming; fees/format dates may change.
 8. **Validate before delivering**: correct item count and per-theme/per-part distribution; every MC item has a valid 0-based `correctAnswer` and every productive item its content/prompt; **the correct-answer positions are spread roughly evenly (count them: each of 0/1/2 should appear a comparable number of times, none zero, none dominating)**; the file is valid JSON; and **every `{{EXAM_ASSETS_BASE_URL}}` reference resolves to a generated asset file**.
 
@@ -347,7 +347,7 @@ A full mock = 16 tasks (4+4+4+4); `timeLimitMinutes: 35`. Not auto-scored: speak
 | Component     | Medium                  | Time    | Items                | Format                              | Scored by            | This app's pass mark (`scoring.ts`) |
 | ------------- | ----------------------- | ------- | -------------------- | ----------------------------------- | -------------------- | ----------------------------------- |
 | **Lezen**     | Computer                | 65 min  | ~25 Q / ~9 texts     | MC A/B/C                            | Auto                 | 19/25                               |
-| **Luisteren** | Computer                | ~45 min | ~25 Q / ~9 fragments | MC A/B/C, spoken media (audio now)  | Auto                 | 18/25                               |
+| **Luisteren** | Computer                | ~45 min | ~25 Q / ~9 fragments | MC A/B/C, audio                     | Auto                 | 18/25                               |
 | **KNM**       | Computer                | 45 min  | 40 Q                 | MC A/B/C, 8 themes (text-only here) | Auto                 | 28/40 (70%)                         |
 | **Schrijven** | Computer here           | 40 min  | 4 tasks              | form + messages + open              | **AI (`grader.ts`)** | 60% of points                       |
 | **Spreken**   | Computer (record voice) | 35 min  | 16 tasks (4+4+4+4)   | video prompt + 1/2/3 images         | **AI (`grader.ts`)** | 60% of points                       |

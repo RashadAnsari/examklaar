@@ -150,11 +150,12 @@ and for coding agents alike. Read it before touching code.
 
 ## Project skills
 
-Project skills live in `.claude/skills/` and are invoked as a slash command.
+Project skills are Codex skills in `.agents/skills/`, invoked with `$`. The skill hands its result
+to the `exam_reviewer` agent in `.codex/agents/`.
 
-| Skill                                                            | What it does                                                                                              |
-| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `/generate-a2-exam <reading\|listening\|writing\|speaking\|knm>` | Generates a new A2 exam for a component, writes the JSON into the exam data, and stages its assets folder |
+| Skill                                                            | What it does                                                                                                                              |
+| ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `$generate-a2-exam <reading\|listening\|writing\|speaking\|knm>` | Generates a new A2 exam for a component, writes the JSON into the exam data, and stages its assets folder (images via Codex, video local) |
 
 ## License
 

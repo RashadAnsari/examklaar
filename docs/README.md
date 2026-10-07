@@ -28,13 +28,13 @@ Start here when adding or changing an exam.
 
 ## Generating exam media
 
-Three local, free, offline pipelines. Media is generated once at authoring time and uploaded to the
-asset bucket, so none of this tooling ships in the app or runs at request time.
+Media is generated once while authoring an exam and uploaded to the asset bucket; none of it runs in
+the app.
 
 | Guide                                             | Produces                                                                            |
 | ------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | [Dutch text-to-speech](./dutch-text-to-speech.md) | MP3 audio from Dutch text, with several distinct voices for multi-speaker dialogues |
-| [Image generation](./image-generation.md)         | PNG scene images from the Dutch scene text, on Apple Silicon                        |
+| [Image generation](./image-generation.md)         | Scene images and presenter portraits from the Dutch scene text, via Codex           |
 | [Video generation](./video-generation.md)         | Lip-synced MP4 talking-head video for the speaking Part 1 prompts                   |
 
 The video pipeline chains the other two: it takes the spoken prompt from the text-to-speech guide and
