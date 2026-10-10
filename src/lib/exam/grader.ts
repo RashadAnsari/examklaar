@@ -275,16 +275,11 @@ export async function gradeExamResult(
 ): Promise<void> {
   const examResults = new ExamResultsRepository(pool);
 
-  async function setStatus(status: "pending" | "in_progress" | "complete" | "failed") {
-    await examResults.updateGradingStatus(resultId, userId, status);
-  }
-
-  await setStatus("in_progress");
-
+  // The caller has already set the result to in_progress
   try {
     await doGrade(resultId, userId, result, examResults);
   } catch (err) {
-    await setStatus("failed");
+    await examResults.updateGradingStatus(resultId, userId, "failed");
     throw err;
   }
 }

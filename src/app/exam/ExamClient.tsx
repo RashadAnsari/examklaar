@@ -34,6 +34,8 @@ export interface Exam {
   questions: Question[];
 }
 
+const GRADE_POLL_INTERVAL_MS = 10_000;
+
 // --- WritingInput ---
 
 function WritingInput({
@@ -496,16 +498,29 @@ export function ExamClient({ exam, skillId, n }: Props) {
     gradingInFlightRef.current = true;
     setGradingFailed(false);
     try {
-      const res = await fetch("/api/exams/grade", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ result_id: resultId }),
-      });
-      const data = await res.json();
-      if (!res.ok || data.error) {
-        setGradingFailed(true);
-        gradingInFlightRef.current = false;
-        return;
+      async function gradingStatus(res: Response): Promise<string> {
+        if (!res.ok) {
+          throw new Error(`Grade request failed with ${res.status}`);
+        }
+        return (await res.json()).status;
+      }
+
+      let status = await gradingStatus(
+        await fetch("/api/exams/grade", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ result_id: resultId }),
+        })
+      );
+      // Grading runs in the background on the server; poll until it settles
+      while (status === "in_progress") {
+        await new Promise((resolve) => setTimeout(resolve, GRADE_POLL_INTERVAL_MS));
+        status = await gradingStatus(
+          await fetch(`/api/exams/grade?result_id=${encodeURIComponent(resultId)}`)
+        );
+      }
+      if (status !== "complete") {
+        throw new Error(`Grading ended with status ${status}`);
       }
       gradingRef.current = false;
       router.replace(`/exam/results?skill=${skillId}&n=${n}`);
