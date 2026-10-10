@@ -25,6 +25,40 @@ export const MAX_SUBMISSION_BYTES = 10 * 1024 * 1024; // 10 MB
 /** Container the browser records speaking answers in (MediaRecorder default). */
 export const RECORDING_MIME_TYPE = "audio/webm";
 
+/** Rubric criteria the grader scores for each open skill, in rubric order. */
+export const GRADING_CRITERIA = {
+  writing: ["content", "vocabulary", "grammar", "spelling", "coherence"],
+  speaking: ["content", "vocabulary", "grammar", "fluency", "coherence", "pronunciation"],
+} as const;
+
+export type CriterionKey = (typeof GRADING_CRITERIA)[keyof typeof GRADING_CRITERIA][number];
+
+/** Every criterion is scored 0, 1 or 2. */
+export const CRITERION_MAX = 2;
+
+export const CRITERION_LABELS: Record<CriterionKey, string> = {
+  content: "Task content",
+  vocabulary: "Vocabulary",
+  grammar: "Grammar",
+  spelling: "Spelling and punctuation",
+  fluency: "Fluency",
+  coherence: "Coherence",
+  pronunciation: "Pronunciation",
+};
+
+/** AI grade of one writing or speaking question, as stored in exam_results.feedback. */
+export interface QuestionFeedback {
+  score: number;
+  maxScore: number;
+  /** Overall summary. Results graded before the per-criterion format only have this. */
+  feedback: string;
+  criteria?: { key: CriterionKey; score: number; comment: string }[];
+  /** Each change from the student's answer to correctedAnswer. */
+  corrections?: { original: string; corrected: string; reason: string }[];
+  /** The student's answer with the fewest changes that satisfy the task. */
+  correctedAnswer?: string;
+}
+
 export const SKILL_TITLES: Record<string, string> = {
   knm: "KNM (Knowledge)",
   reading: "Lezen (Reading)",

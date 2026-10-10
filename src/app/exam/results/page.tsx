@@ -3,6 +3,7 @@ import { getSessionUser } from "@/lib/auth-session";
 import { pool } from "@/lib/db";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar, type ProgressVariant } from "@/components/ui/ProgressBar";
+import { CriteriaScores } from "@/components/ui/CriteriaScores";
 import {
   CheckCircleIcon,
   XCircleIcon,
@@ -11,7 +12,7 @@ import {
   ArrowRightIcon,
 } from "@heroicons/react/20/solid";
 import { readExamOrNull, examFileExists } from "@/data/exams";
-import { SKILL_TITLES } from "@/lib/exam/config";
+import { SKILL_TITLES, type QuestionFeedback } from "@/lib/exam/config";
 import {
   getPassThreshold,
   scorePct,
@@ -22,12 +23,6 @@ import {
 import { BackGuard } from "./BackGuard";
 import { userCanAccessExam } from "@/lib/payment/subscription";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
-
-type QuestionFeedback = {
-  score: number;
-  maxScore: number;
-  feedback: string;
-};
 
 function formatDate(date: Date): string {
   return date.toLocaleDateString("en-US", {
@@ -304,6 +299,7 @@ export default async function ResultsPage(props: {
                       </span>
                     </div>
                     <ProgressBar value={fb.score} max={fb.maxScore} variant={variant} />
+                    <CriteriaScores criteria={fb.criteria} />
                     <p
                       className="text-sm mt-3"
                       style={{ color: "var(--gray-600)", lineHeight: 1.7 }}

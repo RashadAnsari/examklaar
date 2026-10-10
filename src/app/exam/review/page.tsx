@@ -2,14 +2,13 @@ import { redirect, notFound } from "next/navigation";
 import { getSessionUser } from "@/lib/auth-session";
 import { pool } from "@/lib/db";
 import { readExam } from "@/data/exams";
-import { SKILL_TITLES } from "@/lib/exam/config";
+import { SKILL_TITLES, type QuestionFeedback } from "@/lib/exam/config";
 import { scorePct, getPassThreshold } from "@/lib/exam/scoring";
 import type { Exam } from "@/app/exam/ExamClient";
 import { ReviewClient, type ReviewQuestion } from "./ReviewClient";
 import { userCanAccessExam } from "@/lib/payment/subscription";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
-type QuestionFeedback = { score: number; maxScore: number; feedback: string };
 type SpeakingAnswer = { path: string; transcript: string };
 
 export default async function ReviewPage(props: {

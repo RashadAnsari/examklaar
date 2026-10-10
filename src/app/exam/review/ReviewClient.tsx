@@ -3,8 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+import { CriteriaScores } from "@/components/ui/CriteriaScores";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import { sanitizeHtml } from "@/lib/sanitize";
+import type { QuestionFeedback } from "@/lib/exam/config";
 
 export type ReviewQuestion = {
   id: string;
@@ -13,7 +15,7 @@ export type ReviewQuestion = {
   options: string[] | null;
   correctAnswer: number | null;
   userAnswer: number | string | { path: string; transcript: string } | null;
-  feedback: { score: number; maxScore: number; feedback: string } | null;
+  feedback: QuestionFeedback | null;
 };
 
 type FilterType = "all" | "correct" | "incorrect" | "skipped";
@@ -416,9 +418,65 @@ function OpenCard({
             </span>
           </div>
           <ProgressBar value={feedback.score} max={feedback.maxScore} variant={variant} />
-          <p className="text-sm mt-3" style={{ color: "var(--gray-700)", lineHeight: 1.7 }}>
+          <CriteriaScores criteria={feedback.criteria} />
+          <p className="text-sm mt-4" style={{ color: "var(--gray-700)", lineHeight: 1.7 }}>
             {feedback.feedback}
           </p>
+
+          {feedback.corrections && feedback.corrections.length > 0 && (
+            <div className="mt-6">
+              <p
+                className="text-xs font-semibold uppercase tracking-wider mb-3"
+                style={{ color: "var(--blue)" }}
+              >
+                Corrections
+              </p>
+              <ol className="flex flex-col gap-3">
+                {feedback.corrections.map((c, i) => (
+                  <li key={i} className="text-sm" style={{ lineHeight: 1.6 }}>
+                    <span className="break-words">
+                      {c.original && <del style={{ color: "var(--red)" }}>{c.original}</del>}
+                      {c.original && c.corrected && " → "}
+                      {c.corrected && (
+                        <ins
+                          className="no-underline font-semibold"
+                          style={{ color: "var(--green-success)" }}
+                        >
+                          {c.corrected}
+                        </ins>
+                      )}
+                    </span>
+                    <span className="block" style={{ color: "var(--gray-600)" }}>
+                      {c.reason}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+
+          {feedback.correctedAnswer && (
+            <div className="mt-6">
+              <p
+                className="text-xs font-semibold uppercase tracking-wider mb-2"
+                style={{ color: "var(--blue)" }}
+              >
+                {writtenAnswer || transcript ? "Corrected answer" : "Model answer"}
+              </p>
+              <div
+                className="rounded-xl px-5 py-4 text-sm"
+                style={{
+                  background: "white",
+                  border: "1.5px solid var(--gray-200)",
+                  color: "var(--gray-800)",
+                  lineHeight: 1.7,
+                  whiteSpace: "pre-wrap",
+                }}
+              >
+                {feedback.correctedAnswer}
+              </div>
+            </div>
+          )}
         </div>
       ) : (
         <div

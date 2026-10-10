@@ -1,7 +1,8 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, test } from "bun:test";
-import { describeImages } from "./grader";
+import { GRADING_CRITERIA } from "./config";
+import { describeImages, toQuestionFeedback } from "./grader";
 
 /**
  * The grader never sends media to the model. It reads each image's data-description and each video
@@ -47,6 +48,40 @@ describe("describeImages", () => {
     expect(describeImages('<img src="https://cdn/a.jpg" />')).toBe(
       "[Image: no description available]"
     );
+  });
+});
+
+describe("toQuestionFeedback", () => {
+  const grade = {
+    questionId: "q1",
+    criteria: {
+      content: { score: 2, comment: "All points covered." },
+      vocabulary: { score: 1, comment: "Some gaps." },
+      grammar: { score: 5, comment: "Out of range." },
+      coherence: { score: 1, comment: "Weak linking." },
+    },
+    summary: "Decent answer.",
+    corrections: [{ original: "ik gaan", corrected: "ik ga", reason: "Grammar: verb agreement." }],
+    correctedAnswer: "ik ga naar huis",
+  };
+
+  test("sums clamped criteria in rubric order and scores a missing criterion 0", () => {
+    const fb = toQuestionFeedback(grade, GRADING_CRITERIA.writing);
+    expect(fb.criteria?.map((c) => [c.key, c.score])).toEqual([
+      ["content", 2],
+      ["vocabulary", 1],
+      ["grammar", 2],
+      ["spelling", 0],
+      ["coherence", 1],
+    ]);
+    expect(fb.score).toBe(6);
+    expect(fb.maxScore).toBe(10);
+    expect(fb.feedback).toBe("Decent answer.");
+    expect(fb.correctedAnswer).toBe("ik ga naar huis");
+  });
+
+  test("speaking is out of 12", () => {
+    expect(toQuestionFeedback(grade, GRADING_CRITERIA.speaking).maxScore).toBe(12);
   });
 });
 

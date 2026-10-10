@@ -1,3 +1,4 @@
+import type { QuestionFeedback } from "@/lib/exam/config";
 import { runWrite, type DbClient } from "./client";
 
 export interface NewExamResult {
@@ -105,7 +106,7 @@ export class ExamResultsRepository {
       score: number;
       total_score: number;
       answers: Record<string, unknown>;
-      feedback: Record<string, { score: number; maxScore: number; feedback: string }> | null;
+      feedback: Record<string, QuestionFeedback> | null;
       completed_at: Date;
     }>(
       `select id, skill, level, score, total_score, answers, feedback, completed_at
@@ -149,7 +150,7 @@ export class ExamResultsRepository {
     grades: {
       score: number;
       total_score: number;
-      feedback: Record<string, { score: number; maxScore: number; feedback: string }>;
+      feedback: Record<string, QuestionFeedback>;
     }
   ) {
     return runWrite(() =>
