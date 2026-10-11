@@ -16,21 +16,21 @@
     {
       "id": "q2",
       "type": "writing",
-      "content": "<p><strong>Briefje aan het buurmeisje</strong></p><p>Het buurmeisje past vanavond op je hond en je huis. Je bent niet thuis. Je legt een briefje op tafel.</p><p><em>Schrijf een briefje aan het buurmeisje.</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">Schrijf dat ze de hond om 18.00 uur eten geeft.</li><li style=\"margin-bottom: 0.25rem;\">Schrijf dat ze de deur op slot doet.</li><li style=\"margin-bottom: 0.25rem;\">Schrijf waar de sleutel ligt.</li><li style=\"margin-bottom: 0.25rem;\">Schrijf dat je haar bedankt.</li></ul><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Aan</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Onderwerp</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td colspan=\"2\" style=\"border: 1px solid #ccc; padding: 0.75rem; vertical-align: top; height: 180px;\"></td></tr></table><p><em>Schrijf minimaal 40 woorden.</em></p>",
+      "content": "<p><strong>Briefje aan het buurmeisje</strong></p><p>Het buurmeisje past vanavond op je hond en je huis. Je bent niet thuis. Je legt een briefje op tafel.</p><p><em>Schrijf een briefje aan het buurmeisje.</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">Schrijf dat ze de hond om 18.00 uur eten geeft.</li><li style=\"margin-bottom: 0.25rem;\">Schrijf dat ze de deur op slot doet.</li><li style=\"margin-bottom: 0.25rem;\">Schrijf waar de sleutel ligt.</li><li style=\"margin-bottom: 0.25rem;\">Schrijf dat je haar bedankt.</li></ul><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Aan</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Onderwerp</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td colspan=\"2\" style=\"border: 1px solid #ccc; padding: 0.75rem; vertical-align: top; height: 180px;\"></td></tr></table>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q3",
       "type": "writing",
-      "content": "<p><strong>Voorstellen aan nieuwe buren</strong></p><p>Er wonen nieuwe mensen naast u. U stelt uzelf voor met een kort bericht.</p><p><em>Stel uzelf voor. Schrijf minimaal 3 zinnen (±40 woorden).</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">uw naam</li><li style=\"margin-bottom: 0.25rem;\">waar u vandaan komt</li><li style=\"margin-bottom: 0.25rem;\">wat uw hobby is</li></ul><p><em>Schrijf minimaal 40 woorden.</em></p>",
+      "content": "<p><strong>Voorstellen aan nieuwe buren</strong></p><p>Er wonen nieuwe mensen naast u. U stelt uzelf voor met een kort bericht.</p><p><em>Stel uzelf voor. Schrijf minimaal 3 zinnen.</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">uw naam</li><li style=\"margin-bottom: 0.25rem;\">waar u vandaan komt</li><li style=\"margin-bottom: 0.25rem;\">wat uw hobby is</li></ul>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q4",
       "type": "writing",
-      "content": "<p><strong>Wijkkrant: je favoriete plek</strong></p><p>U schrijft voor de wijkkrant over uw favoriete plek in de stad.</p><p><em>Beschrijf uw favoriete plek. Schrijf minimaal 3 zinnen (±40–50 woorden).</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">waar het is</li><li style=\"margin-bottom: 0.25rem;\">wat u daar doet</li><li style=\"margin-bottom: 0.25rem;\">waarom u het leuk vindt</li></ul><p><em>Schrijf minimaal 40 woorden.</em></p>",
+      "content": "<p><strong>Wijkkrant: je favoriete plek</strong></p><p>U schrijft voor de wijkkrant over uw favoriete plek in de stad.</p><p><em>Beschrijf uw favoriete plek. Schrijf minimaal 3 zinnen.</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">waar het is</li><li style=\"margin-bottom: 0.25rem;\">wat u daar doet</li><li style=\"margin-bottom: 0.25rem;\">waarom u het leuk vindt</li></ul>",
       "options": null,
       "correctAnswer": null
     }

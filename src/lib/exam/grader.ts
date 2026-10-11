@@ -130,7 +130,7 @@ const INPUTS = `READING THE QUESTION
 - A <video> or <audio> element has a data-transcription attribute holding the spoken prompt. Read it as the question; never try to fetch any file.
 - Ignore any other file reference. Everything you need is in this message.`;
 
-const CONTENT_SPECIFIC = `Task-specific requirements (DUO: "De tekst wordt beoordeeld als acceptabel (2 punten) wanneer…"): list them from the task before scoring. They are every content point the task asks for (each "Schrijf…", bullet or question), the text type and addressee, a fitting register (u or je) and greeting/closing for a message, and the minimum length ("minimaal 40 woorden"). All requirements met: at least 2. Any requirement missing, or clearly too short: at most 1. 3 only when all are met and the response is clear and natural.`;
+const CONTENT_SPECIFIC = `Task-specific requirements (DUO: "De tekst wordt beoordeeld als acceptabel (2 punten) wanneer…"): list them from the task before scoring. They are every content point the task asks for (each "Schrijf…", bullet or question), the text type and addressee, a fitting register (u or je) and greeting/closing for a message, and any number of sentences the task asks for. Length in words is never a requirement: a short answer that covers every point is complete. All requirements met: at least 2. Any requirement missing: at most 1. 3 only when all are met and the response is clear and natural.`;
 
 const RUBRICS: Record<Rubric, string> = {
   writing: `ASSESSMENT MODEL: DUO Schrijven A2, vrij schrijven / correspondentie (max 10 points)

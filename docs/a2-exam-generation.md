@@ -235,8 +235,8 @@ A full mock = 40 items, 5 per theme; `timeLimitMinutes: 45`; pass mark **28/40**
 **The standard task types**
 
 1. **Formulier invullen**: realistic Dutch form: achternaam, voornaam/voorletters, geboortedatum, adres, postcode + woonplaats, telefoon, e-mail, nationaliteit, handtekening, etc., plus 1–2 **open fields** needing a full sentence. Cue: _"Sommige gegevens mag u zelf verzinnen."_
-2. **Kort bericht / e-mail / briefje**: a situation + explicit content points: e.g. ziekmelding to manager; briefje to the babysitter; abonnement opzeggen; afspraak afzeggen; bedankje; reageren op een uitnodiging/advertentie. ~40–60 words.
-3. **Open schrijfopdracht**: ≥3 (or 4) full sentences: wijkkrant piece, introduce yourself to neighbours, describe a favourite place/person, write about a nice day (past tense), give a friend advice. ~40–50 words.
+2. **Kort bericht / e-mail / briefje**: a situation + explicit content points: e.g. ziekmelding to manager; briefje to the babysitter; abonnement opzeggen; afspraak afzeggen; bedankje; reageren op een uitnodiging/advertentie. A full answer is typically 40–60 words.
+3. **Open schrijfopdracht**: ≥3 (or 4) full sentences: wijkkrant piece, introduce yourself to neighbours, describe a favourite place/person, write about a nice day (past tense), give a friend advice. A full answer is typically 40–50 words.
 
 **Construction rules**
 
@@ -244,6 +244,7 @@ A full mock = 40 items, 5 per theme; `timeLimitMinutes: 45`; pass mark **28/40**
 - Content-point bullets must be grammatical Dutch: never stack "Schrijf" directly before another imperative ("Schrijf bedank haar", "Schrijf stel een vraag" are wrong). Either use the bare imperative ("Stel twee vragen …", "Vraag wat …") or a subordinate clause ("Schrijf dat je haar bedankt …").
 - Choose register deliberately and keep it consistent: **"u"** for employer/school/authority/company; **"je"** for neighbour/friend/family. Never mix within one text.
 - Calibrate: 2–4 content points; ≥3 sentences for open tasks; **never require opinion/argumentation** (that's B1).
+- **Never state a word count in the task** ("Schrijf minimaal 40 woorden", "±40 woorden"): DUO tasks set no word minimum, and the grader judges content points, not length. The word ranges above only guide how much the content points should ask for.
 - For forms: authentic field labels + 1–2 open fields with a reason. The open fields go **inside the form table as rows** (label cell + empty answer cell with extra height), never as a floating paragraph after the table. Choices (e.g. jongen/meisje) are static text with `&#9675;` circle markers, never interactive elements like `<select>` or `<input>`: the `content` HTML is a read-only stimulus and the candidate answers in the separate text area.
 
 **Assessment.** The app AI-grades via `grader.ts` with the official DUO models below (PDFs in `src/data/grading/`; 10 pts per free-writing/correspondence task, 7 per form, pass 60%). Mark the form task with `"form": true` so it is graded on the form model. The two aspect sets and their scales:

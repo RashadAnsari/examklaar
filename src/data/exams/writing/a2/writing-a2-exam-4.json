@@ -16,21 +16,21 @@
     {
       "id": "q2",
       "type": "writing",
-      "content": "<p><strong>Afspraak afzeggen</strong></p><p>U heeft uw arm gebroken. U kunt niet naar uw afspraak voor het rijexamen komen.</p><p><em>Schrijf een e-mail aan het examenbureau.</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">Schrijf waarom u niet kunt komen.</li><li style=\"margin-bottom: 0.25rem;\">Schrijf dat het u spijt.</li><li style=\"margin-bottom: 0.25rem;\">Vraag wat u nu moet doen (nieuwe afspraak).</li></ul><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Aan</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">info@cbr.nl</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Onderwerp</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td colspan=\"2\" style=\"border: 1px solid #ccc; padding: 0.75rem; vertical-align: top; height: 180px;\"></td></tr></table><p><em>Schrijf minimaal 40 woorden.</em></p>",
+      "content": "<p><strong>Afspraak afzeggen</strong></p><p>U heeft uw arm gebroken. U kunt niet naar uw afspraak voor het rijexamen komen.</p><p><em>Schrijf een e-mail aan het examenbureau.</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">Schrijf waarom u niet kunt komen.</li><li style=\"margin-bottom: 0.25rem;\">Schrijf dat het u spijt.</li><li style=\"margin-bottom: 0.25rem;\">Vraag wat u nu moet doen (nieuwe afspraak).</li></ul><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\"><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Aan</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\">info@cbr.nl</td></tr><tr><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem; font-weight: bold; width: 180px; background: #fafafa;\">Onderwerp</td><td style=\"border: 1px solid #ccc; padding: 0.4rem 0.75rem;\"></td></tr><tr><td colspan=\"2\" style=\"border: 1px solid #ccc; padding: 0.75rem; vertical-align: top; height: 180px;\"></td></tr></table>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q3",
       "type": "writing",
-      "content": "<p><strong>Advies aan een vriend</strong></p><p>Een vriend zoekt werk. Jij geeft hem advies in een kort bericht.</p><p><em>Schrijf een bericht aan je vriend met advies over werk zoeken. Schrijf minimaal 3 zinnen (±40 woorden).</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">waar hij kan zoeken</li><li style=\"margin-bottom: 0.25rem;\">een goede tip</li><li style=\"margin-bottom: 0.25rem;\">waarom dat helpt</li></ul><p><em>Schrijf minimaal 40 woorden.</em></p>",
+      "content": "<p><strong>Advies aan een vriend</strong></p><p>Een vriend zoekt werk. Jij geeft hem advies in een kort bericht.</p><p><em>Schrijf een bericht aan je vriend met advies over werk zoeken. Schrijf minimaal 3 zinnen.</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">waar hij kan zoeken</li><li style=\"margin-bottom: 0.25rem;\">een goede tip</li><li style=\"margin-bottom: 0.25rem;\">waarom dat helpt</li></ul>",
       "options": null,
       "correctAnswer": null
     },
     {
       "id": "q4",
       "type": "writing",
-      "content": "<p><strong>Wijkkrant: een leuke dag</strong></p><p>U schrijft voor de wijkkrant over een leuke dag die u heeft gehad.</p><p><em>Schrijf over een leuke dag. Schrijf minimaal 4 zinnen. Gebruik de verleden tijd en woorden zoals eerst, daarna, toen.</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">wat u deed</li><li style=\"margin-bottom: 0.25rem;\">met wie</li><li style=\"margin-bottom: 0.25rem;\">waarom het leuk was</li></ul><p><em>Schrijf minimaal 40 woorden.</em></p>",
+      "content": "<p><strong>Wijkkrant: een leuke dag</strong></p><p>U schrijft voor de wijkkrant over een leuke dag die u heeft gehad.</p><p><em>Schrijf over een leuke dag. Schrijf minimaal 4 zinnen. Gebruik de verleden tijd en woorden zoals eerst, daarna, toen.</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li style=\"margin-bottom: 0.25rem;\">wat u deed</li><li style=\"margin-bottom: 0.25rem;\">met wie</li><li style=\"margin-bottom: 0.25rem;\">waarom het leuk was</li></ul>",
       "options": null,
       "correctAnswer": null
     }
