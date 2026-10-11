@@ -246,7 +246,7 @@ A full mock = 40 items, 5 per theme; `timeLimitMinutes: 45`; pass mark **28/40**
 - Calibrate: 2–4 content points; ≥3 sentences for open tasks; **never require opinion/argumentation** (that's B1).
 - For forms: authentic field labels + 1–2 open fields with a reason. The open fields go **inside the form table as rows** (label cell + empty answer cell with extra height), never as a floating paragraph after the table. Choices (e.g. jongen/meisje) are static text with `&#9675;` circle markers, never interactive elements like `<select>` or `<input>`: the `content` HTML is a read-only stimulus and the candidate answers in the separate text area.
 
-**Assessment.** The app AI-grades via `grader.ts` (5 criteria, 10 pts/task, pass 60%). The official DUO models (for reference and for the criteria shown to users) use two aspect sets with these scales:
+**Assessment.** The app AI-grades via `grader.ts` with the official DUO models below (PDFs in `src/data/grading/`; 10 pts per free-writing/correspondence task, 7 per form, pass 60%). Mark the form task with `"form": true` so it is graded on the form model. The two aspect sets and their scales:
 
 - Free-writing/correspondence: **adequaatheid/begrijpelijkheid** (0-3, precondition; if 0 → all others 0), **grammatica** (0-2), **spelling** (0-2), **woordgebruik** (0-2), **coherentie** (0-1, via en/maar/want/omdat).
 - Form: **adequaatheid** (0-3, same precondition), **spelling** (0-2, "persoonlijke gegevens correct gespeld"), **woordgebruik** (0-2). No grammatica/coherentie aspect for forms.
@@ -256,14 +256,14 @@ A full mock = 40 items, 5 per theme; `timeLimitMinutes: 45`; pass mark **28/40**
 ```jsonc
 {
   "id": "q1",
-  "type": "writing",
+  "type": "writing", // add "form": true on the form task only
   "content": "<p><strong>…titel…</strong></p><p>…situatie…</p><p><em>…instructie…</em></p><ul style=\"list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;\"><li>Schrijf …</li></ul><table style=\"border-collapse: collapse; width: 100%; margin: 1rem 0;\">…Aan / Onderwerp / leeg tekstvak…</table>",
   "options": null,
   "correctAnswer": null,
 }
 ```
 
-A full mock = exactly 4 tasks (1 form + 1-2 messages + 1-2 open); `timeLimitMinutes: 40`. Not auto-scored: writing is AI-graded (`grader.ts`, 5 criteria, 10 pts/task, pass 60%). Render forms as a field table (label cells + input cells) and messages with an Aan/Onderwerp header table plus an empty body cell.
+A full mock = exactly 4 tasks (1 form + 1-2 messages + 1-2 open); `timeLimitMinutes: 40`. Not auto-scored: writing is AI-graded (`grader.ts`, DUO models: 10 pts per task, 7 for the form, pass 60%). The form task carries `"form": true`. Render forms as a field table (label cells + input cells) and messages with an Aan/Onderwerp header table plus an empty body cell.
 
 ---
 
@@ -297,7 +297,7 @@ A full mock = exactly 4 tasks (1 form + 1-2 messages + 1-2 open); `timeLimitMinu
 
 - One clear communicative task per item + a sub-instruction to elicit a reason/detail; concrete familiar topics; **no B1 argumentation**; spread themes; no repeated situations.
 
-**Assessment.** The app AI-grades via `grader.ts` (6 criteria, 12 pts/task, pass 60%). DUO's official model scores each answer on six categories (~12 pts): **adequaatheid/begrijpelijkheid** (0-3, precondition; if 0 → all others 0), **woordgebruik** (0-2), **grammatica** (0-2), **vloeiendheid** (0-2), **coherentie** (0-1), **uitspraak** (0-2).
+**Assessment.** The app AI-grades via `grader.ts` with DUO's official model (PDF in `src/data/grading/`), which scores each answer on six aspects (12 pts): **adequaatheid/begrijpelijkheid** (0-3, precondition; if 0 → all others 0), **woordgebruik** (0-2), **grammatica** (0-2), **vloeiendheid** (0-2), **coherentie** (0-1), **uitspraak** (0-2).
 
 **Output template (project JSON).** All 16 tasks are `type: "speaking"` with `options`/`correctAnswer` `null`.
 
@@ -325,7 +325,7 @@ Parts 2-4 (1 / 2 / 3 generated images + the exact spoken question) open with a `
 }
 ```
 
-A full mock = 16 tasks (4+4+4+4); `timeLimitMinutes: 35`. Not auto-scored: speaking is AI-graded (`grader.ts`, 6 criteria, 12 pts/task, pass 60%); the grader reads the `data-transcription` text and each image's `data-description` instead of the media, so the transcription must match the spoken prompt and the description must match what the final image actually shows. Anything the spoken question asks the candidate to describe must be named in the image prompt.
+A full mock = 16 tasks (4+4+4+4); `timeLimitMinutes: 35`. Not auto-scored: speaking is AI-graded (`grader.ts`, DUO model, 12 pts/task, pass 60%); the grader reads the `data-transcription` text and each image's `data-description` instead of the media, so the transcription must match the spoken prompt and the description must match what the final image actually shows. Anything the spoken question asks the candidate to describe must be named in the image prompt.
 
 ---
 

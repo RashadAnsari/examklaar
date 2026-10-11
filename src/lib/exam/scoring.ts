@@ -14,7 +14,9 @@ export function getPassRate(skill: string, level: string | null): number {
   if (skill === "listening") {
     return lvl === "B1" ? 0.65 : 18 / 25; // 0.650 or 0.720
   }
-  return 0.6; // writing / speaking (MVT model)
+  // writing / speaking: DUO publishes no cut score. 60% matches the acceptable level its writing
+  // models mark (adequacy 2, every other aspect 1 = 6/10 points).
+  return 0.6;
 }
 
 // Minimum score needed to pass given the actual total for this exam.
@@ -81,7 +83,8 @@ export function getScoreFeedback(
   const thresholdPct = Math.round(rate * 100);
 
   if (skill === "writing" || skill === "speaking") {
-    return pct >= 60
+    // Compare points, as getStatus does: a 37-point writing exam passes at 22 points, which is 59%
+    return score >= threshold
       ? { label: `Passed: ${pct}% (need 60%+)`, color: "var(--green-700)" }
       : {
           label: `Not yet passing: ${pct}% (need ${threshold}/${total} pts)`,

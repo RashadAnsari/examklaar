@@ -31,7 +31,7 @@ const FAQS = [
   {
     question: "Is ExamKlaar officially affiliated with DUO or the Dutch government?",
     answer:
-      "No. ExamKlaar is an independent practice platform. We are not affiliated with DUO or the Dutch government. Our content is designed to closely reflect the official exam format and CEFR A2/B1 standards, but we cannot guarantee exam results.",
+      "No. ExamKlaar is an independent practice platform. We are not affiliated with DUO or the Dutch government. Our content is designed to closely reflect the official exam format and CEFR A2 standard, but we cannot guarantee exam results.",
   },
   {
     question: "Which exams can I take for free?",
@@ -46,7 +46,7 @@ const FAQS = [
   {
     question: "How does the AI feedback work?",
     answer:
-      "For writing exercises, our AI reviews your Dutch text and highlights grammar, vocabulary, and sentence structure errors with explanations. For speaking exercises, you record your answer and receive feedback on fluency and language use. All feedback is in plain language so you know exactly what to improve.",
+      "Our AI grades every writing and speaking answer on the official DUO assessment model for A2. You get points per aspect with a short explanation: task completion, word use, grammar, spelling, and coherence for writing (a form only on task completion, spelling, and word use), and fluency and pronunciation instead of spelling for speaking. It then corrects your answer with as few changes as possible, lists each change with the reason, and shows the corrected version. Speaking is graded from a transcript of your recording, so pronunciation and fluency are estimates.",
   },
   {
     question: "Can I cancel my subscription anytime?",

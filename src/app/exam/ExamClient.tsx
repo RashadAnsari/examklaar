@@ -20,6 +20,8 @@ import { sanitizeHtml } from "@/lib/sanitize";
 export interface Question {
   id: string;
   type: "multiple_choice" | "writing" | "speaking";
+  /** A writing task that fills in a form, graded on the DUO form model. */
+  form?: boolean;
   content: string;
   options: string[] | null;
   correctAnswer: number | null;

@@ -71,6 +71,7 @@ approximation (the real threshold is IRT equated), so the question count is not 
 {
   "id": "q1", // unique within the exam, "q1", "q2", ...
   "type": "multiple_choice", // multiple_choice | writing | speaking
+  "form": true, // writing only, and only on the form-filling task; omit otherwise
   "content": "<p>...</p>", // HTML string (see below)
   "options": ["A", "B", "C"], // string[] for multiple_choice, otherwise null
   "correctAnswer": 1, // 0-based index into options, otherwise null
@@ -94,7 +95,8 @@ reading text or scenario, any media, and the actual question prompt. Conventions
   `correctAnswer` is the 0-based index of the right option. These are auto scored by comparing the
   candidate's choice to `correctAnswer`. Two to four options are normal.
 - **`writing`**: `options` and `correctAnswer` are both `null`. The candidate types free text, which
-  is graded by AI (see Scoring).
+  is graded by AI (see Scoring). Set `"form": true` on the one task that fills in a form: DUO
+  grades forms on a separate model, and a test fails unless every writing exam has exactly one.
 - **`speaking`**: `options` and `correctAnswer` are both `null`. The candidate records audio, graded
   by AI. The prompt is delivered as a video (see below).
 
@@ -173,8 +175,9 @@ For two-image speaking prompts ("choose one of the pictures"), put two `<img>` t
 - **Multiple choice** (reading, listening, knm) is scored automatically from `correctAnswer`. The
   total is the question count; the pass threshold is the per-skill rate above.
 - **Writing and speaking** have no `correctAnswer`. Answers are graded by AI in `src/lib/exam/grader.ts`
-  against fixed criteria: writing is scored out of 10 points per question (5 criteria), speaking out
-  of 12 (6 criteria). The pass mark is 60% of total points.
+  against the official DUO A2 assessment models in `src/data/grading/`: free writing and messages out of 10 points (5
+  aspects), a form out of 7 (3 aspects), a speaking answer out of 12 (6 aspects). The pass mark is
+  60% of total points.
 
 ## Authoring checklist
 

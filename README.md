@@ -49,8 +49,8 @@ finds out where they stand before paying €250 to find out at DUO.
 | **KNM** (_Kennis Nederlandse Maatschappij_) | Answers questions on Dutch society, history, culture and civic rules | Instantly, per answer key          |
 | **Lezen** (Reading)                         | Reads Dutch texts and answers comprehension questions                | Instantly, per answer key          |
 | **Luisteren** (Listening)                   | Listens to Dutch audio fragments and answers questions on them       | Instantly, per answer key          |
-| **Schrijven** (Writing)                     | Writes short Dutch texts to a prompt                                 | AI examiner, MVT three-point model |
-| **Spreken** (Speaking)                      | Records spoken answers to a video or audio prompt                    | AI examiner, MVT three-point model |
+| **Schrijven** (Writing)                     | Writes short Dutch texts to a prompt                                 | AI examiner, DUO assessment models |
+| **Spreken** (Speaking)                      | Records spoken answers to a video or audio prompt                    | AI examiner, DUO assessment model  |
 
 Five exams per component, 25 in total, all at A2 level. KNM has no level, matching DUO.
 

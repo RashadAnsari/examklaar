@@ -1,8 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, test } from "bun:test";
-import { GRADING_CRITERIA } from "./config";
-import { describeImages, toQuestionFeedback } from "./grader";
+import { describeImages, rubricFor, toQuestionFeedback } from "./grader";
 
 /**
  * The grader never sends media to the model. It reads each image's data-description and each video
@@ -56,32 +55,61 @@ describe("toQuestionFeedback", () => {
     questionId: "q1",
     criteria: {
       content: { score: 2, comment: "All points covered." },
-      vocabulary: { score: 1, comment: "Some gaps." },
       grammar: { score: 5, comment: "Out of range." },
-      coherence: { score: 1, comment: "Weak linking." },
+      vocabulary: { score: 1, comment: "Simple words." },
+      coherence: { score: 1, comment: "Uses want." },
     },
     summary: "Decent answer.",
     corrections: [{ original: "ik gaan", corrected: "ik ga", reason: "Grammar: verb agreement." }],
     correctedAnswer: "ik ga naar huis",
   };
 
-  test("sums clamped criteria in rubric order and scores a missing criterion 0", () => {
-    const fb = toQuestionFeedback(grade, GRADING_CRITERIA.writing);
-    expect(fb.criteria?.map((c) => [c.key, c.score])).toEqual([
-      ["content", 2],
-      ["vocabulary", 1],
-      ["grammar", 2],
-      ["spelling", 0],
-      ["coherence", 1],
+  test("clamps each aspect to its DUO maximum and scores a missing aspect 0", () => {
+    const fb = toQuestionFeedback(grade, "writing");
+    expect(fb.criteria?.map((c) => [c.key, c.score, c.max])).toEqual([
+      ["content", 2, 3],
+      ["grammar", 2, 2],
+      ["spelling", 0, 2],
+      ["vocabulary", 1, 2],
+      ["coherence", 1, 1],
     ]);
     expect(fb.score).toBe(6);
-    expect(fb.maxScore).toBe(10);
     expect(fb.feedback).toBe("Decent answer.");
     expect(fb.correctedAnswer).toBe("ik ga naar huis");
   });
 
-  test("speaking is out of 12", () => {
-    expect(toQuestionFeedback(grade, GRADING_CRITERIA.speaking).maxScore).toBe(12);
+  test("matches the DUO totals: writing 10, form 7, speaking 12", () => {
+    expect(toQuestionFeedback(grade, "writing").maxScore).toBe(10);
+    expect(toQuestionFeedback(grade, "form").maxScore).toBe(7);
+    expect(toQuestionFeedback(grade, "speaking").maxScore).toBe(12);
+  });
+
+  test("scores every aspect 0 when adequacy is 0", () => {
+    const offTask = {
+      ...grade,
+      criteria: { ...grade.criteria, content: { score: 0, comment: "" } },
+    };
+    expect(toQuestionFeedback(offTask, "writing").score).toBe(0);
+  });
+});
+
+describe("rubricFor", () => {
+  test("picks the DUO model per question", () => {
+    expect(rubricFor({ type: "speaking" })).toBe("speaking");
+    expect(rubricFor({ type: "writing", form: true })).toBe("form");
+    expect(rubricFor({ type: "writing" })).toBe("writing");
+  });
+
+  // A form graded on the free-writing model would lose grammar and coherence points it cannot earn
+  test("every writing exam marks exactly one form question", async () => {
+    for (const { file, exam } of await readExams()) {
+      const forms = exam.questions.filter((q) => (q as { form?: boolean }).form);
+      if (exam.questions.some((q) => q.type === "writing")) {
+        expect([file, forms.length]).toEqual([file, 1]);
+      } else {
+        expect([file, forms.length]).toEqual([file, 0]);
+      }
+    }
   });
 });
 

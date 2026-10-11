@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const description = `${FEATURES_SUMMARY} ${offer}`;
   return {
     title,
-    description: `Prepare for your Dutch inburgering exam (A2/B1) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. ${offer}`,
+    description: `Prepare for your Dutch inburgering exam (A2) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. ${offer}`,
     alternates: { canonical: site.url },
     openGraph: { title, description, url: site.url },
     twitter: { card: "summary_large_image", title, description },
@@ -209,13 +209,13 @@ export default function LandingPage() {
             <FeatureCard
               icon={<SparklesIcon style={{ width: 24, height: 24 }} />}
               title="AI Writing Feedback"
-              description="Get instant corrections on your written Dutch with clear explanations for every grammar and vocabulary mistake."
+              description="Get points on each official DUO aspect, every mistake corrected with an explanation, and a corrected version of your text."
               highlight
             />
             <FeatureCard
               icon={<MicrophoneIcon style={{ width: 24, height: 24 }} />}
               title="Speaking Practice"
-              description="Record your answers and receive AI feedback on fluency, clarity, and structure."
+              description="Record your answers and get points on each official DUO aspect, from grammar to fluency, plus a corrected version of what you said."
               highlight
             />
             <FeatureCard
@@ -226,7 +226,7 @@ export default function LandingPage() {
             <FeatureCard
               icon={<BoltIcon style={{ width: 24, height: 24 }} />}
               title="Built to the Official Format"
-              description="Question types, timing, and pass marks follow the real DUO inburgering exam at CEFR level A2."
+              description="Question types and timing follow the real DUO inburgering exam at CEFR level A2, and writing and speaking are graded on DUO's official assessment models."
             />
             <FeatureCard
               icon={<ChartBarIcon style={{ width: 24, height: 24 }} />}

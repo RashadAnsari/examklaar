@@ -6,7 +6,8 @@ import { ProgressBar } from "@/components/ui/ProgressBar";
 import { UpgradeBanner } from "@/components/ui/UpgradeBanner";
 import type { SkillGroup } from "@/lib/exam/config";
 
-type Level = "A2" | "B1";
+const LEVELS = ["A2", "B1"] as const;
+type Level = (typeof LEVELS)[number];
 
 export function DashboardClient({
   skills,
@@ -17,7 +18,7 @@ export function DashboardClient({
   isPaid: boolean;
   earlyAccess: boolean;
 }) {
-  const [level, setLevel] = useState<Level>(() => {
+  const [selected, setLevel] = useState<Level>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("dashboard:level");
       if (saved === "A2" || saved === "B1") {
@@ -31,6 +32,10 @@ export function DashboardClient({
     setLevel(l);
     localStorage.setItem("dashboard:level", l);
   }
+
+  // Only levels that have exams are offered, so B1 appears once B1 exam files exist
+  const levels = LEVELS.filter((l) => skills.some((s) => s.level === l));
+  const level = levels.includes(selected) ? selected : (levels[0] ?? "A2");
 
   const knm = skills.find((s) => s.skill === "knm");
   const leveled = skills.filter((s) => s.level === level);
@@ -51,25 +56,27 @@ export function DashboardClient({
         <h2 className="font-semibold" style={{ fontSize: "1.5rem", color: "var(--gray-900)" }}>
           Practice Exams
         </h2>
-        <div className="flex rounded-lg p-1 gap-1" style={{ background: "var(--gray-200)" }}>
-          {(["A2", "B1"] as Level[]).map((l) => (
-            <button
-              key={l}
-              aria-pressed={level === l}
-              onClick={() => handleLevelChange(l)}
-              className="rounded-md px-4 py-1.5 text-sm font-semibold transition-all"
-              style={{
-                background: level === l ? "white" : "transparent",
-                color: level === l ? "var(--gray-900)" : "var(--gray-600)",
-                boxShadow: level === l ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              {l}
-            </button>
-          ))}
-        </div>
+        {levels.length > 1 && (
+          <div className="flex rounded-lg p-1 gap-1" style={{ background: "var(--gray-200)" }}>
+            {levels.map((l) => (
+              <button
+                key={l}
+                aria-pressed={level === l}
+                onClick={() => handleLevelChange(l)}
+                className="rounded-md px-4 py-1.5 text-sm font-semibold transition-all"
+                style={{
+                  background: level === l ? "white" : "transparent",
+                  color: level === l ? "var(--gray-900)" : "var(--gray-600)",
+                  boxShadow: level === l ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                {l}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
