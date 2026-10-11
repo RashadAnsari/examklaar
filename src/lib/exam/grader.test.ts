@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, test } from "bun:test";
+import { feedbackHeadline } from "./config";
 import { describeImages, rubricFor, toQuestionFeedback } from "./grader";
 
 /**
@@ -90,6 +91,16 @@ describe("toQuestionFeedback", () => {
       criteria: { ...grade.criteria, content: { score: 0, comment: "" } },
     };
     expect(toQuestionFeedback(offTask, "writing").score).toBe(0);
+  });
+});
+
+describe("feedbackHeadline", () => {
+  test("keeps only the first sentence, not cut at a time like 18.00", () => {
+    expect(feedbackHeadline("You fed the dog at 18.00 as asked. Add where the key is.")).toBe(
+      "You fed the dog at 18.00 as asked."
+    );
+    expect(feedbackHeadline("No answer provided.")).toBe("No answer provided.");
+    expect(feedbackHeadline("No end punctuation")).toBe("No end punctuation");
   });
 });
 

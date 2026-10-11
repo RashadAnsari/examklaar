@@ -3,7 +3,6 @@ import { getSessionUser } from "@/lib/auth-session";
 import { pool } from "@/lib/db";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar, type ProgressVariant } from "@/components/ui/ProgressBar";
-import { CriteriaScores } from "@/components/ui/CriteriaScores";
 import {
   CheckCircleIcon,
   XCircleIcon,
@@ -12,7 +11,7 @@ import {
   ArrowRightIcon,
 } from "@heroicons/react/20/solid";
 import { readExamOrNull, examFileExists } from "@/data/exams";
-import { SKILL_TITLES, type QuestionFeedback } from "@/lib/exam/config";
+import { SKILL_TITLES, feedbackHeadline, type QuestionFeedback } from "@/lib/exam/config";
 import {
   getPassThreshold,
   scorePct,
@@ -273,11 +272,23 @@ export default async function ResultsPage(props: {
             style={{ background: "white", borderColor: "var(--gray-200)" }}
           >
             <h2
-              className="font-semibold mb-6"
+              className="font-semibold mb-2"
               style={{ fontSize: "1.25rem", color: "var(--gray-900)" }}
             >
               AI Feedback by Question
             </h2>
+            <p className="text-sm mb-6" style={{ color: "var(--gray-600)", lineHeight: 1.6 }}>
+              Your score and a one-line verdict per question. For the points per aspect, every
+              correction and the corrected answer,{" "}
+              <a
+                href={`/exam/review?skill=${skillId}&n=${n}`}
+                className="font-semibold underline"
+                style={{ color: "var(--green-900)" }}
+              >
+                open the full feedback
+              </a>
+              .
+            </p>
             <div className="flex flex-col gap-6">
               {feedbackEntries.map((fb) => {
                 const pct = fb.maxScore > 0 ? fb.score / fb.maxScore : 0;
@@ -299,12 +310,11 @@ export default async function ResultsPage(props: {
                       </span>
                     </div>
                     <ProgressBar value={fb.score} max={fb.maxScore} variant={variant} />
-                    <CriteriaScores criteria={fb.criteria} />
                     <p
                       className="text-sm mt-3"
                       style={{ color: "var(--gray-600)", lineHeight: 1.7 }}
                     >
-                      {fb.feedback}
+                      {feedbackHeadline(fb.feedback)}
                     </p>
                   </div>
                 );
@@ -323,7 +333,11 @@ export default async function ResultsPage(props: {
             href={`/exam/review?skill=${skillId}&n=${n}`}
             icon={<EyeIcon style={{ width: 24, height: 24 }} />}
             title="Review Answers"
-            description="See detailed explanations for all questions"
+            description={
+              isMcq
+                ? "See detailed explanations for all questions"
+                : "See the full feedback: points per aspect, corrections and the corrected answer"
+            }
           />
           <ActionCard
             href={`/exam?skill=${skillId}&n=${n}`}

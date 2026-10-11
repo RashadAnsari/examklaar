@@ -73,6 +73,14 @@ export interface QuestionFeedback {
   correctedAnswer?: string;
 }
 
+/**
+ * The one-line comment shown on the results page: the summary's first sentence, which the grader
+ * writes as an overall verdict. A period inside a time such as "18.00" does not end a sentence.
+ */
+export function feedbackHeadline(summary: string): string {
+  return summary.match(/^[\s\S]*?[.!?](?=\s|$)/)?.[0] ?? summary;
+}
+
 export const SKILL_TITLES: Record<string, string> = {
   knm: "KNM (Knowledge)",
   reading: "Lezen (Reading)",

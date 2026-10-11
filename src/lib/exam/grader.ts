@@ -244,7 +244,7 @@ Correct each answer with the FEWEST possible changes so that it fully does the t
 const OUTPUT = `OUTPUT
 - Write the corrections first, then score each aspect from the errors you found, then the summary.
 - Each comment is one English sentence that explains its score with concrete evidence, such as a word from the answer, and agrees with the score.
-- summary: 2 to 4 English sentences: what the candidate did well and the most important thing to improve.
+- summary: 2 to 4 English sentences. The first sentence alone sums up the answer, because it is shown on its own as the one-line verdict. Then say what the candidate did well and the most important thing to improve.
 - Only correctedAnswer and the original/corrected fragments are in Dutch. Every comment, reason and summary is in English.
 - Call submit_grades once with a grade for every question id you are given.
 
