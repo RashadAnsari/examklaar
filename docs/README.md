@@ -4,11 +4,11 @@
 
 # ExamKlaar documentation
 
-Everything needed to author exam content, generate its media, and run the app in production.
+Everything needed to author exam content, generate its media, and run the app.
 
 [![Exams](https://img.shields.io/badge/practice_exams-25-1b6b4a)](../src/data/exams)
 [![Level](https://img.shields.io/badge/level-A2-1b6b4a)](./a2-exam-generation.md)
-[![Guides](https://img.shields.io/badge/guides-9-1b6b4a)](#authoring-exam-content)
+[![Guides](https://img.shields.io/badge/guides-7-1b6b4a)](#authoring-exam-content)
 
 [**Back to the project README**](../README.md) · [**Repository conventions**](../AGENTS.md)
 
@@ -20,11 +20,11 @@ Everything needed to author exam content, generate its media, and run the app in
 
 Start here when adding or changing an exam.
 
-| Guide                                                 | What it covers                                                                                  |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| [Exam JSON format](./exam-format.md)                  | Directory layout, file naming, the schema, per-skill conventions, embedding media, and scoring  |
-| [A2 exam generation runbook](./a2-exam-generation.md) | The single source of truth for generating a standard A2 exam for any of the five components     |
-| [Reference example exams](./examples/README.md)       | Real official DUO A2 exams, kept as a fixed calibration reference, plus where their media lives |
+| Guide                                                 | What it covers                                                                                 |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| [Exam JSON format](./exam-format.md)                  | Directory layout, file naming, the schema, per-skill conventions, embedding media, and scoring |
+| [A2 exam generation runbook](./a2-exam-generation.md) | The single source of truth for generating a standard A2 exam for any of the five components    |
+| [Reference example exams](./examples/README.md)       | Real official DUO A2 exams, kept locally as a fixed calibration reference                      |
 
 ## Generating exam media
 
@@ -42,11 +42,9 @@ the presenter portrait from the image guide.
 
 ## Running the app
 
-| Guide                                                     | What it covers                                                             |
-| --------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [Infrastructure](./infrastructure.md)                     | Database and migrations, auth, storage, billing modes, environment         |
-| [Deployment](./deployment.md)                             | The two compose stacks, the workflows that drive them, backups and restore |
-| [Testing payment webhooks](./testing-payment-webhooks.md) | Receiving real Paddle webhooks against a local dev server through a tunnel |
+| Guide                                 | What it covers                                      |
+| ------------------------------------- | --------------------------------------------------- |
+| [Infrastructure](./infrastructure.md) | Database and migrations, auth, storage, environment |
 
 ## Conventions
 

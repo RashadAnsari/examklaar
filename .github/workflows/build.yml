@@ -34,77 +34,18 @@ jobs:
       - name: Build
         run: make build
 
+  # Production deploys live in a separate private repository. A push to master
+  # only tells it which commit to ship. Forks have no DEPLOY_REPO, so this skips.
   deploy:
-    name: Deploy
+    name: Trigger deploy
     runs-on: ubuntu-latest
     needs: check
+    if: github.event_name == 'push' && vars.DEPLOY_REPO != ''
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-  
-      - name: Set up Buildx
-        uses: docker/setup-buildx-action@v4
-  
-      - name: Docker Build
-        uses: docker/build-push-action@v7
-        with:
-          context: .
-          file: Dockerfile
-          push: false
-          load: true
-          tags: examklaar:${{ github.sha }}
-          cache-from: type=gha
-          build-args: |
-            NODE_ENV=production
-            GIT_SHA=${{ github.sha }}
-            ANALYTICS_GA_MEASUREMENT_ID=${{ secrets.ANALYTICS_GA_MEASUREMENT_ID }}
-            EXAM_ASSETS_BASE_URL=${{ secrets.EXAM_ASSETS_BASE_URL }}
-            S3_ENDPOINT=${{ secrets.S3_ENDPOINT }}
-
-      - name: Docker Save
-        if: github.ref == 'refs/heads/master' && vars.DEPLOY_HOST != ''
-        run: docker save examklaar:${{ github.sha }} > /tmp/docker-image.tar
-  
-      - name: Connect to Tailscale
-        if: github.ref == 'refs/heads/master' && vars.DEPLOY_HOST != ''
-        uses: tailscale/github-action@v4
-        with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:examklaarci
-
-      - name: Run Playbook
-        if: github.ref == 'refs/heads/master' && vars.DEPLOY_HOST != ''
-        uses: dawidd6/action-ansible-playbook@v9
-        with:
-          directory: deploy
-          playbook: app.yaml
-          configuration: |
-            [defaults]
-            inventory = inventory.yaml
-            host_key_checking = False
-          inventory: |
-            [examklaar]
-            ${{ vars.DEPLOY_HOST }} ansible_user=root
-          options: |
-            -e "docker_image_tag=${{ github.sha }}"
-            -e "docker_image_path=/tmp/docker-image.tar"
-            -e "google_api_key=${{ secrets.GOOGLE_API_KEY }}"
-            -e "postgres_password=${{ secrets.POSTGRES_PASSWORD }}"
-            -e "better_auth_secret=${{ secrets.BETTER_AUTH_SECRET }}"
-            -e "better_auth_url=${{ secrets.BETTER_AUTH_URL }}"
-            -e "brevo_api_key=${{ secrets.BREVO_API_KEY }}"
-            -e "email_from_address=${{ secrets.EMAIL_FROM_ADDRESS }}"
-            -e "email_from_name=${{ secrets.EMAIL_FROM_NAME }}"
-            -e "s3_endpoint=${{ secrets.S3_ENDPOINT }}"
-            -e "s3_region=${{ secrets.S3_REGION }}"
-            -e "s3_access_key_id=${{ secrets.S3_ACCESS_KEY_ID }}"
-            -e "s3_secret_access_key=${{ secrets.S3_SECRET_ACCESS_KEY }}"
-            -e "s3_bucket_recordings=${{ secrets.S3_BUCKET_RECORDINGS }}"
-            -e "exam_assets_base_url=${{ secrets.EXAM_ASSETS_BASE_URL }}"
-            -e "analytics_ga_measurement_id=${{ secrets.ANALYTICS_GA_MEASUREMENT_ID }}"
-#             -e "payment_provider=${{ secrets.PAYMENT_PROVIDER }}"
-#             -e "paddle_api_key=${{ secrets.PADDLE_API_KEY }}"
-#             -e "paddle_client_token=${{ secrets.PADDLE_CLIENT_TOKEN }}"
-#             -e "paddle_webhook_secret=${{ secrets.PADDLE_WEBHOOK_SECRET }}"
-#             -e "paddle_price_id_monthly=${{ secrets.PADDLE_PRICE_ID_MONTHLY }}"
+      - name: Dispatch to the deploy repository
+        env:
+          GH_TOKEN: ${{ secrets.DEPLOY_DISPATCH_TOKEN }}
+        run: |
+          gh api "repos/${{ vars.DEPLOY_REPO }}/dispatches" \
+            -f event_type=deploy \
+            -f "client_payload[sha]=${{ github.sha }}"

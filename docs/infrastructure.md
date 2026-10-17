@@ -2,8 +2,7 @@
 
 [Documentation index](./README.md)
 
-What the app needs to run, and how each piece is configured. For getting it onto a server, see
-[Deployment](./deployment.md).
+What the app needs to run, and how each piece is configured.
 
 ## Database
 
@@ -56,30 +55,7 @@ tooling ships in the app or runs at request time. The pipelines are local, free 
 - [Image generation](./image-generation.md) for exam scene images
 - [Video generation](./video-generation.md) for the speaking Part 1 presenter
 
-## Billing
-
-`PAYMENT_PROVIDER` decides which of two modes the app runs in. It is read on every request, so
-changing it needs a restart, not a rebuild.
-
-| `PAYMENT_PROVIDER` | Mode         | Who can open what                                                               |
-| ------------------ | ------------ | ------------------------------------------------------------------------------- |
-| empty              | Early access | Every signed-in user opens every exam. Nothing is sold and there is no checkout |
-| `paddle`           | Paid         | The first exam of each skill is free. The rest need an active subscription      |
-
-During early access the landing page, pricing page, dashboard, exam lists and account settings say
-that every exam is free for now and what full access will cost later. All of that copy disappears
-once a provider is set. The rule lives in `isEarlyAccess()` in `src/lib/payment/subscription.ts`.
-
-### Ending early access
-
-The terms promise users at least 14 days' notice by email, so in this order:
-
-1. Update the legal pages (terms, privacy policy, refund policy) for the paid launch and the
-   provider that sells the subscription, and bump their `LAST_UPDATED` date.
-2. Email every user at least 14 days before the switch, linking to the updated terms.
-3. On the day, set `PAYMENT_PROVIDER` and the provider's variables, then restart the app.
-
 ## Environment
 
-`.env.example` is the reference. Postgres, Brevo, S3 storage and Google AI each need values. Paddle
-needs them only when `PAYMENT_PROVIDER=paddle`. The file documents what every variable is for.
+`.env.example` is the reference. Postgres, Brevo, S3 storage and Google AI each need values. The
+file documents what every variable is for.

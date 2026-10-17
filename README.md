@@ -12,7 +12,7 @@ with AI feedback on every written and spoken answer.
 [![Build](https://github.com/RashadAnsari/examklaar/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/RashadAnsari/examklaar/actions/workflows/build.yml)
 [![Exams](https://img.shields.io/badge/practice_exams-25-1b6b4a)](src/data/exams)
 [![Level](https://img.shields.io/badge/level-A2-1b6b4a)](docs/a2-exam-generation.md)
-[![License](https://img.shields.io/badge/license-proprietary-lightgrey)](#license)
+[![License](https://img.shields.io/badge/license-AGPL--3.0-1b6b4a)](LICENSE)
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.2-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19.2-087ea4?logo=react&logoColor=white)](https://react.dev)
@@ -42,6 +42,8 @@ question types, the same media. Reading, listening and KNM are scored instantly.
 speaking are graded by an AI examiner applying the official DUO assessment model, so a candidate
 finds out where they stand before paying €250 to find out at DUO.
 
+ExamKlaar is free and open source. There is no paid plan and no payment code.
+
 ## The five components
 
 | Component                                   | What the candidate does                                              | How it is scored                   |
@@ -56,9 +58,7 @@ Five exams per component, 25 in total, all at A2 level. KNM has no level, matchi
 
 ## How it works
 
-1. **Sign up** and confirm the email address. During early access every exam is free. After it,
-   every account can take the first exam of each component for free and the rest need a
-   subscription. See [Billing](docs/infrastructure.md#billing).
+1. **Sign up** and confirm the email address. Every exam is free.
 2. **Pick a component and an exam.** The exam opens with the real timer and no way to pause.
 3. **Submit.** Closed questions score immediately, written and spoken answers go to the AI examiner.
 4. **Review.** Every question is replayable next to the correct answer, the candidate's own answer,
@@ -66,19 +66,18 @@ Five exams per component, 25 in total, all at A2 level. KNM has no level, matchi
 
 ## Tech stack
 
-| Layer          | Choice                                                                 |
-| -------------- | ---------------------------------------------------------------------- |
-| Framework      | Next.js 16 (App Router), React 19, TypeScript                          |
-| Styling        | Tailwind CSS 4, design tokens in `src/app/globals.css`                 |
-| Runtime, tests | Bun, `bun test`                                                        |
-| Database       | PostgreSQL 17, plain SQL migrations, `pg` pool                         |
-| Auth           | Better Auth, email and password with mandatory verification            |
-| AI grading     | Google AI via the Vercel AI SDK                                        |
-| Speech         | Transcription on the server with Transformers.js, no external call     |
-| Storage        | Any S3-compatible object storage, two buckets                          |
-| Payments       | Paddle, behind a provider interface, off during early access           |
-| Email          | Brevo HTTP API                                                         |
-| Deployment     | Docker Compose on a single host, driven by Ansible from GitHub Actions |
+| Layer          | Choice                                                             |
+| -------------- | ------------------------------------------------------------------ |
+| Framework      | Next.js 16 (App Router), React 19, TypeScript                      |
+| Styling        | Tailwind CSS 4, design tokens in `src/app/globals.css`             |
+| Runtime, tests | Bun, `bun test`                                                    |
+| Database       | PostgreSQL 17, plain SQL migrations, `pg` pool                     |
+| Auth           | Better Auth, email and password with mandatory verification        |
+| AI grading     | Google AI via the Vercel AI SDK                                    |
+| Speech         | Transcription on the server with Transformers.js, no external call |
+| Storage        | Any S3-compatible object storage, two buckets                      |
+| Email          | Brevo HTTP API                                                     |
+| Deployment     | Docker image built from `Dockerfile`                               |
 
 ## Quick start
 
@@ -90,11 +89,12 @@ make dev        # http://localhost:3000
 ```
 
 Copy `.env.example` to `.env.local` and fill it in. Postgres, Brevo, S3 storage and Google AI each
-need values. Leave `PAYMENT_PROVIDER` empty to run in early access, with every exam free and no
-Paddle setup. The file documents what every variable is for.
+need values. The file documents what every variable is for.
 
-`docker-compose.yml` at the repo root is the local development database only. The production stack
-lives in [`deploy/`](deploy).
+`docker-compose.yml` at the repo root is the local development database only. To self-host, build
+the `Dockerfile`, give the container the variables from `.env.example`, and run `node
+scripts/migrate.js` in it after each deploy. Production deployment of examklaar.nl lives in a
+separate private repository.
 
 ### Everyday commands
 
@@ -117,13 +117,12 @@ passes there too.
 ```
 src/
   app/              routes, API handlers and page components (App Router)
-  components/       ui/ primitives, layout/, pricing/, payment/, analytics/
+  components/       ui/ primitives, layout/, analytics/
   config/           site.ts, everything that identifies the product
   data/             exams/ the exam JSON, grading/ the DUO assessment models
   hooks/            shared client hooks
-  lib/              db, auth, exam scoring and grading, payment, storage, email
+  lib/              db, auth, exam scoring and grading, storage, email
 db/migrations/      numbered SQL migrations, applied by scripts/migrate.ts
-deploy/             Ansible playbooks and compose templates for the server
 docs/               authoring, generation and operations documentation
 scripts/            migrate, delete-user
 test/               test setup and the stub Postgres pool
@@ -133,17 +132,15 @@ test/               test setup and the stub Postgres pool
 
 The full index lives in [`docs/`](docs/README.md).
 
-| Guide                                                        | What it covers                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------------ |
-| [Exam JSON format](docs/exam-format.md)                      | The schema, per-skill conventions and asset rules for exam data    |
-| [A2 exam generation runbook](docs/a2-exam-generation.md)     | How to author a new A2 exam for any component                      |
-| [Reference example exams](docs/examples/README.md)           | Official DUO A2 exams, kept as a calibration reference             |
-| [Dutch text-to-speech](docs/dutch-text-to-speech.md)         | Generating spoken Dutch audio locally for listening and speaking   |
-| [Image generation](docs/image-generation.md)                 | Generating exam scene images locally                               |
-| [Video generation](docs/video-generation.md)                 | Generating talking-head video for speaking Part 1 prompts          |
-| [Infrastructure](docs/infrastructure.md)                     | Database, auth, object storage and the media policy                |
-| [Deployment](docs/deployment.md)                             | The two compose stacks, the workflows that drive them, and backups |
-| [Testing payment webhooks](docs/testing-payment-webhooks.md) | Receiving Paddle webhooks against a local dev server               |
+| Guide                                                    | What it covers                                                    |
+| -------------------------------------------------------- | ----------------------------------------------------------------- |
+| [Exam JSON format](docs/exam-format.md)                  | The schema, per-skill conventions and asset rules for exam data   |
+| [A2 exam generation runbook](docs/a2-exam-generation.md) | How to author a new A2 exam for any component                     |
+| [Reference example exams](docs/examples/README.md)       | Official DUO A2 exams used as a calibration reference, kept local |
+| [Dutch text-to-speech](docs/dutch-text-to-speech.md)     | Generating spoken Dutch audio locally for listening and speaking  |
+| [Image generation](docs/image-generation.md)             | Generating exam scene images locally                              |
+| [Video generation](docs/video-generation.md)             | Generating talking-head video for speaking Part 1 prompts         |
+| [Infrastructure](docs/infrastructure.md)                 | Database, auth, object storage and the media policy               |
 
 [`AGENTS.md`](AGENTS.md) holds the conventions every change in this repository follows, for people
 and for coding agents alike. Read it before touching code.
@@ -159,5 +156,8 @@ to the `exam_reviewer` agent in `.codex/agents/`.
 
 ## License
 
-Proprietary. All rights reserved. This repository and the exam content in it are not licensed for
-reuse or redistribution.
+[GNU Affero General Public License v3.0](LICENSE). If you run a modified version as a public
+service, you must publish its source to its users.
+
+The license covers the code and the exam content in this repository. It does not cover the
+ExamKlaar name or logo.
