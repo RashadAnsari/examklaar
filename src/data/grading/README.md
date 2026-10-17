@@ -12,6 +12,7 @@ publishes a new version.
 
 Source: [DUO Zakelijk, beoordelingsmodellen en eindtermen](https://duo.nl/zakelijk/inburgering-ketenpartners/examens/inburgeringsexamen/beoordelingsmodellen-en-eindtermen.jsp),
 downloaded 2026-10-11. DUO publishes no B1 models and no other grading documents for these exams.
+The PDFs are DUO's and are not in this repository; download them from that page into this folder.
 
 ## Not used
 
