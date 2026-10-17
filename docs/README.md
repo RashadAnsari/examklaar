@@ -8,7 +8,7 @@ Everything needed to author exam content, generate its media, and run the app.
 
 [![Exams](https://img.shields.io/badge/practice_exams-25-1b6b4a)](../src/data/exams)
 [![Level](https://img.shields.io/badge/level-A2-1b6b4a)](./a2-exam-generation.md)
-[![Guides](https://img.shields.io/badge/guides-7-1b6b4a)](#authoring-exam-content)
+[![Guides](https://img.shields.io/badge/guides-6-1b6b4a)](#authoring-exam-content)
 
 [**Back to the project README**](../README.md) · [**Repository conventions**](../AGENTS.md)
 
@@ -24,7 +24,6 @@ Start here when adding or changing an exam.
 | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | [Exam JSON format](./exam-format.md)                  | Directory layout, file naming, the schema, per-skill conventions, embedding media, and scoring |
 | [A2 exam generation runbook](./a2-exam-generation.md) | The single source of truth for generating a standard A2 exam for any of the five components    |
-| [Reference example exams](./examples/README.md)       | Real official DUO A2 exams, kept locally as a fixed calibration reference                      |
 
 ## Generating exam media
 

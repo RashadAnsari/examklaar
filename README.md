@@ -136,15 +136,14 @@ test/               test setup and the stub Postgres pool
 
 The full index lives in [`docs/`](docs/README.md).
 
-| Guide                                                    | What it covers                                                    |
-| -------------------------------------------------------- | ----------------------------------------------------------------- |
-| [Exam JSON format](docs/exam-format.md)                  | The schema, per-skill conventions and asset rules for exam data   |
-| [A2 exam generation runbook](docs/a2-exam-generation.md) | How to author a new A2 exam for any component                     |
-| [Reference example exams](docs/examples/README.md)       | Official DUO A2 exams used as a calibration reference, kept local |
-| [Dutch text-to-speech](docs/dutch-text-to-speech.md)     | Generating spoken Dutch audio locally for listening and speaking  |
-| [Image generation](docs/image-generation.md)             | Generating exam scene images locally                              |
-| [Video generation](docs/video-generation.md)             | Generating talking-head video for speaking Part 1 prompts         |
-| [Infrastructure](docs/infrastructure.md)                 | Database, auth, object storage and the media policy               |
+| Guide                                                    | What it covers                                                   |
+| -------------------------------------------------------- | ---------------------------------------------------------------- |
+| [Exam JSON format](docs/exam-format.md)                  | The schema, per-skill conventions and asset rules for exam data  |
+| [A2 exam generation runbook](docs/a2-exam-generation.md) | How to author a new A2 exam for any component                    |
+| [Dutch text-to-speech](docs/dutch-text-to-speech.md)     | Generating spoken Dutch audio locally for listening and speaking |
+| [Image generation](docs/image-generation.md)             | Generating exam scene images locally                             |
+| [Video generation](docs/video-generation.md)             | Generating talking-head video for speaking Part 1 prompts        |
+| [Infrastructure](docs/infrastructure.md)                 | Database, auth, object storage and the media policy              |
 
 [`AGENTS.md`](AGENTS.md) holds the conventions every change in this repository follows, for people
 and for coding agents alike. Read it before touching code.

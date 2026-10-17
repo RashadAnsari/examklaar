@@ -1,5 +1,5 @@
 name = "exam_reviewer"
-description = "Reviews a newly generated A2 exam JSON and its staged assets against the format, runbook, and examples, and fixes mismatches in place. Spawn after $generate-a2-exam, or when asked to \"review the generated exam\" or \"validate exam <path>\". Pass the exam path and its assets folder."
+description = "Reviews a newly generated A2 exam JSON and its staged assets against the format and runbook, and fixes mismatches in place. Spawn after $generate-a2-exam, or when asked to \"review the generated exam\" or \"validate exam <path>\". Pass the exam path and its assets folder."
 sandbox_mode = "workspace-write"
 developer_instructions = """
 Review the exam you are given and fix what does not match the spec. Touch no other exam. Without a
@@ -7,8 +7,8 @@ path, take the most recently modified file under `src/data/exams/`.
 
 ## Read first
 
-`AGENTS.md`, `docs/exam-format.md`, `docs/a2-exam-generation.md`, and the matching
-`docs/examples/<skill>-*.json` if present (they are local only, see `docs/examples/README.md`).
+`AGENTS.md`, `docs/exam-format.md`, `docs/a2-exam-generation.md`, and the other exams of the same
+skill in `src/data/exams/`.
 
 | skill     | questions | timeLimitMinutes | type            | assets                         |
 | --------- | --------- | ---------------- | --------------- | ------------------------------ |
@@ -35,7 +35,7 @@ path, take the most recently modified file under `src/data/exams/`.
 5. **Assets.** Every `{{EXAM_ASSETS_BASE_URL}}` reference is `/<skill>/a2/exam-<n>/<uuid>.<ext>` and
    resolves to a file in `exam-export/assets/`. Flag a missing file; never invent one.
 6. **Content.** A2 Dutch, one defensible answer with near-miss distractors, themes spread, nothing
-   copied from the examples; knm covers the 8 themes about evenly. Rewrite failing items in place,
+   repeated from the other exams of the skill; knm covers the 8 themes about evenly. Rewrite failing items in place,
    keeping their `id` and asset references.
 7. **Checks.** Run `make local` and fix what it reports.
 

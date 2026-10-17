@@ -16,9 +16,8 @@ stop and print `Usage: $generate-a2-exam <reading|listening|writing|speaking|knm
 
 - `docs/a2-exam-generation.md`: structure, calibration, and output template per component. Follow it.
 - `docs/exam-format.md`: JSON schema and asset rules.
-- `docs/examples/<component>-*.json`: real DUO exams, for tone and level only. Never copy their
-  content. They are local only and not in the repository (`docs/examples/README.md`); without them,
-  calibrate on the runbook and the existing exams in `src/data/exams/`.
+- The existing exams in `src/data/exams/<component>/`: for structure, tone and level. Never reuse
+  their texts, questions or scenarios.
 - Media: `docs/dutch-text-to-speech.md`, `docs/image-generation.md`, `docs/video-generation.md`.
 
 Research what the runbook does not give you (vocabulary range, KNM eindtermen, current facts) on
