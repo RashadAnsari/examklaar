@@ -91,6 +91,10 @@ make dev        # http://localhost:3000
 Copy `.env.example` to `.env.local` and fill it in. Postgres, Brevo, S3 storage and Google AI each
 need values. The file documents what every variable is for.
 
+The exam audio, images and video are not in git. Download `exam-assets.zip` from the
+[latest release](https://github.com/RashadAnsari/examklaar/releases/latest), upload its contents to a
+public bucket, and point `EXAM_ASSETS_BASE_URL` at it. See [Object storage](docs/infrastructure.md#object-storage).
+
 `docker-compose.yml` at the repo root is the local development database only. To self-host, build
 the `Dockerfile`, give the container the variables from `.env.example`, and run `node
 scripts/migrate.js` in it after each deploy. Production deployment of examklaar.nl lives in a

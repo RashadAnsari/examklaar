@@ -53,7 +53,9 @@ function decodeWav(buffer: Buffer): Float32Array {
     const chunkSize = buffer.readUInt32LE(offset + 4);
     if (chunkId === "data") {
       const dataStart = offset + 8;
-      const numSamples = chunkSize / 2; // Int16 = 2 bytes per sample
+      // The declared size comes from the client: never read or allocate past the actual bytes
+      const dataBytes = Math.min(chunkSize, buffer.length - dataStart);
+      const numSamples = Math.floor(dataBytes / 2); // Int16 = 2 bytes per sample
       const float32 = new Float32Array(numSamples);
       for (let i = 0; i < numSamples; i++) {
         float32[i] = buffer.readInt16LE(dataStart + i * 2) / 32768;

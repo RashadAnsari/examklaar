@@ -42,6 +42,10 @@ objects after 30 days: the app deletes recordings only when an account is erased
 
 For `exam-assets`, point `EXAM_ASSETS_BASE_URL` at the public base URL, with no trailing slash.
 
+The media for the exams in `src/data/exams` ships as `exam-assets.zip` on the
+[GitHub releases page](https://github.com/RashadAnsari/examklaar/releases). Unzip it into the root of
+the `exam-assets` bucket: its folders (`listening/a2/exam-1/…`) are the paths the exam JSON asks for.
+
 The Content-Security-Policy in `next.config.ts` derives the allowed media origins from
 `EXAM_ASSETS_BASE_URL` and `S3_ENDPOINT`, so there is nothing extra to configure when either host
 changes.
