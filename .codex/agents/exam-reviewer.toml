@@ -8,7 +8,7 @@ path, take the most recently modified file under `src/data/exams/`.
 ## Read first
 
 `AGENTS.md`, `docs/exam-format.md`, `docs/a2-exam-generation.md`, and the matching
-`docs/examples/<skill>-*.json`.
+`docs/examples/<skill>-*.json` if present (they are local only, see `docs/examples/README.md`).
 
 | skill     | questions | timeLimitMinutes | type            | assets                         |
 | --------- | --------- | ---------------- | --------------- | ------------------------------ |
