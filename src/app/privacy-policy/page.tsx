@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${site.url}/privacy-policy` },
 };
 
-const LAST_UPDATED = "2 October 2026";
+const LAST_UPDATED = "17 October 2026";
 
 const SECTIONS: LegalSection[] = [
   {
@@ -36,10 +36,6 @@ const SECTIONS: LegalSection[] = [
         text: "The audio you record in speaking exercises and a written transcript of it, which we use to give you feedback.",
       },
       {
-        subtitle: "Subscription data",
-        text: "Only once paid subscriptions are sold, which is not the case during early access: your customer reference and subscription status, which we receive from our payment provider Paddle. We never receive your card or bank details.",
-      },
-      {
         subtitle: "Usage data",
         text: "Only if you accept analytics cookies: which pages you visit, how you arrived, your approximate location (city or country), and your device and browser type.",
       },
@@ -58,7 +54,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       {
         subtitle: "Providing the service (contract, Art. 6(1)(b))",
-        text: "Running your account, letting you take exams, giving you feedback, managing your subscription, and sending emails the service needs, such as email confirmation and password reset.",
+        text: "Running your account, letting you take exams, giving you feedback, and sending emails the service needs, such as email confirmation and password reset.",
       },
       {
         subtitle: "Security (legitimate interest, Art. 6(1)(f))",
@@ -104,10 +100,6 @@ const SECTIONS: LegalSection[] = [
         subtitle: "Brevo SAS (France), processor",
         text: "Sends the emails the service needs. Brevo receives only your email address.",
       },
-      {
-        subtitle: "Paddle.com Market Limited (UK), independent controller",
-        text: "Sells the subscription to you as Merchant of Record and processes your payment and billing details under its own privacy policy at paddle.com/legal/privacy. This applies only once paid subscriptions are sold. During early access, no data is shared with Paddle.",
-      },
     ],
     footer:
       "We share data with other parties only where the law requires it, for example under a court order.",
@@ -124,10 +116,6 @@ const SECTIONS: LegalSection[] = [
       {
         subtitle: "Cloudflare (USA)",
         text: "Standard Contractual Clauses, for any access from outside the EU to data stored in the EU.",
-      },
-      {
-        subtitle: "Paddle (UK)",
-        text: "The European Commission's adequacy decision for the United Kingdom.",
       },
     ],
     footer: "You can ask us for more information about these safeguards at hallo@examklaar.nl.",
@@ -200,10 +188,6 @@ const SECTIONS: LegalSection[] = [
       {
         subtitle: "Analytics (with consent)",
         text: "Google Analytics cookies that measure how the website is used. They are not used for advertising.",
-      },
-      {
-        subtitle: "Checkout",
-        text: "Once paid subscriptions are sold, Paddle may use its own cookies when you open the checkout to process your payment, as described in Paddle's privacy policy. There is no checkout during early access.",
       },
     ],
     footer:

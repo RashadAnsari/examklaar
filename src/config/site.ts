@@ -4,7 +4,7 @@
  * Metadata, structured data, the navbar, the footer and the emails all read
  * from this object rather than hardcoding a name, a URL, or a colour.
  *
- * Legal copy is deliberately left alone: the privacy, terms and refund pages
+ * Legal copy is deliberately left alone: the privacy and terms pages
  * name the product inside sentences that also carry legal meaning, and those
  * are edited as prose, not templated.
  */
@@ -16,6 +16,8 @@ export const site = {
   url: "https://examklaar.nl",
   /** Shown in the footer and used as the support address everywhere. */
   supportEmail: "hallo@examklaar.nl",
+  /** The public source repository, linked from the footer. */
+  repoUrl: "https://github.com/RashadAnsari/examklaar",
   /** Brand colour, mirrored by --green-900 in globals.css. Emails cannot read CSS variables. */
   brandColor: "#1b6b4a",
 } as const;

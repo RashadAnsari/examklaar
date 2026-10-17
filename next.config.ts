@@ -30,15 +30,15 @@ const csp = [
   "default-src 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
-  "frame-src https://*.paddle.com",
+  "frame-src 'none'",
   "style-src 'self' 'unsafe-inline'",
   `media-src 'self' blob:${media}`,
   `img-src 'self' data: blob:${images} https://www.google-analytics.com https://*.google-analytics.com`,
   // blob: is required by connect-src, not just media-src: submitting a speaking
   // exam reads each recording back out of its object URL with fetch() to build
   // the upload body (see submitExam in ExamClient).
-  "connect-src 'self' blob: https://*.paddle.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
-  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://cdn.paddle.com https://www.googletagmanager.com`,
+  "connect-src 'self' blob: https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
+  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com`,
 ].join("; ");
 
 const nextConfig: NextConfig = {
@@ -53,8 +53,8 @@ const nextConfig: NextConfig = {
     ],
   },
   // Allow a dev tunnel (e.g. ngrok/cloudflared) to reach the dev server, so the
-  // site is reachable through the tunnel's public URL (for testing Paddle
-  // webhooks, viewing on another device, sharing, etc.). Set DEV_TUNNEL_HOST to
+  // site is reachable through the tunnel's public URL (for viewing on another
+  // device, sharing, etc.). Set DEV_TUNNEL_HOST to
   // the tunnel host (no protocol, e.g. "abc123.trycloudflare.com").
   ...(process.env.DEV_TUNNEL_HOST ? { allowedDevOrigins: [process.env.DEV_TUNNEL_HOST] } : {}),
   async headers() {

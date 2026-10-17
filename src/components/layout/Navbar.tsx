@@ -106,12 +106,6 @@ export function Navbar() {
                 Features
               </Link>
               <Link
-                href="/pricing"
-                className="text-sm font-medium text-[var(--gray-600)] transition hover:text-[var(--green-900)]"
-              >
-                Pricing
-              </Link>
-              <Link
                 href="/privacy-policy"
                 className="text-sm font-medium text-[var(--gray-600)] transition hover:text-[var(--green-900)]"
               >
@@ -269,7 +263,6 @@ export function Navbar() {
             </>
           )}
           <MobileNavLink href="/#features">Features</MobileNavLink>
-          <MobileNavLink href="/pricing">Pricing</MobileNavLink>
           <MobileNavLink href="/privacy-policy">Privacy</MobileNavLink>
           <MobileNavLink href="/terms-and-conditions">Terms</MobileNavLink>
         </nav>

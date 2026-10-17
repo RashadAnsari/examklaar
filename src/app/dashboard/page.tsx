@@ -5,19 +5,11 @@ import { getSessionUser } from "@/lib/auth-session";
 import { pool } from "@/lib/db";
 import { listSkillGroups } from "@/data/exams";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
-import { getUserSubscription, hasFullAccess, isEarlyAccess } from "@/lib/payment/subscription";
 
 export default async function DashboardPage() {
   const user = await getSessionUser();
 
-  const [results, sub] = await Promise.all([
-    user
-      ? new ExamResultsRepository(pool).listCompletedExamIds(user.id)
-      : Promise.resolve<{ exam_id: string }[]>([]),
-    user ? getUserSubscription(user.id) : Promise.resolve(null),
-  ]);
-
-  const isPaid = sub ? hasFullAccess(sub) : false;
+  const results = user ? await new ExamResultsRepository(pool).listCompletedExamIds(user.id) : [];
 
   const completedByGroup = new Map<string, Set<string>>();
   for (const r of results) {
@@ -49,7 +41,7 @@ export default async function DashboardPage() {
           <p style={{ color: "var(--gray-600)" }}>Continue practicing for your inburgering exam</p>
         </div>
 
-        <DashboardClient skills={skills} isPaid={isPaid} earlyAccess={isEarlyAccess()} />
+        <DashboardClient skills={skills} />
       </div>
 
       <Footer />

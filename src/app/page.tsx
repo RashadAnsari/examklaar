@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
-import { PricingCards } from "@/components/pricing/PricingCards";
 import { site } from "@/config/site";
-import { isEarlyAccess } from "@/lib/payment/subscription";
 import {
   ArrowRightIcon,
   CheckCircleIcon,
@@ -21,25 +19,17 @@ import {
 const FEATURES_SUMMARY =
   "Realistic practice tests for all 5 inburgering exam components: KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included.";
 
-/** The free part of the offer: everything during early access, one exam per skill after. */
-function freeOffer(earlyAccess: boolean) {
-  return earlyAccess
-    ? "Every exam is free during early access."
-    : "The first exam of every skill is free.";
-}
+const OFFER = "Every exam is free.";
+const TITLE = `${site.name}: ${site.tagline}`;
+const DESCRIPTION = `${FEATURES_SUMMARY} ${OFFER}`;
 
-export async function generateMetadata(): Promise<Metadata> {
-  const offer = freeOffer(isEarlyAccess());
-  const title = `${site.name}: ${site.tagline}`;
-  const description = `${FEATURES_SUMMARY} ${offer}`;
-  return {
-    title,
-    description: `Prepare for your Dutch inburgering exam (A2) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. ${offer}`,
-    alternates: { canonical: site.url },
-    openGraph: { title, description, url: site.url },
-    twitter: { card: "summary_large_image", title, description },
-  };
-}
+export const metadata: Metadata = {
+  title: TITLE,
+  description: `Prepare for your Dutch inburgering exam (A2) with realistic practice tests for KNM, Reading, Listening, Writing, and Speaking. AI-powered feedback included. ${OFFER}`,
+  alternates: { canonical: site.url },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: site.url },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+};
 
 const websiteSchema = {
   "@context": "https://schema.org",
@@ -64,8 +54,6 @@ const organizationSchema = {
 };
 
 export default function LandingPage() {
-  const earlyAccess = isEarlyAccess();
-
   return (
     <div className="min-h-screen flex flex-col">
       <script
@@ -86,9 +74,7 @@ export default function LandingPage() {
             style={{ background: "var(--green-50)", color: "var(--green-700)" }}
           >
             <ClockIcon style={{ width: 15, height: 15 }} />
-            {earlyAccess
-              ? "Early access: every exam is free for now"
-              : "Have an exam deadline? Start with a free exam today."}
+            Free and open source: every exam, no payment ever
           </div>
 
           <h1
@@ -133,9 +119,7 @@ export default function LandingPage() {
           >
             <TrustItem
               icon={<CheckCircleIcon style={{ width: 18, height: 18 }} />}
-              text={
-                earlyAccess ? "Every exam free in early access" : "First exam of every skill free"
-              }
+              text="Every exam free"
             />
             <TrustItem
               icon={<AcademicCapIcon style={{ width: 18, height: 18 }} />}
@@ -169,11 +153,7 @@ export default function LandingPage() {
               step="1"
               icon={<UserPlusIcon style={{ width: 22, height: 22 }} />}
               title="Create your free account"
-              description={
-                earlyAccess
-                  ? "Sign up and take every exam for free while we are in early access. No payment method needed."
-                  : "Sign up and take the first exam of any skill for free. No payment method needed."
-              }
+              description="Sign up and take every exam for free. No payment method needed."
             />
             <StepCard
               step="2"
@@ -237,22 +217,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing Preview */}
-      <section id="pricing" className="py-14 sm:py-20" style={{ background: "white" }}>
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Simple, Transparent Pricing</h2>
-            <p className="section-subtitle">
-              {earlyAccess
-                ? "Free during early access. This is what full access will cost when it ends."
-                : "Full access to every exam with AI feedback. Cancel anytime."}
-            </p>
-          </div>
-
-          <PricingCards />
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section
         className="py-14 sm:py-20 text-center"
@@ -263,10 +227,8 @@ export default function LandingPage() {
             Start Preparing Today
           </h2>
           <p className="mb-8 opacity-90" style={{ fontSize: "1.25rem", lineHeight: 1.7 }}>
-            {earlyAccess
-              ? `Every exam on ${site.name} is free while we are in early access.`
-              : `Take the first exam of every skill on ${site.name} for free.`}{" "}
-            Practice at your own pace and walk into your exam with confidence.
+            Every exam on {site.name} is free. Practice at your own pace and walk into your exam
+            with confidence.
           </p>
           <Button href="/auth/signup" variant="white" size="lg">
             Start Practicing Free

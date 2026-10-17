@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${site.url}/terms-and-conditions` },
 };
 
-const LAST_UPDATED = "2 October 2026";
+const LAST_UPDATED = "17 October 2026";
 
 const SECTIONS: LegalSection[] = [
   {
@@ -43,9 +43,6 @@ const SECTIONS: LegalSection[] = [
       },
       { text: "AI-generated feedback on writing and speaking answers" },
       { text: "Progress tracking and exam history" },
-      {
-        text: "A monthly subscription that gives access to every exam. No subscriptions are sold during early access (Article 5).",
-      },
     ],
     footer: "ExamKlaar is not affiliated with or endorsed by the Dutch government or DUO.",
   },
@@ -53,62 +50,16 @@ const SECTIONS: LegalSection[] = [
     title: "Article 4. Changes to the Platform",
     content:
       "We may change the platform to add or improve exams and features, to fix problems, to keep it secure, or to follow the law. Changes never cost you extra.",
-    items: [
-      {
-        subtitle: "Changes that affect a subscription",
-        text: "If a change during a paid subscription has more than a minor negative effect on your access to or use of the platform, we tell you by email in advance what changes and when.",
-      },
-      {
-        subtitle: "Your right to end the subscription",
-        text: "You can then end your subscription free of charge within 30 days after that email, or after the change takes effect if that is later. We refund what you paid for the period after it ends.",
-      },
-    ],
   },
   {
-    title: "Article 5. Free Access",
+    title: "Article 5. Free of Charge",
     content:
-      "We offer free access in two forms. The pricing page shows which one applies at the moment.",
-    items: [
-      {
-        subtitle: "One free exam per skill",
-        text: "Every registered user can take the first exam of each skill for free, including its AI feedback. No payment method is needed, and this access does not expire and never turns into a subscription. Outside early access, the other exams require a paid subscription.",
-      },
-      {
-        subtitle: "Early access",
-        text: "While ExamKlaar is in early access, every registered user can use every exam for free, including its AI feedback, without a payment method. No subscriptions are sold during early access. Early access has no fixed end date. We will tell you by email at least 14 days before it ends. When it ends, nothing is charged automatically. You keep the free exam per skill described above, and the other exams, including their results and feedback, need a subscription that you choose to buy.",
-      },
-      {
-        subtitle: "Changes to these offers",
-        text: "We may change which exams are free. We tell you about such a change in the same way and with the same notice as a change to these Terms (Article 15).",
-      },
-    ],
+      "ExamKlaar is free. Every registered user can use every exam, including its AI feedback, without a payment method. We do not sell subscriptions and never charge you.",
   },
   {
-    title: "Article 6. Subscriptions and Payments",
+    title: "Article 6. Open Source",
     content:
-      "This article applies once paid subscriptions are sold, which is not the case during early access. Subscriptions are sold by Paddle.com Market Limited ('Paddle') as Merchant of Record. Paddle is the seller, processes your payment, and handles VAT and invoices. When you buy a subscription, Paddle's Buyer Terms also apply.",
-    items: [
-      {
-        subtitle: "Billing",
-        text: "The subscription renews and is billed every month until you cancel.",
-      },
-      {
-        subtitle: "Cancellation",
-        text: "You can cancel at any time in your account settings or by emailing hallo@examklaar.nl. You keep access until the end of the period you paid for, and after that you keep the free access in Article 5.",
-      },
-      {
-        subtitle: "Price changes",
-        text: "We will tell you about a price change by email at least 30 days before it applies to you. You can cancel free of charge before the new price takes effect. A price change never applies to a period you have already paid for.",
-      },
-      {
-        subtitle: "Failed payments",
-        text: "If a payment fails, Paddle will retry it and let you know. If payment cannot be collected, your subscription ends and you keep the free access in Article 5.",
-      },
-      {
-        subtitle: "Refunds and withdrawal",
-        text: "Your statutory 14-day right of withdrawal and refunds are handled by Paddle. Our Refund Policy explains how this works.",
-      },
-    ],
+      "The source code of ExamKlaar is published at github.com/RashadAnsari/examklaar under the GNU Affero General Public License, version 3. That licence covers the code. These Terms cover your use of the platform at examklaar.nl.",
   },
   {
     title: "Article 7. Acceptable Use",
@@ -172,7 +123,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       {
         subtitle: "By you",
-        text: "You can ask us to delete your account at any time by emailing hallo@examklaar.nl. Deleting your account ends your access immediately and cancels any subscription, so cancel first if you want to use the rest of a paid period.",
+        text: "You can ask us to delete your account at any time by emailing hallo@examklaar.nl. Deleting your account ends your access immediately.",
       },
       {
         subtitle: "By us",
@@ -182,10 +133,6 @@ const SECTIONS: LegalSection[] = [
         subtitle: "Our reasons and your objection",
         text: "If we remove your content or restrict your account, we email you what we did and for how long, the facts behind it, and the rule in these Terms or the law it is based on. You can object by replying to that email. A person reviews every objection, and we tell you the outcome.",
       },
-      {
-        subtitle: "Refunds on closure",
-        text: "If we close your account because you broke these Terms, we do not refund the rest of the paid period. If we close it for any other reason, we refund the unused part. Your statutory rights are not affected.",
-      },
     ],
   },
   {
@@ -193,7 +140,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       {
         subtitle: "Contact us first",
-        text: "Send complaints to hallo@examklaar.nl. We aim to resolve them within 30 days. Payment and billing complaints go to Paddle via paddle.net.",
+        text: "Send complaints to hallo@examklaar.nl. We aim to resolve them within 30 days.",
       },
       {
         subtitle: "Dispute resolution",
@@ -210,7 +157,7 @@ const SECTIONS: LegalSection[] = [
   {
     title: "Article 15. Changes to These Terms",
     content:
-      "We may update these Terms. We will tell you about material changes by email or with a notice on the platform at least 14 days before they take effect. If you do not agree, you can cancel your subscription and close your account before then. If you keep using ExamKlaar after that date, the new Terms apply.",
+      "We may update these Terms. We will tell you about material changes by email or with a notice on the platform at least 14 days before they take effect. If you do not agree, you can close your account before then. If you keep using ExamKlaar after that date, the new Terms apply.",
   },
   {
     title: "Article 16. Governing Law",

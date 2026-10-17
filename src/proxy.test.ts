@@ -33,7 +33,7 @@ beforeEach(() => {
 
 describe("proxy, signed out", () => {
   test("lets a public page through", async () => {
-    for (const path of ["/", "/pricing", "/auth/login", "/privacy-policy"]) {
+    for (const path of ["/", "/auth/login", "/privacy-policy"]) {
       expect((await visit(path)).headers.get("location")).toBeNull();
     }
   });
@@ -47,8 +47,8 @@ describe("proxy, signed out", () => {
   });
 
   test("carries the protected page's own query string inside next", async () => {
-    expect(await locationOf("/checkout?_ptxn=txn_1")).toBe(
-      "/auth/login?next=%2Fcheckout%3F_ptxn%3Dtxn_1"
+    expect(await locationOf("/exam?skill=reading-a2&n=2")).toBe(
+      "/auth/login?next=%2Fexam%3Fskill%3Dreading-a2%26n%3D2"
     );
   });
 

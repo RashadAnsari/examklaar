@@ -3,14 +3,12 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
-import { ChevronLeftIcon, LockClosedIcon } from "@heroicons/react/20/solid";
+import { ChevronLeftIcon } from "@heroicons/react/20/solid";
 import { SKILL_TITLES, SKILL_DESCRIPTIONS } from "@/lib/exam/config";
 import { getSessionUser } from "@/lib/auth-session";
 import { pool } from "@/lib/db";
 import { listSkillExams } from "@/data/exams";
 import { getScoreFeedback } from "@/lib/exam/scoring";
-import { getUserSubscription, hasFullAccess, isEarlyAccess } from "@/lib/payment/subscription";
-import { canAccessExam, isFreeExam, NO_SUBSCRIPTION } from "@/lib/payment/plans";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 interface ExamResult {
@@ -69,10 +67,6 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
 
   const { skill, level, exams } = data;
 
-  const sub = user ? await getUserSubscription(user.id) : NO_SUBSCRIPTION;
-  const earlyAccess = isEarlyAccess();
-  const isPaid = hasFullAccess(sub);
-
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--gray-50)" }}>
       <Navbar />
@@ -105,13 +99,6 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
             {SKILL_DESCRIPTIONS[skill]} · {exams.length} {exams.length === 1 ? "exam" : "exams"}{" "}
             available
           </p>
-          {(earlyAccess || !isPaid) && (
-            <p className="mt-2 text-sm" style={{ color: "var(--green-700)" }}>
-              {earlyAccess
-                ? "Every exam is free while we are in early access."
-                : "The first exam is free. Subscribe to unlock the rest."}
-            </p>
-          )}
         </div>
 
         <div
@@ -119,14 +106,12 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
           style={{ background: "white", borderColor: "var(--gray-200)" }}
         >
           {exams.map((exam, i) => {
-            const unlocked = earlyAccess || canAccessExam(sub, exam.n);
             return (
               <div
                 key={exam.n}
                 className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 sm:px-6 py-4 sm:py-5"
                 style={{
                   borderBottom: i === exams.length - 1 ? "none" : "1px solid var(--gray-100)",
-                  opacity: unlocked ? 1 : 0.6,
                 }}
               >
                 <div
@@ -142,14 +127,6 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
                     style={{ color: "var(--gray-900)" }}
                   >
                     Exam {exam.n}
-                    {!isPaid && isFreeExam(exam.n) && (
-                      <span
-                        className="rounded-full px-2 py-0.5 text-xs font-semibold"
-                        style={{ background: "var(--green-50)", color: "var(--green-700)" }}
-                      >
-                        Free
-                      </span>
-                    )}
                   </p>
                   <p className="text-xs mt-0.5" style={{ color: "var(--gray-500)" }}>
                     {exam.timeLimitMinutes} minutes
@@ -177,12 +154,7 @@ export default async function ExamsPage(props: PageProps<"/exams/[id]">) {
                 </div>
 
                 <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                  {!unlocked ? (
-                    <Button href="/pricing" variant="outline">
-                      <LockClosedIcon style={{ width: 14, height: 14 }} />
-                      Subscribe
-                    </Button>
-                  ) : exam.result ? (
+                  {exam.result ? (
                     <>
                       <Button href={`/exam/results?skill=${id}&n=${exam.n}`} variant="outline">
                         Review

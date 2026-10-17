@@ -27,7 +27,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 - After every change, run `make local` (format, lint, typecheck, tests) and fix anything it reports before considering the work done.
 - `typecheck` runs `next typegen` before `tsc`. Route types such as `PageProps<"/exams/[id]">` are generated into `.next/types`, not imported, so a bare `tsc --noEmit` on a clean checkout fails with "Cannot find name 'PageProps'".
-- Tests run with `bun test`. Pure logic (access rules, redirect validation, the proxy routing table) is tested directly; route handlers are tested with a stub pool and a fake provider, see `src/app/api/payments/webhook/route.test.ts`. `test/setup.ts` neutralises `server-only` for the test runtime.
+- Tests run with `bun test`. Pure logic (access rules, redirect validation, the proxy routing table) is tested directly; route handlers are tested with a stub pool, see `test/stubPool.ts`. `test/setup.ts` neutralises `server-only` for the test runtime.
 
 ## General rules
 

@@ -33,9 +33,4 @@ export const analytics = {
   examStarted: (examId: string) => track("exam_started", { exam_id: examId }),
   examCompleted: (examId: string) => track("exam_completed", { exam_id: examId }),
   examAbandoned: (examId: string) => track("exam_abandoned", { exam_id: examId }),
-
-  // Payment
-  checkoutStarted: (plan: string) => track("checkout_started", { plan }),
-  checkoutCompleted: (plan: string) => track("checkout_completed", { plan }),
-  cancelSubscription: () => track("cancel_subscription"),
 };

@@ -8,7 +8,6 @@ import {
   RECORDING_MIME_TYPE,
 } from "@/lib/exam/config";
 import type { Exam } from "@/app/exam/ExamClient";
-import { userCanAccessExam } from "@/lib/payment/subscription";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 import { uploadRecording } from "@/lib/storage/recordings";
 
@@ -109,11 +108,6 @@ export async function POST(req: NextRequest) {
   } catch {
     console.error("[submit] Exam file not found — skill_id=%s n=%s", skillId, n);
     return NextResponse.json({ error: "Exam not found" }, { status: 404 });
-  }
-
-  if (!(await userCanAccessExam(user.id, n))) {
-    console.warn("[submit] Exam blocked, no access — user=%s exam=%s-%s", user.id, skillId, n);
-    return NextResponse.json({ error: "upgrade_required" }, { status: 403 });
   }
 
   const { id: examId, skill, level, questions } = examJson;

@@ -15,7 +15,7 @@ export interface LegalSection {
 }
 
 /**
- * Shared shell for the privacy, terms and refund pages. Each page supplies only
+ * Shared shell for the privacy and terms pages. Each page supplies only
  * its heading, intro and section data.
  */
 export function LegalPage({

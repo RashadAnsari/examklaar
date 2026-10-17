@@ -20,7 +20,6 @@ import {
   computeHistoryStats,
 } from "@/lib/exam/scoring";
 import { BackGuard } from "./BackGuard";
-import { userCanAccessExam } from "@/lib/payment/subscription";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 function formatDate(date: Date): string {
@@ -44,10 +43,6 @@ export default async function ResultsPage(props: {
   const user = await getSessionUser();
   if (!user) {
     redirect("/auth/login");
-  }
-
-  if (!(await userCanAccessExam(user.id, n))) {
-    redirect("/pricing");
   }
 
   const examId = `${skillId}-exam-${n}`;

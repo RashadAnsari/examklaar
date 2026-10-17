@@ -6,7 +6,6 @@ import { SKILL_TITLES, type QuestionFeedback } from "@/lib/exam/config";
 import { scorePct, getPassThreshold } from "@/lib/exam/scoring";
 import type { Exam } from "@/app/exam/ExamClient";
 import { ReviewClient, type ReviewQuestion } from "./ReviewClient";
-import { userCanAccessExam } from "@/lib/payment/subscription";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
 type SpeakingAnswer = { path: string; transcript: string };
@@ -24,10 +23,6 @@ export default async function ReviewPage(props: {
   const user = await getSessionUser();
   if (!user) {
     redirect("/auth/login");
-  }
-
-  if (!(await userCanAccessExam(user.id, n))) {
-    redirect("/pricing");
   }
 
   const examId = `${skillId}-exam-${n}`;

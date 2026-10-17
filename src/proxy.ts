@@ -5,10 +5,8 @@ import { getSessionCookie } from "better-auth/cookies";
 // list; forgetting to is a fail-closed mistake, not a fail-open one.
 const PUBLIC_PATHS = [
   "/",
-  "/pricing",
   "/auth/login",
   "/auth/signup",
-  "/refund-policy",
   "/privacy-policy",
   "/auth/reset-password",
   "/terms-and-conditions",
@@ -51,7 +49,7 @@ export async function proxy(request: NextRequest) {
 }
 
 // API routes are excluded deliberately. Every one of them authenticates itself
-// (or verifies a provider signature), so the proxy adds nothing there. It also
+//, so the proxy adds nothing there. It also
 // does real harm: Next buffers the whole request body in memory for a proxied
 // request, capped at 10 MB, and silently truncates anything larger. A speaking
 // exam posts up to 16 recordings at once, so submissions were arriving with a

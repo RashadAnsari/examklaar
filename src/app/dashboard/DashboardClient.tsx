@@ -3,21 +3,12 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
-import { UpgradeBanner } from "@/components/ui/UpgradeBanner";
 import type { SkillGroup } from "@/lib/exam/config";
 
 const LEVELS = ["A2", "B1"] as const;
 type Level = (typeof LEVELS)[number];
 
-export function DashboardClient({
-  skills,
-  isPaid,
-  earlyAccess,
-}: {
-  skills: SkillGroup[];
-  isPaid: boolean;
-  earlyAccess: boolean;
-}) {
+export function DashboardClient({ skills }: { skills: SkillGroup[] }) {
   const [selected, setLevel] = useState<Level>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("dashboard:level");
@@ -43,14 +34,6 @@ export function DashboardClient({
 
   return (
     <>
-      {/* Upgrade banner: for users without access, and during early access to
-          say that everything is free for now */}
-      {(earlyAccess || !isPaid) && (
-        <div className="mb-12">
-          <UpgradeBanner earlyAccess={earlyAccess} />
-        </div>
-      )}
-
       {/* Practice Exams heading + level selector */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-semibold" style={{ fontSize: "1.5rem", color: "var(--gray-900)" }}>
@@ -81,14 +64,14 @@ export function DashboardClient({
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {exams.map((exam) => (
-          <ExamCard key={exam.id} skill={exam} isPaid={isPaid} />
+          <ExamCard key={exam.id} skill={exam} />
         ))}
       </div>
     </>
   );
 }
 
-function ExamCard({ skill, isPaid }: { skill: SkillGroup; isPaid: boolean }) {
+function ExamCard({ skill }: { skill: SkillGroup }) {
   const { id, title, level, description, examCount, completedCount } = skill;
 
   return (
@@ -104,14 +87,6 @@ function ExamCard({ skill, isPaid }: { skill: SkillGroup; isPaid: boolean }) {
           {title}
           {level ? ` ${level}` : ""}
         </span>
-        {!isPaid && (
-          <span
-            className="rounded-full px-2 py-0.5 text-xs font-semibold"
-            style={{ background: "var(--green-50)", color: "var(--green-700)" }}
-          >
-            1 free exam
-          </span>
-        )}
       </h3>
 
       <p className="text-sm mb-6" style={{ color: "var(--gray-600)", lineHeight: 1.6 }}>

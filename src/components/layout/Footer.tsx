@@ -26,9 +26,9 @@ export function Footer() {
               <h4 className="font-semibold mb-4 text-sm text-white">Info</h4>
               <ul className="flex flex-col gap-2 text-sm">
                 <li>
-                  <Link href="/pricing" className="hover:text-white transition-colors">
-                    Plans &amp; Pricing
-                  </Link>
+                  <a href={site.repoUrl} className="hover:text-white transition-colors">
+                    Source Code
+                  </a>
                 </li>
                 <li>
                   <Link href="/terms-and-conditions" className="hover:text-white transition-colors">
