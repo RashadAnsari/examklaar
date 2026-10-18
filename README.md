@@ -21,7 +21,7 @@ with AI feedback on every written and spoken answer.
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169e1?logo=postgresql&logoColor=white)](https://www.postgresql.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.2-38bdf8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
-[**Live site**](https://www.examklaar.nl) · [**Documentation**](docs/) · [**Exam format**](docs/exam-format.md) · [**Contributing rules**](AGENTS.md)
+[**Live site**](https://examklaar.nl) · [**Documentation**](docs/) · [**Exam format**](docs/exam-format.md) · [**Contributing**](CONTRIBUTING.md)
 
 </div>
 
@@ -33,14 +33,17 @@ with AI feedback on every written and spoken answer.
 
 ## What it is
 
-Everyone who settles in the Netherlands has to pass the _inburgeringsexamen_, five separate exams
-administered by DUO. Candidates get no official practice material and only a pass or fail back, so
-the first realistic attempt is usually the real one.
+Most people who move to the Netherlands from outside the EU have to pass the _inburgeringsexamen_,
+five separate exams administered by DUO. DUO offers a few official practice exams, but its writing
+and speaking practice gives no personal score or corrections, and the real exam reports only pass or
+fail.
 
-ExamKlaar closes that gap. It reproduces the real exam: the same structure, the same timer, the same
-question types, the same media. Reading, listening and KNM are scored instantly. Writing and
-speaking are graded by an AI examiner applying the official DUO assessment model, so a candidate
-finds out where they stand before paying €250 to find out at DUO.
+ExamKlaar fills that gap with more practice in the format of the real exam: the same structure,
+the same timer, the same question types, the same media. Reading, listening and KNM are scored
+instantly. Writing and speaking are graded by an AI examiner applying the official DUO assessment
+models, with a score per aspect and every mistake corrected, so a candidate finds out where they
+stand before paying €250 for the five exams at DUO. The pass marks are practice targets: DUO
+publishes no cut scores.
 
 ExamKlaar is free and open source. There is no paid plan and no payment code.
 
@@ -128,7 +131,7 @@ src/
   lib/              db, auth, exam scoring and grading, storage, email
 db/migrations/      numbered SQL migrations, applied by scripts/migrate.ts
 docs/               authoring, generation and operations documentation
-scripts/            migrate, delete-user
+scripts/            migrate, delete-user, download-whisper
 test/               test setup and the stub Postgres pool
 ```
 

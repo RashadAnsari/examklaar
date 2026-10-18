@@ -14,9 +14,7 @@ const LAST_UPDATED = "17 October 2026";
 const SECTIONS: LegalSection[] = [
   {
     title: "Article 1. General",
-    // TODO: restore business details (legal entity name, KvK number, registered address) once finalised:
-    // content: `ExamKlaar (www.examklaar.nl) is an online platform providing practice exams and AI-generated feedback for people preparing for the Dutch inburgering (civic integration) exam. ExamKlaar is operated by [Legal Entity Name], registered at the Dutch Chamber of Commerce (KvK) under number [KvK Number], located at [Address, City, the Netherlands].`,
-    content: `ExamKlaar (www.examklaar.nl) is an online platform providing practice exams and AI-generated feedback for people preparing for the Dutch inburgering (civic integration) exam. ExamKlaar is operated from the Netherlands.`,
+    content: `ExamKlaar (examklaar.nl) is an online platform providing practice exams and AI-generated feedback for people preparing for the Dutch inburgering (civic integration) exam. ExamKlaar is operated from the Netherlands.`,
     footer:
       "These Terms & Conditions apply to all use of ExamKlaar. By creating an account or using the platform, you agree to them.",
   },
@@ -148,8 +146,6 @@ const SECTIONS: LegalSection[] = [
       },
       {
         subtitle: "Competent court",
-        // TODO: restore the city of the competent court once the registered address is finalised:
-        // text: "Disputes are submitted to the competent court in [City], the Netherlands. If you are a consumer, you may also bring proceedings in the courts of the country where you live.",
         text: "Disputes are submitted to the competent Dutch court. If you are a consumer, you may also bring proceedings in the courts of the country where you live.",
       },
     ],
@@ -168,8 +164,6 @@ const SECTIONS: LegalSection[] = [
     title: "Article 17. Contact",
     content:
       "Questions about these Terms? Email us at hallo@examklaar.nl. This address is also our single point of contact under the EU Digital Services Act, for users and for authorities. You can write to us in Dutch or English.",
-    // TODO: restore business details (legal entity name, KvK number, registered address) once finalised:
-    // footer: "[Legal Entity Name], [Address, City, the Netherlands]. KvK: [KvK Number].",
     footer: "ExamKlaar, the Netherlands. Contact: hallo@examklaar.nl.",
   },
 ];

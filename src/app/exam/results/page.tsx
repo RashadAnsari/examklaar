@@ -170,7 +170,7 @@ export default async function ResultsPage(props: {
             />
             <BreakdownItem
               value={`${threshold}${isMcq ? ` / ${result.total_score}` : ""}`}
-              label="Pass Threshold"
+              label="Practice Pass Mark"
             />
           </div>
         </div>

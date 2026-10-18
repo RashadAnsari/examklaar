@@ -1,12 +1,12 @@
-// Returns the official pass rate (0–1) for a given skill and level.
-// Sources: DUO (KNM, A2), nt2.nl / levelupacademy.nl (B1).
-// A2 rates use exact DUO counts (fixed exam length).
-// B1 rates are published percentages — the raw pass mark varies per
-// administration due to IRT equating, so no fixed question count is used.
+// Returns the practice pass rate (0–1) for a given skill and level. DUO reports only pass or fail
+// and publishes no cut scores, so these are practice targets, not official thresholds.
+// Sources: commonly cited A2 counts for the fixed exam length, nt2.nl / levelupacademy.nl (B1).
+// B1 rates are published percentages: the raw pass mark varies per administration due to IRT
+// equating, so no fixed question count is used.
 export function getPassRate(skill: string, level: string | null): number {
   const lvl = level?.toUpperCase() ?? null;
   if (skill === "knm") {
-    return 28 / 40; // 0.700 — DUO official
+    return 28 / 40; // 0.700
   }
   if (skill === "reading") {
     return lvl === "B1" ? 0.65 : 19 / 25; // 0.650 or 0.760
@@ -24,7 +24,7 @@ export function getPassThreshold(skill: string, level: string | null, total: num
   return Math.round(getPassRate(skill, level) * total);
 }
 
-// Returns true when the B1 threshold is an approximation (not a fixed official count).
+// Returns true when the B1 threshold is a percentage approximation rather than a fixed count.
 function isApproxThreshold(skill: string, level: string | null): boolean {
   return level?.toUpperCase() === "B1" && (skill === "reading" || skill === "listening");
 }
@@ -70,7 +70,7 @@ export function getStatus(
 }
 
 // One-line feedback shown in the exam list (exams/[id] page).
-// e.g. "Passed — 85% (need ≥70%)"  or  "Not yet passing — 65% (3 more correct needed)"
+// e.g. "Passed: 85% (need 70%+)"  or  "Not yet passing: 65% (3 more correct needed)"
 export function getScoreFeedback(
   skill: string,
   level: string | null,

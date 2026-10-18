@@ -9,14 +9,12 @@ export const metadata: Metadata = {
   alternates: { canonical: `${site.url}/privacy-policy` },
 };
 
-const LAST_UPDATED = "17 October 2026";
+const LAST_UPDATED = "18 October 2026";
 
 const SECTIONS: LegalSection[] = [
   {
     title: "1. Who We Are",
-    // TODO: restore business details (legal entity name, KvK number, registered address) once finalised:
-    // content: `ExamKlaar (www.examklaar.nl) is an online platform that helps people prepare for the Dutch inburgering (civic integration) exam through practice exams and AI-generated feedback. ExamKlaar is operated by [Legal Entity Name], registered at the Dutch Chamber of Commerce (KvK) under number [KvK Number], located at [Address, City, the Netherlands], which is the controller of the personal data described in this policy.`,
-    content: `ExamKlaar (www.examklaar.nl) is an online platform that helps people prepare for the Dutch inburgering (civic integration) exam through practice exams and AI-generated feedback. ExamKlaar is based in the Netherlands and is the controller of the personal data described in this policy.`,
+    content: `ExamKlaar (examklaar.nl) is an online platform that helps people prepare for the Dutch inburgering (civic integration) exam through practice exams and AI-generated feedback. ExamKlaar is based in the Netherlands and is the controller of the personal data described in this policy.`,
     footer:
       "Contact: hallo@examklaar.nl. We have not appointed a Data Protection Officer, as we are not required to under Article 37 GDPR.",
   },
@@ -62,7 +60,7 @@ const SECTIONS: LegalSection[] = [
       },
       {
         subtitle: "Legal obligations (Art. 6(1)(c))",
-        text: "Keeping billing records as Dutch tax law requires, and responding to lawful requests from authorities.",
+        text: "Responding to lawful requests from authorities.",
       },
       {
         subtitle: "Consent (Art. 6(1)(a))",
@@ -130,10 +128,6 @@ const SECTIONS: LegalSection[] = [
       {
         subtitle: "Speaking recordings",
         text: "Deleted automatically 30 days after you record them, or sooner if you delete your account.",
-      },
-      {
-        subtitle: "Billing records",
-        text: "7 years, as Dutch tax law requires.",
       },
       {
         subtitle: "Technical logs",
@@ -211,8 +205,6 @@ const SECTIONS: LegalSection[] = [
   {
     title: "13. Contact",
     content: "Questions about this policy or your data? Email us at hallo@examklaar.nl.",
-    // TODO: restore business details (legal entity name, KvK number, registered address) once finalised:
-    // footer: "[Legal Entity Name], [Address, City, the Netherlands]. KvK: [KvK Number].",
     footer: "ExamKlaar, the Netherlands. Contact: hallo@examklaar.nl.",
   },
 ];
