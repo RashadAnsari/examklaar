@@ -150,12 +150,13 @@ and for coding agents alike. Read it before touching code.
 
 ## Project skills
 
-Project skills are Codex skills in `.agents/skills/`, invoked with `$`. The skill hands its result
-to the `exam_reviewer` agent in `.codex/agents/`.
+Project skills are Codex skills in `.agents/skills/`, invoked with `$`. `$generate-a2-exam` hands
+its result to the `exam_reviewer` agent in `.codex/agents/`.
 
-| Skill                                                            | What it does                                                                                                                              |
-| ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `$generate-a2-exam <reading\|listening\|writing\|speaking\|knm>` | Generates a new A2 exam for a component, writes the JSON into the exam data, and stages its assets folder (images via Codex, video local) |
+| Skill                                                            | What it does                                                                                                                                                                                |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$generate-a2-exam <reading\|listening\|writing\|speaking\|knm>` | Generates a new A2 exam for a component, writes the JSON into the exam data, and stages its assets folder (images via Codex, video local)                                                   |
+| `$grade-a2-exam`                                                 | Grades any A2 writing or speaking answer, given its question, on the DUO assessment models with the same rules as the app's grader. Self-contained: the folder can be copied into any agent |
 
 ## License
 

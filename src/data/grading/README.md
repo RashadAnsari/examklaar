@@ -2,7 +2,8 @@
 
 The AI grader in `src/lib/exam/grader.ts` follows the official DUO assessment models for the A2
 inburgeringsexamen. Change the grader only to match these documents, and replace them when DUO
-publishes a new version.
+publishes a new version. The `grade-a2-exam` skill in `.agents/skills/` carries the same rubric text
+for agents outside the app; copy every grader change into it, or `bun test` fails.
 
 | File                                                                       | Used for                                  | Max points |
 | -------------------------------------------------------------------------- | ----------------------------------------- | ---------- |

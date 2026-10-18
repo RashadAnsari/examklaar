@@ -2,7 +2,14 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, test } from "bun:test";
 import { feedbackHeadline } from "./config";
-import { describeImages, rubricFor, toQuestionFeedback } from "./grader";
+import {
+  CALIBRATION,
+  CORRECTION,
+  RUBRICS,
+  describeImages,
+  rubricFor,
+  toQuestionFeedback,
+} from "./grader";
 
 /**
  * The grader never sends media to the model. It reads each image's data-description and each video
@@ -149,5 +156,18 @@ describe("exam media", () => {
       }
     }
     expect(missing).toEqual([]);
+  });
+});
+
+describe("grade-a2-exam skill", () => {
+  // Agents outside the app grade with the skill, so it must carry the grader's exact rules
+  test("copies the grader's assessment models, scoring and correction rules word for word", async () => {
+    const skill = await readFile(
+      path.join(process.cwd(), ".agents", "skills", "grade-a2-exam", "SKILL.md"),
+      "utf-8"
+    );
+    for (const section of [...Object.values(RUBRICS), CALIBRATION, CORRECTION]) {
+      expect(skill).toContain(section);
+    }
   });
 });

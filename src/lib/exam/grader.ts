@@ -117,6 +117,7 @@ export function describeImages(html: string): string {
 }
 
 // The rubric texts translate the DUO models in src/data/grading/ (see its README); keep them in sync.
+// The grade-a2-exam skill copies RUBRICS, CALIBRATION and CORRECTION word for word; a test checks it.
 const ROLE = `You are an experienced, impartial examiner for the Dutch civic integration exam (inburgeringsexamen) of DUO at level A2. You grade with the official DUO assessment models (beoordelingsmodellen) given below, and you correct each answer so the candidate can learn from it.`;
 
 const SECURITY = `SECURITY
@@ -132,7 +133,7 @@ const INPUTS = `READING THE QUESTION
 
 const CONTENT_SPECIFIC = `Task-specific requirements (DUO: "De tekst wordt beoordeeld als acceptabel (2 punten) wanneer…"): list them from the task before scoring. They are every content point the task asks for (each "Schrijf…", bullet or question), the text type and addressee, a fitting register (u or je) and greeting/closing for a message, and any number of sentences the task asks for. Length in words is never a requirement: a short answer that covers every point is complete. All requirements met: at least 2. Any requirement missing: at most 1. 3 only when all are met and the response is clear and natural.`;
 
-const RUBRICS: Record<Rubric, string> = {
+export const RUBRICS: Record<Rubric, string> = {
   writing: `ASSESSMENT MODEL: DUO Schrijven A2, vrij schrijven / correspondentie (max 10 points)
 
 content (Adequaatheid/begrijpelijkheid), 0 to 3
@@ -223,14 +224,14 @@ The answer is an automatic speech-recognition transcript, not audio:
 - In correctedAnswer, leave out fillers (eh, uhm) and accidental repeated words, and write normal sentences with punctuation. Do not list these clean-ups as corrections.`,
 };
 
-const CALIBRATION = `SCORING
+export const CALIBRATION = `SCORING
 - Score every aspect independently, using the descriptions above literally. Count each error under one aspect only: word endings, verb forms, word order (inversion, verb at the end of a subordinate clause), articles (de/het), plurals and tenses are grammar; letters, capitals and compound words written apart are spelling; a wrong or unsuitable word is vocabulary.
 - Grade at A2. The DUO writing models mark the acceptable A2 level as content 2 and 1 on every other aspect; use the same level for speaking. Learners at this level make systematic elementary errors, so an answer that does the task in simple sentences with a fair number of errors is a normal, acceptable answer. Reserve 0 for the descriptions of 0.
 - Judge only what the task asks. Do not reward length beyond the task, and do not penalise a simple answer for not being B1.
 - An identical answer must always get identical scores.
 - No answer, only "(no answer given)", or a completely off-task answer: content 0, so every aspect 0, with the summary "No answer provided." or a short reason.`;
 
-const CORRECTION = `CORRECTION
+export const CORRECTION = `CORRECTION
 Correct each answer with the FEWEST possible changes so that it fully does the task (all requirements met) and has no language errors:
 - Keep the candidate's own words, word order and ideas wherever they are already acceptable at A2. Fix only real errors, and add only required content that is missing. Do not rewrite for style or to reach "excellent".
 - Every corrected fragment must be correct standard Dutch (Groene Boekje). Never invent a word. Separable verbs are one word in a subordinate clause ("als je weggaat", not "weg gaat").
