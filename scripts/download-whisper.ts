@@ -1,6 +1,5 @@
 // Downloads the Whisper model the transcribe route loads into models/, so the server reads it from
-// disk. Run at image build time: the model files are served from a host without IPv6, which an
-// IPv6-only server cannot reach.
+// disk. Run at build time (Dockerfile, netlify.toml): a Netlify function cannot write to its disk.
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 

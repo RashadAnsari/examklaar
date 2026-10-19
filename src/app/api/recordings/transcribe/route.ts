@@ -18,7 +18,7 @@ async function loadTranscriber(): Promise<Transcriber> {
     AutoModelForSpeechSeq2Seq,
     AutomaticSpeechRecognitionPipeline,
   } = await import("@xenova/transformers");
-  // The image ships the model in WHISPER_MODEL_DIR; without it (local dev) it is downloaded
+  // Builds ship the model in WHISPER_MODEL_DIR; without it (local dev) it is downloaded
   env.localModelPath = WHISPER_MODEL_DIR;
   const [tokenizer, processor, model] = await Promise.all([
     AutoTokenizer.from_pretrained(WHISPER_MODEL),

@@ -19,7 +19,7 @@ ENV S3_ENDPOINT=$S3_ENDPOINT
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
-# The Whisper files are served from an IPv4-only host the server cannot reach, so bake them in
+# Bake the Whisper files into the image so the server does not download them at runtime
 COPY scripts/download-whisper.ts scripts/
 COPY src/lib/exam/whisper.ts src/lib/exam/
 RUN bun scripts/download-whisper.ts
@@ -39,12 +39,12 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-# Only what the server reads at runtime: the traced standalone build (next.config.ts), its
-# static files, the Whisper model, and the migrations with the bundled scripts that apply them
+# Only what the server reads at runtime: the traced standalone build (next.config.ts, which
+# includes the Whisper model), its static files, and the migrations with the bundled scripts
+# that apply them
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/models ./models
 COPY --from=builder --chown=nextjs:nodejs /app/db/migrations ./db/migrations
 COPY --from=builder --chown=nextjs:nodejs /app/dist/scripts ./scripts
 

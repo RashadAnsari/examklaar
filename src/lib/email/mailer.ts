@@ -1,6 +1,4 @@
-// Brevo transactional email over its HTTP API rather than the SMTP relay: the
-// production host is IPv6-only and smtp-relay.brevo.com has no AAAA record,
-// while api.brevo.com does. BREVO_API_KEY is an API key, not an SMTP key.
+// Brevo transactional email over its HTTP API. BREVO_API_KEY is an API key, not an SMTP key.
 const BREVO_SEND_URL = "https://api.brevo.com/v3/smtp/email";
 
 export async function sendEmail({

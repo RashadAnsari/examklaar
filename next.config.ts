@@ -43,12 +43,13 @@ const csp = [
 
 const nextConfig: NextConfig = {
   // Ship only the files the server needs (see Dockerfile). Files loaded by paths the tracer cannot
-  // follow are included explicitly: the exam JSON, and the ONNX runtime library that Whisper's
-  // native binding loads for the build's platform.
+  // follow are included explicitly: the exam JSON, the Whisper model (scripts/download-whisper.ts),
+  // and the ONNX runtime library that Whisper's native binding loads for the build's platform.
   output: "standalone",
   outputFileTracingIncludes: {
     "/**": ["./src/data/exams/**/*.json"],
     "/api/recordings/transcribe": [
+      "./models/**",
       `./node_modules/onnxruntime-node/bin/napi-v3/${process.platform}/${process.arch}/**`,
     ],
   },
