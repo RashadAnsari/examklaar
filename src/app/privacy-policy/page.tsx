@@ -16,7 +16,7 @@ const SECTIONS: LegalSection[] = [
     title: "1. Who We Are",
     content: `ExamKlaar (examklaar.nl) is an online platform that helps people prepare for the Dutch inburgering (civic integration) exam through practice exams and AI-generated feedback. ExamKlaar is based in the Netherlands and is the controller of the personal data described in this policy.`,
     footer:
-      "Contact: hallo@examklaar.nl. We have not appointed a Data Protection Officer, as we are not required to under Article 37 GDPR.",
+      "Contact: github.com/RashadAnsari/examklaar/issues. We have not appointed a Data Protection Officer, as we are not required to under Article 37 GDPR.",
   },
   {
     title: "2. What Personal Data We Collect",
@@ -116,7 +116,8 @@ const SECTIONS: LegalSection[] = [
         text: "Standard Contractual Clauses, for any access from outside the EU to data stored in the EU.",
       },
     ],
-    footer: "You can ask us for more information about these safeguards at hallo@examklaar.nl.",
+    footer:
+      "You can ask us for more information about these safeguards by opening an issue at github.com/RashadAnsari/examklaar/issues.",
   },
   {
     title: "7. How Long We Keep Your Data",
@@ -142,7 +143,7 @@ const SECTIONS: LegalSection[] = [
   {
     title: "8. Your Rights",
     content:
-      "You have the rights below. To use them, email hallo@examklaar.nl. We reply within one month. For complex requests we may need up to two more months, and if so we tell you within the first month.",
+      "You have the rights below. To use them, open an issue at github.com/RashadAnsari/examklaar/issues. Do not put your email address or other personal data in the issue. We then contact you to confirm the request, and reply within one month. For complex requests we may need up to two more months, and if so we tell you within the first month.",
     items: [
       { subtitle: "Access", text: "Get a copy of the personal data we hold about you." },
       { subtitle: "Rectification", text: "Have incorrect or incomplete data corrected." },
@@ -195,7 +196,7 @@ const SECTIONS: LegalSection[] = [
   {
     title: "11. Age",
     content:
-      "ExamKlaar is intended for adults. You must be 18 or older to create an account. If you believe someone under 18 has given us personal data, contact us at hallo@examklaar.nl and we will delete it.",
+      "ExamKlaar is intended for adults. You must be 18 or older to create an account. If you believe someone under 18 has given us personal data, open an issue at github.com/RashadAnsari/examklaar/issues, without personal details, and we will delete it.",
   },
   {
     title: "12. Changes to This Policy",
@@ -204,8 +205,9 @@ const SECTIONS: LegalSection[] = [
   },
   {
     title: "13. Contact",
-    content: "Questions about this policy or your data? Email us at hallo@examklaar.nl.",
-    footer: "ExamKlaar, the Netherlands. Contact: hallo@examklaar.nl.",
+    content:
+      "Questions about this policy or your data? Open an issue at github.com/RashadAnsari/examklaar/issues. Do not put your email address or other personal data in the issue. We reply there and arrange the rest with you.",
+    footer: "ExamKlaar, the Netherlands. Contact: github.com/RashadAnsari/examklaar/issues.",
   },
 ];
 

@@ -4,7 +4,8 @@ ExamKlaar stores accounts, exam answers and voice recordings, so we take reports
 
 ## Reporting a vulnerability
 
-Email **hallo@examklaar.nl** with "Security" in the subject. Do not open a public issue.
+Report it privately through [GitHub private vulnerability reporting](https://github.com/RashadAnsari/examklaar/security/advisories/new).
+Do not open a public issue.
 
 Include what you found, how to reproduce it, and what an attacker could do with it. We reply within
 5 working days and keep you updated until it is fixed.

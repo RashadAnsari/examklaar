@@ -1,6 +1,6 @@
 /**
  * Everything that identifies the product lives here, so renaming it, moving it
- * to another domain, or changing the support address is a single-file change.
+ * to another domain, or changing the contact link is a single-file change.
  * Metadata, structured data, the navbar, the footer and the emails all read
  * from this object rather than hardcoding a name, a URL, or a colour.
  *
@@ -14,10 +14,10 @@ export const site = {
   tagline: "Practice for Your Dutch Inburgering Exam",
   /** Canonical origin, no trailing slash. Used by metadata, sitemap, and robots. */
   url: "https://examklaar.nl",
-  /** Shown in the footer and used as the support address everywhere. */
-  supportEmail: "hallo@examklaar.nl",
   /** The public source repository, linked from the footer. */
   repoUrl: "https://github.com/RashadAnsari/examklaar",
+  /** Where users ask questions and send requests; there is no support email. */
+  issuesUrl: "https://github.com/RashadAnsari/examklaar/issues",
   /** Brand colour, mirrored by --green-900 in globals.css. Emails cannot read CSS variables. */
   brandColor: "#1b6b4a",
 } as const;

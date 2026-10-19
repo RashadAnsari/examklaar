@@ -48,7 +48,7 @@ const organizationSchema = {
   logo: `${site.url}/examklaar-logo.svg`,
   contactPoint: {
     "@type": "ContactPoint",
-    email: site.supportEmail,
+    url: site.issuesUrl,
     contactType: "customer support",
   },
 };

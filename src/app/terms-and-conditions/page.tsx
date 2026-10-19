@@ -50,9 +50,9 @@ const SECTIONS: LegalSection[] = [
       "We may change the platform to add or improve exams and features, to fix problems, to keep it secure, or to follow the law. Changes never cost you extra.",
   },
   {
-    title: "Article 5. Free of Charge",
+    title: "Article 5. Free Demo Without Guarantee",
     content:
-      "ExamKlaar is free. Every registered user can use every exam, including its AI feedback, without a payment method. We do not sell subscriptions and never charge you.",
+      "ExamKlaar at examklaar.nl is a free demo version. Every registered user can use every exam, including its AI feedback, without a payment method. We do not sell subscriptions and never charge you. The demo is provided as is, without any guarantee: we do not promise that it works correctly, stays available, keeps your data, or keeps running at all, and we may change or stop it at any time.",
   },
   {
     title: "Article 6. Open Source",
@@ -79,7 +79,7 @@ const SECTIONS: LegalSection[] = [
       { text: "Pretend to be someone else" },
     ],
     footer:
-      "We do not check answers or recordings in advance. We act when we find a breach ourselves or someone reports one to us, and a person makes every decision, not an automated tool. To report illegal content, email hallo@examklaar.nl with where it is and why you think it is illegal. If you break these rules, we may remove the content concerned, or suspend or close your account, as set out in Article 13. We may report illegal activity to the authorities.",
+      "We do not check answers or recordings in advance. We act when we find a breach ourselves or someone reports one to us, and a person makes every decision, not an automated tool. To report illegal content, open an issue at github.com/RashadAnsari/examklaar/issues saying where it is and why you think it is illegal. If you break these rules, we may remove the content concerned, or suspend or close your account, as set out in Article 13. We may report illegal activity to the authorities.",
   },
   {
     title: "Article 8. Intellectual Property",
@@ -94,7 +94,7 @@ const SECTIONS: LegalSection[] = [
   {
     title: "Article 10. Availability",
     content:
-      "We aim to keep ExamKlaar available at all times but cannot guarantee uninterrupted access. Maintenance, technical problems or events outside our control may cause interruptions. Where possible, we announce planned maintenance in advance.",
+      "We aim to keep ExamKlaar available at all times but cannot guarantee uninterrupted access. Maintenance, technical problems or events outside our control may cause interruptions. As a free demo, it may also be taken offline without notice.",
   },
   {
     title: "Article 11. Liability",
@@ -121,7 +121,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       {
         subtitle: "By you",
-        text: "You can ask us to delete your account at any time by emailing hallo@examklaar.nl. Deleting your account ends your access immediately.",
+        text: "You can ask us to delete your account at any time by opening an issue at github.com/RashadAnsari/examklaar/issues. Do not put your email address or other personal data in the issue. We then contact you to confirm the request and finish it. Deleting your account ends your access immediately.",
       },
       {
         subtitle: "By us",
@@ -138,7 +138,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       {
         subtitle: "Contact us first",
-        text: "Send complaints to hallo@examklaar.nl. We aim to resolve them within 30 days.",
+        text: "Open an issue at github.com/RashadAnsari/examklaar/issues with your complaint. We aim to resolve them within 30 days.",
       },
       {
         subtitle: "Dispute resolution",
@@ -163,8 +163,8 @@ const SECTIONS: LegalSection[] = [
   {
     title: "Article 17. Contact",
     content:
-      "Questions about these Terms? Email us at hallo@examklaar.nl. This address is also our single point of contact under the EU Digital Services Act, for users and for authorities. You can write to us in Dutch or English.",
-    footer: "ExamKlaar, the Netherlands. Contact: hallo@examklaar.nl.",
+      "Questions about these Terms? Open an issue at github.com/RashadAnsari/examklaar/issues. This issue tracker is also our single point of contact under the EU Digital Services Act, for users and for authorities. You can write to us in Dutch or English.",
+    footer: "ExamKlaar, the Netherlands. Contact: github.com/RashadAnsari/examklaar/issues.",
   },
 ];
 

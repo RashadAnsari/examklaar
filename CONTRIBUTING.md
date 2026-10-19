@@ -6,7 +6,7 @@ Thanks for helping. Issues and pull requests are welcome.
 
 - For a bug, open an issue with the steps to reproduce it. For a larger change, open an issue first
   so we can agree on the approach before you write the code.
-- Security problems go by email, not in an issue: see [SECURITY.md](SECURITY.md).
+- Security problems go through a private report, not an issue: see [SECURITY.md](SECURITY.md).
 
 ## Setup
 

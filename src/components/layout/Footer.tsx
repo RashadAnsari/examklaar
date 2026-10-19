@@ -51,10 +51,10 @@ export function Footer() {
               <h4 className="font-semibold mb-4 text-sm text-white">Contact</h4>
               <p className="text-sm mb-2">Have a question or need help?</p>
               <a
-                href={`mailto:${site.supportEmail}`}
+                href={site.issuesUrl}
                 className="text-sm text-[var(--green-500)] hover:text-white transition-colors"
               >
-                {site.supportEmail}
+                Open an issue on GitHub
               </a>
             </div>
           </div>
@@ -62,6 +62,7 @@ export function Footer() {
 
         <div className="pt-6 text-center text-sm border-t border-[var(--gray-800)]">
           <p>&copy; 2026 {site.name}. All rights reserved.</p>
+          <p className="mt-1">Free demo version, provided as is without any guarantee.</p>
         </div>
       </div>
     </footer>
