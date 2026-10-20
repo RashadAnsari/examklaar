@@ -69,18 +69,18 @@ Five exams per component, 25 in total, all at A2 level. KNM has no level, matchi
 
 ## Tech stack
 
-| Layer          | Choice                                                             |
-| -------------- | ------------------------------------------------------------------ |
-| Framework      | Next.js 16 (App Router), React 19, TypeScript                      |
-| Styling        | Tailwind CSS 4, design tokens in `src/app/globals.css`             |
-| Runtime, tests | Bun, `bun test`                                                    |
-| Database       | PostgreSQL 17, plain SQL migrations, `pg` pool                     |
-| Auth           | Better Auth, email and password with mandatory verification        |
-| AI grading     | Google AI via the Vercel AI SDK                                    |
-| Speech         | Transcription on the server with Transformers.js, no external call |
-| Storage        | Any S3-compatible object storage, two buckets                      |
-| Email          | Brevo HTTP API                                                     |
-| Deployment     | Docker image built from `Dockerfile`                               |
+| Layer          | Choice                                                      |
+| -------------- | ----------------------------------------------------------- |
+| Framework      | Next.js 16 (App Router), React 19, TypeScript               |
+| Styling        | Tailwind CSS 4, design tokens in `src/app/globals.css`      |
+| Runtime, tests | Bun, `bun test`                                             |
+| Database       | PostgreSQL 17, plain SQL migrations, `pg` pool              |
+| Auth           | Better Auth, email and password with mandatory verification |
+| AI grading     | Google AI via the Vercel AI SDK                             |
+| Speech         | Transcription in the browser with Transformers.js           |
+| Storage        | Any S3-compatible object storage, two buckets               |
+| Email          | Brevo HTTP API                                              |
+| Deployment     | Docker image built from `Dockerfile`                        |
 
 ## Quick start
 
@@ -130,7 +130,7 @@ src/
   lib/              db, auth, exam scoring and grading, storage, email
 db/migrations/      numbered SQL migrations, applied by scripts/migrate.ts
 docs/               authoring, generation and operations documentation
-scripts/            migrate, delete-user, download-whisper
+scripts/            migrate, delete-user
 test/               test setup and the stub Postgres pool
 ```
 

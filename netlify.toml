@@ -1,3 +1,2 @@
-# The Whisper model must exist before `next build` so file tracing bundles it (next.config.ts).
 [build]
-  command = "bun scripts/download-whisper.ts && bun run build"
+  command = "bun run build"

@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import type { NextConfig } from "next";
 
 /** Scheme and host of a URL, or empty when it is unset or malformed. */
@@ -20,6 +21,15 @@ const assetsOrigin = origin(process.env.EXAM_ASSETS_BASE_URL);
 const recordingsOrigin = origin(process.env.S3_ENDPOINT);
 const mediaOrigins = [...new Set([assetsOrigin, recordingsOrigin])].filter(Boolean).join(" ");
 
+// Speaking answers are transcribed in the browser (src/hooks/whisper.worker.ts). The model files
+// come from Hugging Face, which redirects the large ones to its CDN on hf.co. The ONNX runtime that
+// runs the model comes from jsDelivr, pinned to the exact version Transformers.js was installed with.
+const ortVersion: string = JSON.parse(
+  readFileSync("node_modules/onnxruntime-web/package.json", "utf8")
+).version;
+const ortWasmBase = `https://cdn.jsdelivr.net/npm/onnxruntime-web@${ortVersion}/dist/`;
+const whisperOrigins = `https://huggingface.co https://*.hf.co ${ortWasmBase}`;
+
 const media = mediaOrigins ? ` ${mediaOrigins}` : "";
 const images = assetsOrigin ? ` ${assetsOrigin}` : "";
 
@@ -37,21 +47,17 @@ const csp = [
   // blob: is required by connect-src, not just media-src: submitting a speaking
   // exam reads each recording back out of its object URL with fetch() to build
   // the upload body (see submitExam in ExamClient).
-  "connect-src 'self' blob: https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
-  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com`,
+  `connect-src 'self' blob: ${whisperOrigins} https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com`,
+  // 'wasm-unsafe-eval' lets the ONNX runtime compile its WebAssembly; it allows no JavaScript eval
+  `script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' ${ortWasmBase}${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com`,
 ].join("; ");
 
 const nextConfig: NextConfig = {
-  // Ship only the files the server needs (see Dockerfile). Files loaded by paths the tracer cannot
-  // follow are included explicitly: the exam JSON, the Whisper model (scripts/download-whisper.ts),
-  // and the ONNX runtime library that Whisper's native binding loads for the build's platform.
+  // Ship only the files the server needs (see Dockerfile). The exam JSON is loaded by paths the
+  // tracer cannot follow, so it is included explicitly.
   output: "standalone",
   outputFileTracingIncludes: {
     "/**": ["./src/data/exams/**/*.json"],
-    "/api/recordings/transcribe": [
-      "./models/**",
-      `./node_modules/onnxruntime-node/bin/napi-v3/${process.platform}/${process.arch}/**`,
-    ],
   },
   // Allow a dev tunnel (e.g. ngrok/cloudflared) to reach the dev server, so the
   // site is reachable through the tunnel's public URL (for viewing on another
@@ -81,10 +87,11 @@ const nextConfig: NextConfig = {
   // Server Action IDs.
   generateBuildId: async () => process.env.GIT_SHA ?? "development",
   // Keep native addons out of the webpack bundle so Node can require them at runtime.
-  serverExternalPackages: ["@xenova/transformers", "onnxruntime-node", "sharp", "pg"],
+  serverExternalPackages: ["sharp", "pg"],
   // Expose public vars to the client bundle (replaces the NEXT_PUBLIC_ convention).
   env: {
     ANALYTICS_GA_MEASUREMENT_ID: process.env.ANALYTICS_GA_MEASUREMENT_ID ?? "",
+    ORT_WASM_BASE: ortWasmBase,
   },
 };
 

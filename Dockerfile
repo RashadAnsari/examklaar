@@ -19,11 +19,6 @@ ENV S3_ENDPOINT=$S3_ENDPOINT
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
-# Bake the Whisper files into the image so the server does not download them at runtime
-COPY scripts/download-whisper.ts scripts/
-COPY src/lib/exam/whisper.ts src/lib/exam/
-RUN bun scripts/download-whisper.ts
-
 COPY . .
 RUN bun run build
 # The runner has no bun and no source, so the admin scripts ship bundled for node
@@ -31,7 +26,7 @@ RUN bun build scripts/migrate.ts scripts/delete-user.ts \
     --target node --outdir dist/scripts
 
 # Use Debian-based Node (not Alpine) so glibc native addons
-# (onnxruntime-node, sharp) work correctly at runtime.
+# (sharp) work correctly at runtime.
 FROM node:20-slim AS runner
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -39,9 +34,8 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-# Only what the server reads at runtime: the traced standalone build (next.config.ts, which
-# includes the Whisper model), its static files, and the migrations with the bundled scripts
-# that apply them
+# Only what the server reads at runtime: the traced standalone build (next.config.ts), its static
+# files, and the migrations with the bundled scripts that apply them
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
@@ -52,4 +46,4 @@ USER nextjs
 EXPOSE 3000
 ENV HOSTNAME=0.0.0.0
 
-CMD node server.js 2>&1 | grep --line-buffered -v "CleanUnusedInitializersAndNodeArgs"
+CMD ["node", "server.js"]

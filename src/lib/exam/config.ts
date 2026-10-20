@@ -9,10 +9,9 @@ export interface SkillGroup {
 }
 
 /**
- * Cap on any audio the browser posts to us, both the recording stored for a
- * speaking answer and the WAV sent for local transcription. S3-compatible
- * object storage has no bucket-level size or content type limit, so the route
- * handlers are the only place either is enforced.
+ * Cap on the recording the browser posts to us for a speaking answer.
+ * S3-compatible object storage has no bucket-level size or content type limit,
+ * so the route handlers are the only place either is enforced.
  */
 export const MAX_AUDIO_UPLOAD_BYTES = 2 * 1024 * 1024; // 2 MB
 
