@@ -270,7 +270,6 @@ export async function gradeExamResult(
 ): Promise<void> {
   const examResults = new ExamResultsRepository(pool);
 
-  // The caller has already set the result to in_progress
   try {
     await doGrade(resultId, userId, result, examResults);
   } catch (err) {
