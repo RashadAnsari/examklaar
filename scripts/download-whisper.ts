@@ -1,5 +1,5 @@
 // Downloads the Whisper model the transcribe route loads into models/, so the server reads it from
-// disk. Run at build time (Dockerfile, netlify.toml): a Netlify function cannot write to its disk.
+// disk. Run at build time, since the server's file system may be read-only at runtime.
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 

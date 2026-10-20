@@ -24,8 +24,8 @@ export async function GET(req: NextRequest) {
 }
 
 /**
- * Start grading and answer at once. Grading can outlast the proxy's request timeout (Cloudflare
- * returns 524 after 125 s and only Enterprise plans can raise it), so it runs after the response and the client polls GET for the outcome.
+ * Start grading and answer at once. Grading can outlast a proxy's request timeout, so it
+ * runs after the response and the client polls GET for the outcome.
  */
 export async function POST(req: NextRequest) {
   const user = await getSessionUser();

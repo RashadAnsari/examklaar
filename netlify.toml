@@ -1,4 +1,3 @@
-# The Whisper model must exist before `next build` so file tracing bundles it into the server
-# function (next.config.ts). The function's file system is read-only, so it cannot download it.
+# The Whisper model must exist before `next build` so file tracing bundles it (next.config.ts).
 [build]
   command = "bun scripts/download-whisper.ts && bun run build"

@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   alternates: { canonical: `${site.url}/privacy-policy` },
 };
 
-const LAST_UPDATED = "18 October 2026";
+const LAST_UPDATED = "20 October 2026";
 
 const SECTIONS: LegalSection[] = [
   {
     title: "1. Who We Are",
-    content: `ExamKlaar (examklaar.nl) is an online platform that helps people prepare for the Dutch inburgering (civic integration) exam through practice exams and AI-generated feedback. ExamKlaar is based in the Netherlands and is the controller of the personal data described in this policy.`,
+    content: `ExamKlaar (examklaar.nl) is an online platform that helps people prepare for the Dutch inburgering (civic integration) exam through practice exams and AI-generated feedback. ExamKlaar is a free demo website run from the Netherlands. ExamKlaar decides why and how your personal data is used, which makes it the controller of that data under the General Data Protection Regulation (GDPR).`,
     footer:
       "Contact: github.com/RashadAnsari/examklaar/issues. We have not appointed a Data Protection Officer, as we are not required to under Article 37 GDPR.",
   },
@@ -79,12 +79,16 @@ const SECTIONS: LegalSection[] = [
       "We do not sell your personal data. We share it only with the service providers below. Those acting on our behalf (processors) may use it only on our instructions and under a data processing agreement.",
     items: [
       {
-        subtitle: "Hetzner Online GmbH (Germany), processor",
-        text: "Hosts the platform. Your account data and exam results are stored in its data centres in the EU.",
+        subtitle: "Netlify, Inc. (USA), processor",
+        text: "Hosts the website. Every visit passes through Netlify, which also turns your speaking recordings into written text and keeps the technical logs.",
+      },
+      {
+        subtitle: "Neon, Inc. (USA), processor",
+        text: "Stores our database in its data centre in Frankfurt, Germany: your account data, answers, feedback and exam results.",
       },
       {
         subtitle: "Cloudflare, Inc. (USA), processor",
-        text: "Stores speaking recordings and our backups in EU data centres, and delivers exam images, audio and video.",
+        text: "Stores speaking recordings in EU data centres, and delivers exam images, audio and video.",
       },
       {
         subtitle: "Google LLC (USA), processor, AI feedback",
@@ -108,12 +112,12 @@ const SECTIONS: LegalSection[] = [
       "Some of these providers are based outside the European Economic Area. We transfer data to them only with a safeguard recognised by the GDPR:",
     items: [
       {
-        subtitle: "Google (USA)",
-        text: "The EU-US Data Privacy Framework, backed by the European Commission's adequacy decision, with Standard Contractual Clauses as an additional safeguard.",
+        subtitle: "Netlify and Google (USA)",
+        text: "Standard Contractual Clauses approved by the European Commission, which are part of our agreement with each of them, and the EU-US Data Privacy Framework where the provider is certified under it.",
       },
       {
-        subtitle: "Cloudflare (USA)",
-        text: "Standard Contractual Clauses, for any access from outside the EU to data stored in the EU.",
+        subtitle: "Neon and Cloudflare (USA)",
+        text: "Your data stays in their EU data centres. Standard Contractual Clauses cover any access to it from outside the EU, for example by their support staff.",
       },
     ],
     footer:
@@ -124,7 +128,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       {
         subtitle: "Account data and exam results",
-        text: "As long as you have an account. We delete them within 30 days after you ask us to delete your account. Our backups are kept for 30 days, so copies in them are gone 30 days after that.",
+        text: "As long as you have an account. We delete them within 30 days after you ask us to delete your account. Our database provider keeps a restore copy for at most 30 days, so copies in it are gone 30 days after that.",
       },
       {
         subtitle: "Speaking recordings",
@@ -133,6 +137,10 @@ const SECTIONS: LegalSection[] = [
       {
         subtitle: "Technical logs",
         text: "Up to 90 days.",
+      },
+      {
+        subtitle: "If the demo stops",
+        text: "If we take the demo offline for good, we delete all personal data within 30 days, apart from what the law requires us to keep.",
       },
       {
         subtitle: "Analytics data",
@@ -191,7 +199,7 @@ const SECTIONS: LegalSection[] = [
   {
     title: "10. Security",
     content:
-      "We take appropriate technical and organisational measures to protect your personal data, as Article 32 GDPR requires. These include encryption in transit, storing passwords only in a form we cannot read, and limiting access to personal data to those who need it. If a data breach puts your rights at risk, we report it to the Autoriteit Persoonsgegevens within 72 hours and inform you without undue delay.",
+      "We take appropriate technical and organisational measures to protect your personal data, as Article 32 GDPR requires. These include sending all data over an encrypted connection, storing passwords only in a form we cannot read, and limiting access to personal data to those who need it. If a data breach puts your rights at risk, we report it to the Autoriteit Persoonsgegevens within 72 hours and inform you without undue delay.",
   },
   {
     title: "11. Age",
@@ -201,7 +209,7 @@ const SECTIONS: LegalSection[] = [
   {
     title: "12. Changes to This Policy",
     content:
-      "We may update this policy. We will tell you about significant changes by email or with a notice on the platform before they take effect. The date at the top of this page shows the latest version.",
+      "We may update this policy. We will tell you about significant changes, such as a new service provider, by email or with a notice on the platform before they take effect. The date at the top of this page shows the latest version.",
   },
   {
     title: "13. Contact",

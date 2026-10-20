@@ -100,9 +100,7 @@ public bucket, and point `EXAM_ASSETS_BASE_URL` at it. See [Object storage](docs
 
 `docker-compose.yml` at the repo root is the local development database only. To self-host, build
 the `Dockerfile`, give the container the variables from `.env.example`, and run `node
-scripts/migrate.js` in it after each deploy. `netlify.toml` builds the same app on Netlify, where
-migrations run from your machine with `bun scripts/migrate.ts`. Production deployment of examklaar.nl lives in a
-separate private repository.
+scripts/migrate.js` in it after each release.
 
 ### Everyday commands
 
