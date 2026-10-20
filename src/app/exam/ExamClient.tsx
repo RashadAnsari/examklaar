@@ -98,6 +98,7 @@ function SpeakingRecorder({
     status: transcribeStatus,
     transcript,
     error: transcribeError,
+    modelProgress,
     transcribe,
   } = useWhisperTranscriber();
   const processing = transcribeStatus === "transcribing";
@@ -215,7 +216,9 @@ function SpeakingRecorder({
                     d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
                   />
                 </svg>
-                Verwerken…
+                {modelProgress !== null && modelProgress < 100
+                  ? `Spraakmodel laden (${modelProgress}%)…`
+                  : "Verwerken…"}
               </>
             ) : (
               <>

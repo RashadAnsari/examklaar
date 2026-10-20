@@ -20,7 +20,7 @@ db-shell:
 	docker compose exec postgres psql -U examklaar -d examklaar
 
 dev:
-	bun run dev 2>&1 | grep --line-buffered -v "CleanUnusedInitializersAndNodeArgs"
+	bun run dev
 
 build:
 	bun run build

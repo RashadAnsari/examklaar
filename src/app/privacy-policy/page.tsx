@@ -31,7 +31,7 @@ const SECTIONS: LegalSection[] = [
       },
       {
         subtitle: "Speaking recordings",
-        text: "The audio you record in speaking exercises and a written transcript of it, which we use to give you feedback.",
+        text: "The audio you record in speaking exercises and a written transcript of it, which we use to give you feedback. The transcript is made on your own device, so your audio is not sent anywhere to be turned into text.",
       },
       {
         subtitle: "Usage data",
@@ -80,7 +80,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       {
         subtitle: "Netlify, Inc. (USA), processor",
-        text: "Hosts the website. Every visit passes through Netlify, which also turns your speaking recordings into written text and keeps the technical logs.",
+        text: "Hosts the website. Every visit passes through Netlify, which also keeps the technical logs.",
       },
       {
         subtitle: "Neon, Inc. (USA), processor",
@@ -97,6 +97,10 @@ const SECTIONS: LegalSection[] = [
       {
         subtitle: "Google LLC (USA), processor, Google Analytics",
         text: "Measures how visitors use the website, only if you accept analytics cookies. We have turned off advertising and data-sharing features.",
+      },
+      {
+        subtitle: "Hugging Face, Inc. (USA) and jsDelivr (Poland)",
+        text: "Provide the files your browser needs to turn your recordings into text. They see your IP address when the files download, but never your audio, answers, name or email address.",
       },
       {
         subtitle: "Brevo SAS (France), processor",

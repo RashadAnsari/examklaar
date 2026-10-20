@@ -53,6 +53,3 @@ REVIEW_REPORT.md
 # generated exam assets
 exam-export/
 
-
-# Whisper model files, baked into the image by scripts/download-whisper.ts
-/models/
