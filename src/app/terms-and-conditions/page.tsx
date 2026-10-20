@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${site.url}/terms-and-conditions` },
 };
 
-const LAST_UPDATED = "17 October 2026";
+const LAST_UPDATED = "20 October 2026";
 
 const SECTIONS: LegalSection[] = [
   {
@@ -94,7 +94,7 @@ const SECTIONS: LegalSection[] = [
   {
     title: "Article 10. Availability",
     content:
-      "We aim to keep ExamKlaar available at all times but cannot guarantee uninterrupted access. Maintenance, technical problems or events outside our control may cause interruptions. As a free demo, it may also be taken offline without notice.",
+      "We aim to keep ExamKlaar available at all times but cannot guarantee uninterrupted access. Maintenance, technical problems or events outside our control may cause interruptions. We rely on outside providers to host the website and store its data, and their outages affect ExamKlaar too. As a free demo, it may also be taken offline without notice.",
   },
   {
     title: "Article 11. Liability",
@@ -103,7 +103,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       {
         subtitle: "Liability cap",
-        text: "Our total liability is limited to the amount you paid us in the 3 months before the event that caused the damage.",
+        text: "ExamKlaar is a free demo, so as far as the law allows, our total liability is limited to the amount you paid us, which is nothing.",
       },
       {
         subtitle: "Exceptions",
@@ -128,6 +128,10 @@ const SECTIONS: LegalSection[] = [
         text: "We may suspend or close your account if you break these Terms. For a minor first breach we give you a warning and a chance to fix it first. We act without notice only for serious or illegal breaches.",
       },
       {
+        subtitle: "If the demo stops",
+        text: "If we take the demo offline for good, all accounts end. Where we can, we tell you beforehand, and we delete your personal data as described in our Privacy Policy.",
+      },
+      {
         subtitle: "Our reasons and your objection",
         text: "If we remove your content or restrict your account, we email you what we did and for how long, the facts behind it, and the rule in these Terms or the law it is based on. You can object by replying to that email. A person reviews every objection, and we tell you the outcome.",
       },
@@ -143,6 +147,10 @@ const SECTIONS: LegalSection[] = [
       {
         subtitle: "Dispute resolution",
         text: "If we cannot resolve your complaint, you can take it to a recognised alternative dispute resolution body in your country, or to court.",
+      },
+      {
+        subtitle: "Your data",
+        text: "Questions or complaints about how we use your personal data are covered by our Privacy Policy. You can also complain to the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).",
       },
       {
         subtitle: "Competent court",
