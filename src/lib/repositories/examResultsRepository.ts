@@ -9,18 +9,10 @@ export interface NewExamResult {
   score: number;
   total_score: number;
   answers: Record<string, unknown>;
-  grading_status: "pending" | "in_progress" | "complete" | "failed";
+  grading_status: "pending" | "complete" | "failed";
 }
 
 type GradingStatus = NewExamResult["grading_status"];
-
-/**
- * An in_progress row whose grading started longer ago than any real grade takes. Its run died with
- * a server restart, so it counts as failed and can be claimed again. A missing start time means
- * the row was claimed before grading_started_at existed.
- */
-const STALE_GRADING = `grading_status = 'in_progress'
-  and coalesce(grading_started_at, '-infinity') < now() - interval '10 minutes'`;
 
 /**
  * All exam_results table access. Every read filters on user_id explicitly:
@@ -50,8 +42,7 @@ export class ExamResultsRepository {
       answers: Record<string, unknown>;
       grading_status: GradingStatus;
     }>(
-      `select id, skill, level, exam_id, answers,
-              case when ${STALE_GRADING} then 'failed' else grading_status end as grading_status
+      `select id, skill, level, exam_id, answers, grading_status
          from exam_results
         where id = $1 and user_id = $2`,
       [resultId, userId]
@@ -137,21 +128,6 @@ export class ExamResultsRepository {
       [examId, userId]
     );
     return rows;
-  }
-
-  /**
-   * Mark one of the user's results as being graded, unless it is complete or another run holds it.
-   * True when this call claimed it, so two concurrent requests never both grade.
-   */
-  async claimGrading(resultId: string, userId: string): Promise<boolean> {
-    const { rowCount } = await this.db.query(
-      `update exam_results
-          set grading_status = 'in_progress', grading_started_at = now()
-        where id = $1 and user_id = $2
-          and (grading_status in ('pending', 'failed') or (${STALE_GRADING}))`,
-      [resultId, userId]
-    );
-    return rowCount === 1;
   }
 
   /** Set the grading status of one of the user's results. */
