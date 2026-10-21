@@ -10,8 +10,8 @@ Any Postgres reachable through `DATABASE_URL`. Apply the schema with `make migra
 `db/migrations/*.sql` in filename order and records what it applied in `schema_migrations`.
 Re-running it is a no-op.
 
-The hosted site on Netlify applies them on every deploy: `netlify.toml` runs the migration after
-the build, so `DATABASE_URL` must be available to builds as well as functions.
+Run it on every release, before the new code serves traffic. The Docker image ships it as `node
+scripts/migrate.js`.
 
 `db/migrations/0001_auth.sql` holds Better Auth's own schema and is not hand-written. After changing
 the Better Auth config or plugins, run this against a running database:
