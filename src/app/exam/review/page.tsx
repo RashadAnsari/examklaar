@@ -8,7 +8,7 @@ import type { Exam } from "@/app/exam/ExamClient";
 import { ReviewClient, type ReviewQuestion } from "./ReviewClient";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
 
-type SpeakingAnswer = { path: string; transcript: string };
+type SpeakingAnswer = { transcript: string };
 
 export default async function ReviewPage(props: {
   searchParams: Promise<{ skill?: string; n?: string }>;
@@ -69,7 +69,6 @@ export default async function ReviewPage(props: {
   return (
     <ReviewClient
       questions={questions}
-      resultId={result.id}
       isMcq={isMcq}
       skillId={skillId}
       n={n}

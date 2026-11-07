@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${site.url}/terms-and-conditions` },
 };
 
-const LAST_UPDATED = "20 October 2026";
+const LAST_UPDATED = "7 November 2026";
 
 const SECTIONS: LegalSection[] = [
   {
@@ -71,7 +71,7 @@ const SECTIONS: LegalSection[] = [
         text: "Use bots or other automated tools to access the platform",
       },
       {
-        text: "Submit offensive, illegal or infringing content in your answers or recordings",
+        text: "Submit offensive, illegal or infringing content in your answers",
       },
       {
         text: "Try to hack, disrupt or reverse-engineer the platform",
@@ -79,7 +79,7 @@ const SECTIONS: LegalSection[] = [
       { text: "Pretend to be someone else" },
     ],
     footer:
-      "We do not check answers or recordings in advance. We act when we find a breach ourselves or someone reports one to us, and a person makes every decision, not an automated tool. To report illegal content, open an issue at github.com/RashadAnsari/examklaar/issues saying where it is and why you think it is illegal. If you break these rules, we may remove the content concerned, or suspend or close your account, as set out in Article 13. We may report illegal activity to the authorities.",
+      "We do not check answers in advance. We act when we find a breach ourselves or someone reports one to us, and a person makes every decision, not an automated tool. To report illegal content, open an issue at github.com/RashadAnsari/examklaar/issues saying where it is and why you think it is illegal. If you break these rules, we may remove the content concerned, or suspend or close your account, as set out in Article 13. We may report illegal activity to the authorities.",
   },
   {
     title: "Article 8. Intellectual Property",

@@ -32,26 +32,17 @@ reset emails go out through the Brevo HTTP API.
 
 ## Object storage
 
-Two S3-compatible buckets:
+One public-read Neon Object Storage bucket, `exam-assets`, holds the audio, images and video referenced by the exam JSON.
+Speaking recordings never leave the browser: only their transcript is submitted and stored.
 
-| Bucket                | Access      | Holds                                                             |
-| --------------------- | ----------- | ----------------------------------------------------------------- |
-| `speaking-recordings` | Private     | Candidate recordings, uploaded server-side by `/api/exams/submit` |
-| `exam-assets`         | Public read | The audio, images and video referenced by the exam JSON           |
-
-Recordings are read back through 5-minute signed URLs. Set a lifecycle rule on that bucket to expire
-objects after 30 days: the app deletes recordings only when an account is erased with
-`scripts/delete-user.ts`, and the review page already handles a missing recording.
-
-For `exam-assets`, point `EXAM_ASSETS_BASE_URL` at the public base URL, with no trailing slash.
+Point `EXAM_ASSETS_BASE_URL` at the public base URL, with no trailing slash.
 
 The media for the exams in `src/data/exams` ships as `exam-assets.zip` on the
 [GitHub releases page](https://github.com/RashadAnsari/examklaar/releases). Unzip it into the root of
 the `exam-assets` bucket: its folders (`listening/a2/exam-1/…`) are the paths the exam JSON asks for.
 
-The Content-Security-Policy in `next.config.ts` derives the allowed media origins from
-`EXAM_ASSETS_BASE_URL` and `S3_ENDPOINT`, so there is nothing extra to configure when either host
-changes.
+The Content-Security-Policy in `next.config.ts` derives the allowed media origin from
+`EXAM_ASSETS_BASE_URL`, so there is nothing extra to configure when that host changes.
 
 ## Media
 
@@ -64,5 +55,5 @@ tooling ships in the app or runs at request time. The pipelines are local, free 
 
 ## Environment
 
-`.env.example` is the reference. Postgres, Brevo, S3 storage and Google AI each need values. The
+`.env.example` is the reference. Postgres, Brevo, the exam assets URL and Google AI each need values. The
 file documents what every variable is for.

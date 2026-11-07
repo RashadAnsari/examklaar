@@ -51,9 +51,7 @@ export async function proxy(request: NextRequest) {
 // API routes are excluded deliberately. Every one of them authenticates itself
 //, so the proxy adds nothing there. It also
 // does real harm: Next buffers the whole request body in memory for a proxied
-// request, capped at 10 MB, and silently truncates anything larger. A speaking
-// exam posts up to 16 recordings at once, so submissions were arriving with a
-// half-read multipart body that could not be parsed.
+// request, capped at 10 MB, and silently truncates anything larger.
 export const config = {
   matcher: [
     "/((?!api/|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|webmanifest|txt|xml)$).*)",

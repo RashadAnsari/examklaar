@@ -2,14 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth-session";
 import { pool } from "@/lib/db";
 import { readExam } from "@/data/exams";
-import {
-  MAX_AUDIO_UPLOAD_BYTES,
-  MAX_SUBMISSION_BYTES,
-  RECORDING_MIME_TYPE,
-} from "@/lib/exam/config";
+import { MAX_SUBMISSION_BYTES } from "@/lib/exam/config";
 import type { Exam } from "@/app/exam/ExamClient";
 import { ExamResultsRepository } from "@/lib/repositories/examResultsRepository";
-import { uploadRecording } from "@/lib/storage/recordings";
 
 export async function POST(req: NextRequest) {
   const user = await getSessionUser();
@@ -20,7 +15,7 @@ export async function POST(req: NextRequest) {
   const examResults = new ExamResultsRepository(pool);
 
   // Reject an oversized submission before buffering it. Absent on a chunked
-  // request, in which case the per-file check below is the remaining guard.
+  // request, in which case the per-field checks below are the remaining guard.
   const declaredSize = Number(req.headers.get("content-length") ?? 0);
   if (declaredSize > MAX_SUBMISSION_BYTES) {
     console.warn("[submit] Submission too large — user=%s size=%d bytes", user.id, declaredSize);
@@ -34,7 +29,7 @@ export async function POST(req: NextRequest) {
     formData = await req.formData();
   } catch (err) {
     console.error("[submit] Could not parse request body — user=%s error=%o", user.id, err);
-    return NextResponse.json({ error: "upload_failed" }, { status: 400 });
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
   const skillId = formData.get("skill_id") as string;
@@ -115,7 +110,7 @@ export async function POST(req: NextRequest) {
   const totalQuestions = questions.length;
   const score = isMcq ? questions.filter((q) => answersRaw[q.id] === q.correctAnswer).length : 0;
 
-  const answersJson: Record<string, number | string | { path: string; transcript: string }> = {};
+  const answersJson: Record<string, number | string | { transcript: string }> = {};
 
   for (const q of questions) {
     if (answersRaw[q.id] === undefined) {
@@ -123,49 +118,11 @@ export async function POST(req: NextRequest) {
     }
 
     if (q.type === "speaking") {
-      const audioFile = formData.get(`audio_${q.id}`) as File | null;
-      if (audioFile) {
-        // Tolerates a codec suffix, e.g. "audio/webm;codecs=opus".
-        if (!audioFile.type.startsWith(RECORDING_MIME_TYPE)) {
-          console.warn(
-            "[submit] Invalid audio type — user=%s exam=%s-%s question=%s type=%s",
-            user.id,
-            skillId,
-            n,
-            q.id,
-            audioFile.type
-          );
-          return NextResponse.json({ error: "Invalid audio type" }, { status: 415 });
-        }
-        if (audioFile.size > MAX_AUDIO_UPLOAD_BYTES) {
-          console.warn(
-            "[submit] Audio file too large — user=%s exam=%s-%s question=%s size=%d bytes",
-            user.id,
-            skillId,
-            n,
-            q.id,
-            audioFile.size
-          );
-          return NextResponse.json({ error: "Audio file too large" }, { status: 413 });
-        }
-        const storagePath = `${user.id}/${examId}/${attemptId}/${q.id}.webm`;
-        const { error } = await uploadRecording(
-          storagePath,
-          await audioFile.arrayBuffer(),
-          RECORDING_MIME_TYPE
-        );
-        if (error) {
-          console.error(
-            "[submit] Storage upload failed — path=%s error=%s",
-            storagePath,
-            error.message
-          );
-          return NextResponse.json({ error: "upload_failed" }, { status: 500 });
-        }
-        const MAX_TRANSCRIPT_CHARS = 2000;
-        const rawTranscript = (transcriptsRaw[q.id] ?? "").slice(0, MAX_TRANSCRIPT_CHARS);
-        answersJson[q.id] = { path: storagePath, transcript: rawTranscript };
-      }
+      const MAX_TRANSCRIPT_CHARS = 2000;
+      const transcript = transcriptsRaw[q.id];
+      answersJson[q.id] = {
+        transcript: typeof transcript === "string" ? transcript.slice(0, MAX_TRANSCRIPT_CHARS) : "",
+      };
     } else {
       const val = answersRaw[q.id];
       if (q.type === "writing") {

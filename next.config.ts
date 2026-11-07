@@ -13,13 +13,9 @@ function origin(url: string | undefined): string {
   }
 }
 
-// Storage origins the browser loads media from, derived rather than configured
-// separately. Exam images, audio, and video come from the public exam-assets
-// bucket; signed speaking-recording URLs come from the S3 endpoint itself.
-// The two can be different hosts when exam assets sit behind a CDN.
+// Origin the browser loads exam images, audio, and video from, derived rather than
+// configured separately: the public exam-assets bucket, possibly behind a CDN.
 const assetsOrigin = origin(process.env.EXAM_ASSETS_BASE_URL);
-const recordingsOrigin = origin(process.env.S3_ENDPOINT);
-const mediaOrigins = [...new Set([assetsOrigin, recordingsOrigin])].filter(Boolean).join(" ");
 
 // Speaking answers are transcribed in the browser (src/hooks/whisper.worker.ts). The model files
 // come from Hugging Face, which redirects the large ones to its CDN on hf.co. The ONNX runtime that
@@ -30,8 +26,7 @@ const ortVersion: string = JSON.parse(
 const ortWasmBase = `https://cdn.jsdelivr.net/npm/onnxruntime-web@${ortVersion}/dist/`;
 const whisperOrigins = `https://huggingface.co https://*.hf.co ${ortWasmBase}`;
 
-const media = mediaOrigins ? ` ${mediaOrigins}` : "";
-const images = assetsOrigin ? ` ${assetsOrigin}` : "";
+const assets = assetsOrigin ? ` ${assetsOrigin}` : "";
 
 const csp = [
   "font-src 'self'",
@@ -42,12 +37,9 @@ const csp = [
   "frame-ancestors 'none'",
   "frame-src 'none'",
   "style-src 'self' 'unsafe-inline'",
-  `media-src 'self' blob:${media}`,
-  `img-src 'self' data: blob:${images} https://www.google-analytics.com https://*.google-analytics.com`,
-  // blob: is required by connect-src, not just media-src: submitting a speaking
-  // exam reads each recording back out of its object URL with fetch() to build
-  // the upload body (see submitExam in ExamClient).
-  `connect-src 'self' blob: ${whisperOrigins} https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com`,
+  `media-src 'self' blob:${assets}`,
+  `img-src 'self' data: blob:${assets} https://www.google-analytics.com https://*.google-analytics.com`,
+  `connect-src 'self' ${whisperOrigins} https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com`,
   // 'wasm-unsafe-eval' lets the ONNX runtime compile its WebAssembly; it allows no JavaScript eval
   `script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' ${ortWasmBase}${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com`,
 ].join("; ");

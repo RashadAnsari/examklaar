@@ -5,18 +5,13 @@
  * Usage:
  *   bun scripts/delete-user.ts <email|userId> [--yes]
  *
- * The order is deliberate. Recordings come first, because object storage takes
- * no part in the database cascade and the keys are only reachable through the
- * user id. The "user" row goes last, and its cascade removes sessions, accounts
- * and exam results in one transaction.
- *
- * Every step is safe to repeat, so a run that fails halfway can be run again.
+ * The "user" row's cascade removes sessions, accounts and exam results in one
+ * transaction, so a run that fails can be run again.
  *
  * Flags:
  *   --yes   skip the interactive confirmation (for scripted runs)
  */
 import { pool } from "@/lib/db";
-import { deleteUserRecordings } from "@/lib/storage/recordings";
 import { createInterface } from "node:readline/promises";
 
 const KNOWN_FLAGS = new Set(["--yes"]);
@@ -135,16 +130,6 @@ async function deleteUser(): Promise<void> {
   await printSummary(user);
   if (!skipConfirmation) {
     await confirm(user);
-  }
-
-  try {
-    const deleted = await deleteUserRecordings(user.id);
-    console.log(`Deleted ${deleted} recording(s) from object storage`);
-  } catch (error) {
-    throw new Error(
-      `could not delete recordings: ${error instanceof Error ? error.message : error}\n` +
-        "The database rows are untouched, so re-running the script is safe."
-    );
   }
 
   const verificationsDeleted = await eraseFromDatabase(user);

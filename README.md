@@ -65,7 +65,7 @@ Five exams per component, 25 in total, all at A2 level. KNM has no level, matchi
 2. **Pick a component and an exam.** The exam opens with the real timer and no way to pause.
 3. **Submit.** Closed questions score immediately, written and spoken answers go to the AI examiner.
 4. **Review.** Every question is replayable next to the correct answer, the candidate's own answer,
-   and the examiner's feedback, including the original recording for speaking.
+   and the examiner's feedback, including the transcript for speaking.
 
 ## Tech stack
 
@@ -78,7 +78,7 @@ Five exams per component, 25 in total, all at A2 level. KNM has no level, matchi
 | Auth           | Better Auth, email and password with mandatory verification |
 | AI grading     | Google AI via the Vercel AI SDK                             |
 | Speech         | Transcription in the browser with Transformers.js           |
-| Storage        | Any S3-compatible object storage, two buckets               |
+| Storage        | Neon Object Storage, one public bucket for exam media       |
 | Email          | Brevo HTTP API                                              |
 | Deployment     | Docker image built from `Dockerfile`                        |
 
@@ -91,7 +91,7 @@ make migrate    # apply db/migrations
 make dev        # http://localhost:3000
 ```
 
-Copy `.env.example` to `.env.local` and fill it in. Postgres, Brevo, S3 storage and Google AI each
+Copy `.env.example` to `.env.local` and fill it in. Postgres, Brevo, the exam assets URL and Google AI each
 need values. The file documents what every variable is for.
 
 The exam audio, images and video are not in git. Download `exam-assets.zip` from the

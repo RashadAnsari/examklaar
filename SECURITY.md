@@ -1,6 +1,6 @@
 # Security
 
-ExamKlaar stores accounts, exam answers and voice recordings, so we take reports seriously.
+ExamKlaar stores accounts, exam answers and speaking transcripts, so we take reports seriously.
 
 ## Reporting a vulnerability
 

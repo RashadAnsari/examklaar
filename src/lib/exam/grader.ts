@@ -96,7 +96,6 @@ export function toQuestionFeedback(grade: ModelGrade, rubric: Rubric): QuestionF
 }
 
 interface SpeakingAnswer {
-  path?: string;
   transcript?: string;
 }
 

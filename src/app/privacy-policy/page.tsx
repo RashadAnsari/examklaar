@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${site.url}/privacy-policy` },
 };
 
-const LAST_UPDATED = "20 October 2026";
+const LAST_UPDATED = "7 November 2026";
 
 const SECTIONS: LegalSection[] = [
   {
@@ -30,8 +30,8 @@ const SECTIONS: LegalSection[] = [
         text: "Your answers, scores, feedback and exam history, so you can track your progress.",
       },
       {
-        subtitle: "Speaking recordings",
-        text: "The audio you record in speaking exercises and a written transcript of it, which we use to give you feedback. The transcript is made on your own device, so your audio is not sent anywhere to be turned into text.",
+        subtitle: "Speaking transcripts",
+        text: "A written transcript of what you say in speaking exercises, which we use to give you feedback. The transcript is made on your own device. Your audio never leaves your device and we do not store it.",
       },
       {
         subtitle: "Usage data",
@@ -84,15 +84,11 @@ const SECTIONS: LegalSection[] = [
       },
       {
         subtitle: "Neon, Inc. (USA), processor",
-        text: "Stores our database in its data centre in Frankfurt, Germany: your account data, answers, feedback and exam results.",
-      },
-      {
-        subtitle: "Cloudflare, Inc. (USA), processor",
-        text: "Stores speaking recordings in EU data centres, and delivers exam images, audio and video.",
+        text: "Stores our database and the exam images, audio and video in its data centre in Frankfurt, Germany. The database holds your account data, answers, feedback and exam results.",
       },
       {
         subtitle: "Google LLC (USA), processor, AI feedback",
-        text: "Generates feedback on your writing and speaking answers. We send only the exam question and your written answer or the transcript of your recording. We never send your name, email address or audio. Google does not use this content to train its models, and keeps it for a limited period only to detect misuse of its service. Please do not include personal details in your answers beyond what the question asks for.",
+        text: "Generates feedback on your writing and speaking answers. We send only the exam question and your written answer or the transcript of your spoken answer. We never send your name, email address or audio. Google does not use this content to train its models, and keeps it for a limited period only to detect misuse of its service. Please do not include personal details in your answers beyond what the question asks for.",
       },
       {
         subtitle: "Google LLC (USA), processor, Google Analytics",
@@ -120,8 +116,8 @@ const SECTIONS: LegalSection[] = [
         text: "Standard Contractual Clauses approved by the European Commission, which are part of our agreement with each of them, and the EU-US Data Privacy Framework where the provider is certified under it.",
       },
       {
-        subtitle: "Neon and Cloudflare (USA)",
-        text: "Your data stays in their EU data centres. Standard Contractual Clauses cover any access to it from outside the EU, for example by their support staff.",
+        subtitle: "Neon (USA)",
+        text: "Your data stays in its EU data centre. Standard Contractual Clauses cover any access to it from outside the EU, for example by its support staff.",
       },
     ],
     footer:
@@ -133,10 +129,6 @@ const SECTIONS: LegalSection[] = [
       {
         subtitle: "Account data and exam results",
         text: "As long as you have an account. We delete them within 30 days after you ask us to delete your account. Our database provider keeps a restore copy for at most 30 days, so copies in it are gone 30 days after that.",
-      },
-      {
-        subtitle: "Speaking recordings",
-        text: "Deleted automatically 30 days after you record them, or sooner if you delete your account.",
       },
       {
         subtitle: "Technical logs",

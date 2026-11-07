@@ -8,21 +8,8 @@ export interface SkillGroup {
   completedCount: number;
 }
 
-/**
- * Cap on the recording the browser posts to us for a speaking answer.
- * S3-compatible object storage has no bucket-level size or content type limit,
- * so the route handlers are the only place either is enforced.
- */
-export const MAX_AUDIO_UPLOAD_BYTES = 2 * 1024 * 1024; // 2 MB
-
-/**
- * Cap on a whole exam submission. A speaking exam posts one recording per
- * question, so the per-file limit alone would still allow a 30 MB+ body.
- */
-export const MAX_SUBMISSION_BYTES = 10 * 1024 * 1024; // 10 MB
-
-/** Container the browser records speaking answers in (MediaRecorder default). */
-export const RECORDING_MIME_TYPE = "audio/webm";
+/** Cap on a whole exam submission: the answers and transcripts fields plus multipart overhead. */
+export const MAX_SUBMISSION_BYTES = 128 * 1024; // 128 KB
 
 /**
  * Aspects of the official DUO A2 assessment models (beoordelingsmodellen), in model order. A form

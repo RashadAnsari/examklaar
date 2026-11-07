@@ -541,11 +541,10 @@ export function ExamClient({ exam, skillId, n }: Props) {
           continue;
         }
 
-        if (q.type === "speaking" && typeof a === "string" && a.startsWith("blob:")) {
-          const audioBlob = await fetch(a).then((r) => r.blob());
-          formData.append(`audio_${q.id}`, audioBlob, `${q.id}.webm`);
+        // Only the transcript leaves the browser; the recording stays on the device.
+        if (q.type === "speaking") {
           transcriptsPayload[q.id] = transcripts[q.id] ?? "";
-          answersPayload[q.id] = "AUDIO";
+          answersPayload[q.id] = "SPOKEN";
         } else {
           answersPayload[q.id] = a as number | string;
         }
@@ -558,11 +557,7 @@ export function ExamClient({ exam, skillId, n }: Props) {
       const data = await res.json();
 
       if (!res.ok || data.error) {
-        setSubmitError(
-          data.error === "upload_failed"
-            ? "Failed to upload your recording. Please try again."
-            : "Something went wrong. Please try again."
-        );
+        setSubmitError("Something went wrong. Please try again.");
         setSubmitting(false);
         blockNavRef.current = true;
         return;

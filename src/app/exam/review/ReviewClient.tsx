@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { CriteriaScores } from "@/components/ui/CriteriaScores";
@@ -14,7 +14,7 @@ export type ReviewQuestion = {
   content: string;
   options: string[] | null;
   correctAnswer: number | null;
-  userAnswer: number | string | { path: string; transcript: string } | null;
+  userAnswer: number | string | { transcript: string } | null;
   feedback: QuestionFeedback | null;
 };
 
@@ -23,7 +23,6 @@ type WritingFilterType = "all" | "good" | "needs_work";
 
 interface Props {
   questions: ReviewQuestion[];
-  resultId: string;
   isMcq: boolean;
   skillId: string;
   n: number;
@@ -36,7 +35,6 @@ interface Props {
 
 export function ReviewClient({
   questions,
-  resultId,
   isMcq,
   skillId,
   n,
@@ -180,7 +178,7 @@ export function ReviewClient({
               isMcq ? (
                 <McqCard key={q.id} question={q} displayIndex={displayIndex} />
               ) : (
-                <OpenCard key={q.id} question={q} resultId={resultId} displayIndex={displayIndex} />
+                <OpenCard key={q.id} question={q} displayIndex={displayIndex} />
               )
             )
           )}
@@ -285,15 +283,7 @@ function McqCard({ question, displayIndex }: { question: ReviewQuestion; display
 
 /* ─── Writing / Speaking Card ─── */
 
-function OpenCard({
-  question,
-  resultId,
-  displayIndex,
-}: {
-  question: ReviewQuestion;
-  resultId: string;
-  displayIndex: number;
-}) {
+function OpenCard({ question, displayIndex }: { question: ReviewQuestion; displayIndex: number }) {
   const feedback = question.feedback;
   const pct = feedback && feedback.maxScore > 0 ? feedback.score / feedback.maxScore : null;
   const variant =
@@ -304,8 +294,8 @@ function OpenCard({
     isSpeaking &&
     question.userAnswer !== null &&
     typeof question.userAnswer === "object" &&
-    "path" in question.userAnswer
-      ? (question.userAnswer as { path: string; transcript: string })
+    "transcript" in question.userAnswer
+      ? (question.userAnswer as { transcript: string })
       : null;
   const transcript = speakingAnswer?.transcript ?? null;
 
@@ -351,18 +341,17 @@ function OpenCard({
       />
 
       {/* User's answer */}
-      {(writtenAnswer || transcript || speakingAnswer) && (
+      {(writtenAnswer || transcript) && (
         <div className="mb-6">
           <p
             className="text-xs font-semibold uppercase tracking-wider mb-2"
             style={{ color: "var(--gray-500)" }}
           >
-            {isSpeaking ? "Your recording" : "Your answer"}
+            {isSpeaking ? "Your transcript" : "Your answer"}
           </p>
-          {speakingAnswer && <AudioPlayer resultId={resultId} questionId={question.id} />}
           {transcript && (
             <div
-              className="rounded-xl px-5 py-4 text-sm mt-3"
+              className="rounded-xl px-5 py-4 text-sm"
               style={{
                 background: "var(--gray-50)",
                 border: "1.5px solid var(--gray-200)",
@@ -371,12 +360,6 @@ function OpenCard({
                 whiteSpace: "pre-wrap",
               }}
             >
-              <p
-                className="text-xs font-semibold uppercase tracking-wider mb-2"
-                style={{ color: "var(--gray-500)" }}
-              >
-                Transcript
-              </p>
               {transcript}
             </div>
           )}
@@ -487,77 +470,5 @@ function OpenCard({
         </div>
       )}
     </div>
-  );
-}
-
-/* ─── Audio Player ─── */
-
-function AudioPlayer({ resultId, questionId }: { resultId: string; questionId: string }) {
-  const [url, setUrl] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [expired, setExpired] = useState(false);
-  const [error, setError] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch(
-      `/api/recordings/signed-url?resultId=${encodeURIComponent(resultId)}&questionId=${encodeURIComponent(questionId)}`
-    )
-      .then(async (r) => {
-        const data = await r.json();
-        if (cancelled) {
-          return;
-        }
-        if (r.status === 404 && data.expired) {
-          setExpired(true);
-        } else if (data.url) {
-          setUrl(data.url);
-        } else {
-          setError(true);
-        }
-        setLoading(false);
-      })
-      .catch(() => {
-        if (cancelled) {
-          return;
-        }
-        setError(true);
-        setLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [resultId, questionId]);
-
-  if (loading) {
-    return (
-      <p className="text-sm" style={{ color: "var(--gray-400)" }}>
-        Loading recording…
-      </p>
-    );
-  }
-  if (expired) {
-    return (
-      <p className="text-sm italic" style={{ color: "var(--gray-400)" }}>
-        Recording expired after 30 days.
-      </p>
-    );
-  }
-  if (error || !url) {
-    return (
-      <p className="text-sm italic" style={{ color: "var(--gray-400)" }}>
-        Recording unavailable.
-      </p>
-    );
-  }
-  return (
-    <audio
-      ref={audioRef}
-      src={url}
-      controls
-      style={{ width: "100%", borderRadius: "0.5rem" }}
-      onError={() => setError(true)}
-    />
   );
 }
