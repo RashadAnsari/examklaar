@@ -12,6 +12,7 @@
  *   --yes   skip the interactive confirmation (for scripted runs)
  */
 import { pool } from "@/lib/db";
+import { VerificationRepository } from "@/lib/repositories/verificationRepository";
 import { createInterface } from "node:readline/promises";
 
 const KNOWN_FLAGS = new Set(["--yes"]);
@@ -103,16 +104,11 @@ async function eraseFromDatabase(user: UserRow): Promise<number> {
   const client = await pool.connect();
   try {
     await client.query("begin");
-    // Password reset and delete-account tokens store the user id in value;
-    // email-keyed tokens store the address in identifier.
-    const verifications = await client.query(
-      `delete from verification where value = $1 or value = $2 or identifier = $2`,
-      [user.id, user.email]
-    );
+    const verificationsDeleted = await new VerificationRepository(client).deleteForUser(user);
     // Cascades to session, account and exam_results.
     await client.query(`delete from "user" where id = $1`, [user.id]);
     await client.query("commit");
-    return verifications.rowCount ?? 0;
+    return verificationsDeleted;
   } catch (error) {
     await client.query("rollback");
     throw new Error(

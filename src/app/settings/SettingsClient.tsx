@@ -9,6 +9,7 @@ import { Footer } from "@/components/layout/Footer";
 import { SuccessBanner } from "@/components/ui/SuccessBanner";
 import { ErrorBanner } from "@/components/ui/ErrorBanner";
 import { SettingsSection } from "./SettingsSection";
+import { DeleteAccountSection } from "./DeleteAccountSection";
 
 export function SettingsClient() {
   const { data: session } = authClient.useSession();
@@ -187,6 +188,8 @@ export function SettingsClient() {
             </div>
           </form>
         </SettingsSection>
+
+        <DeleteAccountSection />
       </div>
       <Footer />
     </div>

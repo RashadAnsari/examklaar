@@ -30,6 +30,12 @@ Better Auth with email and password, mounted at `/api/auth`. Email verification 
 new account is inactive until the confirmation link is clicked. Signup confirmation and password
 reset emails go out through the Brevo HTTP API.
 
+Users delete their own account from the Settings page, which calls Better Auth's `/delete-user`
+with their password. Deleting the `user` row cascades to sessions, accounts and exam results, and a
+`beforeDelete` hook clears the verification tokens, which the cascade does not reach.
+`bun run delete-user <email|userId>` does the same from the command line, for requests from people
+who cannot sign in.
+
 ## Object storage
 
 One public-read Neon Object Storage bucket, `exam-assets`, holds the audio, images and video referenced by the exam JSON.
