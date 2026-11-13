@@ -121,7 +121,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       {
         subtitle: "By you",
-        text: "You can delete your account at any time under 'Delete Account' on the Settings page. Deleting your account ends your access immediately and cannot be undone. If you cannot sign in, open an issue at github.com/RashadAnsari/examklaar/issues, without your email address or other personal data, and we contact you to confirm the request and finish it.",
+        text: "You can delete your account at any time on the Settings page. This ends your access immediately and cannot be undone. If you cannot sign in, open an issue at github.com/RashadAnsari/examklaar/issues, without personal data, and we will contact you.",
       },
       {
         subtitle: "By us",
