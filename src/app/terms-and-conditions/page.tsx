@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${site.url}/terms-and-conditions` },
 };
 
-const LAST_UPDATED = "7 November 2026";
+const LAST_UPDATED = "13 November 2026";
 
 const SECTIONS: LegalSection[] = [
   {
@@ -121,7 +121,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       {
         subtitle: "By you",
-        text: "You can ask us to delete your account at any time by opening an issue at github.com/RashadAnsari/examklaar/issues. Do not put your email address or other personal data in the issue. We then contact you to confirm the request and finish it. Deleting your account ends your access immediately.",
+        text: "You can delete your account at any time under 'Delete Account' on the Settings page. Deleting your account ends your access immediately and cannot be undone. If you cannot sign in, open an issue at github.com/RashadAnsari/examklaar/issues, without your email address or other personal data, and we contact you to confirm the request and finish it.",
       },
       {
         subtitle: "By us",

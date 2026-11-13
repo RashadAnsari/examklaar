@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${site.url}/privacy-policy` },
 };
 
-const LAST_UPDATED = "7 November 2026";
+const LAST_UPDATED = "13 November 2026";
 
 const SECTIONS: LegalSection[] = [
   {
@@ -128,7 +128,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       {
         subtitle: "Account data and exam results",
-        text: "As long as you have an account. We delete them within 30 days after you ask us to delete your account. Our database provider keeps a restore copy for at most 30 days, so copies in it are gone 30 days after that.",
+        text: "As long as you have an account. When you delete your account on the Settings page, we delete them straight away. If you ask us to delete your account instead, we do so within 30 days. Our database provider keeps a restore copy for at most 30 days, so copies in it are gone 30 days after that.",
       },
       {
         subtitle: "Technical logs",
@@ -153,7 +153,7 @@ const SECTIONS: LegalSection[] = [
       { subtitle: "Rectification", text: "Have incorrect or incomplete data corrected." },
       {
         subtitle: "Erasure",
-        text: "Have your data deleted, except where the law requires us to keep it.",
+        text: "Have your data deleted, except where the law requires us to keep it. You can delete your account and everything in it yourself under 'Delete Account' on the Settings page.",
       },
       {
         subtitle: "Restriction",
