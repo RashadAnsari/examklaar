@@ -99,7 +99,7 @@ export default function LandingPage() {
             }}
           >
             Realistic mock exams for all 5 components: KNM, Reading, Listening, Writing, and
-            Speaking. AI-powered feedback on every answer.
+            Speaking. AI-powered feedback on every writing and speaking answer.
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">

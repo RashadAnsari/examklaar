@@ -24,7 +24,7 @@ export async function sendEmail({
     },
     body: JSON.stringify({
       sender: {
-        name: process.env.EMAIL_FROM_NAME ?? "Examklaar",
+        name: process.env.EMAIL_FROM_NAME ?? "ExamKlaar",
         email: process.env.EMAIL_FROM_ADDRESS ?? "",
       },
       to: [{ email: to }],

@@ -57,7 +57,7 @@ const SECTIONS: LegalSection[] = [
   {
     title: "Article 6. Open Source",
     content:
-      "The source code of ExamKlaar is published at github.com/RashadAnsari/examklaar under the GNU Affero General Public License, version 3. That licence covers the code. These Terms cover your use of the platform at examklaar.nl.",
+      "The source code of ExamKlaar is published at github.com/RashadAnsari/examklaar under the GNU Affero General Public License, version 3. That licence covers the code and the exam content in that repository, and you may copy, change and share them under its conditions. These Terms cover your use of the platform at examklaar.nl.",
   },
   {
     title: "Article 7. Acceptable Use",
@@ -65,7 +65,7 @@ const SECTIONS: LegalSection[] = [
     items: [
       { text: "Share your account with others or resell access to the platform" },
       {
-        text: "Copy, scrape or redistribute exam content or feedback",
+        text: "Copy, scrape or redistribute exam content or feedback, other than as the open source licence in Article 6 allows",
       },
       {
         text: "Use bots or other automated tools to access the platform",
@@ -84,7 +84,7 @@ const SECTIONS: LegalSection[] = [
   {
     title: "Article 8. Intellectual Property",
     content:
-      "All content on ExamKlaar, including exam questions, audio, video, images, design and software, belongs to ExamKlaar or its licensors and is protected by copyright. You may use it only for your own exam preparation. You may not copy, share or publish it without our written permission.",
+      "All content on ExamKlaar, including exam questions, audio, video, images, design and software, belongs to ExamKlaar or its licensors and is protected by copyright. The code and the exam content in our public repository are licensed to you under the open source licence in Article 6. Everything else, such as the audio, video, images and the ExamKlaar name and logo, you may use only for your own exam preparation, and you may not copy, share or publish it without our written permission.",
   },
   {
     title: "Article 9. AI Feedback",

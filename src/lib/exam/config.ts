@@ -39,7 +39,7 @@ export const CRITERION_LABELS: Record<CriterionKey, string> = {
   content: "Task completion",
   vocabulary: "Word use",
   grammar: "Grammar",
-  spelling: "Spelling and punctuation",
+  spelling: "Spelling",
   fluency: "Fluency",
   coherence: "Coherence",
   pronunciation: "Pronunciation",
