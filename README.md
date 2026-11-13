@@ -127,7 +127,7 @@ src/
   config/           site.ts, everything that identifies the product
   data/             exams/ the exam JSON, grading/ the DUO assessment models
   hooks/            shared client hooks
-  lib/              db, auth, exam scoring and grading, storage, email
+  lib/              db, auth, exam scoring and grading, email
 db/migrations/      numbered SQL migrations, applied by scripts/migrate.ts
 docs/               authoring, generation and operations documentation
 scripts/            migrate, delete-user

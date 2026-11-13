@@ -9,7 +9,7 @@ beforeEach(() => {
   calls = [];
   process.env.BREVO_API_KEY = "test-key";
   process.env.EMAIL_FROM_ADDRESS = "noreply@examklaar.nl";
-  process.env.EMAIL_FROM_NAME = "Examklaar";
+  process.env.EMAIL_FROM_NAME = "ExamKlaar";
   globalThis.fetch = (async (url: string, init: RequestInit) => {
     calls.push({ url, init });
     return response;
@@ -29,7 +29,7 @@ describe("sendEmail", () => {
     expect(calls[0].url).toBe("https://api.brevo.com/v3/smtp/email");
     expect((calls[0].init.headers as Record<string, string>)["api-key"]).toBe("test-key");
     expect(JSON.parse(calls[0].init.body as string)).toEqual({
-      sender: { name: "Examklaar", email: "noreply@examklaar.nl" },
+      sender: { name: "ExamKlaar", email: "noreply@examklaar.nl" },
       to: [{ email: "a@b.nl" }],
       subject: "Hi",
       htmlContent: "<p>Hi</p>",
